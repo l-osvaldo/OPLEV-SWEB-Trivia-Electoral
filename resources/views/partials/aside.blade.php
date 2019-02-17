@@ -25,7 +25,7 @@
       <li class="header nav-small-cap">PERSONAL</li>
       <li class="active">
         <a href="index.html">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <i class="fa fa-dashboard"></i> <span>Panel</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-right pull-right"></i>
           </span>

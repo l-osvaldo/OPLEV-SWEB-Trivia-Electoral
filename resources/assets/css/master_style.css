@@ -2108,7 +2108,7 @@ input[type="color"] {
     border-color: #d2d6de;
 }
 .form-control:focus {
-    border-color: #398bf7;
+    border-color: #EA0D94;
     box-shadow: none;
 }
 .form-control:-ms-input-placeholder, .form-control::-moz-placeholder, .form-control::-webkit-input-placeholder {
