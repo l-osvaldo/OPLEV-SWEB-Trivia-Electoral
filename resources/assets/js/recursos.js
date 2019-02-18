@@ -67,5 +67,36 @@ $(function() {
     });
   }
 
+  //Generación de tabla
+  $("#actividades").change(function() {
+    console.log("Genera tabla");
+    var idActividad = $('#actividades').find(':selected').val();
+
+    //Obtener porcentajes programado
+    $.ajax({
+      url: "/obtenPorcProgramado",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {idActividad: idActividad},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        $('#enep').html(response[0]['enep']);
+        $('#febp').html(response[0]['febp']);
+        $('#marp').html(response[0]['marp']);
+        $('#abrp').html(response[0]['abrp']);
+        $('#mayp').html(response[0]['mayp']);
+        $('#junp').html(response[0]['junp']);
+        $('#julp').html(response[0]['julp']);
+        $('#agop').html(response[0]['agop']);
+        $('#sepp').html(response[0]['sepp']);
+        $('#octp').html(response[0]['octp']);
+        $('#novp').html(response[0]['novp']);
+        $('#dicp').html(response[0]['dicp']);
+        $('#inicio').html(response[0]['inicio']);
+        $('#termino').html(response[0]['termino']);
+      });
+  });
+
 });
 

@@ -241,20 +241,20 @@
                       <tbody>
                         <tr>
                           <td>Programado</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>Enero</td>
-                          <td>Diciembre</td>
+                          <td><span id="enep"></span></td>
+                          <td><span id="febp"></span></td>
+                          <td><span id="marp"></span></td>
+                          <td><span id="abrp"></span></td>
+                          <td><span id="mayp"></span></td>
+                          <td><span id="junp"></span></td>
+                          <td><span id="julp"></span></td>
+                          <td><span id="agop"></span></td>
+                          <td><span id="sepp"></span></td>
+                          <td><span id="octp"></span></td>
+                          <td><span id="novp"></span></td>
+                          <td><span id="dicp"></span></td>
+                          <td><span id="inicio"></span></td>
+                          <td><span id="termino"></span></td>
                         </tr>
                         <tr>
                           <td>Realizado</td>
