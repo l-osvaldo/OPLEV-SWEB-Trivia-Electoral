@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado};
 use DB;
 use Auth;
 
@@ -36,11 +36,11 @@ class PoaController extends Controller
     {
       if ( Auth::check() )
       {
-
         $idmesreportar = $request->input('idmesreportar');
+        $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
         $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
         $action = route('programa.store');
-        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action') );
+        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
 
         /*
         $zonas       = DB::table('zonas')->orderBy('zona')->get();
@@ -57,7 +57,7 @@ class PoaController extends Controller
 
         return view('pages.obras.create')->with( compact('obra', 'action', 'zonas', 'municipios', 'tipoObras', 'origenObras', 'statusObras', 'statusProyectos', 'supervisores', 'residente') );*/
       }
-      else 
+      else
       {
         return redirect()->route('login');
       }
@@ -117,5 +117,52 @@ class PoaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function obtenProgramaEsp(Request $request) {
+      if (Auth::check()) {
+        $idArea = Auth::user()->idarea;
+        $programa = $request->programa;
+
+        $programaEsp = ProgramaEsp::select('idprogramaesp', 'claveprogramaesp','descprogramaesp')
+          ->where('idprograma', $programa)
+          ->where('idarea', $idArea)->get();
+
+        return response()->json($programaEsp);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+    public function obtenActividades(Request $request) {
+      $idArea = Auth::user()->idarea;
+      $idPrograma = $request->programa;
+      $idProgramaEsp = $request->programaEsp;
+
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      return response()->json($actividades);
+
+    }
+
+    public function obtenObjetivoAct(Request $request) {
+      $idArea = Auth::user()->idarea;
+      $idPrograma = $request->programa;
+      $idProgramaEsp = $request->programaEsp;
+      $objetivo = ProgramaEsp::select('objprogramaesp')
+        ->where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      return response()->json($objetivo);
+    }
+
+    public function obtenPorcProgramado(Request $request) {
+      $idActividad = $request->idActividad;
+      $porcProgramado = PorcProgramado::where('porcentajep.idporcentajep', $idActividad)->leftJoin('actividades', 'actividades.autoactividades', 'porcentajep.idporcentajep')->get();
+      return response()->json($porcProgramado);
+    }
+
+    public function obtenPorcRealizado(Request $request) {
+      $idActividad = $request->idActividad;
+      $porcRealizado = PorcRealizado::where('idporcentajer', $idActividad)->get();
+      return response()->json($porcRealizado);
     }
 }
