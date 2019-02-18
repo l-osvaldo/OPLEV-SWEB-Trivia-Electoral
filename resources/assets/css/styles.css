@@ -15,11 +15,17 @@
 {
 	background-color: #EA0D94 !important;
 	color: #fff !important;
+	text-align: center;
 }
 
 .ribbon-blanco
 {
 	background: #fff;
+}
+
+.ribbon-rosa
+{
+	background: #FCE6F4;
 }
 
 .ribbon
@@ -34,4 +40,21 @@
 {
 	font-weight: bold;
 	font-size: 16px;
+}
+
+.titareames
+{
+	font-size: 20px;	
+	font-weight: 	bold;		
+	text-align: center;
+}
+
+.contenido
+{
+	font-size: 15px;	
+}
+
+.contcentrado
+{
+	text-align: center;
 }

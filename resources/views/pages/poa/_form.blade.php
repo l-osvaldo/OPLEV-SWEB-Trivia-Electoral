@@ -22,14 +22,14 @@
       <div class="box">
         <div class="row">
           <div class="col-12">
-            <div class="ribbon-wrapper ribbon-blanco">
+            <div class="ribbon-wrapper ribbon-rosa">
               <div class="ribbon ribbon-primary">
                 Unidad Responsable
               </div>
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>{{ Auth::user()->name }}</p>
+                    <span class="titareames">{{ Auth::user()->name }}</span>
                   </div>
                 </div>
               </div>
@@ -42,14 +42,14 @@
       <div class="box">
         <div class="row">
           <div class="col-12">
-            <div class="ribbon-wrapper ribbon-blanco">
+            <div class="ribbon-wrapper ribbon-rosa">
               <div class="ribbon ribbon-primary">
                 Mes a reportar
               </div>
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>{{$mes[0]->mes}}</p>
+                    <span class="titareames">{{$mes[0]->mes}}</span>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p id="objetivo"></p>
+                    <p id="objetivo" class="contenido"></p>
                   </div>
                 </div>
               </div>
@@ -172,7 +172,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p id="unidadmedida"></p>
+                    <p id="unidadmedida" class="contenido contcentrado"></p>
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p id="cantidadanual"></p>
+                    <p id="cantidadanual" class="contenido contcentrado"></p>
                   </div>
                 </div>
               </div>
