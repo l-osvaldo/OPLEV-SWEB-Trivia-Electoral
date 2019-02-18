@@ -10,3 +10,21 @@
 	margin-left: 16px;
 	font-weight: 500;	
 }
+
+.ribbon-primary
+{
+	background-color: #EA0D94 !important;
+	color: #fff !important;
+}
+
+.ribbon-blanco
+{
+	background: #fff;
+}
+
+.ribbon
+{
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}

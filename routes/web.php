@@ -11,18 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-  //return view('welcome');
-	
+Route::get('/', function () {	
 	return view('auth/login');
-
 });
 
-
-Route::get('/lite', function () {
-    return view('welcomelite');
-});
+Route::resource('programa', 'PoaController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::post('programa/create','PoaController@create')->name('poa.create');
+

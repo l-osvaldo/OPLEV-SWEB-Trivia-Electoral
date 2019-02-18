@@ -5,14 +5,13 @@
 
     <section class="content-header">
     <h3>
-      <small>Programa Operativo Anual 2019</small>
+      <small>Panel</small>
     </h3>
   </section>
 
   <section>
-  	
+  	<br><br>
   	<!-- Espacio de Trabajo -->
-
 
 
   </section>

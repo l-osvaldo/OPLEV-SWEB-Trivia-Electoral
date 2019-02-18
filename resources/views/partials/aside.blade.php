@@ -13,8 +13,13 @@
         <!--<img src="../images/user2-160x160.jpg" class="rounded-circle" alt="User Image">     -->
         <img src="../images/usuario.png" class="rounded-circle" alt="User Image">           
       </div>      
-      <div class="info">          
-          <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ion ion-power"></i></a>
+      <div class="info">   
+
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ion ion-power"></i></a>
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+
       </div>
     </div>
     <!-- sidebar menu -->
@@ -25,7 +30,7 @@
       
       <li class="active">
         <a href="index.html">
-          <i class="fa fa-dashboard"></i> <span>Capturar</span>
+          <i class="fa fa-calendar-check-o"></i> <span>Capturar</span>
         </a>
       </li>
       <!--
