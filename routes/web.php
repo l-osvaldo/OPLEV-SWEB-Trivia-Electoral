@@ -21,6 +21,8 @@ Route::get('obtenActividades', 'PoaController@obtenActividades')->name('obten.pr
 Route::get('obtenObjetivoAct', 'PoaController@obtenObjetivoAct')->name('obten.objetivo.actividad');
 Route::get('obtenPorcProgramado', 'PoaController@obtenPorcProgramado')->name('obten.porcentaje.programado');
 
+Route::get('obtenPorcRealizado', 'PoaController@obtenPorcRealizado')->name('obten.porcentaje.realizado');
+
 Auth::routes();
 
 

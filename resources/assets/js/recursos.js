@@ -63,13 +63,13 @@ $(function() {
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(response[0]);
         $('#objetivo').append(response[0]['objprogramaesp']);
     });
   }
 
   //Generación de tabla
   $("#actividades").change(function() {
-    console.log("Genera tabla");
     var idActividad = $('#actividades').find(':selected').val();
 
     //Obtener porcentajes programado
@@ -95,6 +95,33 @@ $(function() {
         $('#dicp').html(response[0]['dicp']);
         $('#inicio').html(response[0]['inicio']);
         $('#termino').html(response[0]['termino']);
+
+        $('#unidadmedida').html(response[0]['unidadmedida']);
+        $('#cantidadanual').html(response[0]['cantidadanual']);
+      });
+
+      //Obtener porcentaje realizado
+    $.ajax({
+      url: "/obtenPorcRealizado",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {idActividad: idActividad},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        $('#ener').html(response[0]['ener']);
+        $('#febr').html(response[0]['febr']);
+        $('#marr').html(response[0]['marr']);
+        $('#abrr').html(response[0]['abrr']);
+        $('#mayr').html(response[0]['mayr']);
+        $('#junr').html(response[0]['junr']);
+        $('#julr').html(response[0]['julr']);
+        $('#agor').html(response[0]['agor']);
+        $('#sepr').html(response[0]['sepr']);
+        $('#octr').html(response[0]['octr']);
+        $('#novr').html(response[0]['novr']);
+        $('#dicr').html(response[0]['dicr']);
+
       });
   });
 

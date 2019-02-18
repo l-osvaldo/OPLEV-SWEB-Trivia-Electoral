@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>Nombre de la unidad responsable que inicio sesión</p>
+                    <p>{{ Auth::user()->name }}</p>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>Mes seleccionado</p>
+                    <p>{{$mes[0]->mes}}</p>
                   </div>
                 </div>
               </div>
@@ -172,7 +172,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>Orden del Día</p>
+                    <p id="unidadmedida"></p>
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>18</p>
+                    <p id="cantidadanual"></p>
                   </div>
                 </div>
               </div>
@@ -258,18 +258,20 @@
                         </tr>
                         <tr>
                           <td>Realizado</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
+                          <td><span id="ener"></span></td>
+                          <td><span id="febr"></span></td>
+                          <td><span id="marr"></span></td>
+                          <td><span id="abrr"></span></td>
+                          <td><span id="mayr"></span></td>
+                          <td><span id="junr"></span></td>
+                          <td><span id="julr"></span></td>
+                          <td><span id="agor"></span></td>
+                          <td><span id="sepr"></span></td>
+                          <td><span id="octr"></span></td>
+                          <td><span id="novr"></span></td>
+                          <td><span id="dicr"></span></td>
+                          <td></td>
+                          <td></td>
                         </tr>
                       </tbody>
                     </table>
