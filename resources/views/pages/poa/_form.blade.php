@@ -70,7 +70,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Seleccione un Programa
+                1. Seleccione un Programa
               </div>
               <div class="row">
                 <div class="col-12">
@@ -96,7 +96,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Seleccione un Programa Específico
+                2. Seleccione un Programa Específico
               </div>
               <div class="row">
                 <div class="col-12">
@@ -145,7 +145,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Actividad
+                3. Seleccione una Actividad
               </div>
               <div class="row">
                 <div class="col-12">
@@ -277,7 +277,10 @@
                     </table>
                   </div>
 
-
+                  <span class="fraserealizado">Realizado en este Mes:</span>
+                  <div class="form-group">                  
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
 
                 </div>
               </div>
@@ -288,8 +291,75 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-blanco">
+              <div class="ribbon ribbon-primary">
+                Descripción de la Actividad
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                  <textarea class="form-control" rows="4" placeholder="Actividad ..."></textarea>
 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-blanco">
+              <div class="ribbon ribbon-primary">
+                Soporte
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                  <textarea class="form-control" rows="4" placeholder="Soporte de la actividad ..."></textarea>
 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-blanco">
+              <div class="ribbon ribbon-primary">
+                Observaciones
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                  <textarea class="form-control" rows="4" placeholder="Observaciones ..."></textarea>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>

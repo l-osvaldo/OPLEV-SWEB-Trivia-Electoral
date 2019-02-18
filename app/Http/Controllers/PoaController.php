@@ -42,20 +42,6 @@ class PoaController extends Controller
         $action = route('programa.store');
         return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
 
-        /*
-        $zonas       = DB::table('zonas')->orderBy('zona')->get();
-        $municipios  = DB::table('municipios')->where('estado', 'VERACRUZ DE IGNACIO DE LA LLAVE')->orderBy('mpio')->get();
-        $tipoObras   = DB::table('tipo_obras')->orderBy('obra')->get();
-        $origenObras = DB::table('origen_obras')->orderBy('origen')->get();
-        $residente   = Residente::find(Auth::user()->id);
-        $statusObras = DB::table('status_obras')->orderBy('id')->get();
-        $statusProyectos = DB::table('status_proyectos')->orderBy('id')->get();
-        $supervisores = Supervisor::all();
-
-        $obra = new Obra();
-        $action = route('obras.store');
-
-        return view('pages.obras.create')->with( compact('obra', 'action', 'zonas', 'municipios', 'tipoObras', 'origenObras', 'statusObras', 'statusProyectos', 'supervisores', 'residente') );*/
       }
       else
       {

@@ -27,4 +27,11 @@
 	border-top-right-radius: 0px !important;
 	border-bottom-right-radius: 0px !important;
 	border-bottom-left-radius: 0px !important;
+	width: 100%;	
+}
+
+.fraserealizado
+{
+	font-weight: bold;
+	font-size: 16px;
 }
