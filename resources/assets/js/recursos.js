@@ -63,15 +63,16 @@ $(function() {
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response[0]);
-        $('#objetivo').append(response[0]['objprogramaesp']);
+        $('#objetivo').html(response[0]['objprogramaesp']);
     });
   }
 
   //Generación de tabla
   $("#actividades").change(function() {
     var idActividad = $('#actividades').find(':selected').val();
-
+    var programa = $('#programa').find(':selected').val();
+    var programaEsp = $('#programaEsp').find(':selected').val();
+    obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
       url: "/obtenPorcProgramado",
