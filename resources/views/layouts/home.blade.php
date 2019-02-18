@@ -45,5 +45,6 @@
     <script src="{{ URL::asset('vendor_components/bootstrap/dist/js/bootstrap.js') }}"></script>
     <!-- Slimscroll -->
     <script src="{{ URL::asset('vendor_components/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+
   </body>
 </html>

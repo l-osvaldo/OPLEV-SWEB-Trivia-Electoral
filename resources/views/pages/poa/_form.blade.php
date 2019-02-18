@@ -18,7 +18,7 @@
 
 
   <div class="row">
-    <div class="col-12 col-lg-12 col-md-12">
+    <div class="col-6 col-lg-6 col-md-6">
       <div class="box">
         <div class="row">
           <div class="col-12">
@@ -28,20 +28,40 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <p>Nombre de la unidad responsable que inicio sesión</p>
-                  </div>                      
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-6 col-md-6">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-blanco">
+              <div class="ribbon ribbon-primary">
+                Mes a reportar
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <p>Mes seleccionado</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
 
-  
+
   <div class="row">
 
     <div class="col-5 col-lg-5 col-md-5">
@@ -54,19 +74,19 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <select class="form-control" id="programa" name="programa">
-                      <option value="0">Programa...</option>      
+                      <option value="0">Programa...</option>
                       @foreach( $programas as $programa )
                         <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
-                       @endforeach                                     
-                    </select>                       
-                  </div>                      
+                       @endforeach
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
 
@@ -80,17 +100,16 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
-                    <select class="form-control" id="programa" name="programa">
-                      <option value="0">Programa Específico...</option>      
-
-                    </select>                       
-                  </div>                      
+                  <div class="form-group" id="divProgramaEsp">
+                    <!--<select class="form-control" id="programaEsp" name="programaEsp">
+                      <option value="0">Programa Específico...</option>
+                    </select>-->
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
   </div>
@@ -106,14 +125,14 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <p>Descripcion del objetivo del programa especifico que se encuentra la tabla programasesp en el campo objprogramaesp</p>
-                  </div>                      
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
   </div>
@@ -130,17 +149,17 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <select class="form-control" id="programa" name="programa">
-                      <option value="0">No. Act...</option>      
-                                   
-                    </select>                       
-                  </div>                      
+                      <option value="0">No. Act...</option>
+
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
 
@@ -154,14 +173,14 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <p>Descripcion de la actividad la cual se encuentra en la tabla actividades en el campo descactividad</p>
-                  </div>                      
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
 
@@ -175,14 +194,14 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <p>Orden del Día</p>
-                  </div>                      
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
 
@@ -196,14 +215,14 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">                
+                  <div class="form-group">
                     <p>18</p>
-                  </div>                      
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
   </div>
@@ -241,7 +260,7 @@
                           <th>Inicio</th>
                           <th>Termino</th>
                         </tr>
-                      </thead>  
+                      </thead>
                       <tbody>
                         <tr>
                           <td>Programado</td>
@@ -259,7 +278,7 @@
                           <td>1</td>
                           <td>Enero</td>
                           <td>Diciembre</td>
-                        </tr>   
+                        </tr>
                         <tr>
                           <td>Realizado</td>
                           <td>0</td>
@@ -274,7 +293,7 @@
                           <td>0</td>
                           <td>0</td>
                           <td>0</td>
-                        </tr>                                              
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -285,7 +304,7 @@
               </div>
             </div>
           </div>
-        </div>            
+        </div>
       </div>
     </div>
   </div>

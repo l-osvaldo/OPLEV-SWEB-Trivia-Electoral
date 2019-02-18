@@ -49,7 +49,7 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         @yield('content')
-    
+
         <!--
         <footer class="main-footer">
             <div class="pull-right d-none d-sm-inline-block"></div> &copy; 2019 POA
@@ -98,6 +98,8 @@
 
         <!-- FastClick -->
         <script src="{{ URL::asset('vendor_components/fastclick/lib/fastclick.js') }}"></script>
+
+        <script src="{{ URL::asset('js/recursos.js') }}"></script>
 
   </body>
 </html>

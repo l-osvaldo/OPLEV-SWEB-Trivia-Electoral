@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {	
+Route::get('/', function () {
 	return view('auth/login');
 });
 
 Route::resource('programa', 'PoaController');
+Route::get('obtenProgramaEsp', 'PoaController@obtenProgramaEsp')->name('obten.programa.esp');
 
 Auth::routes();
 
