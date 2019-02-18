@@ -101,9 +101,9 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group" id="divProgramaEsp">
-                    <!--<select class="form-control" id="programaEsp" name="programaEsp">
+                    <select class="form-control" id="programaEsp" name="programaEsp">
                       <option value="0">Programa Específico...</option>
-                    </select>-->
+                    </select>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <p>Descripcion del objetivo del programa especifico que se encuentra la tabla programasesp en el campo objprogramaesp</p>
+                    <p id="objetivo"></p>
                   </div>
                 </div>
               </div>
@@ -139,31 +139,7 @@
 
   <div class="row">
 
-    <div class="col-2 col-lg-2 col-md-2">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
-            <div class="ribbon-wrapper ribbon-blanco">
-              <div class="ribbon ribbon-primary">
-                No. Actividad
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <select class="form-control" id="programa" name="programa">
-                      <option value="0">No. Act...</option>
-
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6 col-lg-6 col-md-6">
+    <div class="col-8 col-lg-8 col-md-8">
       <div class="box">
         <div class="row">
           <div class="col-12">
@@ -173,8 +149,9 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <div class="form-group">
-                    <p>Descripcion de la actividad la cual se encuentra en la tabla actividades en el campo descactividad</p>
+                  <div class="form-group" id="divActividad">
+                    <select class="form-control" id="actividades" name="actividades">
+                    </select>
                   </div>
                 </div>
               </div>

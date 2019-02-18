@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::resource('programa', 'PoaController');
 Route::get('obtenProgramaEsp', 'PoaController@obtenProgramaEsp')->name('obten.programa.esp');
+Route::get('obtenActividades', 'PoaController@obtenActividades')->name('obten.programa.actividades');
+Route::get('obtenObjetivoAct', 'PoaController@obtenObjetivoAct')->name('obten.objetivo.actividad');
 
 Auth::routes();
 
