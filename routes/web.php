@@ -20,8 +20,9 @@ Route::get('obtenProgramaEsp', 'PoaController@obtenProgramaEsp')->name('obten.pr
 Route::get('obtenActividades', 'PoaController@obtenActividades')->name('obten.programa.actividades');
 Route::get('obtenObjetivoAct', 'PoaController@obtenObjetivoAct')->name('obten.objetivo.actividad');
 Route::get('obtenPorcProgramado', 'PoaController@obtenPorcProgramado')->name('obten.porcentaje.programado');
-
 Route::get('obtenPorcRealizado', 'PoaController@obtenPorcRealizado')->name('obten.porcentaje.realizado');
+Route::get('obtenDetallesActi', 'PoaController@obtenDetallesActi')->name('obten.detalle.actividades');
+Route::get('obtenRealizadoMes', 'PoaController@obtenRealizadoMes')->name('obten.realizado.mes');
 
 Auth::routes();
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi};
 use DB;
 use Auth;
 
@@ -151,4 +151,14 @@ class PoaController extends Controller
       $porcRealizado = PorcRealizado::where('idporcentajer', $idActividad)->get();
       return response()->json($porcRealizado);
     }
+
+    public function obtenDetallesActi(Request $request) {      
+      $idActividad = $request->idActividad;
+      $idMes = $request->idMes;      
+      $detalleActi = DetalleActi::where('idmes', $idMes)->where('autoactividades', $idActividad)->get();
+      return response()->json($detalleActi);
+    }
+
+
+
 }

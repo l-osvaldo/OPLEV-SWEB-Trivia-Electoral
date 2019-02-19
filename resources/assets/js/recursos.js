@@ -67,11 +67,14 @@ $(function() {
     });
   }
 
-  //Generación de tabla
+  //Generación de tabla y textareas de actividad, soporte, observaciones
   $("#actividades").change(function() {
     var idActividad = $('#actividades').find(':selected').val();
     var programa = $('#programa').find(':selected').val();
     var programaEsp = $('#programaEsp').find(':selected').val();
+
+    var idMes = $('#programa').data('idmes');
+
     obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
@@ -123,8 +126,33 @@ $(function() {
         $('#novr').html(response[0]['novr']);
         $('#dicr').html(response[0]['dicr']);
 
+        var realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];
+        console.log(realizado[idMes]);
+        var pos = realizado[idMes];
+
+        $('#realizadomes').val(response[0][pos]);
+
       });
-  });
+
+
+    //Obtener textareas de actividad, soporte, observaciones
+    $.ajax({
+      url: "/obtenDetallesActi",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {idActividad: idActividad, idMes: idMes},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+
+        //console.log(response);
+        $('#descactividad').html(response[0]['descripcion']);
+        $('#soporte').html(response[0]['soporte']);
+        $('#observaciones').html(response[0]['observaciones']);
+      });
+
+
+  }); //Fin de codigo actividades
 
 });
 

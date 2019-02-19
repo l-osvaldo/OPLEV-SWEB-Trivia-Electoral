@@ -75,7 +75,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <select class="form-control" id="programa" name="programa">
+                    <select class="form-control" id="programa" name="programa" data-idmes={{$idmesreportar}}>
                       <option value="0">Programa...</option>
                       @foreach( $programas as $programa )
                         <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
@@ -279,7 +279,7 @@
 
                   <span class="fraserealizado">Realizado en este Mes:</span>
                   <div class="form-group">                  
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" id="realizadomes" name="realizadomes" placeholder="">
                   </div>
 
                 </div>
@@ -303,7 +303,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" placeholder="Actividad ..."></textarea>
+                  <textarea class="form-control" rows="4" id="descactividad" name="descactividad" placeholder="Descripción de la Actividad"></textarea>
 
                   </div>
                 </div>
@@ -327,7 +327,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" placeholder="Soporte de la actividad ..."></textarea>
+                  <textarea class="form-control" rows="4" id="soporte" name="soporte" placeholder="Soporte de la actividad"></textarea>
 
                   </div>
                 </div>
@@ -351,7 +351,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" placeholder="Observaciones ..."></textarea>
+                  <textarea class="form-control" id="observaciones" name="observaciones" rows="4" placeholder="Observaciones"></textarea>
 
                   </div>
                 </div>
