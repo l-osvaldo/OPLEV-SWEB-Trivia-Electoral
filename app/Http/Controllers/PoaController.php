@@ -57,7 +57,26 @@ class PoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //tengo que conseguir el idmes y el autoactividades
+      $autoactividades = $request->input('actividades');
+      $idmesreportar = $request->input('idmesreportar');
+
+      //en tabla porcentajer se guarda el input realizadomes en la columna del mes correspondiente:
+      //ener,febr,marr,abrr, etc
+      $realizadomes = $request->input('realizadomes');
+      $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];     
+      $mes = $realizado[$idmesreportar];
+      DB::table('porcentajer')->where('autoactividades', $autoactividades)->update([$mes => $realizadomes]);
+
+      //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
+      //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
+      //seleccionada
+      $descactividad = $request->input('descactividad');
+      $soporte = $request->input('soporte');
+      $observaciones = $request->input('observaciones');
+      DB::table('detalleactividades')->where('idmes', $idmesreportar)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
+
+      return redirect()->route('programa.index');
     }
 
     /**

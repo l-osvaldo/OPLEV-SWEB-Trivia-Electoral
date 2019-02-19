@@ -303,7 +303,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" id="descactividad" name="descactividad" placeholder="Descripción de la Actividad"></textarea>
+                  <textarea class="form-control" rows="4" id="descactividad" name="descactividad" placeholder="Escriba la descripción de la Actividad"></textarea>
 
                   </div>
                 </div>
@@ -327,7 +327,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" id="soporte" name="soporte" placeholder="Soporte de la actividad"></textarea>
+                  <textarea class="form-control" rows="4" id="soporte" name="soporte" placeholder="Escriba el soporte de la actividad"></textarea>
 
                   </div>
                 </div>
@@ -351,7 +351,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" id="observaciones" name="observaciones" rows="4" placeholder="Observaciones"></textarea>
+                  <textarea class="form-control" id="observaciones" name="observaciones" rows="4" placeholder="Si es que aplican, escriba las observaciones"></textarea>
 
                   </div>
                 </div>
@@ -362,4 +362,21 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-3 col-3">
+      @if ( ! empty( $put ) )
+        <input type="hidden" name="_method" value="PUT">
+      @endif
+      <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
+      <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
+      <button type="submit" class="btn btn-block btn-dark">Guardar Informaci&oacute;n</button>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+    <div class="col-md-3 col-3">
+      <a class="btn btn-block btn-danger" href="{{ route('programa.index') }}">Cancelar</a>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+  </div> <!-- del primer .col-md-12 col-12 -->
+
 </form>
