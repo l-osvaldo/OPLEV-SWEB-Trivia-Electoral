@@ -176,6 +176,7 @@ class PoaController extends Controller
       $idMes = $request->idMes;      
       $detalleActi = DetalleActi::where('idmes', $idMes)->where('autoactividades', $idActividad)->get();
       return response()->json($detalleActi);
+      //
     }
 
 

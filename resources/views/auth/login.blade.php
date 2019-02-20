@@ -13,9 +13,9 @@
           <div class="col-lg-7 col-md-6 col-12">
             <div class="p-20 content-bottom">
               <div class="content-top-agile">
-                <h2><strong>S</strong>istema de <strong>S</strong>eguimiento al <strong>P</strong>rograma <strong>O</strong>perativo <strong>A</strong>nual 2019</h2>
+                <h2><strong>S</strong>istema <strong>I</strong>ntegral de <strong>P</strong>laneación <strong>S</strong>eguimiento y <strong>E</strong>valuación <strong>I</strong>nstitucional</h2>
                 <br /><br />
-                <h3>Bienvenido</h3>
+                <h3>Bienvenido(a)</h3>
                 
               </div>
               <form method="POST" action="{{ route('login') }}">
