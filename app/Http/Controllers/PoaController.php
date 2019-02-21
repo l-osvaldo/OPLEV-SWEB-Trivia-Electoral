@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa};
 use DB;
 use Auth;
 
@@ -177,6 +177,15 @@ class PoaController extends Controller
       return response()->json($detalleActi);
       //
     }
+
+
+
+
+
+
+
+
+
 
 
 

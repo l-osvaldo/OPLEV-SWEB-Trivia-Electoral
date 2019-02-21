@@ -24,6 +24,7 @@ Route::get('obtenPorcRealizado', 'PoaController@obtenPorcRealizado')->name('obte
 Route::get('obtenDetallesActi', 'PoaController@obtenDetallesActi')->name('obten.detalle.actividades');
 Route::get('obtenRealizadoMes', 'PoaController@obtenRealizadoMes')->name('obten.realizado.mes');
 Route::get('/reportes', 'ReportesController@index')->name('reportes');;
+Route::post('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');;
 
 Auth::routes();
 

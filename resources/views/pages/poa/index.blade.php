@@ -18,7 +18,6 @@
 		    <div class="col-6 col-lg-6 col-md-6">
 
 		      <div class="box">
-
 						  <div class="row">
 								<div class="col-12">
 									<div class="ribbon-wrapper ribbon-blanco">
@@ -43,9 +42,7 @@
 			              </div>
 									</div>
 								</div>
-							</div>
-
-						
+							</div>						
 		      </div>	      
 
 		    </div>
