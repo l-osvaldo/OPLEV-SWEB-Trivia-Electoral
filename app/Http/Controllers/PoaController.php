@@ -41,7 +41,6 @@ class PoaController extends Controller
         $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
         $action = route('programa.store');
         return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
-
       }
       else
       {
@@ -178,6 +177,35 @@ class PoaController extends Controller
       return response()->json($detalleActi);
       //
     }
+
+
+
+
+
+
+    public function invoice() 
+    {
+        $data = $this->getData();
+        $date = date('Y-m-d');
+        $invoice = "2222";
+        $view =  \View::make('pages.reportes.invoice', compact('data', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+    }
+
+    public function getData() 
+    {
+        $data =  [
+            'quantity'      => '1' ,
+            'description'   => 'some ramdom text',
+            'price'   => '500',
+            'total'     => '500'
+        ];
+        return $data;
+    }
+
+
 
 
 

@@ -26,13 +26,23 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="nav-devider"></li>
 
-      <li class="header nav-small-cap">POA</li>
+      <!--<li class="header nav-small-cap">POA</li> -->
       
       <li class="active">
-        <a href="index.html">
-          <i class="fa fa-calendar-check-o"></i> <span>Capturar</span>
+        <a href="{{ route('programa.index') }}">
+          <i class="fa fa-calendar-check-o"></i> <span>Programa Operativo Anual</span>
         </a>
       </li>
+      <li class="active">
+        <a href="{{ route('reportes') }}">
+          <i class="fa fa-calendar-check-o"></i> <span>Reportes POA</span>
+        </a>
+      </li>   
+      <li class="active">
+        <a href="{{ route('reportes') }}">
+          <i class="fa fa-calendar-check-o"></i> <span>Reportes Cédulas</span>
+        </a>
+      </li>       
       <!--
       <li class="treeview">
         <a href="#">

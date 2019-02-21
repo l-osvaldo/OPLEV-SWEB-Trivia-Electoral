@@ -23,7 +23,7 @@
 								<div class="col-12">
 									<div class="ribbon-wrapper ribbon-blanco">
 										<div class="ribbon ribbon-primary">
-											Seleccione el mes a reportar
+											Seleccione el mes de trabajo:
 										</div>
 										<div class="row">
 	            				<div class="col-5">
@@ -44,7 +44,6 @@
 									</div>
 								</div>
 							</div>
-
 
 						
 		      </div>	      
