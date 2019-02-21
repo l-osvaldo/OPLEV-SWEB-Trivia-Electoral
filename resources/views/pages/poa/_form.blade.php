@@ -221,26 +221,26 @@
                     <table class='table table-striped table-bordered table-hover table-condensed'>
                       <thead>
                         <tr>
-                          <th>Meses</th>
-                          <th>Ene</th>
-                          <th>Feb</th>
-                          <th>Mar</th>
-                          <th>Abr</th>
-                          <th>May</th>
-                          <th>Jun</th>
-                          <th>Jul</th>
-                          <th>Ago</th>
-                          <th>Sep</th>
-                          <th>Oct</th>
-                          <th>Nov</th>
-                          <th>Dic</th>
-                          <th>Inicio</th>
-                          <th>Termino</th>
+                          <th class="tittabla">Meses</th>
+                          <th class="tittabla">Ene</th>
+                          <th class="tittabla">Feb</th>
+                          <th class="tittabla">Mar</th>
+                          <th class="tittabla">Abr</th>
+                          <th class="tittabla">May</th>
+                          <th class="tittabla">Jun</th>
+                          <th class="tittabla">Jul</th>
+                          <th class="tittabla">Ago</th>
+                          <th class="tittabla">Sep</th>
+                          <th class="tittabla">Oct</th>
+                          <th class="tittabla">Nov</th>
+                          <th class="tittabla">Dic</th>
+                          <th class="tittabla">Inicio</th>
+                          <th class="tittabla">Término</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Programado</td>
+                          <td class="tittabla">Programado</td>
                           <td><span id="enep"></span></td>
                           <td><span id="febp"></span></td>
                           <td><span id="marp"></span></td>
@@ -257,7 +257,7 @@
                           <td><span id="termino"></span></td>
                         </tr>
                         <tr>
-                          <td>Realizado</td>
+                          <td class="tittabla">Realizado</td>
                           <td><span id="ener"></span></td>
                           <td><span id="febr"></span></td>
                           <td><span id="marr"></span></td>
@@ -276,14 +276,20 @@
                       </tbody>
                     </table>
                   </div>
-
-                  <span class="fraserealizado">Realizado en este Mes:</span>
-                  <div class="form-group">                  
-                    <input type="text" class="form-control" id="realizadomes" name="realizadomes" placeholder="">
-                  </div>
-
                 </div>
               </div>
+                <div class="row">
+                  <div class="col-3">
+                    <span class="fraserealizado">Realizado en este Mes:</span>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group">                  
+                      <input type="text" class="form-control" id="realizadomes" name="realizadomes" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+
             </div>
           </div>
         </div>
