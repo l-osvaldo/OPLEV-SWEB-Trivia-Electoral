@@ -140,6 +140,7 @@ class ReportesController extends Controller
 
         
         $poa['nombrearea'] = $area[0]->nombrearea;
+        $poa['idmes'] = $idMes;        
         $poa['mes'] = $arrMeses[$idMes];
         $poa['programa'] = $programa[0]->claveprograma.' - '.$programa[0]->descprograma;
         $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;

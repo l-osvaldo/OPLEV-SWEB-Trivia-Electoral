@@ -72,34 +72,28 @@ table td.resultj2{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
 
 table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 12cm; }
 
+.tablacontenido
+{
+  margin-top: 5px;
+  border: .5px solid;
+}
 
 
-.principal { font-size: 9px; width: 100%;  border-top :1px solid #000; border-left :1px solid #000; border-right :1px solid #000; }
-
-.principal #unop    {  width: 100%;    border-bottom :1px solid #000; }
-.principal #unopunop    {  width: 100%;    border-bottom :1px solid #000; }
-
-.principal #uno    {  width: 2%;    float:left;  text-align: center;  padding-top: 1px;}
+.datos
+{
+  font-size: 11px;
+}
 
 
-.principal #unouno   {  width: 10%;    float:left;  text-align: center; }    
+.colinfo
+{
+  text-align: justify; 
+  padding: 4px 4px;  
+  border-bottom: .5px solid;
+}
 
 
-.principal #dos    {  width: 5%;    float:left;  text-align: center;  padding-top: 1px;}
-.principal #tres   {  width: 6%;    float:left;  text-align: center;  padding-top: 1px;}
 
-
-.principal #cuatro {  width: 31%;   float:left;  text-align: justify; padding: 4px 4px;}
-.principal #cuatrocuatro {  width: 29%;   float:left;  text-align: justify; padding: 3px 3px;}
-
-.principal #cinco  {  width: 26%;   float:left;  text-align: justify; padding: 4px 4px;}
-.principal #cincocinco  {  width:29%;   float:left;  text-align: justify; padding: 3px 3px;}
-
-.principal #seis   {  width: 25%;   float:left;  text-align: justify; padding: 4px 4px;}
-.principal #seisseis   {  width: 29%;   float:left;  text-align: justify; padding: 3px 3px;}
-
-
-      
     </style>
 
 
@@ -123,7 +117,7 @@ table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
       </tr>
       <tr>
         <td class="obj">
-          Objetivo:
+          Objetivo: 
           {{$poa['objetivo']}}
         </td>
       </tr>
@@ -144,28 +138,67 @@ table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
     </table>
 
 
-    <table  width="100%">
+    <table width="100%">
       <tr class="avances">
         <td width="2%">No. <br> Act.</td> 
         <td colspan="2" width="11%">AVANCE MENSUAL <br> PROG.  &nbsp; &nbsp; &nbsp; &nbsp; REAL.</td> 
-        <td width="29%">DESCRIPCION</td> 
+        <td width="29%">DESCRIPCIÓN</td> 
         <td width="29%">SOPORTE</td> 
-        <td width="29%">OBSERVACIONES</td>
+        <td width="15%">OBSERVACIONES</td>
       </tr>
     </table>
 
     @if (!empty($poa['resultado']))
-
-      @foreach ($poa['resultado'] as $r)
-
-        {{$r->soporte}}
-        {{$r->descactividad}}
-        {{$r->unidadmedida}}
-
-      @endforeach
-
-
-
+      <table class="tablacontenido">
+        {{$i=1}}
+        @foreach ($poa['resultado'] as $r)
+          <tr class="datos">
+            <td class="colinfo" width="2%">{{$i}}</td>
+            <td class="colinfo" colspan="2" width="11%">&nbsp; &nbsp; &nbsp; &nbsp;
+            @if ($poa['idmes']==1)
+              {{$r->enep}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->ener}}
+            @endif
+            @if ($poa['idmes']==2)
+              {{$r->febp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->febr}}
+            @endif
+            @if ($poa['idmes']==3)
+              {{$r->marp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->marr}}
+            @endif
+            @if ($poa['idmes']==4)
+              {{$r->abrp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->abrr}}
+            @endif
+            @if ($poa['idmes']==5)
+              {{$r->mayp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->mayr}}
+            @endif
+            @if ($poa['idmes']==6)
+              {{$r->junp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->junr}}
+            @endif
+            @if ($poa['idmes']==7)
+              {{$r->julp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->julr}}
+            @endif                                                                        
+            @if ($poa['idmes']==8)
+              {{$r->agop}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->agor}}
+            @endif
+            @if ($poa['idmes']==9)
+              {{$r->sepp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->sepr}}
+            @endif
+            @if ($poa['idmes']==10)
+              {{$r->octp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->octr}}
+            @endif
+            @if ($poa['idmes']==11)
+              {{$r->novp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->novr}}
+            @endif                
+            @if ($poa['idmes']==12)
+              {{$r->dicp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->dicr}}
+            @endif
+            </td>
+            <td class="colinfo" width="29%">{{$r->descripcion}}</td>
+            <td class="colinfo"  width="29%">{{$r->soporte}}</td>
+            <td class="colinfo"width="15%">{{$r->observaciones}}</td>
+          </tr>
+          {{$i++}}
+        @endforeach
+      </table>  
     @endif
 
 
