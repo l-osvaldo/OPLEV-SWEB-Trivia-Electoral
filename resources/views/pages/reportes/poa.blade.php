@@ -9,18 +9,18 @@
 
 table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
 table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
-table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px dotted #46453f; width: 1000px; font-size: 10px;}
+table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
 
 
 table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
 
-table tr.trestitulos td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px;}
+table tr.trestitulos td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
 
-table tr.trestitulos2 td{ text-align: center; border:1px dotted #46453f; font-weight:900; height: 30px; font-size: 10px;}
+table tr.trestitulos2 td{ text-align: center; border:1px solid #46453f; font-weight:900; height: 30px; font-size: 10px;}
 
 
 table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
-table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px dotted #46453f; }
+table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }
 
 table tr.avances2 { background: #bfbfbf; border:1px solid #46453f; }
 table tr.avances2 td{ text-align: center; height: 20px; font-size: 9px;}
@@ -116,35 +116,59 @@ table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
     </table>
 
     <table>
-      <tr><td class="programa">{{ $programa->claveprograma }} - {{ $programa->descprograma }}</td></tr>
-      <tr><td class="obj">Objetivo del programa</td></tr>
+      <tr>
+        <td class="programa">
+          {{$poa['programa']}}<br>{{$poa['programaesp']}}
+        </td>
+      </tr>
+      <tr>
+        <td class="obj">
+          Objetivo:
+          {{$poa['objetivo']}}
+        </td>
+      </tr>
     </table>
 
 
     <table width="100%">
       <tr class="trestitulos">
         <td>UNIDAD RESPONSABLE</td>
-        <td>FIRMA RESPONSABLE DE UNIDAD</td>
+        <td>FIRMA DEL RESPONSABLE DE UNIDAD</td>
         <td>MES</td>
       </tr>
       <tr class="trestitulos2">
-        <td width="45%"><img src="img/usuario.png" hspace="15px">{{ $idArea }}</td>
+        <td width="45%">{{ $poa['nombrearea'] }}</td>
         <td width="35%"></td>
-        <td width="20%">{{ $mes }}</td>
+        <td width="20%">{{ $poa['mes'] }}</td>
       </tr>
     </table>
 
 
     <table  width="100%">
-
-    <tr class="avances">
-    <td width="2%">No. <br> Act.</td> 
-    <td colspan="2" width="11%">AVANCE MENSUAL <br> PROG.  &nbsp; &nbsp; &nbsp; &nbsp; REAL.</td> 
-    <td width="29%">DESCRIPCION</td> 
-    <td width="29%">SOPORTE</td> 
-    <td width="29%">OBSERVACIONES</td>
-    </tr>
+      <tr class="avances">
+        <td width="2%">No. <br> Act.</td> 
+        <td colspan="2" width="11%">AVANCE MENSUAL <br> PROG.  &nbsp; &nbsp; &nbsp; &nbsp; REAL.</td> 
+        <td width="29%">DESCRIPCION</td> 
+        <td width="29%">SOPORTE</td> 
+        <td width="29%">OBSERVACIONES</td>
+      </tr>
     </table>
+
+    @if (!empty($poa['resultado']))
+
+      @foreach ($poa['resultado'] as $r)
+
+        {{$r->soporte}}
+        {{$r->descactividad}}
+        {{$r->unidadmedida}}
+
+      @endforeach
+
+
+
+    @endif
+
+
 
 
 

@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+
+/*Route::get('/', function () {
 	return view('auth/login');
-});
+});*/
+
+Route::get('/', 'PoaController@index')->name('index');
 
 Route::resource('programa', 'PoaController');
 Route::get('obtenProgramaEsp', 'PoaController@obtenProgramaEsp')->name('obten.programa.esp');
@@ -23,8 +26,8 @@ Route::get('obtenPorcProgramado', 'PoaController@obtenPorcProgramado')->name('ob
 Route::get('obtenPorcRealizado', 'PoaController@obtenPorcRealizado')->name('obten.porcentaje.realizado');
 Route::get('obtenDetallesActi', 'PoaController@obtenDetallesActi')->name('obten.detalle.actividades');
 Route::get('obtenRealizadoMes', 'PoaController@obtenRealizadoMes')->name('obten.realizado.mes');
-Route::get('/reportes', 'ReportesController@index')->name('reportes');;
-Route::post('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');;
+Route::get('/reportes', 'ReportesController@index')->name('reportes');
+Route::post('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');
 
 Auth::routes();
 
