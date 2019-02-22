@@ -7,102 +7,62 @@
 
     <style type="text/css">
 
-table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
-table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
-table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
+      body 
+      {
+        font-family: Arial, Helvetica, sans-serif;        
+      }
 
+      html
+      {
+        margin: 0;
+      }
 
-table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
+      header
+      {
+        position: fixed;
+        margin: 8mm 8mm 6mm 10mm;
+      }
 
-table tr.trestitulos td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
+      .main
+      { 
+        margin: 53mm 8mm 6mm 10mm;
+      }
 
-table tr.trestitulos2 td{ text-align: center; border:1px solid #46453f; font-weight:900; height: 30px; font-size: 10px;}
+      .tablacontenido
+      {        
+        border: .5px solid;
+      }
 
+      .datos
+      {
+        font-size: 11px;
+      }
 
-table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
-table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }
+      .colinfo
+      {
+        text-align: justify; 
+        padding: 4px 4px;  
+        border-bottom: .5px solid;
+      }
 
-table tr.avances2 { background: #bfbfbf; border:1px solid #46453f; }
-table tr.avances2 td{ text-align: center; height: 20px; font-size: 9px;}
-
-
-
-
-table tr.avances_tri { background: #bfbfbf;  }
-table tr.avances_tri td{ text-align: center; height: 20px; font-size: 9px;}
-
-
-/*  border:1px solid #46453f;  */
-
-
-
-
-table tr.avances_tri2 { background: #bfbfbf;}
-table tr.avances_tri2 td{ text-align: center; font-size: 8px;}
-
-
-
-
-
-table tr.resulttrime td{ text-align: center; font-size: 10px; border:1px solid #bfbfbf;}
-
-table tr.resulttrime td.jus { text-align:justify; font-size: 10px; padding: 5px  5px; }
-
-
-
-
-
-table tr.vobo td{text-align: center; font-size: 10px;}
-
-
-
-table {border-collapse:collapse; table-layout:fixed;  width:100%; }
-
-table td.result{ text-align: center; font-weight:900; font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top;}
-
-table td.result1{ text-align: center; font-weight:900; font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 1cm;}
-table td.result2{ text-align: center; font-weight:900; font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 2cm;}
-table td.result3{ text-align: center; font-weight:900; font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 2cm;}
-
-table td.resultj{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 12cm; }
-
-table td.resultm{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 12cm; text-align: justify;}
-
-table td.resultj2{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 12cm; }
-
-table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px; vertical-align:top; width: 12cm; }
-
-.tablacontenido
-{
-  margin-top: 5px;
-  border: .5px solid;
-}
-
-
-.datos
-{
-  font-size: 11px;
-}
-
-
-.colinfo
-{
-  text-align: justify; 
-  padding: 4px 4px;  
-  border-bottom: .5px solid;
-}
-
+      table {border-collapse:collapse; table-layout:fixed;  width:100%; }
+      table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
+      table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
+      table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
+      table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
+      table tr.trestitulos td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
+      table tr.trestitulos2 td{ text-align: center; border:1px solid #46453f; font-weight:900; height: 30px; font-size: 10px;}      
+      table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
+      table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
 
 
     </style>
 
 
-
-
   </head>
   <body>
 
-
+  <header>
     <table>
       <tr>
         <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
@@ -147,6 +107,13 @@ table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
         <td width="15%">OBSERVACIONES</td>
       </tr>
     </table>
+
+  </header>
+
+
+  <div class="main">
+
+
 
     @if (!empty($poa['resultado']))
       <table class="tablacontenido">
@@ -201,15 +168,7 @@ table td.resultj3{  font-size: 11px; border:1px solid #bfbfbf; padding: 7px  7px
       </table>  
     @endif
 
-
-
-
-
-
-
-
-
-
+  </div>
 
 
   </body>

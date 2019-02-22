@@ -20,8 +20,18 @@ class ReportesController extends Controller
       $meses = Mes::all();      
       $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
       $action = route('reportes.poa');
-      return view('pages.reportes.index')->with( compact('action', 'programas', 'meses'));
+      return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses'));
     }
+
+
+    public function indexindicador()
+    {
+      $meses = Mes::all();      
+      $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+      $action = route('reportes.indicadores');
+      return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -99,12 +109,8 @@ class ReportesController extends Controller
         $idProgramaEsp = $request->programaEsp;
 
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();
-
         $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
-
         $programa = Programa::select('claveprograma', 'descprograma')->where('idprograma', $idPrograma)->get();
-       
-
         $programaesp = ProgramaEsp::select('claveprogramaesp', 'descprogramaesp', 'objprogramaesp')->where('idprograma', $idPrograma)->where('idprogramaesp',$idProgramaEsp)->get();
 
         /*
@@ -118,7 +124,6 @@ class ReportesController extends Controller
           where actividades.idprograma = 1 
           and actividades.idprogramaesp = 2 
           and actividades.idarea = 2 and detalleactividades.idmes = 1
-
         */
 
         $poa = array();
@@ -128,24 +133,12 @@ class ReportesController extends Controller
           leftjoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftjoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->leftjoin('detalleactividades', 'detalleactividades.autoactividades', 'actividades.autoactividades')->get();
 
         
-        /*if (!empty($poa['resultado'])){
-          foreach ($poa['resultado'] as $r) {
-            echo $r->soporte."<br />";
-            echo $r->descactividad."<br />";
-            echo $r->unidadmedida."<br />";
-          }
-        }*/
-        
-
-
-        
         $poa['nombrearea'] = $area[0]->nombrearea;
         $poa['idmes'] = $idMes;        
         $poa['mes'] = $arrMeses[$idMes];
         $poa['programa'] = $programa[0]->claveprograma.' - '.$programa[0]->descprograma;
         $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;
-        $poa['objetivo'] = $programaesp[0]->objprogramaesp;
-          
+        $poa['objetivo'] = $programaesp[0]->objprogramaesp;        
         $pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
         return $pdf->stream();
       }
@@ -153,5 +146,10 @@ class ReportesController extends Controller
       {
         return redirect()->route('login');
       }      
+    }
+
+    public function indicadores(Request $request)
+    {
+      
     }
 }

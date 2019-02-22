@@ -145,7 +145,7 @@ $(function() {
       contentType: 'application/json'
       }).done(function(response) {
 
-        //console.log(response);
+        console.log(response);
         $('#descactividad').html(response[0]['descripcion']);
         $('#soporte').html(response[0]['soporte']);
         $('#observaciones').html(response[0]['observaciones']);

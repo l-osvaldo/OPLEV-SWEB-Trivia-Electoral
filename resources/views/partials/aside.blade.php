@@ -34,13 +34,13 @@
         </a>
       </li>
       <li class="active">
-        <a href="{{ route('reportes') }}">
-          <i class="fa fa-calendar-check-o"></i> <span>Reportes POA</span>
+        <a href="{{ route('reppoa') }}">
+          <i class="fa fa-calendar"></i> <span>Reportes POA</span>
         </a>
       </li>   
       <li class="active">
-        <a href="{{ route('reportes') }}">
-          <i class="fa fa-calendar-check-o"></i> <span>Reportes Cédulas</span>
+        <a href="{{ route('repindicadores') }}">
+          <i class="fa fa-clone"></i> <span>Reportes Indicadores</span>
         </a>
       </li>       
       <!--

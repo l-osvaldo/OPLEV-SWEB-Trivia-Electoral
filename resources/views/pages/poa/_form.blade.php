@@ -70,7 +70,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                1. Seleccione un Programa
+                <span class="numpasos">1.</span> Seleccione un Programa
               </div>
               <div class="row">
                 <div class="col-12">
@@ -96,7 +96,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                2. Seleccione un Programa Específico
+                <span class="numpasos">2.</span> Seleccione un Programa Específico
               </div>
               <div class="row">
                 <div class="col-12">
@@ -145,7 +145,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                3. Seleccione una Actividad
+                <span class="numpasos">3.</span> Seleccione una Actividad
               </div>
               <div class="row">
                 <div class="col-12">
@@ -239,7 +239,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr class="contenidotabla">
                           <td class="tittabla">Programado</td>
                           <td><span id="enep"></span></td>
                           <td><span id="febp"></span></td>
@@ -256,7 +256,7 @@
                           <td><span id="inicio"></span></td>
                           <td><span id="termino"></span></td>
                         </tr>
-                        <tr>
+                        <tr class="contenidotabla">
                           <td class="tittabla">Realizado</td>
                           <td><span id="ener"></span></td>
                           <td><span id="febr"></span></td>
@@ -280,11 +280,11 @@
               </div>
                 <div class="row">
                   <div class="col-3">
-                    <span class="fraserealizado">Realizado en este Mes:</span>
+                    <span class="fraserealizado"><span class="numpasos">4.</span> Realizado en este Mes:</span>
                   </div>
                   <div class="col-3">
                     <div class="form-group">                  
-                      <input type="text" class="form-control" id="realizadomes" name="realizadomes" placeholder="">
+                      <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="">
                     </div>
                   </div>
                 </div>
@@ -304,7 +304,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Descripción de la Actividad
+                <span class="numpasos">5.</span> Descripción de la Actividad
               </div>
               <div class="row">
                 <div class="col-12">
@@ -328,7 +328,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Soporte
+                <span class="numpasos">6.</span> Soporte
               </div>
               <div class="row">
                 <div class="col-12">
@@ -352,7 +352,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                Observaciones
+                <span class="numpasos">7.</span> Observaciones
               </div>
               <div class="row">
                 <div class="col-12">
