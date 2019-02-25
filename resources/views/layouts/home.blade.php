@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
 
-    <title>{{ config('app.name', 'SIAVCON') }}</title>
+    <title>{{ config('app.name', 'POA2019') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap 4.0-->
@@ -33,7 +33,7 @@
 
   </head>
 
-  <body class="hold-transition bg-img" data-overlay="4">
+  <body class="hold-transition bg-img letralogin" data-overlay="4">
     @yield('content')
     <!-- jQuery 3 -->
     <script src="{{ URL::asset('vendor_components/jquery/dist/jquery.js') }}"></script>

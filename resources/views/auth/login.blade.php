@@ -13,7 +13,7 @@
           <div class="col-lg-7 col-md-6 col-12">
             <div class="p-20 content-bottom">
               <div class="content-top-agile">
-                <h2><strong>S</strong>istema <strong>I</strong>ntegral de <strong>P</strong>laneación <strong>S</strong>eguimiento y <strong>E</strong>valuación <strong>I</strong>nstitucional</h2>
+                <h2><strong>S</strong>istema <strong>I</strong>ntegral de <strong>P</strong>laneación, <strong>S</strong>eguimiento y <strong>E</strong>valuación <strong>I</strong>nstitucional</h2>
                 <br /><br />
                 <h3>Bienvenido(a)</h3>
                 
