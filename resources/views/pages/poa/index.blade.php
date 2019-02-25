@@ -11,6 +11,23 @@
 
   <section>
   	<br>
+
+
+		@if ( $errors->any() )
+		  <div class="row">
+		    <div class="col-12">
+		      <div class="box">
+		        <ul class="alert alert-danger">
+		          @foreach ( $errors->all() as $error )
+		            <p class="media-body pb-1 mb-0 small lh-125">* {{ $error }}</p>
+		          @endforeach
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+		@endif
+
+
   	<!-- Espacio de Trabajo -->
 		<form method="get" action="{{ route('programa.create') }}" class="col-md-12 col-12">
 		  {{ csrf_field() }}
@@ -36,7 +53,7 @@
 			              		</div>		              		
 			              	</div>
 			              	<div class="col-5">
-			              		<button type="submit" class="btn btn-block btn-dark">Ver actividades&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
+			              		<button type="submit" class="btn btn-block btn-dark" id="btnveractividades" name="btnveractividades">Ver actividades&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
 	      								<div class="clearfix">&nbsp;</div>
 			              	</div>
 			              </div>

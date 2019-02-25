@@ -25,6 +25,7 @@
 
     <!-- Personal css -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">    
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
     @yield('styles')
@@ -99,6 +100,8 @@
         <!-- FastClick -->
         <script src="{{ URL::asset('vendor_components/fastclick/lib/fastclick.js') }}"></script>
 
+        <script src="{{ URL::asset('js/jquery.validate.js') }}"></script>        
+        <script src="{{ URL::asset('js/sweetalert.min.js') }}"></script>
         <script src="{{ URL::asset('js/recursos.js') }}"></script>
 
   </body>

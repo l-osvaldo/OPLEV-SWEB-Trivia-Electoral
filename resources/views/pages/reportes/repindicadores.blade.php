@@ -13,6 +13,21 @@
     <br>
     <!-- Espacio de Trabajo -->
 
+
+    @if ( $errors->any() )
+      <div class="row">
+        <div class="col-12">
+          <div class="box">
+            <ul class="alert alert-danger">
+              @foreach ( $errors->all() as $error )
+                <p class="media-body pb-1 mb-0 small lh-125">* {{ $error }}</p>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      </div>
+    @endif
+
 <form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12">
   {{ csrf_field() }}
 
@@ -52,7 +67,7 @@
               <select class="form-control" id="idmesreportar" name="idmesreportar">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
-                  <option value="{{$mes->idmes}}">{{$mes->mes}}</option>
+                <option value="{{ $mes->idmes }}" @if(old('idmesreportar') == $mes->idmes) {{ 'selected' }} @endif>{{$mes->mes}}</option>
                 @endforeach                                     
               </select> 
               <br>
@@ -61,8 +76,7 @@
               <select class="form-control" id="programa" name="programa">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
-                  <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
-                @endforeach
+                  <option value="{{ $programa->idprograma }}" @if(old('programa') == $programa->idprograma) {{ 'selected' }} @endif>{{$programa->claveprograma}} - {{$programa->descprograma}}</option>                @endforeach
               </select>
               <br>
 

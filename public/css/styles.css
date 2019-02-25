@@ -91,3 +91,8 @@
 	text-align: center;		
 	color: #000 !important;
 }
+
+.textuppercase
+{
+	text-transform: uppercase !important;
+}

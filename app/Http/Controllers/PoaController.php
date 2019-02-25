@@ -36,6 +36,10 @@ class PoaController extends Controller
     {
       if ( Auth::check() )
       {
+        #Validación del mes a reportar
+        list( $rules, $messages ) = $this->_rules();
+        $this->validate( $request, $rules, $messages );
+
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
         $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
@@ -70,9 +74,9 @@ class PoaController extends Controller
       //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
       //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
       //seleccionada
-      $descactividad = $request->input('descactividad');
-      $soporte = $request->input('soporte');
-      $observaciones = $request->input('observaciones');
+      $descactividad = strtoupper($request->input('descactividad'));
+      $soporte = strtoupper($request->input('soporte'));
+      $observaciones = strtoupper($request->input('observaciones'));
       DB::table('detalleactividades')->where('idmes', $idmesreportar)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
 
       return redirect()->route('programa.index');
@@ -122,6 +126,27 @@ class PoaController extends Controller
     {
         //
     }
+
+
+    #Validación de formulario
+    private function _rules( $new = True )
+    {
+
+      $messages = [
+        'idmesreportar.required' => 'Debe seleccionar un mes de trabajo',
+        'idmesreportar.not_in' => 'Debe seleccionar un mes de trabajo'
+      ];
+
+      $rules = [
+
+          'idmesreportar' => 'required|not_in:0'
+      ];
+
+      return array( $rules, $messages );
+    }
+
+
+
 
     public function obtenProgramaEsp(Request $request) {
       if (Auth::check()) {

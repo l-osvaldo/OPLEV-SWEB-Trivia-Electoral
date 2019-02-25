@@ -1,13 +1,79 @@
 $(function() {
 
-  $("#programa").change(function() {
+
+  $('#btnGuardarInfo').hide();
+
+  $("input#realizadomes").keydown(function (e)
+  {
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+           // Allow: Ctrl+A, Command+A
+          (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+           // Allow: home, end, left, right, down, up
+          (e.keyCode >= 35 && e.keyCode <= 40)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+      }
+  });
+
+  function limpiaTablaAnalisis()
+  {
+    $('#enep').html('');
+    $('#febp').html('');
+    $('#marp').html('');
+    $('#abrp').html('');
+    $('#mayp').html('');
+    $('#junp').html('');
+    $('#julp').html('');
+    $('#agop').html('');
+    $('#sepp').html('');
+    $('#octp').html('');
+    $('#novp').html('');
+    $('#dicp').html('');
+    $('#inicio').html('');
+    $('#termino').html('');
+
+    $('#ener').html('');
+    $('#febr').html('');
+    $('#marr').html('');
+    $('#abrr').html('');
+    $('#mayr').html('');
+    $('#junr').html('');
+    $('#julr').html('');
+    $('#agor').html('');
+    $('#sepr').html('');
+    $('#octr').html('');
+    $('#novr').html('');
+    $('#dicr').html('');
+  }
+
+
+
+
+  $("#programa").change(function()
+  {
+    $('#programaEsp').html('');    
+    $('#objetivo').html('');
+    $('#actividades').html('');     
+    $('#unidadmedida').html('');
+    $('#cantidadanual').html('');   
+    limpiaTablaAnalisis();
+    $('#realizadomes').val(0);
+    $('#descactividad').html('');
+    $('#soporte').html('');
+    $('#observaciones').html('');
+    $('#btnGuardarInfo').hide();
 
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
-    $('#programaEsp').html('');
+
 
     $.ajax({
-      url: "/obtenProgramaEsp",
+      url: "/poa/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
@@ -24,12 +90,39 @@ $(function() {
 
   });
 
-  $("#programaEsp").change(function() {
+  function obtenObjetivos(programa, programaEsp) {
+    //Obtener objetivo de la actividad
+    $.ajax({
+      url: "/obtenObjetivoAct",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {programa: programa, programaEsp: programaEsp},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        $('#objetivo').html(response[0]['objprogramaesp']);
+    });
+  }
+
+  $("#programaEsp").change(function() 
+  {
+    $('#objetivo').html('');
+    $('#actividades').html('');     
+    $('#unidadmedida').html('');
+    $('#cantidadanual').html('');   
+    limpiaTablaAnalisis();
+    $('#realizadomes').val(0);
+    $('#descactividad').html('');
+    $('#soporte').html('');
+    $('#observaciones').html('');
+    $('#btnGuardarInfo').hide();
+
+
+
+
     var programa = $('#programa').find(':selected').val();
     var programaEsp = $('#programaEsp').find(':selected').val();
     var comboActividades = '';
-    $('#actividades').html('');
-    $('#objprogramaesp').html('');
 
     obtenObjetivos(programa, programaEsp);
 
@@ -53,26 +146,21 @@ $(function() {
       }); //Done
   });
 
-  function obtenObjetivos(programa, programaEsp) {
-    //Obtener objetivo de la actividad
-    $.ajax({
-      url: "/obtenObjetivoAct",
-      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-      type: 'GET',
-      data: {programa: programa, programaEsp: programaEsp},
-      dataType: 'json',
-      contentType: 'application/json'
-      }).done(function(response) {
-        $('#objetivo').html(response[0]['objprogramaesp']);
-    });
-  }
-
   //Generación de tabla y textareas de actividad, soporte, observaciones
-  $("#actividades").change(function() {
+  $("#actividades").change(function()
+  {
+    $('#btnGuardarInfo').hide();
+    $('#unidadmedida').html('');
+    $('#cantidadanual').html('');   
+    limpiaTablaAnalisis();
+    $('#realizadomes').val(0);
+    $('#descactividad').html('');
+    $('#soporte').html('');
+    $('#observaciones').html('');
+
     var idActividad = $('#actividades').find(':selected').val();
     var programa = $('#programa').find(':selected').val();
     var programaEsp = $('#programaEsp').find(':selected').val();
-
     var idMes = $('#programa').data('idmes');
 
     obtenObjetivos(programa, programaEsp);
@@ -131,7 +219,6 @@ $(function() {
         var pos = realizado[idMes];
 
         $('#realizadomes').val(response[0][pos]);
-
       });
 
 
@@ -145,14 +232,18 @@ $(function() {
       contentType: 'application/json'
       }).done(function(response) {
 
-        console.log(response);
+        //console.log(response);
         $('#descactividad').html(response[0]['descripcion']);
         $('#soporte').html(response[0]['soporte']);
         $('#observaciones').html(response[0]['observaciones']);
+
+        $('#btnGuardarInfo').show();
       });
 
-
+    
   }); //Fin de codigo actividades
+
+
 
 });
 

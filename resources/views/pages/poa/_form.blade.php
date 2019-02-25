@@ -279,16 +279,15 @@
                 </div>
               </div>
                 <div class="row">
-                  <div class="col-3">
-                    <span class="fraserealizado"><span class="numpasos">4.</span> Realizado en este Mes:</span>
+                  <div class="col-4">
+                    <span class="fraserealizado"><span class="numpasos">4.</span> Realizado en este Mes - </span><span class="titareames">{{$mes[0]->mes}}</span>
                   </div>
                   <div class="col-3">
                     <div class="form-group">                  
-                      <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="">
+                      <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="" maxlength="3">
                     </div>
                   </div>
                 </div>
-
 
             </div>
           </div>
@@ -309,7 +308,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" id="descactividad" name="descactividad" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" rows="4" id="descactividad" name="descactividad" placeholder=""></textarea>
 
                   </div>
                 </div>
@@ -333,7 +332,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" rows="4" id="soporte" name="soporte" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" rows="4" id="soporte" name="soporte" placeholder=""></textarea>
 
                   </div>
                 </div>
@@ -357,7 +356,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control" id="observaciones" name="observaciones" rows="4" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" id="observaciones" name="observaciones" rows="4" placeholder=""></textarea>
 
                   </div>
                 </div>
@@ -376,7 +375,7 @@
       @endif
       <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
-      <button type="submit" class="btn btn-block btn-dark">Guardar Informaci&oacute;n</button>
+      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo" name="btnGuardarInfo">Guardar Informaci&oacute;n</button>
       <div class="clearfix">&nbsp;</div>
     </div>
     <div class="col-md-3 col-3">

@@ -7,6 +7,7 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use PDF;
+use Illuminate\Support\Facades\Input;
 
 class ReportesController extends Controller
 {
@@ -99,10 +100,38 @@ class ReportesController extends Controller
         //
     }
 
+
+    #Validación de formulario
+    private function _rulespoa( $new = True )
+    {
+
+      $messages = [
+        'idmesreportar.required' => 'Debe seleccionar un mes de trabajo',
+        'idmesreportar.not_in' => 'Debe seleccionar un mes de trabajo',
+        'programa.required' => 'Debe seleccionar un programa',
+        'programa.not_in' => 'Debe seleccionar un programa',
+        'programaEsp.required' => 'Debe seleccionar un programa específico',
+        'programaEsp.not_in' => 'Debe seleccionar un programa específico'
+      ];
+
+      $rules = [
+        'idmesreportar' => 'required|not_in:0',
+        'programa' => 'required|not_in:0',
+        'programaEsp' => 'required|not_in:0'
+      ];
+
+      return array( $rules, $messages );
+    }
+
+
     public function poa(Request $request)
     {
       if ( Auth::check() )
       {
+        #Validación de seleccion de combos
+        list( $rules, $messages ) = $this->_rulespoa();
+        $this->validate( $request, $rules, $messages );
+
         $idArea = Auth::user()->idarea;        
         $idMes = $request->idmesreportar;      
         $idPrograma = $request->programa;
@@ -148,8 +177,50 @@ class ReportesController extends Controller
       }      
     }
 
+
+    #Validación de formulario
+    private function _rulesindicadores( $new = True )
+    {
+
+      $messages = [
+        'idmesreportar.required' => 'Debe seleccionar un mes de trabajo',
+        'idmesreportar.not_in' => 'Debe seleccionar un mes de trabajo',
+        'programa.required' => 'Debe seleccionar un programa',
+        'programa.not_in' => 'Debe seleccionar un programa',
+        'programaEsp.required' => 'Debe seleccionar un programa específico',
+        'programaEsp.not_in' => 'Debe seleccionar un programa específico',
+        'actividades.required' => 'Debe seleccionar una actividad',
+        'actividades.not_in' => 'Debe seleccionar una actividad'
+      ];
+
+      $rules = [
+        'idmesreportar' => 'required|not_in:0',
+        'programa' => 'required|not_in:0',
+        'programaEsp' => 'required|not_in:0',
+        'actividades' => 'required|not_in:0'
+      ];
+
+      return array( $rules, $messages );
+    }
+
+
     public function indicadores(Request $request)
     {
+      if ( Auth::check() )
+      {      
+        #Validación de seleccion de combos
+        list( $rules, $messages ) = $this->_rulesindicadores();
+        $this->validate( $request, $rules, $messages );  
+
+
+        $indicadores = array();
       
+        $pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
+        return $pdf->stream();
+      }
+      else
+      {
+        return redirect()->route('login');
+      }  
     }
 }
