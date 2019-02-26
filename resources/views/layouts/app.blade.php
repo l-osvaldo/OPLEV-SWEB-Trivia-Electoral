@@ -40,7 +40,7 @@
   </head>
 
   <body class="hold-transition skin-purple sidebar-mini">
-    <div class="wrapper">
+    <div class="wrapper" id="app">
 
       @include('partials.header')
 
@@ -78,8 +78,8 @@
           $.widget.bridge('uibutton', $.ui.button);
         </script>
 
-        <!-- popper -->
-        <script src="{{ URL::asset('vendor_components/popper/dist/popper.min.js') }}"></script>
+        <!-- popper  Lo comente por que la librería no se encuentra
+        <script src="{{ URL::asset('vendor_components/popper/dist/popper.min.js') }}"></script>-->
 
         <!-- Bootstrap 4.0-->
         <script src="{{ URL::asset('vendor_components/bootstrap/dist/js/bootstrap.js') }}"></script>
