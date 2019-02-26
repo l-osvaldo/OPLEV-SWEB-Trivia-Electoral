@@ -1,6 +1,6 @@
 $(function() {
 
-  var _prefix_url =  $('meta[name="app-prefix"]').attr('content');
+  var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
   $('#btnGuardarInfo').hide();
 
   $("input#realizadomes").keydown(function (e)
