@@ -20,12 +20,15 @@
       header
       {
         position: fixed;
-        margin: 8mm 8mm 6mm 10mm;
+       /* margin: 8mm 8mm 6mm 10mm;*/
+        top: -60px;
+        left: 0px;
+        right: 0px;
       }
 
       .main
       { 
-        margin: 53mm 8mm 6mm 10mm;
+       /*margin: 53mm 8mm 6mm 10mm;*/
       }
 
       .tablacontenido
@@ -114,6 +117,58 @@
 
 
   <div class="main">
+    @if (!empty($poa['resultado']))
+      <table class="tablacontenido">
+        {{$i=1}}
+        @foreach ($poa['resultado'] as $r)
+          <tr class="datos">
+            <td class="colinfo" width="2%">{{$i}}</td>
+            <td class="colinfo" colspan="2" width="11%">&nbsp; &nbsp; &nbsp; &nbsp;
+            @if ($poa['idmes']==1)
+              {{$r->enep}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->ener}}
+            @endif
+            @if ($poa['idmes']==2)
+              {{$r->febp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->febr}}
+            @endif
+            @if ($poa['idmes']==3)
+              {{$r->marp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->marr}}
+            @endif
+            @if ($poa['idmes']==4)
+              {{$r->abrp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->abrr}}
+            @endif
+            @if ($poa['idmes']==5)
+              {{$r->mayp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->mayr}}
+            @endif
+            @if ($poa['idmes']==6)
+              {{$r->junp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->junr}}
+            @endif
+            @if ($poa['idmes']==7)
+              {{$r->julp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->julr}}
+            @endif
+            @if ($poa['idmes']==8)
+              {{$r->agop}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->agor}}
+            @endif
+            @if ($poa['idmes']==9)
+              {{$r->sepp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->sepr}}
+            @endif
+            @if ($poa['idmes']==10)
+              {{$r->octp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->octr}}
+            @endif
+            @if ($poa['idmes']==11)
+              {{$r->novp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->novr}}
+            @endif
+            @if ($poa['idmes']==12)
+              {{$r->dicp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->dicr}}
+            @endif
+            </td>
+            <td class="colinfo" width="29%">{{$r->descripcion}}</td>
+            <td class="colinfo"  width="29%">{{$r->soporte}}</td>
+            <td class="colinfo"width="15%">{{$r->observaciones}}</td>
+          </tr>
+          {{$i++}}
+        @endforeach
+      </table>
+    @endif
 
   </div>
 
