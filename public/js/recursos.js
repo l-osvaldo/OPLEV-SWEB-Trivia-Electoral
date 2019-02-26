@@ -73,7 +73,7 @@ $(function() {
 
 
     $.ajax({
-      url: "/poa/obtenProgramaEsp",
+      url: "./poa/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
@@ -93,7 +93,7 @@ $(function() {
   function obtenObjetivos(programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-      url: "/obtenObjetivoAct",
+      url: "./obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -128,7 +128,7 @@ $(function() {
 
     //Obtener actividades
     $.ajax({
-      url: "/obtenActividades",
+      url: "./obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -166,7 +166,7 @@ $(function() {
     obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-      url: "/obtenPorcProgramado",
+      url: "./obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -194,7 +194,7 @@ $(function() {
 
       //Obtener porcentaje realizado
     $.ajax({
-      url: "/obtenPorcRealizado",
+      url: "./obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -224,7 +224,7 @@ $(function() {
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-      url: "/obtenDetallesActi",
+      url: "./obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, idMes: idMes},
