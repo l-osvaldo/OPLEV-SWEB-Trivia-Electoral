@@ -20,12 +20,15 @@
       header
       {
         position: fixed;
-        margin: 8mm 8mm 6mm 10mm;
+       /* margin: 8mm 8mm 6mm 10mm;*/
+        top: -60px;
+        left: 0px;
+        right: 0px;
       }
 
       .main
       { 
-        margin: 53mm 8mm 6mm 10mm;
+       /*margin: 53mm 8mm 6mm 10mm;*/
       }
 
       .tablacontenido
@@ -114,9 +117,6 @@
 
 
   <div class="main">
-
-
-
     @if (!empty($poa['resultado']))
       <table class="tablacontenido">
         {{$i=1}}
@@ -144,7 +144,7 @@
             @endif
             @if ($poa['idmes']==7)
               {{$r->julp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->julr}}
-            @endif                                                                        
+            @endif
             @if ($poa['idmes']==8)
               {{$r->agop}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->agor}}
             @endif
@@ -156,7 +156,7 @@
             @endif
             @if ($poa['idmes']==11)
               {{$r->novp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->novr}}
-            @endif                
+            @endif
             @if ($poa['idmes']==12)
               {{$r->dicp}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$r->dicr}}
             @endif
@@ -167,7 +167,7 @@
           </tr>
           {{$i++}}
         @endforeach
-      </table>  
+      </table>
     @endif
 
   </div>

@@ -27,7 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
+    'app-prefix'=> env('APP_FOLDER',''),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
