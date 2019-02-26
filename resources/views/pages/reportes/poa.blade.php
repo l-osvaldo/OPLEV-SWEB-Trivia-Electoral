@@ -20,15 +20,12 @@
       header
       {
         position: fixed;
-       /* margin: 8mm 8mm 6mm 10mm;*/
-        top: -60px;
-        left: 0px;
-        right: 0px;
+        margin: 8mm 8mm 6mm 10mm;
       }
 
       .main
       { 
-       /*margin: 53mm 8mm 6mm 10mm;*/
+        margin: 53mm 8mm 6mm 10mm;
       }
 
       .tablacontenido

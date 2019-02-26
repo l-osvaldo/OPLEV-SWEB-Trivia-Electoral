@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula};
 use DB;
 use Auth;
 use PDF;
@@ -212,9 +212,20 @@ class ReportesController extends Controller
         list( $rules, $messages ) = $this->_rulesindicadores();
         $this->validate( $request, $rules, $messages );  
 
+        $idArea = Auth::user()->idarea;        
+        $idMes = $request->idmesreportar;      
+        $idPrograma = $request->programa;
+        $idProgramaEsp = $request->programaEsp;    
+        $idActividad = $request->actividades;    
 
-        $indicadores = array();
-      
+        $area = Area::select('nombrearea')->where('idarea', $idArea)->get();            
+        $infocedula = InfoCedula::where('idcontrol', $idActividad)->get();
+
+
+        //var_dump($infocedula[0]['nombreindicador']);
+        //die();
+        $indicadores = array();      
+        $indicadores['nombrearea'] = $area[0]->nombrearea;
         $pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
         return $pdf->stream();
       }
