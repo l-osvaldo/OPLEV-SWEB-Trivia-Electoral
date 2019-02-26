@@ -51,6 +51,7 @@
 
       table {border-collapse:collapse; table-layout:fixed;  width:100%; }
       table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
+
       table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
       table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
       table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
@@ -69,14 +70,14 @@
   <header>
     <table>
       <tr>
-        <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y metas del Programa Operativo Anual 2019 </td>
+        <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 </td>
       </tr>
     </table>
 
     <table>
       <tr class="rubro">
-        <td>Área Responsable</td>
-        <td class="texto">Nombre del Área</td>
+        <td width="20%">Área Responsable</td>
+        <td class="texto">{{ $indicadores['nombrearea'] }}</td>
       </tr>
     </table>
 
@@ -88,7 +89,7 @@
 
     <table>
       <tr class="rubro">
-        <td>Programa Presupuestario</td>        
+        <td width="20%">Programa Presupuestario</td>        
         <td class="texto">01. Desarrollo y Fortalecimiento Institucional</td>        
         <td class="texto">02. Proceso Electoral</td>        
         <td class="texto">03. Cartera de Proyectos</td>
@@ -98,16 +99,16 @@
 
     <table>
       <tr class="rubro">
-        <td>Objetivo del Indicador</td>        
+        <td width="20%">Objetivo del Indicador</td>        
         <td class="texto">Descripción del Objetivo</td>        
       </tr>
     </table>
 
     <table>
       <tr class="rubro">
-        <td>Periodo de Cumplimiento</td>        
+        <td width="20%">Periodo de Cumplimiento</td>        
         <td class="texto">periodo</td>        
-        <td class="rubro">Periodo de Evauación</td>        
+        <td width="20%" class="rubro">Periodo de Evauación</td>        
         <td class="texto">mes</td>
       </tr>
     </table>

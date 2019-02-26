@@ -89,7 +89,7 @@
     <table width="100%">
       <tr class="trestitulos">
         <td>UNIDAD RESPONSABLE</td>
-        <td>FIRMA DEL RESPONSABLE DE UNIDAD</td>
+        <td>FIRMA DEL RESPONSABLE</td>
         <td>MES</td>
       </tr>
       <tr class="trestitulos2">
