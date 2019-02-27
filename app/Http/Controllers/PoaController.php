@@ -74,9 +74,14 @@ class PoaController extends Controller
       //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
       //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
       //seleccionada
-      $descactividad = strtoupper($request->input('descactividad'));
-      $soporte = strtoupper($request->input('soporte'));
-      $observaciones = strtoupper($request->input('observaciones'));
+
+      $descactividad = trim(strtoupper($request->input('descactividad')));
+      $descactividad = strtr($descactividad,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      $soporte = trim(strtoupper($request->input('soporte')));
+      $soporte = strtr($soporte,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");            
+      $observaciones = trim(strtoupper($request->input('observaciones')));
+      $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
+
       DB::table('detalleactividades')->where('idmes', $idmesreportar)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
 
       return redirect()->route('programa.index');
