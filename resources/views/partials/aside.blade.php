@@ -11,7 +11,7 @@
       </div>
       <div class="image">
         <!--<img src="../images/user2-160x160.jpg" class="rounded-circle" alt="User Image">     -->
-        <img src="images/usuario.png" class="rounded-circle" alt="User Image">           
+        <img src="../images/usuario.png" class="rounded-circle" alt="User Image">           
       </div>      
       <div class="info">   
 

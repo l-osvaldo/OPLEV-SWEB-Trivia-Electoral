@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula};
 use DB;
 use Auth;
 use PDF;
@@ -212,9 +212,83 @@ class ReportesController extends Controller
         list( $rules, $messages ) = $this->_rulesindicadores();
         $this->validate( $request, $rules, $messages );  
 
+        $idArea = Auth::user()->idarea;        
+        $idMes = $request->idmesreportar;      
+        $idPrograma = $request->programa;
+        $idProgramaEsp = $request->programaEsp;    
+        $idActividad = $request->actividades;    
+        $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+        $area = Area::select('nombrearea')->where('idarea', $idArea)->get();            
+        $infocedula = InfoCedula::where('idcontrol', $idActividad)->get();
 
-        $indicadores = array();
-      
+        $programado = [0,'enep','febp','marp','abrp','mayp','junp','julp','agop','sepp','octp','novp','dicp'];     
+        $colmesp = $programado[$idMes];
+        $meta = PorcProgramado::select($colmesp)->where('idporcentajep', $idActividad)->get();
+
+        $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];     
+        $colmesr = $realizado[$idMes];
+        $real = PorcRealizado::select($colmesr)->where('idporcentajer', $idActividad)->get();
+
+        if ($meta[0][$colmesp]!=0)
+          $resultado = ($real[0][$colmesr]*100)/$meta[0][$colmesp];
+        else
+          $resultado = 100;
+
+        $variacion = $resultado - 100;
+
+
+        $observa = DetalleActi::select('observaciones')->where('idmes', $idMes)->where('autoactividades', $idActividad)->get();
+
+
+        $prog1 = '';
+        $prog2 = '';
+        $prog3 = '';
+        $prog4 = '';
+        if ($idPrograma==1)
+          $prog1 = 'X';
+        if ($idPrograma==2)
+          $prog2 = 'X';
+        if ($idPrograma==3)
+          $prog3 = 'X';
+        if ($idPrograma==4)
+          $prog4 = 'X';
+
+
+        $frecuenciamedicion = $infocedula[0]['frecuenciamedicion'];
+        if ($frecuenciamedicion==1)
+          $frecuencia = "Mensual";
+        if ($frecuenciamedicion==2)
+          $frecuencia = "Trimestre";
+        if ($frecuenciamedicion==3)
+          $frecuencia = "Semestre";
+        if ($frecuenciamedicion==4)
+          $frecuencia = "Anual";                            
+        if ($frecuenciamedicion==5)
+          $frecuencia = "Único";
+
+        //var_dump($infocedula[0]['nombreindicador']);
+        //die();
+        $indicadores = array();      
+        $indicadores['nombrearea'] = $area[0]->nombrearea;
+        $indicadores['objetivoindicador'] = $infocedula[0]['objetivoindicador'];
+        $indicadores['abreviaturaperiodocump'] = $infocedula[0]['abreviaturaperiodocump']; 
+        $indicadores['mes'] = $arrMeses[$idMes];               
+        $indicadores['prog1'] = $prog1;
+        $indicadores['prog2'] = $prog2;
+        $indicadores['prog3'] = $prog3;
+        $indicadores['prog4'] = $prog4;
+        $indicadores['nombreindicador'] = $infocedula[0]['nombreindicador'];
+        $indicadores['frecuencia'] = $frecuencia;
+        $indicadores['variable1'] = $infocedula[0]['variable1'];
+        $indicadores['variable2'] = $infocedula[0]['variable2'];
+        $indicadores['meta'] = $meta[0][$colmesp];
+        $indicadores['realizado'] = $real[0][$colmesr];
+        $indicadores['resultado'] = $resultado;
+        $indicadores['variacion'] = $variacion;
+        $indicadores['observaciones'] = $observa[0]['observaciones'];
+        $indicadores['nombretitular'] = $infocedula[0]['nombretitular'];
+        $indicadores['cargo'] = $infocedula[0]['cargo'];
+
         $pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
         return $pdf->stream();
       }
