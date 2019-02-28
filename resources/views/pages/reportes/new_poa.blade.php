@@ -67,6 +67,8 @@
       color: #000000;
       text-align: right;
     }
+
+    .page-number:after { content: counter(page); }
     /** Define the margins of your page **/
     /*body
     {
@@ -184,7 +186,7 @@
   </table>
 </header>
 
-<footer>
+<footer class="page-number">
   Página <script type="text/php"> $PAGE_NUM </script>
 </footer>
 
