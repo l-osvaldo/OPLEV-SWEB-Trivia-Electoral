@@ -64,10 +64,8 @@
       left: 0px;
       right: 0px;
       height: 50px;
-
-      background-color: #03a9f4;
-      color: white;
-      text-align: center;
+      color: #000000;
+      text-align: right;
     }
     /** Define the margins of your page **/
     /*body
@@ -187,7 +185,7 @@
 </header>
 
 <footer>
-  Copyright &copy; <?php echo date("Y");?>
+  Página <?php $PAGE_NUM . " de " . $PAGE_COUNT; ?>
 </footer>
 
 <!-- Wrap the content of your PDF inside a main tag -->
