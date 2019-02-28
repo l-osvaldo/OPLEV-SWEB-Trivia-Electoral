@@ -187,7 +187,12 @@
 </header>
 
 <footer class="page-number">
-  Página <script type="text/php"> $PAGE_NUM </script>
+    <script type="text/php">
+    if ( isset($pdf) ) {
+        $font = Font_Metrics::get_font("helvetica", "bold");
+        $pdf->page_text(72, 18, "Header: {PAGE_NUM} of {PAGE_COUNT}", $font, 6, array(0,0,0));
+    }
+</script>
 </footer>
 
 <!-- Wrap the content of your PDF inside a main tag -->
