@@ -48,7 +48,13 @@
 
 
       table {border-collapse:collapse; table-layout:fixed;  width:100%; }
-      table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
+      table td.texto {
+        text-align: center;  
+        font-weight: 400;
+        height: 65px;
+      /*  background: #ffffff url('img/logoople.jpg') no-repeat left top;*/
+        width: 1000px; font-size: 14px;
+      }
       table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
       table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
       table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
