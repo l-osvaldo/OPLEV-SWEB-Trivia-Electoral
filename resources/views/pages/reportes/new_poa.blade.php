@@ -185,7 +185,7 @@
 </header>
 
 <footer>
-  Página <?php $PAGE_NUM . " de " . $PAGE_COUNT; ?>
+  Página {PAGE_NUM} de {PAGE_COUNT}
 </footer>
 
 <!-- Wrap the content of your PDF inside a main tag -->
