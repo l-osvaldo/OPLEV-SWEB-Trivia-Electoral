@@ -133,7 +133,7 @@
       <td style="height: 10px;"></td>
     </tr>
     <tr>
-      <td width="300px" bgcolor="#ffe4c4">
+      <td width="300px" >
         <img src="{{asset('images/logoople.png')}}" alt="" height="65px">
       </td>
       <td>
@@ -185,7 +185,7 @@
 </header>
 
 <footer>
-  Página {PAGE_NUM} de {PAGE_COUNT}
+  Página <script type="text/php"> $PAGE_NUM </script>
 </footer>
 
 <!-- Wrap the content of your PDF inside a main tag -->
