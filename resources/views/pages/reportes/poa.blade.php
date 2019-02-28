@@ -159,8 +159,8 @@
             @endif
             </td>
             <td class="colinfo" width="29%">{{$r->descripcion}}</td>
-            <td class="colinfo"  width="29%">{{$r->soporte}}</td>
-            <td class="colinfo"width="15%">{{$r->observaciones}}</td>
+            <td class="colinfo"  width="29%"></td>
+            <td class="colinfo"width="15%"></td>
           </tr>
           {{$i++}}
         @endforeach

@@ -168,8 +168,9 @@ class ReportesController extends Controller
         $poa['programa'] = $programa[0]->claveprograma.' - '.$programa[0]->descprograma;
         $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;
         $poa['objetivo'] = $programaesp[0]->objprogramaesp;        
-        $pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
+        $pdf = PDF::loadView( 'pages.reportes.new_poa', ['poa'=>$poa] )->setPaper('a4', 'landscape');
         return $pdf->stream();
+          //return view('pages.reportes.new_poa', ['poa'=>$poa] );
       }
       else
       {
