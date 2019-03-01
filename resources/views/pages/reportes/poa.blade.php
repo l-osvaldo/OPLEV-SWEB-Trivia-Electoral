@@ -74,7 +74,7 @@
       margin-top:20px;
     }
 
-    table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('http://sistemas.oplever.org.mx/poa2019/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
+    table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url({{ asset('images/logoople.jpg') }}) no-repeat left top; width: 980px; font-size: 14px;}
 
     table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
     table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
