@@ -1,36 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>POA 2019</title>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>POA 2019</title>
+  <style>
+    *{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      font-size: 12px;
+    }
+    table tr td{
+      vertical-align: middle;
+    }
+    .table{
+      width: 980px;
+    }
+    table{
+      border-collapse: collapse;
+    }
+    h1, h2, h3, h4, p{
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .gray{
+      background-color: #bfbfbf;
+      font-weight: 900;
+      text-align: center;
+    }
 
 
-    <style type="text/css">
+    header table{
+      text-align: center;
+      font-size: 10px;
+    }
 
-      body 
-      {
-        font-family: Arial, Helvetica, sans-serif;        
-      }
+    header table h1{
+      font-size: 14px;
+    }
+    header table h2{
+      font-size: 12px;
+      font-weight: bolder;
+    }
 
-      html
-      {
-        margin: 0;
-      }
+    tr.padding td{
+      padding: 10px 0;
+    }
+    @page {
+      margin-top:253px;
+      margin-bottom: 60px;
+    }
+    header {
+      position: fixed;
+      top: -260px;
+      left: 0px;
+      right: 0px;
+      height: 253px;
+    }
+    footer {
+      position: fixed;
+      bottom: -60px;
+      left: 0px;
+      right: 0px;
+      height: 50px;
+      color: #000000;
+      text-align: right;
+    }
 
-      header
-      {
-        position: fixed;
-        margin: 8mm 8mm 6mm 10mm;
-      }
 
-      .main
-      { 
-        margin: 53mm 8mm 6mm 10mm;
-      }
+    .tituloople
+    {
+      margin-top:20px;
+    }
+
+    table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
+
+    table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
+    table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
 
       .tablacontenido
       {        
         border: .5px solid;
+        margin-top:5px;
+      }
+
+      .colinfo
+      {
+        text-align: justify; 
+        padding: 5px 5px;  
+        border-bottom: .5px solid;
       }
 
       .datos
@@ -38,90 +97,64 @@
         font-size: 11px;
       }
 
-      .colinfo
-      {
-        text-align: justify; 
-        padding: 4px 4px;  
-        border-bottom: .5px solid;
-      }
+  </style>
+</head>
+<body>
+<header>
+  <table class="tituloople">
+    <tr>
+      <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
+    </tr>
+  </table>
 
+  <table class="table" border="1" align="center" cellpadding="5px">
+    <tr class="gray">
+      <th colspan="3">
+        <h2>{{$poa['programa']}}<br>{{$poa['programaesp']}}</h2>
+      </th>
+    </tr>
+    <tr>
+     <td colspan="3">
+       Objetivo: {{$poa['objetivo']}}
+     </td>
+    </tr>
+    <tr class="gray padding">
+      <td width="400px">UNIDAD RESPONSABLE</td>
+      <td width="400px">FIRMA DEL RESPONSABLE</td>
+      <td>MES</td>
+    </tr>
+    <tr class="padding">
+      <td>{{ $poa['nombrearea'] }}</td>
+      <td></td>
+      <td>{{ $poa['mes'] }}</td>
+    </tr>
+  </table>
 
-
-      table {border-collapse:collapse; table-layout:fixed;  width:100%; }
-      table td.texto {
-        text-align: center;  
-        font-weight: 400;
-        height: 65px;
-      /*  background: #ffffff url('img/logoople.jpg') no-repeat left top;*/
-        width: 1000px; font-size: 14px;
-      }
-      table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
-      table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
-      table tr.trestitulos{ background: #bfbfbf; border:1px solid #46453f; }
-      table tr.trestitulos td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
-      table tr.trestitulos2 td{ text-align: center; border:1px solid #46453f; font-weight:900; height: 30px; font-size: 10px;}      
-      table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
-      table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
-
-
-    </style>
-
-
-  </head>
-  <body>
-
-  <header>
-    <table>
-      <tr>
-        <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
-      </tr>
-    </table>
-
-    <table>
-      <tr>
-        <td class="programa">
-          {{$poa['programa']}}<br>{{$poa['programaesp']}}
-        </td>
-      </tr>
-      <tr>
-        <td class="obj">
-          Objetivo: 
-          {{$poa['objetivo']}}
-        </td>
-      </tr>
-    </table>
-
-
-    <table width="100%">
-      <tr class="trestitulos">
-        <td>UNIDAD RESPONSABLE</td>
-        <td>FIRMA DEL RESPONSABLE</td>
-        <td>MES</td>
-      </tr>
-      <tr class="trestitulos2">
-        <td width="45%">{{ $poa['nombrearea'] }}</td>
-        <td width="35%"></td>
-        <td width="20%">{{ $poa['mes'] }}</td>
-      </tr>
-    </table>
-
-
-    <table width="100%">
+    <table class="table" border="1" align="center">
       <tr class="avances">
-        <td width="2%">No. <br> Act.</td> 
+        <td width="2%">No. <br> ACT.</td> 
         <td colspan="2" width="11%">AVANCE MENSUAL <br> PROG.  &nbsp; &nbsp; &nbsp; &nbsp; REAL.</td> 
         <td width="29%">DESCRIPCIÓN</td> 
-        <td width="29%">SOPORTE</td> 
-        <td width="15%">OBSERVACIONES</td>
+        <td width="23%">SOPORTE</td> 
+        <td width="22%">OBSERVACIONES</td>
       </tr>
     </table>
 
-  </header>
 
+</header>
 
-  <div class="main">
-    @if (!empty($poa['resultado']))
-      <table class="tablacontenido">
+<footer class="page-number">
+    <script type="text/php">
+      if ( isset($pdf) ) {
+        $pdf->page_text(720, 570, "Página: {PAGE_NUM} de {PAGE_COUNT}", null, 6, array(0,0,0));
+    }
+</script>
+</footer>
+
+<!-- Wrap the content of your PDF inside a main tag -->
+<main>
+  @if (!empty($poa['resultado']))
+      <table class="table tablacontenido" align="center">
         {{$i=1}}
         @foreach ($poa['resultado'] as $r)
           <tr class="datos">
@@ -165,16 +198,18 @@
             @endif
             </td>
             <td class="colinfo" width="29%">{{$r->descripcion}}</td>
-            <td class="colinfo"  width="29%"></td>
-            <td class="colinfo"width="15%"></td>
+            <td class="colinfo"  width="23%">{{$r->soporte}}</td>
+            <td class="colinfo"width="22%">{{$r->observaciones}}</td>
           </tr>
           {{$i++}}
         @endforeach
       </table>
-    @endif
 
-  </div>
+  @endif
+
+</main>
 
 
-  </body>
+
+</body>
 </html>

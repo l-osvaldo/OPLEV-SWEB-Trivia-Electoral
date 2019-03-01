@@ -55,7 +55,16 @@
       table tr.rubro td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
 
       table {border-collapse:collapse; table-layout:fixed;  width:100%; }
-      table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('img/logoople.jpg') no-repeat left top; width: 1000px; font-size: 14px;}
+
+      .tablamargen
+      {
+        margin-top: 15px !important;
+      }
+
+    table td.textologo {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
+
+
+      table td.texto {font-weight: normal !important;  text-align: center;  font-weight: 400; height: 65px; background: #ffffff; width: 1000px; font-size: 14px;}
 
       table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
       table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
@@ -75,7 +84,7 @@
   <header>
     <table>
       <tr>
-        <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 </td>
+        <td class="textologo tablamargen">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 </td>
       </tr>
     </table>
 
@@ -120,7 +129,7 @@
       <tr class="rubro">
         <td width="20%">Periodo de Cumplimiento</td>        
         <td class="texto">{{ $indicadores['abreviaturaperiodocump'] }}</td>        
-        <td width="20%" class="rubro">Periodo de Evauación</td>        
+        <td width="20%" class="rubro">Periodo de Evaluación</td>        
         <td class="texto">{{ $indicadores['mes'] }}</td>
       </tr>
     </table>
