@@ -61,7 +61,7 @@
         margin-top: 15px !important;
       }
 
-    table td.textologo {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
+    table td.textologo {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('http://sistemas.oplever.org.mx/poa2019/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
 
 
       table td.texto {font-weight: normal !important;  text-align: center;  font-weight: 400; height: 65px; background: #ffffff; width: 1000px; font-size: 14px;}
