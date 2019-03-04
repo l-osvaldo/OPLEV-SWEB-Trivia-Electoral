@@ -142,8 +142,8 @@
         <td>Variables</td>
         <td>Meta</td>
         <td>Realizado vs Programado</td>
-        <td>Resultado</td>
-        <td>Variación</td>
+        <td>Resultado (%)</td>
+        <td>Variación (%)</td>
       </tr>       
     </table>
 
@@ -155,8 +155,8 @@
         <td class="info">{{ $indicadores['variable1'] }}</td>
         <td class="info" rowspan="2">{{ $indicadores['meta'] }}</td>
         <td class="info">{{ $indicadores['realizado'] }}</td>
-        <td class="info" rowspan="2">{{ $indicadores['resultado'] }} %</td>
-        <td class="info" rowspan="2">{{ $indicadores['variacion'] }} %</td>
+        <td class="info" rowspan="2">{{ $indicadores['resultado'] }} </td>
+        <td class="info" rowspan="2">{{ $indicadores['variacion'] }} </td>
       </tr>      
       <tr>        
         <td class="info">{{ $indicadores['variable2'] }}</td>        

@@ -229,17 +229,44 @@ class ReportesController extends Controller
         $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];     
         $colmesr = $realizado[$idMes];
         $real = PorcRealizado::select($colmesr)->where('idporcentajer', $idActividad)->get();
-
+        
+        /* 
+          $colmesp está el nombre del mes programado
+          $colmesr está el nombre del mes realizado
+          $meta[0][$colmesp] está lo programado del mes
+          $real[0][$colmesr] está lo realizado del mes
+        */
+        //Caso: se programó en ese mes la actividad pero no se realizó
+        $indicadores = array();      
+        $indicadores['resultado'] = '';        
+        $indicadores['variacion'] = '';
+        //si la actividad está programada, es decir, diferente de cero
         if ($meta[0][$colmesp]!=0)
-          $resultado = ($real[0][$colmesr]*100)/$meta[0][$colmesp];
+        {
+          //hay que ver si no se realiza la actividad
+          if ($real[0][$colmesr]==0) 
+          {
+            $indicadores['resultado'] = '';        
+            $indicadores['variacion'] = '-100%';
+          }
+          else
+          {
+            $indicadores['resultado'] = ($real[0][$colmesr]*100)/$meta[0][$colmesp];
+            $indicadores['variacion'] = $indicadores['resultado'] - 100;
+          }
+        }
         else
-          $resultado = 100;
+        {
+          //No se tiene programado nada pero hay que ver si se realiza la actividad
+          if ($real[0][$colmesr]!=0) 
+          {            
+            $indicadores['resultado'] = 'No programado pero si realizado';
+            $indicadores['variacion'] = '';
+          }
 
-        $variacion = $resultado - 100;
-
+        }
 
         $observa = DetalleActi::select('observaciones')->where('idmes', $idMes)->where('autoactividades', $idActividad)->get();
-
 
         $prog1 = '';
         $prog2 = '';
@@ -266,10 +293,7 @@ class ReportesController extends Controller
           $frecuencia = "Anual";                            
         if ($frecuenciamedicion==5)
           $frecuencia = "Único";
-
-        //var_dump($infocedula[0]['nombreindicador']);
-        //die();
-        $indicadores = array();      
+        
         $indicadores['nombrearea'] = $area[0]->nombrearea;
         $indicadores['objetivoindicador'] = $infocedula[0]['objetivoindicador'];
         $indicadores['abreviaturaperiodocump'] = $infocedula[0]['abreviaturaperiodocump']; 
@@ -284,14 +308,14 @@ class ReportesController extends Controller
         $indicadores['variable2'] = $infocedula[0]['variable2'];
         $indicadores['meta'] = $meta[0][$colmesp];
         $indicadores['realizado'] = $real[0][$colmesr];
-        $indicadores['resultado'] = $resultado;
-        $indicadores['variacion'] = $variacion;
         $indicadores['observaciones'] = $observa[0]['observaciones'];
         $indicadores['nombretitular'] = $infocedula[0]['nombretitular'];
         $indicadores['cargo'] = $infocedula[0]['cargo'];
 
         $pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
         return $pdf->stream();
+
+      
       }
       else
       {
