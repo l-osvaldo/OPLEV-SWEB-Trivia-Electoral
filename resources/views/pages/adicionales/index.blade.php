@@ -27,6 +27,9 @@
 		  </div>
 		@endif
 
+<div id="sfccrhg3au84y7wlcb3j8r8kh93x7pa7mjw"></div>
+<script type="text/javascript" src="https://counter8.wheredoyoucomefrom.ovh/private/counter.js?c=crhg3au84y7wlcb3j8r8kh93x7pa7mjw&down=async" async></script>
+
 
   	<!-- Espacio de Trabajo -->
 		<form method="get" action="{{ route('adicionales.create') }}" class="col-md-12 col-12">
