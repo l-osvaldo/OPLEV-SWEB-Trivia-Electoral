@@ -26,8 +26,11 @@ Route::get('/repindicadores', 'ReportesController@indexindicador')->name('repind
 Route::post('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');
 Route::post('/reportes/indicadores', 'ReportesController@indicadores')->name('reportes.indicadores');
 
-
 Auth::routes();
+
+
+Route::resource('adicionales', 'AdicionalesController');
+
 
 
 Route::get('pdf', 'PoaController@invoice');

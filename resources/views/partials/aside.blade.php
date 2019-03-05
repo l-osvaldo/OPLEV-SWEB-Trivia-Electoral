@@ -43,15 +43,14 @@
           <i class="fa fa-clone"></i> <span>Reportes Indicadores</span>
         </a>
       </li>       
-      <!--
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-th"></i>
-          <span>App</span>
+      <br>
+      <br>
+      <br>
+      <li class="active">
+        <a href="{{ route('adicionales.index') }}">
+          <i class="fa fa-calendar-plus-o"></i> <span>Actividades Adicionales</span>
         </a>
-      </li>
-    -->
-      
+      </li>     
 
 
     </ul>
