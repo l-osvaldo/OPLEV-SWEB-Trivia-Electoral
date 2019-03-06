@@ -27,8 +27,7 @@
 		  </div>
 		@endif
 
-<div id="sfccrhg3au84y7wlcb3j8r8kh93x7pa7mjw"></div>
-<script type="text/javascript" src="https://counter8.wheredoyoucomefrom.ovh/private/counter.js?c=crhg3au84y7wlcb3j8r8kh93x7pa7mjw&down=async" async></script>
+
 
 
   	<!-- Espacio de Trabajo -->
@@ -79,7 +78,7 @@
 			              		</div>		              		
 			              	</div>
 			              	<div class="col-5">
-			              		<button type="submit" class="btn btn-block btn-dark" id="btnveractividades" name="btnveractividades">Ver actividades&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
+			              		<button type="submit" class="btn btn-block btn-dark" id="btnveractividades" name="btnveractividades">Capturar Act. Adicional&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
 	      								<div class="clearfix">&nbsp;</div>
 			              	</div>
 			              </div>

@@ -44,7 +44,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-rosa">
               <div class="ribbon ribbon-primary">
-                Mes a reportar
+                Mes en dónde se dio la actividad adicional
               </div>
               <div class="row">
                 <div class="col-12">
@@ -71,12 +71,12 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">1.</span> Descripción de la Actividad
+                <span class="numpasos">1.</span> Descripción de la actividad adicional
               </div>
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" rows="4" id="descactividad" name="descactividad" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" rows="4" id="descadicional" name="descadicional" placeholder="">{{ old( 'descadicional', $adicional->descadicional ) }}</textarea>
 
                   </div>
                 </div>
@@ -95,12 +95,12 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">2.</span> Soporte
+                <span class="numpasos">2.</span> Soporte para la actividad adicional
               </div>
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" rows="4" id="soporte" name="soporte" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" rows="4" id="soporteadicional" name="soporteadicional" placeholder="">{{ old( 'soporteadicional', $adicional->soporteadicional ) }}</textarea>
 
                   </div>
                 </div>
@@ -124,7 +124,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" id="observaciones" name="observaciones" rows="4" placeholder=""></textarea>
+                  <textarea class="form-control textuppercase" id="observaadicional" name="observaadicional" rows="4" placeholder="" value="{{ old( 'observaadicional', $adicional->observaadicional ) }}"></textarea>
 
                   </div>
                 </div>
@@ -142,12 +142,12 @@
         <input type="hidden" name="_method" value="PUT">
       @endif
       <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
-      <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
+      <input type="hidden" name="redirect" value="{{ route('adicionales.index') }}">
       <button type="submit" class="btn btn-block btn-dark" id="btnGuardarAdicional" name="btnGuardarAdicional">Guardar Informaci&oacute;n</button>
       <div class="clearfix">&nbsp;</div>
     </div>
     <div class="col-md-3 col-3">
-      <a class="btn btn-block btn-danger" href="{{ route('programa.index') }}">Cancelar</a>
+      <a class="btn btn-block btn-danger" href="{{ route('adicionales.index') }}">Cancelar</a>
       <div class="clearfix">&nbsp;</div>
     </div>
   </div> <!-- del primer .col-md-12 col-12 -->

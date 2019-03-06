@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, Adicional};
 use DB;
 use Auth;
 
@@ -37,15 +37,28 @@ class AdicionalesController extends Controller
       if ( Auth::check() )
       {        
         #Validación del mes a reportar
-
         list( $rules, $messages ) = $this->_rules();
         $this->validate( $request, $rules, $messages );
 
+        $idArea = Auth::user()->idarea;
         $idmesreportar = $request->input('idmesreportar');
-        $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
-        //$programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
-        $action = route('adicionales.store');
-        return view('pages.adicionales.create')->with( compact('idmesreportar', 'action', 'mes') );
+        $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();                
+        $existeAdicional = Adicional::select('descadicional', 'soporteadicional', 'observaadicional')->where('idarea', $idArea)->where('idmes', $idmesreportar)->exists();
+        //devuelve false sino existe
+        if ($existeAdicional)
+        {          
+          $id = Adicional::select('id')->where('idarea', $idArea)->where('idmes', $idmesreportar)->get();
+          $adicional = Adicional::find($id[0]->id);
+          $put = TRUE;
+          $action = route('adicionales.update', ['adicional' => $adicional->id ]);
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes') );
+        }
+        else
+        {
+          $adicional = new Adicional();
+          $action = route('adicionales.store');
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes') );
+        }
       }
       else
       {
@@ -61,7 +74,24 @@ class AdicionalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      #Validación de formulario
+      list( $rules, $messages ) = $this->_rulesadicionales();
+      $this->validate( $request, $rules, $messages );
+
+      $idArea = Auth::user()->idarea;        
+      $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+      $idmes = $request->input('idmesreportar');
+      $area = Area::select('nombrearea')->where('idarea', $idArea)->get();                  
+      $adicional = new Adicional();
+      $adicional->idarea = $idArea;
+      $adicional->area = $area[0]->nombrearea;
+      $adicional->idmes = $request->input('idmesreportar');
+      $adicional->mes = $arrMeses[$idmes];      
+      $adicional->descadicional = strtoupper($request->input('descadicional'));
+      $adicional->soporteadicional = strtoupper($request->input('soporteadicional'));
+      $adicional->observaadicional = strtoupper($request->input('observaadicional'));
+      $adicional->save();
+      return redirect()->route('adicionales.index');      
     }
 
     /**
@@ -95,7 +125,26 @@ class AdicionalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      #Validación de formulario
+      list( $rules, $messages ) = $this->_rulesadicionales();
+      $this->validate( $request, $rules, $messages );
+
+      $idArea = Auth::user()->idarea;        
+      $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+      $idmes = $request->input('idmesreportar');
+      $area = Area::select('nombrearea')->where('idarea', $idArea)->get();        
+
+      $adicional = Adicional::find($id);
+      $adicional->idarea = $idArea;
+      $adicional->area = $area[0]->nombrearea;
+      $adicional->idmes = $request->input('idmesreportar');
+      $adicional->mes = $arrMeses[$idmes];      
+      $adicional->descadicional = strtoupper($request->input('descadicional'));
+      $adicional->soporteadicional = strtoupper($request->input('soporteadicional'));
+      $adicional->observaadicional = strtoupper($request->input('observaadicional'));
+
+      $adicional->save();
+      return redirect()->route('adicionales.index');  
     }
 
 
@@ -112,7 +161,6 @@ class AdicionalesController extends Controller
 
           'idmesreportar' => 'required|not_in:0'
       ];
-
       return array( $rules, $messages );
     }
 
@@ -128,4 +176,22 @@ class AdicionalesController extends Controller
     {
         //
     }
+
+    #Validación de formulario adicionales
+    private function _rulesadicionales( $new = True )
+    {
+
+      $messages = [
+        'descadicional.required' => 'Debe escribir la descripción de la actividad adicional',
+        'soporteadicional.required' => 'Debe escribir el soporte de la actividad adicional'
+      ];
+
+      $rules = [
+        'descadicional' => 'required',
+        'soporteadicional' => 'required'        
+      ];
+      return array( $rules, $messages );
+    }
+
+
 }
