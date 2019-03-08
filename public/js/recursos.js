@@ -5,6 +5,7 @@ $(function() {
       _prefix_url = "/"+_prefix_url;
     }
   $('#btnGuardarInfo').hide();
+  //$('#btnConcentradoPoa').hide();
 
   $("input#realizadomes").keydown(function (e)
   {
@@ -153,6 +154,7 @@ $(function() {
   $("#actividades").change(function()
   {
     $('#btnGuardarInfo').hide();
+    //$('#btnConcentradoPoa').hide();
     $('#unidadmedida').html('');
     $('#cantidadanual').html('');   
     limpiaTablaAnalisis();
@@ -241,6 +243,7 @@ $(function() {
         $('#observaciones').html(response[0]['observaciones']);
 
         $('#btnGuardarInfo').show();
+        //$('#btnConcentradoPoa').show();
       });
 
     

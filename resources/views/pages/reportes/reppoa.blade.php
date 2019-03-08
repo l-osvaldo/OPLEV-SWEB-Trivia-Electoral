@@ -33,7 +33,7 @@
 
 
   <div class="row">
-    <div class="col-6 col-lg-6 col-md-6">
+    <div class="col-8 col-lg-8 col-md-8">
       <div class="box">
         <div class="row">
           <div class="col-12">
@@ -57,8 +57,11 @@
 
   
 	<div class="row">
-    <div class="col-md-6 col-lg-6">
+    <div class="col-md-4 col-lg-4">
       <div class="box">
+        <div class="box-header with-border">
+          <h4 class="box-title">Reporte Mensual</h4>
+        </div>
         <div class="box-body">
           <div class="col-12">
             <div class="form-group">
@@ -87,8 +90,15 @@
               </select>
               <br>
 
-              <button type="submit" class="btn btn-purple">Generar Reporte de POA&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+              <button type="submit" class="btn btn-purple">Generar Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
               <div class="clearfix">&nbsp;</div>
+
+              <!--
+              <button type="button" class="btn btn-success" id="btnConcentradoPoa" name="btnConcentradoPoa">Generar Concentrado del Programa Específico&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+              <div class="clearfix">&nbsp;</div> -->
+
+
+
 
             </div>
           </div>
