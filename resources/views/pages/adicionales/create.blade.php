@@ -4,7 +4,7 @@
 
   <section class="content-header">
     <h3>
-      <small>Actividades Adicionales</small>
+      <small>Actividades Adicionales. Captura y Reportes</small>
     </h3>
   </section>
 

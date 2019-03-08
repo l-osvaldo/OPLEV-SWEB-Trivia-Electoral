@@ -25,6 +25,10 @@ class AdicionalesController extends Controller
       {
         return redirect()->route('login');
       }
+
+
+
+      
     }
 
     /**
@@ -192,6 +196,8 @@ class AdicionalesController extends Controller
       ];
       return array( $rules, $messages );
     }
+
+
 
 
 }

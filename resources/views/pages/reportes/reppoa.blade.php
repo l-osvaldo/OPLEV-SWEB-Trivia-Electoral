@@ -87,7 +87,7 @@
               </select>
               <br>
 
-              <button type="submit" class="btn btn-dark">Generar Reporte de POA&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+              <button type="submit" class="btn btn-purple">Generar Reporte de POA&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
               <div class="clearfix">&nbsp;</div>
 
             </div>

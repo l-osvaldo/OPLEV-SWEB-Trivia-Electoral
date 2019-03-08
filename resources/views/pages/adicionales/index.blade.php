@@ -5,7 +5,7 @@
 
   <section class="content-header">
     <h3>
-      <small>Actividades Adicionales</small>
+			<small>Actividades Adicionales. Captura y Reportes</small>
     </h3>
   </section>
 
@@ -34,9 +34,8 @@
 		<form method="get" action="{{ route('adicionales.create') }}" class="col-md-12 col-12">
 		  {{ csrf_field() }}
 
-
 		  <div class="row">
-		    <div class="col-4 col-lg-4 col-md-4">
+		    <div class="col-6 col-lg-6 col-md-6">
 		      <div class="box">
 		        <div class="row">
 		          <div class="col-12">
@@ -56,18 +55,19 @@
 		        </div>
 		      </div>
 		    </div>
+		  </div>
 
-
+		  <div class="row">
 		    <div class="col-6 col-lg-6 col-md-6">
 		      <div class="box">
 						  <div class="row">
 								<div class="col-12">
 									<div class="ribbon-wrapper ribbon-blanco">
 										<div class="ribbon ribbon-primary">
-											Seleccione el mes de trabajo:
+											Seleccione el mes de captura
 										</div>
 										<div class="row">
-	            				<div class="col-5">
+	            				<div class="col-3">
 			            			<div class="form-group">                
 			              			<select class="form-control" id="idmesreportar" name="idmesreportar">
 			                			<option value="0">Mes...</option>      
@@ -77,8 +77,8 @@
 			              			</select>		              			
 			              		</div>		              		
 			              	</div>
-			              	<div class="col-5">
-			              		<button type="submit" class="btn btn-block btn-dark" id="btnveractividades" name="btnveractividades">Capturar Act. Adicional&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
+			              	<div class="col-3">
+			              		<button type="submit" class="btn btn-block btn-dark" id="btncapturaadicional" name="btncapturaadicional">Capturar Adicional&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
 	      								<div class="clearfix">&nbsp;</div>
 			              	</div>
 			              </div>
@@ -86,9 +86,51 @@
 								</div>
 							</div>						
 		      </div>	      
-		    </div>
+		    </div>		  	
 		  </div>
 		</form>
+
+
+
+		<form method="post" action="{{ route('reportes.adicionales') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+		  {{ csrf_field() }}
+
+		  <div class="row">
+		    <div class="col-6 col-lg-6 col-md-6">
+		      <div class="box">
+						  <div class="row">
+								<div class="col-12">
+									<div class="ribbon-wrapper ribbon-blanco">
+										<div class="ribbon ribbon-primary">
+											Seleccione el mes del reporte
+										</div>
+										<div class="row">
+	            				<div class="col-3">
+			            			<div class="form-group">                
+			              			<select class="form-control" id="idmesreporteadicional" name="idmesreporteadicional">
+			                			<option value="0">Mes...</option>      
+			                			@foreach( $meses as $mes )
+	                    				<option value="{{$mes->idmes}}">{{$mes->mes}}</option>
+	                  				@endforeach            		                  		
+			              			</select>		              			
+			              		</div>		              		
+			              	</div>
+				              	<div class="col-3">
+				              		<button type="submit" class="btn btn-block btn-purple" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+		      								<div class="clearfix">&nbsp;</div>
+				              	</div>
+			              </div>
+									</div>
+								</div>
+							</div>						
+		      </div>	      
+		    </div>		  	
+		  </div>
+		</form>
+
+
+
+
 
   </section>
 

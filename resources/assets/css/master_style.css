@@ -9006,9 +9006,9 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
 }
 
 .btn-purple {
-  background-color: #926dde;
-  border-color: #926dde;
-  color: #fff;
+  background-color: #926dde !important;
+  border-color: #926dde !important;
+  color: #fff !important;
 }
 
 .btn-purple:hover {

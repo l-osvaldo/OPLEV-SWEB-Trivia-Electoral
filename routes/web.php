@@ -30,6 +30,7 @@ Auth::routes();
 
 
 Route::resource('adicionales', 'AdicionalesController');
+Route::post('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
 
 
 
