@@ -52,7 +52,6 @@ class AdminController extends Controller
       //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
       //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
       //seleccionada
-
       $descactividad = trim(strtoupper($request->input('descactividad_admin')));
       $descactividad = strtr($descactividad,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
       $soporte = trim(strtoupper($request->input('soporte_admin')));
@@ -61,9 +60,6 @@ class AdminController extends Controller
       $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
 
       DB::table('detalleactividades')->where('idmes', $mesadmin)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
-
-      //DetalleActi::where('idmes', $mes)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
-
       return redirect()->route('programa.index');
     }
 
@@ -169,6 +165,23 @@ class AdminController extends Controller
       //
     }
 
+
+    public function reportemensual(Request $request)
+    {
+
+        #Validación de seleccion de combos
+        //list( $rules, $messages ) = $this->_rulespoa();
+        //$this->validate( $request, $rules, $messages );
+
+        //$idArea = $request->area;
+
+      echo "sdakcnsd csd cklsdncsd";
+
+      //$idArea = $request->input('area');
+      //echo "sdcvsdc".$idArea;
+
+ 
+    }
 
 
 

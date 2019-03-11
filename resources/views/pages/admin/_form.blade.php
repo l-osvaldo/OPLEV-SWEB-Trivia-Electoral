@@ -405,6 +405,18 @@
       <a class="btn btn-block btn-danger" href="{{ route('programa.index') }}">Cancelar</a>
       <div class="clearfix">&nbsp;</div>
     </div>
+
+
+    <div class="col-md-1 col-1">
+    </div>
+
+
+    <div class="col-md-3 col-3">
+      <a target="_blank" href="" class="btn btn-block btn-purple" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></a>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+
+
   </div> <!-- del primer .col-md-12 col-12 -->
 
 </form>

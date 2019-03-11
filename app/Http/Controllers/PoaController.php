@@ -18,6 +18,7 @@ class PoaController extends Controller
     {
       if (Auth::check())
       {
+        
         if (Auth::user()->hasRole('admin')) 
         {          
           $meses = Mes::all();
@@ -28,7 +29,7 @@ class PoaController extends Controller
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action'));
         }
         else
-        {  
+        { 
           $meses = Mes::all();
           return view('pages.poa.index')->with( compact('meses'));
         }

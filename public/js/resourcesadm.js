@@ -241,9 +241,27 @@ $(function() {
         $('#observaciones_admin').html(response[0]['observaciones']);
         $('#btnGuardarInfo_admin').show();
       });
-
     
   }); //Fin de codigo actividades
+
+
+  $("#btnReporteMensual_admin").click(function()
+  {  
+    
+    var area = $('#area_admin').find(':selected').val();
+    var mes = $('#mes_admin').find(':selected').val();    
+    var idActividad = $('#actividades_admin').find(':selected').val();
+    var programa = $('#programa_admin').find(':selected').val();
+    var programaEsp = $('#programaEsp_admin').find(':selected').val();
+    
+    var funcion = _prefix_url+"/admin/reportemensual";
+    //alert(funcion);
+    $.redirect(funcion,{"area":area});
+
+  });
+
+
+
 
 
 
