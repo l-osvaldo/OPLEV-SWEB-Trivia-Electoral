@@ -37,7 +37,34 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //tengo que conseguir el idmes y el autoactividades
+      $autoactividades = $request->input('actividades_admin');
+      $mesadmin = $request->input('mes_admin');
+
+
+      //en tabla porcentajer se guarda el input realizadomes en la columna del mes correspondiente:
+      //ener,febr,marr,abrr, etc
+      $realizadomes = $request->input('realizadomes_admin');
+      $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];     
+      $mes = $realizado[$mesadmin];
+      DB::table('porcentajer')->where('autoactividades', $autoactividades)->update([$mes => $realizadomes]);
+
+      //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
+      //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
+      //seleccionada
+
+      $descactividad = trim(strtoupper($request->input('descactividad_admin')));
+      $descactividad = strtr($descactividad,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      $soporte = trim(strtoupper($request->input('soporte_admin')));
+      $soporte = strtr($soporte,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");            
+      $observaciones = trim(strtoupper($request->input('observaciones_admin')));
+      $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
+
+      DB::table('detalleactividades')->where('idmes', $mesadmin)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
+
+      //DetalleActi::where('idmes', $mes)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
+
+      return redirect()->route('programa.index');
     }
 
     /**
@@ -121,11 +148,6 @@ class AdminController extends Controller
         ->where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
       return response()->json($objetivo);
     }
-
-
-
-
-
 
     public function obtenPorcProgramado(Request $request) {
       $idActividad = $request->idActividad;

@@ -1,6 +1,7 @@
 $(function() {
 
 
+  $('#btnGuardarInfo_admin').hide();
 
   var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
     if(_prefix_url != ""){
@@ -64,13 +65,12 @@ $(function() {
     $('#actividades_admin').html('');     
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');
-
     limpiaTablaAnalisis_admin();
-
     $('#realizadomes_admin').val(0);
     $('#descactividad_admin').html('');
     $('#soporte_admin').html('');
     $('#observaciones_admin').html('');
+    $('#btnGuardarInfo_admin').hide();
     
     var area = $('#area_admin').find(':selected').val();
     var programa = $('#programa_admin').find(':selected').val();
@@ -120,6 +120,7 @@ $(function() {
     $('#descactividad_admin').html('');
     $('#soporte_admin').html('');
     $('#observaciones_admin').html('');
+    $('#btnGuardarInfo_admin').hide();
     var area = $('#area_admin').find(':selected').val();
     var programa = $('#programa_admin').find(':selected').val();
     var programaEsp = $('#programaEsp_admin').find(':selected').val();
@@ -150,6 +151,7 @@ $(function() {
   //Generación de tabla y textareas de actividad, soporte, observaciones
   $("#actividades_admin").change(function()
   {
+    $('#btnGuardarInfo_admin').hide();
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');   
     limpiaTablaAnalisis_admin();
@@ -237,7 +239,7 @@ $(function() {
         $('#descactividad_admin').html(response[0]['descripcion']);
         $('#soporte_admin').html(response[0]['soporte']);
         $('#observaciones_admin').html(response[0]['observaciones']);
-
+        $('#btnGuardarInfo_admin').show();
       });
 
     

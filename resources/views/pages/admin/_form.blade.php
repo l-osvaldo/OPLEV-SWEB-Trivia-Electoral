@@ -324,13 +324,14 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">5.</span> Descripción de la Actividad
+                <span class="numpasos"></span> Descripción de la Actividad
               </div>
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
+                  
                   <textarea class="form-control textuppercase" rows="4" id="descactividad_admin" name="descactividad_admin" placeholder=""></textarea>
-
+                  
                   </div>
                 </div>
               </div>
@@ -348,7 +349,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">6.</span> Soporte
+                <span class="numpasos"></span> Soporte
               </div>
               <div class="row">
                 <div class="col-12">
@@ -372,7 +373,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">7.</span> Observaciones
+                <span class="numpasos"></span> Observaciones
               </div>
               <div class="row">
                 <div class="col-12">
@@ -393,12 +394,11 @@
     <div class="col-md-3 col-3">
       @if ( ! empty( $put ) )
         <input type="hidden" name="_method" value="PUT">
-      @endif
-      <input type="hidden" name="idmesreportar" value="">
+      @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
-      <!--
-      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo" name="btnGuardarInfo">Guardar Informaci&oacute;n</button>
-      -->
+      
+      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>
+      
       <div class="clearfix">&nbsp;</div>
     </div>
     <div class="col-md-3 col-3">

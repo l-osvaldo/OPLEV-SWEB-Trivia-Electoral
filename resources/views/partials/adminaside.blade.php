@@ -33,27 +33,9 @@
       
       <li class="active">
         <a href="{{ route('programa.index') }}">
-          <i class="fa fa-calendar-check-o"></i> <span>ADMIN Programa Operativo Anual</span>
+          <i class="fa fa-calendar-check-o"></i> <span>Programa Operativo Anual</span>
         </a>
       </li>
-      <li class="active">
-        <a href="{{ route('reppoa') }}">
-          <i class="fa fa-calendar"></i> <span>ADMIN Reportes POA</span>
-        </a>
-      </li>   
-      <li class="active">
-        <a href="{{ route('repindicadores') }}">
-          <i class="fa fa-clone"></i> <span>ADMIN Reportes Indicadores</span>
-        </a>
-      </li>       
-      <br>
-      <br>
-      <br>
-      <li class="active">
-        <a href="{{ route('adicionales.index') }}">
-          <i class="fa fa-calendar-plus-o"></i> <span>ADMIN Actividades Adicionales</span>
-        </a>
-      </li>     
 
 
     </ul>

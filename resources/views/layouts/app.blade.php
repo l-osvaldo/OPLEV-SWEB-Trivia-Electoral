@@ -104,14 +104,17 @@
 
         <!-- FastClick -->
         <script src="{{ URL::asset('vendor_components/fastclick/lib/fastclick.js') }}"></script>
-
-        <script src="{{ URL::asset('js/jquery.validate.js') }}"></script>        
         <script src="{{ URL::asset('js/sweetalert.min.js') }}"></script>
-          @if(Auth::user()->hasRole('admin')) 
-            <script src="{{ URL::asset('js/resourcesadm.js') }}"></script>
-          @else
-            <script src="{{ URL::asset('js/recursos.js') }}"></script>
-          @endif        
+        <script src="{{ URL::asset('js/jquery.validate.js') }}"></script>        
+        <script src="{{ URL::asset('js/jquery.redirect.js') }}"></script>        
+        <script src="{{ URL::asset('js/jquery.jeditable.js') }}"></script>        
+        <script src="{{ URL::asset('js/jquery.jeditable.checkbox.js') }}"></script>
+
+        @if(Auth::user()->hasRole('admin')) 
+        <script src="{{ URL::asset('js/resourcesadm.js') }}"></script>
+        @else
+        <script src="{{ URL::asset('js/recursos.js') }}"></script>
+        @endif        
         
 
 

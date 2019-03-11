@@ -23,7 +23,7 @@ class PoaController extends Controller
           $meses = Mes::all();
           $areas = Area::all();
           $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
-          $action = route('programa.store');
+          $action = route('admin.store');
 
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action'));
         }
