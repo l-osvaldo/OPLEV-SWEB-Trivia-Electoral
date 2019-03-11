@@ -16,10 +16,22 @@ class PoaController extends Controller
      */
     public function index()
     {
-      if ( Auth::check() )
+      if (Auth::check())
       {
-        $meses = Mes::all();
-        return view('pages.poa.index')->with( compact('meses') );
+        if (Auth::user()->hasRole('admin')) 
+        {          
+          $meses = Mes::all();
+          $areas = Area::all();
+          $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+          $action = route('programa.store');
+
+          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action'));
+        }
+        else
+        {  
+          $meses = Mes::all();
+          return view('pages.poa.index')->with( compact('meses'));
+        }
       }
       else
       {

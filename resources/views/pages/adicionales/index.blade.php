@@ -77,7 +77,7 @@
 			              			</select>		              			
 			              		</div>		              		
 			              	</div>
-			              	<div class="col-3">
+			              	<div class="col-4">
 			              		<button type="submit" class="btn btn-block btn-dark" id="btncapturaadicional" name="btncapturaadicional">Capturar Adicional&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
 	      								<div class="clearfix">&nbsp;</div>
 			              	</div>
@@ -115,7 +115,7 @@
 			              			</select>		              			
 			              		</div>		              		
 			              	</div>
-				              	<div class="col-3">
+				              	<div class="col-4">
 				              		<button type="submit" class="btn btn-block btn-purple" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
 		      								<div class="clearfix">&nbsp;</div>
 				              	</div>

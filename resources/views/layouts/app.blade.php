@@ -46,7 +46,11 @@
       @include('partials.header')
 
       <!-- Aside -->
-      @include('partials.aside')
+      @if(Auth::user()->hasRole('admin')) 
+        @include('partials.adminaside')
+      @else
+        @include('partials.aside')
+      @endif
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -103,7 +107,13 @@
 
         <script src="{{ URL::asset('js/jquery.validate.js') }}"></script>        
         <script src="{{ URL::asset('js/sweetalert.min.js') }}"></script>
-        <script src="{{ URL::asset('js/recursos.js') }}"></script>
+          @if(Auth::user()->hasRole('admin')) 
+            <script src="{{ URL::asset('js/resourcesadm.js') }}"></script>
+          @else
+            <script src="{{ URL::asset('js/recursos.js') }}"></script>
+          @endif        
+        
+
 
   </body>
 </html>
