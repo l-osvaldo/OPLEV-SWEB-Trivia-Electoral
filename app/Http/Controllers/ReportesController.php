@@ -308,7 +308,7 @@ class ReportesController extends Controller
           $frecuencia = "Anual";                            
         if ($frecuenciamedicion==5)
           $frecuencia = "Único";
-        
+        $indicadores['identificadorindicador'] = $infocedula[0]['identificadorindicador'];
         $indicadores['nombrearea'] = $area[0]->nombrearea;
         $indicadores['objetivoindicador'] = $infocedula[0]['objetivoindicador'];
         $indicadores['abreviaturaperiodocump'] = $infocedula[0]['abreviaturaperiodocump']; 

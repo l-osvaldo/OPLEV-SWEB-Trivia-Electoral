@@ -149,7 +149,7 @@
 
     <table>
       <tr>
-        <td class="info" rowspan="2"  height="70"></td>        
+        <td class="info" rowspan="2"  height="70">{{ $indicadores['identificadorindicador'] }}</td>        
         <td class="info" rowspan="2">{{ $indicadores['nombreindicador'] }}</td>
         <td class="info" rowspan="2">{{ $indicadores['frecuencia'] }}</td>
         <td class="info">{{ $indicadores['variable1'] }}</td>
