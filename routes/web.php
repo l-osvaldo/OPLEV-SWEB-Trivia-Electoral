@@ -37,6 +37,6 @@ Route::get('/admin/obtenActividades', 'AdminController@obtenActividades')->name(
 Route::get('/admin/obtenPorcProgramado', 'AdminController@obtenPorcProgramado')->name('admin.obten.porcentaje.programado');
 Route::get('/admin/obtenPorcRealizado', 'AdminController@obtenPorcRealizado')->name('admin.obten.porcentaje.realizado');
 Route::get('/admin/obtenDetallesActi', 'AdminController@obtenDetallesActi')->name('admin.obten.detalle.actividades');
-Route::post('/admin/reportemensual', 'AdminController@reportemensual')->name('admin.reporte.mensual');
+//Route::post('/admin/reportemensual', 'AdminController@reportemensual')->name('admin.reporte.mensual');
 Route::resource('admin', 'AdminController');
 

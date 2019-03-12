@@ -397,8 +397,7 @@
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
       
-      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>
-      
+      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>      
       <div class="clearfix">&nbsp;</div>
     </div>
     <div class="col-md-3 col-3">
@@ -406,17 +405,22 @@
       <div class="clearfix">&nbsp;</div>
     </div>
 
-
-    <div class="col-md-1 col-1">
-    </div>
-
-
-    <div class="col-md-3 col-3">
-      <a target="_blank" href="" class="btn btn-block btn-purple" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></a>
-      <div class="clearfix">&nbsp;</div>
-    </div>
-
-
   </div> <!-- del primer .col-md-12 col-12 -->
 
 </form>
+
+<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+  {{ csrf_field() }}
+
+  <div class="row">
+    <div class="col-md-3 col-3">  
+      <input type="hidden" id="areareporte" name="areareporte" value="">
+      <input type="hidden" id="mesreporte" name="mesreporte" value="">
+      <input type="hidden" id="programareporte" name="programareporte" value="">
+      <input type="hidden" id="programaespreporte" name="programaespreporte" value="">      
+      <button type="submit" class="btn btn-block btn-purple" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
+      <div class="clearfix">&nbsp;</div>
+    </div>
+  </div>
+
+</form>  

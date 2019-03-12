@@ -128,15 +128,30 @@ class ReportesController extends Controller
     {
       if ( Auth::check() )
       {
-        #Validación de seleccion de combos
-        list( $rules, $messages ) = $this->_rulespoa();
-        $this->validate( $request, $rules, $messages );
 
-        $idArea = Auth::user()->idarea;        
-        $idMes = $request->idmesreportar;      
-        $idPrograma = $request->programa;
-        $idProgramaEsp = $request->programaEsp;
+        if (!Auth::user()->hasRole('admin')) 
+        {         
+          #Validación de seleccion de combos
+          list( $rules, $messages ) = $this->_rulespoa();
+          $this->validate( $request, $rules, $messages );
+        }
 
+        
+        if (Auth::user()->hasRole('admin')) 
+        { 
+          $idArea = $request->areareporte;
+          $idMes = $request->mesreporte;      
+          $idPrograma = $request->programareporte;
+          $idProgramaEsp = $request->programaespreporte;    
+        }
+        else
+        {
+          $idArea = Auth::user()->idarea;        
+          $idMes = $request->idmesreportar;      
+          $idPrograma = $request->programa;
+          $idProgramaEsp = $request->programaEsp;
+        }
+        
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();
         $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
         $programa = Programa::select('claveprograma', 'descprograma')->where('idprograma', $idPrograma)->get();

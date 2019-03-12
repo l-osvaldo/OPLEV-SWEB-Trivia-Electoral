@@ -2,7 +2,7 @@ $(function() {
 
 
   $('#btnGuardarInfo_admin').hide();
-
+  $('#btnReporteMensual_admin').hide();
   var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
     if(_prefix_url != ""){
       _prefix_url = "/"+_prefix_url;
@@ -71,6 +71,7 @@ $(function() {
     $('#soporte_admin').html('');
     $('#observaciones_admin').html('');
     $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();    
     
     var area = $('#area_admin').find(':selected').val();
     var programa = $('#programa_admin').find(':selected').val();
@@ -90,7 +91,8 @@ $(function() {
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
           comboProgramaEsp += "<option value='"+value['idprogramaesp']+"'>"+ cadena +"</option>";
         });
-        $('#programaEsp_admin').html(comboProgramaEsp);        
+        $('#programaEsp_admin').html(comboProgramaEsp);      
+        $('#programareporte').val(programa);
       });
 
   });
@@ -121,6 +123,7 @@ $(function() {
     $('#soporte_admin').html('');
     $('#observaciones_admin').html('');
     $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();
     var area = $('#area_admin').find(':selected').val();
     var programa = $('#programa_admin').find(':selected').val();
     var programaEsp = $('#programaEsp_admin').find(':selected').val();
@@ -144,6 +147,7 @@ $(function() {
         }); //Each
 
         $('#actividades_admin').html(comboActividades);
+        $('#programaespreporte').val(programaEsp);        
       }); //Done
   });
 
@@ -152,6 +156,8 @@ $(function() {
   $("#actividades_admin").change(function()
   {
     $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();
+
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');   
     limpiaTablaAnalisis_admin();
@@ -219,7 +225,7 @@ $(function() {
         $('#dicr_admin').html(response[0]['dicr']);
 
         var realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];
-        console.log(realizado[mes]);
+        //console.log(realizado[mes]);
         var pos = realizado[mes];
 
         $('#realizadomes_admin').val(response[0][pos]);
@@ -240,30 +246,52 @@ $(function() {
         $('#soporte_admin').html(response[0]['soporte']);
         $('#observaciones_admin').html(response[0]['observaciones']);
         $('#btnGuardarInfo_admin').show();
+        $('#btnReporteMensual_admin').show();
       });
     
   }); //Fin de codigo actividades
 
-
-  $("#btnReporteMensual_admin").click(function()
+  $("#mes_admin").change(function()  
   {  
-    
-    var area = $('#area_admin').find(':selected').val();
-    var mes = $('#mes_admin').find(':selected').val();    
-    var idActividad = $('#actividades_admin').find(':selected').val();
-    var programa = $('#programa_admin').find(':selected').val();
-    var programaEsp = $('#programaEsp_admin').find(':selected').val();
-    
-    var funcion = _prefix_url+"/admin/reportemensual";
-    //alert(funcion);
-    $.redirect(funcion,{"area":area});
+    $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();    
+    $('#programa_admin').val('0');    
+    $('#programaEsp_admin').html('');    
+    $('#objetivo_admin').html('');
+    $('#actividades_admin').html('');     
+    $('#unidadmedida_admin').html('');
+    $('#cantidadanual_admin').html('');
+    limpiaTablaAnalisis_admin();
+    $('#realizadomes_admin').val(0);
+    $('#descactividad_admin').html('');
+    $('#soporte_admin').html('');
+    $('#observaciones_admin').html('');
+    $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();  
 
+    $('#mesreporte').val($('#mes_admin').find(':selected').val());
+  });
+
+  $("#area_admin").change(function()  
+  {  
+    $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();    
+    $('#programa_admin').val('0');
+    $('#programaEsp_admin').html('');    
+    $('#objetivo_admin').html('');
+    $('#actividades_admin').html('');     
+    $('#unidadmedida_admin').html('');
+    $('#cantidadanual_admin').html('');
+    limpiaTablaAnalisis_admin();
+    $('#realizadomes_admin').val(0);
+    $('#descactividad_admin').html('');
+    $('#soporte_admin').html('');
+    $('#observaciones_admin').html('');
+    $('#btnGuardarInfo_admin').hide();
+    $('#btnReporteMensual_admin').hide();  
+
+    $('#areareporte').val($('#area_admin').find(':selected').val());
   });
 
 
-
-
-
-
 });
-
