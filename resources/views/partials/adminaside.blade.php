@@ -29,8 +29,6 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="nav-devider"></li>
 
-      <!--<li class="header nav-small-cap">POA</li> -->
-      
       <li class="active">
         <a href="{{ route('programa.index') }}">
           <i class="fa fa-calendar-check-o"></i> <span>Programa Operativo Anual</span>
