@@ -27,10 +27,30 @@ class ReportesController extends Controller
 
     public function indexindicador()
     {
-      $meses = Mes::all();      
-      $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
-      $action = route('reportes.indicadores');
-      return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses'));
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+          $meses = Mes::all();
+          $areas = Area::all();
+          $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+          $action = route('reportes.indicadores');
+
+          return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas'));
+        }
+        else
+        { 
+          $meses = Mes::all();      
+          $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+          $action = route('reportes.indicadores');
+          return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses'));
+        }
+      }
+      else
+      {
+        return redirect()->route('login');
+      }
     }
 
 
@@ -224,15 +244,33 @@ class ReportesController extends Controller
     {
       if ( Auth::check() )
       {      
-        #Validación de seleccion de combos
-        list( $rules, $messages ) = $this->_rulesindicadores();
-        $this->validate( $request, $rules, $messages );  
+        
+        if (!(Auth::user()->hasRole('admin')) && !(Auth::user()->hasRole('consulta')))
+        {  
+          #Validación de seleccion de combos
+          list( $rules, $messages ) = $this->_rulesindicadores();
+          $this->validate( $request, $rules, $messages );  
+        }
 
-        $idArea = Auth::user()->idarea;        
-        $idMes = $request->idmesreportar;      
-        $idPrograma = $request->programa;
-        $idProgramaEsp = $request->programaEsp;    
-        $idActividad = $request->actividades;    
+
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        { 
+          $idArea = $request->area_admin;
+          $idMes = $request->mes_admin;      
+          $idPrograma = $request->programa_admin;
+          $idProgramaEsp = $request->programaEsp_admin;    
+          $idActividad = $request->actividades_admin; 
+        }
+        else
+        {
+          $idArea = Auth::user()->idarea;        
+          $idMes = $request->idmesreportar;      
+          $idPrograma = $request->programa;
+          $idProgramaEsp = $request->programaEsp;    
+          $idActividad = $request->actividades; 
+        }
+
+
         $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();            
         $infocedula = InfoCedula::where('idcontrol', $idActividad)->get();

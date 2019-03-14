@@ -38,6 +38,13 @@
       </li>
 
 
+      <li class="active">
+        <a href="{{ route('repindicadores') }}">
+          <i class="fa fa-clone"></i> <span>Reportes Indicadores</span>
+        </a>
+      </li>
+
+
     </ul>
   </section>
 </aside>
