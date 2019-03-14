@@ -124,7 +124,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" id="observaadicional" name="observaadicional" rows="4" placeholder="" value="{{ old( 'observaadicional', $adicional->observaadicional ) }}"></textarea>
+                  <textarea class="form-control textuppercase" id="observaadicional" name="observaadicional" rows="4" placeholder="" value="">{{ old( 'observaadicional', $adicional->observaadicional ) }}</textarea>
 
                   </div>
                 </div>
