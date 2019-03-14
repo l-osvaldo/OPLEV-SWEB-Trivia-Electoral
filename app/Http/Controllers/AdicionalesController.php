@@ -91,9 +91,18 @@ class AdicionalesController extends Controller
       $adicional->area = $area[0]->nombrearea;
       $adicional->idmes = $request->input('idmesreportar');
       $adicional->mes = $arrMeses[$idmes];      
-      $adicional->descadicional = strtoupper($request->input('descadicional'));
-      $adicional->soporteadicional = strtoupper($request->input('soporteadicional'));
-      $adicional->observaadicional = strtoupper($request->input('observaadicional'));
+
+      $descadicional = trim(strtoupper($request->input('descadicional')));
+      $descadicional = strtr($descadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      $soporteadicional = trim(strtoupper($request->input('soporteadicional')));
+      $soporteadicional = strtr($soporteadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      $observaadicional = trim(strtoupper($request->input('observaadicional')));
+      $observaadicional = strtr($observaadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+
+
+      $adicional->descadicional = $descadicional;
+      $adicional->soporteadicional = $soporteadicional;
+      $adicional->observaadicional = $observaadicional;
       $adicional->save();
       return redirect()->route('adicionales.index');      
     }
