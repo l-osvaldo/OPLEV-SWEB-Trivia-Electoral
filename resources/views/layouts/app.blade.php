@@ -46,7 +46,7 @@
       @include('partials.header')
 
       <!-- Aside -->
-      @if(Auth::user()->hasRole('admin')) 
+      @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         @include('partials.adminaside')
       @else
         @include('partials.aside')
@@ -110,7 +110,7 @@
         <script src="{{ URL::asset('js/jquery.jeditable.js') }}"></script>        
         <script src="{{ URL::asset('js/jquery.jeditable.checkbox.js') }}"></script>
 
-        @if(Auth::user()->hasRole('admin')) 
+        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         <script src="{{ URL::asset('js/resourcesadm.js') }}"></script>
         @else
         <script src="{{ URL::asset('js/recursos.js') }}"></script>

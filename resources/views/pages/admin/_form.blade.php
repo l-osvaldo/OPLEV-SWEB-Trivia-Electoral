@@ -17,6 +17,30 @@
   {{ csrf_field() }}
 
 
+  <div class="row">
+    <div class="col-3 col-lg-3 col-md-3">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-rosa">
+              <div class="ribbon ribbon-primary">                
+                <h3>Perfil de Trabajo</h3>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+
+                    <span class="titareames">{{ Auth::user()->name }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row">
 
@@ -53,7 +77,7 @@
           <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">2.</span> Seleccione un Area
+                <span class="numpasos">2.</span> Seleccione un Área
               </div>
               <div class="row">
                 <div class="col-12">
@@ -305,7 +329,11 @@
                   </div>
                   <div class="col-3">
                     <div class="form-group">                  
-                      <input type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
+                      @if(Auth::user()->hasRole('admin'))                         
+                        <input type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
+                      @else
+                        <input disabled type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -329,9 +357,11 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  
-                  <textarea class="form-control textuppercase" rows="4" id="descactividad_admin" name="descactividad_admin" placeholder=""></textarea>
-                  
+                  @if(Auth::user()->hasRole('admin')) 
+                    <textarea class="form-control textuppercase" rows="4" id="descactividad_admin" name="descactividad_admin" placeholder=""></textarea>
+                  @else
+                    <textarea disabled class="form-control textuppercase" rows="4" id="descactividad_admin" name="descactividad_admin" placeholder=""></textarea>
+                  @endif
                   </div>
                 </div>
               </div>
@@ -354,8 +384,11 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" rows="4" id="soporte_admin" name="soporte_admin" placeholder=""></textarea>
-
+                    @if(Auth::user()->hasRole('admin')) 
+                      <textarea class="form-control textuppercase" rows="4" id="soporte_admin" name="soporte_admin" placeholder=""></textarea>
+                    @else
+                      <textarea disabled class="form-control textuppercase" rows="4" id="soporte_admin" name="soporte_admin" placeholder=""></textarea>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -378,8 +411,11 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                  <textarea class="form-control textuppercase" id="observaciones_admin" name="observaciones_admin" rows="4" placeholder=""></textarea>
-
+                    @if(Auth::user()->hasRole('admin')) 
+                      <textarea class="form-control textuppercase" id="observaciones_admin" name="observaciones_admin" rows="4" placeholder=""></textarea>
+                    @else
+                      <textarea disabled class="form-control textuppercase" id="observaciones_admin" name="observaciones_admin" rows="4" placeholder=""></textarea>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -396,13 +432,16 @@
         <input type="hidden" name="_method" value="PUT">
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
-      
-      <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>      
-      <div class="clearfix">&nbsp;</div>
+      @if(Auth::user()->hasRole('admin')) 
+        <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>      
+        <div class="clearfix">&nbsp;</div>
+      @endif      
     </div>
     <div class="col-md-3 col-3">
+      @if(Auth::user()->hasRole('admin')) 
       <a class="btn btn-block btn-danger" href="{{ route('programa.index') }}">Cancelar</a>
       <div class="clearfix">&nbsp;</div>
+      @endif      
     </div>
 
   </div> <!-- del primer .col-md-12 col-12 -->
@@ -417,9 +456,11 @@
       <input type="hidden" id="areareporte" name="areareporte" value="">
       <input type="hidden" id="mesreporte" name="mesreporte" value="">
       <input type="hidden" id="programareporte" name="programareporte" value="">
-      <input type="hidden" id="programaespreporte" name="programaespreporte" value="">      
+      <input type="hidden" id="programaespreporte" name="programaespreporte" value="">    
+      @if(Auth::user()->hasRole('admin'))   
       <button type="submit" class="btn btn-block btn-purple" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
       <div class="clearfix">&nbsp;</div>
+      @endif
     </div>
   </div>
 

@@ -344,8 +344,6 @@ class ReportesController extends Controller
     {
       if ( Auth::check() )
       {   
-
-        echo "reporte adicional";
         #Validación de seleccion de combos
         //list( $rules, $messages ) = $this->_rulesindicadores();
         //$this->validate( $request, $rules, $messages );  
@@ -353,16 +351,24 @@ class ReportesController extends Controller
         $idArea = Auth::user()->idarea;        
         $idMes = $request->idmesreporteadicional;      
         $infoadicional = Adicional::where('idarea', $idArea)->where('idmes', $idMes)->get();
-        $adicionales = array();      
-        $adicionales['area'] = $infoadicional[0]['area'];
-        $adicionales['mes'] = $infoadicional[0]['mes'];
-        $adicionales['descadicional'] = $infoadicional[0]['descadicional'];
-        $adicionales['soporteadicional'] = $infoadicional[0]['soporteadicional'];
-        $adicionales['observaadicional'] = $infoadicional[0]['observaadicional'];
 
-        $pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
-        return $pdf->stream();
+        if ($infoadicional->count() > 0)
+        {
+          $adicionales = array();      
+          $adicionales['area'] = $infoadicional[0]['area'];
+          $adicionales['mes'] = $infoadicional[0]['mes'];
+          $adicionales['descadicional'] = $infoadicional[0]['descadicional'];
+          $adicionales['soporteadicional'] = $infoadicional[0]['soporteadicional'];
+          $adicionales['observaadicional'] = $infoadicional[0]['observaadicional'];
 
+          $pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
+          return $pdf->stream();
+        }
+        else
+        {          
+          echo "<script>alert('No hay actividades adicionales en el mes seleccionado');</script>";
+          echo "<script>window.close();</script>";  
+        }
       }
       else
       {

@@ -5,7 +5,7 @@
 
   <section class="content-header">
     <h3>
-      <small>Administrador - Programa Operativo Anual 2019</small>
+      <small>Programa Operativo Anual 2019.</small>
     </h3>
   </section>
 

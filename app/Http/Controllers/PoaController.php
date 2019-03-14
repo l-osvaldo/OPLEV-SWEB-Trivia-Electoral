@@ -19,7 +19,7 @@ class PoaController extends Controller
       if (Auth::check())
       {
         
-        if (Auth::user()->hasRole('admin')) 
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         {          
           $meses = Mes::all();
           $areas = Area::all();

@@ -8,7 +8,7 @@
         <!-- logo for regular state and mobile devices -->
           <span><b>SIPSEI</b></span>
           <br>
-          <span><b>ADMINISTRADOR</b></span>
+          <span><b>{{ Auth::user()->name }}</b></span>
 
         </a>
       </div>
