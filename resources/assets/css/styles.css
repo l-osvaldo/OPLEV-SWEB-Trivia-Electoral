@@ -11,6 +11,27 @@
 	font-weight: 500;	
 }
 
+.ribbon-perfil
+{
+	padding: 8px;
+	height: 35px;	
+	text-align: left !important;	
+}
+
+.ribbon-area
+{
+	padding: 2px !important;
+	padding-left: 10px !important;
+	height: 35px;	
+}
+
+.titareames
+{
+	font-size: 20px;	
+	font-weight: bold;		
+	text-align: center;
+}
+
 .ribbon-primary
 {
 	background-color: #EA0D94 !important;
@@ -36,7 +57,6 @@
 	width: 100%;	
 }
 
-
 .numpasos
 {
 	font-size: 20px;
@@ -53,13 +73,6 @@
 {
 	font-weight: bold;
 	font-size: 16px;
-}
-
-.titareames
-{
-	font-size: 20px;	
-	font-weight: 	bold;		
-	text-align: center;
 }
 
 .contenido

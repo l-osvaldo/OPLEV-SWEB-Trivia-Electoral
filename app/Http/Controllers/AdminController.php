@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, Trimestre};
 use DB;
 use Auth;
 use PDF;
@@ -166,61 +166,34 @@ class AdminController extends Controller
     }
 
 
-    public function reportemensual(Request $request)
+
+    public function trimestral()
     {
 
-      #Validación de seleccion de combos
-      //list( $rules, $messages ) = $this->_rulespoa();
-      //$this->validate( $request, $rules, $messages );
-
-/*
-      $idArea = $request->areareporte;
-      $idMes = $request->mesreporte;      
-      $idPrograma = $request->programareporte;
-      $idProgramaEsp = $request->programaespreporte;      
-
-
-      $idArea = 2;
-      $idMes = 1;      
-      $idPrograma = 1;
-      $idProgramaEsp = 2;   
-
-        $area = Area::select('nombrearea')->where('idarea', $idArea)->get();
-        $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
-        $programa = Programa::select('claveprograma', 'descprograma')->where('idprograma', $idPrograma)->get();
-        $programaesp = ProgramaEsp::select('claveprogramaesp', 'descprogramaesp', 'objprogramaesp')->where('idprograma', $idPrograma)->where('idprogramaesp',$idProgramaEsp)->get();
-*/
-        /*
-          select * from actividades 
-          left join porcentajep 
-          ON porcentajep.idporcentajep = actividades.idporcentajep 
-          left join porcentajer 
-          ON porcentajer.idporcentajer = actividades.idporcentajer
-          left join detalleactividades 
-          ON detalleactividades.autoactividades = actividades.autoactividades
-          where actividades.idprograma = 1 
-          and actividades.idprogramaesp = 2 
-          and actividades.idarea = 2 and detalleactividades.idmes = 1
-        */
-
-/*
-        $poa = array();
-        $poa['resultado'] = Actividad::where('actividades.idprograma', $idPrograma)->
-          where('actividades.idprogramaesp', $idProgramaEsp)->where('actividades.idarea', $idArea)->
-          where('detalleactividades.idmes', $idMes)->
-          leftjoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftjoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->leftjoin('detalleactividades', 'detalleactividades.autoactividades', 'actividades.autoactividades')->get();
-
+      if (Auth::check())
+      {
         
-        $poa['nombrearea'] = $area[0]->nombrearea;
-        $poa['idmes'] = $idMes;        
-        $poa['mes'] = $arrMeses[$idMes];
-        $poa['programa'] = $programa[0]->claveprograma.' - '.$programa[0]->descprograma;
-        $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;
-        $poa['objetivo'] = $programaesp[0]->objprogramaesp;        
-        $pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
-        return $pdf->stream();
-*/
- 
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $areas = Area::all();
+          $trimestres = Trimestre::all();
+          $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+          $action = route('admin.store');
+          return view('pages.admin.trimestral')->with( compact('areas', 'trimestres', 'programas', 'action'));
+
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+
+
     }
 
 

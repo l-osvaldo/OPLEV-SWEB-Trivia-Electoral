@@ -294,4 +294,63 @@ $(function() {
   });
 
 
+
+  // ------- _formtrim  ------- //
+  $("#area_trim").change(function()  
+  {  
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();    
+    $('#programa_trim').val('0');
+    $('#programaEsp_trim').html('');    
+    $('#trimestre_trim').val('0');
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();  
+
+    $('#areareporte').val($('#area_trim').find(':selected').val());
+  });
+
+  $("#mes_trim").change(function()  
+  {  
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();    
+    $('#programa_trim').val('0');    
+    $('#programaEsp_trim').html('');    
+    $('#trimestre_trim').val('0');
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();  
+
+    $('#mesreporte').val($('#mes_trim').find(':selected').val());
+  });
+
+  $("#programa_trim").change(function()
+  {    
+    $('#programaEsp_trim').html('');
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();    
+    
+    var area = $('#area_trim').find(':selected').val();
+    var programa = $('#programa_trim').find(':selected').val();
+    var comboProgramaEsp = '';
+    $.ajax({
+      url: _prefix_url+"/admin/obtenProgramaEsp",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {area: area, programa: programa},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
+        $.each(response, function(index, value){
+          var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
+          comboProgramaEsp += "<option value='"+value['idprogramaesp']+"'>"+ cadena +"</option>";
+        });
+        $('#programaEsp_trim').html(comboProgramaEsp);      
+        $('#programareporte').val(programa);
+      });
+
+  });
+
+
+
+
 });

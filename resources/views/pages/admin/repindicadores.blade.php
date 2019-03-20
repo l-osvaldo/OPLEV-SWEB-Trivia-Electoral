@@ -33,14 +33,25 @@
 
 
   <div class="row">
-    <div class="col-6 col-lg-6 col-md-6">
+    <div class="col-3 col-lg-3 col-md-3">
       <div class="box">
         <div class="row">
           <div class="col-12">
-            <div class="ribbon-wrapper ribbon-rosa">
-              <div class="ribbon ribbon-primary">
-                Unidad Responsable Admin
+            <div class="ribbon-wrapper">
+              <div class="ribbon ribbon-primary ribbon-perfil">                
+                <h4>Perfil de Trabajo</h4>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 col-lg-4 col-md-4">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-rosa ribbon-area">
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
@@ -54,7 +65,6 @@
       </div>
     </div>
   </div>
-
   
   <div class="row">
     <div class="col-md-6 col-lg-6">

@@ -22,14 +22,24 @@
       <div class="box">
         <div class="row">
           <div class="col-12">
-            <div class="ribbon-wrapper ribbon-rosa">
-              <div class="ribbon ribbon-primary">                
-                <h3>Perfil de Trabajo</h3>
+            <div class="ribbon-wrapper">
+              <div class="ribbon ribbon-primary ribbon-perfil">                
+                <h4>Perfil de Trabajo</h4>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 col-lg-4 col-md-4">
+      <div class="box">
+        <div class="row">
+          <div class="col-12">
+            <div class="ribbon-wrapper ribbon-rosa ribbon-area">
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-
                     <span class="titareames">{{ Auth::user()->name }}</span>
                   </div>
                 </div>

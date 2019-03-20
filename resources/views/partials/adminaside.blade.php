@@ -42,7 +42,12 @@
         </a>
       </li>
 
-
+      <br>
+      <li class="active">
+        <a href="{{ route('admintrimestral') }}">
+          <i class="fa fa-calendar-o"></i> <span>Reporte Trimestral</span>
+        </a>
+      </li>
     </ul>
   </section>
 </aside>
