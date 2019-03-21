@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional, Trimestre};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional, Trimestre, Trimestral};
 use DB;
 use Auth;
 use PDF;
@@ -418,6 +418,93 @@ class ReportesController extends Controller
     public function trimestral(Request $request)
     {
       echo "reporte poa trimestral";
+
+      $idArea = $request->area_trim;      
+      $idPrograma = $request->programa_trim;
+      $idProgramaEsp = $request->programaEsp_trim;    
+      $idTrimestre = $request->trimestre_trim; 
+
+      /*
+      echo "<br>".$idArea."<br>";
+      echo $idPrograma."<br>";
+      echo $idProgramaEsp."<br>";
+      echo $idTrimestre."<br>";
+      */
+      /*$programaEsp = ProgramaEsp::select('idprogramaesp', 'claveprogramaesp','descprogramaesp')
+          ->where('idprograma', $programa)
+          ->where('idarea', $idArea)->get();*/
+      //      $actividades = Actividad::select('numactividad', 'descactividad','unidadmedida', 'cantidadanual')->where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      //echo "<br>";
+      //var_dump($actividades[0]['descactividad']);
+      /*
+      foreach ($actividades as $a)
+      {
+        echo "<br>linea";
+        echo $a->numactividad."     ".$a->descactividad."     ".$a->unidadmedida."     ".$a->cantidadanual;
+      }*/
+
+      //Obtengo los campos del área
+      $areas = Area::where('idarea', $idArea)->get();
+      $trim_idarea = $idArea;
+      $trim_nombrearea = $areas[0]['nombrearea'];
+      var_dump($trim_nombrearea);
+
+      //Obtengo los campos del programa
+      $programas = Programa::where('idprograma', '=', 1)->get();
+      $trim_idprograma = $idPrograma;
+      $trim_claveprograma = $programas[0]['claveprograma'];
+      $trim_descprograma = $programas[0]['descprograma'];
+      var_dump($trim_claveprograma);
+
+      //Obtengo los campos del programa especial o subprograma
+      $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $trim_idprogramaesp = $idProgramaEsp;
+      $trim_claveprogramaesp = $programasesp[0]['claveprogramaesp'];
+      $trim_descprogramaesp = $programasesp[0]['descprogramaesp'];
+      $trim_objprogramaesp = $programasesp[0]['objprogramaesp'];
+      var_dump($trim_objprogramaesp);
+
+
+      /*
+      Este seria un each global porque se tienen que hacer por cada una de las actividades las sig operaciones:
+      - recuperar el numero de la actividad, su descripcion, su unidad de medida y cantidad anual (estan en actividades)
+      - recuperar los campos inicio y termino (estan en porcentajep)
+      - Para el avance trimestral seleccionado, de la actividad involucrada:
+          recuperar los meses programados y sumar esas cantidades
+          recuperar los meses realizados y sumas esas cantidades
+          calcular la variacion (pendiente la formula)
+      - Para el avance acumulado de la actividad involucrada:          
+          recuperar los meses programados desde enero hasta el mes final que se obtiene con el ultimo del trimestral
+          recuperar los meses realizados desde enero hasta el mes final que se obtiene con el ultimo del trimestral
+          calcula la variacion
+      - En base a los cálculos trimestrales, guardar (aun se verá en donde) la observacion pertinente:
+          Meta Cumplida en su totalidad
+          Meta Rebasada          
+          personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
+
+      */      
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();    
+      var_dump($actividades[0]['descactividad']);            
+      foreach ($actividades as $acti)
+      {
+        $trim_numactividad = $acti->numactividad;
+        $trim_descactividad = $acti->descactividad;
+        $trim_unidadmedida = $acti->unidadmedida;
+        $trim_cantidadanual = $acti->cantidadanual;
+        $actiporcentajep = $acti->idporcentajep;
+        
+        $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
+        $trim_inicio = $porcentajep[0]->inicio;
+        $trim_termino = $porcentajep[0]->termino;
+        var_dump($trim_termino);
+
+
+      }
+
+
+
+
+
     }
 
 
