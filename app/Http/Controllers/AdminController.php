@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, Trimestre};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional, Trimestre};
 use DB;
 use Auth;
 use PDF;
@@ -167,7 +167,7 @@ class AdminController extends Controller
 
 
 
-    public function trimestral()
+    public function poatrimestral()
     {
 
       if (Auth::check())
@@ -179,8 +179,8 @@ class AdminController extends Controller
           $areas = Area::all();
           $trimestres = Trimestre::all();
           $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
-          $action = route('admin.store');
-          return view('pages.admin.trimestral')->with( compact('areas', 'trimestres', 'programas', 'action'));
+          $action = route('reportes.trimestral');
+          return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action'));
 
         }
         else

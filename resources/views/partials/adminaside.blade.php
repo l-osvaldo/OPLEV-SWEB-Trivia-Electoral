@@ -44,7 +44,7 @@
 
       <br>
       <li class="active">
-        <a href="{{ route('admintrimestral') }}">
+        <a href="{{ route('admin.poa.trimestral') }}">
           <i class="fa fa-calendar-o"></i> <span>Reporte Trimestral</span>
         </a>
       </li>

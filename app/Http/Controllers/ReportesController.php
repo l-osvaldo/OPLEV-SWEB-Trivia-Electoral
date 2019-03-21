@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional};
+use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional, Trimestre};
 use DB;
 use Auth;
 use PDF;
@@ -412,6 +412,12 @@ class ReportesController extends Controller
       {
         return redirect()->route('login');
       }       
+    }
+
+
+    public function trimestral(Request $request)
+    {
+      echo "reporte poa trimestral";
     }
 
 

@@ -5,7 +5,7 @@
 
   <section class="content-header">
     <h3>
-      <small>Reporte Trimestral</small>
+      <small>Reporte Trimestral del POA 2019</small>
     </h3>
   </section>
 
@@ -16,7 +16,7 @@
   <section class="content">
     <div class="row">
       @include('pages.admin._formtrim')
-    </div>
+    </div>    
   </section>
   <!-- /.content -->
 </div>

@@ -37,7 +37,8 @@ Route::get('/admin/obtenActividades', 'AdminController@obtenActividades')->name(
 Route::get('/admin/obtenPorcProgramado', 'AdminController@obtenPorcProgramado')->name('admin.obten.porcentaje.programado');
 Route::get('/admin/obtenPorcRealizado', 'AdminController@obtenPorcRealizado')->name('admin.obten.porcentaje.realizado');
 Route::get('/admin/obtenDetallesActi', 'AdminController@obtenDetallesActi')->name('admin.obten.detalle.actividades');
-Route::get('/trimestral', 'AdminController@trimestral')->name('admintrimestral');
+Route::get('/poatrimestral', 'AdminController@poatrimestral')->name('admin.poa.trimestral');
+Route::post('/reportes/trimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 
 Route::resource('admin', 'AdminController');

@@ -162,25 +162,6 @@
 
 
 
-
-  <div class="form-group ichack-input">
-                <label>
-                  <input type="checkbox" class="minimal" checked>
-                </label>
-                <label>
-                  <input type="checkbox" class="minimal">
-                </label>
-                <label>
-                  <input type="checkbox" class="minimal" disabled>
-                  Minimal skin checkbox
-                </label>
-              </div>
-
-
-
-
-
-
   <div class="row">
     <div class="col-md-3 col-3">
       @if ( ! empty( $put ) )
@@ -188,16 +169,11 @@
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
       @if(Auth::user()->hasRole('admin')) 
-        <button type="submit" class="btn btn-block btn-dark" id="btnGuardarInfo_trim" name="btnGuardarInfo_trim">Guardar Informaci&oacute;n</button>      
+        <button type="submit" class="btn btn-block btn-dark" id="btnGenerar_trim" name="btnGenerar_trim">Generar Trimestral</button>      
         <div class="clearfix">&nbsp;</div>
       @endif      
     </div>
-    <div class="col-md-3 col-3">
-      @if(Auth::user()->hasRole('admin')) 
-      <a class="btn btn-block btn-danger" href="{{ route('programa.index') }}">Cancelar</a>
-      <div class="clearfix">&nbsp;</div>
-      @endif      
-    </div>
+
 
   </div> <!-- del primer .col-md-12 col-12 -->
 
