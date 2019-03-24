@@ -424,10 +424,6 @@ class ReportesController extends Controller
       $idProgramaEsp = $request->programaEsp_trim;    
       $idTrimestre = $request->trimestre_trim; 
 
-
-      $trimestral = array();
-
-
       //Obtengo los campos del área
       $areas = Area::where('idarea', $idArea)->get();
       $trim_idarea = $idArea;
@@ -464,7 +460,8 @@ class ReportesController extends Controller
           personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
 
       */      
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();        
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();   
+      DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
         $trim_numactividad = $acti->numactividad;
@@ -513,21 +510,54 @@ class ReportesController extends Controller
             break;            
         }
 
+        //faltan los calculos de la variacion
 
-        var_dump($avtprogramado);
-        var_dump($avtrealizado);
-        var_dump($avaprogramado);
-        var_dump($avarealizado);
+        //faltan las observaciones que se guardaran en la tabla trimestral en el campo observatrim
+        // y guardarlo al mismo tiempo en otro campo en la tabla actividades, la cual debe de tener
+        //cuatro campos de observaciones, uno por cada trimestre.
 
+        //ahora vamos a guardar
 
+        //DB::table('users')->insert(['email' => 'john@example.com', 'votes' => 0]);
+
+        $trimestral = array(
+          'idtrimestral' => $idTrimestre,
+          'periodotrimestral' => $periodotrimestral,
+          'idarea' => $trim_idarea,
+          'nombrearea' => $trim_nombrearea,
+          'idprograma' => $trim_idprograma,
+          'claveprograma' => $trim_claveprograma,
+          'descprograma' => $trim_descprograma,
+          'idprogramaesp' => $trim_idprogramaesp,
+          'claveprogramaesp' => $trim_claveprogramaesp,
+          'descprogramaesp' => $trim_descprogramaesp,
+          'objprogramaesp' => $trim_objprogramaesp,
+          'numactividad' => $trim_numactividad,
+          'descactividad' => $trim_descactividad,
+          'unidadmedida' => $trim_unidadmedida,
+          'cantidadanual' => $trim_cantidadanual,
+          'inicio' => $trim_inicio,
+          'termino' => $trim_termino,
+          'avtprogramado' => $avtprogramado,
+          'avtrealizado' => $avtrealizado,
+          'avtvariacion' => 0,
+          'avaprogramado' => $avaprogramado,
+          'avarealizado' => $avarealizado,
+          'avacantidad' => 0,
+          'avaporcentaje' => 0,
+          'observatrim' => '' 
+          );
+
+        DB::table('trimestral')->insert($trimestral);
 
       }
 
-
-
-
+      $areas = Area::all();
+      $trimestres = Trimestre::all();
+      $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+      $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
+      $action = route('reportes.trimestral');
+      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'trimestral'));
 
     }
-
-
 }
