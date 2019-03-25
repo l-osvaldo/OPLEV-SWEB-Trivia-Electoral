@@ -351,6 +351,26 @@ $(function() {
   });
 
 
+  $.ajaxSetup({      
+    headers: { 
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+  });
+
+
+  $('.observatrim').editable(_prefix_url+'/admin/guardarObsTrim',
+  {     
+    type : 'textarea',
+    submitdata: { _method: "put" },
+    select : true,
+    cancel    : 'Cancelar',
+    submit    : 'Guardar',
+    rows: 4,
+    cols: 20,
+    onblur    : "ignore",    
+    indicator : "<img src='/images/guardar.gif'>",
+    tooltip   : "Clic para Modificar"
+  });
 
 
 });

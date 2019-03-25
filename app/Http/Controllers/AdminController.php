@@ -192,9 +192,17 @@ class AdminController extends Controller
       {
         return redirect()->route('login');        
       }
-
-
     }
+
+    public function guardarObsTrim(Request $request)
+    {      
+      $id = $request->input('id');
+      $modificacion = $request->input('value');
+      $modificacion = strtr($modificacion,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+
+      return $modificacion.'  id:   '.$id;
+      
+    }    
 
 
 

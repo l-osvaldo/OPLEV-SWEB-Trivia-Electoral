@@ -41,5 +41,10 @@ Route::get('/poatrimestral', 'AdminController@poatrimestral')->name('admin.poa.t
 Route::post('/reportes/trimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 
+Route::put('/admin/guardarObsTrim', 'AdminController@guardarObsTrim')->name('admin.guardar.obs.trim');
+
+
+Route::post('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name('reportes.poa.trimestral');
+
 Route::resource('admin', 'AdminController');
 

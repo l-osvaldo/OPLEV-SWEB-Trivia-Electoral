@@ -470,6 +470,7 @@ class ReportesController extends Controller
         $trim_cantidadanual = $acti->cantidadanual;
         $actiporcentajep = $acti->idporcentajep;
         $actiporcentajer = $acti->idporcentajer;
+        $trim_idactividad = $acti->idporcentajep;        
         
         $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
         $trim_inicio = $porcentajep[0]->inicio;
@@ -518,9 +519,8 @@ class ReportesController extends Controller
 
         //ahora vamos a guardar
 
-        //DB::table('users')->insert(['email' => 'john@example.com', 'votes' => 0]);
-
-        $trimestral = array(
+        $arrTrimestral = array(          
+          'idactividad' => $trim_idactividad,
           'idtrimestral' => $idTrimestre,
           'periodotrimestral' => $periodotrimestral,
           'idarea' => $trim_idarea,
@@ -548,7 +548,7 @@ class ReportesController extends Controller
           'observatrim' => '' 
           );
 
-        DB::table('trimestral')->insert($trimestral);
+        DB::table('trimestral')->insert($arrTrimestral);
 
       }
 
@@ -556,8 +556,45 @@ class ReportesController extends Controller
       $trimestres = Trimestre::all();
       $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
       $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
+      $trimestral = Trimestral::all();
       $action = route('reportes.trimestral');
-      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'trimestral'));
-
+      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral'));
     }
+
+
+
+
+    public function poatrimestral(Request $request)
+    {
+      if ( Auth::check() )
+      {      
+        $trimestral = Trimestral::all();
+
+        $pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('letter', 'landscape');
+        return $pdf->stream();
+
+      
+      }
+      else
+      {
+        return redirect()->route('login');
+      }  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

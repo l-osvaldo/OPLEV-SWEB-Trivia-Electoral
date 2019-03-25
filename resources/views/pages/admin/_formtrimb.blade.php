@@ -40,7 +40,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <span class="titareames">{{ Auth::user()->name }} {{ $trimestral['unidadmedida'] }}</span>
+                    <span class="titareames">{{ Auth::user()->name }}  </span>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                     <select class="form-control" id="area_trim" name="area_trim" >
                       <option value="0">Área...</option>
                       @foreach( $areas as $area )
-                        @if ($area->idarea == $trimestral['idarea'])
+                        @if ($area->idarea == $arrTrimestral['idarea'])
                           <option selected value="{{$area->idarea}}">{{$area->nombrearea}}</option>
                         @else
                           <option value="{{$area->idarea}}">{{$area->nombrearea}}</option>
@@ -101,7 +101,7 @@
                     <select class="form-control" id="programa_trim" name="programa_trim" >
                       <option value="0">Programa...</option>
                       @foreach( $programas as $programa )
-                        @if ($programa->idprograma == $trimestral['idprograma'])
+                        @if ($programa->idprograma == $arrTrimestral['idprograma'])
                           <option selected value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
                         @else
                           <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
@@ -131,7 +131,7 @@
                     <select class="form-control" id="programaEsp_trim" name="programaEsp_trim">
                       <option value="0">Programa Específico...</option>                      
                       @foreach( $programaesp as $pespecifico )
-                        @if ($pespecifico->idprogramaesp == $trimestral['idprogramaesp'])
+                        @if ($pespecifico->idprogramaesp == $arrTrimestral['idprogramaesp'])
                           <option selected value="{{$pespecifico->idprogramaesp}}">{{$pespecifico->claveprogramaesp}} - {{$pespecifico->descprogramaesp}}</option>
                         @else
                           <option value="{{$pespecifico->idprogramaesp}}">{{$pespecifico->claveprogramaesp}} - {{$pespecifico->descprogramaesp}}</option>
@@ -161,7 +161,7 @@
                     <select class="form-control" id="trimestre_trim" name="trimestre_trim">
                       <option value="0">Trimestre...</option>
                       @foreach( $trimestres as $trimestre )
-                        @if ($trimestre->id == $trimestral['idtrimestral'])
+                        @if ($trimestre->id == $arrTrimestral['idtrimestral'])
                           <option selected value="{{$trimestre->id}}">{{$trimestre->trimestre}}</option>
                         @else
                           <option value="{{$trimestre->id}}">{{$trimestre->trimestre}}</option>
@@ -176,9 +176,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
 
 
   <div class="row">
@@ -192,13 +190,71 @@
         <div class="clearfix">&nbsp;</div>
       @endif      
     </div>
-
-
-  </div> <!-- del primer .col-md-12 col-12 -->
-
+  </div> 
 </form>
 
-<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+  <div class="row">
+    {{ csrf_field() }}
+    <div class="col-md-12 col-12">
+      <div style="overflow-x:auto;">
+
+        <table width="100%" class='table table-striped'>
+          <thead>
+            <tr>
+              <th rowspan="3" width="2%">No.</th>
+              <th rowspan="3" width="20%">Actividad</th> 
+              <th colspan="2" width="11%">Meta Anual</th>
+              <th rowspan="3" width="7%">Periodo Calendarizado</th>
+              <th colspan="3" width="20%">Avance Trimestral</th>
+              <th colspan="3" width="25%">Avance Acumulado</th>
+              <th rowspan="3" width="15%">Observaciones</th>
+              <tr>
+                <th rowspan="2">Unidad Medida</th>
+                <th rowspan="2">Cantidad</th> 
+
+                <th rowspan="2">Programado</th> 
+                <th rowspan="2">Realizado</th> 
+                <th rowspan="2">Variación</th> 
+
+                <th rowspan="2">Programado</th> 
+                <th rowspan="2">Realizado</th> 
+                <th >Variación<br> Cantidad &nbsp; &nbsp; &nbsp;%</th> 
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+
+            @foreach ($trimestral as $trim )
+              <tr>
+                <td>1</td>
+                <td>{{ $trim->descactividad }}</td>   
+                <td>{{ $trim->unidadmedida }}</td>   
+                <td>{{ $trim->cantidadanual }}</td>   
+                <td>{{ $trim->inicio }} - {{ $trim->termino }} </td>   
+                <td>{{ $trim->avtprogramado }}</td>   
+                <td>{{ $trim->avtrealizado }}</td>   
+                <td>{{ $trim->avtvariacion }}</td>   
+                <td>{{ $trim->avaprogramado }}</td>   
+                <td>{{ $trim->avarealizado }}</td>   
+                <td>{{ $trim->avavariacion }}</td>   
+                <td class='observatrim' id='{{ $trim->idactividad }}'>{{ $trim->observatrim }}</td>                   
+              </tr>
+            @endforeach
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+<form method="post" action="{{ route('reportes.poa.trimestral') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
   {{ csrf_field() }}
 
   <div class="row">
@@ -208,10 +264,9 @@
       <input type="hidden" id="programareporte" name="programareporte" value="">
       <input type="hidden" id="programaespreporte" name="programaespreporte" value="">    
       @if(Auth::user()->hasRole('admin'))   
-      <button type="submit" class="btn btn-block btn-purple" id="btnReporteMensual_trim" name="btnReporteMensual_trim">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
-      <div class="clearfix">&nbsp;</div>
+        <button type="submit" class="btn btn-block btn-purple" id="btnReporteTrimestral" name="btnReporteTrimestral">Reporte Trimestral&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+        <div class="clearfix">&nbsp;</div>
       @endif
     </div>
   </div>
-
 </form>  
