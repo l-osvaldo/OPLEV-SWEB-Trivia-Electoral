@@ -218,15 +218,16 @@
 
                 <th rowspan="2">Programado</th> 
                 <th rowspan="2">Realizado</th> 
-                <th >Variación<br> Cantidad &nbsp; &nbsp; &nbsp;%</th> 
+                <th >Variación<br> Cantidad &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;%</th> 
+
               </tr>
             </tr>
           </thead>
           <tbody>
 
-            @foreach ($trimestral as $trim )
+            @foreach ($trimestral as $key => $trim )
               <tr>
-                <td>1</td>
+                <td>{{ $key + 1 }}</td>
                 <td>{{ $trim->descactividad }}</td>   
                 <td>{{ $trim->unidadmedida }}</td>   
                 <td>{{ $trim->cantidadanual }}</td>   
@@ -236,7 +237,8 @@
                 <td>{{ $trim->avtvariacion }}</td>   
                 <td>{{ $trim->avaprogramado }}</td>   
                 <td>{{ $trim->avarealizado }}</td>   
-                <td>{{ $trim->avavariacion }}</td>   
+                <td>{{ $trim->avacantidad }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{ $trim->avaporcentaje }}</td>   
+                
                 <td class='observatrim' id='{{ $trim->idactividad }}'>{{ $trim->observatrim }}</td>                   
               </tr>
             @endforeach

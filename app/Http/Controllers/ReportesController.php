@@ -471,6 +471,7 @@ class ReportesController extends Controller
         $actiporcentajep = $acti->idporcentajep;
         $actiporcentajer = $acti->idporcentajer;
         $trim_idactividad = $acti->idporcentajep;        
+        $bandera = $acti->bandera;
         
         $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
         $trim_inicio = $porcentajep[0]->inicio;
@@ -511,14 +512,50 @@ class ReportesController extends Controller
             break;            
         }
 
-        //faltan los calculos de la variacion
+        //se calcula la variacion del avance trimestral
+        $resta = $avtrealizado - $avtprogramado;
+        if ( ($resta != 0) && ($avtprogramado != 0) )
+          $avtvariacion = ($resta * 100) / $avtprogramado;
+        else
+          $avtvariacion = 0;
+
+        //se calcula la cantidad y porcentaje de variacion del avance acumulado
+        $avacantidad = $avarealizado - $avaprogramado;
+        if ( ($avacantidad != 0) && ($avaprogramado != 0) )
+          $avaporcentaje = ($avacantidad * 100) / $avaprogramado;
+        else
+          $avaporcentaje = 0;
 
         //faltan las observaciones que se guardaran en la tabla trimestral en el campo observatrim
         // y guardarlo al mismo tiempo en otro campo en la tabla actividades, la cual debe de tener
         //cuatro campos de observaciones, uno por cada trimestre.
+        //si $avaporcentaje = 0 "META CUMPLIDA"
+        //si $avaporcentaje = -100 "META NO CUMPLIDA"
+        //si $avaporcentaje <=-1 y >-100 "META PARCIALMENTE CUMPLIDA"
+        //si $avaporcentaje > 0 "META REBASADA"
 
-        //ahora vamos a guardar
+        if ($bandera == 0 )
+        {
+          if ($avaporcentaje == 0)
+            $observatrim = "META CUMPLIDA";
+          if ($avaporcentaje == -100)
+            $observatrim = "META NO CUMPLIDA";
+          if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+            $observatrim = "META PARCIALMENTE CUMPLIDA";
+          if ($avaporcentaje > 0)
+            $observatrim = "META REBASADA";
+        }
+        else
+          $observatrim = $acti->observatrim;
 
+        //Ahora hay que guardar la observacion en la tabla actividades 
+        //en la actividad numero trim_idactividad
+
+        if ($bandera == 0 )
+          Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim' => $observatrim]);        
+
+
+        //ahora vamos a guardar en la tabla auxiliar trimestral
         $arrTrimestral = array(          
           'idactividad' => $trim_idactividad,
           'idtrimestral' => $idTrimestre,
@@ -540,12 +577,12 @@ class ReportesController extends Controller
           'termino' => $trim_termino,
           'avtprogramado' => $avtprogramado,
           'avtrealizado' => $avtrealizado,
-          'avtvariacion' => 0,
+          'avtvariacion' => $avtvariacion,
           'avaprogramado' => $avaprogramado,
           'avarealizado' => $avarealizado,
-          'avacantidad' => 0,
-          'avaporcentaje' => 0,
-          'observatrim' => '' 
+          'avacantidad' => $avacantidad,
+          'avaporcentaje' => $avaporcentaje,
+          'observatrim' => $observatrim
           );
 
         DB::table('trimestral')->insert($arrTrimestral);
