@@ -52,7 +52,7 @@
       }
 
       table tr.rubro{ background: #bfbfbf; border:1px solid #46453f; }
-      table tr.rubro td{ text-align: center;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
+      table tr.rubro td{ text-align: left;  font-weight:900; height: 30px; font-size: 10px; border:1px solid #46453f;}
 
       table {border-collapse:collapse; table-layout:fixed;  width:100%; }
 
@@ -64,7 +64,7 @@
     table td.textologo {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
 
 
-      table td.texto {font-weight: normal !important;  text-align: center;  font-weight: 400; height: 65px; background: #ffffff; width: 1000px; font-size: 14px;}
+      table td.texto {font-weight: normal !important;  text-align: left;  font-weight: 400; height: 65px; background: #ffffff; width: 1000px; font-size: 14px; margin-left: 10px !important;}
 
       table td.programa {text-align: center;  font-weight:900; height: 30px; background: #bfbfbf;  border:1px solid #46453f; width: 1000px; font-size: 12px;}
       table td.obj {text-align: center;  font-weight:bolder; height: 30px;  border:1px solid #46453f; width: 1000px; font-size: 10px;}
@@ -84,21 +84,24 @@
   <header>
     <table>
       <tr>
-        <td class="textologo tablamargen">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 </td>
+        <td class="textologo tablamargen">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
       </tr>
     </table>
 
     <table>
       <tr class="rubro">
-        <td width="20%">Área Responsable</td>
-        <td class="texto">{{ $trimestral[0]['nombrearea'] }}</td>
+        <td width="20%">Programa</td>
+        <td class="texto">{{ $trimestral[0]['descprograma'] }}</td>
       </tr>
-    </table>
-
-    <table>
       <tr class="rubro">
-        <td>Avance de Indicadores</td>        
+        <td width="20%">Programa Específico</td>
+        <td class="texto">{{ $trimestral[0]['descprogramaesp'] }}</td>
       </tr>
+      <tr class="rubro">
+        <td width="20%">Objetivo</td>
+        <td class="texto">{{ $trimestral[0]['objprogramaesp'] }}</td>
+      </tr>
+
     </table>
 
     <table>

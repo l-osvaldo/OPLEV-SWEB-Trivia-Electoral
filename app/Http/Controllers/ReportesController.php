@@ -304,8 +304,8 @@ class ReportesController extends Controller
           }
           else
           {
-            $indicadores['resultado'] = ($real[0][$colmesr]*100)/$meta[0][$colmesp];
-            $indicadores['variacion'] = $indicadores['resultado'] - 100;
+            $indicadores['resultado'] = round(($real[0][$colmesr]*100)/$meta[0][$colmesp],1);
+            $indicadores['variacion'] = round($indicadores['resultado'] - 100,1);
           }
         }
         else
