@@ -198,30 +198,35 @@
     <div class="col-md-12 col-12">
       <div style="overflow-x:auto;">
 
-        <table width="100%" class='table table-striped'>
+        <table width="100%" class='table table-striped' border="1">
           <thead>
-            <tr>
-              <th rowspan="3" width="2%">No.</th>
-              <th rowspan="3" width="20%">Actividad</th> 
-              <th colspan="2" width="11%">Meta Anual</th>
-              <th rowspan="3" width="7%">Periodo Calendarizado</th>
-              <th colspan="3" width="20%">Avance Trimestral</th>
-              <th colspan="3" width="25%">Avance Acumulado</th>
-              <th rowspan="3" width="15%">Observaciones</th>
-              <tr>
-                <th rowspan="2">Unidad Medida</th>
-                <th rowspan="2">Cantidad</th> 
 
-                <th rowspan="2">Programado</th> 
-                <th rowspan="2">Realizado</th> 
-                <th rowspan="2">Variación</th> 
 
-                <th rowspan="2">Programado</th> 
-                <th rowspan="2">Realizado</th> 
-                <th >Variación<br> Cantidad &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;%</th> 
-
-              </tr>
+            <tr class="avances">
+              <th rowspan="3">No. <br>ACT.</th>
+              <th rowspan="3">ACTIVIDAD</th>
+              <th colspan="2">META ANUAL</th>
+              <th rowspan="3">PERIODO <br>CALENDARIZADO</th>
+              <th colspan="3">AVANCE TRIMESTRAL</th>
+              <th colspan="4">AVANCE ACUMULADO</th>
+              <th rowspan="3">OBSERVACIONES</th>
             </tr>
+            <tr class="avances">
+              <th rowspan="2">UNIDAD DE<br>MEDIDA</th>
+              <th rowspan="2">CANTIDAD</th>
+              <th rowspan="2">PROGRAMADO</th>
+              <th rowspan="2">REALIZADO</th>
+              <th rowspan="2">VARIACION %</th>
+              <th rowspan="2">PROGRAMADO</th>
+              <th rowspan="2">REALIZADO</th>
+              <th colspan="2">VARIACION</th>
+            </tr>
+            <tr class="avances">
+              <th>CANTIDAD</th>
+              <th>%</th>
+            </tr>
+
+
           </thead>
           <tbody>
 
@@ -237,8 +242,8 @@
                 <td>{{ $trim->avtvariacion }}</td>   
                 <td>{{ $trim->avaprogramado }}</td>   
                 <td>{{ $trim->avarealizado }}</td>   
-                <td>{{ $trim->avacantidad }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{ $trim->avaporcentaje }}</td>   
-                
+                <td>{{ $trim->avacantidad }}</td>   
+                <td>{{ $trim->avaporcentaje }}</td>
                 <td class='observatrim' id='{{ $trim->idactividad }}'>{{ $trim->observatrim }}</td>                   
               </tr>
             @endforeach

@@ -537,13 +537,13 @@ class ReportesController extends Controller
         if ($bandera == 0 )
         {
           if ($avaporcentaje == 0)
-            $observatrim = "META CUMPLIDA";
+            $observatrim = "Meta cumplida";
           if ($avaporcentaje == -100)
-            $observatrim = "META NO CUMPLIDA";
+            $observatrim = "Meta No Cumplida";
           if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
-            $observatrim = "META PARCIALMENTE CUMPLIDA";
+            $observatrim = "Meta Parcialmente Cumplida";
           if ($avaporcentaje > 0)
-            $observatrim = "META REBASADA";
+            $observatrim = "Meta Rebasada";
         }
         else
           $observatrim = $acti->observatrim;
@@ -607,7 +607,7 @@ class ReportesController extends Controller
       {      
         $trimestral = Trimestral::all();
 
-        $pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('letter', 'landscape');
+        $pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('legal', 'landscape');
         return $pdf->stream();
 
       
