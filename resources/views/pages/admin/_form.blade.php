@@ -335,7 +335,7 @@
               </div>
                 <div class="row">
                   <div class="col-4">
-                    <span class="fraserealizado"><span class="numpasos">4.</span> Realizado en este Mes - </span><span class="titareames"> Mes </span>
+                    <span class="fraserealizado"><span class="numpasos">4.</span> Realizado en el Mes Seleccionado: </span><span class="titareames">  </span>
                   </div>
                   <div class="col-3">
                     <div class="form-group">                  

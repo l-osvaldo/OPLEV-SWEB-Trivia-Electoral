@@ -131,7 +131,7 @@ class AdminController extends Controller
       $idPrograma = $request->programa;
       $idProgramaEsp = $request->programaEsp;
 
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();
       return response()->json($actividades);
     }
 

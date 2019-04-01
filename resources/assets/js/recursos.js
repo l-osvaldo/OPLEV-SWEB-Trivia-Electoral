@@ -147,16 +147,16 @@ $(function() {
             comboActividades += "<option value='"+value['autoactividades']+"'>"+ cadena +"</option>";
           else
           {
-            if(reprogramacion == 1)
+            if (reprogramacion == 1)
               comboActividades += "<option class='actcambio' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
             else
             {
-              if(reprogramacion == 2)
+              if (reprogramacion == 2)
                 comboActividades += "<option class='actnueva' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
               else
               {
-                if(reprogramacion == 3)
-                comboActividades += "<option class='actborrada' value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+                if ((reprogramacion == 3) || (reprogramacion == 4))
+                  comboActividades += "<option class='actborrada' value='"+value['autoactividades']+"'>"+ cadena +"</option>";                
               }
             }
           }

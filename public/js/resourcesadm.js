@@ -143,7 +143,24 @@ $(function() {
 
         $.each(response, function(index, value) {
           var cadena = value['numactividad'] + " - " + value['descactividad'];
-          comboActividades += "<option value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+          var reprogramacion = value['reprogramacion'];
+          if(reprogramacion == 0)
+            comboActividades += "<option value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+          else
+          {
+            if (reprogramacion == 1)
+              comboActividades += "<option class='actcambio' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
+            else
+            {
+              if (reprogramacion == 2)
+                comboActividades += "<option class='actnueva' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
+              else
+              {
+                if ((reprogramacion == 3) || (reprogramacion == 4))
+                  comboActividades += "<option class='actborrada' value='"+value['autoactividades']+"'>"+ cadena +"</option>";                
+              }
+            }
+          }
         }); //Each
 
         $('#actividades_admin').html(comboActividades);

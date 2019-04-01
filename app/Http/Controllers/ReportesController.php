@@ -467,7 +467,7 @@ class ReportesController extends Controller
           personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
 
       */      
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();   
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',3)->orderBy('numactividad')->get();   
       DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
