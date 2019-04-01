@@ -87,10 +87,11 @@
 
 .tittabla
 {
-	text-align: center;
-	background: #FCE6F4;
+	text-align: center !important;
+	background: #FCE6F4 !important;
 	font-weight: bold !important;
 	color: #000 !important;
+	font-size: 11px;
 }
 
 .cantidadrealizada
@@ -130,4 +131,14 @@
 .actborrada
 {
 	background-color: #ffb2b2 !important;
+}
+
+.justificado
+{
+	.text-align: justify !important;
+}
+
+.centrado
+{
+	.text-align: center !important;
 }

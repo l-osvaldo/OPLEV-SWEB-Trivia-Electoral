@@ -179,20 +179,3 @@
 
 </form>
 
-<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
-  {{ csrf_field() }}
-
-  <div class="row">
-    <div class="col-md-3 col-3">  
-      <input type="hidden" id="areareporte" name="areareporte" value="">
-      <input type="hidden" id="mesreporte" name="mesreporte" value="">
-      <input type="hidden" id="programareporte" name="programareporte" value="">
-      <input type="hidden" id="programaespreporte" name="programaespreporte" value="">    
-      @if(Auth::user()->hasRole('admin'))   
-      <button type="submit" class="btn btn-block btn-purple" id="btnReporteMensual_trim" name="btnReporteMensual_trim">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
-      <div class="clearfix">&nbsp;</div>
-      @endif
-    </div>
-  </div>
-
-</form>  

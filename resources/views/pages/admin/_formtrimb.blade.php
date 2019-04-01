@@ -198,32 +198,32 @@
     <div class="col-md-12 col-12">
       <div style="overflow-x:auto !important;">
 
-        <table width="100%" class='table table-striped' border="1">
+        <table width="100%" class='' border="1">
           <thead>
 
 
             <tr class="avances">
-              <th rowspan="3">No. <br>ACT.</th>
-              <th rowspan="3">ACTIVIDAD</th>
-              <th colspan="2">META ANUAL</th>
-              <th rowspan="3">PERIODO <br>CALENDARIZADO</th>
-              <th colspan="3">AVANCE TRIMESTRAL</th>
-              <th colspan="4">AVANCE ACUMULADO</th>
-              <th rowspan="3">OBSERVACIONES</th>
+              <th rowspan="3" class="tittabla">No. <br>ACT.</th>
+              <th rowspan="3" class="tittabla">ACTIVIDAD</th>
+              <th colspan="2" class="tittabla">META ANUAL</th>
+              <th rowspan="3" class="tittabla">PERIODO <br>CALENDARIZADO</th>
+              <th colspan="3" class="tittabla">AVANCE TRIMESTRAL</th>
+              <th colspan="4" class="tittabla">AVANCE ACUMULADO</th>
+              <th rowspan="3" class="tittabla">OBSERVACIONES</th>
             </tr>
             <tr class="avances">
-              <th rowspan="2">UNIDAD DE<br>MEDIDA</th>
-              <th rowspan="2">CANTIDAD</th>
-              <th rowspan="2">PROGRAMADO</th>
-              <th rowspan="2">REALIZADO</th>
-              <th rowspan="2">VARIACION %</th>
-              <th rowspan="2">PROGRAMADO</th>
-              <th rowspan="2">REALIZADO</th>
-              <th colspan="2">VARIACION</th>
+              <th rowspan="2" class="tittabla">UNIDAD DE<br>MEDIDA</th>
+              <th rowspan="2" class="tittabla">CANTIDAD</th>
+              <th rowspan="2" class="tittabla">PROGRAMADO</th>
+              <th rowspan="2" class="tittabla">REALIZADO</th>
+              <th rowspan="2" class="tittabla">VARIACION %</th>
+              <th rowspan="2" class="tittabla">PROGRAMADO</th>
+              <th rowspan="2" class="tittabla">REALIZADO</th>
+              <th colspan="2" class="tittabla">VARIACION</th>
             </tr>
             <tr class="avances">
-              <th>CANTIDAD</th>
-              <th>%</th>
+              <th class="tittabla">CANTIDAD</th>
+              <th class="tittabla">%</th>
             </tr>
 
 
@@ -231,19 +231,30 @@
           <tbody>
 
             @foreach ($trimestral as $key => $trim )
-              <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $trim->descactividad }}</td>   
-                <td>{{ $trim->unidadmedida }}</td>   
-                <td>{{ $trim->cantidadanual }}</td>   
-                <td>{{ $trim->inicio }} - {{ $trim->termino }} </td>   
-                <td>{{ $trim->avtprogramado }}</td>   
-                <td>{{ $trim->avtrealizado }}</td>   
-                <td>{{ $trim->avtvariacion }}</td>   
-                <td>{{ $trim->avaprogramado }}</td>   
-                <td>{{ $trim->avarealizado }}</td>   
-                <td>{{ $trim->avacantidad }}</td>   
-                <td>{{ $trim->avaporcentaje }}</td>
+              @if ($trim->reprogramacion == 0)              
+                <tr class="">
+              @endif
+              @if ($trim->reprogramacion == 1)
+                <tr class="actcambio">
+              @endif
+              @if ($trim->reprogramacion == 2)              
+                <tr class="actnueva">
+              @endif
+              @if ($trim->reprogramacion == 3)              
+                <tr class="actborrada">
+              @endif
+                <td class="tittabla">{{ $key + 1 }}</td>
+                <td class="justificado">{{ $trim->descactividad }}</td>   
+                <td class="centrado">{{ $trim->unidadmedida }}</td>   
+                <td class="centrado">{{ $trim->cantidadanual }}</td>   
+                <td class="centrado">{{ $trim->inicio }} - {{ $trim->termino }} </td>   
+                <td class="centrado">{{ $trim->avtprogramado }}</td>   
+                <td class="centrado">{{ $trim->avtrealizado }}</td>   
+                <td class="centrado">{{ $trim->avtvariacion }}</td>   
+                <td class="centrado">{{ $trim->avaprogramado }}</td>   
+                <td class="centrado">{{ $trim->avarealizado }}</td>   
+                <td class="centrado">{{ $trim->avacantidad }}</td>   
+                <td class="centrado">{{ $trim->avaporcentaje }}</td>
                 <td class='observatrim' id='{{ $trim->idactividad }}'>{{ $trim->observatrim }}</td>                   
               </tr>
             @endforeach
@@ -256,7 +267,7 @@
 
 
 
-
+<br>
 
 
 
@@ -271,6 +282,7 @@
       <input type="hidden" id="programareporte" name="programareporte" value="">
       <input type="hidden" id="programaespreporte" name="programaespreporte" value="">    
       @if(Auth::user()->hasRole('admin'))   
+      <br>
         <button type="submit" class="btn btn-block btn-purple" id="btnReporteTrimestral" name="btnReporteTrimestral">Reporte Trimestral&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
         <div class="clearfix">&nbsp;</div>
       @endif

@@ -471,6 +471,7 @@ class ReportesController extends Controller
       DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
+        $reprogramacion = $acti->reprogramacion;
         $trim_numactividad = $acti->numactividad;
         $trim_descactividad = $acti->descactividad;
         $trim_unidadmedida = $acti->unidadmedida;
@@ -563,7 +564,8 @@ class ReportesController extends Controller
 
 
         //ahora vamos a guardar en la tabla auxiliar trimestral
-        $arrTrimestral = array(          
+        $arrTrimestral = array(     
+          'reprogramacion' => $reprogramacion,     
           'idactividad' => $trim_idactividad,
           'idtrimestral' => $idTrimestre,
           'periodotrimestral' => $periodotrimestral,
@@ -598,7 +600,7 @@ class ReportesController extends Controller
 
       $areas = Area::all();
       $trimestres = Trimestre::all();
-      $programas = Programa::where('idprograma', '=', 1)->get();     
+      $programas = Programa::where('reprogramacion', '<', 3)->get();     
 
       $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
       $trimestral = Trimestral::all();
