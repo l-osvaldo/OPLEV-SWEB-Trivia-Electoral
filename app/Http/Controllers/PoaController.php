@@ -23,9 +23,8 @@ class PoaController extends Controller
         {          
           $meses = Mes::all();
           $areas = Area::all();
-          $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+          $programas = Programa::where('reprogramacion', '<', 3)->get();
           $action = route('admin.store');
-
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action'));
         }
         else
@@ -55,7 +54,11 @@ class PoaController extends Controller
 
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
-        $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+        //si el area es prerrogativas
+        if (Auth::user()->idarea==3)        
+          $programas = Programa::where('reprogramacion', '<', 3)->get();
+        else
+          $programas = Programa::where('idprograma', '=', 1)->get();
         $action = route('programa.store');
         return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
       }
@@ -187,7 +190,7 @@ class PoaController extends Controller
       $idPrograma = $request->programa;
       $idProgramaEsp = $request->programaEsp;
 
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();
       return response()->json($actividades);
 
     }

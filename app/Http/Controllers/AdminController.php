@@ -178,7 +178,7 @@ class AdminController extends Controller
 
           $areas = Area::all();
           $trimestres = Trimestre::all();
-          $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+          $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
           $action = route('reportes.trimestral');
           return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action'));
 

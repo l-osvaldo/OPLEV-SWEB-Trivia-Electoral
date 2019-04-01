@@ -140,12 +140,27 @@ $(function() {
       contentType: 'application/json'
       }).done(function(response) {
         comboActividades = "<option value='0'>Seleccione la actividad</option>";
-
         $.each(response, function(index, value) {
           var cadena = value['numactividad'] + " - " + value['descactividad'];
-          comboActividades += "<option value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+          var reprogramacion = value['reprogramacion'];
+          if(reprogramacion == 0)
+            comboActividades += "<option value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+          else
+          {
+            if(reprogramacion == 1)
+              comboActividades += "<option class='actcambio' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
+            else
+            {
+              if(reprogramacion == 2)
+                comboActividades += "<option class='actnueva' value='"+value['autoactividades']+"'>"+ cadena +"</option>";          
+              else
+              {
+                if(reprogramacion == 3)
+                comboActividades += "<option class='actborrada' value='"+value['autoactividades']+"'>"+ cadena +"</option>";
+              }
+            }
+          }
         }); //Each
-
         $('#actividades').html(comboActividades);
       }); //Done
   });

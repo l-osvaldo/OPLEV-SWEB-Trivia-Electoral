@@ -115,3 +115,19 @@
 	color: #000 !important;
 	background-color: #342234 !important;
 }
+
+
+.actcambio
+{
+	background-color: #ffff99 !important;
+}
+
+.actnueva
+{
+	background-color: #99cc99 !important;
+}
+
+.actborrada
+{
+	background-color: #ffb2b2 !important;
+}

@@ -19,7 +19,10 @@ class ReportesController extends Controller
     public function index()
     {
       $meses = Mes::all();      
-      $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+      if (Auth::user()->idarea==3)              
+        $programas = Programa::where('reprogramacion', '<', 3)->get();
+      else
+        $programas = Programa::where('idprograma', '=', 1)->get();
       $action = route('reportes.poa');
       return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses'));
     }
@@ -34,7 +37,7 @@ class ReportesController extends Controller
         {          
           $meses = Mes::all();
           $areas = Area::all();
-          $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+          $programas = Programa::where('idprograma', '<', 3)->get();
           $action = route('reportes.indicadores');
 
           return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas'));
@@ -42,7 +45,10 @@ class ReportesController extends Controller
         else
         { 
           $meses = Mes::all();      
-          $programas = DB::table('programas')->where('idprograma', '<>', 2)->get();
+          if (Auth::user()->idarea==3)                        
+            $programas = Programa::where('reprogramacion', '<', 3)->get();
+          else
+            $programas = Programa::where('idprograma', '=', 1)->get();        
           $action = route('reportes.indicadores');
           return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses'));
         }
@@ -430,7 +436,8 @@ class ReportesController extends Controller
       $trim_nombrearea = $areas[0]['nombrearea'];
 
       //Obtengo los campos del programa
-      $programas = Programa::where('idprograma', '=', 1)->get();
+
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
       $trim_idprograma = $idPrograma;
       $trim_claveprograma = $programas[0]['claveprograma'];
       $trim_descprograma = $programas[0]['descprograma'];      
@@ -460,7 +467,7 @@ class ReportesController extends Controller
           personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
 
       */      
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();   
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();   
       DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
@@ -591,7 +598,8 @@ class ReportesController extends Controller
 
       $areas = Area::all();
       $trimestres = Trimestre::all();
-      $programas = DB::table('programas')->where('idprograma', '=', 1)->get();
+      $programas = Programa::where('idprograma', '=', 1)->get();     
+
       $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
       $trimestral = Trimestral::all();
       $action = route('reportes.trimestral');

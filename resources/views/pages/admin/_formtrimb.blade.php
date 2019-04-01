@@ -196,7 +196,7 @@
   <div class="row">
     {{ csrf_field() }}
     <div class="col-md-12 col-12">
-      <div style="overflow-x:auto;">
+      <div style="overflow-x:auto !important;">
 
         <table width="100%" class='table table-striped' border="1">
           <thead>
