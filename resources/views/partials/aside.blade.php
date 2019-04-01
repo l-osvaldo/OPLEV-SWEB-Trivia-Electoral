@@ -38,11 +38,13 @@
           <i class="fa fa-calendar"></i> <span>Reportes POA</span>
         </a>
       </li>   
+      <!--
       <li class="active">
         <a href="{{ route('repindicadores') }}">
           <i class="fa fa-clone"></i> <span>Reportes Indicadores</span>
         </a>
       </li>       
+    -->
       <br>
       <br>
       <br>
