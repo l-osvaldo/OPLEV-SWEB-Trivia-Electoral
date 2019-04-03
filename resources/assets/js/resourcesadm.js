@@ -311,10 +311,15 @@ $(function() {
   });
 
 
-
+  // ------- _formtrim  ------- //
+  // ------- _formtrim  ------- //
+  // ------- _formtrim  ------- //
+  // ------- _formtrim  ------- //
   // ------- _formtrim  ------- //
   $("#area_trim").change(function()  
   {  
+    $('#tablaresultados').html('');    
+    $('#btnReporteTrimestral').hide();    
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
     $('#programa_trim').val('0');
@@ -326,21 +331,10 @@ $(function() {
     $('#areareporte').val($('#area_trim').find(':selected').val());
   });
 
-  $("#mes_trim").change(function()  
-  {  
-    $('#btnGuardarInfo_trim').hide();
-    $('#btnReporteMensual_trim').hide();    
-    $('#programa_trim').val('0');    
-    $('#programaEsp_trim').html('');    
-    $('#trimestre_trim').val('0');
-    $('#btnGuardarInfo_trim').hide();
-    $('#btnReporteMensual_trim').hide();  
-
-    $('#mesreporte').val($('#mes_trim').find(':selected').val());
-  });
-
   $("#programa_trim").change(function()
   {    
+    $('#tablaresultados').html('');    
+    $('#btnReporteTrimestral').hide();    
     $('#programaEsp_trim').html('');
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
@@ -365,6 +359,32 @@ $(function() {
         $('#programareporte').val(programa);
       });
 
+  });
+
+  $("#programaEsp_trim").change(function()
+  {  
+    $('#tablaresultados').html('');    
+    $('#btnReporteTrimestral').hide();    
+  });
+
+  $("#trimestre_trim").change(function()
+  {  
+    $('#tablaresultados').html('');    
+    $('#btnReporteTrimestral').hide();    
+  });
+
+
+  $("#mes_trim").change(function()  
+  {  
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();    
+    $('#programa_trim').val('0');    
+    $('#programaEsp_trim').html('');    
+    $('#trimestre_trim').val('0');
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();  
+
+    $('#mesreporte').val($('#mes_trim').find(':selected').val());
   });
 
 

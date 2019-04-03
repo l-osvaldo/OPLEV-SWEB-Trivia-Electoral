@@ -135,10 +135,10 @@
 
 .justificado
 {
-	.text-align: justify !important;
+	text-align: justify !important;
 }
 
 .centrado
 {
-	.text-align: center !important;
+	text-align: center !important;
 }

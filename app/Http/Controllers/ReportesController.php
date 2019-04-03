@@ -545,7 +545,7 @@ class ReportesController extends Controller
         if ($bandera == 0 )
         {
           if ($avaporcentaje == 0)
-            $observatrim = "Meta cumplida";
+            $observatrim = "Meta Cumplida";
           if ($avaporcentaje == -100)
             $observatrim = "Meta No Cumplida";
           if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )

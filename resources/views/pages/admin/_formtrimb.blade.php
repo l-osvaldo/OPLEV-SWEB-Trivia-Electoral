@@ -193,7 +193,7 @@
   </div> 
 </form>
 
-  <div class="row">
+  <div class="row" id="tablaresultados" name="tablaresultados">
     {{ csrf_field() }}
     <div class="col-md-12 col-12">
       <div style="overflow-x:auto !important;">
