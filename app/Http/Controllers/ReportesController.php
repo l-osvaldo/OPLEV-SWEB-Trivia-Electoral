@@ -543,6 +543,9 @@ class ReportesController extends Controller
         //si $avaporcentaje <=-1 y >-100 "META PARCIALMENTE CUMPLIDA"
         //si $avaporcentaje > 0 "META REBASADA"
 
+        //Consideraciones para "SIN VARIACION"
+        
+
         if ($bandera == 0 )
         {
           if ($avaporcentaje == 0)
