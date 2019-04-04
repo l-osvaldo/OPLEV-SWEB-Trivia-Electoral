@@ -192,15 +192,16 @@ class ReportesController extends Controller
           left join detalleactividades 
           ON detalleactividades.autoactividades = actividades.autoactividades
           where actividades.idprograma = 1 
-          and actividades.idprogramaesp = 2 
-          and actividades.idarea = 2 and detalleactividades.idmes = 1
+          and actividades.idprogramaesp = 15
+          and actividades.idarea = 5 and detalleactividades.idmes = 3 order by actividades.numactividad
+          where 
         */
 
         $poa = array();
         $poa['resultado'] = Actividad::where('actividades.idprograma', $idPrograma)->
           where('actividades.idprogramaesp', $idProgramaEsp)->where('actividades.idarea', $idArea)->
           where('detalleactividades.idmes', $idMes)->
-          leftjoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftjoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->leftjoin('detalleactividades', 'detalleactividades.autoactividades', 'actividades.autoactividades')->get();
+          leftjoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftjoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->leftjoin('detalleactividades', 'detalleactividades.autoactividades', 'actividades.autoactividades')->orderBy('actividades.numactividad','asc')->get();
 
         
         $poa['nombrearea'] = $area[0]->nombrearea;
