@@ -2,100 +2,6 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>POA 2019</title>
-  <style>
-    *{
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body{
-      font-size: 12px;
-    }
-    table tr td{
-      vertical-align: middle;
-    }
-    .table{
-      width: 980px;
-    }
-    table{
-      border-collapse: collapse;
-    }
-    h1, h2, h3, h4, p{
-      margin: 0px;
-      padding: 0px;
-    }
-
-    .gray{
-      background-color: #bfbfbf;
-      font-weight: 900;
-      text-align: center;
-    }
-
-
-    header table{
-      text-align: center;
-      font-size: 10px;
-    }
-
-    header table h1{
-      font-size: 14px;
-    }
-    header table h2{
-      font-size: 12px;
-      font-weight: bolder;
-    }
-
-    tr.padding td{
-      padding: 10px 0;
-    }
-    @page {
-      margin-top:253px;
-      margin-bottom: 60px;
-    }
-    header {
-      position: fixed;
-      top: -260px;
-      left: 0px;
-      right: 0px;
-      height: 253px;
-    }
-    footer {
-      position: fixed;
-      bottom: -60px;
-      left: 0px;
-      right: 0px;
-      height: 50px;
-      color: #000000;
-      text-align: right;
-    }
-
-
-    .tituloople
-    {
-      margin-top:20px;
-    }
-
-    table td.texto {text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 980px; font-size: 14px;}
-
-    table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
-    table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
-
-      .tablacontenido
-      {        
-        border: .5px solid;
-        margin-top:5px;
-      }
-
-      .colinfo
-      {
-        text-align: left; 
-        padding: 5px 5px;  
-        border-bottom: .5px solid;
-      }
-
-      .datos
-      {
-        font-size: 11px;
-      }
 
   </style>
 </head>
@@ -146,7 +52,7 @@
 <footer class="page-number">
     <script type="text/php">
       if ( isset($pdf) ) {
-        $pdf->page_text(720, 570, "Página: {PAGE_NUM} de {PAGE_COUNT}", null, 6, array(0,0,0));
+        
     }
 </script>
 </footer>

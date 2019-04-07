@@ -141,7 +141,8 @@
 <header>
   <table class="tituloople">
     <tr>
-      <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
+      <td><img src="http://sistemas.oplever.org.mx/poa2019/images/logoople.jpg"></img></td>
+      <td>ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
     </tr>
   </table>
 
@@ -196,11 +197,7 @@
 </header>
 
 <footer class="page-number">
-    <script type="text/php">
-      if ( isset($pdf) ) {
-        $pdf->page_text(920, 570, "Página: {PAGE_NUM} de {PAGE_COUNT}", null, 6, array(0,0,0));
-    }
-</script>
+
 </footer>
 
 <!-- Wrap the content of your PDF inside a main tag -->

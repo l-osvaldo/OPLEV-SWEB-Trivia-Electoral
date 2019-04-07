@@ -210,7 +210,8 @@ class ReportesController extends Controller
         $poa['programa'] = $programa[0]->claveprograma.' - '.$programa[0]->descprograma;
         $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;
         $poa['objetivo'] = $programaesp[0]->objprogramaesp;        
-        $pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
+        //$pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
+        $pdf = PDF::loadView( 'pages.reportes.pruebapoa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
         return $pdf->stream();
           //return view('pages.reportes.new_poa', ['poa'=>$poa] );
       }
@@ -468,7 +469,7 @@ class ReportesController extends Controller
           personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
 
       */      
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',3)->orderBy('numactividad')->get();   
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',2)->orderBy('numactividad')->get();   
       DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
@@ -548,14 +549,16 @@ class ReportesController extends Controller
 
         if ($bandera == 0 )
         {
-          if ($avaporcentaje == 0)
-            $observatrim = "Meta Cumplida";
+          if (($avtprogramado == 0) && ($avtrealizado == 0))
+            $observatrim = "Sin Variación";
           if ($avaporcentaje == -100)
             $observatrim = "Meta No Cumplida";
           if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
             $observatrim = "Meta Parcialmente Cumplida";
           if ($avaporcentaje > 0)
             $observatrim = "Meta Rebasada";
+          else 
+            $observatrim = "";
         }
         else
           $observatrim = $acti->observatrim;
