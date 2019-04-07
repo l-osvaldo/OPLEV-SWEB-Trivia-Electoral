@@ -141,7 +141,7 @@
 <header>
   <table class="tituloople">
     <tr>
-      <td><img src="http://sistemas.oplever.org.mx/poa2019/images/logoople.jpg"></img></td>
+      <td><img src="{{ public_path('/images/logoople.jpg') }}"></img></td>
       <td>ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
     </tr>
   </table>
