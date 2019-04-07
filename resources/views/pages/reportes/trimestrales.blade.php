@@ -75,7 +75,7 @@
       margin-left: 33px;
     }
 
-    table td.texto { text-align: center;  font-weight: 400; height: 65px; background: #ffffff url('/images/logoople.jpg') no-repeat left top; width: 1150px; font-size: 14px;}
+    table td.texto { text-align: center;  font-weight: 400; height: 65px; background: #ffffff; width: 1150px; font-size: 14px;}
 
     table tr.avances { background: #bfbfbf; border:1px solid #46453f; }
     table tr.avances td{ text-align: center;  font-weight:900; height: 20px; font-size: 10px; border:1px solid #46453f; }      
@@ -140,9 +140,8 @@
 <body>
 <header>
   <table class="tituloople">
-    <tr>
-      <td><img src="{{ public_path('/images/logoople.jpg') }}"></img></td>
-      <td>ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
+    <tr>      
+      <td class="texto">ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 </td>
     </tr>
   </table>
 
@@ -150,17 +149,20 @@
 
   <table class="table" border="1" align="center" cellpadding="5px">
     <tr>
+      <td rowspan="3" width="12%"><img src="{{ public_path('/images/logoople.jpg') }}"></td>
       <td class="titulo" width="12%">Programa</td>      
       <td class="contenido"> {{$trimestral[0]['descprograma']}} </td>
       <td width="15%" class="titulocenter">Unidad Responsable<br><span class="">{{ $trimestral[0]['nombrearea'] }}</span></td>
     </tr>
 
     <tr class="rubro">
+      
       <td class="titulo">Programa Específico</td>
       <td class="contenido">{{ $trimestral[0]['descprogramaesp'] }}</td>
       <td width="15%" class="titulocenter">Periodo Trimestral<br><span class="">{{ $trimestral[0]['periodotrimestral'] }}</span></td>
     </tr>
     <tr class="">
+      
       <td class="titulo">Objetivo</td>
       <td class="contenido" colspan="2">{{ $trimestral[0]['objprogramaesp'] }}</td>
     </tr>
