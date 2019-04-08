@@ -7,6 +7,12 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html
+    {
+      margin-left: 75px;
+      margin-right: : 20px;
+    }
+
     body{
       font-size: 12px;
     }
@@ -134,6 +140,19 @@
         border-left: 1.6px solid !important;
       }
 
+      .titfirmas
+      {
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 85px !important;
+      }
+
+      .nombresfirmas
+      {
+        text-align: center;
+        font-size: 13px;
+      }
 
   </style>
 </head>
@@ -171,7 +190,7 @@
 
 <table class="table" border="1" align="center">
   <tr class="avances">
-    <td rowspan="3" width="2%">No. <br>ACT.</td>
+    <td rowspan="3" width="2%">No.</td>
     <td rowspan="3" width="29%">ACTIVIDAD</td>
     <td colspan="2" width="12%">META ANUAL</td>
     <td rowspan="3" width="8%" class="borde">PERIODO <br>CALENDARIZADO</td>
@@ -209,15 +228,15 @@
         {{$i=1}}
         @foreach ($trimestral as $trim)
           <tr class="datos">
-            <td class="colinfo" width="15px">{{$i}}</td>
-            <td class="colinfojust" width="305px">{{ $trim->descactividad }}</td>   
+            <td class="colinfo" width="12px">{{$i}}</td>
+            <td class="colinfojust" width="308px">{{ $trim->descactividad }}</td>   
             <td class="colinfo" width="49px">{{ $trim->unidadmedida }}</td>   
-            <td class="colinfo" width="52px">{{ $trim->cantidadanual }}</td>   
+            <td class="colinfo" width="55px">{{ $trim->cantidadanual }}</td>   
             <td class="colinfo" width="78px">{{ $trim->inicio }} - {{ $trim->termino }} </td>   
             <td class="colinfo" width="53px">{{ $trim->avtprogramado }}</td>   
             <td class="colinfo" width="55px">{{ $trim->avtrealizado }}</td>   
-            <td class="colinfo" width="53px">{{ $trim->avtvariacion }}</td>   
-            <td class="colinfo" width="54px">{{ $trim->avaprogramado }}</td>   
+            <td class="colinfo" width="55px">{{ $trim->avtvariacion }}</td>   
+            <td class="colinfo" width="56px">{{ $trim->avaprogramado }}</td>   
             <td class="colinfo" width="54px">{{ $trim->avarealizado }}</td>   
             <td class="colinfo" width="35px">{{ $trim->avacantidad }}</td>   
             <td class="colinfo" width="35px">{{ $trim->avaporcentaje }}</td>
@@ -227,7 +246,25 @@
         @endforeach
       </table>
 
+      @if (($trim->idarea==3) && ($trim->idprograma==4))
+        <br><br><br><br>
+        <table class="table" align="center" border="0">
+          <tr>
+            <td colspan="2" class="titfirmas">
+              LAS FIRMAS AL CALCE AMPARAN LA TOTALIDAD DEL PRESENTE DOCUMENTO
+            </td>
+          </tr>
 
+          <tr class="nombresfirmas">
+            <td>
+              ELABORÓ<br>MTRA. PATRICIA PÉREZ HERNÁNDEZ<br>TITULAR DE LA UNIDAD TÉCNICA DE PLANEACIÓN
+            </td>
+            <td>
+              Vo. Bo.<br>MTRO. HUGO ENRIQUE CASTRO BERNABE<br>SECRETARIO EJECUTIVO
+            </td>
+          </tr>
+        </table>
+      @endif
 </main>
 
 
