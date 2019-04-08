@@ -11,6 +11,7 @@
     {
       margin-left: 75px;
       margin-right: : 20px;
+      margin-bottom: 10px;
     }
 
     body{
@@ -240,7 +241,7 @@
             <td class="colinfo" width="54px">{{ $trim->avarealizado }}</td>   
             <td class="colinfo" width="35px">{{ $trim->avacantidad }}</td>   
             <td class="colinfo" width="35px">{{ $trim->avaporcentaje }}</td>
-            <td class="colinfojust">{{ $trim->observatrim }}</td>  
+            <td class="colinfojust">{{ $trim->observatrim }}</td>              
           </tr>
           {{$i++}}
         @endforeach
@@ -265,6 +266,31 @@
           </tr>
         </table>
       @endif
+
+
+
+      @if ( ($trim->idarea==18) && ($trim->idprograma==1) && ($trim->idprogramaesp==54) )        
+      <br>
+        <table class="table" align="center" border="0">          
+          <tr>
+            <td colspan="2" class="titfirmas">
+              LAS FIRMAS AL CALCE AMPARAN LA TOTALIDAD DEL PRESENTE DOCUMENTO
+            </td>
+          </tr>
+
+          <tr class="nombresfirmas">
+            <td>
+              ELABORÓ<br>MTRA. PATRICIA PÉREZ HERNÁNDEZ<br>TITULAR DE LA UNIDAD TÉCNICA DE PLANEACIÓN
+            </td>
+            <td>
+              Vo. Bo.<br>MTRO. HUGO ENRIQUE CASTRO BERNABE<br>SECRETARIO EJECUTIVO
+            </td>
+          </tr>
+
+        </table>
+      @endif
+
+
 </main>
 
 
