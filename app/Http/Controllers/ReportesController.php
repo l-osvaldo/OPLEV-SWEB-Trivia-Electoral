@@ -549,19 +549,22 @@ class ReportesController extends Controller
 
         if ($bandera == 0 )
         {
-          if (($avtprogramado == 0) && ($avaprogramado == 0))
-            $observatrim = "Sin Variación";
-          else
-            if ($avaporcentaje == -100)
-              $observatrim = "Meta No Cumplida";
+          if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+            $observatrim = "Meta Cumplida";
+          else 
+            if (($avtprogramado == 0) && ($avaprogramado == 0))
+              $observatrim = "Sin Variación";
             else
-              if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
-                $observatrim = "Meta Parcialmente Cumplida";
+              if ($avaporcentaje == -100)
+                $observatrim = "Meta No Cumplida";
               else
-                if ($avaporcentaje > 0)
-                  $observatrim = "Meta Rebasada";
-                else 
-                  $observatrim = "";
+                if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                  $observatrim = "Meta Parcialmente Cumplida";
+                else
+                  if ($avaporcentaje > 0)
+                    $observatrim = "Meta Rebasada";
+                  else 
+                    $observatrim = "";
         }
         else
           $observatrim = $acti->observatrim;
