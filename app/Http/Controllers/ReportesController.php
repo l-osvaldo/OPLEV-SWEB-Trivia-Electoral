@@ -37,7 +37,7 @@ class ReportesController extends Controller
         {          
           $meses = Mes::all();
           $areas = Area::all();
-          $programas = Programa::where('idprograma', '<', 3)->get();
+          $programas = Programa::where('reprogramacion', '<', 3)->get();
           $action = route('reportes.indicadores');
 
           return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas'));
