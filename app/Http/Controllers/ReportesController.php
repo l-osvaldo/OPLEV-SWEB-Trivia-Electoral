@@ -200,9 +200,8 @@ class ReportesController extends Controller
         $poa = array();
         $poa['resultado'] = Actividad::where('actividades.idprograma', $idPrograma)->
           where('actividades.idprogramaesp', $idProgramaEsp)->where('actividades.idarea', $idArea)->
-          where('detalleactividades.idmes', $idMes)->
+          where('detalleactividades.idmes', $idMes)->where('actividades.reprogramacion','<',3)->
           leftjoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftjoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->leftjoin('detalleactividades', 'detalleactividades.autoactividades', 'actividades.autoactividades')->orderBy('actividades.numactividad','asc')->get();
-
         
         $poa['nombrearea'] = $area[0]->nombrearea;
         $poa['idmes'] = $idMes;        

@@ -157,6 +157,7 @@
       <table class="table tablacontenido" align="center">
         {{$i=1}}
         @foreach ($poa['resultado'] as $r)
+        
           <tr class="datos">
             <td class="colinfo" width="2%">{{$i}}</td>
             <td class="colinfo" colspan="2" width="11%">&nbsp; &nbsp; &nbsp; &nbsp;
@@ -202,6 +203,7 @@
             <td class="colinfo"width="22%">{{$r->observaciones}}</td>
           </tr>
           {{$i++}}
+        
         @endforeach
       </table>
 
