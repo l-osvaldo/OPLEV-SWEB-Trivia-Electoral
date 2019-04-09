@@ -438,11 +438,18 @@ class ReportesController extends Controller
 
       //Obtengo los campos del programa
 
-      $programas = Programa::where('reprogramacion', '<', 3)->get();
+
+      if ($idPrograma==4)      
+        $programas = Programa::where('idprograma', '=', 4)->get();        
+      else
+        $programas = Programa::where('reprogramacion', '<', 3)->get();
+      
+
       $trim_idprograma = $idPrograma;
       $trim_claveprograma = $programas[0]['claveprograma'];
       $trim_descprograma = $programas[0]['descprograma'];      
 
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
       //Obtengo los campos del programa especial o subprograma
       $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
       $trim_idprogramaesp = $idProgramaEsp;
