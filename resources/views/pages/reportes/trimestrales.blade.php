@@ -90,9 +90,9 @@
       .tablacontenido
       {        
         border: .5px solid;
-        /*margin-top:5px;
-        Aqui le voy a mover al margin-top porque se encima la actividad de ODES*/
-        margin-top:23px;
+        margin-top:5px;
+        /*Aqui le voy a mover al margin-top porque se encima la actividad de ODES
+        margin-top:23px;*/
       }
 
       .colinfo

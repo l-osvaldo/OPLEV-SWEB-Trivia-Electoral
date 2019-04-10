@@ -239,9 +239,9 @@
               @endif
               @if ($trim->reprogramacion == 2)              
                 <tr class="actnueva">
-              @endif
+              @endif              
               @if ($trim->reprogramacion == 3)              
-                <tr class="actborrada">
+                <tr class="actborradaafectatrimestral">
               @endif
                 <td class="tittabla">{{ $key + 1 }}</td>
                 <td class="justificado">{{ $trim->descactividad }}</td>   

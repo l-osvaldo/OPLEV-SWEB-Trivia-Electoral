@@ -475,7 +475,7 @@ class ReportesController extends Controller
           personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
 
       */      
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',2)->orderBy('numactividad')->get();   
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',3)->orderBy('numactividad')->get();   
       DB::table('trimestral')->truncate();     
       foreach ($actividades as $acti)
       {
@@ -488,6 +488,7 @@ class ReportesController extends Controller
         $actiporcentajer = $acti->idporcentajer;
         $trim_idactividad = $acti->idporcentajep;        
         $bandera = $acti->bandera;
+        $reprog =  $acti->reprogramacion;
         
         $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
         $trim_inicio = $porcentajep[0]->inicio;
@@ -555,22 +556,25 @@ class ReportesController extends Controller
 
         if ($bandera == 0 )
         {
-          if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
-            $observatrim = "Meta Cumplida";
-          else 
-            if (($avtprogramado == 0) && ($avaprogramado == 0))
-              $observatrim = "Sin Variación";
-            else
-              if ($avaporcentaje == -100)
-                $observatrim = "Meta No Cumplida";
+          if ($reprog == 3)
+            $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+          else          
+            if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+              $observatrim = "Meta Cumplida";
+            else 
+              if (($avtprogramado == 0) && ($avaprogramado == 0))
+                $observatrim = "Sin Variación";
               else
-                if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
-                  $observatrim = "Meta Parcialmente Cumplida";
+                if ($avaporcentaje == -100)
+                  $observatrim = "Meta No Cumplida";
                 else
-                  if ($avaporcentaje > 0)
-                    $observatrim = "Meta Rebasada";
-                  else 
-                    $observatrim = "";
+                  if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                    $observatrim = "Meta Parcialmente Cumplida";
+                  else
+                    if ($avaporcentaje > 0)
+                      $observatrim = "Meta Rebasada";
+                    else 
+                      $observatrim = "";
         }
         else
           $observatrim = $acti->observatrim;
