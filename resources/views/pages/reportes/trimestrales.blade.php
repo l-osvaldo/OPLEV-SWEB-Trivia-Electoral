@@ -8,7 +8,7 @@
     }
 
     html
-    {
+    {      
       margin-left: 75px;
       margin-right: : 20px;
       margin-bottom: 10px;
@@ -90,9 +90,9 @@
       .tablacontenido
       {        
         border: .5px solid;
-        margin-top:5px;
-        /*Aqui le voy a mover al margin-top porque se encima la actividad de ODES
-        margin-top:23px;*/
+        /*margin-top:5px;*/
+        /*Aqui le voy a mover al margin-top porque se encima la actividad de ODES*/
+        margin-top:23px;
       }
 
       .colinfo
@@ -151,11 +151,40 @@
         margin-bottom: 85px !important;
       }
 
+
+
+      .titfirmas2
+      {
+        text-align: center;
+        font-weight: bold;
+        font-size: 11px;
+        margin-bottom: 15px !important;
+      }
+
+
+
+
       .nombresfirmas
       {
         text-align: center;
         font-size: 13px;
       }
+
+
+      .nombresfirmas2
+      {
+        text-align: center;
+        font-size: 11px;
+      }
+
+
+      .datos2
+      {
+        font-size: 15px;
+        page-break-before: auto !important;
+      }
+
+
 
   </style>
 </head>
@@ -229,8 +258,8 @@
   
       <table class="table tablacontenido" align="center" border="1">
         {{$i=1}}
-        @foreach ($trimestral as $trim)
-          <tr class="datos">
+        @foreach ($trimestral as $trim)      
+          <tr class="datos">        
             <td class="colinfo" width="12px">{{$i}}</td>
             <td class="colinfojust" width="308px">{{ $trim->descactividad }}</td>   
             <td class="colinfo" width="49px">{{ $trim->unidadmedida }}</td>   
@@ -272,15 +301,15 @@
 
 
       @if ( ($trim->idarea==18) && ($trim->idprograma==1) && ($trim->idprogramaesp==54) )        
-      <br>
+      
         <table class="table" align="center" border="0">          
           <tr>
-            <td colspan="2" class="titfirmas">
+            <td colspan="2" class="titfirmas2">
               LAS FIRMAS AL CALCE AMPARAN LA TOTALIDAD DEL PRESENTE DOCUMENTO
             </td>
           </tr>
 
-          <tr class="nombresfirmas">
+          <tr class="nombresfirmas2">
             <td>
               ELABORÓ<br>MTRA. PATRICIA PÉREZ HERNÁNDEZ<br>TITULAR DE LA UNIDAD TÉCNICA DE PLANEACIÓN
             </td>
