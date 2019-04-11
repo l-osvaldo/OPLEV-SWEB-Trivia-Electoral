@@ -114,7 +114,7 @@
                   </div>
               <br>
 
-              <button type="submit" class="btn btn-purple">Generar Reporte de Indicador&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+              <button type="submit" class="btn btn-secondary">Generar Reporte de Indicador&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
               <div class="clearfix">&nbsp;</div>
 
             </div>
@@ -123,6 +123,7 @@
       </div>
     </div>  
   </div>
+
 
 
 
