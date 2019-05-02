@@ -277,14 +277,9 @@ class ReportesController extends Controller
           $idActividad = $request->actividades; 
         }
 
-
         $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();            
         $infocedula = InfoCedula::where('idcontrol', $idActividad)->get();
-
-        var_dump($infocedula[0]);
-        dd();
-
 
         $programado = [0,'enep','febp','marp','abrp','mayp','junp','julp','agop','sepp','octp','novp','dicp'];     
         $colmesp = $programado[$idMes];
