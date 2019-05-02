@@ -282,6 +282,10 @@ class ReportesController extends Controller
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();            
         $infocedula = InfoCedula::where('idcontrol', $idActividad)->get();
 
+        var_dump($infocedula[0]);
+        dd();
+
+
         $programado = [0,'enep','febp','marp','abrp','mayp','junp','julp','agop','sepp','octp','novp','dicp'];     
         $colmesp = $programado[$idMes];
         $meta = PorcProgramado::select($colmesp)->where('idporcentajep', $idActividad)->get();
@@ -353,6 +357,8 @@ class ReportesController extends Controller
           $frecuencia = "Anual";                            
         if ($frecuenciamedicion==5)
           $frecuencia = "Único";
+        if ($frecuenciamedicion==6)
+          $frecuencia = "Bimestral";        
         $indicadores['identificadorindicador'] = $infocedula[0]['identificadorindicador'];
         $indicadores['nombrearea'] = $area[0]->nombrearea;
         $indicadores['objetivoindicador'] = $infocedula[0]['objetivoindicador'];
