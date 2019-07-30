@@ -17,14 +17,14 @@
   {{ csrf_field() }}
 
 
-  <div class="row">
+  <!--div class="row">
     <div class="col-3 col-lg-3 col-md-3">
       <div class="box">
         <div class="row">
           <div class="col-12">
             <div class="ribbon-wrapper">
               <div class="ribbon ribbon-primary ribbon-perfil">                
-                <h4>Perfil de Trabajo</h4>
+                <h4>Perfil de Trabajo22</h4>
               </div>
             </div>
           </div>
@@ -49,20 +49,19 @@
         </div>
       </div>
     </div>
-  </div>
+  </div-->
+
+  <div class="col-md-12">
+  <section class="content">
+    <div class="container">
 
 
   <div class="row">
-
-
-
-    <div class="col-3 col-lg-3 col-md-3">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
+          <div class="col-md-3"></div>
+          <div class="col-6">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">1.</span> Seleccione un Área
+                <p class="textoPrincipal">1. Seleccione un Área</p>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -77,19 +76,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-
-    <div class="col-3 col-lg-3 col-md-3">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">2.</span> Seleccione un Programa
+                <p class="textoPrincipal">2. Seleccione un Programa</p>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -104,18 +94,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-3 col-lg-3 col-md-3">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">3.</span> Seleccione un Programa Específico
+                <p class="textoPrincipal">3. Seleccione un Programa Específico</p>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -127,18 +109,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-3 col-lg-3 col-md-3">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
             <div class="ribbon-wrapper ribbon-blanco">
               <div class="ribbon ribbon-primary">
-                <span class="numpasos">4.</span> Seleccione un Trimestre
+                <p class="textoPrincipal">4. Seleccione un Trimestre</p>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -154,16 +128,14 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 
 
+    <div class="row">
 
-  <div class="row">
-    <div class="col-md-3 col-3">
+    <div class="col-md-3"></div>
+          <div class="col-3">
       @if ( ! empty( $put ) )
         <input type="hidden" name="_method" value="PUT">
       @endif      
@@ -176,6 +148,15 @@
 
 
   </div> <!-- del primer .col-md-12 col-12 -->
+
+
+</div>
+</section>
+</div>
+
+
+
+
 
 </form>
 

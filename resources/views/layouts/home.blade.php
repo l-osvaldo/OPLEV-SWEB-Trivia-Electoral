@@ -18,11 +18,12 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.css') }}">
 
     <!-- theme style -->
-    <link rel="stylesheet" href="{{ asset('css/master_style.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/master_style.css') }}"-->
 
     <!-- Lion_admin skins -->
     <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

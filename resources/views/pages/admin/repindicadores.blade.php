@@ -3,11 +3,11 @@
 @section('content')
 
 
-  <section class="content-header">
+  <!--section class="content-header">
     <h3>
       <small>Reportes de Indicadores</small>
     </h3>
-  </section>
+  </section-->
 
   <section>
     <br>
@@ -32,7 +32,7 @@
   {{ csrf_field() }}
 
 
-  <div class="row">
+  <!--div class="row">
     <div class="col-3 col-lg-3 col-md-3">
       <div class="box">
         <div class="row">
@@ -64,72 +64,68 @@
         </div>
       </div>
     </div>
-  </div>
+  </div-->
+
+<div class="col-md-12">
+  <section class="content">
+    <div class="container">
   
   <div class="row">
-    <div class="col-md-6 col-lg-6">
-      <div class="box">
-        <div class="box-body">
-          <div class="col-12">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      
             <div class="form-group">
-
-              <label class="fondopaso"><span class="numpasos">1.</span> Seleccione el área:</label>                 
+              <p class="textoPrincipal">1. Seleccione el área:</p>                 
               <select class="form-control" id="area_admin" name="area_admin">
                 <option value="0">Áreas...</option>      
                 @foreach( $areas as $area )
                 <option value="{{ $area->idarea }}" @if(old('area_admin') == $area->idarea) {{ 'selected' }} @endif>{{$area->nombrearea}}</option>
                 @endforeach                                     
               </select> 
-              <br>
-
-              <label class="fondopaso"><span class="numpasos">2.</span> Seleccione el mes del reporte:</label>                 
+            </div>
+            <div class="form-group">
+              <p class="textoPrincipal">2. Seleccione el mes del reporte:</p>                 
               <select class="form-control" id="mes_admin" name="mes_admin">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
                   <option value="{{ $mes->idmes }}" @if(old('mes_admin') == $mes->idmes) {{ 'selected' }} @endif>{{$mes->mes}}</option>
                 @endforeach                                     
               </select> 
-              <br>
-
-              <label class="fondopaso"><span class="numpasos">3.</span> Seleccione el programa:</label>                  
+            </div>
+            <div class="form-group">
+              <p class="textoPrincipal">3. Seleccione el programa:</p>                  
               <select class="form-control" id="programa_admin" name="programa_admin">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
                   <option value="{{ $programa->idprograma }}" @if(old('programa_admin') == $programa->idprograma) {{ 'selected' }} @endif>{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
                 @endforeach
               </select>
-              <br>
-
-              <label class="fondopaso"><span class="numpasos">4.</span> Seleccione el programa específico:</label>                  
+            </div>
+            <div class="form-group">
+              <p class="textoPrincipal">4. Seleccione el programa específico:</p>                  
               <select class="form-control" id="programaEsp_admin" name="programaEsp_admin">
                 <option value="0">Programa Específico...</option>
               </select>
-              <br>
+            </div>
 
-
-              <label class="fondopaso"><span class="numpasos">5.</span> Seleccione la actividad para el indicador:</label>                  
-                  <div class="form-group" id="divActividad">
+              <p class="textoPrincipal">5. Seleccione la actividad para el indicador:</p>            
+                <div class="form-group" id="divActividad">
                     <select class="form-control" id="actividades_admin" name="actividades_admin">
                     </select>
                   </div>
               <br>
 
               <button type="submit" class="btn btn-secondary">Generar Reporte de Indicador&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
-              <div class="clearfix">&nbsp;</div>
-
-            </div>
-          </div>
-        </div>
-      </div>
     </div>  
   </div>
 
 
-
+    </div>
+  </section>
+</div>
 
   </form>
 
-  </section>
 
 
 

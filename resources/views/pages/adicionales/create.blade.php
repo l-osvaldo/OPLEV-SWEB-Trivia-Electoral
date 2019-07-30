@@ -3,17 +3,15 @@
 @section('content')
 
   <section class="content-header">
-    <h3>
-      <small>Actividades Adicionales. Captura y Reportes</small>
-    </h3>
+    <h4>
+      Actividades Adicionales. Captura y Reportes
+    </h4>
   </section>
 
   <!-- Start Section -->
-  <section class="content">
-    <div class="row">
+
       @include('pages.adicionales._form')
-    </div>
-  </section>
+
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

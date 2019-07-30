@@ -13,21 +13,26 @@
       <meta name="app-prefix" content="{{config('app.app-prefix')}}">
 
     <!-- Bootstrap 4.0-->
-    <link rel="stylesheet" href="{{ asset('vendor_components/bootstrap/dist/css/bootstrap.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('vendor_components/bootstrap/dist/css/bootstrap.css') }}"-->
 
     <!-- Bootstrap extend-->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/bootstrap-extend.css') }}"-->
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Lion_admin skins -->
+    <!--link rel="stylesheet" href="{{ asset('css/skins/_all-skins.css') }}"-->
 
     <!-- theme style -->
-    <link rel="stylesheet" href="{{ asset('css/master_style.css') }}">
-
-    <!-- Lion_admin skins -->
-    <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('css/master_style.css') }}"-->
 
     <!-- Personal css -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">    
+    <!--link rel="stylesheet" href="{{ asset('css/app.css') }}"-->
+    <!--link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}"-->   
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"  >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
     @yield('styles')
 
@@ -40,21 +45,23 @@
 
   </head>
 
-  <body class="hold-transition skin-purple sidebar-mini">
-    <div class="wrapper" id="app">
-
-      @include('partials.header')
+  <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper wrapperPading">
 
       <!-- Aside -->
       @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        @include('partials.header')
         @include('partials.adminaside')
       @else
+        @include('partials.headeruser')
         @include('partials.aside')
       @endif
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         @yield('content')
+        <!-- Include this after the sweet alert js file -->
+        @include('sweet::alert')
 
         <!--
         <footer class="main-footer">
@@ -69,6 +76,19 @@
     </div>
     <!-- ./wrapper -->
 
+    <!-- Main Footer -->
+  <footer class="main-footer footerAdminLite">
+    <strong>Ople Veracruz<a href="http://www.oplever.org.mx/"> Más info.</a></strong> Todos los derechos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>OPLE</b> VERACRUZ
+    </div>
+  </footer>
+
+          <!-- REQUIRED SCRIPTS -->
+        <!-- jQuery -->
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
         <script src="{{ asset('js/app.js') }}"></script>
 
@@ -109,6 +129,8 @@
         <script src="{{ URL::asset('js/jquery.redirect.js') }}"></script>        
         <script src="{{ URL::asset('js/jquery.jeditable.js') }}"></script>        
         <script src="{{ URL::asset('js/jquery.jeditable.checkbox.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 
         @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         <script src="{{ URL::asset('js/resourcesadm.js') }}"></script>
@@ -116,7 +138,62 @@
         <script src="{{ URL::asset('js/recursos.js') }}"></script>
         @endif        
         
+    <script type="text/javascript">
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
+        function hiddenAlerta () {
+            $.ajax({
+             type:'POST',
+             url:"clickalertas",
+             success:function(data){ 
+                console.log(data);
+                document.getElementById('campanaAlert').classList.add("hidden");
+            }
+          });
+        }
 
+        document.getElementById("iconAlertfin").addEventListener("click", hiddenAlertafin);
+        function hiddenAlertafin () {
+            $.ajax({
+             type:'POST',
+             url:"clickalertasfin",
+             success:function(data){ 
+                console.log(data);
+                document.getElementById('campanaAlertfin').classList.add("hidden");
+            }
+          });
+        }
+
+        document.getElementById("repEmail").addEventListener("click", sendMail);
+        function sendMail () {
+            document.getElementById("loader").classList.remove('hidden');
+            var mes = this.getAttribute('data-mes');
+            var clave = document.getElementById("clave").value;
+            if(clave !== null && clave !== '') {
+
+                document.getElementById("errorEmail").classList.add('hidden');
+                $.ajax({
+                     type:'POST',
+                     url:"mail/send",
+                     data:{mes:mes,clave:clave},
+                     success:function(data){ 
+                        location.reload();
+                    }
+                });
+
+            } else {
+
+            document.getElementById("errorEmail").classList.remove('hidden');
+            document.getElementById("loader").classList.add('hidden');
+            document.getElementById("errorEmail").innerHTML = 'Inserte su clave!';
+
+            }
+        }
+    </script>
 
   </body>
 </html>

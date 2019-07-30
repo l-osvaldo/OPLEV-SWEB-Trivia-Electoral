@@ -3,14 +3,17 @@
 @section('content')
 
 
-  <section class="content-header">
+  <!--section class="content-header">
     <h3>
-			<small>Actividades Adicionales. Captura y Reportes</small>
+			Actividades Adicionales. Captura y Reportes
     </h3>
-  </section>
+  </section-->
 
-  <section>
-  	<br>
+  <div class="col-md-12">
+    <!-- Main content -->
+<section class="content">
+
+  <div class="container">
 
 
 		@if ( $errors->any() )
@@ -34,7 +37,7 @@
 		<form method="get" action="{{ route('adicionales.create') }}" class="col-md-12 col-12">
 		  {{ csrf_field() }}
 
-		  <div class="row">
+		  <!--div class="row">
 		    <div class="col-6 col-lg-6 col-md-6">
 		      <div class="box">
 		        <div class="row">
@@ -55,19 +58,18 @@
 		        </div>
 		      </div>
 		    </div>
-		  </div>
+		  </div-->
 
-		  <div class="row">
-		    <div class="col-6 col-lg-6 col-md-6">
+		  <div class="row secForm">
+		  	<div class="col-md-3"></div>
+		    <div class="col-md-6">
 		      <div class="box">
-						  <div class="row">
-								<div class="col-12">
-									<div class="ribbon-wrapper ribbon-blanco">
-										<div class="ribbon ribbon-primary">
-											Seleccione el mes de captura
-										</div>
-										<div class="row">
-	            				<div class="col-3">
+		      	 <div class="box-header with-border">
+			        <p><h4>Actividades Adicionales. Captura y Reportes</h4></p>
+			     </div>
+					<p class="textoPrincipal">Seleccione el mes de captura</p>
+
+	            				<div class="col-12">
 			            			<div class="form-group">                
 			              			<select class="form-control" id="idmesreportar" name="idmesreportar">
 			                			<option value="0">Mes...</option>      
@@ -81,10 +83,8 @@
 			              		<button type="submit" class="btn btn-block btn-dark" id="btncapturaadicional" name="btncapturaadicional">Capturar Adicional&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
 	      								<div class="clearfix">&nbsp;</div>
 			              	</div>
-			              </div>
-									</div>
-								</div>
-							</div>						
+
+					
 		      </div>	      
 		    </div>		  	
 		  </div>
@@ -96,16 +96,13 @@
 		  {{ csrf_field() }}
 
 		  <div class="row">
-		    <div class="col-6 col-lg-6 col-md-6">
+		  	<div class="col-md-3"></div>
+		    <div class="col-md-6">
 		      <div class="box">
-						  <div class="row">
-								<div class="col-12">
-									<div class="ribbon-wrapper ribbon-blanco">
-										<div class="ribbon ribbon-primary">
-											Seleccione el mes del reporte
-										</div>
-										<div class="row">
-	            				<div class="col-3">
+						  				
+				<p class="textoPrincipal">Seleccione el mes del reporte</p>
+					<div class="row">
+	            				<div class="col-12">
 			            			<div class="form-group">                
 			              			<select class="form-control" id="idmesreporteadicional" name="idmesreporteadicional">
 			                			<option value="0">Mes...</option>      
@@ -120,9 +117,8 @@
 		      								<div class="clearfix">&nbsp;</div>
 				              	</div>
 			              </div>
-									</div>
-								</div>
-							</div>						
+
+						
 		      </div>	      
 		    </div>		  	
 		  </div>
@@ -131,9 +127,9 @@
 
 
 
-
+</div>
   </section>
-
+</div>
 
 
 @endsection

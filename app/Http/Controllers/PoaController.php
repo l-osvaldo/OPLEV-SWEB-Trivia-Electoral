@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, InfoCedula, Adicional, Trimestre, Trimestral};
 use DB;
 use Auth;
+use App\Alerta;
 
 class PoaController extends Controller
 {
@@ -25,7 +26,16 @@ class PoaController extends Controller
           $areas = Area::all();
           $programas = Programa::where('reprogramacion', '<', 3)->get();
           $action = route('admin.store');
-          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action'));
+
+          /////////////////////////////////////////////////////////////////////////////////////////
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(20)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          /////////////////////////////////////////////////////////////////////////////////////////
+
+          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin'));
         }
         else
         { 
@@ -77,7 +87,8 @@ class PoaController extends Controller
     public function store(Request $request)
     {
       //tengo que conseguir el idmes y el autoactividades
-      $autoactividades = $request->input('actividades');
+      $nactividad = explode(",", $request->input('actividades'));
+      $autoactividades = $nactividad[0];
       $idmesreportar = $request->input('idmesreportar');
 
       //en tabla porcentajer se guarda el input realizadomes en la columna del mes correspondiente:
@@ -100,7 +111,60 @@ class PoaController extends Controller
 
       DB::table('detalleactividades')->where('idmes', $idmesreportar)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
 
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      $user   = auth()->user();
+      $userId = $user->id;
+      $userName = $user->name;
+      $acronimo = $user->usu_acronimo;
+
+      $nomenclatura = explode(",", $request->input('programaEsp'));
+      $id_programa = $nomenclatura[1];
+      $num_actividad = $nactividad[1];
+
+      $alerta = new Alerta();
+      $alerta->ale_actividad = $userName;
+
+      $alerta->ale_acronimo = $acronimo;
+      $alerta->ale_id_programa = $id_programa;
+      $alerta->ale_num_actividad = $num_actividad;
+
+      $alerta->ale_tipo = 1;
+      $alerta->ale_clase = 'edicion';
+      $alerta->ale_id_usuario = $userId;
+     $alerta->ale_mes = substr($mes, 0, -1);
+      $alerta->save();
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       return redirect()->route('programa.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function clickalertas()
+    {
+        //
+        DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->update(['ale_tipo' => 0]);
+        return response()->json(['edicion']);
+    }
+
+    public function clickalertasfin()
+    {
+        //
+        DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->update(['ale_tipo' => 0]);
+        return response()->json(['fin']);
+    }
+
+
+    /***/
+    public function alertames()
+    {
+        //
+      return view('pages.poa.alertames');
     }
 
     /**

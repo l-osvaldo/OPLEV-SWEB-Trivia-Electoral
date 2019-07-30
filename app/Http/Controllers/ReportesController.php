@@ -40,7 +40,12 @@ class ReportesController extends Controller
           $programas = Programa::where('reprogramacion', '<', 3)->get();
           $action = route('reportes.indicadores');
 
-          return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas'));
+          $nfin = [];
+          $alertasfin = [];
+          $nalertas = [];
+          $alertas = [];
+
+          return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas','nfin', 'alertasfin','nalertas', 'alertas'));
         }
         else
         { 
@@ -50,7 +55,12 @@ class ReportesController extends Controller
           else
             $programas = Programa::where('idprograma', '=', 1)->get();        
           $action = route('reportes.indicadores');
-          return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses'));
+
+          $nfin = [];
+          $alertasfin = [];
+          $nalertas = [];
+          $alertas = [];
+          return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses','nfin', 'alertasfin','nalertas', 'alertas'));
         }
       }
       else

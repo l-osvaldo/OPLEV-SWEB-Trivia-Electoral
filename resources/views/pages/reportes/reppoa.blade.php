@@ -3,14 +3,11 @@
 @section('content')
 
 
-  <section class="content-header">
-    <h3>
-      <small>Reportes de Programa Operativo Anual</small>
-    </h3>
-  </section>
+  <div class="col-md-12">
+    <!-- Main content -->
+<section class="content">
 
-  <section>
-  	<br>
+  <div class="container">
   	<!-- Espacio de Trabajo -->
 
     @if ( $errors->any() )
@@ -32,7 +29,7 @@
   {{ csrf_field() }}
 
 
-  <div class="row">
+  <!--div class="row">
     <div class="col-8 col-lg-8 col-md-8">
       <div class="box">
         <div class="row">
@@ -53,20 +50,23 @@
         </div>
       </div>
     </div>
-  </div>
+  </div-->
 
   
-	<div class="row">
-    <div class="col-md-4 col-lg-4">
+	<div class="row secForm">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
       <div class="box">
         <div class="box-header with-border">
-          <h4 class="box-title">Reporte Mensual</h4>
+          <p><h4>Reportes de Programa Operativo Anual</h4></p>
+          <p><h5 class="box-title">Reporte Mensual</h5></p>
         </div>
         <div class="box-body">
           <div class="col-12">
             <div class="form-group">
 
-              <label class="fondopaso"><span class="numpasos">1.</span> Seleccione el mes del reporte:</label>                  
+              <p class="fondopaso textoPrincipal">1. Seleccione el mes del reporte:</p>                  
               <select class="form-control" id="idmesreportar" name="idmesreportar">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
@@ -75,7 +75,7 @@
               </select> 
               <br>
 
-              <label class="fondopaso"><span class="numpasos">2.</span> Seleccione el programa:</label>                  
+              <p class="fondopaso textoPrincipal">2. Seleccione el programa:</p>                  
               <select class="form-control" id="programa" name="programa">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
@@ -84,7 +84,7 @@
               </select>
               <br>
 
-              <label class="fondopaso"><span class="numpasos">3.</span> Seleccione el programa específico:</label>                  
+              <p class="fondopaso textoPrincipal">3. Seleccione el programa específico:</p>                  
               <select class="form-control" id="programaEsp" name="programaEsp">
                 <option value="0">Programa Específico...</option>
               </select>
@@ -111,7 +111,10 @@
 
   </form>
 
-  </section>
+
+</div>
+</section>
+</div>
 
 
 

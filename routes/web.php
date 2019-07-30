@@ -48,3 +48,12 @@ Route::post('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name
 
 Route::resource('admin', 'AdminController');
 
+// Email related routes
+Route::get('/mail/send', 'MailController@send')->name('emailsend');
+Route::post('/mail/send', 'MailController@send')->name('emailsend');
+// ALERT&AS
+Route::post('/clickalertas', 'PoaController@clickalertas')->name('clickalertas');
+Route::post('/clickalertasfin', 'PoaController@clickalertasfin')->name('clickalertasfin');
+Route::get('/alertames', 'PoaController@alertames')->name('alertames');
+Route::post('/alertames', 'PoaController@alertames')->name('alertames');
+

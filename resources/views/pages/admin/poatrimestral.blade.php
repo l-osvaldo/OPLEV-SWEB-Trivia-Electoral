@@ -3,11 +3,11 @@
 @section('content')
 
 
-  <section class="content-header">
+  <!--section class="content-header">
     <h3>
       <small>Reporte Trimestral del POA 2019</small>
     </h3>
-  </section>
+  </section-->
 
   <section>
     <br>

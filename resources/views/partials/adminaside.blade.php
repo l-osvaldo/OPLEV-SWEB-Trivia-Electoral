@@ -1,53 +1,92 @@
-<aside class="main-sidebar">
-  <!-- sidebar -->
+<!--aside class="main-sidebar sidebar-dark-primary elevation-4">
+
   <section class="sidebar">
-    <!-- Sidebar user panel -->
+
     <div class="user-panel">
       <div class="ulogo">
-        <a href="index.html">
-        <!-- logo for regular state and mobile devices -->
-          <span><b>SIPSEI</b></span>
-          <br>
-          <span><b>{{ Auth::user()->name }}</b></span>
 
-        </a>
+          <img src="{{ asset('images/logosipsei.png') }}" alt="SIPSEI" class="panelImgLogo"><br>
+
+           <div class="panelUserName">Sistema Integral de<br>Planeación, Seguimiento y<br>Evaluación Institucional</div>
       </div>
-      <div class="image">
-        <!--<img src="../images/user2-160x160.jpg" class="rounded-circle" alt="User Image">     -->        
-        <img src="{{ asset('images/usuario.png') }}" class="rounded-circle" alt="User Image">           
-      </div>      
-      <div class="info">   
-
-        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ion ion-power"></i></a>
-        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
-
-      </div>
+      
     </div>
-    <!-- sidebar menu -->
+
     <ul class="sidebar-menu" data-widget="tree">
       <li class="nav-devider"></li>
 
-      <li class="active">
+      <li class="{!! Request::is('programa') ? 'active activeOn' : '' !!}">
         <a href="{{ route('programa.index') }}">
           <i class="fa fa-calendar-check-o"></i> <span>Programa Operativo Anual</span>
         </a>
       </li>
 
 
-      <li class="active">
+      <li class="{!! Request::is('repindicadores') ? 'active activeOn' : '' !!}">
         <a href="{{ route('repindicadores') }}">
           <i class="fa fa-clone"></i> <span>Reportes Indicadores</span>
         </a>
       </li>
 
       <br>
-      <li class="active">
+      <li class="{!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">
         <a href="{{ route('admin.poa.trimestral') }}">
           <i class="fa fa-calendar-o"></i> <span>Reporte Trimestral</span>
         </a>
       </li>
     </ul>
-  </section>
+  </section-->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+<!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{{ asset('images/logosipsei.png') }}" width="100%" alt="SIPSEI Logo" class="elevation-3"><br>
+      <div class="brand-text" style="font-size: .9rem;letter-spacing: 2px;line-height: 1 !important;text-align: center;padding: .5rem 0 0 0;">Sistema Integral de<br>Planeación, Seguimiento y<br>Evaluación Institucional</div>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" style="background: #ccc;padding: .1rem;" alt="User Image">
+        </div>
+        <div class="info nav-header">
+          {{ Auth::user()->name }}
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar-check-o"></i> <p>Programa Operativo Anual</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('repindicadores') }}" class="textSideOption nav-link {!! Request::is('repindicadores') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-clone"></i> <p>Reportes Indicadores</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar-plus-o"></i> <p>Reporte Trimestral</p>
+            </a>
+          </li>
+
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+
+
 </aside>
+
+

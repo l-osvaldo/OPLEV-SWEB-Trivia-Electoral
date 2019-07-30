@@ -1,4 +1,20 @@
-.logologin
+.textoPrincipal{color: #EA0D94; font-weight: initial;font-size: 1.1em;}
+.salir{color: #EA0D94 !important;font-weight: initial; padding: .5rem 1rem;display: block}
+/*.salir:hover{text-decoration: underline;}*/
+.imgUser{border-radius: 5px;}
+.textoSecundario{color: #333;font-size: 1.1em;}
+.navAdminLite{position: fixed;z-index: 949;top: 0;right: 0;left: 0;background: #fff;}
+.footerAdminLite{position: fixed;z-index: 949;bottom: 0;right: 0;left: 0;background: #fff;}
+.wrapperPading{padding: 57px 0;}
+.textSideOption{font-size: .95em;}
+.card-header:first-child{background: #f5f5f5;}
+.info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.secForm{padding-top: 3%;}
+.badge-warning{background: #EA0D94; color: #fff;}
+.hidden{display: none !important;}
+.nueva-alerta{background: #f1f1f1 !important;}
+.inputMes{cursor: pointer;}
+/*.logologin
 {
 	height: 150px;
 	width: 200px;
@@ -142,4 +158,4 @@
 {
 	text-align: center !important;
 }
-
+*/

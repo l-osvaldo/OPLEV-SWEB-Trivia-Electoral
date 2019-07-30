@@ -180,7 +180,11 @@ class AdminController extends Controller
           $trimestres = Trimestre::all();
           $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
           $action = route('reportes.trimestral');
-          return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action'));
+          $nfin = [];
+          $alertasfin = [];
+          $nalertas = [];
+          $alertas = [];
+          return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action', 'nfin', 'alertasfin','nalertas', 'alertas'));
 
         }
         else

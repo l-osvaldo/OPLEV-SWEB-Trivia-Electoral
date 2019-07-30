@@ -57,6 +57,22 @@ import icon and fonts Styles
 Body :		Poppins, sans-serif;
 -------------------------------------------------------------------*/
 
+
+/*------------------------------------------------------------------
+
+CSS AGREGADO
+
+-------------------------------------------------------------------*/
+.panelUserName{background: #34515e; color: #fff;height: auto;width: 100% !important;padding:.5rem 1rem;font-size: 1rem;}
+.panelImgLogo{margin-bottom: 10px;width: 70%;}
+.activeOn{background: #EA0D94;}
+/*------------------------------------------------------------------
+
+CSS AGREGADO
+
+-------------------------------------------------------------------*/
+
+
 /*Body, layout*/
 .layout-boxed body, .layout-boxed html, .wrapper, body, html {
     height: 100%}
@@ -539,7 +555,7 @@ a:active, a:focus, a:hover {
 .user-panel {
     position: relative;
     width: 100%;
-    padding: 10px 0 10px;
+    padding: 10px 0 0;
 }
 .user-panel:after, .user-panel:before {
     content: " ";
@@ -745,7 +761,7 @@ a:active, a:focus, a:hover {
 }
 .user-panel .ulogo {
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     font-size: 18px;
 }
 .user-panel .ulogo a b {
