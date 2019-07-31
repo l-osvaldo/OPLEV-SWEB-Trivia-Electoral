@@ -1,6 +1,5 @@
 .textoPrincipal{color: #EA0D94; font-weight: initial;font-size: 1.1em;}
 .salir{color: #EA0D94 !important;font-weight: initial; padding: .5rem 1rem;display: block}
-/*.salir:hover{text-decoration: underline;}*/
 .imgUser{border-radius: 5px;}
 .textoSecundario{color: #333;font-size: 1.1em;}
 .navAdminLite{position: fixed;z-index: 949;top: 0;right: 0;left: 0;background: #fff;}
@@ -10,9 +9,8 @@
 .card-header:first-child{background: #f5f5f5;}
 .info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .secForm{padding-top: 3%;}
-.badge-warning{background: #EA0D94; color: #fff;}
+.badge-warning{background: #6d5622; color: #fff;}
 .hidden{display: none !important;}
-.nueva-alerta{background: #f1f1f1 !important;}
 .inputMes{cursor: pointer;}
 /*.logologin
 {

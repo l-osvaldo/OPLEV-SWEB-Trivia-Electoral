@@ -122,6 +122,12 @@ class PoaController extends Controller
       $id_programa = $nomenclatura[1];
       $num_actividad = $nactividad[1];
 
+      $fmes = substr($mes, 0, -1);
+      
+      $ale = Alerta::where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', $fmes)->get();
+      $ale->isEmpty() ? $aletipo = 'dentro' : $aletipo = 'fuera';
+      //print_r($aletipo);exit;
+
       $alerta = new Alerta();
       $alerta->ale_actividad = $userName;
 
@@ -132,7 +138,8 @@ class PoaController extends Controller
       $alerta->ale_tipo = 1;
       $alerta->ale_clase = 'edicion';
       $alerta->ale_id_usuario = $userId;
-     $alerta->ale_mes = substr($mes, 0, -1);
+      $alerta->ale_tiempo = $aletipo;
+      $alerta->ale_mes = $fmes;
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
