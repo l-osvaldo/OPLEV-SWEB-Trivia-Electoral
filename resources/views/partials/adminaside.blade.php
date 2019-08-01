@@ -79,6 +79,12 @@
             </a>
           </li>
 
+          <li class="nav-item has-treeview">
+            <a href="{{ route('bitacora') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-list-alt"></i> <p>Bitacora de actividades</p>
+            </a>
+          </li>
+
           
         </ul>
       </nav>

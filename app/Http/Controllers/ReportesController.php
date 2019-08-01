@@ -137,6 +137,33 @@ class ReportesController extends Controller
     }
 
 
+     public function bitacora(Request $request)
+    {
+        //
+      /////////////////////////////////////////////////////////////////////////////////////////
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(30)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          /////////////////////////////////////////////////////////////////////////////////////////
+         return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin'));
+    }
+
+     public function bitacorames(Request $request)
+    {
+        //
+      /////////////////////////////////////////////////////////////////////////////////////////
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(30)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          /////////////////////////////////////////////////////////////////////////////////////////
+         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin'));
+    }
+
+
     #Validación de formulario
     private function _rulespoa( $new = True )
     {

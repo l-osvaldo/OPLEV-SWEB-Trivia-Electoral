@@ -46,9 +46,9 @@
   .alerta-logout{background:#90a4ae;border-right:solid 1px #fff; }
   .navbar-light .navbar-nav .nav-link{color: #EA0D94;}
   .tiempofuera:after {
-    content: "\00a0 \f0f3";
+    content: "\00a0 \f071";
     font-family: FontAwesome;
-    color: #d50000;
+    color: #EA0D94;
 </style>
 
   <!-- Right navbar links -->
@@ -82,7 +82,7 @@
           @endforeach
 
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
+          <a href="/bitacorames" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
         </div>
       </li>  
 
@@ -112,7 +112,7 @@
           @endforeach
 
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
+          <a href="/bitacora" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
         </div>
       </li>  
 
