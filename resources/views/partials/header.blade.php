@@ -77,7 +77,7 @@
 
           @foreach( $alertasfin as $alertafin )
             <a href="#" class="dropdown-item texto-negro alerta-texto {{ $alertafin->ale_tipo === 1 ? 'nueva-alerta' : 'no' }}">
-            <div style="display: inline-block;float: left;">{{$alertafin->ale_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alertafin->created_at)) }}</div>
+            <div style="display: inline-block;float: left;">{{$alertafin->ale_acronimo}} - {{$alertafin->ale_mes}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alertafin->created_at)) }}</div>
             </a>
           @endforeach
 

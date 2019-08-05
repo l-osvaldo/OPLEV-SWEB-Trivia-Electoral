@@ -76,6 +76,21 @@
     </div>
     <!-- ./wrapper -->
 
+    <!-- begin cubes modal -->
+ <div id="loader" class="hidden">
+ <div class="cubes">
+  <div class="sk-cube sk-cube1"></div>
+  <div class="sk-cube sk-cube2"></div>
+  <div class="sk-cube sk-cube3"></div>
+  <div class="sk-cube sk-cube4"></div>
+  <div class="sk-cube sk-cube5"></div>
+  <div class="sk-cube sk-cube6"></div>
+  <div class="sk-cube sk-cube7"></div>
+  <div class="sk-cube sk-cube8"></div>
+  <div class="sk-cube sk-cube9"></div>
+ </div>
+ </div>
+
     <!-- Main Footer -->
   <footer class="main-footer footerAdminLite">
     <strong>Ople Veracruz<a href="http://www.oplever.org.mx/"> Más info.</a></strong> Todos los derechos reservados.
@@ -192,6 +207,79 @@
             document.getElementById("errorEmail").innerHTML = 'Inserte su clave!';
 
             }
+        }
+
+        document.getElementById("buscarMes").addEventListener("click", busquedames);
+        function busquedames () {
+
+          document.getElementById("loader").classList.remove('hidden');
+          var mes = document.getElementById('mesbusqueda').value;
+          var acr = document.getElementById('acronimo').value;
+          console.log(mes,acr);
+
+          $.ajax({
+               type:'POST',
+               url:"buscarmes",
+               data:{mes:mes,acr:acr},
+               success:function(data){ 
+                console.log(data)
+
+                  document.getElementById('resultMes').innerHTML ='';
+                  if (data[0].length>0) {
+
+                  document.getElementById('resultMes').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+
+                    for (var i = 0; i < data[0].length; i++) {
+                      var x = document.createElement("TR");
+                      document.getElementById('resultMes').appendChild(x);
+                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>---</td><td>---</td><td>'+data[0][i].created_at+'</th>';
+                    }
+
+                  } else {
+                     document.getElementById('resultMes').innerHTML ='<tr><th>No se encontraron resultados</th></tr>';
+                  }
+
+                  document.getElementById("loader").classList.add('hidden');
+              }
+          });
+          
+        }
+
+        document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
+        function busquedaentre () {
+
+          document.getElementById("loader").classList.remove('hidden');
+          var datep = document.getElementById('datep').value;
+          var dates = document.getElementById('datep').value;
+          var acr = document.getElementById('acronimoentre').value;
+          console.log(datep,dates,acr);
+
+          $.ajax({
+               type:'POST',
+               url:"buscaentre",
+               data:{datep:datep,dates:dates,acr:acr},
+               success:function(data){ 
+
+                console.log(data)
+                  document.getElementById('resultEntre').innerHTML ='';
+                  if (data[0].length>0) {
+
+                  document.getElementById('resultEntre').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+
+                    for (var i = 0; i < data[0].length; i++) {
+                      var x = document.createElement("TR");
+                      document.getElementById('resultEntre').appendChild(x);
+                      x.innerHTML='<td class="'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+data[0][i].created_at+'</th>';
+                    }
+
+                  } else {
+                     document.getElementById('resultEntre').innerHTML ='<tr><th>No se encontraron resultados</th></tr>';
+                  }
+
+                  document.getElementById("loader").classList.add('hidden');
+              }
+          });
+          
         }
     </script>
 

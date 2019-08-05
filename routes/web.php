@@ -57,6 +57,9 @@ Route::post('/clickalertasfin', 'PoaController@clickalertasfin')->name('clickale
 Route::get('/alertames', 'PoaController@alertames')->name('alertames');
 Route::post('/alertames', 'PoaController@alertames')->name('alertames');
 
+Route::post('/buscarmes', 'ReportesController@buscarmes')->name('buscarmes');
+Route::post('/buscaentre', 'ReportesController@buscaentre')->name('buscaentre');
+
 Route::get('/bitacora', 'ReportesController@bitacora')->name('bitacora');
 Route::get('/bitacorames', 'ReportesController@bitacorames')->name('bitacorames');
 

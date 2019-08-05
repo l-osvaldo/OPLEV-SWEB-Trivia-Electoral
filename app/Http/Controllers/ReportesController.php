@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use PDF;
 use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
@@ -152,15 +153,51 @@ class ReportesController extends Controller
 
      public function bitacorames(Request $request)
     {
-        //
-      /////////////////////////////////////////////////////////////////////////////////////////
+
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(30)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          /////////////////////////////////////////////////////////////////////////////////////////
-         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin'));
+
+          $rfijo = DB::table('alertas')->where('ale_clase', 'final')
+        //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
+        //->join('users', 'ban_receptor_id', '=', 'id')
+        //->select('doc_asunto', 'doc_tipo', 'documentos.created_at', 'doc_respuesta', 'doc_prioridad', 'nombre')
+        ->get();
+
+          //dd($rfijo);exit;
+         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo'));
+    }
+
+
+    public function buscarmes(Request $request)
+    {
+
+        $mes = $request->mes;
+        $acr = $request->acr;
+        
+        $resultado = DB::table('alertas')->where('ale_mes', $mes)->where('ale_acronimo', $acr)->get();
+
+        return response()->json([$resultado]);
+    }
+
+
+    public function buscaentre(Request $request)
+    {
+
+        $pri = $request->datep;
+        $seg = $request->dates;
+
+        $date_from = Carbon::parse($request->datep)->startOfDay();
+        $date_to = Carbon::parse($request->dates)->endOfDay();
+
+        $acr = $request->acr;
+        
+        $resultado = DB::table('alertas')->where('ale_acronimo', $acr)->whereBetween('datetime',[$date_from, $date_to ])->get();
+
+        //print_r($resultado);exit;
+        return response()->json([$resultado]);
     }
 
 
