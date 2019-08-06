@@ -2461,8 +2461,8 @@ tr { height: 50px; }
   }
 
   .btn-primary:hover {
-    color: #ffffff;
-    background-color: #0069d9;
+    color: #000;
+    background-color: #fce4ec;
     border-color: #0062cc;
   }
 

@@ -56,9 +56,9 @@ th {
               </div>
               <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Fecha de termino</label>
-                <input type="date" class="form-control" id="dates" required>
+                <input type="date" class="form-control" id="dates" required disabled="true">
               </div>
-              <button  id="buscarEntre" type="button" class="btn btn-primary">Buscar</button>
+              <button  id="buscarEntre" type="button" class="btn btn-primary" disabled="true">Buscar</button>
               <button id="buscarMes" type="button" class="btn btn-primary hidden">Buscar</button>
             </div>
 
@@ -78,7 +78,7 @@ th {
                     <td>{{$alerta->ale_acronimo}}</td>
                     <td>{{$alerta->ale_id_programa}}</td>
                     <td>{{$alerta->ale_num_actividad}}</td>
-                    <td>{{ date('d/m/Y', strtotime($alerta->created_at)) }}</th>
+                    <td>{{ date('d/m/Y', strtotime($alerta->ale_date)) }}</th>
                   </tr>
                 @endforeach
             </table>

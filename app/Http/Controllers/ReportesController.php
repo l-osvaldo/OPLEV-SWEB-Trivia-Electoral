@@ -142,10 +142,10 @@ class ReportesController extends Controller
     {
         //
       /////////////////////////////////////////////////////////////////////////////////////////
-          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
-          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(30)->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(30)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
          return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin'));
@@ -154,16 +154,16 @@ class ReportesController extends Controller
      public function bitacorames(Request $request)
     {
 
-          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
-          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(30)->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(30)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
 
           $rfijo = DB::table('alertas')->where('ale_clase', 'final')
         //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
         //->join('users', 'ban_receptor_id', '=', 'id')
-        //->select('doc_asunto', 'doc_tipo', 'documentos.created_at', 'doc_respuesta', 'doc_prioridad', 'nombre')
+        //->select('doc_asunto', 'doc_tipo', 'documentos.ale_date', 'doc_respuesta', 'doc_prioridad', 'nombre')
         ->get();
 
           //dd($rfijo);exit;
@@ -177,7 +177,7 @@ class ReportesController extends Controller
         $mes = $request->mes;
         $acr = $request->acr;
         
-        $resultado = DB::table('alertas')->where('ale_mes', $mes)->where('ale_acronimo', $acr)->get();
+        $resultado = DB::table('alertas')->where('ale_mes', $mes)->where('ale_acronimo', $acr)->where('ale_clase', 'final')->get();
 
         return response()->json([$resultado]);
     }
@@ -194,7 +194,7 @@ class ReportesController extends Controller
 
         $acr = $request->acr;
         
-        $resultado = DB::table('alertas')->where('ale_acronimo', $acr)->whereBetween('datetime',[$date_from, $date_to ])->get();
+        $resultado = DB::table('alertas')->where('ale_acronimo', $acr)->where('ale_clase', 'edicion')->whereBetween('ale_date', [$date_from, $date_to])->get();
 
         //print_r($resultado);exit;
         return response()->json([$resultado]);

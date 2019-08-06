@@ -222,7 +222,7 @@
                url:"buscarmes",
                data:{mes:mes,acr:acr},
                success:function(data){ 
-                console.log(data)
+                //console.log(data)
 
                   document.getElementById('resultMes').innerHTML ='';
                   if (data[0].length>0) {
@@ -250,7 +250,7 @@
 
           document.getElementById("loader").classList.remove('hidden');
           var datep = document.getElementById('datep').value;
-          var dates = document.getElementById('datep').value;
+          var dates = document.getElementById('dates').value;
           var acr = document.getElementById('acronimoentre').value;
           console.log(datep,dates,acr);
 
@@ -260,7 +260,7 @@
                data:{datep:datep,dates:dates,acr:acr},
                success:function(data){ 
 
-                console.log(data)
+                //console.log(data)
                   document.getElementById('resultEntre').innerHTML ='';
                   if (data[0].length>0) {
 
@@ -281,6 +281,18 @@
           });
           
         }
+
+         document.getElementById("datep").addEventListener("change", changedatep);
+        function changedatep (){
+          var datep = document.getElementById('datep').value;
+          document.getElementById('dates').setAttribute("min", datep);
+          document.getElementById('dates').disabled = false;
+        }
+        document.getElementById("dates").addEventListener("change", changedates);
+        function changedates(){
+          document.getElementById('buscarEntre').disabled = false;
+        }
+
     </script>
 
   </body>

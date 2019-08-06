@@ -92,7 +92,7 @@ th {
                     <td>{{$alertafin->ale_acronimo}}</td>
                     <td>---</td>
                     <td>---</td>
-                    <td>{{ date('d/m/Y', strtotime($alertafin->created_at)) }}</th>
+                    <td>{{ date('d/m/Y', strtotime($alertafin->ale_date)) }}</th>
                   </tr>
                 @endforeach
             </table>
@@ -114,7 +114,7 @@ th {
                 <th>Ago</th>
                 <th>Sep</th>
                 <th>Oct</th>
-                <th>Nob</th>
+                <th>Nov</th>
                 <th>Dic</th>
               </tr>
                   <tr>
@@ -395,6 +395,10 @@ th {
                     document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
                   </script>
             @endforeach
+
+            <hr>
+            <a href="/bitacora">Acciones por actividad</a>
+
 
         </div>
       </section>

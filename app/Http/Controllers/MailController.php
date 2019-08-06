@@ -38,7 +38,9 @@ class MailController extends Controller
             $alerta->ale_tipo = 1;
             $alerta->ale_clase = 'final';
             $alerta->ale_id_usuario = $userId;
+            $alerta->ale_tiempo = '---';
             $alerta->ale_mes = $send_mes;
+             $alerta->ale_date = date('Y-m-d H:i:s');
             $alerta->save();
 
 

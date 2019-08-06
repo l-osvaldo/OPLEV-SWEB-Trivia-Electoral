@@ -140,6 +140,7 @@ class PoaController extends Controller
       $alerta->ale_id_usuario = $userId;
       $alerta->ale_tiempo = $aletipo;
       $alerta->ale_mes = $fmes;
+      $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -171,7 +172,11 @@ class PoaController extends Controller
     public function alertames()
     {
         //
-      return view('pages.poa.alertames');
+      $user   = auth()->user();
+      $userId = $user->id;
+      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+      //dd($resultado);exit;
+      return view('pages.poa.alertames')->with( compact('resultado'));
     }
 
     /**
