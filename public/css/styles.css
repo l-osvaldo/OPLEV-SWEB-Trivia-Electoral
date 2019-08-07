@@ -6,9 +6,9 @@
 .footerAdminLite{position: fixed;z-index: 949;bottom: 0;right: 0;left: 0;background: #fff;}
 .wrapperPading{padding: 57px 0;}
 .textSideOption{font-size: .95em;}
-.card-header:first-child{background: #f5f5f5;}
+
 .info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
-.secForm{padding-top: 3%;}
+
 .badge-warning{background: #6d5622; color: #fff;}
 .hidden{display: none !important;}
 .inputMes{cursor: pointer;}

@@ -7,6 +7,7 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use App\Alerta;
+use Alert;
 
 class PoaController extends Controller
 {
@@ -34,7 +35,6 @@ class PoaController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(20)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
-
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin'));
         }
         else
@@ -70,6 +70,7 @@ class PoaController extends Controller
         else
           $programas = Programa::where('idprograma', '=', 1)->get();
         $action = route('programa.store');
+        
         return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
       }
       else
@@ -143,7 +144,7 @@ class PoaController extends Controller
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+      Alert::success('Notificación registrada', 'Ok!')->autoclose(3500);
       return redirect()->route('programa.index');
     }
 

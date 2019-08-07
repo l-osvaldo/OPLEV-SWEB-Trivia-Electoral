@@ -59,10 +59,10 @@
 
 
 
-		  <div class="row secForm">
-		  	<div class="col-md-3"></div>
-			<div class="col-6">
-				<p class="textoPrincipal">Seleccione el mes de trabajo:</p>
+		  <div class="row" style="padding-top: 3%;">
+		  	<div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
+			<div class="col-md-12">
+				<label>Seleccione el mes de trabajo:</label>
 			    <div class="form-group">                
 			      <select class="form-control" id="idmesreportar" name="idmesreportar">
 			       	<option value="0">Mes...</option>      
@@ -71,10 +71,9 @@
 	            	@endforeach            		                  		
 			      </select>		              			
 			    </div>		              		
-
-			    <div class="col-4">
-			    	<button type="submit" class="btn btn-block btn-dark" id="btnveractividades" name="btnveractividades">Ver actividades&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
-			    </div>	
+			    	<button type="submit" class="btn btn-primary" id="btnveractividades" name="btnveractividades">Ver actividades&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
+			    
+			</div>
 			</div>
 		  </div>
 		</form>

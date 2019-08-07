@@ -28,45 +28,21 @@
 <form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
   {{ csrf_field() }}
 
-
-  <!--div class="row">
-    <div class="col-8 col-lg-8 col-md-8">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
-            <div class="ribbon-wrapper ribbon-rosa">
-              <div class="ribbon ribbon-primary">
-                Unidad Responsable
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <span class="titareames">{{ Auth::user()->name }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div-->
-
   
-	<div class="row secForm">
+	<div class="row" style="padding-top: 2%">
 
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="box">
-        <div class="box-header with-border">
-          <p><h4>Reportes de Programa Operativo Anual</h4></p>
-          <p><h5 class="box-title">Reporte Mensual</h5></p>
-        </div>
-        <div class="box-body">
+
+
+    
+        <h4>Reportes de Programa Operativo Anual</h4>
+        <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
+        <h5 class="textoPrincipal">Reporte Mensual</h5>
+
+
           <div class="col-12">
-            <div class="form-group">
+            
 
-              <p class="fondopaso textoPrincipal">1. Seleccione el mes del reporte:</p>                  
+              <label>1. Seleccione el mes del reporte:</label>                  
               <select class="form-control" id="idmesreportar" name="idmesreportar">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
@@ -75,7 +51,7 @@
               </select> 
               <br>
 
-              <p class="fondopaso textoPrincipal">2. Seleccione el programa:</p>                  
+              <label>2. Seleccione el programa:</label>                  
               <select class="form-control" id="programa" name="programa">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
@@ -84,27 +60,25 @@
               </select>
               <br>
 
-              <p class="fondopaso textoPrincipal">3. Seleccione el programa específico:</p>                  
+              <label>3. Seleccione el programa específico:</label>                  
               <select class="form-control" id="programaEsp" name="programaEsp">
                 <option value="0">Programa Específico...</option>
               </select>
               <br>
 
-              <button type="submit" class="btn btn-purple">Generar Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
+              <button type="submit" class="btn btn-primary">Generar Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
               <div class="clearfix">&nbsp;</div>
 
               <!--
               <button type="button" class="btn btn-success" id="btnConcentradoPoa" name="btnConcentradoPoa">Generar Concentrado del Programa Específico&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
               <div class="clearfix">&nbsp;</div> -->
 
-
-
-
-            </div>
+            
           </div>
         </div>
-      </div>
-    </div>	
+
+      
+  	
 	</div>
 
 

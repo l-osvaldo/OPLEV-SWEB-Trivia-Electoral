@@ -56,18 +56,17 @@
   </div-->
 
   
-  <div class="row secForm">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="box">
-        <div class="box-header with-border">
-          <p><h4>Reportes de Indicadores</h4></p>
-        </div>
-        <div class="box-body">
-          <div class="col-12">
-            <div class="form-group">
+  <div class="row" style="padding-top: 2%;">
+    <h4>Reportes de Indicadores</h4>
+    <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
 
-              <p class="textoPrincipal">1. Seleccione el mes del reporte:</p>                  
+
+        
+
+          <div class="col-12">
+            
+
+              <label>1. Seleccione el mes del reporte:</label>                  
               <select class="form-control" id="idmesreportar" name="idmesreportar">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
@@ -76,7 +75,7 @@
               </select> 
               <br>
 
-              <p class="textoPrincipal">2. Seleccione el programa:</p>                  
+              <label>2. Seleccione el programa:</label>                  
               <select class="form-control" id="programa" name="programa">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
@@ -84,27 +83,24 @@
               </select>
               <br>
 
-              <p class="textoPrincipal">3. Seleccione el programa específico:</p>                  
+              <label>3. Seleccione el programa específico:</label>                  
               <select class="form-control" id="programaEsp" name="programaEsp">
                 <option value="0">Programa Específico...</option>
               </select>
               <br>
 
 
-              <p class="textoPrincipal">4. Seleccione la actividad para el indicador:</p>                  
+              <label>4. Seleccione la actividad para el indicador:</label>                  
                   <div class="form-group" id="divActividad">
                     <select class="form-control" id="actividades" name="actividades">
                     </select>
                   </div>
-              <br>
 
-              <button type="submit" class="btn btn-purple">Generar Reporte de Indicador&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
-              <div class="clearfix">&nbsp;</div>
+              <button type="submit" class="btn btn-primary">Generar Reporte de Indicador <i class="fa fa-file-pdf-o"></i></button>
 
-            </div>
+           
           </div>
-        </div>
-      </div>
+       
     </div>  
   </div>
 
