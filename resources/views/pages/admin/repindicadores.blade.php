@@ -9,8 +9,8 @@
     </h3>
   </section-->
 
-  <section>
-    <br>
+<section class="content" style="padding-top: 2em;">
+    <div class="container">
     <!-- Espacio de Trabajo -->
 
 
@@ -32,100 +32,55 @@
   {{ csrf_field() }}
 
 
-  <!--div class="row">
-    <div class="col-3 col-lg-3 col-md-3">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
-            <div class="ribbon-wrapper">
-              <div class="ribbon ribbon-primary ribbon-perfil">                
-                <h4>Perfil de Trabajo</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-4 col-lg-4 col-md-4">
-      <div class="box">
-        <div class="row">
-          <div class="col-12">
-            <div class="ribbon-wrapper ribbon-rosa ribbon-area">
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group">
-                    <span class="titareames">{{ Auth::user()->name }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div-->
-
-<div class="col-md-12">
-  <section class="content">
-    <div class="container">
-  
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      
-            <div class="form-group">
-              <p class="textoPrincipal">1. Seleccione el área:</p>                 
+<div class="row">
+  <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
+    <div class="contInput">
+<label>1. Seleccione el área:</label>                 
               <select class="form-control" id="area_admin" name="area_admin">
                 <option value="0">Áreas...</option>      
                 @foreach( $areas as $area )
                 <option value="{{ $area->idarea }}" @if(old('area_admin') == $area->idarea) {{ 'selected' }} @endif>{{$area->nombrearea}}</option>
                 @endforeach                                     
-              </select> 
-            </div>
-            <div class="form-group">
-              <p class="textoPrincipal">2. Seleccione el mes del reporte:</p>                 
+              </select>
+              <br> 
+            <label>2. Seleccione el mes del reporte:</label>                 
               <select class="form-control" id="mes_admin" name="mes_admin">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
                   <option value="{{ $mes->idmes }}" @if(old('mes_admin') == $mes->idmes) {{ 'selected' }} @endif>{{$mes->mes}}</option>
                 @endforeach                                     
               </select> 
-            </div>
-            <div class="form-group">
-              <p class="textoPrincipal">3. Seleccione el programa:</p>                  
+              <br>
+            <label>3. Seleccione el programa:</label>                  
               <select class="form-control" id="programa_admin" name="programa_admin">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
                   <option value="{{ $programa->idprograma }}" @if(old('programa_admin') == $programa->idprograma) {{ 'selected' }} @endif>{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
                 @endforeach
               </select>
-            </div>
-            <div class="form-group">
-              <p class="textoPrincipal">4. Seleccione el programa específico:</p>                  
+              <br>
+            <label>4. Seleccione el programa específico:</label>                  
               <select class="form-control" id="programaEsp_admin" name="programaEsp_admin">
                 <option value="0">Programa Específico...</option>
               </select>
-            </div>
-
-              <p class="textoPrincipal">5. Seleccione la actividad para el indicador:</p>            
+              <br>
+            <label>5. Seleccione la actividad para el indicador:</label>            
                 <div class="form-group" id="divActividad">
                     <select class="form-control" id="actividades_admin" name="actividades_admin">
                     </select>
                   </div>
-              <br>
+             
 
-              <button type="submit" class="btn btn-secondary">Generar Reporte de Indicador&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>
-    </div>  
-  </div>
-
-
-    </div>
-  </section>
 </div>
+</div>
+</div>
+ <button type="submit" class="btn btn-primary">Generar Reporte de Indicador <i class="fa fa-file-pdf-o"></i></button>
+
 
   </form>
-
+ </div>
+  </section>
 
 
 

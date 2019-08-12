@@ -10,7 +10,11 @@
 
   <!-- Start Section -->
 
+<section class="content">
+    <div class="container">
       @include('pages.adicionales._form')
+</div>
+</section>
 
   <!-- /.content -->
 </div>

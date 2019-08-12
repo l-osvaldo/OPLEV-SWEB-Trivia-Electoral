@@ -145,7 +145,7 @@ class ReportesController extends Controller
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
-          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(30)->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
          return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin'));
@@ -157,7 +157,7 @@ class ReportesController extends Controller
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
-          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(30)->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
 
           $rfijo = DB::table('alertas')->where('ale_clase', 'final')
@@ -506,6 +506,12 @@ class ReportesController extends Controller
       $idProgramaEsp = $request->programaEsp_trim;    
       $idTrimestre = $request->trimestre_trim; 
 
+      //print_r($aletipo);exit;
+
+      //if ($idArea) {
+      //  # code...
+      //}
+
       //Obtengo los campos del área
       $areas = Area::where('idarea', $idArea)->get();
       $trim_idarea = $idArea;
@@ -703,7 +709,15 @@ class ReportesController extends Controller
       $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
       $trimestral = Trimestral::all();
       $action = route('reportes.trimestral');
-      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral'));
+
+
+          $nfin = [];
+          $alertasfin = [];
+          $nalertas = [];
+          $alertas = [];
+
+
+      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas'));
     }
 
 

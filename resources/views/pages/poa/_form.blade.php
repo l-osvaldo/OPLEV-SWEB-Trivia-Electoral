@@ -13,12 +13,6 @@
 @endif
 
 
-<style type="text/css">
-  .secForm{padding: 2% 4% 0 4%;}
-  .card-header:first-child{background: #fce4ec; color: #000;}
-  .contInput{height: auto;width: 100%;margin-bottom: 2%;}
-</style>
-
 <form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12">
   {{ csrf_field() }}
 
@@ -204,33 +198,18 @@
 
 
 <div class="row">
-
   <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;padding:1%;">
-
     <div class="contInput">
-      
-                   @if ( ! empty( $put ) )
-        <input type="hidden" name="_method" value="PUT">
+      @if ( ! empty( $put ) )
+      <input type="hidden" name="_method" value="PUT">
       @endif
       <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
-
       <button type="submit" class="btn btn-primary" id="btnGuardarInfo" name="btnGuardarInfo">Guardar Información</button>
-                
-                 
-        <a class="btn btn-secondary" href="{{ route('programa.index') }}">Cancelar</a>
-                  
+      <a class="btn btn-secondary" href="{{ route('programa.index') }}">Cancelar</a>
     </div>
-
   </div>
-
 </div>
-
-
-
-</div>
-
-
 
 
 

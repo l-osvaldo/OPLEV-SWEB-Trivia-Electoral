@@ -8821,14 +8821,14 @@ button.btn.dropdown-toggle::after, .wysihtml5-toolbar .btn.dropdown-toggle::afte
   height: 24px;
 }
 .btn-primary {
-  background-color: #ab8ce4;
-  border-color: #ab8ce4;
+  background-color: #EA0D94;
+  border-color: #EA0D94;
   color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: #b4a1d8;
-  border-color: #b4a1d8;
+  background-color: #EA0D94;
+  border-color: #EA0D94;
   color: #fff;
 }
 

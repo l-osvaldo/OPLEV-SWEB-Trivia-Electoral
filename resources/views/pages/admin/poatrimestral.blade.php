@@ -13,8 +13,8 @@
     <br>
 
   <!-- Start Section -->
-  <section class="content">
-    <div class="row">
+<section class="content" style="padding-top: 2em;">
+    <div class="container">
       @include('pages.admin._formtrim')
     </div>    
   </section>

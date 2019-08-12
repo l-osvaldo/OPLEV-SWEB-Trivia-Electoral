@@ -2462,8 +2462,8 @@ tr { height: 50px; }
 
   .btn-primary:hover {
     color: #ffffff;
-    background-color: #0069d9;
-    border-color: #0062cc;
+    background-color: #EA0D94;
+    border-color: #c20c7b;
   }
 
   .btn-sm, .btn-group-sm > .btn {
@@ -2485,7 +2485,7 @@ tr { height: 50px; }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
   .show > .btn-primary.dropdown-toggle {
     color: #ffffff;
-    background-color: #0062cc;
+    background-color: #c20c7b;
     border-color: #005cbf;
   }
 
@@ -4881,7 +4881,7 @@ tr { height: 50px; }
   .badge-primary[href]:hover, .badge-primary[href]:focus {
     color: #ffffff;
     text-decoration: none;
-    background-color: #0062cc;
+    background-color: #c20c7b;
   }
 
   .badge-secondary {
@@ -6106,7 +6106,7 @@ tr { height: 50px; }
   button.label-primary:hover,
   button.bg-primary:focus,
   button.label-primary:focus {
-    background-color: #0062cc !important;
+    background-color: #c20c7b !important;
   }
 
   .bg-secondary {
@@ -8728,7 +8728,7 @@ tr { height: 50px; }
   }
 
   a.text-primary:hover, a.text-primary:focus {
-    color: #0062cc !important;
+    color: #c20c7b !important;
   }
 
   .text-secondary {

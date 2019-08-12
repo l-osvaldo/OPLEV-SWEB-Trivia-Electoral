@@ -9,8 +9,8 @@
   </section-->
 
   <!-- Start Section -->
-  <section class="content">
-    <div class="row secForm">
+  <section class="content" style="padding-top: 2em;">
+    <div class="container">
       @include('pages.poa._form')
     </div>
   </section>
