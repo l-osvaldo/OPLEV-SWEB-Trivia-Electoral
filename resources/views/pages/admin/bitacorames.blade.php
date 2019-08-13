@@ -21,6 +21,7 @@ th {
   color: #000;
 }
 .iconCheck{font-weight: lighter;color: #EA0D94;}
+.tdTabla{border-left: 1px solid #eceff1;}
 </style>
 
         <section class="content" style="padding-top: 2em;">
@@ -118,274 +119,274 @@ th {
                 <th>Dic</th>
               </tr>
                   <tr>
-                    <td>CG</td>
-                    <td id="eneCG"></td>
-                    <td id="febCG"></td>
-                    <td id="marCG"></td>
-                    <td id="abrCG"></th>
-                    <td id="mayCG"></td>
-                    <td id="junCG"></td>
-                    <td id="julCG"></td>
-                    <td id="agoCG"></th>
-                    <td id="sepCG"></td>
-                    <td id="octCG"></td>
-                    <td id="novCG"></td>
-                    <td id="dicCG"></th>
+                    <td>Consejo General</td>
+                    <td class="tdTabla" id="eneCG"></td>
+                    <td class="tdTabla" id="febCG"></td>
+                    <td class="tdTabla" id="marCG"></td>
+                    <td class="tdTabla" id="abrCG"></th>
+                    <td class="tdTabla" id="mayCG"></td>
+                    <td class="tdTabla" id="junCG"></td>
+                    <td class="tdTabla" id="julCG"></td>
+                    <td class="tdTabla" id="agoCG"></th>
+                    <td class="tdTabla" id="sepCG"></td>
+                    <td class="tdTabla" id="octCG"></td>
+                    <td class="tdTabla" id="novCG"></td>
+                    <td class="tdTabla" id="dicCG"></th>
                   </tr>
                   <tr>
-                    <td>SE</td>
-                    <td id="eneSE"></td>
-                    <td id="febSE"></td>
-                    <td id="marSE"></td>
-                    <td id="abrSE"></th>
-                    <td id="maySE"></td>
-                    <td id="junSE"></td>
-                    <td id="julSE"></td>
-                    <td id="agoSE"></th>
-                    <td id="sepSE"></td>
-                    <td id="octSE"></td>
-                    <td id="novSE"></td>
-                    <td id="dicSE"></th>
+                    <td>Secretaria Ejecutiva</td>
+                    <td class="tdTabla" id="eneSE"></td>
+                    <td class="tdTabla" id="febSE"></td>
+                    <td class="tdTabla" id="marSE"></td>
+                    <td class="tdTabla" id="abrSE"></th>
+                    <td class="tdTabla" id="maySE"></td>
+                    <td class="tdTabla" id="junSE"></td>
+                    <td class="tdTabla" id="julSE"></td>
+                    <td class="tdTabla" id="agoSE"></th>
+                    <td class="tdTabla" id="sepSE"></td>
+                    <td class="tdTabla" id="octSE"></td>
+                    <td class="tdTabla" id="novSE"></td>
+                    <td class="tdTabla" id="dicSE"></th>
                   </tr>
                   <tr>
-                    <td>DEPPP</td>
-                    <td id="eneDEPPP"></td>
-                    <td id="febDEPPP"></td>
-                    <td id="marDEPPP"></td>
-                    <td id="abrDEPPP"></th>
-                    <td id="mayDEPPP"></td>
-                    <td id="junDEPPP"></td>
-                    <td id="julDEPPP"></td>
-                    <td id="agoDEPPP"></th>
-                    <td id="sepDEPPP"></td>
-                    <td id="octDEPPP"></td>
-                    <td id="novDEPPP"></td>
-                    <td id="dicDEPPP"></th>
+                    <td>Dirección Ejecutiva Prerrogativas y Partidos Políticos</td>
+                    <td class="tdTabla" id="eneDEPPP"></td>
+                    <td class="tdTabla" id="febDEPPP"></td>
+                    <td class="tdTabla" id="marDEPPP"></td>
+                    <td class="tdTabla" id="abrDEPPP"></th>
+                    <td class="tdTabla" id="mayDEPPP"></td>
+                    <td class="tdTabla" id="junDEPPP"></td>
+                    <td class="tdTabla" id="julDEPPP"></td>
+                    <td class="tdTabla" id="agoDEPPP"></th>
+                    <td class="tdTabla" id="sepDEPPP"></td>
+                    <td class="tdTabla" id="octDEPPP"></td>
+                    <td class="tdTabla" id="novDEPPP"></td>
+                    <td class="tdTabla" id="dicDEPPP"></th>
                   </tr>
                   <tr>
-                    <td>DEOE</td>
-                    <td id="eneDEODE"></td>
-                    <td id="febDEODE"></td>
-                    <td id="marDEODE"></td>
-                    <td id="abrDEODE"></th>
-                    <td id="mayDEODE"></td>
-                    <td id="junDEODE"></td>
-                    <td id="julDEODE"></td>
-                    <td id="agoDEODE"></th>
-                    <td id="sepDEODE"></td>
-                    <td id="octDEODE"></td>
-                    <td id="novDEODE"></td>
-                    <td id="dicDEODE"></th>
+                    <td>Dirección Ejecutiva de Organización Electoral</td>
+                    <td class="tdTabla" id="eneDEODE"></td>
+                    <td class="tdTabla" id="febDEODE"></td>
+                    <td class="tdTabla" id="marDEODE"></td>
+                    <td class="tdTabla" id="abrDEODE"></th>
+                    <td class="tdTabla" id="mayDEODE"></td>
+                    <td class="tdTabla" id="junDEODE"></td>
+                    <td class="tdTabla" id="julDEODE"></td>
+                    <td class="tdTabla" id="agoDEODE"></th>
+                    <td class="tdTabla" id="sepDEODE"></td>
+                    <td class="tdTabla" id="octDEODE"></td>
+                    <td class="tdTabla" id="novDEODE"></td>
+                    <td class="tdTabla" id="dicDEODE"></th>
                   </tr>
                   <tr>
-                    <td>DECEYEC</td>
-                    <td id="eneDECEYEC"></td>
-                    <td id="febDECEYEC"></td>
-                    <td id="marDECEYEC"></td>
-                    <td id="abrDECEYEC"></th>
-                    <td id="mayDECEYEC"></td>
-                    <td id="junDECEYEC"></td>
-                    <td id="julDECEYEC"></td>
-                    <td id="agoDECEYEC"></th>
-                    <td id="sepDECEYEC"></td>
-                    <td id="octDECEYEC"></td>
-                    <td id="novDECEYEC"></td>
-                    <td id="dicDECEYEC"></th>
+                    <td>Dirección Ejecutiva de Capacitación Electoral y Educación Cívica</td>
+                    <td class="tdTabla" id="eneDECEYEC"></td>
+                    <td class="tdTabla" id="febDECEYEC"></td>
+                    <td class="tdTabla" id="marDECEYEC"></td>
+                    <td class="tdTabla" id="abrDECEYEC"></th>
+                    <td class="tdTabla" id="mayDECEYEC"></td>
+                    <td class="tdTabla" id="junDECEYEC"></td>
+                    <td class="tdTabla" id="julDECEYEC"></td>
+                    <td class="tdTabla" id="agoDECEYEC"></th>
+                    <td class="tdTabla" id="sepDECEYEC"></td>
+                    <td class="tdTabla" id="octDECEYEC"></td>
+                    <td class="tdTabla" id="novDECEYEC"></td>
+                    <td class="tdTabla" id="dicDECEYEC"></th>
                   </tr>
                   <tr>
-                    <td>DEA</td>
-                    <td id="eneDEA"></td>
-                    <td id="febDEA"></td>
-                    <td id="marDEA"></td>
-                    <td id="abrDEA"></th>
-                    <td id="mayDEA"></td>
-                    <td id="junDEA"></td>
-                    <td id="julDEA"></td>
-                    <td id="agoDEA"></th>
-                    <td id="sepDEA"></td>
-                    <td id="octDEA"></td>
-                    <td id="novDEA"></td>
-                    <td id="dicDEA"></th>
+                    <td>Dirección Ejecutiva de Administración</td>
+                    <td class="tdTabla" id="eneDEA"></td>
+                    <td class="tdTabla" id="febDEA"></td>
+                    <td class="tdTabla" id="marDEA"></td>
+                    <td class="tdTabla" id="abrDEA"></th>
+                    <td class="tdTabla" id="mayDEA"></td>
+                    <td class="tdTabla" id="junDEA"></td>
+                    <td class="tdTabla" id="julDEA"></td>
+                    <td class="tdTabla" id="agoDEA"></th>
+                    <td class="tdTabla" id="sepDEA"></td>
+                    <td class="tdTabla" id="octDEA"></td>
+                    <td class="tdTabla" id="novDEA"></td>
+                    <td class="tdTabla" id="dicDEA"></th>
                   </tr>
                   <tr>
-                    <td>DEAJ</td>
-                    <td id="eneDEAJ"></td>
-                    <td id="febDEAJ"></td>
-                    <td id="marDEAJ"></td>
-                    <td id="abrDEAJ"></th>
-                    <td id="mayDEAJ"></td>
-                    <td id="junDEAJ"></td>
-                    <td id="julDEAJ"></td>
-                    <td id="agoDEAJ"></th>
-                    <td id="sepDEAJ"></td>
-                    <td id="octDEAJ"></td>
-                    <td id="novDEAJ"></td>
-                    <td id="dicDEAJ"></th>
+                    <td>Dirección Ejecutiva de Asuntos Jurídicos</td>
+                    <td class="tdTabla" id="eneDEAJ"></td>
+                    <td class="tdTabla" id="febDEAJ"></td>
+                    <td class="tdTabla" id="marDEAJ"></td>
+                    <td class="tdTabla" id="abrDEAJ"></th>
+                    <td class="tdTabla" id="mayDEAJ"></td>
+                    <td class="tdTabla" id="junDEAJ"></td>
+                    <td class="tdTabla" id="julDEAJ"></td>
+                    <td class="tdTabla" id="agoDEAJ"></th>
+                    <td class="tdTabla" id="sepDEAJ"></td>
+                    <td class="tdTabla" id="octDEAJ"></td>
+                    <td class="tdTabla" id="novDEAJ"></td>
+                    <td class="tdTabla" id="dicDEAJ"></th>
                   </tr>
                   <tr>
-                    <td>UF</td>
-                    <td id="eneUF"></td>
-                    <td id="febUF"></td>
-                    <td id="marUF"></td>
-                    <td id="abrUF"></th>
-                    <td id="mayUF"></td>
-                    <td id="junUF"></td>
-                    <td id="julUF"></td>
-                    <td id="agoUF"></th>
-                    <td id="sepUF"></td>
-                    <td id="octUF"></td>
-                    <td id="novUF"></td>
-                    <td id="dicUF"></th>
+                    <td>Unidad de Fiscalización</td>
+                    <td class="tdTabla" id="eneUF"></td>
+                    <td class="tdTabla" id="febUF"></td>
+                    <td class="tdTabla" id="marUF"></td>
+                    <td class="tdTabla" id="abrUF"></th>
+                    <td class="tdTabla" id="mayUF"></td>
+                    <td class="tdTabla" id="junUF"></td>
+                    <td class="tdTabla" id="julUF"></td>
+                    <td class="tdTabla" id="agoUF"></th>
+                    <td class="tdTabla" id="sepUF"></td>
+                    <td class="tdTabla" id="octUF"></td>
+                    <td class="tdTabla" id="novUF"></td>
+                    <td class="tdTabla" id="dicUF"></th>
                   </tr>
                   <tr>
-                    <td>UTCS</td>
-                    <td id="eneUTCS"></td>
-                    <td id="febUTCS"></td>
-                    <td id="marUTCS"></td>
-                    <td id="abrUTCS"></th>
-                    <td id="mayUTCS"></td>
-                    <td id="junUTCS"></td>
-                    <td id="julUTCS"></td>
-                    <td id="agoUTCS"></th>
-                    <td id="sepUTCS"></td>
-                    <td id="octUTCS"></td>
-                    <td id="novUTCS"></td>
-                    <td id="dicUTCS"></th>
+                    <td>Unidad Técnica de Comunicación Social</td>
+                    <td class="tdTabla" id="eneUTCS"></td>
+                    <td class="tdTabla" id="febUTCS"></td>
+                    <td class="tdTabla" id="marUTCS"></td>
+                    <td class="tdTabla" id="abrUTCS"></th>
+                    <td class="tdTabla" id="mayUTCS"></td>
+                    <td class="tdTabla" id="junUTCS"></td>
+                    <td class="tdTabla" id="julUTCS"></td>
+                    <td class="tdTabla" id="agoUTCS"></th>
+                    <td class="tdTabla" id="sepUTCS"></td>
+                    <td class="tdTabla" id="octUTCS"></td>
+                    <td class="tdTabla" id="novUTCS"></td>
+                    <td class="tdTabla" id="dicUTCS"></th>
                   </tr>
                   <tr>
-                    <td>UTCFD</td>
-                    <td id="eneUTCFD"></td>
-                    <td id="febUTCFD"></td>
-                    <td id="marUTCFD"></td>
-                    <td id="abrUTCFD"></th>
-                    <td id="mayUTCFD"></td>
-                    <td id="junUTCFD"></td>
-                    <td id="julUTCFD"></td>
-                    <td id="agoUTCFD"></th>
-                    <td id="sepUTCFD"></td>
-                    <td id="octUTCFD"></td>
-                    <td id="novUTCFD"></td>
-                    <td id="dicUTCFD"></th>
+                    <td>Unidad Técnica del Centro de Formación y Desarrollo</td>
+                    <td class="tdTabla" id="eneUTCFD"></td>
+                    <td class="tdTabla" id="febUTCFD"></td>
+                    <td class="tdTabla" id="marUTCFD"></td>
+                    <td class="tdTabla" id="abrUTCFD"></th>
+                    <td class="tdTabla" id="mayUTCFD"></td>
+                    <td class="tdTabla" id="junUTCFD"></td>
+                    <td class="tdTabla" id="julUTCFD"></td>
+                    <td class="tdTabla" id="agoUTCFD"></th>
+                    <td class="tdTabla" id="sepUTCFD"></td>
+                    <td class="tdTabla" id="octUTCFD"></td>
+                    <td class="tdTabla" id="novUTCFD"></td>
+                    <td class="tdTabla" id="dicUTCFD"></th>
                   </tr>
                   <tr>
-                    <td>UTSI</td>
-                    <td id="eneUTSI"></td>
-                    <td id="febUTSI"></td>
-                    <td id="marUTSI"></td>
-                    <td id="abrUTSI"></th>
-                    <td id="mayUTSI"></td>
-                    <td id="junUTSI"></td>
-                    <td id="julUTSI"></td>
-                    <td id="agoUTSI"></th>
-                    <td id="sepUTSI"></td>
-                    <td id="octUTSI"></td>
-                    <td id="novUTSI"></td>
-                    <td id="dicUTSI"></th>
+                    <td>Unidad Técnica de Servicios Informáticos</td>
+                    <td class="tdTabla" id="eneUTSI"></td>
+                    <td class="tdTabla" id="febUTSI"></td>
+                    <td class="tdTabla" id="marUTSI"></td>
+                    <td class="tdTabla" id="abrUTSI"></th>
+                    <td class="tdTabla" id="mayUTSI"></td>
+                    <td class="tdTabla" id="junUTSI"></td>
+                    <td class="tdTabla" id="julUTSI"></td>
+                    <td class="tdTabla" id="agoUTSI"></th>
+                    <td class="tdTabla" id="sepUTSI"></td>
+                    <td class="tdTabla" id="octUTSI"></td>
+                    <td class="tdTabla" id="novUTSI"></td>
+                    <td class="tdTabla" id="dicUTSI"></th>
                   </tr>
                   <tr>
-                    <td>UTP</td>
-                    <td id="eneUTP"></td>
-                    <td id="febUTP"></td>
-                    <td id="marUTP"></td>
-                    <td id="abrUTP"></th>
-                    <td id="mayUTP"></td>
-                    <td id="junUTP"></td>
-                    <td id="julUTP"></td>
-                    <td id="agoUTP"></th>
-                    <td id="sepUTP"></td>
-                    <td id="octUTP"></td>
-                    <td id="novUTP"></td>
-                    <td id="dicUTP"></th>
+                    <td>Unidad Técnica de Planeación</td>
+                    <td class="tdTabla" id="eneUTP"></td>
+                    <td class="tdTabla" id="febUTP"></td>
+                    <td class="tdTabla" id="marUTP"></td>
+                    <td class="tdTabla" id="abrUTP"></th>
+                    <td class="tdTabla" id="mayUTP"></td>
+                    <td class="tdTabla" id="junUTP"></td>
+                    <td class="tdTabla" id="julUTP"></td>
+                    <td class="tdTabla" id="agoUTP"></th>
+                    <td class="tdTabla" id="sepUTP"></td>
+                    <td class="tdTabla" id="octUTP"></td>
+                    <td class="tdTabla" id="novUTP"></td>
+                    <td class="tdTabla" id="dicUTP"></th>
                   </tr>
                   <tr>
-                    <td>UTOE</td>
-                    <td id="eneUTOE"></td>
-                    <td id="febUTOE"></td>
-                    <td id="marUTOE"></td>
-                    <td id="abrUTOE"></th>
-                    <td id="mayUTOE"></td>
-                    <td id="junUTOE"></td>
-                    <td id="julUTOE"></td>
-                    <td id="agoUTOE"></th>
-                    <td id="sepUTOE"></td>
-                    <td id="octUTOE"></td>
-                    <td id="novUTOE"></td>
-                    <td id="dicUTOE"></th>
+                    <td>Unidad Técnica de Oficialía Electoral</td>
+                    <td class="tdTabla" id="eneUTOE"></td>
+                    <td class="tdTabla" id="febUTOE"></td>
+                    <td class="tdTabla" id="marUTOE"></td>
+                    <td class="tdTabla" id="abrUTOE"></th>
+                    <td class="tdTabla" id="mayUTOE"></td>
+                    <td class="tdTabla" id="junUTOE"></td>
+                    <td class="tdTabla" id="julUTOE"></td>
+                    <td class="tdTabla" id="agoUTOE"></th>
+                    <td class="tdTabla" id="sepUTOE"></td>
+                    <td class="tdTabla" id="octUTOE"></td>
+                    <td class="tdTabla" id="novUTOE"></td>
+                    <td class="tdTabla" id="dicUTOE"></th>
                   </tr>
                   <tr>
-                    <td>UTS</td>
-                    <td id="eneUTS"></td>
-                    <td id="febUTS"></td>
-                    <td id="marUTS"></td>
-                    <td id="abrUTS"></th>
-                    <td id="mayUTS"></td>
-                    <td id="junUTS"></td>
-                    <td id="julUTS"></td>
-                    <td id="agoUTS"></th>
-                    <td id="sepUTS"></td>
-                    <td id="octUTS"></td>
-                    <td id="novUTS"></td>
-                    <td id="dicUTS"></th>
+                    <td>Unidad Técnica de Secretariado</td>
+                    <td class="tdTabla" id="eneUTS"></td>
+                    <td class="tdTabla" id="febUTS"></td>
+                    <td class="tdTabla" id="marUTS"></td>
+                    <td class="tdTabla" id="abrUTS"></th>
+                    <td class="tdTabla" id="mayUTS"></td>
+                    <td class="tdTabla" id="junUTS"></td>
+                    <td class="tdTabla" id="julUTS"></td>
+                    <td class="tdTabla" id="agoUTS"></th>
+                    <td class="tdTabla" id="sepUTS"></td>
+                    <td class="tdTabla" id="octUTS"></td>
+                    <td class="tdTabla" id="novUTS"></td>
+                    <td class="tdTabla" id="dicUTS"></th>
                   </tr>
                   <tr>
-                    <td>UTVODES</td>
-                    <td id="eneUTVODES"></td>
-                    <td id="febUTVODES"></td>
-                    <td id="marUTVODES"></td>
-                    <td id="abrUTVODES"></th>
-                    <td id="mayUTVODES"></td>
-                    <td id="junUTVODES"></td>
-                    <td id="julUTVODES"></td>
-                    <td id="agoUTVODES"></th>
-                    <td id="sepUTVODES"></td>
-                    <td id="octUTVODES"></td>
-                    <td id="novUTVODES"></td>
-                    <td id="dicUTVODES"></th>
+                    <td>Unidad Técnica de Vinculación con Órganos Desconcentrados y Organizaciones de la Sociedad Civil</td>
+                    <td class="tdTabla" id="eneUTVODES"></td>
+                    <td class="tdTabla" id="febUTVODES"></td>
+                    <td class="tdTabla" id="marUTVODES"></td>
+                    <td class="tdTabla" id="abrUTVODES"></th>
+                    <td class="tdTabla" id="mayUTVODES"></td>
+                    <td class="tdTabla" id="junUTVODES"></td>
+                    <td class="tdTabla" id="julUTVODES"></td>
+                    <td class="tdTabla" id="agoUTVODES"></th>
+                    <td class="tdTabla" id="sepUTVODES"></td>
+                    <td class="tdTabla" id="octUTVODES"></td>
+                    <td class="tdTabla" id="novUTVODES"></td>
+                    <td class="tdTabla" id="dicUTVODES"></th>
                   </tr>
                   <tr>
-                    <td>UTIGI</td>
-                    <td id="eneUTIGI"></td>
-                    <td id="febUTIGI"></td>
-                    <td id="marUTIGI"></td>
-                    <td id="abrUTIGI"></th>
-                    <td id="mayUTIGI"></td>
-                    <td id="junUTIGI"></td>
-                    <td id="julUTIGI"></td>
-                    <td id="agoUTIGI"></th>
-                    <td id="sepUTIGI"></td>
-                    <td id="octUTIGI"></td>
-                    <td id="novUTIGI"></td>
-                    <td id="dicUTIGI"></th>
+                    <td>Unidad Técnica de Igualdad de Género e Inclusión</td>
+                    <td class="tdTabla" id="eneUTIGI"></td>
+                    <td class="tdTabla" id="febUTIGI"></td>
+                    <td class="tdTabla" id="marUTIGI"></td>
+                    <td class="tdTabla" id="abrUTIGI"></th>
+                    <td class="tdTabla" id="mayUTIGI"></td>
+                    <td class="tdTabla" id="junUTIGI"></td>
+                    <td class="tdTabla" id="julUTIGI"></td>
+                    <td class="tdTabla" id="agoUTIGI"></th>
+                    <td class="tdTabla" id="sepUTIGI"></td>
+                    <td class="tdTabla" id="octUTIGI"></td>
+                    <td class="tdTabla" id="novUTIGI"></td>
+                    <td class="tdTabla" id="dicUTIGI"></th>
                   </tr>
                   <tr>
-                    <td>UTT</td>
-                    <td id="eneUTT"></td>
-                    <td id="febUTT"></td>
-                    <td id="marUTT"></td>
-                    <td id="abrUTT"></th>
-                    <td id="mayUTT"></td>
-                    <td id="junUTT"></td>
-                    <td id="julUTT"></td>
-                    <td id="agoUTT"></th>
-                    <td id="sepUTT"></td>
-                    <td id="octUTT"></td>
-                    <td id="novUTT"></td>
-                    <td id="dicUTT"></th>
+                    <td>Unidad Técnica de Transparencia</td>
+                    <td class="tdTabla" id="eneUTT"></td>
+                    <td class="tdTabla" id="febUTT"></td>
+                    <td class="tdTabla" id="marUTT"></td>
+                    <td class="tdTabla" id="abrUTT"></th>
+                    <td class="tdTabla" id="mayUTT"></td>
+                    <td class="tdTabla" id="junUTT"></td>
+                    <td class="tdTabla" id="julUTT"></td>
+                    <td class="tdTabla" id="agoUTT"></th>
+                    <td class="tdTabla" id="sepUTT"></td>
+                    <td class="tdTabla" id="octUTT"></td>
+                    <td class="tdTabla" id="novUTT"></td>
+                    <td class="tdTabla" id="dicUTT"></th>
                   </tr>
                   <tr>
-                    <td>CONTRALORIA</td>
-                    <td id="eneCONTRALORIA"></td>
-                    <td id="febCONTRALORIA"></td>
-                    <td id="marCONTRALORIA"></td>
-                    <td id="abrCONTRALORIA"></th>
-                    <td id="mayCONTRALORIA"></td>
-                    <td id="junCONTRALORIA"></td>
-                    <td id="julCONTRALORIA"></td>
-                    <td id="agoCONTRALORIA"></th>
-                    <td id="sepCONTRALORIA"></td>
-                    <td id="octCONTRALORIA"></td>
-                    <td id="novCONTRALORIA"></td>
-                    <td id="dicCONTRALORIA"></th>
+                    <td>Órgano Interno de Control</td>
+                    <td class="tdTabla" id="eneCONTRALORIA"></td>
+                    <td class="tdTabla" id="febCONTRALORIA"></td>
+                    <td class="tdTabla" id="marCONTRALORIA"></td>
+                    <td class="tdTabla" id="abrCONTRALORIA"></th>
+                    <td class="tdTabla" id="mayCONTRALORIA"></td>
+                    <td class="tdTabla" id="junCONTRALORIA"></td>
+                    <td class="tdTabla" id="julCONTRALORIA"></td>
+                    <td class="tdTabla" id="agoCONTRALORIA"></th>
+                    <td class="tdTabla" id="sepCONTRALORIA"></td>
+                    <td class="tdTabla" id="octCONTRALORIA"></td>
+                    <td class="tdTabla" id="novCONTRALORIA"></td>
+                    <td class="tdTabla" id="dicCONTRALORIA"></th>
                   </tr>
             </table>
 

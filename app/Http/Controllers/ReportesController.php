@@ -508,9 +508,11 @@ class ReportesController extends Controller
 
       //print_r($aletipo);exit;
 
-      //if ($idArea) {
-      //  # code...
-      //}
+      if (empty($idArea)||empty($idprograma)||empty($idProgramaEsp)||empty($idTrimestre)) {
+
+         return redirect()->route('admin.poa.trimestral');
+        # code...
+      } else {
 
       //Obtengo los campos del área
       $areas = Area::where('idarea', $idArea)->get();
@@ -716,8 +718,11 @@ class ReportesController extends Controller
           $nalertas = [];
           $alertas = [];
 
+          return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas'));
 
-      return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas'));
+        }
+
+     
     }
 
 
