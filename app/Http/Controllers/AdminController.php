@@ -7,6 +7,8 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use PDF;
+use Alert;
+
 class AdminController extends Controller
 {
     /**
@@ -60,6 +62,7 @@ class AdminController extends Controller
       $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
 
       DB::table('detalleactividades')->where('idmes', $mesadmin)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
+      Alert::success('Registro exitoso', 'Ok!')->autoclose(3500);
       return redirect()->route('programa.index');
     }
 

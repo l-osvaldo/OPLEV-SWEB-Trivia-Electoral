@@ -18,6 +18,7 @@ class PoaController extends Controller
      */
     public function index()
     {
+
       if (Auth::check())
       {
         
@@ -56,8 +57,14 @@ class PoaController extends Controller
      */
     public function create(Request $request)
     {
+      
       if ( Auth::check() )
       {
+
+        if ( empty($request->input('idmesreportar')) ) {
+         //Alert::error('Seleccione un mes', '¡Error!')->autoclose(3500);
+          return redirect()->route('index');
+        }
         #Validación del mes a reportar
         list( $rules, $messages ) = $this->_rules();
         $this->validate( $request, $rules, $messages );

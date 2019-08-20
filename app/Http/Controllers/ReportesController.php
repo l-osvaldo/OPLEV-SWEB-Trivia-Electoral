@@ -9,6 +9,7 @@ use Auth;
 use PDF;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Alert;
 
 class ReportesController extends Controller
 {
@@ -229,13 +230,13 @@ class ReportesController extends Controller
       if ( Auth::check() )
       {
 
+
         if (!Auth::user()->hasRole('admin')) 
         {         
           #Validación de seleccion de combos
           list( $rules, $messages ) = $this->_rulespoa();
           $this->validate( $request, $rules, $messages );
         }
-
         
         if (Auth::user()->hasRole('admin')) 
         { 
@@ -251,6 +252,11 @@ class ReportesController extends Controller
           $idPrograma = $request->programa;
           $idProgramaEsp = $request->programaEsp;
         }
+
+        //if (empty($idArea)||empty($idMes)||empty($idProgramaEsp)||empty($idPrograma)) {
+        //   Alert::error('Los campos son requeridos', '¡Error!')->autoclose(3500);
+        //     return redirect()->route('reportes.poa');
+        //  }
         
         $area = Area::select('nombrearea')->where('idarea', $idArea)->get();
         $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
@@ -466,11 +472,16 @@ class ReportesController extends Controller
       {   
         #Validación de seleccion de combos
         //list( $rules, $messages ) = $this->_rulesindicadores();
-        //$this->validate( $request, $rules, $messages );  
+        //$this->validate( $request, $rules, $messages ); 
+         
 
         $idArea = Auth::user()->idarea;        
         $idMes = $request->idmesreporteadicional;      
         $infoadicional = Adicional::where('idarea', $idArea)->where('idmes', $idMes)->get();
+
+        //if (empty($idArea)||empty($idMes)) {
+        //    Alert::error('Seleccione un mes', '¡Error!')->autoclose(3500);
+        //}
 
         if ($infoadicional->count() > 0)
         {
@@ -488,6 +499,7 @@ class ReportesController extends Controller
         {          
           echo "<script>alert('No hay actividades adicionales en el mes seleccionado');</script>";
           echo "<script>window.close();</script>";  
+          //Alert::error('No hay actividades adicionales en el mes seleccionado', '¡Error!')->autoclose(3500);
         }
       }
       else
@@ -505,14 +517,18 @@ class ReportesController extends Controller
       $idPrograma = $request->programa_trim;
       $idProgramaEsp = $request->programaEsp_trim;    
       $idTrimestre = $request->trimestre_trim; 
+      //print_r($idProgramaEsp);exit;
+      //if ($idArea==='0'||$idProgramaEsp==='0'||$idProgramaEsp==='0'||$idTrimestre==='0') {
+      //   Alert::error('Los campos son requeridos', '¡Error!')->autoclose(3500);
+      //}
 
       //print_r($aletipo);exit;
 
-      if (empty($idArea)||empty($idprograma)||empty($idProgramaEsp)||empty($idTrimestre)) {
-
-         return redirect()->route('admin.poa.trimestral');
-        # code...
-      } else {
+      if (empty($idArea)||empty($idPrograma)||empty($idProgramaEsp)||empty($idTrimestre)) {
+         //Alert::error('Los campos son requeridos', '¡Error!')->autoclose(3500);
+          return redirect()->route('admin.poa.trimestral');
+         //print_r($idArea);exit;
+      }
 
       //Obtengo los campos del área
       $areas = Area::where('idarea', $idArea)->get();
@@ -720,7 +736,7 @@ class ReportesController extends Controller
 
           return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas'));
 
-        }
+
 
      
     }

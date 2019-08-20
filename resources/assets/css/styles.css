@@ -9,6 +9,7 @@
 .btn-primary:hover{background:#EA0D94 !important; }
 .info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 
+
 .badge-warning{background: #6d5622; color: #fff;}
 .hidden{display: none !important;}
 .inputMes{cursor: pointer;}

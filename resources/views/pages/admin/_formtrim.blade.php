@@ -22,7 +22,7 @@
 <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
 <div class="contInput">
   <label>1. Seleccione un Área</label>
-    <select class="form-control" id="area_trim" name="area_trim" >
+    <select class="form-control validar" data-error="1" id="area_trim" name="area_trim" >
         <option value="0">Área...</option>
         @foreach( $areas as $area )
         <option value="{{$area->idarea}}">{{$area->nombrearea}}</option>
@@ -32,7 +32,7 @@
 
 
     <label>2. Seleccione un Programa</label>
-      <select class="form-control" id="programa_trim" name="programa_trim" >
+      <select class="form-control validar" data-error="1" id="programa_trim" name="programa_trim" >
         <option value="0">Programa...</option>
         @foreach( $programas as $programa )
         <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
@@ -41,13 +41,13 @@
       <br>
 
       <label>3. Seleccione un Programa Específico</label>
-        <select class="form-control" id="programaEsp_trim" name="programaEsp_trim">
+        <select class="form-control validar" data-error="1" id="programaEsp_trim" name="programaEsp_trim">
           <option value="0">Programa Específico...</option>
         </select>
         <br>
                   
         <label>4. Seleccione un Trimestre</label>
-          <select class="form-control" id="trimestre_trim" name="trimestre_trim">
+          <select class="form-control validar" data-error="1" id="trimestre_trim" name="trimestre_trim">
             <option value="0">Trimestre...</option>
             @foreach( $trimestres as $trimestre )
               <option value="{{$trimestre->id}}">{{$trimestre->trimestre}}</option>
@@ -65,7 +65,7 @@
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
       @if(Auth::user()->hasRole('admin')) 
-        <button type="submit" class="btn btn-primary" id="btnGenerar_trim" name="btnGenerar_trim">Generar Trimestral</button>      
+        <button type="submit" class="btn btn-primary  EnaBtn" disabled="true" id="btnGenerar_trim" name="btnGenerar_trim">Generar Trimestral</button>      
       @endif      
 
 

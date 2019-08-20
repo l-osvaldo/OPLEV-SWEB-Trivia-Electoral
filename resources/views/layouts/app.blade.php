@@ -295,5 +295,7 @@
 
     </script>
 
+    <script src="{{ URL::asset('js/validainput.js') }}"></script>
+
   </body>
 </html>

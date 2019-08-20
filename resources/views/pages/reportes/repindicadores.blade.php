@@ -18,11 +18,11 @@
       <div class="row">
         <div class="col-12">
           <div class="box">
-            <ul class="alert alert-danger">
+            <!--ul class="alert alert-danger">
               @foreach ( $errors->all() as $error )
                 <p class="media-body pb-1 mb-0 small lh-125">* {{ $error }}</p>
               @endforeach
-            </ul>
+            </ul-->
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
             
 
               <label>1. Seleccione el mes del reporte:</label>                  
-              <select class="form-control" id="idmesreportar" name="idmesreportar">
+              <select class="form-control validar" id="idmesreportar" data-error="1" name="idmesreportar">
                 <option value="0">Mes...</option>      
                 @foreach( $meses as $mes )
                 <option value="{{ $mes->idmes }}" @if(old('idmesreportar') == $mes->idmes) {{ 'selected' }} @endif>{{$mes->mes}}</option>
@@ -76,7 +76,7 @@
               <br>
 
               <label>2. Seleccione el programa:</label>                  
-              <select class="form-control" id="programa" name="programa">
+              <select class="form-control validar" id="programa" data-error="1" name="programa">
                 <option value="0">Programa...</option>
                 @foreach( $programas as $programa )
                   <option value="{{ $programa->idprograma }}" @if(old('programa') == $programa->idprograma) {{ 'selected' }} @endif>{{$programa->claveprograma}} - {{$programa->descprograma}}</option>                @endforeach
@@ -84,7 +84,7 @@
               <br>
 
               <label>3. Seleccione el programa específico:</label>                  
-              <select class="form-control" id="programaEsp" name="programaEsp">
+              <select class="form-control validar" id="programaEsp" data-error="1" name="programaEsp">
                 <option value="0">Programa Específico...</option>
               </select>
               <br>
@@ -92,11 +92,12 @@
 
               <label>4. Seleccione la actividad para el indicador:</label>                  
                   <div class="form-group" id="divActividad">
-                    <select class="form-control" id="actividades" name="actividades">
+                    <select class="form-control validar" id="actividades" data-error="1" name="actividades">
+                      <option value="0">---</option>
                     </select>
                   </div>
 
-              <button type="submit" class="btn btn-primary">Generar Reporte de Indicador <i class="fa fa-file-pdf-o"></i></button>
+              <button type="submit" id="btnvalidar" class="btn btn-primary EnaBtn" disabled="true">Generar Reporte de Indicador <i class="fa fa-file-pdf-o"></i></button>
 
            
           </div>
@@ -112,5 +113,35 @@
 </section>
 </div>
 
+<!--script src="http://sipsei.test/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+var EnaBtn = document.getElementsByClassName('EnaBtn')[0];
+var classname = document.getElementsByClassName("validar");
+
+for (var i = 0; i < classname.length; i++) {
+    classname[i].addEventListener('change', validardatos, false);
+}
+
+function validardatos() {
+  EnaBtn.disabled = true;
+  for (var i = 0; i < classname.length; i++) {
+    if (classname[i].value === '0' || classname[i].value === '' || classname[i].value === null || classname[i].value === 'undefined') {
+      classname[i].setAttribute('data-error', '1');
+    }
+  }
+  this.value != 0 ? this.setAttribute('data-error', '0') : this.setAttribute('data-error', '1');
+  disabledBTN();
+}
+  
+function disabledBTN() {
+  var valArr = []; 
+  for (var i = 0; i < classname.length; i++) {
+      valArr.push(classname[i].getAttribute('data-error'));
+  }
+  valArr.includes('1') ? EnaBtn.disabled = true : EnaBtn.disabled = false;
+}
+
+</script-->
 
 @endsection

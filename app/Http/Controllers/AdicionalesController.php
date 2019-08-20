@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, DetalleActi, Area, Programa, Adicional};
 use DB;
 use Auth;
+use Alert;
 
 class AdicionalesController extends Controller
 {
@@ -41,6 +42,9 @@ class AdicionalesController extends Controller
       if ( Auth::check() )
       {        
         #Validación del mes a reportar
+        if ($this->_rules()) {
+           //Alert::error('Seleccione un mes', '¡Error!')->autoclose(3500);
+        }
         list( $rules, $messages ) = $this->_rules();
         $this->validate( $request, $rules, $messages );
 
@@ -48,6 +52,8 @@ class AdicionalesController extends Controller
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();                
         $existeAdicional = Adicional::select('descadicional', 'soporteadicional', 'observaadicional')->where('idarea', $idArea)->where('idmes', $idmesreportar)->exists();
+
+
         //devuelve false sino existe
         if ($existeAdicional)
         {          
