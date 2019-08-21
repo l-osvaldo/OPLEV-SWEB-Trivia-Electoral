@@ -77,6 +77,7 @@ $(function() {
     var programa = $('#programa_admin').find(':selected').val();
     var comboProgramaEsp = '';
 
+    
 
     $.ajax({
       url: _prefix_url+"/admin/obtenProgramaEsp",
@@ -95,6 +96,9 @@ $(function() {
         $('#programareporte').val(programa);
       });
 
+      document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
+      document.getElementById('actividades_admin').setAttribute('data-error', '1');
+      disabledBTN();
   });
 
   function obtenObjetivos(area, programa, programaEsp) {
@@ -166,6 +170,8 @@ $(function() {
         $('#actividades_admin').html(comboActividades);
         $('#programaespreporte').val(programaEsp);        
       }); //Done
+      document.getElementById('actividades_admin').setAttribute('data-error', '1');
+      disabledBTN();
   });
 
 
@@ -287,6 +293,11 @@ $(function() {
     $('#btnReporteMensual_admin').hide();  
 
     $('#mesreporte').val($('#mes_admin').find(':selected').val());
+
+    document.getElementById('programa_admin').setAttribute('data-error', '1');
+    document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
+    document.getElementById('actividades_admin').setAttribute('data-error', '1');
+    disabledBTN();
   });
 
   $("#area_admin").change(function()  
@@ -308,6 +319,11 @@ $(function() {
     $('#btnReporteMensual_admin').hide();  
 
     $('#areareporte').val($('#area_admin').find(':selected').val());
+
+    document.getElementById('programa_admin').setAttribute('data-error', '1');
+    document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
+    document.getElementById('actividades_admin').setAttribute('data-error', '1');
+    disabledBTN();
   });
 
 
@@ -329,6 +345,10 @@ $(function() {
     $('#btnReporteMensual_trim').hide();  
 
     $('#areareporte').val($('#area_trim').find(':selected').val());
+
+    document.getElementById('programa_trim').setAttribute('data-error', '1');
+    document.getElementById('trimestre_trim').setAttribute('data-error', '1');
+    disabledBTN();
   });
 
   $("#programa_trim").change(function()
@@ -358,7 +378,8 @@ $(function() {
         $('#programaEsp_trim').html(comboProgramaEsp);      
         $('#programareporte').val(programa);
       });
-
+      document.getElementById('programaEsp_trim').setAttribute('data-error', '1');
+      disabledBTN();
   });
 
   $("#programaEsp_trim").change(function()

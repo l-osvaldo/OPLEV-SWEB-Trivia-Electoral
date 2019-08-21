@@ -163,7 +163,11 @@ $(function() {
           }
         }); //Each
         $('#actividades').html(comboActividades);
+       
+        
       }); //Done
+       document.getElementById('actividades').setAttribute('data-error', '1');
+      disabledBTN();
   });
 
   //Generación de tabla y textareas de actividad, soporte, observaciones
@@ -236,7 +240,7 @@ $(function() {
         $('#dicr').html(response[0]['dicr']);
 
         var realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];
-        console.log(realizado[idMes]);
+        //console.log(realizado[idMes]);
         var pos = realizado[idMes];
 
         $('#realizadomes').val(response[0][pos]);

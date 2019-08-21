@@ -113,35 +113,5 @@
 </section>
 </div>
 
-<!--script src="http://sipsei.test/js/jquery.min.js"></script>
-<script type="text/javascript">
-
-var EnaBtn = document.getElementsByClassName('EnaBtn')[0];
-var classname = document.getElementsByClassName("validar");
-
-for (var i = 0; i < classname.length; i++) {
-    classname[i].addEventListener('change', validardatos, false);
-}
-
-function validardatos() {
-  EnaBtn.disabled = true;
-  for (var i = 0; i < classname.length; i++) {
-    if (classname[i].value === '0' || classname[i].value === '' || classname[i].value === null || classname[i].value === 'undefined') {
-      classname[i].setAttribute('data-error', '1');
-    }
-  }
-  this.value != 0 ? this.setAttribute('data-error', '0') : this.setAttribute('data-error', '1');
-  disabledBTN();
-}
-  
-function disabledBTN() {
-  var valArr = []; 
-  for (var i = 0; i < classname.length; i++) {
-      valArr.push(classname[i].getAttribute('data-error'));
-  }
-  valArr.includes('1') ? EnaBtn.disabled = true : EnaBtn.disabled = false;
-}
-
-</script-->
 
 @endsection
