@@ -7,6 +7,7 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use PDF;
+use PDFS;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use Alert;
@@ -290,9 +291,65 @@ class ReportesController extends Controller
         $poa['programaesp'] = $programaesp[0]->claveprogramaesp.' - '.$programaesp[0]->descprogramaesp;
         $poa['objetivo'] = $programaesp[0]->objprogramaesp;        
         //$pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
-        $pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
-        return $pdf->stream();
-          //return view('pages.reportes.new_poa', ['poa'=>$poa] );
+        //$pdf = PDF::loadView( 'pages.reportes.poa', ['poa'=>$poa] )->setPaper('letter', 'landscape');
+        //return $pdf->stream();
+
+        //dd(['poa'=>$poa]);exit;
+
+        $pdfs = PDFS::loadView('pages.reportes.poa', ['poa'=>$poa])->setPaper('letter', 'landscape');
+        $pdfs->setOption('margin-top', 72);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 10);
+        $pdfs->setOption('margin-right', 10);
+
+        $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html><body>
+    <table border="0" align="center" width="100%">
+
+    <tr style="border: 1px solid black;background:#fff; height:75px;">
+      <th colspan="6">
+      <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
+      ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
+      </th>
+    </tr>
+    <tr style="border: 1px solid black;background:#e3e3e3;">
+      <th colspan="6">
+        <h3>'.$poa['programa'].'<br>'.$poa['programaesp'].'</h3>
+      </th>
+    </tr>
+    <tr style="border: 1px solid black;background:#f9f9f9;">
+     <td colspan="6">
+       Objetivo: '.$poa['objetivo'].'
+     </td>
+    </tr>
+    <tr style="border: 1px solid black;background:#e3e3e3;">
+      <td colspan="2" width="400px">UNIDAD RESPONSABLE</td>
+      <td colspan="2" width="400px">FIRMA DEL RESPONSABLE</td>
+      <td colspan="2">MES</td>
+    </tr>
+    <tr style="border: 1px solid black;background:#f9f9f9;">
+      <td colspan="2">'.$poa['nombrearea'].'</td>
+      <td colspan="2"></td>
+      <td colspan="2">'.$poa['mes'].'</td>
+    </tr>
+    </table>
+     <table border="0" align="center" width="100%">
+    <tr style="border: 1px solid black;background:#e3e3e3;text-align: center;">
+        <td width="5%" colspan="1">No. ACT.</td> 
+        <td width="10%" colspan="1">AVANCE MENSUAL</td> 
+        <td width="10%" colspan="1">PROG. REAL.</td> 
+        <td width="42%" colspan="1">DESCRIPCIÓN</td> 
+        <td width="15%" colspan="1">SOPORTE</td> 
+        <td width="15%" colspan="1">OBSERVACIONES</td>
+    </tr>
+
+  </table>
+</body></html>');
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
+        //return view('pages.reportes.new_poa', ['poa'=>$poa] );
       }
       else
       {
@@ -453,8 +510,31 @@ class ReportesController extends Controller
         $indicadores['nombretitular'] = $infocedula[0]['nombretitular'];
         $indicadores['cargo'] = $infocedula[0]['cargo'];
 
-        $pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
-        return $pdf->stream();
+        //$pdf = PDF::loadView( 'pages.reportes.indicadores', ['indicadores'=>$indicadores] )->setPaper('letter', 'landscape');
+        //return $pdf->stream();
+
+        $pdfs = PDFS::loadView('pages.reportes.indicadores', ['indicadores'=>$indicadores])->setPaper('letter', 'landscape');
+        $pdfs->setOption('margin-top', 22);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 10);
+        $pdfs->setOption('margin-right', 10);
+
+        $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <html><body>
+            <table border="0" align="center" width="100%">
+
+            <tr style="border: 1px solid black;background:#fff; height:75px;">
+              <th colspan="6">
+              <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 
+              </th>
+            </tr>
+          </table>
+        </body></html>');
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
 
       
       }
@@ -492,8 +572,32 @@ class ReportesController extends Controller
           $adicionales['soporteadicional'] = $infoadicional[0]['soporteadicional'];
           $adicionales['observaadicional'] = $infoadicional[0]['observaadicional'];
 
-          $pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
-          return $pdf->stream();
+          //$pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
+         // return $pdf->stream();
+
+        $pdfs = PDFS::loadView('pages.reportes.adicionales', ['adicionales'=>$adicionales])->setPaper('letter', 'landscape');
+        $pdfs->setOption('margin-top', 22);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 10);
+        $pdfs->setOption('margin-right', 10);
+
+        $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <html><body>
+            <table border="0" align="center" width="100%">
+
+            <tr style="border: 1px solid black;background:#fff; height:75px;">
+              <th colspan="6">
+              <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 <br> Actividades Adicionales 
+              </th>
+            </tr>
+          </table>
+        </body></html>');
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
+
         }
         else
         {          
@@ -750,8 +854,31 @@ class ReportesController extends Controller
       {      
         $trimestral = Trimestral::all();
 
-        $pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('legal', 'landscape');
-        return $pdf->stream();
+        //$pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('legal', 'landscape');
+        //return $pdf->stream();
+
+        $pdfs = PDFS::loadView('pages.reportes.trimestrales', ['trimestral'=>$trimestral])->setPaper('legal', 'landscape');
+        $pdfs->setOption('margin-top', 22);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 10);
+        $pdfs->setOption('margin-right', 10);
+
+        $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <html><body>
+            <table border="0" align="center" width="100%">
+
+            <tr style="border: 1px solid black;background:#fff; height:75px;">
+              <th colspan="6">
+              <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
+              </th>
+            </tr>
+          </table>
+        </body></html>');
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
 
       
       }

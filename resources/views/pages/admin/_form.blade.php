@@ -221,7 +221,7 @@
 </div>
 
 <div class="col-md-6" style="margin-bottom: 1em;">
-<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" target="_blank">
     {{ csrf_field() }}
      <input type="hidden" id="areareporte" name="areareporte" value="">
     <input type="hidden" id="mesreporte" name="mesreporte" value="">
