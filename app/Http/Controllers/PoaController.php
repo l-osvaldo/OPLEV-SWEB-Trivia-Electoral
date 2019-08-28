@@ -151,7 +151,7 @@ class PoaController extends Controller
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      Alert::success('Notificación registrada', 'Ok!')->autoclose(3500);
+      Alert::success('', 'Notificación registrada')->autoclose(3500);
       return redirect()->route('programa.index');
     }
 

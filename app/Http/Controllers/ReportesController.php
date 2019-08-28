@@ -43,10 +43,10 @@ class ReportesController extends Controller
           $programas = Programa::where('reprogramacion', '<', 3)->get();
           $action = route('reportes.indicadores');
 
-          $nfin = [];
-          $alertasfin = [];
-          $nalertas = [];
-          $alertas = [];
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
           return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas','nfin', 'alertasfin','nalertas', 'alertas'));
         }
@@ -59,10 +59,10 @@ class ReportesController extends Controller
             $programas = Programa::where('idprograma', '=', 1)->get();        
           $action = route('reportes.indicadores');
 
-          $nfin = [];
-          $alertasfin = [];
-          $nalertas = [];
-          $alertas = [];
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
           return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses','nfin', 'alertasfin','nalertas', 'alertas'));
         }
       }
@@ -301,46 +301,53 @@ class ReportesController extends Controller
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+       
 
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <html><body>
     <table border="0" align="center" width="100%">
 
-    <tr style="border: 1px solid black;background:#fff; height:75px;">
-      <th colspan="6">
+    <tr style="border: 1px solid black;background:#fff; height:75px; text-align:center;">
+      <td colspan="6">
       <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
       ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
+      </td>
+    </tr>
+
+    </table>
+
+    <table border="1" align="center" width="100%" style="border: 1px solid black;border-collapse: collapse;text-align:center;">
+
+    <tr style="border: 1px solid black;background:#ccc;">
+      <th colspan="6"  style="font-size:14px;padding:5px 0;"">
+        '.$poa['programa'].'<br>'.$poa['programaesp'].'
       </th>
     </tr>
-    <tr style="border: 1px solid black;background:#e3e3e3;">
-      <th colspan="6">
-        <h3>'.$poa['programa'].'<br>'.$poa['programaesp'].'</h3>
-      </th>
-    </tr>
-    <tr style="border: 1px solid black;background:#f9f9f9;">
-     <td colspan="6">
+    <tr style="border: 1px solid black;">
+     <td colspan="6" style="text-align:center;font-size:14px;padding:5px 0;">
        Objetivo: '.$poa['objetivo'].'
      </td>
     </tr>
-    <tr style="border: 1px solid black;background:#e3e3e3;">
-      <td colspan="2" width="400px">UNIDAD RESPONSABLE</td>
-      <td colspan="2" width="400px">FIRMA DEL RESPONSABLE</td>
-      <td colspan="2">MES</td>
+    <tr style="background:#ccc;font-size:14px;font-weight: bold;">
+      <td colspan="2" style="padding:10px 0; border:solid 1px black;" width="400px">UNIDAD RESPONSABLE</td>
+      <td colspan="2" style="padding:10px 0; border:solid 1px black;" width="400px">FIRMA DEL RESPONSABLE</td>
+      <td colspan="2" style="padding:10px 30px; border:solid 1px black;">MES</td>
     </tr>
-    <tr style="border: 1px solid black;background:#f9f9f9;">
-      <td colspan="2">'.$poa['nombrearea'].'</td>
-      <td colspan="2"></td>
-      <td colspan="2">'.$poa['mes'].'</td>
+    <tr style="font-size:14px">
+      <td colspan="2" style="padding:10px 0; border:solid 1px black;">'.$poa['nombrearea'].'</td>
+      <td colspan="2" style="padding:10px 0; border:solid 1px black;"></td>
+      <td colspan="2" style="padding:10px 30px; border:solid 1px black;">'.$poa['mes'].'</td>
     </tr>
     </table>
-     <table border="0" align="center" width="100%">
-    <tr style="border: 1px solid black;background:#e3e3e3;text-align: center;">
-        <td width="5%" colspan="1">No. ACT.</td> 
-        <td width="10%" colspan="1">AVANCE MENSUAL</td> 
-        <td width="10%" colspan="1">PROG. REAL.</td> 
-        <td width="42%" colspan="1">DESCRIPCIÓN</td> 
-        <td width="15%" colspan="1">SOPORTE</td> 
-        <td width="15%" colspan="1">OBSERVACIONES</td>
+
+     <table border="0" align="center" width="100%" style="border-collapse: collapse;text-align:center;margin:2px 0;">
+    <tr style="background:#ccc;text-align: center;border: 1px solid black;border-bottom:1px;font-weight: bold;font-size:14px;">
+        <td width="5%" colspan="1" style="border-left:1px solid black;">No. ACT.</td> 
+        <td width="20%" colspan="1" style="border-left:1px solid black;">AVANCE MENSUAL<br><div style="width: 50%; float: left;text-align: center;">PROG.</div> <div style="width: 50%; float: left;text-align: center;">REAL.</div></td> 
+        <td width="42%" colspan="1" style="border-left:1px solid black;">DESCRIPCIÓN</td> 
+        <td width="15%" colspan="1" style="border-left:1px solid black;">SOPORTE</td> 
+        <td width="15%" colspan="1" style="border-left:1px solid black;">OBSERVACIONES</td>
     </tr>
 
   </table>
@@ -518,16 +525,17 @@ class ReportesController extends Controller
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
 
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <html><body>
             <table border="0" align="center" width="100%">
 
-            <tr style="border: 1px solid black;background:#fff; height:75px;">
-              <th colspan="6">
+            <tr style="border: 1px solid black;background:#fff; height:75px; text-align:center;">
+              <td colspan="6">
               <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
               ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 
-              </th>
+              </td>
             </tr>
           </table>
         </body></html>');
@@ -568,9 +576,9 @@ class ReportesController extends Controller
           $adicionales = array();      
           $adicionales['area'] = $infoadicional[0]['area'];
           $adicionales['mes'] = $infoadicional[0]['mes'];
-          $adicionales['descadicional'] = $infoadicional[0]['descadicional'];
-          $adicionales['soporteadicional'] = $infoadicional[0]['soporteadicional'];
-          $adicionales['observaadicional'] = $infoadicional[0]['observaadicional'];
+          $adicionales['descadicional'] = nl2br($infoadicional[0]['descadicional']);
+          $adicionales['soporteadicional'] = nl2br($infoadicional[0]['soporteadicional']);
+          $adicionales['observaadicional'] = nl2br($infoadicional[0]['observaadicional']);
 
           //$pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
          // return $pdf->stream();
@@ -580,6 +588,7 @@ class ReportesController extends Controller
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
 
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <html><body>
@@ -833,10 +842,10 @@ class ReportesController extends Controller
       $action = route('reportes.trimestral');
 
 
-          $nfin = [];
-          $alertasfin = [];
-          $nalertas = [];
-          $alertas = [];
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
 
           return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas'));
 
@@ -862,6 +871,8 @@ class ReportesController extends Controller
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+
 
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <html><body>
@@ -869,7 +880,6 @@ class ReportesController extends Controller
 
             <tr style="border: 1px solid black;background:#fff; height:75px;">
               <th colspan="6">
-              <img class="logo" src="http://sipsei.test/images/logoople.png" width="100" style="position:absolute;top:0px;">
               ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
               </th>
             </tr>

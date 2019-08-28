@@ -13,7 +13,7 @@
 @endif
 
 
-<form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+<form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12">
   {{ csrf_field() }}
 
 

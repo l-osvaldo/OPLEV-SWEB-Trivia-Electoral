@@ -106,7 +106,7 @@ function setid() {
       <div class="modal-body">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Su clave</span>
+            <span class="input-group-text" id="basic-addon3"><i class="fa fa-key" aria-hidden="true"></i></span>
           </div>
           <input type="password" class="form-control" id="clave" name="clave" aria-describedby="basic-addon3" maxlength="6">
 

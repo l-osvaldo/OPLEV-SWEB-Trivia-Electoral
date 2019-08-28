@@ -53,7 +53,7 @@
           <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" style="background: #ccc;padding: .1rem;" alt="User Image">
         </div>
         <div class="info nav-header">
-          {{ Auth::user()->name }}
+          {{ Auth::user()->username }}
         </div>
       </div>
 

@@ -52,7 +52,7 @@ class MailController extends Controller
      
             Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
 
-            Alert::success('Notificación mensual enviada', 'Ok!')->autoclose(3500);
+            Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
         } else {
             Alert::error('Su clave no coincide', '¡Error!')->autoclose(3500);
         }
