@@ -93,7 +93,7 @@
 
     <!-- Main Footer -->
   <footer class="main-footer footerAdminLite">
-    <strong>Ople Veracruz<a href="http://www.oplever.org.mx/"> Más info.</a></strong> Todos los derechos reservados.
+    <strong><a href="http://www.oplever.org.mx/" target="_blank">Ople Veracruz</a></strong> Todos los derechos reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>OPLE</b> VERACRUZ
     </div>

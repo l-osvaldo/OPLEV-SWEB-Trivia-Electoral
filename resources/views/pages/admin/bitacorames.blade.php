@@ -101,7 +101,7 @@ th {
 
             <hr>
 
-            <h5>Reporte general</h5>
+            <h5>Notificación mensual</h5>
             <table>
               <tr>
                 <th>Unidad</th>
@@ -397,8 +397,8 @@ th {
                   </script>
             @endforeach
 
-            <hr>
-            <a href="/bitacora">Acciones por actividad</a>
+            <!--hr>
+            <a href="/bitacora">Acciones por actividad</a-->
 
 
         </div>

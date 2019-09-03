@@ -431,4 +431,24 @@ $(function() {
   });
 
 
+
+
+    document.getElementById("mes_admin").onchange = function(){
+      document.getElementById('mesActual').innerHTML = '';
+      var mesc = document.getElementsByClassName('mesColor');
+      for (var i = 0; i < mesc.length; i++) {
+        mesc[i].style.background = "#fff";
+        mesc[i].style.color = "#333";
+      }
+      var x = this.options[this.selectedIndex].text;
+      document.getElementById('mesActual').innerHTML = x;
+      var mesx = document.getElementsByClassName('mes'+x)[0];
+      var mesy = document.getElementsByClassName('mes'+x)[1];
+
+      mesx.style.background = "#546e7a";
+      mesx.style.color = "#fff";
+      mesy.style.backgroundColor = "#546e7a";
+      mesy.style.color = "#fff";
+    };
+
 });
