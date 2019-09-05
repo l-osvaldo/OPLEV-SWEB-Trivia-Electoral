@@ -10,7 +10,7 @@
     th, td {
       padding: 3px;border:none;
     }
-    .jusText{text-align: justify;position: relative;}
+    .jusText{text-align: left;/*psition: relative*/}
     br{margin-bottom: 50px;}
   </style>
 </head>
@@ -23,8 +23,8 @@
         @foreach ($poa['resultado'] as $indexKey => $r)
         
           <tr>
-            <td width="4.8%" colspan="1" height="20" valign="top" style="text-align: center;">{{$indexKey+1}}</td>
-            <td width="18.8%" colspan="1" height="20" valign="top" style="text-align: center;">
+            <td width="2%" colspan="1" height="20" valign="top" style="text-align: center;">{{$indexKey+1}}</td>
+            <td width="8%" colspan="1" height="20" valign="top" style="text-align: center;">
             @if ($poa['idmes']==1)
               <div style="width: 50%; float: left;text-align: center;">{{$r->enep}}</div><div style="width: 50%; float: right; text-align:center;">{{$r->ener}}</div>
             @endif
@@ -62,9 +62,9 @@
               <div style="width: 50%; float: left;text-align: center;">{{$r->dicp}}</div><div style="width: 50%; float: right; text-align:center;">{{$r->dicr}}</div>
             @endif
             </td>
-            <td width="38.5%" colspan="2" valign="top" class="jusText">{!!nl2br(str_replace(" ", " &nbsp;", $r->descripcion))!!}</td>
-            <td width="14%" colspan="1" valign="top" class="jusText">{!!nl2br($r->soporte)!!}</td>
-            <td width="14%" colspan="1" valign="top" class="jusText">{!!nl2br($r->observaciones)!!}</td>
+            <td width="26%" colspan="2" valign="top" class="jusText">{!!nl2br(str_replace(" ", " &nbsp;", $r->descripcion))!!}</td>
+            <td width="20%" colspan="1" valign="top" class="jusText">{!!nl2br($r->soporte)!!}</td>
+            <td width="20%" colspan="1" valign="top" class="jusText">{!!nl2br($r->observaciones)!!}</td>
           </tr>
         
         @endforeach

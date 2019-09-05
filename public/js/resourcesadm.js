@@ -451,4 +451,122 @@ $(function() {
       mesy.style.color = "#fff";
     };
 
+
 });
+
+ $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
+        function hiddenAlerta () {
+            $.ajax({
+             type:'POST',
+             url:"clickalertas",
+             success:function(data){ 
+                //console.log(data);
+                document.getElementById('campanaAlert').classList.add("hidden");
+            }
+          });
+        }
+
+        document.getElementById("iconAlertfin").addEventListener("click", hiddenAlertafin);
+        function hiddenAlertafin () {
+            $.ajax({
+             type:'POST',
+             url:"clickalertasfin",
+             success:function(data){ 
+                //console.log(data);
+                document.getElementById('campanaAlertfin').classList.add("hidden");
+            }
+          });
+        }
+
+document.getElementById("buscarMes").addEventListener("click", busquedames);
+        function busquedames () {
+
+          document.getElementById("loader").classList.remove('hidden');
+          var mes = document.getElementById('mesbusqueda').value;
+          var acr = document.getElementById('acronimo').value;
+          //console.log(mes,acr);
+
+          $.ajax({
+               type:'POST',
+               url:"buscarmes",
+               data:{mes:mes,acr:acr},
+               success:function(data){ 
+                //console.log(data)
+
+                  document.getElementById('resultMes').innerHTML ='';
+                  if (data[0].length>0) {
+
+                  document.getElementById('resultMes').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+
+                    for (var i = 0; i < data[0].length; i++) {
+                      var x = document.createElement("TR");
+                      document.getElementById('resultMes').appendChild(x);
+                      //data[0][i].created_at
+                      var d = new Date(data[0][i].created_at);
+                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>---</td><td>---</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
+                    }
+
+                  } else {
+                     document.getElementById('resultMes').innerHTML ='<tr><th>No se encontraron resultados</th></tr>';
+                  }
+
+                  document.getElementById("loader").classList.add('hidden');
+              }
+          });
+          
+        }
+
+        document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
+        function busquedaentre () {
+
+          document.getElementById("loader").classList.remove('hidden');
+          var datep = document.getElementById('datep').value;
+          var dates = document.getElementById('dates').value;
+          var acr = document.getElementById('acronimoentre').value;
+          //console.log(datep,dates,acr);
+
+          $.ajax({
+               type:'POST',
+               url:"buscaentre",
+               data:{datep:datep,dates:dates,acr:acr},
+               success:function(data){ 
+
+                //console.log(data)
+                  document.getElementById('resultEntre').innerHTML ='';
+                  if (data[0].length>0) {
+
+                  document.getElementById('resultEntre').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+
+                    for (var i = 0; i < data[0].length; i++) {
+                      var x = document.createElement("TR");
+                      document.getElementById('resultEntre').appendChild(x);
+                      var d = new Date(data[0][i].created_at);
+                      x.innerHTML='<td class="'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
+                    }
+
+                  } else {
+                     document.getElementById('resultEntre').innerHTML ='<tr><th>No se encontraron resultados</th></tr>';
+                  }
+
+                  document.getElementById("loader").classList.add('hidden');
+              }
+          });
+          
+        }
+
+         document.getElementById("datep").addEventListener("change", changedatep);
+        function changedatep (){
+          var datep = document.getElementById('datep').value;
+          document.getElementById('dates').setAttribute("min", datep);
+          document.getElementById('dates').disabled = false;
+        }
+        document.getElementById("dates").addEventListener("change", changedates);
+        function changedates(){
+          document.getElementById('buscarEntre').disabled = false;
+        }

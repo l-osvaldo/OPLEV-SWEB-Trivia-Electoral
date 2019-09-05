@@ -173,6 +173,26 @@ class ReportesController extends Controller
     }
 
 
+     public function tablames(Request $request)
+    {
+
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+
+          $rfijo = DB::table('alertas')->where('ale_clase', 'final')
+        //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
+        //->join('users', 'ban_receptor_id', '=', 'id')
+        //->select('doc_asunto', 'doc_tipo', 'documentos.ale_date', 'doc_respuesta', 'doc_prioridad', 'nombre')
+        ->get();
+
+          //dd($rfijo);exit;
+         return view('pages.admin.tablames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo'));
+    }
+
+
     public function buscarmes(Request $request)
     {
 
@@ -198,7 +218,7 @@ class ReportesController extends Controller
         
         $resultado = DB::table('alertas')->where('ale_acronimo', $acr)->where('ale_clase', 'edicion')->whereBetween('ale_date', [$date_from, $date_to])->get();
 
-        //print_r($resultado);exit;
+        //dd($resultado);exit;
         return response()->json([$resultado]);
     }
 
@@ -343,11 +363,11 @@ class ReportesController extends Controller
 
      <table border="0" align="center" width="100%" style="border-collapse: collapse;text-align:center;margin:2px 0;">
     <tr style="background:#ccc;text-align: center;border: 1px solid black;border-bottom:1px;font-weight: bold;font-size:14px;">
-        <td width="5%" colspan="1" style="border-left:1px solid black;">No. ACT.</td> 
-        <td width="20%" colspan="1" style="border-left:1px solid black;">AVANCE MENSUAL<br><div style="width: 50%; float: left;text-align: center;">PROG.</div> <div style="width: 50%; float: left;text-align: center;">REAL.</div></td> 
-        <td width="42%" colspan="1" style="border-left:1px solid black;">DESCRIPCIÓN</td> 
-        <td width="15%" colspan="1" style="border-left:1px solid black;">SOPORTE</td> 
-        <td width="15%" colspan="1" style="border-left:1px solid black;">OBSERVACIONES</td>
+        <td width="2%" colspan="1" style="border-left:1px solid black;">No. ACT.</td> 
+        <td width="8%" colspan="1" style="border-left:1px solid black;">AVANCE MENSUAL<br><div style="width: 50%; float: left;text-align: center;">PROG.</div> <div style="width: 50%; float: left;text-align: center;">REAL.</div></td> 
+        <td width="28%" colspan="1" style="border-left:1px solid black;">DESCRIPCIÓN</td> 
+        <td width="22%" colspan="1" style="border-left:1px solid black;">SOPORTE</td> 
+        <td width="22%" colspan="1" style="border-left:1px solid black;">OBSERVACIONES</td>
     </tr>
 
   </table>

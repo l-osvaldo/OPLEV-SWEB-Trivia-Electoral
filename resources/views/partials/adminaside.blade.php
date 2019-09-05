@@ -91,6 +91,12 @@
             </a>
           </li>
 
+          <li class="nav-item has-treeview">
+            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-list-alt"></i> <p>Reporte mensual</p>
+            </a>
+          </li>
+
           
         </ul>
       </nav>

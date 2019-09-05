@@ -27,7 +27,7 @@ th {
         <section class="content" style="padding-top: 2em;">
           <div class="container">
 
-            <h5>Personalizar Busqueda</h5>
+            <!--h5>Personalizar Busqueda</h5>
             <div class="form-row" style="margin: 1em 0 3em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
 
               <div class="col-md-6 mb-3">
@@ -99,7 +99,7 @@ th {
             </table>
 
 
-            <!--hr>
+            <hr-->
 
             <h5>Notificación mensual</h5>
             <table>
@@ -389,15 +389,15 @@ th {
                     <td class="tdTabla" id="dicCONTRALORIA"></th>
                   </tr>
             </table>
-
+            <script type="text/javascript">
             @foreach( $rfijo as $rfijos )
-                  <script type="text/javascript">
+                  
                     var demos = '{{$rfijos->ale_mes}}{{$rfijos->ale_acronimo}}';
                     document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
-                  </script>
+                  
             @endforeach
-
-            <hr>
+            </script>
+            <!--hr>
             <a href="/bitacora">Acciones por actividad</a-->
 
 

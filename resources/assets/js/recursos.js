@@ -273,3 +273,35 @@ $(function() {
 
 });
 
+$.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        
+
+        document.getElementById("repEmail").addEventListener("click", sendMail);
+        function sendMail () {
+            document.getElementById("loader").classList.remove('hidden');
+            var mes = this.getAttribute('data-mes');
+            var clave = document.getElementById("clave").value;
+            if(clave !== null && clave !== '') {
+
+                document.getElementById("errorEmail").classList.add('hidden');
+                $.ajax({
+                     type:'POST',
+                     url:"mail/send",
+                     data:{mes:mes,clave:clave},
+                     success:function(data){ 
+                        location.reload();
+                    }
+                });
+
+            } else {
+
+            document.getElementById("errorEmail").classList.remove('hidden');
+            document.getElementById("loader").classList.add('hidden');
+            document.getElementById("errorEmail").innerHTML = 'Inserte su clave!';
+
+            }
+        }
