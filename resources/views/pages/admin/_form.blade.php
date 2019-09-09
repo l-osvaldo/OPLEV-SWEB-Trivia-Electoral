@@ -119,48 +119,52 @@
                       <tbody>
                         <tr class="contenidotabla">
                           <td class="tittabla">Programado</td>
-                          <td><span id="enep_admin"></span></td>
-                          <td><span id="febp_admin"></span></td>
-                          <td><span id="marp_admin"></span></td>
-                          <td><span id="abrp_admin"></span></td>
-                          <td><span id="mayp_admin"></span></td>
-                          <td><span id="junp_admin"></span></td>
-                          <td><span id="julp_admin"></span></td>
-                          <td><span id="agop_admin"></span></td>
-                          <td><span id="sepp_admin"></span></td>
-                          <td><span id="octp_admin"></span></td>
-                          <td><span id="novp_admin"></span></td>
-                          <td><span id="dicp_admin"></span></td>
+                          <td class="mesColor mesEnero"><span id="enep_admin"></span></td>
+                          <td class="mesColor mesFebrero"><span id="febp_admin"></span></td>
+                          <td class="mesColor mesMarzo"><span id="marp_admin"></span></td>
+                          <td class="mesColor mesAbril"><span id="abrp_admin"></span></td>
+                          <td class="mesColor mesMayo"><span id="mayp_admin"></span></td>
+                          <td class="mesColor mesJunio"><span id="junp_admin"></span></td>
+                          <td class="mesColor mesJulio"><span id="julp_admin"></span></td>
+                          <td class="mesColor mesAgosto"><span id="agop_admin"></span></td>
+                          <td class="mesColor mesSeptiembre"><span id="sepp_admin"></span></td>
+                          <td class="mesColor mesOctubre"><span id="octp_admin"></span></td>
+                          <td class="mesColor mesNoviembre"><span id="novp_admin"></span></td>
+                          <td class="mesColor mesDiciembre"><span id="dicp_admin"></span></td>
                           <td><span id="inicio_admin"></span></td>
                           <td><span id="termino_admin"></span></td>
                         </tr>
                         <tr class="contenidotabla">
                           <td class="tittabla">Realizado</td>
-                          <td><span id="ener_admin"></span></td>
-                          <td><span id="febr_admin"></span></td>
-                          <td><span id="marr_admin"></span></td>
-                          <td><span id="abrr_admin"></span></td>
-                          <td><span id="mayr_admin"></span></td>
-                          <td><span id="junr_admin"></span></td>
-                          <td><span id="julr_admin"></span></td>
-                          <td><span id="agor_admin"></span></td>
-                          <td><span id="sepr_admin"></span></td>
-                          <td><span id="octr_admin"></span></td>
-                          <td><span id="novr_admin"></span></td>
-                          <td><span id="dicr_admin"></span></td>
+                          <td class="mesColor mesEnero"><span id="ener_admin"></span></td>
+                          <td class="mesColor mesFebrero"><span id="febr_admin"></span></td>
+                          <td class="mesColor mesMarzo"><span id="marr_admin"></span></td>
+                          <td class="mesColor mesAbril"><span id="abrr_admin"></span></td>
+                          <td class="mesColor mesMayo"><span id="mayr_admin"></span></td>
+                          <td class="mesColor mesJunio"><span id="junr_admin"></span></td>
+                          <td class="mesColor mesJulio"><span id="julr_admin"></span></td>
+                          <td class="mesColor mesAgosto"><span id="agor_admin"></span></td>
+                          <td class="mesColor mesSeptiembre"><span id="sepr_admin"></span></td>
+                          <td class="mesColor mesOctubre"><span id="octr_admin"></span></td>
+                          <td class="mesColor mesNoviembre"><span id="novr_admin"></span></td>
+                          <td class="mesColor mesDiciembre"><span id="dicr_admin"></span></td>
                           <td></td>
                           <td></td>
                         </tr>
                       </tbody>
                     </table>
 
-                  <label>Realizado en el Mes Seleccionado:</label>
+                  <div class="row">
+                  <div class="col-md-4" style="margin-bottom: 1em;">
+                  <label>Realizado en el Mes Seleccionado: <span id="mesActual" class="textoPrincipal"></span></label>
                   
                     @if(Auth::user()->hasRole('admin'))                         
                         <input type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
                     @else
                         <input disabled type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
                     @endif
+                  </div>
+                  </div>
     </div>
   </div>
 </div>

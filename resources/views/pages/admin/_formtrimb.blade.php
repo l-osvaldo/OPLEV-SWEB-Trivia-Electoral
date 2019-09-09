@@ -132,7 +132,7 @@
     <div class="col-md-12 col-12" style="position: relative;">
 
 
-        <table border="3" style="font-size: .9em;text-align: center;border:solid 2px #fff;">
+        <table border="3" style="font-size: .9em;text-align: center;border:solid 2px #e3e3e3;background: #fff">
 
           <tbody>
             <tr class="avances" style="background: #fce4ec;font-size: .8em;">

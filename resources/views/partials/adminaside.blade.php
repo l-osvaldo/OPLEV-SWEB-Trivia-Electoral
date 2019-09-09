@@ -40,7 +40,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ route('programa.index') }}" class="brand-link">
       <img src="{{ asset('images/logosipsei.png') }}" width="100%" alt="SIPSEI Logo" class="elevation-3"><br>
       <div class="brand-text" style="font-size: .9rem;letter-spacing: 2px;line-height: 1 !important;text-align: center;padding: .5rem 0 0 0;">Sistema Integral de<br>Planeación, Seguimiento y<br>Evaluación Institucional</div>
     </a>
@@ -53,7 +53,7 @@
           <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" style="background: #ccc;padding: .1rem;" alt="User Image">
         </div>
         <div class="info nav-header">
-          {{ Auth::user()->name }}
+          {{ Auth::user()->username }}
         </div>
       </div>
 
@@ -80,8 +80,20 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('bitacorames') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('bitacorames') }}" class="textSideOption nav-link {!! Request::is('bitacorames') ? 'active activeOn' : '' !!}">
               <i class="fa fa-list-alt"></i> <p>Bitacora de actividades</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('bitacora') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-list-alt"></i> <p>Acciones por actividad</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-list-alt"></i> <p>Reporte mensual</p>
             </a>
           </li>
 

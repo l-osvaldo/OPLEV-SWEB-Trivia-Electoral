@@ -8,12 +8,12 @@
     }
 
     table, th, td {
-      border: 1px solid #ccc;
+      border: 1px solid #000;
     }
     th, td {
-      padding: 3px;text-align: center;font-size: 13px;
+      padding: 3px;font-size: 13px;padding: 10px 0 10px 5px;
     }    
-    .gris{background: #e3e3e3;}
+    .gris{background: #ccc;font-weight: bold;}
 
   </style>
 </head>
@@ -27,63 +27,66 @@
 
 
 
-  <table class="table" border="1" align="center" cellpadding="5px">
+  <table class="table" border="1">
     <tr>
-      <td colspan="2" class="gris">Programa</td>      
-      <td colspan="7"> {{$trimestral[0]['descprograma']}} </td>
-      <td colspan="4" class="gris">Unidad Responsable<br><span>{{ $trimestral[0]['nombrearea'] }}</span></td>
+      <td rowspan="3" style="text-align: center;" width="8%"><img class="logo" src="{{ asset('images/logoople.png') }}" width="100"></td>
+      <td class="gris" width="8%">Programa</td>      
+      <td width="35%"> {{$trimestral[0]['descprograma']}} </td>
+      <td class="gris" style="text-align: center;" width="10%">Unidad Responsable<br><span>{{ $trimestral[0]['nombrearea'] }}</span></td>
     </tr>
 
     <tr>
       
-      <td colspan="2" class="gris">Programa Específico</td>
-      <td colspan="7">{{ $trimestral[0]['descprogramaesp'] }}</td>
-      <td colspan="4" class="gris">Periodo Trimestral<br><span>{{ $trimestral[0]['periodotrimestral'] }}</span></td>
+      <td width="8%" class="gris">Programa Específico</td>
+      <td width="35%">{{ $trimestral[0]['descprogramaesp'] }}</td>
+      <td width="10%" class="gris" style="text-align: center;">Periodo Trimestral<br><span>{{ $trimestral[0]['periodotrimestral'] }}</span></td>
     </tr>
     <tr>
-      <td colspan="2" class="gris">Objetivo</td>
-      <td colspan="11">{{ $trimestral[0]['objprogramaesp'] }}</td>
+      <td width="8%" class="gris">Objetivo</td>
+      <td colspan="2" width="60%">{{ $trimestral[0]['objprogramaesp'] }}</td>
     </tr>
+  </table>
+  <table class="table" border="1" align="center" cellpadding="5px" style="margin-top: -1px;">
 
-  <tr class="gris">
+  <tr class="gris" style="text-align: center;">
     <td rowspan="3">No.</td>
-    <td rowspan="3">ACTIVIDAD</td>
+    <td rowspan="3" width="28%">ACTIVIDAD</td>
     <td colspan="2">META ANUAL</td>
     <td rowspan="3">PERIODO <br>CALENDARIZADO</td>
     <td colspan="3">AVANCE TRIMESTRAL</td>
     <td colspan="4">AVANCE ACUMULADO</td>
-    <td rowspan="3">OBSERVACIONES</td>
+    <td rowspan="3" width="10%">OBSERVACIONES</td>
   </tr>
   <tr class="gris">
-    <td rowspan="2">UNIDAD DE<br>MEDIDA</td>
+    <td rowspan="2" style="text-align: center;">UNIDAD DE<br>MEDIDA</td>
     <td rowspan="2">CANTIDAD</td>
     <td rowspan="2">PROGRAMADO</td>
     <td rowspan="2">REALIZADO</td>
     <td rowspan="2">VARIACION %</td>
     <td rowspan="2">PROGRAMADO</td>
     <td rowspan="2">REALIZADO</td>
-    <td colspan="2">VARIACION</td>
+    <td colspan="2" style="text-align: center;">VARIACION</td>
   </tr>
   <tr class="gris">
-    <td>CANTIDAD</td>
-    <td>%</td>
+    <td width="5%" style="text-align: center;">CANTIDAD</td>
+    <td width="5%" style="text-align: center;">%</td>
   </tr>
 
         @foreach ($trimestral as $indexKey => $trim)      
           <tr>        
-            <td>{{$indexKey+1}}</td>
-            <td>{{ $trim->descactividad }}</td>   
-            <td>{{ $trim->unidadmedida }}</td>   
-            <td>{{ $trim->cantidadanual }}</td>   
-            <td>{{ $trim->inicio }} - {{ $trim->termino }} </td>   
-            <td>{{ $trim->avtprogramado }}</td>   
-            <td>{{ $trim->avtrealizado }}</td>   
-            <td>{{ $trim->avtvariacion }}</td>   
-            <td>{{ $trim->avaprogramado }}</td>   
-            <td>{{ $trim->avarealizado }}</td>   
-            <td>{{ $trim->avacantidad }}</td>   
-            <td>{{ $trim->avaporcentaje }}</td>
-            <td>{{ $trim->observatrim }}</td>              
+            <td style="text-align: center;">{{$indexKey+1}}</td>
+            <td style="text-align: justify;padding:3px;">{{ $trim->descactividad }}</td>   
+            <td style="text-align: center;">{{ $trim->unidadmedida }}</td>   
+            <td style="text-align: center;">{{ $trim->cantidadanual }}</td>   
+            <td style="text-align: center;">{{ $trim->inicio }} - {{ $trim->termino }} </td>   
+            <td style="text-align: center;">{{ $trim->avtprogramado }}</td>   
+            <td style="text-align: center;">{{ $trim->avtrealizado }}</td>   
+            <td style="text-align: center;">{{ $trim->avtvariacion }}</td>   
+            <td style="text-align: center;">{{ $trim->avaprogramado }}</td>   
+            <td style="text-align: center;">{{ $trim->avarealizado }}</td>   
+            <td style="text-align: center;">{{ $trim->avacantidad }}</td>   
+            <td style="text-align: center;">{{ $trim->avaporcentaje }}</td>
+            <td style="text-align: left;">{{ $trim->observatrim }}</td>              
           </tr>
         @endforeach
 

@@ -4,17 +4,17 @@
   <title>Adicionales 2019</title>
   <style>
     table {
-      border-collapse: collapse;
+      border-collapse: collapse;height: 100vh;
     }
 
     table, th, td {
-      border: 1px solid #ccc;
+      border: 1px solid #000;
     }
     th, td {
       padding: 3px;text-align: center;
     }    
-    .gris{background: #e3e3e3;}
-
+    .gris{background: #ccc;}
+    .jusText{text-align: justify;position: relative;}
   </style>
 </head>
 <body>
@@ -25,22 +25,22 @@
     </tr>
   </table-->
 
-  <table class="table" border="1" align="center" cellpadding="5px">
+  <table class="table" border="0" align="center" cellpadding="5px">
     <tr class="gris">
       <td>UNIDAD RESPONSABLE</td>
       <td>FIRMA DEL RESPONSABLE</td>
       <td>MES</td>
     </tr>
-    <tr style="height: 150px;">
+    <tr style="height: 50px;">
       <td>{{ $adicionales['area'] }}</td>
       <td></td>
       <td>{{ $adicionales['mes'] }}</td>
     </tr>
 
       <tr class="gris">
-        <td width="29%">DESCRIPCIÓN</td> 
-        <td width="23%">SOPORTE</td> 
-        <td width="22%">OBSERVACIONES</td>
+        <td>DESCRIPCIÓN</td> 
+        <td>SOPORTE</td> 
+        <td>OBSERVACIONES</td>
       </tr>
 
 
@@ -57,9 +57,9 @@
 <!--main-->
 
           <tr class="datos">
-            <td class="colinfo" width="29%">{{$adicionales['descadicional']}}</td>
-            <td class="colinfo"  width="23%">{{$adicionales['soporteadicional']}}</td>
-            <td class="colinfo"width="22%">{{$adicionales['observaadicional']}}</td>
+            <td class="jusText" width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['descadicional']))!!}</td>
+            <td class="jusText"  width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['soporteadicional']))!!}</td>
+            <td class="jusText" width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['observaadicional']))!!}</td>
           </tr>        
       </table>
 

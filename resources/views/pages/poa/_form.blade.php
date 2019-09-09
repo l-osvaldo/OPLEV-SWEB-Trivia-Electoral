@@ -13,7 +13,7 @@
 @endif
 
 
-<form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+<form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12">
   {{ csrf_field() }}
 
 
@@ -146,9 +146,13 @@
       y.style.textAlign = "center";
     </script>
 
-    <div class="contInput">
+    <div class="row">
+    <div class="col-md-12" style="margin-bottom: 1em;">
+
         <label>4. Realizado en este Mes - <span class="textoPrincipal">{{$mes[0]->mes}}</span></label>           
         <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="" maxlength="3">
+
+    </div>
     </div>
 
   </div>

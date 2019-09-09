@@ -8,16 +8,13 @@
     <style type="text/css">
 
     table {
-      border-collapse: collapse;
+      border-collapse: collapse;font-size: 14px;
     }
 
-    table, th, td {
-      border: 1px solid #ccc;
-    }
     th, td {
-      padding: 3px;text-align: center;
+      padding: 3px;text-align: center;padding: 10px 0;border: 1px solid #000;
     }    
-    .gris{background: #e3e3e3;}
+    .gris{background: #ccc;font-weight: bold;}
 
 
     </style>
@@ -32,7 +29,7 @@
       </tr>
     </table-->
 
-    <table>
+    <table style="width: 99.98%;">
       <tr class="rubro">
         <td colspan="1" class="gris">Área Responsable</td>
         <td colspan="7">{{ $indicadores['nombrearea'] }}</td>
@@ -43,11 +40,11 @@
       </tr>
    
       <tr>
-        <td rowspan="2" class="gris">Programa Presupuestario</td>        
-        <td colspan="2">01. Desarrollo y Fortalecimiento Institucional</td>        
-        <td colspan="2">02. Proceso Electoral</td>        
-        <td colspan="2">03. Cartera de Proyectos</td>
-        <td colspan="2">04. Prerrogativas y Partidos Políticos</td>
+        <td rowspan="2" class="gris" width="20%">Programa Presupuestario</td>        
+        <td colspan="2" width="20%">01. Desarrollo y Fortalecimiento Institucional</td>        
+        <td colspan="2" width="20%">02. Proceso Electoral</td>        
+        <td colspan="2" width="20%">03. Cartera de Proyectos</td>
+        <td colspan="2" width="20%">04. Prerrogativas y Partidos Políticos</td>
       </tr>
       <tr>        
         <td colspan="2">{{ $indicadores['prog1'] }}</td>        
@@ -64,20 +61,22 @@
     
       <tr>
         <td colspan="1" class="gris">Periodo de Cumplimiento</td>        
-        <td colspan="2">{{ $indicadores['abreviaturaperiodocump'] }}</td>        
+        <td colspan="3">{{ $indicadores['abreviaturaperiodocump'] }}</td>        
         <td colspan="3" class="gris">Periodo de Evaluación</td>        
         <td colspan="2">{{ $indicadores['mes'] }}</td>
       </tr>
-    
+    </table>
+
+    <table style="margin-top: -1px;width: 100%;">
       <tr>
-        <td class="gris">Clave del Indicador</td>        
-        <td class="gris">Nombre del Indicador</td>
-        <td class="gris">Frecuencia</td>
-        <td class="gris">Variables</td>
-        <td class="gris">Meta</td>
-        <td class="gris">Realizado vs Programado</td>
-        <td class="gris">Resultado (%)</td>
-        <td class="gris">Variación (%)</td>
+        <td class="gris" width="12.5%">Clave del Indicador</td>        
+        <td class="gris" width="12.5%">Nombre del Indicador</td>
+        <td class="gris" width="12.5%">Frecuencia</td>
+        <td class="gris" width="12.5%">Variables</td>
+        <td class="gris" width="12.5%">Meta</td>
+        <td class="gris" width="12.5%">Realizado vs Programado</td>
+        <td class="gris" width="12.5%">Resultado (%)</td>
+        <td class="gris" width="12.5%">Variación (%)</td>
       </tr>       
     
       <tr>
@@ -93,14 +92,18 @@
       <tr>        
         <td>{{ $indicadores['variable2'] }}</td>        
         <td>{{ $indicadores['meta'] }}</td>
-      </tr>          
+      </tr>
+
+      </table>
+
+    <table style="margin-top: -1px;width: 100%;height:auto;">          
    
       <tr>
         <td colspan="8" class="gris">Observaciones</td>
       </tr>
     
       <tr>        
-        <td colspan="8">{{ $indicadores['observaciones'] }}</td>
+        <td colspan="8" ><div style="overflow:auto; height: 130px;">{{ $indicadores['observaciones'] }}</div></td>
       </tr>          
     
       <tr>
@@ -112,7 +115,7 @@
       </tr>
     
       <tr>        
-        <td colspan="8" style="padding: 10px 0 10px 0;"><br>{{ $indicadores['nombretitular'] }}<br>{{ $indicadores['cargo'] }}</td>
+        <td colspan="8" style="padding: 20px 0 30px 0;"><br>{{ $indicadores['nombretitular'] }}<br>{{ $indicadores['cargo'] }}</td>
       </tr>          
     </table>
 

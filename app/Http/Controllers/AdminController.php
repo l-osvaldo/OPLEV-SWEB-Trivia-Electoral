@@ -62,7 +62,7 @@ class AdminController extends Controller
       $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
 
       DB::table('detalleactividades')->where('idmes', $mesadmin)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
-      Alert::success('Registro exitoso', 'Ok!')->autoclose(3500);
+      Alert::success('', 'Registro exitoso')->autoclose(3500);
       return redirect()->route('programa.index');
     }
 
@@ -183,10 +183,10 @@ class AdminController extends Controller
           $trimestres = Trimestre::all();
           $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
           $action = route('reportes.trimestral');
-          $nfin = [];
-          $alertasfin = [];
-          $nalertas = [];
-          $alertas = [];
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
           return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action', 'nfin', 'alertasfin','nalertas', 'alertas'));
 
         }

@@ -7,7 +7,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block textoPrincipal">
-        Programa Operativo Anual 2019. <span class="textoSecundario">/ Perfil de Trabajo - {{ Auth::user()->name }}</span>
+        Programa Operativo Anual 2019 <span class="textoSecundario">/ Perfil de Trabajo - {{ Auth::user()->name }}</span>
       </li>
     </ul>
 
