@@ -290,7 +290,7 @@ $.ajaxSetup({
                 document.getElementById("errorEmail").classList.add('hidden');
                 $.ajax({
                      type:'POST',
-                     url:"sipsei/mail/send",
+                     url:"mail/send",
                      data:{mes:mes,clave:clave},
                      success:function(data){ 
                         location.reload();
