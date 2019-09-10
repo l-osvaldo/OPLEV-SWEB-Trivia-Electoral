@@ -5,7 +5,7 @@ $(function() {
   $('#btnReporteMensual_admin').hide();
   var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
     if(_prefix_url != ""){
-      _prefix_url = "/"+_prefix_url;
+      _prefix_url = "../"+_prefix_url;
     }
 
 
@@ -464,7 +464,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlerta () {
             $.ajax({
              type:'POST',
-             url:"clickalertas",
+             url:"../clickalertas",
              success:function(data){ 
                 //console.log(data);
                 document.getElementById('campanaAlert').classList.add("hidden");
@@ -476,7 +476,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlertafin () {
             $.ajax({
              type:'POST',
-             url:"clickalertasfin",
+             url:"../clickalertasfin",
              success:function(data){ 
                 //console.log(data);
                 document.getElementById('campanaAlertfin').classList.add("hidden");
@@ -494,7 +494,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
 
           $.ajax({
                type:'POST',
-               url:"buscarmes",
+               url:"../buscarmes",
                data:{mes:mes,acr:acr},
                success:function(data){ 
                 //console.log(data)
@@ -533,7 +533,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
 
           $.ajax({
                type:'POST',
-               url:"buscaentre",
+               url:"../buscaentre",
                data:{datep:datep,dates:dates,acr:acr},
                success:function(data){ 
 
