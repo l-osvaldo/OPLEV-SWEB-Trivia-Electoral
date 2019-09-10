@@ -80,7 +80,7 @@ $(function() {
     
 
     $.ajax({
-      url: _prefix_url+"/admin/obtenProgramaEsp",
+      url: _prefix_url+"../admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -454,6 +454,10 @@ $(function() {
 
 });
 
+
+
+var token = $('meta[name="csrf-token"]').attr('content');
+
  $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -484,7 +488,6 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
           });
         }
 
-var token = $('meta[name="csrf-token"]').attr('content');
 
 document.getElementById("buscarMes").addEventListener("click", busquedames);
         function busquedames () {
