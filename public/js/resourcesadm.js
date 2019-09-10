@@ -469,6 +469,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
             $.ajax({
              type:'POST',
              url:"clickalertas",
+             data:{"_token": token},
              success:function(data){ 
                 //console.log(data);
                 document.getElementById('campanaAlert').classList.add("hidden");
@@ -481,6 +482,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
             $.ajax({
              type:'POST',
              url:"clickalertasfin",
+             data:{"_token": token},
              success:function(data){ 
                 //console.log(data);
                 document.getElementById('campanaAlertfin').classList.add("hidden");
@@ -539,7 +541,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
           $.ajax({
                type:'POST',
                url:"buscaentre",
-               data:{datep:datep,dates:dates,acr:acr},
+               data:{datep:datep,dates:dates,acr:acr,"_token": token},
                success:function(data){ 
 
                 //console.log(data)
