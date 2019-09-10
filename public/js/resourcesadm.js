@@ -494,7 +494,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
 
           $.ajax({
                type:'POST',
-               url:"sipsei/buscarmes",
+               url:"../buscarmes",
                data:{mes:mes,acr:acr},
                success:function(data){ 
                 //console.log(data)
