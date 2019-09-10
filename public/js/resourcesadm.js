@@ -460,6 +460,8 @@ $(function() {
           }
         });
 
+var baseurl = window.location.protocol + "//" + window.location.host;
+
 document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlerta () {
             $.ajax({
@@ -494,7 +496,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
 
           $.ajax({
                type:'POST',
-               url:"/buscarmes",
+               url:baseurl+"/buscarmes",
                data:{mes:mes,acr:acr},
                success:function(data){ 
                 //console.log(data)
