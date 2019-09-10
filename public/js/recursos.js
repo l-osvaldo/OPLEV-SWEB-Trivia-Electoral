@@ -273,6 +273,10 @@ $(function() {
 
 });
 
+
+
+var token = $('meta[name="csrf-token"]').attr('content');
+
 $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -291,7 +295,7 @@ $.ajaxSetup({
                 $.ajax({
                      type:'POST',
                      url:"mail/send",
-                     data:{mes:mes,clave:clave},
+                     data:{mes:mes,clave:clave,"_token": token},
                      success:function(data){ 
                         location.reload();
                     }
