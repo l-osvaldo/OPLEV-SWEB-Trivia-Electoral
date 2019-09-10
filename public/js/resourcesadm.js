@@ -104,7 +104,7 @@ $(function() {
   function obtenObjetivos(area, programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-     url: _prefix_url+"/admin/obtenObjetivoAct",
+     url: _prefix_url+"admin/obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa, programaEsp: programaEsp},
@@ -136,7 +136,7 @@ $(function() {
 
     //Obtener actividades
     $.ajax({
-     url: _prefix_url+"/admin/obtenActividades",
+     url: _prefix_url+"admin/obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa, programaEsp: programaEsp},
@@ -199,7 +199,7 @@ $(function() {
     obtenObjetivos(area, programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-     url: _prefix_url+"/admin/obtenPorcProgramado",
+     url: _prefix_url+"admin/obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -227,7 +227,7 @@ $(function() {
 
       //Obtener porcentaje realizado
     $.ajax({
-     url: _prefix_url+"/admin/obtenPorcRealizado",
+     url: _prefix_url+"admin/obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -256,7 +256,7 @@ $(function() {
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-     url: _prefix_url+"/admin/obtenDetallesActi",
+     url: _prefix_url+"admin/obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, mes: mes},
@@ -363,7 +363,7 @@ $(function() {
     var programa = $('#programa_trim').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: _prefix_url+"/admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
