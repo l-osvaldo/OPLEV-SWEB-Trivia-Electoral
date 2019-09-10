@@ -2,7 +2,7 @@ $(function() {
 
   var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
     if(_prefix_url != ""){
-      _prefix_url = "../"+_prefix_url;
+      _prefix_url = "/"+_prefix_url;
     }
   $('#btnGuardarInfo').hide();
   //$('#btnConcentradoPoa').hide();
@@ -290,7 +290,7 @@ $.ajaxSetup({
                 document.getElementById("errorEmail").classList.add('hidden');
                 $.ajax({
                      type:'POST',
-                     url:"../mail/send",
+                     url:"sipsei/mail/send",
                      data:{mes:mes,clave:clave},
                      success:function(data){ 
                         location.reload();
