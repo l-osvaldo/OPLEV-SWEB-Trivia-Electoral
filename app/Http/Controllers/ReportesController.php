@@ -887,7 +887,7 @@ class ReportesController extends Controller
         //return $pdf->stream();
 
         $pdfs = PDFS::loadView('pages.reportes.trimestrales', ['trimestral'=>$trimestral])->setPaper('legal', 'landscape');
-        $pdfs->setOption('margin-top', 22);
+        $pdfs->setOption('margin-top', 55);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
@@ -904,8 +904,28 @@ class ReportesController extends Controller
               </th>
             </tr>
           </table>
+
+  <table border="1" style="border-collapse: collapse;">
+    <tr style="border: 1px solid black;">
+      <td rowspan="3" style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px;" width="8%"><img class="logo" src="'.public_path('images/logoople.png').'" width="100"></td>
+      <td style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;" width="8%">Programa</td>      
+      <td style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;" width="35%">'.$trimestral[0]->descprograma.'</td>
+      <td style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;"  width="10%">Unidad Responsable<br><span>'.$trimestral[0]->nombrearea.'</span></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td width="8%" style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Programa Específico</td>
+      <td style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;" width="35%">'.$trimestral[0]->descprogramaesp.'</td>
+      <td width="10%" style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Periodo Trimestral<br><span>'.$trimestral[0]->periodotrimestral.'</span></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td width="8%" style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Objetivo</td>
+      <td colspan="2" width="60%" style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;">'.$trimestral[0]->objprogramaesp.'</td>
+    </tr>
+  </table>
+
         </body></html>');
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        //dd($trimestral);exit();
         $pdfs->setOption('load-error-handling','ignore');
         $pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('reporte.pdf');

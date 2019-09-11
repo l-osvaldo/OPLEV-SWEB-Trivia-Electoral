@@ -7,11 +7,8 @@
       border-collapse: collapse;width: 100%
     }
 
-    table, th, td {
-      border: 1px solid #000;
-    }
     th, td {
-      padding: 3px;font-size: 13px;padding: 10px 0 10px 5px;
+      font-size: 13px;padding: 10px 0 10px 5px;
     }    
     .gris{background: #ccc;font-weight: bold;}
 
@@ -27,9 +24,9 @@
 
 
 
-  <table class="table" border="1">
+  <!--table class="table" border="1">
     <tr>
-      <td rowspan="3" style="text-align: center;" width="8%"></td>
+      <td rowspan="3" style="text-align: center;" width="8%"><img class="logo" src="{{ asset('images/logoople.png') }}" width="100"></td>
       <td class="gris" width="8%">Programa</td>      
       <td width="35%"> {{$trimestral[0]['descprograma']}} </td>
       <td class="gris" style="text-align: center;" width="10%">Unidad Responsable<br><span>{{ $trimestral[0]['nombrearea'] }}</span></td>
@@ -45,7 +42,7 @@
       <td width="8%" class="gris">Objetivo</td>
       <td colspan="2" width="60%">{{ $trimestral[0]['objprogramaesp'] }}</td>
     </tr>
-  </table>
+  </table-->
   <table class="table" border="1" align="center" cellpadding="5px" style="margin-top: -1px;">
 
   <tr class="gris" style="text-align: center;">
@@ -73,20 +70,20 @@
   </tr>
 
         @foreach ($trimestral as $indexKey => $trim)      
-          <tr>        
-            <td style="text-align: center;">{{$indexKey+1}}</td>
-            <td style="text-align: justify;padding:3px;">{{ $trim->descactividad }}</td>   
-            <td style="text-align: center;">{{ $trim->unidadmedida }}</td>   
-            <td style="text-align: center;">{{ $trim->cantidadanual }}</td>   
-            <td style="text-align: center;">{{ $trim->inicio }} - {{ $trim->termino }} </td>   
-            <td style="text-align: center;">{{ $trim->avtprogramado }}</td>   
-            <td style="text-align: center;">{{ $trim->avtrealizado }}</td>   
-            <td style="text-align: center;">{{ $trim->avtvariacion }}</td>   
-            <td style="text-align: center;">{{ $trim->avaprogramado }}</td>   
-            <td style="text-align: center;">{{ $trim->avarealizado }}</td>   
-            <td style="text-align: center;">{{ $trim->avacantidad }}</td>   
-            <td style="text-align: center;">{{ $trim->avaporcentaje }}</td>
-            <td style="text-align: left;">{{ $trim->observatrim }}</td>              
+          <tr style="border: 1px solid black;">        
+            <td style="border: 1px solid black;text-align: center;">{{$indexKey+1}}</td>
+            <td style="border: 1px solid black;text-align: justify;padding:3px;">{{ $trim->descactividad }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->unidadmedida }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->cantidadanual }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->inicio }} - {{ $trim->termino }} </td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avtprogramado }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avtrealizado }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avtvariacion }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avaprogramado }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avarealizado }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avacantidad }}</td>   
+            <td style="border: 1px solid black;text-align: center;">{{ $trim->avaporcentaje }}</td>
+            <td style="border: 1px solid black;text-align: left;">{{ $trim->observatrim }}</td>              
           </tr>
         @endforeach
 
