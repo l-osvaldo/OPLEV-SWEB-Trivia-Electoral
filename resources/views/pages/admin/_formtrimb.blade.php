@@ -72,7 +72,7 @@
 
     <div class="col-md-6" style="margin-bottom: 1em;">
     <label>2. Seleccione un Programa</label>   
-        <select class="form-control validar" data-error="1" id="programa_trim" name="programa_trim" >
+        <select class="form-control validar" data-error="1" id="programa_trima" name="programa_trim" >
           <option value="0">Programa...</option>
           @foreach( $programas as $programa )
             @if ($programa->idprograma == $arrTrimestral['idprograma'])

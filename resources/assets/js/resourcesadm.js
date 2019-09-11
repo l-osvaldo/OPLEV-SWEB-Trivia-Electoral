@@ -339,6 +339,7 @@ $(function() {
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
     $('#programa_trim').val('0');
+    $('#programa_trima').val('0');
     $('#programaEsp_trim').html('');    
     $('#trimestre_trim').val('0');
     $('#btnGuardarInfo_trim').hide();
@@ -347,6 +348,7 @@ $(function() {
     $('#areareporte').val($('#area_trim').find(':selected').val());
 
     document.getElementById('programa_trim').setAttribute('data-error', '1');
+    document.getElementById('programa_trima').setAttribute('data-error', '1');
     document.getElementById('trimestre_trim').setAttribute('data-error', '1');
     disabledBTN();
   });
@@ -358,9 +360,38 @@ $(function() {
     $('#programaEsp_trim').html('');
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
-    console.log('holas')
     var area = $('#area_trim').find(':selected').val();
     var programa = $('#programa_trim').find(':selected').val();
+    var comboProgramaEsp = '';
+    $.ajax({
+      url: _prefix_url+"../admin/obtenProgramaEsp",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {area: area, programa: programa},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
+        $.each(response, function(index, value){
+          var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
+          comboProgramaEsp += "<option value='"+value['idprogramaesp']+"'>"+ cadena +"</option>";
+        });
+        $('#programaEsp_trim').html(comboProgramaEsp);      
+        $('#programareporte').val(programa);
+      });
+      document.getElementById('programaEsp_trim').setAttribute('data-error', '1');
+      disabledBTN();
+  });
+
+  $("#programa_trima").change(function()
+  {    
+    $('#tablaresultados').html('');    
+    $('#btnReporteTrimestral').hide();    
+    $('#programaEsp_trim').html('');
+    $('#btnGuardarInfo_trim').hide();
+    $('#btnReporteMensual_trim').hide();    
+    var area = $('#area_trim').find(':selected').val();
+    var programa = $('#programa_trima').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
       url: _prefix_url+"../admin/obtenProgramaEsp",
@@ -399,7 +430,8 @@ $(function() {
   {  
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
-    $('#programa_trim').val('0');    
+    $('#programa_trim').val('0'); 
+    $('#programa_trima').val('0');    
     $('#programaEsp_trim').html('');    
     $('#trimestre_trim').val('0');
     $('#btnGuardarInfo_trim').hide();
