@@ -46,27 +46,27 @@
   <table class="table" border="1" align="center" cellpadding="5px" style="margin-top: -1px;">
 
   <tr class="gris" style="text-align: center;">
-    <td rowspan="3">No.</td>
-    <td rowspan="3" width="28%">ACTIVIDAD</td>
-    <td colspan="2">META ANUAL</td>
-    <td rowspan="3">PERIODO <br>CALENDARIZADO</td>
-    <td colspan="3">AVANCE TRIMESTRAL</td>
-    <td colspan="4">AVANCE ACUMULADO</td>
-    <td rowspan="3" width="10%">OBSERVACIONES</td>
+    <td style="border: 1px solid black;" rowspan="3">No.</td>
+    <td style="border: 1px solid black;" rowspan="3" width="28%">ACTIVIDAD</td>
+    <td style="border: 1px solid black;" colspan="2">META ANUAL</td>
+    <td style="border: 1px solid black;" rowspan="3">PERIODO <br>CALENDARIZADO</td>
+    <td style="border: 1px solid black;" colspan="3">AVANCE TRIMESTRAL</td>
+    <td style="border: 1px solid black;" colspan="4">AVANCE ACUMULADO</td>
+    <td style="border: 1px solid black;" rowspan="3" width="10%">OBSERVACIONES</td>
   </tr>
   <tr class="gris">
-    <td rowspan="2" style="text-align: center;">UNIDAD DE<br>MEDIDA</td>
-    <td rowspan="2">CANTIDAD</td>
-    <td rowspan="2">PROGRAMADO</td>
-    <td rowspan="2">REALIZADO</td>
-    <td rowspan="2">VARIACION %</td>
-    <td rowspan="2">PROGRAMADO</td>
-    <td rowspan="2">REALIZADO</td>
-    <td colspan="2" style="text-align: center;">VARIACION</td>
+    <td rowspan="2" style="border: 1px solid black;text-align: center;">UNIDAD DE<br>MEDIDA</td>
+    <td style="border: 1px solid black;" rowspan="2">CANTIDAD</td>
+    <td style="border: 1px solid black;" rowspan="2">PROGRAMADO</td>
+    <td style="border: 1px solid black;" rowspan="2">REALIZADO</td>
+    <td style="border: 1px solid black;" rowspan="2">VARIACION %</td>
+    <td style="border: 1px solid black;" rowspan="2">PROGRAMADO</td>
+    <td style="border: 1px solid black;" rowspan="2">REALIZADO</td>
+    <td colspan="2" style="border: 1px solid black;text-align: center;">VARIACION</td>
   </tr>
   <tr class="gris">
-    <td width="5%" style="text-align: center;">CANTIDAD</td>
-    <td width="5%" style="text-align: center;">%</td>
+    <td width="5%" style="text-align: center;border: 1px solid black;">CANTIDAD</td>
+    <td width="5%" style="text-align: center;border: 1px solid black;">%</td>
   </tr>
 
         @foreach ($trimestral as $indexKey => $trim)      
