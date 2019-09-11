@@ -364,7 +364,7 @@ $(function() {
     var programa = $('#programa_trim').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: _prefix_url+"../admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
