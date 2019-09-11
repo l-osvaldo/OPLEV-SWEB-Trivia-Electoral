@@ -29,7 +29,7 @@
 
   <table class="table" border="1">
     <tr>
-      <td rowspan="3" style="text-align: center;" width="8%"><img class="logo" src="{{ asset('images/logoople.png') }}" width="100"></td>
+      <td rowspan="3" style="text-align: center;" width="8%"></td>
       <td class="gris" width="8%">Programa</td>      
       <td width="35%"> {{$trimestral[0]['descprograma']}} </td>
       <td class="gris" style="text-align: center;" width="10%">Unidad Responsable<br><span>{{ $trimestral[0]['nombrearea'] }}</span></td>

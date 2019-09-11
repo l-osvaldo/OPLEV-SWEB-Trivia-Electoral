@@ -603,7 +603,7 @@ class ReportesController extends Controller
           //$pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
          // return $pdf->stream();
 
-        $pdfs = PDFS::loadView('pages.reportes.indicadores', ['adicionales'=>$adicionales])->setPaper('letter', 'landscape');
+        $pdfs = PDFS::loadView('pages.reportes.adicionales', ['adicionales'=>$adicionales])->setPaper('letter', 'landscape');
         $pdfs->setOption('margin-top', 22);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
