@@ -906,6 +906,8 @@ class ReportesController extends Controller
           </table>
         </body></html>');
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        dd($pdfs);exit;
+
         $pdfs->setOption('load-error-handling','ignore');
         $pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('reporte.pdf');
