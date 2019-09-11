@@ -886,7 +886,7 @@ class ReportesController extends Controller
         //$pdf = PDF::loadView( 'pages.reportes.trimestrales', ['trimestral'=>$trimestral] )->setPaper('legal', 'landscape');
         //return $pdf->stream();
 
-        $pdfs = PDFS::loadView('pages.reportes.trimestrales', ['trimestral'=>$trimestral])->setPaper('legal', 'landscape');
+        $pdfs = PDFS::loadView('pages.reportes.trimestrales', '')->setPaper('legal', 'landscape');
         $pdfs->setOption('margin-top', 22);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
@@ -906,9 +906,7 @@ class ReportesController extends Controller
           </table>
         </body></html>');
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
-        //dd($pdfs);exit;
-
-        //$pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('load-error-handling','ignore');
         $pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('reporte.pdf');
 
