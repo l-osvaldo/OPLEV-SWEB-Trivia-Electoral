@@ -394,7 +394,7 @@ th {
                   
                     var demos = '{{$rfijos->ale_mes}}{{$rfijos->ale_acronimo}}';
                     console.log('{{$rfijos->ale_mes}}{{$rfijos->ale_acronimo}}');
-                    document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
+                    //document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
                   
             @endforeach
             </script>
