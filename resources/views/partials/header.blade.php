@@ -82,7 +82,7 @@
           @endforeach
 
           <div class="dropdown-divider"></div>
-          <a href="/bitacorames" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
+          <a href="../bitacorames" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
         </div>
       </li>  
 
@@ -112,7 +112,7 @@
           @endforeach
 
           <div class="dropdown-divider"></div>
-          <a href="/bitacora" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
+          <a href="../bitacora" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
         </div>
       </li>  
 
