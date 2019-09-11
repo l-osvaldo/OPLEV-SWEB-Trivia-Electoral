@@ -393,7 +393,7 @@ th {
             @foreach( $rfijo as $rfijos )
                   
                     var demos = '{{$rfijos->ale_mes}}{{$rfijos->ale_acronimo}}';
-                    console.log(demos);
+                    console.log('{{$rfijos->ale_mes}}{{$rfijos->ale_acronimo}}');
                     document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
                   
             @endforeach
