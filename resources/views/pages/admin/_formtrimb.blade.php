@@ -58,7 +58,7 @@
     
     <div class="col-md-6" style="margin-bottom: 1em;">
     <label>1. Seleccione un Área</label>
-                    <select class="form-control validar" data-error="1" id="area_trim" name="area_trim" >
+                    <select class="form-control" id="area_trim" name="area_trim" >
                       <option value="0">Área...</option>
                       @foreach( $areas as $area )
                         @if ($area->idarea == $arrTrimestral['idarea'])
@@ -72,7 +72,7 @@
 
     <div class="col-md-6" style="margin-bottom: 1em;">
     <label>2. Seleccione un Programa</label>   
-        <select class="form-control validar" data-error="1" id="programa_trima" name="programa_trim" >
+        <select class="form-control" id="programa_trima" name="programa_trim" >
           <option value="0">Programa...</option>
           @foreach( $programas as $programa )
             @if ($programa->idprograma == $arrTrimestral['idprograma'])
@@ -86,7 +86,7 @@
 
       <div class="col-md-6" style="margin-bottom: 1em;">
         <label>3. Seleccione un Programa Específico</label>
-            <select class="form-control validar" data-error="1" id="programaEsp_trim" name="programaEsp_trim">
+            <select class="form-control" id="programaEsp_trim" name="programaEsp_trim">
             <option value="0">Programa Específico...</option>                      
             @foreach( $programaesp as $pespecifico )
             @if ($pespecifico->idprogramaesp == $arrTrimestral['idprogramaesp'])
@@ -100,8 +100,8 @@
 
 
     <div class="col-md-6" style="margin-bottom: 1em;">
-          <label>4 Seleccione un Trimestre</label>
-            <select class="form-control validar" data-error="1" id="trimestre_trim" name="trimestre_trim">
+          <label>4. Seleccione un Trimestre</label>
+            <select class="form-control" id="trimestre_trim" name="trimestre_trim">
               <option value="0">Trimestre...</option>
               @foreach( $trimestres as $trimestre )
                 @if ($trimestre->id == $arrTrimestral['idtrimestral'])
