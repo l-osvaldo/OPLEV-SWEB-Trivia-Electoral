@@ -547,7 +547,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
                       var x = document.createElement("TR");
                       document.getElementById('resultMes').appendChild(x);
                       //data[0][i].created_at
-                      var d = new Date(data[0][i].created_at);
+                      var d = new Date(data[0][i].ale_date);
                       x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>---</td><td>---</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
                     }
 
@@ -585,7 +585,7 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
                     for (var i = 0; i < data[0].length; i++) {
                       var x = document.createElement("TR");
                       document.getElementById('resultEntre').appendChild(x);
-                      var d = new Date(data[0][i].created_at);
+                      var d = new Date(data[0][i].ale_date);
                       x.innerHTML='<td class="'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
                     }
 
