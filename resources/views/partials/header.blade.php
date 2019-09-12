@@ -77,7 +77,7 @@
 
           @foreach( $alertasfin as $alertafin )
             <a href="#" class="dropdown-item texto-negro alerta-texto {{ $alertafin->ale_tipo === 1 ? 'nueva-alerta' : 'no' }}">
-            <div style="display: inline-block;float: left;">{{$alertafin->ale_acronimo}} - {{$alertafin->ale_mes}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alertafin->created_at)) }}</div>
+            <div style="display: inline-block;float: left;">{{$alertafin->ale_acronimo}} - {{$alertafin->ale_mes}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alertafin->ale_date)) }}</div>
             </a>
           @endforeach
 
@@ -107,7 +107,7 @@
 
           @foreach( $alertas as $alerta )
             <a href="#" class="dropdown-item texto-negro alerta-texto {{ $alerta->ale_tipo === 1 ? 'nueva-alerta' : 'no' }}">
-              <div class=" tiempo{{ $alerta->ale_tiempo }}" style="display: inline-block;float: left;">{{$alerta->ale_acronimo}} - {{$alerta->ale_id_programa}} - {{$alerta->ale_num_actividad}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alerta->created_at)) }}</div>
+              <div class=" tiempo{{ $alerta->ale_tiempo }}" style="display: inline-block;float: left;">{{$alerta->ale_acronimo}} - {{$alerta->ale_id_programa}} - {{$alerta->ale_num_actividad}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($alerta->ale_date)) }}</div>
             </a>
           @endforeach
 
