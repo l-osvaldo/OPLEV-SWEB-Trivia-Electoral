@@ -8,7 +8,7 @@ $(function() {
   //    _prefix_url = "/"+_prefix_url;
   //  }
 
-  var _prefix_url =  '/sipsei' 
+  var _prefix_url =  '/'; 
 
 
   $("input#realizadomes_admin").keydown(function (e)
@@ -397,7 +397,7 @@ $(function() {
     var programa = $('#programa_trima').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: _prefix_url+"../admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -451,7 +451,7 @@ $(function() {
   });
 
 
-  $('.observatrim').editable(_prefix_url+'/admin/guardarObsTrim',
+  $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
   {     
     type : 'textarea',
     submitdata: { _method: "put" },
