@@ -3,10 +3,12 @@ $(function() {
 
   $('#btnGuardarInfo_admin').hide();
   $('#btnReporteMensual_admin').hide();
-  var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
-    if(_prefix_url != ""){
-      _prefix_url = "/"+_prefix_url;
-    }
+  //var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
+  //  if(_prefix_url != ""){
+  //    _prefix_url = "/"+_prefix_url;
+  //  }
+
+  var _prefix_url =  '/sipsei' 
 
 
   $("input#realizadomes_admin").keydown(function (e)
@@ -77,7 +79,7 @@ $(function() {
     var programa = $('#programa_admin').find(':selected').val();
     var comboProgramaEsp = '';
 
-    
+    console.log(_prefix_url);
 
     $.ajax({
       url: _prefix_url+"admin/obtenProgramaEsp",
@@ -134,6 +136,7 @@ $(function() {
     var comboActividades = '';
     obtenObjetivos(area, programa, programaEsp);
 
+     console.log(_prefix_url);
     //Obtener actividades
     $.ajax({
      url: _prefix_url+"admin/obtenActividades",
