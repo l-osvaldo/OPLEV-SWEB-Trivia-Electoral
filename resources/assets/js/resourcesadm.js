@@ -82,7 +82,7 @@ $(function() {
     console.log(_prefix_url);
 
     $.ajax({
-      url: _prefix_url+"admin/obtenProgramaEsp",
+      url: _prefix_url+"obtenProgramaEspAdmin",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
