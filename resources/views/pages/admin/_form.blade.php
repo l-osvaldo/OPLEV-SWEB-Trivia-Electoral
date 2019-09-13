@@ -40,7 +40,7 @@
 
        <div class="col-md-4" style="margin-bottom: 1em;">
             <label>1. Seleccione un Mes</label>
-            <select class="form-control" id="mes_admin" name="mes_admin">
+            <select class="form-control validar" data-error="1" id="mes_admin" name="mes_admin">
             <option value="0">Mes...</option>      
             @foreach( $meses as $mes )
               <option value="{{$mes->idmes}}">{{$mes->mes}}</option>
@@ -50,7 +50,7 @@
 
         <div class="col-md-4" style="margin-bottom: 1em;">
             <label>2. Seleccione un Área</label>
-            <select class="form-control" id="area_admin" name="area_admin" >
+            <select class="form-control validar" data-error="1" id="area_admin" name="area_admin" >
               <option value="0">Área...</option>
               @foreach( $areas as $area )
               <option value="{{$area->idarea}}">{{$area->nombrearea}}</option>
@@ -60,7 +60,7 @@
 
         <div class="col-md-4" style="margin-bottom: 1em;">
           <label>3. Seleccione un Programa</label>
-            <select class="form-control" id="programa_admin" name="programa_admin" >
+            <select class="form-control validar" data-error="1" id="programa_admin" name="programa_admin" >
                <option value="0">Programa...</option>
                @foreach( $programas as $programa )
                  <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
@@ -70,7 +70,7 @@
 
         <div class="col-md-12" style="margin-bottom: 1em;">
           <label>4. Seleccione un Programa Específico</label>
-            <select class="form-control" id="programaEsp_admin" name="programaEsp_admin">
+            <select class="form-control validar" data-error="1" id="programaEsp_admin" name="programaEsp_admin">
                 <option value="0">Programa Específico...</option>
             </select>
           </div>
@@ -216,7 +216,7 @@
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
       @if(Auth::user()->hasRole('admin')) 
-      <button type="submit" class="btn btn-primary" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>      
+      <button type="submit" class="btn btn-primary EnaBtn" disabled="true" id="btnGuardarInfo_admin" name="btnGuardarInfo_admin">Guardar Informaci&oacute;n</button>      
       @endif      
       @if(Auth::user()->hasRole('admin')) 
       <a class="btn btn-secondary" href="{{ route('programa.index') }}">Cancelar</a>

@@ -28,7 +28,7 @@
 
     <div class="contInput">
     <label>1. Seleccione un Programa.</label>
-        <select class="form-control" id="programa" name="programa" data-idmes={{$idmesreportar}}>
+        <select class="form-control validar" data-error="1" id="programa" name="programa" data-idmes={{$idmesreportar}}>
         <option value="0">Programa...</option>
           @foreach( $programas as $programa )
           <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>
@@ -37,7 +37,7 @@
     </div>
     <div class="contInput">
         <label>2. Seleccione un Programa Específico.</label>
-        <select class="form-control" id="programaEsp" name="programaEsp">
+        <select class="form-control validar" data-error="1" id="programaEsp" name="programaEsp">
           <option value="0">Programa Específico...</option>
         </select>   
     </div>  
@@ -56,7 +56,7 @@
 
     <div class="contInput">
       <label>3. Seleccione una Actividad</label>
-    <select class="form-control" id="actividades" name="actividades"></select>
+    <select class="form-control validar" data-error="1" id="actividades" name="actividades"></select>
     </div>
 
     <div class="contInput">
@@ -209,7 +209,7 @@
       @endif
       <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
-      <button type="submit" class="btn btn-primary" id="btnGuardarInfo" name="btnGuardarInfo">Guardar Información</button>
+      <button type="submit" class="btn btn-primary EnaBtn" disabled="true" id="btnGuardarInfo" name="btnGuardarInfo">Guardar Información</button>
       <a class="btn btn-secondary" href="{{ route('programa.index') }}">Cancelar</a>
     </div>
   </div>

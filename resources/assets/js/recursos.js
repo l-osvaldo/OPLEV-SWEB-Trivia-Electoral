@@ -77,7 +77,7 @@ $(function() {
 
 
     $.ajax({
-      url: _prefix_url+"poa/obtenProgramaEsp",
+      url: _prefix_url+"/poa/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
@@ -98,7 +98,7 @@ $(function() {
   function obtenObjetivos(programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-     url: _prefix_url+"obtenObjetivoAct",
+     url: _prefix_url+"/obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -133,7 +133,7 @@ $(function() {
 
     //Obtener actividades
     $.ajax({
-     url: _prefix_url+"obtenActividades",
+     url: _prefix_url+"/obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -191,7 +191,7 @@ $(function() {
     obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-     url: _prefix_url+"obtenPorcProgramado",
+     url: _prefix_url+"/obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -219,7 +219,7 @@ $(function() {
 
       //Obtener porcentaje realizado
     $.ajax({
-     url: _prefix_url+"obtenPorcRealizado",
+     url: _prefix_url+"/obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -249,7 +249,7 @@ $(function() {
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-     url: _prefix_url+"obtenDetallesActi",
+     url: _prefix_url+"/obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, idMes: idMes},
