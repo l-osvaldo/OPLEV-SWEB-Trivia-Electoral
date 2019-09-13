@@ -88,6 +88,7 @@ $(function() {
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
@@ -288,7 +289,7 @@ $.ajaxSetup({
         });
         
 
-        //document.getElementById("repEmail").addEventListener("click", sendMail);
+        document.getElementById("repEmail").addEventListener("click", sendMail);
         function sendMail () {
             document.getElementById("loader").classList.remove('hidden');
             var mes = this.getAttribute('data-mes');
