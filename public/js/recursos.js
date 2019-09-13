@@ -81,7 +81,7 @@ $(function() {
     console.log(_prefix_url);
 
     $.ajax({
-      url: _prefix_url+"poa/obtenProgramaEsp",
+      url: _prefix_url+"obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
