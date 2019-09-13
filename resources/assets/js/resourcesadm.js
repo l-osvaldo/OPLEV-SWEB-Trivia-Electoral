@@ -8,8 +8,8 @@ $(function() {
   //    _prefix_url = "/"+_prefix_url;
   //  }
 
-  //var _prefix_url =  ''; 
-
+  var _prefix_url;
+  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='';
 
   $("input#realizadomes_admin").keydown(function (e)
   {
@@ -79,10 +79,10 @@ $(function() {
     var programa = $('#programa_admin').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log();
+    console.log(_prefix_url);
 
     $.ajax({
-      url: "admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -106,7 +106,7 @@ $(function() {
   function obtenObjetivos(area, programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-     url: "admin/obtenObjetivoAct",
+     url: _prefix_url+"admin/obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa, programaEsp: programaEsp},
@@ -136,10 +136,10 @@ $(function() {
     var comboActividades = '';
     obtenObjetivos(area, programa, programaEsp);
 
-     console.log();
+     console.log(_prefix_url);
     //Obtener actividades
     $.ajax({
-     url: "admin/obtenActividades",
+     url: _prefix_url+"admin/obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa, programaEsp: programaEsp},
@@ -202,7 +202,7 @@ $(function() {
     obtenObjetivos(area, programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-     url: "admin/obtenPorcProgramado",
+     url: _prefix_url+"admin/obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -230,7 +230,7 @@ $(function() {
 
       //Obtener porcentaje realizado
     $.ajax({
-     url: "admin/obtenPorcRealizado",
+     url: _prefix_url+"admin/obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -259,7 +259,7 @@ $(function() {
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-     url: "admin/obtenDetallesActi",
+     url: _prefix_url+"admin/obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, mes: mes},
@@ -367,7 +367,7 @@ $(function() {
     var programa = $('#programa_trim').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: "admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -397,7 +397,7 @@ $(function() {
     var programa = $('#programa_trima').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: "admin/obtenProgramaEsp",
+      url: _prefix_url+"admin/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -451,7 +451,7 @@ $(function() {
   });
 
 
-  $('.observatrim').editable('admin/guardarObsTrim',
+  $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
   {     
     type : 'textarea',
     submitdata: { _method: "put" },

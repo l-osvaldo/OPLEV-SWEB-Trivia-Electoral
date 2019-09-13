@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'SIPSEI') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-      <meta name="app-prefix" content="{{config('app.app-prefix')}}">
+      <meta name="app-prefix" content="{{ url('/') }}">
 
     <!-- Bootstrap 4.0-->
     <!--link rel="stylesheet" href="{{ asset('vendor_components/bootstrap/dist/css/bootstrap.css') }}"-->
