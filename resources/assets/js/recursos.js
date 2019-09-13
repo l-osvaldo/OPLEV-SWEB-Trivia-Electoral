@@ -1,10 +1,11 @@
 $(function() {
 
   //var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
-  //  if(_prefix_url != ""){
-  //    _prefix_url = "/"+_prefix_url;
-  //  }
-  var _prefix_url =  '/'; 
+    //if(_prefix_url != ""){
+    //  _prefix_url = "/"+_prefix_url;
+    //}
+  //_prefix_url==''
+  //var _prefix_url =  '/'; 
   $('#btnGuardarInfo').hide();
   //$('#btnConcentradoPoa').hide();
 
@@ -76,10 +77,10 @@ $(function() {
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log(_prefix_url);
+    console.log();
 
     $.ajax({
-      url: _prefix_url+"poa/obtenProgramaEsp",
+      url: "poa/obtenProgramaEsp",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
@@ -100,7 +101,7 @@ $(function() {
   function obtenObjetivos(programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-     url: _prefix_url+"obtenObjetivoAct",
+     url: "obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -135,7 +136,7 @@ $(function() {
 
     //Obtener actividades
     $.ajax({
-     url: _prefix_url+"obtenActividades",
+     url: "obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -193,7 +194,7 @@ $(function() {
     obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-     url: _prefix_url+"obtenPorcProgramado",
+     url: "obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -221,7 +222,7 @@ $(function() {
 
       //Obtener porcentaje realizado
     $.ajax({
-     url: _prefix_url+"obtenPorcRealizado",
+     url: "obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -251,7 +252,7 @@ $(function() {
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-     url: _prefix_url+"obtenDetallesActi",
+     url: "obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, idMes: idMes},
