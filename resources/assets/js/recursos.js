@@ -5,7 +5,7 @@ $(function() {
   //    _prefix_url = "/"+_prefix_url;
   //  }
   var _prefix_url;
-  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='';
+  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='../';
   //var _prefix_url =  '/'; 
   $('#btnGuardarInfo').hide();
   //$('#btnConcentradoPoa').hide();
