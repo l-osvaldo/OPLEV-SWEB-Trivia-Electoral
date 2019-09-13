@@ -77,6 +77,7 @@ $(function() {
 
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
+    var token = $('meta[name="csrf-token"]').attr('content');
 
     console.log(_prefix_url);
 
@@ -84,7 +85,7 @@ $(function() {
       url: _prefix_url+"obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
-      data: {programa: programa},
+      data: {programa: programa,"_token": token},
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
