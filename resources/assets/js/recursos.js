@@ -288,7 +288,7 @@ $.ajaxSetup({
         });
         
 
-        document.getElementById("repEmail").addEventListener("click", sendMail);
+        //document.getElementById("repEmail").addEventListener("click", sendMail);
         function sendMail () {
             document.getElementById("loader").classList.remove('hidden');
             var mes = this.getAttribute('data-mes');

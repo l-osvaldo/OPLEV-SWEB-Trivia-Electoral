@@ -13,7 +13,7 @@
 Route::group(['middleware' => 'disablepreventback'],function()
 {
 Route::get('/', 'PoaController@index')->name('index');
-Route::get('/obtenProgramaEspPoa', 'PoaController@obtenProgramaEsp')->name('obten.programa.esp');
+Route::get('obtenProgramaEspPoa', 'PoaController@obtenProgramaEsp')->name('obten.programa.esp');
 Route::get('obtenActividades', 'PoaController@obtenActividades')->name('obten.programa.actividades');
 Route::get('obtenObjetivoAct', 'PoaController@obtenObjetivoAct')->name('obten.objetivo.actividad');
 Route::get('obtenPorcProgramado', 'PoaController@obtenPorcProgramado')->name('obten.porcentaje.programado');
@@ -22,7 +22,7 @@ Route::get('obtenDetallesActi', 'PoaController@obtenDetallesActi')->name('obten.
 //Route::get('obtenRealizadoMes', 'PoaController@obtenRealizadoMes')->name('obten.realizado.mes');
 Route::get('/reppoa', 'ReportesController@index')->name('reppoa');
 Route::get('/repindicadores', 'ReportesController@indexindicador')->name('repindicadores');
-Route::get('/obtenProgramaEspAdmin', 'AdminController@obtenProgramaEsp')->name('admin.obten.programa.esp');
+Route::get('obtenProgramaEspAdmin', 'AdminController@obtenProgramaEsp')->name('admin.obten.programa.esp');
 Route::get('/admin/obtenObjetivoAct', 'AdminController@obtenObjetivoAct')->name('admin.obten.objetivo.actividad');
 Route::get('/admin/obtenActividades', 'AdminController@obtenActividades')->name('admin.obten.programa.actividades');
 Route::get('/admin/obtenPorcProgramado', 'AdminController@obtenPorcProgramado')->name('admin.obten.porcentaje.programado');
