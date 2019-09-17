@@ -306,6 +306,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(response)
         $('#enep').html(response[0]['enep']);
         $('#febp').html(response[0]['febp']);
         $('#marp').html(response[0]['marp']);
@@ -334,6 +335,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(response)
         $('#ener').html(response[0]['ener']);
         $('#febr').html(response[0]['febr']);
         $('#marr').html(response[0]['marr']);
@@ -364,6 +366,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(response)
 
         //console.log(response);
         $('#descactividad').html(response[0]['descripcion']);
