@@ -61,9 +61,9 @@ $(function() {
 
 $("#programaOP").change(function()
   {
-    $('#programaEsp').html('');    
+    $('#programaEspOP').html('');    
     $('#objetivo').html('');
-    $('#actividades').html('');     
+    $('#actividadesOP').html('');     
     $('#unidadmedida').html('');
     $('#cantidadanual').html('');   
     limpiaTablaAnalisis();
@@ -156,7 +156,7 @@ $("#programaOP").change(function()
   $("#programaEspOP").change(function() 
   {
     $('#objetivo').html('');
-    $('#actividades').html('');     
+    $('#actividadesOP').html('');     
     $('#unidadmedida').html('');
     $('#cantidadanual').html('');   
     limpiaTablaAnalisis();
