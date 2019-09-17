@@ -504,7 +504,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlerta () {
             $.ajax({
              type:'POST',
-             url:"../clickalertas",
+             url:"clickalertas",
              data:{"_token": token},
              success:function(data){ 
                 //console.log(data);
@@ -517,7 +517,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlertafin () {
             $.ajax({
              type:'POST',
-             url:"../clickalertasfin",
+             url:"clickalertasfin",
              data:{"_token": token},
              success:function(data){ 
                 //console.log(data);
