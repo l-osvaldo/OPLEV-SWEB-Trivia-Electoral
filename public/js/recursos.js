@@ -178,7 +178,7 @@ $("#programaOP").change(function()
 
     //Obtener actividades
     $.ajax({
-     url: "obtenActividades",
+     url: "../obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -207,6 +207,7 @@ $("#programaOP").change(function()
             }
           }
         }); //Each
+        console.log('holas',comboActividades)
         $('#actividadesOP').html(comboActividades);
        
         
