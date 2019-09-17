@@ -142,7 +142,7 @@ $("#programaOP").change(function()
   function obtenObjetivos(programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
-     url: _prefix_url+"obtenObjetivoAct",
+     url: "../obtenObjetivoAct",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
