@@ -174,10 +174,11 @@ $("#programaOP").change(function()
     var comboActividades = '';
 
     obtenObjetivos(programa, programaEsp);
+    console.log('holas')
 
     //Obtener actividades
     $.ajax({
-     url: "../obtenActividades",
+     url: "obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
