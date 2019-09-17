@@ -177,7 +177,7 @@ $("#programaOP").change(function()
 
     //Obtener actividades
     $.ajax({
-     url: _prefix_url+"obtenActividades",
+     url: "../obtenActividades",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa, programaEsp: programaEsp},
@@ -297,7 +297,7 @@ $("#programaEsp").change(function()
     obtenObjetivos(programa, programaEsp);
     //Obtener porcentajes programado
     $.ajax({
-     url: _prefix_url+"obtenPorcProgramado",
+     url: "../obtenPorcProgramado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
