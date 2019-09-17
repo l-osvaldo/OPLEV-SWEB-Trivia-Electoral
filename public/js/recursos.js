@@ -78,6 +78,8 @@ $(function() {
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
 
+    console.log(_prefix_url,'1')
+
     $.ajax({
       url: _prefix_url+"obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -86,7 +88,6 @@ $(function() {
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-         console.log(_prefix_url,response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
