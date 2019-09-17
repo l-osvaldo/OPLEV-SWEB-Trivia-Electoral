@@ -37,7 +37,7 @@
     </div>
     <div class="contInput">
         <label>2. Seleccione un Programa Específico.</label>
-        <select class="form-control validar" data-error="1" id="programaEsp" name="programaEsp">
+        <select class="form-control validar" data-error="1" id="programaEspOP" name="programaEsp">
           <option value="0">Programa Específico...</option>
         </select>   
     </div>  
@@ -56,7 +56,7 @@
 
     <div class="contInput">
       <label>3. Seleccione una Actividad</label>
-    <select class="form-control validar" data-error="1" id="actividades" name="actividades"></select>
+    <select class="form-control validar" data-error="1" id="actividadesOP" name="actividades"></select>
     </div>
 
     <div class="contInput">
