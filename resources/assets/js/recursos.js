@@ -5,7 +5,7 @@ $(function() {
   //    _prefix_url = "/"+_prefix_url;
   //  }
   var _prefix_url;
-  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='';
+  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='../';
   //var _prefix_url =  '/'; 
   $('#btnGuardarInfo').hide();
   //$('#btnConcentradoPoa').hide();
@@ -77,20 +77,16 @@ $(function() {
 
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
-    ///////////////////////////////////////////////////////////////////////////////////////////////QUITAR O AGREGAR
-    var token = $('meta[name="csrf-token"]').attr('content');
-
-    console.log(_prefix_url);
 
     $.ajax({
       url: _prefix_url+"obtenProgramaEspPoa",
-      //headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa,"_token": token},
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response);
+         console.log(_prefix_url,response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
