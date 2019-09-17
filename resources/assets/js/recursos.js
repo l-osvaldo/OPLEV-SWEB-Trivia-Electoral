@@ -84,7 +84,7 @@ $(function() {
 
     $.ajax({
       url: _prefix_url+"obtenProgramaEspPoa",
-      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      //headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa,"_token": token},
       dataType: 'json',
