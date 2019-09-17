@@ -328,7 +328,7 @@ $("#programaEsp").change(function()
 
       //Obtener porcentaje realizado
     $.ajax({
-     url: _prefix_url+"obtenPorcRealizado",
+     url: "../obtenPorcRealizado",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad},
@@ -359,7 +359,7 @@ $("#programaEsp").change(function()
 
     //Obtener textareas de actividad, soporte, observaciones
     $.ajax({
-     url: _prefix_url+"obtenDetallesActi",
+     url: "../obtenDetallesActi",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {idActividad: idActividad, idMes: idMes},
