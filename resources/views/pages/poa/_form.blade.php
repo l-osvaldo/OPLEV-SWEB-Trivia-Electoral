@@ -28,7 +28,7 @@
 
     <div class="contInput">
     <label>1. Seleccione un Programa.</label>
-        <select class="form-control validar" data-error="1" id="programa" name="programa" data-idmes={{$idmesreportar}}>
+        <select class="form-control validar" data-error="1" id="programaOP" name="programa" data-idmes={{$idmesreportar}}>
         <option value="0">Programa...</option>
           @foreach( $programas as $programa )
           <option value="{{$programa->idprograma}}">{{$programa->claveprograma}} - {{$programa->descprograma}}</option>

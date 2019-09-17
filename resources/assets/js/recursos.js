@@ -5,7 +5,7 @@ $(function() {
   //    _prefix_url = "/"+_prefix_url;
   //  }
   var _prefix_url;
-  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='../' : _prefix_url='../';
+  $('meta[name="app-prefix"]').attr('content') == 'http://sipsei.test' ? _prefix_url='/' : _prefix_url='';
   //var _prefix_url =  '/'; 
   $('#btnGuardarInfo').hide();
   //$('#btnConcentradoPoa').hide();
@@ -59,6 +59,45 @@ $(function() {
   }
 
 
+$("#programaOP").change(function()
+  {
+    $('#programaEsp').html('');    
+    $('#objetivo').html('');
+    $('#actividades').html('');     
+    $('#unidadmedida').html('');
+    $('#cantidadanual').html('');   
+    limpiaTablaAnalisis();
+    $('#realizadomes').val(0);
+    $('#descactividad').html('');
+    $('#soporte').html('');
+    $('#observaciones').html('');
+    $('#btnGuardarInfo').hide();
+
+    var programa = $('#programa').find(':selected').val();
+    var comboProgramaEsp = '';
+
+    console.log(_prefix_url,'1');
+
+    $.ajax({
+      url: "../obtenProgramaEspPoa",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      type: 'GET',
+      data: {programa: programa},
+      dataType: 'json',
+      contentType: 'application/json'
+      }).done(function(response) {
+        console.log(response);
+        comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
+        $.each(response, function(index, value){
+          var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
+          var nomenclatura = value['claveprogramaesp'];
+          comboProgramaEsp += '<option value=" '+value['idprogramaesp']+','+nomenclatura+'">'+ cadena +'</option>';
+        });
+        $('#programaEsp').html(comboProgramaEsp);
+      });
+
+  });
+
 
 
   $("#programa").change(function()
@@ -78,17 +117,17 @@ $(function() {
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log(_prefix_url,'1',window.location.href)
+    console.log(_prefix_url,'2');
 
     $.ajax({
-      url: "obtenProgramaEspPoa",
+      url: _prefix_url+"obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(_prefix_url,'1')
+        console.log(response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
