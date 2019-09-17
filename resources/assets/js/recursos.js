@@ -84,10 +84,11 @@ $(function() {
       url: _prefix_url+"obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
-      data: {programa: programa,"_token": token},
+      data: {programa: programa},
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        console.log(_prefix_url,'1')
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
