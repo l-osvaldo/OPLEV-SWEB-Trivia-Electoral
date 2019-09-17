@@ -76,7 +76,7 @@ $("#programaOP").change(function()
     var programa = $('#programaOP').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log(_prefix_url,'1');
+    //console.log(_prefix_url,'1');
 
     $.ajax({
       url: "../obtenProgramaEspPoa",
@@ -86,7 +86,7 @@ $("#programaOP").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response);
+        //console.log(response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
@@ -117,7 +117,7 @@ $("#programaOP").change(function()
     var programa = $('#programa').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log(_prefix_url,'2');
+    //console.log(_prefix_url,'2');
 
     $.ajax({
       url: _prefix_url+"obtenProgramaEspPoa",
@@ -127,7 +127,7 @@ $("#programaOP").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response);
+        //console.log(response);
         comboProgramaEsp = "<option value='0'>Programa Específico...</option>";
         $.each(response, function(index, value){
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
@@ -174,7 +174,7 @@ $("#programaOP").change(function()
     var comboActividades = '';
 
     obtenObjetivos(programa, programaEsp);
-    console.log('holas')
+    //console.log('holas')
 
     //Obtener actividades
     $.ajax({
@@ -207,7 +207,7 @@ $("#programaOP").change(function()
             }
           }
         }); //Each
-        console.log('holas',comboActividades)
+        //console.log('holas',comboActividades)
         $('#actividadesOP').html(comboActividades);
        
         
@@ -274,7 +274,7 @@ $("#programaEsp").change(function()
        
         
       }); //Done
-       document.getElementById('actividades').setAttribute('data-error', '1');
+       //document.getElementById('actividades').setAttribute('data-error', '1');
       disabledBTN();
   });
 
@@ -306,7 +306,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response)
+        //console.log(response)
         $('#enep').html(response[0]['enep']);
         $('#febp').html(response[0]['febp']);
         $('#marp').html(response[0]['marp']);
@@ -335,7 +335,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response)
+        //console.log(response)
         $('#ener').html(response[0]['ener']);
         $('#febr').html(response[0]['febr']);
         $('#marr').html(response[0]['marr']);
@@ -366,7 +366,7 @@ $("#programaEsp").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
-        console.log(response)
+        //console.log(response)
 
         //console.log(response);
         $('#descactividad').html(response[0]['descripcion']);
@@ -470,9 +470,9 @@ $("#programaEsp").change(function()
       }).done(function(response) {
 
         //console.log(response);
-        $('#descactividad').html(response[0]['descripcion']);
-        $('#soporte').html(response[0]['soporte']);
-        $('#observaciones').html(response[0]['observaciones']);
+        //$('#descactividad').html(response[0]['descripcion']);
+        //$('#soporte').html(response[0]['soporte']);
+        //$('#observaciones').html(response[0]['observaciones']);
 
         $('#btnGuardarInfo').show();
         //$('#btnConcentradoPoa').show();
