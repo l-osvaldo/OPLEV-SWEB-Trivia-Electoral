@@ -343,7 +343,7 @@ $(function() {
     $('#btnReporteMensual_trim').hide();    
     $('#programa_trim').val('0');
     $('#programa_trima').val('0');
-    $('#programaEsp_trim').html('');    
+    $('#programaEsp_trim').html("<option value='0'>Programa Específico...</option>");    
     $('#trimestre_trim').val('0');
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();  
@@ -351,7 +351,7 @@ $(function() {
     $('#areareporte').val($('#area_trim').find(':selected').val());
 
     document.getElementById('programa_trim').setAttribute('data-error', '1');
-    document.getElementById('programa_trima').setAttribute('data-error', '1');
+    $('#programa_trima').attr('data-error', '1');
     document.getElementById('trimestre_trim').setAttribute('data-error', '1');
     disabledBTN();
   });
@@ -360,14 +360,14 @@ $(function() {
   {    
     $('#tablaresultados').html('');    
     $('#btnReporteTrimestral').hide();    
-    $('#programaEsp_trim').html('');
+    $('#programaEsp_trim').html("<option value='0'>Programa Específico...</option>");
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
     var area = $('#area_trim').find(':selected').val();
     var programa = $('#programa_trim').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: _prefix_url+"admin/obtenProgramaEsp",
+      url: "../obtenProgramaEspAdmin",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -379,6 +379,7 @@ $(function() {
           var cadena = value['claveprogramaesp'] + " - " + value['descprogramaesp'];
           comboProgramaEsp += "<option value='"+value['idprogramaesp']+"'>"+ cadena +"</option>";
         });
+
         $('#programaEsp_trim').html(comboProgramaEsp);      
         $('#programareporte').val(programa);
       });
@@ -390,14 +391,14 @@ $(function() {
   {    
     $('#tablaresultados').html('');    
     $('#btnReporteTrimestral').hide();    
-    $('#programaEsp_trim').html('');
+    $('#programaEsp_trim').html("<option value='0'>Programa Específico...</option>");
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();    
     var area = $('#area_trim').find(':selected').val();
     var programa = $('#programa_trima').find(':selected').val();
     var comboProgramaEsp = '';
     $.ajax({
-      url: _prefix_url+"admin/obtenProgramaEsp",
+      url: "../obtenProgramaEspAdmin",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {area: area, programa: programa},
@@ -435,7 +436,7 @@ $(function() {
     $('#btnReporteMensual_trim').hide();    
     $('#programa_trim').val('0'); 
     $('#programa_trima').val('0');    
-    $('#programaEsp_trim').html('');    
+    $('#programaEsp_trim').html("<option value='0'>Programa Específico...</option>");    
     $('#trimestre_trim').val('0');
     $('#btnGuardarInfo_trim').hide();
     $('#btnReporteMensual_trim').hide();  
@@ -526,8 +527,8 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         }
 
 
-document.getElementById("buscarMes").addEventListener("click", busquedames);
-        function busquedames () {
+//document.getElementById("buscarMes").addEventListener("click", busquedames);
+$("#buscarMes").click(function(){
 
           document.getElementById("loader").classList.remove('hidden');
           var mes = document.getElementById('mesbusqueda').value;
@@ -562,10 +563,10 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
               }
           });
           
-        }
+   });
 
-        document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
-        function busquedaentre () {
+        //document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
+$("#buscarEntre").click(function(){
 
           document.getElementById("loader").classList.remove('hidden');
           var datep = document.getElementById('datep').value;
@@ -600,15 +601,17 @@ document.getElementById("buscarMes").addEventListener("click", busquedames);
               }
           });
           
-        }
+        });
 
-         document.getElementById("datep").addEventListener("change", changedatep);
-        function changedatep (){
+         //document.getElementById("datep").addEventListener("change", changedatep);
+$("#datep").click(function(){
           var datep = document.getElementById('datep').value;
           document.getElementById('dates').setAttribute("min", datep);
           document.getElementById('dates').disabled = false;
-        }
-        document.getElementById("dates").addEventListener("change", changedates);
-        function changedates(){
+        });
+
+$("#dates").click(function(){
+        //document.getElementById("dates").addEventListener("change", changedates);
+
           document.getElementById('buscarEntre').disabled = false;
-        }
+        });
