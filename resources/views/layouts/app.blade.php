@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('/favicon.ico')}}">
+    <link rel="icon" href="{{ asset('public/images/favicon.ico') }}">
 
     <title>{{ config('app.name', 'SIPSEI') }}</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" type="image/x-icon">
       <meta name="app-prefix" content="{{ url('/') }}">
      
       <!--meta name="app-prefix" content="{{config('app.app-prefix')}}"-->

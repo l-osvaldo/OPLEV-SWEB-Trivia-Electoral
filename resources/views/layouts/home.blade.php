@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('/favicon.ico')}}">
+    <link rel="icon" href="{{ asset('public/images/favicon.ico') }}" type="image/x-icon">
 
     <title>{{ config('app.name', 'POA2019') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
