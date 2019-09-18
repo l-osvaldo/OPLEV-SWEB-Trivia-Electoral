@@ -102,9 +102,9 @@ $("#programaOP").change(function()
 
   $("#programa").change(function()
   {
-    $('#programaEsp').html('');    
+    $('#programaEsp').html('<option value="0">Programa Específico...</option>');    
     $('#objetivo').html('');
-    $('#actividades').html('');     
+    $('#actividades').html('<option value="0">Seleccione la actividad</option>');     
     $('#unidadmedida').html('');
     $('#cantidadanual').html('');   
     limpiaTablaAnalisis();
@@ -149,7 +149,9 @@ $("#programaOP").change(function()
       dataType: 'json',
       contentType: 'application/json'
       }).done(function(response) {
+        if (response.length > 0) {
         $('#objetivo').html(response[0]['objprogramaesp']);
+        }
     });
   }
 
@@ -496,8 +498,10 @@ $.ajaxSetup({
         });
         
 
-        document.getElementById("repEmail").addEventListener("click", sendMail);
-        function sendMail () {
+        //document.getElementById("repEmail").addEventListener("click", sendMail);
+        //function sendMail () {
+        $("#repEmail").click(function(){
+        
             document.getElementById("loader").classList.remove('hidden');
             var mes = this.getAttribute('data-mes');
             var clave = document.getElementById("clave").value;
@@ -520,4 +524,4 @@ $.ajaxSetup({
             document.getElementById("errorEmail").innerHTML = 'Ingrese su clave!';
 
             }
-        }
+        });

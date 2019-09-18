@@ -104,7 +104,7 @@ th {
             <h5>Notificación mensual</h5>
             <table>
               <tr>
-                <th>Unidad</th>
+                <th>Área</th>
                 <th>Ene</th>
                 <th>Feb</th>
                 <th>Mar</th>

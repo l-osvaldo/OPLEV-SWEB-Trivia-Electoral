@@ -49,6 +49,7 @@
 
   <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper wrapperPading">
+      <div id='app' class="hidden"></div>
 
       <!-- Aside -->
       @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 

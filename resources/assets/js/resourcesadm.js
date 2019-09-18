@@ -79,7 +79,7 @@ $(function() {
     var programa = $('#programa_admin').find(':selected').val();
     var comboProgramaEsp = '';
 
-    console.log(_prefix_url);
+    //console.log(_prefix_url);
 
     $.ajax({
       url: _prefix_url+"obtenProgramaEspAdmin",
@@ -98,8 +98,8 @@ $(function() {
         $('#programareporte').val(programa);
       });
 
-      document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
-      document.getElementById('actividades_admin').setAttribute('data-error', '1');
+      $('#programaEsp_admin').attr('data-error', '1');
+      $('#actividades_admin').attr('data-error', '1');
       disabledBTN();
   });
 
@@ -136,7 +136,7 @@ $(function() {
     var comboActividades = '';
     obtenObjetivos(area, programa, programaEsp);
 
-     console.log(_prefix_url);
+     //console.log(_prefix_url);
     //Obtener actividades
     $.ajax({
      url: _prefix_url+"admin/obtenActividades",
@@ -173,7 +173,7 @@ $(function() {
         $('#actividades_admin').html(comboActividades);
         $('#programaespreporte').val(programaEsp);        
       }); //Done
-      document.getElementById('actividades_admin').setAttribute('data-error', '1');
+      $('#actividades_admin').attr('data-error', '1');
       disabledBTN();
   });
 
@@ -297,9 +297,9 @@ $(function() {
 
     $('#mesreporte').val($('#mes_admin').find(':selected').val());
 
-    document.getElementById('programa_admin').setAttribute('data-error', '1');
-    document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
-    document.getElementById('actividades_admin').setAttribute('data-error', '1');
+    $('programa_admin').attr('data-error', '1');
+    $('programaEsp_admin').attr('data-error', '1');
+    $('actividades_admin').attr('data-error', '1');
     disabledBTN();
   });
 
@@ -323,9 +323,9 @@ $(function() {
 
     $('#areareporte').val($('#area_admin').find(':selected').val());
 
-    document.getElementById('programa_admin').setAttribute('data-error', '1');
-    document.getElementById('programaEsp_admin').setAttribute('data-error', '1');
-    document.getElementById('actividades_admin').setAttribute('data-error', '1');
+    $('programa_admin').attr('data-error', '1');
+    $('programaEsp_admin').attr('data-error', '1');
+    $('actividades_admin').attr('data-error', '1');
     disabledBTN();
   });
 
@@ -350,9 +350,9 @@ $(function() {
 
     $('#areareporte').val($('#area_trim').find(':selected').val());
 
-    document.getElementById('programa_trim').setAttribute('data-error', '1');
+    $('#programa_trim').attr('data-error', '1');
     $('#programa_trima').attr('data-error', '1');
-    document.getElementById('trimestre_trim').setAttribute('data-error', '1');
+    $('#trimestre_trim').attr('data-error', '1');
     disabledBTN();
   });
 
@@ -383,7 +383,7 @@ $(function() {
         $('#programaEsp_trim').html(comboProgramaEsp);      
         $('#programareporte').val(programa);
       });
-      document.getElementById('programaEsp_trim').setAttribute('data-error', '1');
+      $('#programaEsp_trim').attr('data-error', '1');
       disabledBTN();
   });
 
@@ -413,7 +413,7 @@ $(function() {
         $('#programaEsp_trim').html(comboProgramaEsp);      
         $('#programareporte').val(programa);
       });
-      document.getElementById('programaEsp_trim').setAttribute('data-error', '1');
+      $('#programaEsp_trim').attr('data-error', '1');
       disabledBTN();
   });
 
@@ -469,7 +469,10 @@ $(function() {
 
 
 
-    document.getElementById("mes_admin").onchange = function(){
+    //document.getElementById("mes_admin").onchange = function(){
+      $("#mes_admin").change(function()  
+  {  
+      if (document.getElementById('mesActual')) {
       document.getElementById('mesActual').innerHTML = '';
       var mesc = document.getElementsByClassName('mesColor');
       for (var i = 0; i < mesc.length; i++) {
@@ -485,7 +488,8 @@ $(function() {
       mesx.style.color = "#fff";
       mesy.style.backgroundColor = "#546e7a";
       mesy.style.color = "#fff";
-    };
+     }
+    });
 
 
 });

@@ -25,7 +25,7 @@ th {
         <section class="content" style="padding-top: 2em;">
           <div class="container">
 
-            <h5>Personalizar Busqueda</h5>
+            <h5>Personalizar Búsqueda</h5>
             <div class="form-row" style="margin: 1em 0 3em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Área</label>
@@ -84,7 +84,7 @@ th {
             <h5>Reporte por actividad</h5>
             <table id="resultEntre">
               <tr>
-                <th>Unidad</th>
+                <th>Área</th>
                 <th>Acronimo</th>
                 <th>Programa</th>
                 <th>Actividad</th>
