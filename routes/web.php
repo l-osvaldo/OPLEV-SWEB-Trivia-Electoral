@@ -44,7 +44,7 @@ Route::resource('programa', 'PoaController');
 Auth::routes();
 Route::resource('adicionales', 'AdicionalesController');
 Route::post('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
-Route::post('/reportes/trimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
+Route::post('/rtrimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 
 Route::put('/admin/guardarObsTrim', 'AdminController@guardarObsTrim')->name('admin.guardar.obs.trim');
@@ -55,7 +55,7 @@ Route::post('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name
 Route::resource('admin', 'AdminController');
 
 // Email related routes
-Route::post('/mail/send', 'MailController@send')->name('emailsend');
+Route::post('/mailsend', 'MailController@send')->name('emailsend');
 // ALERT&AS
 Route::post('/clickalertas', 'PoaController@clickalertas')->name('clickalertas');
 Route::post('/clickalertasfin', 'PoaController@clickalertasfin')->name('clickalertasfin');

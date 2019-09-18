@@ -62,9 +62,9 @@ $(function() {
 
   $("#programa_admin").change(function()
   {    
-    $('#programaEsp_admin').html('');    
+    $('#programaEsp_admin').html('<option value="0">Programa Específico...</option>');    
     $('#objetivo_admin').html('');
-    $('#actividades_admin').html('');     
+    $('#actividades_admin').html('<option value="0">Seleccione la actividad</option>');     
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');
     limpiaTablaAnalisis_admin();
@@ -282,9 +282,9 @@ $(function() {
     $('#btnGuardarInfo_admin').hide();
     $('#btnReporteMensual_admin').hide();    
     $('#programa_admin').val('0');    
-    $('#programaEsp_admin').html('');    
+    $('#programaEsp_admin').html('<option value="0">Programa Específico...</option>');    
     $('#objetivo_admin').html('');
-    $('#actividades_admin').html('');     
+    $('#actividades_admin').html('<option value="0">Seleccione la actividad</option>');     
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');
     limpiaTablaAnalisis_admin();
@@ -308,9 +308,9 @@ $(function() {
     $('#btnGuardarInfo_admin').hide();
     $('#btnReporteMensual_admin').hide();    
     $('#programa_admin').val('0');
-    $('#programaEsp_admin').html('');    
+    $('#programaEsp_admin').html('<option value="0">Programa Específico...</option>');    
     $('#objetivo_admin').html('');
-    $('#actividades_admin').html('');     
+    $('#actividades_admin').html('<option value="0">Seleccione la actividad</option>');     
     $('#unidadmedida_admin').html('');
     $('#cantidadanual_admin').html('');
     limpiaTablaAnalisis_admin();

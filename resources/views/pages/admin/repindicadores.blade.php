@@ -68,6 +68,7 @@
             <label>5. Seleccione la actividad para el indicador:</label>            
                 <div class="form-group" id="divActividad">
                     <select class="form-control validar" data-error="1" id="actividades_admin" name="actividades_admin">
+                      <option value="0">Seleccione la actividad</option>
                     </select>
                   </div>
              

@@ -506,7 +506,7 @@ $.ajaxSetup({
                 document.getElementById("errorEmail").classList.add('hidden');
                 $.ajax({
                      type:'POST',
-                     url:"mail/send",
+                     url:"mailsend",
                      data:{mes:mes,clave:clave,"_token": token},
                      success:function(data){ 
                         location.reload();
@@ -517,7 +517,7 @@ $.ajaxSetup({
 
             document.getElementById("errorEmail").classList.remove('hidden');
             document.getElementById("loader").classList.add('hidden');
-            document.getElementById("errorEmail").innerHTML = 'Inserte su clave!';
+            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave!';
 
             }
         }

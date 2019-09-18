@@ -110,6 +110,7 @@ class AdicionalesController extends Controller
       $adicional->soporteadicional = $soporteadicional;
       $adicional->observaadicional = $observaadicional;
       $adicional->save();
+      Alert::success('', 'Registro exitoso')->autoclose(3500);
       return redirect()->route('adicionales.index');      
     }
 
