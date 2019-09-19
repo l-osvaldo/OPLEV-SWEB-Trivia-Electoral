@@ -50,7 +50,7 @@ class MailController extends Controller
             $objDemo->sender = $userName;
             $objDemo->receiver = $userName;
      
-            //Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
+            Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
 
 
 
