@@ -85,7 +85,7 @@ th {
             <table id="resultEntre">
               <tr>
                 <th>Área</th>
-                <th>Acronimo</th>
+                <th>Acrónimo</th>
                 <th>Programa</th>
                 <th>Actividad</th>
                 <th>Fecha</th>

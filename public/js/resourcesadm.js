@@ -549,14 +549,14 @@ $("#buscarMes").click(function(){
                   document.getElementById('resultMes').innerHTML ='';
                   if (data[0].length>0) {
 
-                  document.getElementById('resultMes').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+                  document.getElementById('resultMes').innerHTML ='<tr><th>Área</th><th>Acrónimo</th><th>Fecha</th></tr>';
 
                     for (var i = 0; i < data[0].length; i++) {
                       var x = document.createElement("TR");
                       document.getElementById('resultMes').appendChild(x);
                       //data[0][i].created_at
                       var d = new Date(data[0][i].ale_date);
-                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>---</td><td>---</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
+                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
                     }
 
                   } else {
@@ -588,13 +588,13 @@ $("#buscarEntre").click(function(){
                   document.getElementById('resultEntre').innerHTML ='';
                   if (data[0].length>0) {
 
-                  document.getElementById('resultEntre').innerHTML ='<tr><th>Unidad</th><th>Acronimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+                  document.getElementById('resultEntre').innerHTML ='<tr><th>Área</th><th>Acrónimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
 
                     for (var i = 0; i < data[0].length; i++) {
                       var x = document.createElement("TR");
                       document.getElementById('resultEntre').appendChild(x);
                       var d = new Date(data[0][i].ale_date);
-                      x.innerHTML='<td class="'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
+                      x.innerHTML='<td class="tiempo'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
                     }
 
                   } else {

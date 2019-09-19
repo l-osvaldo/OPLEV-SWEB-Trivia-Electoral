@@ -82,7 +82,7 @@ th {
             <table id="resultMes">
               <tr>
                 <th>Área</th>
-                <th>Acronimo</th>
+                <th>Acrónimo</th>
                 <!--th>Programa</th>
                 <th>Actividad</th-->
                 <th>Fecha</th>
