@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Http\Controllers\Controller;
 use App\Mail\DemoEmail;
-//use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
@@ -55,8 +55,8 @@ class MailController extends Controller
 
 
 $from = 'sipsei@oplever.org.mx'; //Correo del formulario
-//$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
-$to = 'aligutman1@gmail.com'; //Aqui va el correo del buzon de quejas
+$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+//$to = 'aligutman1@gmail.com'; //Aqui va el correo del buzon de quejas
 //$to = 'javier24viper@gmail.com'; //Aqui va el correo del buzon de quejas
 
 $subject = 'Buzon de Quejas ODES'; //El asunto del correo
@@ -75,7 +75,7 @@ hola</body></html>
 $headers = "From:" . $from . "\r\n";
 $headers .= "Reply-To: " .$from . "\r\n";
 //$headers .= 'CC: creducindo@hotmail.com' . " \r\n";
-$headers .= 'CC: livan.ibanez@gmail.com' . " \r\n";
+$headers .= 'CC: aligutman1@gmail.com' . " \r\n";
 $headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
