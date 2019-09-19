@@ -88,7 +88,7 @@ $cabeceras = 'From: webmaster@example.com' . "\r\n" .
     'Reply-To: webmaster@example.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-mail($para, $titulo, $mensaje, $cabeceras);
+mail($para, $titulo, $mensaje, $headers);
 
 //mail($to, $subject, $message, $headers);
 
