@@ -513,7 +513,7 @@ $.ajaxSetup({
                      url:"mailsend",
                      data:{mes:mes,clave:clave,"_token": token},
                      success:function(data){ 
-                        location.reload();
+                        //location.reload();
                     }
                 });
 
