@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Http\Controllers\Controller;
 use App\Mail\DemoEmail;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
@@ -50,7 +50,7 @@ class MailController extends Controller
             $objDemo->sender = $userName;
             $objDemo->receiver = $userName;
      
-            Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
+            //Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
 
 
 
@@ -80,7 +80,17 @@ $headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
 $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
-mail($to, $subject, $message, $headers);
+
+$para      = 'aligutman1@gmail.com';
+$titulo    = 'El título';
+$mensaje   = 'Hola';
+$cabeceras = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($para, $titulo, $mensaje, $cabeceras);
+
+//mail($to, $subject, $message, $headers);
 
 
 
