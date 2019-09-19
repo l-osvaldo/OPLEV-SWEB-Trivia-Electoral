@@ -62,7 +62,8 @@ $comentario = 'Hola'; //Recupera el comentario.
 //La función "nl2br" sirve para que el texto respete los saltos de línea y los espacios, si lo quitas todo el mensaje se eenvia en una sola línea.  
 //Enviar email.
 $from = $correo; //Correo del formulario
-$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+//$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+$to = 'aligutman@gmail.com'; //Aqui va el correo del buzon de quejas
 //$to = 'javier24viper@gmail.com'; //Aqui va el correo del buzon de quejas
 
 
