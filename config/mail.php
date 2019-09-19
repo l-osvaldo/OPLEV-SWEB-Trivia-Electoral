@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('creducindo'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('Opl3woProc355'),
 
     /*
     |--------------------------------------------------------------------------
