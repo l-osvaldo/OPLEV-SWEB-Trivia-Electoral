@@ -95,15 +95,14 @@ mail($para, $titulo, $mensaje, $headers);
 
 
 
+phpinfo(); 
 
 
 
 
 
 
-
-            //Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
-return View('laravelPhpInfo::phpinfo.php-info');
+            Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
         } else {
             Alert::error('Su clave no coincide', '¡Error!')->autoclose(3500);
         }
