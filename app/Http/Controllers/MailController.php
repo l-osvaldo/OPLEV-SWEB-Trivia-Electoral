@@ -41,7 +41,7 @@ class MailController extends Controller
             $alerta->ale_tiempo = '---';
             $alerta->ale_mes = $send_mes;
              $alerta->ale_date = date('Y-m-d H:i:s');
-            $alerta->save();
+            //$alerta->save();
 
 
             $objDemo = new \stdClass();
@@ -93,6 +93,9 @@ mail($para, $titulo, $mensaje, $headers);
 //mail($to, $subject, $message, $headers);
 
 
+if (mail::failures()) {
+    Alert::error('Error', '¡Error!')->autoclose(3500);
+} else { Alert::success('', 'Notificación mensual enviada')->autoclose(3500);}
 
 
 
@@ -101,8 +104,7 @@ mail($para, $titulo, $mensaje, $headers);
 
 
 
-
-            Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
+           
         } else {
             Alert::error('Su clave no coincide', '¡Error!')->autoclose(3500);
         }
