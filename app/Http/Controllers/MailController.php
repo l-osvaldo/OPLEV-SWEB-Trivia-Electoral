@@ -95,7 +95,7 @@ mail($para, $titulo, $mensaje, $headers);
 
 
 
-phpinfo(); 
+print_r((phpinfo());
 
 
 
