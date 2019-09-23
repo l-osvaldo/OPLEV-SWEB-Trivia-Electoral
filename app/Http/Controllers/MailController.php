@@ -93,9 +93,6 @@ mail($para, $titulo, $mensaje, $headers);
 //mail($to, $subject, $message, $headers);
 
 
-if (mail::failures()) {
-    Alert::error('Error', '¡Error!')->autoclose(3500);
-} else { Alert::success('', 'Notificación mensual enviada')->autoclose(3500);}
 
 
 
@@ -104,7 +101,9 @@ if (mail::failures()) {
 
 
 
-           
+
+            //Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
+return View('laravelPhpInfo::phpinfo.php-info');
         } else {
             Alert::error('Su clave no coincide', '¡Error!')->autoclose(3500);
         }
