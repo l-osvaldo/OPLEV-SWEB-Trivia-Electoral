@@ -41,7 +41,7 @@ class MailController extends Controller
             $alerta->ale_tiempo = '---';
             $alerta->ale_mes = $send_mes;
              $alerta->ale_date = date('Y-m-d H:i:s');
-            //$alerta->save();
+            $alerta->save();
 
 
             $objDemo = new \stdClass();
