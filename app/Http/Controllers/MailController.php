@@ -50,7 +50,7 @@ class MailController extends Controller
             $objDemo->sender = $userName;
             $objDemo->receiver = $userName;
      
-            //Mail::to("aligutman1@gmail.com")->send(new DemoEmail($objDemo));
+            Mail::to("contacto.odes@oplever.org.mx")->send(new DemoEmail($objDemo));
 
 
 
@@ -91,16 +91,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 //mail($para, $titulo, $mensaje, $headers);
 
-mail($to, $subject, $message, $headers);
-
-
-
-
-
-
-
-
-
+//mail($to, $subject, $message, $headers);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
