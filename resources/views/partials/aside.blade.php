@@ -79,6 +79,30 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #909821;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                POA
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: block;">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link" style="color: #f1ff2b;">
+                  <i class="fa fa-registered nav-icon" aria-hidden="true"></i>
+                  <p>Registro de Actividades</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/flot.html" class="nav-link" style="color: #f1ff2b;">
+                  <i class="nav-icon fa fa-file-text-o" aria-hidden="true"></i>
+                  <p>Cedulas de Indicadores</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview">
             <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar-check-o"></i> <p>Programa Operativo Anual</p>
@@ -109,6 +133,7 @@
               <i class="fa fa-envelope" aria-hidden="true"></i> <p>Notificación Mensual</p>
             </a>
           </li>
+
 
           
         </ul>

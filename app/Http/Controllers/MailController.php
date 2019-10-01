@@ -41,7 +41,7 @@ class MailController extends Controller
             $alerta->ale_tiempo = '---';
             $alerta->ale_mes = $send_mes;
              $alerta->ale_date = date('Y-m-d H:i:s');
-            $alerta->save();
+            //$alerta->save();
 
 
             $objDemo = new \stdClass();
@@ -55,7 +55,8 @@ class MailController extends Controller
 
 
 $from = 'sipsei@oplever.org.mx'; //Correo del formulario
-$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+$to = 'contacto.odes@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+//contacto.odes@oplever.org.mx
 //$to = 'aligutman1@gmail.com'; //Aqui va el correo del buzon de quejas
 //$to = 'javier24viper@gmail.com'; //Aqui va el correo del buzon de quejas
 
@@ -81,16 +82,16 @@ $headers .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 
-$para      = 'aligutman1@gmail.com';
-$titulo    = 'El título';
-$mensaje   = 'Hola';
-$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+//$para      = 'aligutman1@gmail.com';
+//$titulo    = 'El título';
+//$mensaje   = 'Hola';
+//$cabeceras = 'From: webmaster@example.com' . "\r\n" .
+//    'Reply-To: webmaster@example.com' . "\r\n" .
+//    'X-Mailer: PHP/' . phpversion();
 
-mail($para, $titulo, $mensaje, $headers);
+//mail($para, $titulo, $mensaje, $headers);
 
-//mail($to, $subject, $message, $headers);
+mail($to, $subject, $message, $headers);
 
 
 
