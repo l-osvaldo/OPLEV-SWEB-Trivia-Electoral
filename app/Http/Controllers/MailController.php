@@ -101,7 +101,7 @@ $mensaje = "Línea 1\r\nLínea 2\r\nLínea 3";
 $mensaje = wordwrap($mensaje, 70, "\r\n");
 
 // Enviarlo
-mail('caffeinated@example.com', 'Mi título', $mensaje);
+mail('contacto.odes@oplever.org.mx', 'Mi título', $mensaje);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
