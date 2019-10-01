@@ -55,7 +55,7 @@ class MailController extends Controller
 
 
 $from = 'sipsei@oplever.org.mx'; //Correo del formulario
-$to = 'contacto.odes@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
 //contacto.odes@oplever.org.mx
 //$to = 'aligutman1@gmail.com'; //Aqui va el correo del buzon de quejas
 //$to = 'javier24viper@gmail.com'; //Aqui va el correo del buzon de quejas
@@ -91,7 +91,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 //mail($para, $titulo, $mensaje, $headers);
 
-Mail($to, $subject, $message, $headers);
+Mail($to, $subject, $objDemo, $headers);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
