@@ -91,7 +91,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 //mail($para, $titulo, $mensaje, $headers);
 
-Mail($to, $subject, $objDemo, $headers);
+Mail($to, $subject, $message, $headers);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
