@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Http\Controllers\Controller;
 use App\Mail\DemoEmail;
-//use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
@@ -50,7 +50,7 @@ class MailController extends Controller
             $objDemo->sender = $userName;
             $objDemo->receiver = $userName;
      
-            //Mail::to("contacto.odes@oplever.org.mx")->send(new DemoEmail($objDemo));
+            Mail::to("ali.gutierrez@oplever.org.mx")->send(new DemoEmail($objDemo));
 
 
 
