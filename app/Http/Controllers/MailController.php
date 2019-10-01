@@ -50,7 +50,7 @@ class MailController extends Controller
             $objDemo->sender = $userName;
             $objDemo->receiver = $userName;
      
-            Mail::to("contacto.odes@oplever.org.mx")->send(new DemoEmail($objDemo));
+            //Mail::to("contacto.odes@oplever.org.mx")->send(new DemoEmail($objDemo));
 
 
 
@@ -92,6 +92,16 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 //mail($para, $titulo, $mensaje, $headers);
 
 //mail($to, $subject, $message, $headers);
+
+
+// El mensaje
+$mensaje = "Línea 1\r\nLínea 2\r\nLínea 3";
+
+// Si cualquier línea es más larga de 70 caracteres, se debería usar wordwrap()
+$mensaje = wordwrap($mensaje, 70, "\r\n");
+
+// Enviarlo
+mail('caffeinated@example.com', 'Mi título', $mensaje);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
