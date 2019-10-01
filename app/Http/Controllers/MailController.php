@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Http\Controllers\Controller;
 use App\Mail\DemoEmail;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
@@ -91,7 +91,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 //mail($para, $titulo, $mensaje, $headers);
 
-Mail($to, $subject, $message, $headers);
+mail($to, $subject, $message, $headers);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);
