@@ -103,37 +103,53 @@
             </ul>
           </li>
 
+          <style type="text/css">
+            .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover{background-color: #49494a;}
+          </style>
+
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                SEGUIMIENTO POA
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
           <li class="nav-item has-treeview">
-            <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
-              <i class="fa fa-calendar-check-o"></i> <p>Programa Operativo Anual</p>
+            <a href="{{ route('programa.index') }}" style="color: #efb0d6;font-weight: bold;" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar-check-o"></i> <p>Poa</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('reppoa') }}" class="textSideOption nav-link {!! Request::is('reppoa') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('reppoa') }}" style="color: #efb0d6;font-weight: bold;" class="textSideOption nav-link {!! Request::is('reppoa') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar"></i> <p>Reportes POA</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('repindicadores') }}" class="textSideOption nav-link {!! Request::is('repindicadores') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('repindicadores') }}" style="color: #efb0d6;font-weight: bold;" class="textSideOption nav-link {!! Request::is('repindicadores') ? 'active activeOn' : '' !!}">
               <i class="fa fa-clone"></i> <p>Reportes Indicadores</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('adicionales.index') }}" class="textSideOption nav-link {!! Request::is('adicionales') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('adicionales.index') }}" style="color: #efb0d6;font-weight: bold;" class="textSideOption nav-link {!! Request::is('adicionales') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar-plus-o"></i> <p>Actividades Adicionales</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
             <!--a href="{{ route('emailsend') }}" class="textSideOption nav-link"-->
-            <a href="{{ route('alertames') }}" class="textSideOption nav-link {!! Request::is('alertames') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('alertames') }}" style="color: #efb0d6;font-weight: bold;" class="textSideOption nav-link {!! Request::is('alertames') ? 'active activeOn' : '' !!}">
               <i class="fa fa-envelope" aria-hidden="true"></i> <p>Notificación Mensual</p>
             </a>
           </li>
-
+            </ul>
+          </li>
 
           
         </ul>
