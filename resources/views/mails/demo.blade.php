@@ -24,7 +24,3 @@ Fecha: <span style="text-decoration: underline;font-weight: bold;text-transform:
 
 </div>
  
-<!--div>
-<p><b>Lorem ipsum:</b>&nbsp;{{ $testVarOne }}</p>
-<p><b>Lorem ipsum:</b>&nbsp;{{ $testVarTwo }}</p>
-</div-->
