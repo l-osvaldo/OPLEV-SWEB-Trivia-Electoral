@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mail.oplever.org.mx'),
+    'host' => env('MAIL_HOST', 'mail.oplever.org.mx'),
 
     /*
     |--------------------------------------------------------------------------
