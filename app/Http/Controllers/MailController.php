@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
+use DB;
  
 class MailController extends Controller
 {
@@ -40,46 +41,51 @@ class MailController extends Controller
             $alerta->ale_id_usuario = $userId;
             $alerta->ale_tiempo = '---';
             $alerta->ale_mes = $send_mes;
-             $alerta->ale_date = date('Y-m-d H:i:s');
-            //$alerta->save();
+            $alerta->ale_date = date('Y-m-d H:i:s');
+            $alerta->save();
+
+
+            $alertasmes = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'edicion')->where('ale_mes', $send_mes)->orderBy('ale_date', 'desc')->take(10)->get();
+
 
 
             $objDemo = new \stdClass();
             $objDemo->demo_one = $acronimo;
             $objDemo->demo_two = $send_mes;
             $objDemo->sender = $userName;
-            $objDemo->receiver = $userName;
-     
+            $objDemo->receiver = $alertasmes;
+
+
             Mail::to("ali.gutierrez@oplever.org.mx")->send(new DemoEmail($objDemo));
 
 
 
-$from = 'sipsei@oplever.org.mx'; //Correo del formulario
-$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
+//$from = 'sipsei@oplever.org.mx'; //Correo del formulario
+//$to = 'ali.gutierrez@oplever.org.mx'; //Aqui va el correo del buzon de quejas
 //contacto.odes@oplever.org.mx
 //$to = 'aligutman1@gmail.com'; //Aqui va el correo del buzon de quejas
 //$to = 'javier24viper@gmail.com'; //Aqui va el correo del buzon de quejas
 
-$subject = 'Buzon de Quejas ODES'; //El asunto del correo
-$message = '
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width"> 
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-<meta name="x-apple-disable-message-reformatting">  
-<title></title> 
-</head><body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #fff;">
-hola</body></html>
-        ';
+//$subject = 'Buzon de Quejas ODES'; //El asunto del correo
+//$message = '
+//<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+//<head>
+//<meta charset="utf-8"> 
+//<meta name="viewport" content="width=device-width"> 
+//<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+//<meta name="x-apple-disable-message-reformatting">  
+//<title></title> 
+//</head><body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #fff;">
+//hola</body></html>
+//        ';
 
-$headers = "From:" . $from . "\r\n";
-$headers .= "Reply-To: " .$from . "\r\n";
+//$headers = "From:" . $from . "\r\n";
+//$headers .= "Reply-To: " .$from . "\r\n";
 //$headers .= 'CC: creducindo@hotmail.com' . " \r\n";
-$headers .= 'CC: aligutman1@gmail.com' . " \r\n";
-$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
-$headers .= 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+//$headers .= 'CC: aligutman1@gmail.com' . " \r\n";
+//$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
+//$headers .= 'MIME-Version: 1.0' . "\r\n";
+//$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 
 //$para      = 'aligutman1@gmail.com';
@@ -91,7 +97,7 @@ $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 //mail($para, $titulo, $mensaje, $headers);
 
-mail($to, $subject, 'hola', $headers);
+//mail($to, $subject, 'hola', $headers);
 
 
             Alert::success('', 'Notificación mensual enviada')->autoclose(3500);

@@ -61,6 +61,16 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                SEGUIMIENTO POA
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
           <li class="nav-item has-treeview">
             <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar-check-o"></i> <p>Programa Operativo Anual</p>
@@ -95,6 +105,9 @@
             <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
               <i class="fa fa-list-alt"></i> <p>Reporte mensual</p>
             </a>
+          </li>
+
+          </ul>
           </li>
 
           
