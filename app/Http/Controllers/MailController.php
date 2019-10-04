@@ -47,6 +47,8 @@ class MailController extends Controller
 
             $alertasmes = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'edicion')->where('ale_mes', $send_mes)->orderBy('ale_date', 'desc')->take(10)->get();
 
+            $horayfecha = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', 'FEB')->take(1)->get();
+
 
 
             $objDemo = new \stdClass();
@@ -54,6 +56,9 @@ class MailController extends Controller
             $objDemo->demo_two = $send_mes;
             $objDemo->sender = $userName;
             $objDemo->receiver = $alertasmes;
+            $objDemo->horayfecha = $horayfecha;
+
+            //print_r($horayfecha);exit;
 
 
             Mail::to("ali.gutierrez@oplever.org.mx")->send(new DemoEmail($objDemo));
