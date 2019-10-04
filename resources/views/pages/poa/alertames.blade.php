@@ -30,19 +30,19 @@
 <div class="row">
 <div class="contPanel">
     <h3 class="textoPrincipal">Notificación mensual</h3>
-    <div id="ene" class="mesesOff">ENE</div>
-    <div id="feb" class="mesesOff">FEB</div>
-    <div id="mar" class="mesesOff">MAR</div>
-    <div id="abr" class="mesesOff">ABR</div>
-    <div id="may" class="mesesOff">MAY</div>
-    <div id="jun" class="mesesOff">JUN</div>
+    <div id="ene" data-mesc="enero" class="mesesOff">ENE</div>
+    <div id="feb" data-mesc="febrero" class="mesesOff">FEB</div>
+    <div id="mar" data-mesc="marzo" class="mesesOff">MAR</div>
+    <div id="abr" data-mesc="abril" class="mesesOff">ABR</div>
+    <div id="may" data-mesc="mayo" class="mesesOff">MAY</div>
+    <div id="jun" data-mesc="junio" class="mesesOff">JUN</div>
     <!--div id="jul" class="mesesOn" data-toggle="modal" data-target="#exampleModalCenter">JUL</div-->
-    <div id="jul" class="mesesOff" >JUL</div>
-    <div id="ago" class="mesesOff">AGO</div>
-    <div id="sep" class="mesesOff">SEP</div>
-    <div id="oct" class="mesesOff">OCT</div>
-    <div id="nov" class="mesesOff">NOV</div>
-    <div id="dic" class="mesesOff">DIC</div>
+    <div id="jul" data-mesc="julio" class="mesesOff" >JUL</div>
+    <div id="ago" data-mesc="agosto" class="mesesOff">AGO</div>
+    <div id="sep" data-mesc="septiembre" class="mesesOff">SEP</div>
+    <div id="oct" data-mesc="octubre" class="mesesOff">OCT</div>
+    <div id="nov" data-mesc="noviembre" class="mesesOff">NOV</div>
+    <div id="dic" data-mesc="diciembre" class="mesesOff">DIC</div>
 </div>
 </div>
 

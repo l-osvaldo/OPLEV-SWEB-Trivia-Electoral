@@ -504,6 +504,8 @@ $.ajaxSetup({
         
             document.getElementById("loader").classList.remove('hidden');
             var mes = this.getAttribute('data-mes');
+            var mesc = $('.mesesOn').attr('data-mesc');
+            console.log(mesc);
             var clave = document.getElementById("clave").value;
             if(clave !== null && clave !== '') {
 
@@ -511,7 +513,7 @@ $.ajaxSetup({
                 $.ajax({
                      type:'POST',
                      url:"mailsend",
-                     data:{mes:mes,clave:clave,"_token": token},
+                     data:{mes:mes,mesc:mesc,clave:clave,"_token": token},
                      success:function(data){ 
                         location.reload();
                     }

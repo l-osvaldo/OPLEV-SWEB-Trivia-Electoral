@@ -19,6 +19,7 @@ class MailController extends Controller
 
         $send_clave = $request->clave;
         $send_mes = $request->mes;
+        $send_mesEmail = $request->mesc;
 
         if ($send_clave === $usu_clave) {
 
@@ -55,7 +56,7 @@ class MailController extends Controller
             $objDemo->demo_one = $acronimo;
             $objDemo->demo_two = $send_mes;
             $objDemo->sender = $userName;
-            $objDemo->receiver = $alertasmes;
+            $objDemo->receiver = $send_mesEmail;
             $objDemo->horayfecha = $horayfecha;
 
             //print_r($horayfecha);exit;

@@ -20,7 +20,7 @@ Unidad Técnica de Planeación
 
    Fecha: <span style="text-decoration: underline;font-weight: bold;text-transform: uppercase;">{{ date('d/m/Y H:i:s', strtotime($hf->ale_date)) }}</span>
             
-@endforeach>
+@endforeach
 
 </p>
 </div>
