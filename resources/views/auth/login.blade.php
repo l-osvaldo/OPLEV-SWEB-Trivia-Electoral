@@ -9,7 +9,7 @@
   <div class="title-container">
     <div class="title-text">
       Sistema Integral de Planeación, Seguimiento y Evaluación Institucional  <br>
-      <small>Organismo Público Local Electoral del Estado de Veracruz</small>
+      <small>Unidad Técnica de Planeación</small>
     </div>
   </div>  
 </header>
@@ -73,7 +73,7 @@
     <div class="footer-middle">
       <div class="footer-text">
         Sistema Integral de Planeación, Seguimiento y Evaluación Institucional<br>
-        <small>Organismo Público Local Electoral del Estado de Veracruz</small>
+        <small>Compatibilidad óptima con Google Chrome</small>
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@ Unidad Técnica de Planeación
 <p style="text-align: left;font-family: sans-serif; padding: 0 20px; font-size: 17px;color: #555;">
  @foreach( $demo->horayfecha as $hf )
 
-   Fecha: <span style="text-decoration: underline;font-weight: bold;text-transform: uppercase;">{{ date('d/m/Y H:i:s', strtotime($hf->ale_date)) }}</span>
+   Fecha: <span style="text-decoration: underline;font-weight: bold;text-transform: uppercase;color: #555;">{{ date('d/m/Y H:i:s', strtotime($hf->ale_date)) }}</span>
             
 @endforeach
 
