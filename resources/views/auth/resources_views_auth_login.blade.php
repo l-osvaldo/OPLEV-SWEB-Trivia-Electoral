@@ -4,12 +4,12 @@
 
 <header>
   <div class="logo-container">
-    <img src="{{ asset('images/logosipseir.png') }}" class="logo-image" />
+    <img src="{{ asset('images/scop_logo.png') }}" class="logo-image" />
   </div>
   <div class="title-container">
     <div class="title-text">
-      Sistema Integral de Planeación, Seguimiento y Evaluación Institucional  <br>
-      <small>Organismo Público Local Electoral del Estado de Veracruz</small>
+      Sistema de Control de Correspondencia de Oficialía de Partes  <br>
+      <small>Secretaría Ejecutiva</small>
     </div>
   </div>  
 </header>
@@ -72,8 +72,8 @@
     </div>
     <div class="footer-middle">
       <div class="footer-text">
-        Sistema Integral de Planeación, Seguimiento y Evaluación Institucional<br>
-        <small>Organismo Público Local Electoral del Estado de Veracruz</small>
+        Sistema de Control de Correspondencia de Oficialía de Partes<br>
+        <small>Secretaría Ejecutiva</small>
       </div>
     </div>
   </div>

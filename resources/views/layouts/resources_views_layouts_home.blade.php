@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('public/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logoople.png') }}">
 
-    <title>{{ config('app.name', 'POA2019') }}</title>
+    <title> Oficialía de Partes </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap 4.0-->
@@ -26,7 +26,7 @@
 
   <body class="d-flex flex-column h-100">
     @yield('content')
-    
+
     <!-- jQuery 3 -->
     <script src="{{ URL::asset('vendor_components/jquery/dist/jquery.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->

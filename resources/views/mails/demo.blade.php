@@ -11,7 +11,7 @@ Unidad Técnica de Planeación
 </div>
 <p style="text-align: center;">
 <!--img class="logo" src="http://sistemas.oplever.org.mx/sipsei/images/logosipsei.png" alt="SIPSEI" title="logo SIPSEI" width="85" height="30" style="background-color: #343a40; border-radius: 5px;margin-top: 10px;"-->
-<img class="logo" src="{{ asset('images/logosipsei.png') }}" alt="SIPSEI" title="logo SIPSEI" width="85" height="30" style="background-color: #343a40; border-radius: 5px;margin-top: 10px;"></p>
+<img class="logo" src="{{ asset('images/logosipseir.png') }}" alt="SIPSEI" title="logo SIPSEI" width="85" height="30" style="background-color: #343a40; border-radius: 5px;margin-top: 10px;"></p>
 <div style="width: 300px;background-color: #fff;padding: 10px 5px;margin: auto; text-align: center;font-size: 20px;font-family: sans-serif;color: #EA0D94;border-radius: 10px; webkit-box-shadow: 0 10px 6px -6px #777;-moz-box-shadow: 0 10px 6px -6px #777;box-shadow: 0 10px 6px -6px #777;">Notificación Mensual</div>
 <div style="background: #f9f9f9; height: auto;padding: 5px;margin: 30px 0;">
 <p style="text-align: justify; padding: 0 20px; font-family: sans-serif;font-size: 17px;color: #555;">El área <span style="text-decoration: underline;font-weight: bold;text-transform: uppercase;">{{ $demo->sender }} - ({{ $demo->demo_one }})</span> ha concluido la captura del avance en sus actividades correspondientes al mes de <span style="text-decoration: underline;font-weight: bold;text-transform: uppercase;">{{ $demo->demo_two }}.</span></p>
