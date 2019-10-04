@@ -54,9 +54,9 @@ class MailController extends Controller
 
             $objDemo = new \stdClass();
             $objDemo->demo_one = $acronimo;
-            $objDemo->demo_two = $send_mes;
+            $objDemo->demo_two = $send_mesEmail;
             $objDemo->sender = $userName;
-            $objDemo->receiver = $send_mesEmail;
+            $objDemo->receiver = $alertasmes;
             $objDemo->horayfecha = $horayfecha;
 
             //print_r($horayfecha);exit;
