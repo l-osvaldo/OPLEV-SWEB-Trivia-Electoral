@@ -47,7 +47,7 @@ class MailController extends Controller
 
             $alertasmes = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'edicion')->where('ale_mes', $send_mes)->orderBy('ale_date', 'desc')->take(10)->get();
 
-            $horayfecha = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', 'FEB')->take(1)->get();
+            $horayfecha = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', $send_mes)->take(1)->get();
 
 
 
