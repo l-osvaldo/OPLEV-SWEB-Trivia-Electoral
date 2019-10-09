@@ -62,7 +62,7 @@ class MailController extends Controller
             //print_r($horayfecha);exit;
 
 
-            Mail::to("ali.gutierrez@oplever.org.mx")->cc(['aligutman1@gmail.com','gutti_001@hotmail.com']->send(new DemoEmail($objDemo));
+            Mail::to("ali.gutierrez@oplever.org.mx")->cc(['aligutman1@gmail.com','gutti_001@hotmail.com'])->send(new DemoEmail($objDemo));
 
 
 
