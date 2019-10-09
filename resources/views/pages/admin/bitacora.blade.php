@@ -82,20 +82,19 @@ th {
 
 
             <h5>Reporte por actividad</h5>
+            <hr>
             <table id="resultEntre">
               <tr>
                 <th>Área</th>
-                <th>Acrónimo</th>
-                <th>Programa</th>
+                <th>Clave del Programa</th>
                 <th>Actividad</th>
-                <th>Fecha</th>
+                <th>Fecha de modificación</th>
               </tr>
                @foreach( $alertas as $alerta )
                   <tr>
                     <td class="tiempo{{ $alerta->ale_tiempo }}">{{$alerta->ale_actividad}}</td>
-                    <td>{{$alerta->ale_acronimo}}</td>
                     <td>{{$alerta->ale_id_programa}}</td>
-                    <td>{{$alerta->ale_num_actividad}}</td>
+                    <td style="max-width: 20vw;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{$alerta->ale_num_actividad}}.- {{$alerta->ale_desc_actividad}}</td>
                     <td>{{ date('d/m/Y', strtotime($alerta->ale_date)) }}</th>
                   </tr>
                 @endforeach

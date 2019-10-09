@@ -535,28 +535,29 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
 $("#buscarMes").click(function(){
 
           document.getElementById("loader").classList.remove('hidden');
-          var mes = document.getElementById('mesbusqueda').value;
+          //var mes = document.getElementById('mesbusqueda').value;
           var acr = document.getElementById('acronimo').value;
           //console.log(mes,acr);
 
           $.ajax({
                type:'POST',
                url:"buscarmes",
-               data:{mes:mes,acr:acr,"_token": token},
+               //data:{mes:mes,acr:acr,"_token": token},
+               data:{acr:acr,"_token": token},
                success:function(data){ 
                 //console.log(data)
 
                   document.getElementById('resultMes').innerHTML ='';
                   if (data[0].length>0) {
 
-                  document.getElementById('resultMes').innerHTML ='<tr><th>Área</th><th>Acrónimo</th><th>Fecha</th></tr>';
+                  document.getElementById('resultMes').innerHTML ='<tr><th>Área</th><th>Mes</th><th>Fecha</th></tr>';
 
                     for (var i = 0; i < data[0].length; i++) {
                       var x = document.createElement("TR");
                       document.getElementById('resultMes').appendChild(x);
                       //data[0][i].created_at
                       var d = new Date(data[0][i].ale_date);
-                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
+                      x.innerHTML='<td>'+data[0][i].ale_actividad+'</td><td style="text-transform: uppercase;">'+data[0][i].ale_mes+'</td><td>'+d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()+'</th>';
                     }
 
                   } else {
@@ -588,13 +589,13 @@ $("#buscarEntre").click(function(){
                   document.getElementById('resultEntre').innerHTML ='';
                   if (data[0].length>0) {
 
-                  document.getElementById('resultEntre').innerHTML ='<tr><th>Área</th><th>Acrónimo</th><th>Programa</th><th>Actividad</th><th>Fecha</th></tr>';
+                  document.getElementById('resultEntre').innerHTML ='<tr><th>Área</th><th>Clave del Programa</th><th>Actividad</th><th>Fecha</th></tr>';
 
-                    for (var i = 0; i < data[0].length; i++) {
+                    for (var i =  data[0].length - 1; i >= 0; i--) {
                       var x = document.createElement("TR");
                       document.getElementById('resultEntre').appendChild(x);
                       var d = new Date(data[0][i].ale_date);
-                      x.innerHTML='<td class="tiempo'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_acronimo+'</td><td>'+data[0][i].ale_id_programa+'</td><td>'+data[0][i].ale_num_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
+                      x.innerHTML='<td class="tiempo'+data[0][i].ale_tiempo+'">'+data[0][i].ale_actividad+'</td><td>'+data[0][i].ale_id_programa+'</td><td style="max-width: 20vw;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">'+data[0][i].ale_num_actividad+'.- '+data[0][i].ale_desc_actividad+'</td><td>'+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() +'</th>';
                     }
 
                   } else {
@@ -608,13 +609,13 @@ $("#buscarEntre").click(function(){
         });
 
          //document.getElementById("datep").addEventListener("change", changedatep);
-$("#datep").click(function(){
+$("#datep").change(function(){
           var datep = document.getElementById('datep').value;
           document.getElementById('dates').setAttribute("min", datep);
           document.getElementById('dates').disabled = false;
         });
 
-$("#dates").click(function(){
+$("#dates").change(function(){
         //document.getElementById("dates").addEventListener("change", changedates);
 
           document.getElementById('buscarEntre').disabled = false;

@@ -9,7 +9,7 @@
 .btn-primary:hover{background:#EA0D94 !important; }
 .info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 
-.sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover{background-color: rgba(255, 199, 248, 0.9);}
+.sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover{background-color: #fff;}
 
 
 .badge-warning{background: #6d5622; color: #fff;}

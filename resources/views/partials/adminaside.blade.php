@@ -89,21 +89,35 @@
             </a>
           </li>
 
+          </ul>
+          </li>
+
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #7d8c00;color: #FFF;">
+              <i class="fa fa-flag" aria-hidden="true"></i>
+              <p>
+                Bitacoras
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-list-alt"></i> <p>Concentrado mensual</p>
+            </a>
+          </li>
+
           <li class="nav-item has-treeview">
             <a href="{{ route('bitacorames') }}" class="textSideOption nav-link {!! Request::is('bitacorames') ? 'active activeOn' : '' !!}">
-              <i class="fa fa-list-alt"></i> <p>Bitacora de actividades</p>
+              <i class="fa fa-list-alt"></i> <p>Termino mensual</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
             <a href="{{ route('bitacora') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}">
               <i class="fa fa-list-alt"></i> <p>Acciones por actividad</p>
-            </a>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
-              <i class="fa fa-list-alt"></i> <p>Reporte mensual</p>
             </a>
           </li>
 

@@ -30,7 +30,7 @@ th {
             <h5>Personalizar Búsqueda</h5>
             <div class="form-row" style="margin: 1em 0 3em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
 
-              <div class="col-md-6 mb-3">
+              <div class="col-md-12 mb-3">
                 <label for="validationCustom02">Área</label>
                 <select id="acronimo" class="form-control" required>
                   <option value="CG">Consejo General</option>
@@ -54,7 +54,7 @@ th {
                 </select>
               </div>
 
-              <div class="col-md-6 mb-3">
+              <!--div class="col-md-6 mb-3">
                 <label for="validationCustom01">Mes</label>
                 <select id="mesbusqueda" class="form-control" required>
                   <option value="ENE">ENERO</option>
@@ -70,7 +70,7 @@ th {
                   <option value="NOV">NOVIEMBRE</option>
                   <option value="DIC">DICIEMBRE</option>
                 </select>
-              </div>
+              </div-->
 
 
               <button id="buscarMes" type="button" class="btn btn-primary">Buscar</button>
@@ -79,10 +79,11 @@ th {
 
 
             <h5>Reporte de termino de mes</h5>
+            <hr>
             <table id="resultMes">
               <tr>
                 <th>Área</th>
-                <th>Acrónimo</th>
+                <th>Mes</th>
                 <!--th>Programa</th>
                 <th>Actividad</th-->
                 <th>Fecha</th>
@@ -90,7 +91,7 @@ th {
                 @foreach( $alertasfin as $alertafin )
                   <tr>
                     <td>{{$alertafin->ale_actividad}}</td>
-                    <td>{{$alertafin->ale_acronimo}}</td>
+                    <td style="text-transform: uppercase;">{{$alertafin->ale_mes}}</td>
                     <!--td>---</td>
                     <td>---</td-->
                     <td>{{ date('d/m/Y', strtotime($alertafin->ale_date)) }}</th>

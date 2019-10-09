@@ -196,10 +196,11 @@ class ReportesController extends Controller
     public function buscarmes(Request $request)
     {
 
-        $mes = $request->mes;
+        //$mes = $request->mes;
         $acr = $request->acr;
         
-        $resultado = DB::table('alertas')->where('ale_mes', $mes)->where('ale_acronimo', $acr)->where('ale_clase', 'final')->get();
+        $resultado = DB::table('alertas')->where('ale_acronimo', $acr)->where('ale_clase', 'final')->get();
+        //$resultado = DB::table('alertas')->where('ale_mes', $mes)->where('ale_acronimo', $acr)->where('ale_clase', 'final')->get();
 
         return response()->json([$resultado]);
     }

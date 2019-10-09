@@ -25,7 +25,7 @@
     </tr>
   </table-->
 
-  <table class="table" border="0" align="center" cellpadding="5px">
+  <table class="table" border="0" align="center" cellpadding="5px" width="100%">
     <tr class="gris">
       <td>UNIDAD RESPONSABLE</td>
       <td>FIRMA DEL RESPONSABLE</td>
