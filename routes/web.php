@@ -64,5 +64,8 @@ Route::post('/alertames', 'PoaController@alertames')->name('alertames');
 Route::post('/buscarmes', 'ReportesController@buscarmes')->name('buscarmes');
 Route::post('/buscaentre', 'ReportesController@buscaentre')->name('buscaentre');
 
+Route::get('/change-password', 'ChangePasswordController@index');
+Route::post('/change-password', 'ChangePasswordController@store')->name('change.password');
+
 });
 
