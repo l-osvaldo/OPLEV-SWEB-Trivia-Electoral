@@ -30,25 +30,25 @@
 <div class="row">
 <div class="contPanel">
     <h3 class="textoPrincipal">Notificación mensual</h3>
-    <div id="ene" data-mesc="enero" class="mesesOff">ENE</div>
-    <div id="feb" data-mesc="febrero" class="mesesOff">FEB</div>
-    <div id="mar" data-mesc="marzo" class="mesesOff">MAR</div>
-    <div id="abr" data-mesc="abril" class="mesesOff">ABR</div>
-    <div id="may" data-mesc="mayo" class="mesesOff">MAY</div>
-    <div id="jun" data-mesc="junio" class="mesesOff">JUN</div>
+    <div id="enero" data-mesc="enero" class="mesesOff">ENE</div>
+    <div id="febrero" data-mesc="febrero" class="mesesOff">FEB</div>
+    <div id="marzo" data-mesc="marzo" class="mesesOff">MAR</div>
+    <div id="abril" data-mesc="abril" class="mesesOff">ABR</div>
+    <div id="mayo" data-mesc="mayo" class="mesesOff">MAY</div>
+    <div id="junio" data-mesc="junio" class="mesesOff">JUN</div>
     <!--div id="jul" class="mesesOn" data-toggle="modal" data-target="#exampleModalCenter">JUL</div-->
-    <div id="jul" data-mesc="julio" class="mesesOff" >JUL</div>
-    <div id="ago" data-mesc="agosto" class="mesesOff">AGO</div>
-    <div id="sep" data-mesc="septiembre" class="mesesOff">SEP</div>
-    <div id="oct" data-mesc="octubre" class="mesesOff">OCT</div>
-    <div id="nov" data-mesc="noviembre" class="mesesOff">NOV</div>
-    <div id="dic" data-mesc="diciembre" class="mesesOff">DIC</div>
+    <div id="julio" data-mesc="julio" class="mesesOff" >JUL</div>
+    <div id="agosto" data-mesc="agosto" class="mesesOff">AGO</div>
+    <div id="septiembre" data-mesc="septiembre" class="mesesOff">SEP</div>
+    <div id="octubre" data-mesc="octubre" class="mesesOff">OCT</div>
+    <div id="noviembre" data-mesc="noviembre" class="mesesOff">NOV</div>
+    <div id="diciembre" data-mesc="diciembre" class="mesesOff">DIC</div>
 </div>
 </div>
 
 @foreach( $resultado as $resultados )
 <script type="text/javascript">
-  var meses = ['titulo','ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  var meses = ['titulo','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   var demos = '{{$resultados->ale_mes}}';
   document.getElementById(demos).classList.remove('mesesOff');
   document.getElementById(demos).classList.add("mesesRep");
@@ -58,7 +58,7 @@
 var ele = document.getElementsByClassName('mesesRep');
 
 if (ele.length===0) {
-  var ini = document.getElementById('ene');
+  var ini = document.getElementById('enero');
     ini.classList.remove('mesesOff');
     ini.classList.add('mesesOn');
     ini.setAttribute('data-toggle', 'modal');

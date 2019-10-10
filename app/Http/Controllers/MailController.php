@@ -36,12 +36,13 @@ class MailController extends Controller
             $alerta->ale_acronimo = $acronimo;
             $alerta->ale_id_programa = $id_programa;
             $alerta->ale_num_actividad = $num_actividad;
+            $alerta->ale_desc_actividad = '---';
 
             $alerta->ale_tipo = 1;
             $alerta->ale_clase = 'final';
             $alerta->ale_id_usuario = $userId;
             $alerta->ale_tiempo = '---';
-            $alerta->ale_mes = $send_mes;
+            $alerta->ale_mes = $send_mesEmail;
             $alerta->ale_date = date('Y-m-d H:i:s');
             $alerta->save();
 

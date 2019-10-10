@@ -95,15 +95,17 @@ class PoaController extends Controller
     public function store(Request $request)
     {
       //tengo que conseguir el idmes y el autoactividades
-      $nactividad = explode(",", $request->input('actividades'));
+      $nactividad = explode("&&&", $request->input('actividades'));
       $autoactividades = $nactividad[0];
       $idmesreportar = $request->input('idmesreportar');
 
       //en tabla porcentajer se guarda el input realizadomes en la columna del mes correspondiente:
       //ener,febr,marr,abrr, etc
       $realizadomes = $request->input('realizadomes');
-      $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];     
+      $realizado = [0,'ener','febr','marr','abrr','mayr','junr','julr','agor','sepr','octr','novr','dicr'];
+      $realizadoc = [0,'enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];     
       $mes = $realizado[$idmesreportar];
+      $mesc = $realizadoc[$idmesreportar];
       DB::table('porcentajer')->where('autoactividades', $autoactividades)->update([$mes => $realizadomes]);
 
       //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
@@ -148,7 +150,7 @@ class PoaController extends Controller
       $alerta->ale_clase = 'edicion';
       $alerta->ale_id_usuario = $userId;
       $alerta->ale_tiempo = $aletipo;
-      $alerta->ale_mes = $fmes;
+      $alerta->ale_mes = $mesc;
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

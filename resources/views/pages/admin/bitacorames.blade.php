@@ -83,12 +83,12 @@ th {
             <table id="resultMes">
               <tr>
                 <th>Área</th>
-                <th>Mes</th>
+                <th>Mes reportado</th>
                 <!--th>Programa</th>
                 <th>Actividad</th-->
-                <th>Fecha</th>
+                <th>Fecha de reporte</th>
               </tr>
-                @foreach( $alertasfin as $alertafin )
+                @foreach( $alertaMA as $alertafin )
                   <tr>
                     <td>{{$alertafin->ale_actividad}}</td>
                     <td style="text-transform: uppercase;">{{$alertafin->ale_mes}}</td>

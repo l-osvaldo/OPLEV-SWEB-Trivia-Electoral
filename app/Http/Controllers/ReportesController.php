@@ -162,6 +162,14 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
 
+          $mes_anterior  = date("m")-1;
+
+          $mesant=['titulo','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+          //dd($mesant[$mes_anterior]);exit;
+
+          $alertaMA = DB::table('alertas')->where('ale_clase', 'final')->where('ale_mes', $mesant[$mes_anterior])->take(20)->get();
+
           $rfijo = DB::table('alertas')->where('ale_clase', 'final')
         //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
         //->join('users', 'ban_receptor_id', '=', 'id')
@@ -169,7 +177,7 @@ class ReportesController extends Controller
         ->get();
 
           //dd($rfijo);exit;
-         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo'));
+         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo', 'alertaMA'));
     }
 
 
