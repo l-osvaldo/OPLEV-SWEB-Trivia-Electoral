@@ -30,16 +30,16 @@
 <div class="row">
 <div class="contPanel">
     <h3 class="textoPrincipal">Notificación mensual</h3>
-    <div id="enero" data-mesc="enero" class="mesesOff">ENE</div>
-    <div id="febrero" data-mesc="febrero" class="mesesOff">FEB</div>
-    <div id="marzo" data-mesc="marzo" class="mesesOff">MAR</div>
-    <div id="abril" data-mesc="abril" class="mesesOff">ABR</div>
-    <div id="mayo" data-mesc="mayo" class="mesesOff">MAY</div>
-    <div id="junio" data-mesc="junio" class="mesesOff">JUN</div>
+    <div id="enero" data-mesc="enero" class="mesesRep">ENE</div>
+    <div id="febrero" data-mesc="febrero" class="mesesRep">FEB</div>
+    <div id="marzo" data-mesc="marzo" class="mesesRep">MAR</div>
+    <div id="abril" data-mesc="abril" class="mesesRep">ABR</div>
+    <div id="mayo" data-mesc="mayo" class="mesesRep">MAY</div>
+    <div id="junio" data-mesc="junio" class="mesesRep">JUN</div>
     <!--div id="jul" class="mesesOn" data-toggle="modal" data-target="#exampleModalCenter">JUL</div-->
-    <div id="julio" data-mesc="julio" class="mesesOff" >JUL</div>
-    <div id="agosto" data-mesc="agosto" class="mesesOff">AGO</div>
-    <div id="septiembre" data-mesc="septiembre" class="mesesOff">SEP</div>
+    <div id="julio" data-mesc="julio" class="mesesRep" >JUL</div>
+    <div id="agosto" data-mesc="agosto" class="mesesRep">AGO</div>
+    <div id="septiembre" data-mesc="septiembre" class="mesesRep">SEP</div>
     <div id="octubre" data-mesc="octubre" class="mesesOff">OCT</div>
     <div id="noviembre" data-mesc="noviembre" class="mesesOff">NOV</div>
     <div id="diciembre" data-mesc="diciembre" class="mesesOff">DIC</div>
@@ -58,7 +58,7 @@
 var ele = document.getElementsByClassName('mesesRep');
 
 if (ele.length===0) {
-  var ini = document.getElementById('enero');
+  var ini = document.getElementById('octubre');
     ini.classList.remove('mesesOff');
     ini.classList.add('mesesOn');
     ini.setAttribute('data-toggle', 'modal');
