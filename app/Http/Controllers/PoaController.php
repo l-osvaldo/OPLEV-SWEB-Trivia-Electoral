@@ -134,7 +134,8 @@ class PoaController extends Controller
 
       $fmes = substr($mes, 0, -1);
       
-      $ale = Alerta::where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', $fmes)->get();
+      $ale = Alerta::where('ale_id_usuario', $userId)->where('ale_clase', 'final')->where('ale_mes', $mesc)->get();
+      //dd($ale);exit();
       $ale->isEmpty() ? $aletipo = 'dentro' : $aletipo = 'fuera';
       //print_r($aletipo);exit;
 
