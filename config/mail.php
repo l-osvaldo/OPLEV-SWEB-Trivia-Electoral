@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'ali.gutierrez@oplever.org.mx'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sipsei@oplever.org.mx'),
         'name' => env('MAIL_FROM_NAME', 'ExampleDemo'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('ali.gutierrez@oplever.org.mx'),
+    'username' => env('sipsei@oplever.org.mx'),
 
-    'password' => env('8653gutman'),
+    'password' => env('0p13SOI9'),
 
     /*
     |--------------------------------------------------------------------------
