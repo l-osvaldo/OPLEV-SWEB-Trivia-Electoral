@@ -165,18 +165,18 @@ th {
                   </tr>
                   <tr>
                     <td>Dirección Ejecutiva de Organización Electoral</td>
-                    <td class="tdTabla" id="ENERODEODE"></td>
-                    <td class="tdTabla" id="FEBRERODEODE"></td>
-                    <td class="tdTabla" id="MARZODEODE"></td>
-                    <td class="tdTabla" id="ABRILDEODE"></th>
-                    <td class="tdTabla" id="MAYODEODE"></td>
-                    <td class="tdTabla" id="JUNIODEODE"></td>
-                    <td class="tdTabla" id="JULIODEODE"></td>
-                    <td class="tdTabla" id="AGOSTODEODE"></th>
-                    <td class="tdTabla" id="SEPTIEMBREDEODE"></td>
-                    <td class="tdTabla" id="OCTUBREDEODE"></td>
-                    <td class="tdTabla" id="NOVIEMBREDEODE"></td>
-                    <td class="tdTabla" id="DICIEMBREDEODE"></th>
+                    <td class="tdTabla" id="ENERODEOE"></td>
+                    <td class="tdTabla" id="FEBRERODEOE"></td>
+                    <td class="tdTabla" id="MARZODEOE"></td>
+                    <td class="tdTabla" id="ABRILDEOE"></th>
+                    <td class="tdTabla" id="MAYODEOE"></td>
+                    <td class="tdTabla" id="JUNIODEOE"></td>
+                    <td class="tdTabla" id="JULIODEOE"></td>
+                    <td class="tdTabla" id="AGOSTODEOE"></th>
+                    <td class="tdTabla" id="SEPTIEMBREDEOE"></td>
+                    <td class="tdTabla" id="OCTUBREDEOE"></td>
+                    <td class="tdTabla" id="NOVIEMBREDEOE"></td>
+                    <td class="tdTabla" id="DICIEMBREDEOE"></th>
                   </tr>
                   <tr>
                     <td>Dirección Ejecutiva de Capacitación Electoral y Educación Cívica</td>
@@ -390,6 +390,8 @@ th {
                   </tr>
             </table>
             <script type="text/javascript">
+              //var jobs = "{{ $rfijo }}";
+              //console.log(jobs);
             @foreach( $rfijo as $rfijos )
                   
                     var demos = '{{strtoupper($rfijos->ale_mes)}}{{strtoupper($rfijos->ale_acronimo)}}';

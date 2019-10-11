@@ -190,7 +190,7 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
 
-          $rfijo = DB::table('alertas')->where('ale_clase', 'final')
+          $rfijo = DB::table('alertas')->select('ale_acronimo', 'ale_mes')->where('ale_clase', 'final')
         //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
         //->join('users', 'ban_receptor_id', '=', 'id')
         //->select('doc_asunto', 'doc_tipo', 'documentos.ale_date', 'doc_respuesta', 'doc_prioridad', 'nombre')
