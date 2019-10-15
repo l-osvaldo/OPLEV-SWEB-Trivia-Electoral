@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('public/images/favicon.ico') }}" type="image/x-icon">
 
-    <title>{{ config('app.name', 'POA2019') }}</title>
+    <title>{{ config('app.name', 'SIPSEIV2') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap 4.0-->
