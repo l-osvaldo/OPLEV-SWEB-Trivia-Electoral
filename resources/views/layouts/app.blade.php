@@ -108,6 +108,14 @@
         <!-- Bootstrap -->
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+          <script>
+          $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+          });
+          </script>
+
         <script src="{{ asset('js/app.js') }}"></script>
 
         <!-- jQuery 3 -->

@@ -191,6 +191,17 @@ class PoaController extends Controller
       return view('pages.poa.alertames')->with( compact('resultado'));
     }
 
+    /***/
+    public function elaboracion()
+    {
+        //
+      $user   = auth()->user();
+      $userId = $user->id;
+      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+      //dd($resultado);exit;
+      return view('pages.poa.elaboracion')->with( compact('resultado'));
+    }
+
     /**
      * Display the specified resource.
      *
