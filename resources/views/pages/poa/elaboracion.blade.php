@@ -53,6 +53,11 @@
 .up{animation-delay: 2s;}
 .down{animation-delay: 2s;}
 
+.totalUno{width: 43.7%;border-right: solid 4px #f5f5f5;text-align: right;margin-top: 1%;padding-right: .5%;float: left;height: auto;}
+.totalDos{width: 8.5%;border-right: solid 4px #f5f5f5;background: #fff;text-align: center;margin-top: 1%;float: left;height: auto;}
+.totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;}
+.allItemTotal{width: 40.7%;border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;margin-top: 1%;}
+.contTotale{float: left;}
 </style>
 
 <div class="col-md-12">
@@ -60,7 +65,7 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL {{ now()->year }}</div>
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020</div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">
         <img src="{{ asset('images/logoople.png') }}" alt="OPLE" class="ImgLogo" width="80%">
@@ -83,7 +88,7 @@
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA3">
         <div class="col-md-3 textCPOA" style="background-color: #fff;float: left;height: 72px; line-height: 70px;border-bottom:solid 4px #f5f5f5;border-right:solid 4px #f5f5f5">
-          <small>Ejercicio <strong>{{ now()->year }}</strong></small>
+          <small>Ejercicio <strong>2020</strong></small>
         </div>
         <div class="col-md-9 textCPOA" style="background-color: #fff;float: left;height: 72px; line-height: 30px;border-bottom:solid 4px #f5f5f5;">
           <small>Unidad responsable:<br><strong>Unidad Técnica del Centro de Formación y Desarrollo</strong></small>
@@ -147,21 +152,21 @@
           <div class="item3">Informe</div>
           <div class="item4">2</div>
           <div class="allItemMes">
-            <div class="col-md-1 itemMes" data-mes="ene">2</div>
-            <div class="col-md-1 itemMes" data-mes="feb">2</div>
-            <div class="col-md-1 itemMes" data-mes="mar">2</div>
-            <div class="col-md-1 itemMes" data-mes="abr">2</div>
-            <div class="col-md-1 itemMes" data-mes="may">2</div>
-            <div class="col-md-1 itemMes" data-mes="jun">2</div>
-            <div class="col-md-1 itemMes" data-mes="jul">2</div>
-            <div class="col-md-1 itemMes" data-mes="ago">2</div>
-            <div class="col-md-1 itemMes" data-mes="sep">2</div>
-            <div class="col-md-1 itemMes" data-mes="oct">2</div>
-            <div class="col-md-1 itemMes" data-mes="nov">2</div>
-            <div class="col-md-1 itemMesF" data-mes="dic">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="ene">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="feb">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="mar">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="abr">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="may">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="jun">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="jul">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="ago">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="sep">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="oct">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="nov">2</div>
+            <div class="col-md-1 itemMesF numerico" data-mes="dic">2</div>
           </div>
-          <div class="item5">FEV</div>
-          <div class="item6">NOV</div>
+          <div class="item5">ENE</div>
+          <div class="item6">DIC</div>
 
           <i class="iconBH fa fa-pencil-square-o btnEdit btnOff" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Editar"></i>
           <!--i class="iconBH fa fa-check-square-o" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Finalizar edición"></i-->
@@ -169,7 +174,84 @@
           <i class="iconBH fa fa-arrow-circle-down down btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Bajar"></i>
           <i class="iconBHD fa fa-times delAct btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eliminar"></i>
 
+        </div>
+      </div>
 
+      <div class="col-md-12 contTotale">
+      <div class="row">
+          <div class="totalUno">Total programado mensual</div>
+          <div id="resultTPM" class="totalDos">0</div>
+          <div class="allItemTotal">
+            <div id="r1M0" class="col-md-1 totalesMes">0</div>
+            <div id="r1M1" class="col-md-1 totalesMes">0</div>
+            <div id="r1M2" class="col-md-1 totalesMes">0</div>
+            <div id="r1M3" class="col-md-1 totalesMes">0</div>
+            <div id="r1M4" class="col-md-1 totalesMes">0</div>
+            <div id="r1M5" class="col-md-1 totalesMes">0</div>
+            <div id="r1M6" class="col-md-1 totalesMes">0</div>
+            <div id="r1M7" class="col-md-1 totalesMes">0</div>
+            <div id="r1M8" class="col-md-1 totalesMes">0</div>
+            <div id="r1M9" class="col-md-1 totalesMes">0</div>
+            <div id="r1M10" class="col-md-1 totalesMes">0</div>
+            <div id="r1M11" class="col-md-1 totalesMes">0</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="totalUno">Total programado acumulado mensual</div>
+          <div class="totalDos">0</div>
+          <div class="allItemTotal">
+            <div id="r2M0" class="col-md-1 totalesMes">0</div>
+            <div id="r2M1" class="col-md-1 totalesMes">0</div>
+            <div id="r2M2" class="col-md-1 totalesMes">0</div>
+            <div id="r2M3" class="col-md-1 totalesMes">0</div>
+            <div id="r2M4" class="col-md-1 totalesMes">0</div>
+            <div id="r2M5" class="col-md-1 totalesMes">0</div>
+            <div id="r2M6" class="col-md-1 totalesMes">0</div>
+            <div id="r2M7" class="col-md-1 totalesMes">0</div>
+            <div id="r2M8" class="col-md-1 totalesMes">0</div>
+            <div id="r2M9" class="col-md-1 totalesMes">0</div>
+            <div id="r2M10" class="col-md-1 totalesMes">0</div>
+            <div id="r2M11" class="col-md-1 totalesMes">0</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="totalUno">Porcentaje mensual</div>
+          <div class="totalDos">0</div>
+          <div class="allItemTotal">
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="totalUno">Porcentaje acumulado mensual</div>
+          <div class="totalDos">0</div>
+          <div class="allItemTotal">
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+            <div class="col-md-1 totalesMes">0</div>
+          </div>
         </div>
       </div>
 

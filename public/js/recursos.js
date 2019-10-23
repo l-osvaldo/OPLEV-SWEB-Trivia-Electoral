@@ -571,6 +571,7 @@ $.ajaxSetup({
           itemMes1.innerHTML = "0";
           itemMes1.className = "col-md-1 itemMes";
           itemMes1.setAttribute('data-mes', 'ene');
+          itemMes1.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes1)
 
@@ -578,6 +579,7 @@ $.ajaxSetup({
           itemMes2.innerHTML = "0";
           itemMes2.className = "col-md-1 itemMes";
           itemMes2.setAttribute('data-mes', 'feb');
+          itemMes2.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes2)
 
@@ -585,6 +587,7 @@ $.ajaxSetup({
           itemMes3.innerHTML = "0";
           itemMes3.className = "col-md-1 itemMes";
           itemMes3.setAttribute('data-mes', 'mar');
+          itemMes3.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes3)
 
@@ -592,6 +595,7 @@ $.ajaxSetup({
           itemMes4.innerHTML = "0";
           itemMes4.className = "col-md-1 itemMes";
           itemMes4.setAttribute('data-mes', 'abr');
+          itemMes4.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes4)
 
@@ -599,6 +603,7 @@ $.ajaxSetup({
           itemMes5.innerHTML = "0";
           itemMes5.className = "col-md-1 itemMes";
           itemMes5.setAttribute('data-mes', 'may');
+          itemMes5.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes5)
 
@@ -606,6 +611,7 @@ $.ajaxSetup({
           itemMes6.innerHTML = "0";
           itemMes6.className = "col-md-1 itemMes";
           itemMes6.setAttribute('data-mes', 'jun');
+          itemMes6.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes6)
 
@@ -613,6 +619,7 @@ $.ajaxSetup({
           itemMes7.innerHTML = "0";
           itemMes7.className = "col-md-1 itemMes";
           itemMes7.setAttribute('data-mes', 'jul');
+          itemMes7.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes7)
 
@@ -620,6 +627,7 @@ $.ajaxSetup({
           itemMes8.innerHTML = "0";
           itemMes8.className = "col-md-1 itemMes";
           itemMes8.setAttribute('data-mes', 'ago');
+          itemMes8.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes8)
 
@@ -627,6 +635,7 @@ $.ajaxSetup({
           itemMes9.innerHTML = "0";
           itemMes9.className = "col-md-1 itemMes";
           itemMes9.setAttribute('data-mes', 'sep');
+          itemMes9.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes9)
 
@@ -634,6 +643,7 @@ $.ajaxSetup({
           itemMes10.innerHTML = "0";
           itemMes10.className = "col-md-1 itemMes";
           itemMes10.setAttribute('data-mes', 'oct');
+          itemMes10.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes10)
 
@@ -641,6 +651,7 @@ $.ajaxSetup({
           itemMes11.innerHTML = "0";
           itemMes11.className = "col-md-1 itemMes";
           itemMes11.setAttribute('data-mes', 'nov');
+          itemMes11.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes11)
 
@@ -648,6 +659,7 @@ $.ajaxSetup({
           itemMes12.innerHTML = "0";
           itemMes12.className = "col-md-1 itemMesF";
           itemMes12.setAttribute('data-mes', 'dic');
+          itemMes12.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes12)
 
@@ -757,6 +769,7 @@ $.ajaxSetup({
         function removeAct() {
           this.parentNode.remove();
           reCountAct();
+          sumTPM();
         }
         //////////////////////////////////////////////////////////////////////
         function reCountAct() {
@@ -795,51 +808,85 @@ $.ajaxSetup({
             onBtn(this)
             );
 
-          //var editelement = document.getElementsByClassName('editElement');
-          //if (this.getAttribute('data-edit') === '0') {
-          //  for (var i = 0; i < cntEdit.length; i++) {
-          //    cntEdit[i].contentEditable = "false";
-              //this.style.backgroundColor = "whithe";
-            //} 
-          //} 
-          //else {
-          //  for (var i = 0; i < cntEdit.length; i++) {
-          //      cntEdit[i].contentEditable = "true";
-                //this.style.backgroundColor = "red";
-          //  }
-          //}
         }
 
-        function onBtn(t){
-          var btnOff = document.getElementsByClassName('btnOff');
-          for (var i = 0; i < btnOff.length; i++) {
-              btnOff[i].style.pointerEvents = '';
-          }
-
-          t.parentNode.querySelector('.item2').contentEditable = "false";
-          t.parentNode.querySelector('.item2').style.backgroundColor = "";
-          t.parentNode.querySelector('.item3').contentEditable = "false";
-          t.parentNode.querySelector('.item3').style.backgroundColor = "";
-          t.parentNode.querySelector('.itemMes').contentEditable = "false";
-          t.parentNode.querySelector('.itemMes').style.backgroundColor = "";
-           var nu = [];
-           var me = [];
-          for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
-            t.parentNode.children[4].children[i].contentEditable = "false";
-            t.parentNode.children[4].children[i].style.backgroundColor = "";
-            nu.push(Number(t.parentNode.children[4].children[i].textContent));
-            isNaN(t.parentNode.children[4].children[i].textContent) || t.parentNode.children[4].children[i].textContent === '0' || t.parentNode.children[4].children[i].textContent === '' ? '' : me.push(t.parentNode.children[4].children[i].getAttribute('data-mes'));
-            
-          }
+  function onBtn(t){
           
-          var programado = nu.reduce(sumArray);
-          isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
-
+      var nu = [];
+      var me = [];
+      for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
+        nu.push(Number(t.parentNode.children[4].children[i].textContent));
+        isNaN(t.parentNode.children[4].children[i].textContent) || t.parentNode.children[4].children[i].textContent === '0' || t.parentNode.children[4].children[i].textContent === '' ? t.parentNode.children[4].children[i].textContent = "0" : me.push(t.parentNode.children[4].children[i].getAttribute('data-mes'));
+      } 
+      var programado = nu.reduce(sumArray);
+      isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
+      
+      ////////////////////////////////////////////////////////////////////////
+      switch (me.length) {
+        case 0:
+          t.parentNode.querySelector('.item5').innerHTML='MES';
+          t.parentNode.querySelector('.item6').innerHTML='MES';
+          break;
+        case 1:
+          t.parentNode.querySelector('.item5').innerHTML=me[0];
+          t.parentNode.querySelector('.item6').innerHTML=me[0];
+          break;
+        default:
           var totalMes = me.length-1;
           t.parentNode.querySelector('.item5').innerHTML=me[0];
-          t.parentNode.querySelector('.item6').innerHTML=me[totalMes];
+          t.parentNode.querySelector('.item6').innerHTML=me[me.length-1]
+      }
 
-        }
+      ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
+      var actPromesa = new Promise( (resolve, reject) => {
+          programado > 0 ? resolve('A') :reject(new Error('La Programación Mensual deve tener almenos un mes con un numero distinto a 0.'));
+      })
+
+      actPromesa
+          .then( () => {
+               return new Promise((resolve, reject) => {
+                 t.parentNode.querySelector('.item3').textContent ? resolve() : reject(new Error('Ingrese una Unidad de Medida.'));
+              });
+          })
+          .then( () => {
+              return new Promise((resolve, reject) => {
+                t.parentNode.querySelector('.item2').textContent ? resolve() : reject(new Error('Ingrese una Descripción de la actividad.'));
+              });
+          })
+          .then( () => {
+              return new Promise((resolve, reject) => {
+                var btnOff = document.getElementsByClassName('btnOff');
+                for (var i = 0; i < btnOff.length; i++) {
+                    btnOff[i].style.pointerEvents = '';
+                }
+
+                t.parentNode.querySelector('.item2').contentEditable = "false";
+                t.parentNode.querySelector('.item2').style.backgroundColor = "";
+                t.parentNode.querySelector('.item3').contentEditable = "false";
+                t.parentNode.querySelector('.item3').style.backgroundColor = "";
+                for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
+                  t.parentNode.children[4].children[i].contentEditable = "false";
+                  t.parentNode.children[4].children[i].style.backgroundColor = "";
+                } 
+      
+                ///////////////////////////////////////////////////////////////////////
+                t.parentNode.classList.remove('newAct');
+                sumTPM();
+              });
+          })
+          .catch( (err) => {
+              alert(err);
+              t.setAttribute("data-edit", '1');
+              t.classList.add('fa-check');
+              t.classList.remove('fa-pencil-square-o');
+              t.classList.remove('btnOff');
+              t.style.color = "#fff";
+              t.style.backgroundColor = "#EA0D94";
+              t.setAttribute('data-original-title', 'Terminar la edición');
+          });
+
+
+    }
 
         function sumArray(total, num) {
           return total + num;
@@ -862,4 +909,122 @@ $.ajaxSetup({
           }
 
         }
+
+
+
+var numericos = document.getElementsByClassName("numerico");
+
+
+for (var i = 0; i < numericos.length; i++) {
+  numericos[i].addEventListener("keyup", validaNumeros, false);
+}
+
+function validaNumeros() {
+  //console.log(this.textContent);
+  /^\d*$/.test(this.textContent) ? '' : this.textContent="0";
+  //this.textContent ? '' : this.textContent="0";
+}
+
+function sumTPM(){
+  var tpm = document.getElementsByClassName("item4");
+  var tpmArr = [];
+  for (var i = 0; i < tpm.length; i++) {
+    tpmArr.push(Number(tpm[i].textContent));
+  } 
+  var tpmResult;
+  tpm.length == 0 ? tpmResult=tpm.length : tpmResult = tpmArr.reduce(sumArray);
+  document.getElementById('resultTPM').textContent=tpmResult;
+
+
+  ///////////////////////////////////////////////////////////////////////////CHECAR VARIABLES DINAMICAS
+  var allMES = document.getElementsByClassName("rowAct");
+  var m0 = [], m1 = [], m2 = [], m3 = [], m4 = [], m5 = [], m6 = [], m7 = [], m8 = [], m9 = [], m10 = [], m11 = [];
+  var am0, am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11;
+
+  for (var i = 0; i < allMES.length; i++) {
+    m0.push(Number(allMES[i].children[4].children[0].textContent));
+    m1.push(Number(allMES[i].children[4].children[1].textContent));
+    m2.push(Number(allMES[i].children[4].children[2].textContent));
+    m3.push(Number(allMES[i].children[4].children[3].textContent));
+    m4.push(Number(allMES[i].children[4].children[4].textContent));
+    m5.push(Number(allMES[i].children[4].children[5].textContent));
+    m6.push(Number(allMES[i].children[4].children[6].textContent));
+    m7.push(Number(allMES[i].children[4].children[7].textContent));
+    m8.push(Number(allMES[i].children[4].children[8].textContent));
+    m9.push(Number(allMES[i].children[4].children[9].textContent));
+    m10.push(Number(allMES[i].children[4].children[10].textContent));
+    m11.push(Number(allMES[i].children[4].children[11].textContent));
+  }
+
+  allMES.length == 0 ? am0 = allMES.length : am0 = m0.reduce(sumArray);
+  document.getElementById('r1M0').textContent=am0;
+
+  allMES.length == 0 ? am1 = allMES.length : am1 = m1.reduce(sumArray);
+  document.getElementById('r1M1').textContent=am1;
+
+  allMES.length == 0 ? am2 = allMES.length : am2 = m2.reduce(sumArray);
+  document.getElementById('r1M2').textContent=am2;
+
+  allMES.length == 0 ? am3 = allMES.length : am3 = m3.reduce(sumArray);
+  document.getElementById('r1M3').textContent=am3;
+
+  allMES.length == 0 ? am4 = allMES.length : am4 = m4.reduce(sumArray);
+  document.getElementById('r1M4').textContent=am4;
+
+  allMES.length == 0 ? am5 = allMES.length : am5 = m5.reduce(sumArray);
+  document.getElementById('r1M5').textContent=am5;
+
+  allMES.length == 0 ? am6 = allMES.length : am6 = m6.reduce(sumArray);
+  document.getElementById('r1M6').textContent=am6;
+
+  allMES.length == 0 ? am7 = allMES.length : am7 = m7.reduce(sumArray);
+  document.getElementById('r1M7').textContent=am7;
+
+  allMES.length == 0 ? am8 = allMES.length : am8 = m8.reduce(sumArray);
+  document.getElementById('r1M8').textContent=am8;
+
+  allMES.length == 0 ? am9 = allMES.length : am9 = m9.reduce(sumArray);
+  document.getElementById('r1M9').textContent=am9;
+
+  allMES.length == 0 ? am10 = allMES.length : am10 = m10.reduce(sumArray);
+  document.getElementById('r1M10').textContent=am10;
+
+  allMES.length == 0 ? am11 = allMES.length : am11 = m11.reduce(sumArray);
+  document.getElementById('r1M11').textContent=am11;
+
+
+  //////////////////////////////////////////////////////////////////////
+  
+  var m20 = Number(document.getElementById('r1M0').textContent);
+  var m21 = Number(document.getElementById('r1M1').textContent);
+  var m22 = Number(document.getElementById('r1M2').textContent);
+  var m23 = Number(document.getElementById('r1M3').textContent);
+  var m24 = Number(document.getElementById('r1M4').textContent);
+  var m25 = Number(document.getElementById('r1M5').textContent);
+  var m26 = Number(document.getElementById('r1M6').textContent);
+  var m27 = Number(document.getElementById('r1M7').textContent);
+  var m28 = Number(document.getElementById('r1M8').textContent);
+  var m29 = Number(document.getElementById('r1M9').textContent);
+  var m210 = Number(document.getElementById('r1M10').textContent);
+  var m211 = Number(document.getElementById('r1M11').textContent);
+
+  document.getElementById('r2M0').textContent=am0;
+  document.getElementById('r2M1').textContent=m20+m21;
+  document.getElementById('r2M2').textContent=m20+m21+m22;
+  document.getElementById('r2M3').textContent=m20+m21+m22+m23;
+  document.getElementById('r2M4').textContent=m20+m21+m22+m23+m24;
+  document.getElementById('r2M5').textContent=m20+m21+m22+m23+m24+m25;
+  document.getElementById('r2M6').textContent=m20+m21+m22+m23+m24+m25+m26;
+  document.getElementById('r2M7').textContent=m20+m21+m22+m23+m24+m25+m26+m27;
+  document.getElementById('r2M8').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28;
+  document.getElementById('r2M9').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29;
+  document.getElementById('r2M10').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210;
+  document.getElementById('r2M11').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210+m211;
+
+}
+
+sumTPM();
+
+
+
 
