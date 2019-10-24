@@ -866,7 +866,7 @@ $.ajaxSetup({
                 t.parentNode.querySelector('.item3').style.backgroundColor = "";
                 for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
                   t.parentNode.children[4].children[i].contentEditable = "false";
-                  t.parentNode.children[4].children[i].style.backgroundColor = "";
+                  t.parentNode.children[4].children[i].textContent != 0 ? t.parentNode.children[4].children[i].style.backgroundColor = "#cfd8dc" : t.parentNode.children[4].children[i].style.backgroundColor = "";
                 } 
       
                 ///////////////////////////////////////////////////////////////////////
@@ -1020,6 +1020,34 @@ function sumTPM(){
   document.getElementById('r2M9').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29;
   document.getElementById('r2M10').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210;
   document.getElementById('r2M11').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210+m211;
+
+  /////////////////////////////////////////////////////////////////////////
+  document.getElementById('r3M0').textContent=((am0/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M1').textContent=((am1/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M2').textContent=((am2/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M3').textContent=((am3/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M4').textContent=((am4/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M5').textContent=((am5/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M6').textContent=((am6/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M7').textContent=((am7/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M8').textContent=((am8/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M9').textContent=((am9/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M10').textContent=((am10/tpmResult)*100).toFixed(2);
+  document.getElementById('r3M11').textContent=((am11/tpmResult)*100).toFixed(2);
+
+  /////////////////////////////////////////////////////////////////////////
+  document.getElementById('r4M0').textContent=((am0/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M1').textContent=(((m20+m21)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M2').textContent=(((m20+m21+m22)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M3').textContent=(((m20+m21+m22+m23)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M4').textContent=(((m20+m21+m22+m23+m24)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M5').textContent=(((m20+m21+m22+m23+m24+m25)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M6').textContent=(((m20+m21+m22+m23+m24+m25+m26)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M7').textContent=(((m20+m21+m22+m23+m24+m25+m26+m27)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M8').textContent=(((m20+m21+m22+m23+m24+m25+m26+m27+m28)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M9').textContent=(((m20+m21+m22+m23+m24+m25+m26+m27+m28+m29)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M10').textContent=(((m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210)/tpmResult)*100).toFixed(2);
+  document.getElementById('r4M11').textContent=(((m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210+m211)/tpmResult)*100).toFixed(2);
 
 }
 

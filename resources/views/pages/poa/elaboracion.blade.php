@@ -53,10 +53,10 @@
 .up{animation-delay: 2s;}
 .down{animation-delay: 2s;}
 
-.totalUno{width: 43.7%;border-right: solid 4px #f5f5f5;text-align: right;margin-top: 1%;padding-right: .5%;float: left;height: auto;}
+.totalUno{width: 43.7%;border-right: solid 4px #f5f5f5;text-align: right;margin-top: 1%;padding-right: .5%;float: left;height: auto;color: #EA0D94;}
 .totalDos{width: 8.5%;border-right: solid 4px #f5f5f5;background: #fff;text-align: center;margin-top: 1%;float: left;height: auto;}
-.totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;}
-.allItemTotal{width: 40.7%;border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;margin-top: 1%;}
+.totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;font-size: 14px;background: #fff;}
+.allItemTotal{width: 40.7%;text-align: center;height: auto;margin-top: 1%;}
 .contTotale{float: left;}
 </style>
 
@@ -144,26 +144,26 @@
       </div-->
 
 
-      <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;">
+      <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;min-height: 100px;">
         <div class="row rowAct insertAct">
 
           <div class="item1">1</div>
           <div class="item2">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales. Fomentar el desarrollo académico y de profesionalización del personal de Organismo Público Local Electoral del Estado de Veracruz</div>
           <div class="item3">Informe</div>
-          <div class="item4">2</div>
+          <div class="item4">6</div>
           <div class="allItemMes">
-            <div class="col-md-1 itemMes numerico" data-mes="ene">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="feb">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="mar">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="abr">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="may">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="jun">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="jul">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="ago">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="sep">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="oct">2</div>
-            <div class="col-md-1 itemMes numerico" data-mes="nov">2</div>
-            <div class="col-md-1 itemMesF numerico" data-mes="dic">2</div>
+            <div class="col-md-1 itemMes numerico" data-mes="ene">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="feb">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="mar">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="abr">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="may">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="jun">1</div>
+            <div class="col-md-1 itemMes numerico" data-mes="jul">0</div>
+            <div class="col-md-1 itemMes numerico" data-mes="ago">0</div>
+            <div class="col-md-1 itemMes numerico" data-mes="sep">0</div>
+            <div class="col-md-1 itemMes numerico" data-mes="oct">0</div>
+            <div class="col-md-1 itemMes numerico" data-mes="nov">0</div>
+            <div class="col-md-1 itemMesF numerico" data-mes="dic">0</div>
           </div>
           <div class="item5">ENE</div>
           <div class="item6">DIC</div>
@@ -199,7 +199,7 @@
 
         <div class="row">
           <div class="totalUno">Total programado acumulado mensual</div>
-          <div class="totalDos">0</div>
+          <div class="totalDos"></div>
           <div class="allItemTotal">
             <div id="r2M0" class="col-md-1 totalesMes">0</div>
             <div id="r2M1" class="col-md-1 totalesMes">0</div>
@@ -218,39 +218,39 @@
 
         <div class="row">
           <div class="totalUno">Porcentaje mensual</div>
-          <div class="totalDos">0</div>
+          <div class="totalDos"></div>
           <div class="allItemTotal">
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
+            <div id="r3M0" class="col-md-1 totalesMes">0</div>
+            <div id="r3M1" class="col-md-1 totalesMes">0</div>
+            <div id="r3M2" class="col-md-1 totalesMes">0</div>
+            <div id="r3M3" class="col-md-1 totalesMes">0</div>
+            <div id="r3M4" class="col-md-1 totalesMes">0</div>
+            <div id="r3M5" class="col-md-1 totalesMes">0</div>
+            <div id="r3M6" class="col-md-1 totalesMes">0</div>
+            <div id="r3M7" class="col-md-1 totalesMes">0</div>
+            <div id="r3M8" class="col-md-1 totalesMes">0</div>
+            <div id="r3M9" class="col-md-1 totalesMes">0</div>
+            <div id="r3M10" class="col-md-1 totalesMes">0</div>
+            <div id="r3M11" class="col-md-1 totalesMes">0</div>
           </div>
         </div>
 
         <div class="row">
           <div class="totalUno">Porcentaje acumulado mensual</div>
-          <div class="totalDos">0</div>
+          <div class="totalDos"></div>
           <div class="allItemTotal">
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
-            <div class="col-md-1 totalesMes">0</div>
+            <div id="r4M0" class="col-md-1 totalesMes">0</div>
+            <div id="r4M1" class="col-md-1 totalesMes">0</div>
+            <div id="r4M2" class="col-md-1 totalesMes">0</div>
+            <div id="r4M3" class="col-md-1 totalesMes">0</div>
+            <div id="r4M4" class="col-md-1 totalesMes">0</div>
+            <div id="r4M5" class="col-md-1 totalesMes">0</div>
+            <div id="r4M6" class="col-md-1 totalesMes">0</div>
+            <div id="r4M7" class="col-md-1 totalesMes">0</div>
+            <div id="r4M8" class="col-md-1 totalesMes">0</div>
+            <div id="r4M9" class="col-md-1 totalesMes">0</div>
+            <div id="r4M10" class="col-md-1 totalesMes">0</div>
+            <div id="r4M11" class="col-md-1 totalesMes">0</div>
           </div>
         </div>
       </div>
