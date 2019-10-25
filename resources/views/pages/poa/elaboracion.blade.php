@@ -148,31 +148,35 @@
         <div class="row rowAct insertAct">
 
           <div class="item1">1</div>
-          <div class="item2">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales. Fomentar el desarrollo académico y de profesionalización del personal de Organismo Público Local Electoral del Estado de Veracruz</div>
-          <div class="item3">Informe</div>
+          <div class="item2 backAct">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales.</div>
+          <div class="item3 backAct">Informe</div>
           <div class="item4">6</div>
           <div class="allItemMes">
-            <div class="col-md-1 itemMes numerico" data-mes="ene">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="feb">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="mar">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="abr">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="may">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="jun">1</div>
-            <div class="col-md-1 itemMes numerico" data-mes="jul">0</div>
-            <div class="col-md-1 itemMes numerico" data-mes="ago">0</div>
-            <div class="col-md-1 itemMes numerico" data-mes="sep">0</div>
-            <div class="col-md-1 itemMes numerico" data-mes="oct">0</div>
-            <div class="col-md-1 itemMes numerico" data-mes="nov">0</div>
-            <div class="col-md-1 itemMesF numerico" data-mes="dic">0</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="ene">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="feb">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="mar">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="abr">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="may">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="jun">1</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="jul">0</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="ago">0</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="sep">0</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="oct">0</div>
+            <div class="col-md-1 itemMes numerico backAct" data-mes="nov">0</div>
+            <div class="col-md-1 itemMesF numerico backAct" data-mes="dic">0</div>
           </div>
           <div class="item5">ENE</div>
           <div class="item6">DIC</div>
 
-          <i class="iconBH fa fa-pencil-square-o btnEdit btnOff" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Editar"></i>
-          <!--i class="iconBH fa fa-check-square-o" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Finalizar edición"></i-->
+          <i class="iconBH fa fa-pencil-square-o btnEdit btnOff resetBack" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Editar"></i>
+
+          <i class="iconBH fa fa-ban btnBack btnOn" style="color: #eceff1;pointer-events: none;" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Cancelar edición" data-ba="Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales." data-bu="Informe" data-bm="1,1,1,1,1,1,0,0,0,0,0,0"></i>
+
           <i class="iconBH fa fa-arrow-circle-up up btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Subir"></i>
+
           <i class="iconBH fa fa-arrow-circle-down down btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Bajar"></i>
-          <i class="iconBHD fa fa-times delAct btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eliminar"></i>
+
+          <i class="iconBHD fa fa-trash delAct btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eliminar"></i>
 
         </div>
       </div>

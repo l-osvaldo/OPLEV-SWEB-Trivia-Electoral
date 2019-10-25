@@ -552,11 +552,13 @@ $.ajaxSetup({
           var item2 = document.createElement("DIV");
           item2.innerHTML = "";
           item2.className = "item2";                 // Insert text
+          item2.addEventListener("keyup", backEnable, false);
           rowAct.appendChild(item2);
 
           var item3 = document.createElement("DIV");
           item3.innerHTML = "";
           item3.className = "item3";                 // Insert text
+          item3.addEventListener("keyup", backEnable, false);
           rowAct.appendChild(item3);
 
           var item4 = document.createElement("DIV");
@@ -571,6 +573,7 @@ $.ajaxSetup({
           itemMes1.innerHTML = "0";
           itemMes1.className = "col-md-1 itemMes";
           itemMes1.setAttribute('data-mes', 'ene');
+          itemMes1.addEventListener("keyup", backEnable, false);
           itemMes1.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes1)
@@ -579,6 +582,7 @@ $.ajaxSetup({
           itemMes2.innerHTML = "0";
           itemMes2.className = "col-md-1 itemMes";
           itemMes2.setAttribute('data-mes', 'feb');
+          itemMes2.addEventListener("keyup", backEnable, false);
           itemMes2.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes2)
@@ -587,6 +591,7 @@ $.ajaxSetup({
           itemMes3.innerHTML = "0";
           itemMes3.className = "col-md-1 itemMes";
           itemMes3.setAttribute('data-mes', 'mar');
+          itemMes3.addEventListener("keyup", backEnable, false);
           itemMes3.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes3)
@@ -595,6 +600,7 @@ $.ajaxSetup({
           itemMes4.innerHTML = "0";
           itemMes4.className = "col-md-1 itemMes";
           itemMes4.setAttribute('data-mes', 'abr');
+          itemMes4.addEventListener("keyup", backEnable, false);
           itemMes4.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes4)
@@ -603,6 +609,7 @@ $.ajaxSetup({
           itemMes5.innerHTML = "0";
           itemMes5.className = "col-md-1 itemMes";
           itemMes5.setAttribute('data-mes', 'may');
+          itemMes5.addEventListener("keyup", backEnable, false);
           itemMes5.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes5)
@@ -611,6 +618,7 @@ $.ajaxSetup({
           itemMes6.innerHTML = "0";
           itemMes6.className = "col-md-1 itemMes";
           itemMes6.setAttribute('data-mes', 'jun');
+          itemMes6.addEventListener("keyup", backEnable, false);
           itemMes6.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes6)
@@ -619,6 +627,7 @@ $.ajaxSetup({
           itemMes7.innerHTML = "0";
           itemMes7.className = "col-md-1 itemMes";
           itemMes7.setAttribute('data-mes', 'jul');
+          itemMes7.addEventListener("keyup", backEnable, false);
           itemMes7.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes7)
@@ -627,6 +636,7 @@ $.ajaxSetup({
           itemMes8.innerHTML = "0";
           itemMes8.className = "col-md-1 itemMes";
           itemMes8.setAttribute('data-mes', 'ago');
+          itemMes8.addEventListener("keyup", backEnable, false);
           itemMes8.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes8)
@@ -635,6 +645,7 @@ $.ajaxSetup({
           itemMes9.innerHTML = "0";
           itemMes9.className = "col-md-1 itemMes";
           itemMes9.setAttribute('data-mes', 'sep');
+          itemMes9.addEventListener("keyup", backEnable, false);
           itemMes9.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes9)
@@ -643,6 +654,7 @@ $.ajaxSetup({
           itemMes10.innerHTML = "0";
           itemMes10.className = "col-md-1 itemMes";
           itemMes10.setAttribute('data-mes', 'oct');
+          itemMes10.addEventListener("keyup", backEnable, false);
           itemMes10.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes10)
@@ -651,6 +663,7 @@ $.ajaxSetup({
           itemMes11.innerHTML = "0";
           itemMes11.className = "col-md-1 itemMes";
           itemMes11.setAttribute('data-mes', 'nov');
+          itemMes11.addEventListener("keyup", backEnable, false);
           itemMes11.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes11)
@@ -659,6 +672,7 @@ $.ajaxSetup({
           itemMes12.innerHTML = "0";
           itemMes12.className = "col-md-1 itemMesF";
           itemMes12.setAttribute('data-mes', 'dic');
+          itemMes12.addEventListener("keyup", backEnable, false);
           itemMes12.addEventListener("keyup", validaNumeros, false);
 
           allItemMes.appendChild(itemMes12)
@@ -678,7 +692,7 @@ $.ajaxSetup({
           rowAct.appendChild(item6);
 
           var editar = document.createElement("I");
-          editar.className = "iconBH fa fa-pencil-square-o btnOff";   
+          editar.className = "iconBH fa fa-pencil-square-o resetBack";   
           editar.setAttribute('aria-hidden', 'true');
           editar.setAttribute('data-toggle', 'tooltip');
           editar.setAttribute('data-placement', 'right');
@@ -687,6 +701,22 @@ $.ajaxSetup({
           editar.addEventListener("click", editAct, false);
 
           rowAct.appendChild(editar);
+
+
+          var back = document.createElement("I");
+          back.className = "iconBH fa fa-ban btnBack btnOn";   
+          back.setAttribute('aria-hidden', 'true');
+          back.setAttribute('data-toggle', 'tooltip');
+          back.setAttribute('data-placement', 'right');
+          back.setAttribute('title', 'Cancelar edición');
+          back.setAttribute('data-ba', '');
+          back.setAttribute('data-bu', '');
+          back.setAttribute('data-bm', '0,0,0,0,0,0,0,0,0,0,0,0');
+          back.style.color='#eceff1';
+          back.style.pointerEvents='none';
+          back.addEventListener("click", actBack, false);
+
+          rowAct.appendChild(back);
 
           //var end = document.createElement("I");
           //end.className = "iconBH fa fa-check-square-o";   
@@ -718,7 +748,7 @@ $.ajaxSetup({
           rowAct.appendChild(down);
 
           var del = document.createElement("I");
-          del.className = "iconBH fa fa-times delAct btnOff";   
+          del.className = "iconBH fa fa-trash delAct";   
           del.setAttribute('aria-hidden', 'true');
           del.setAttribute('data-toggle', 'tooltip');
           del.setAttribute('data-placement', 'right');
@@ -735,10 +765,18 @@ $.ajaxSetup({
             $('[data-toggle="tooltip"]').tooltip();   
           });
 
+
+          var btnOff = document.getElementsByClassName('btnOff');
+          for (var i = 0; i < btnOff.length; i++) {
+              btnOff[i].style.pointerEvents = 'none';
+              btnOff[i].style.color = '#eceff1';
+          }
+
         }
         //////////////////////////////////////////////////////////////////////
         var upAct = document.getElementsByClassName('up');
         var dowAct = document.getElementsByClassName('down');
+        var backActividad = document.getElementsByClassName('backAct');
 
         for (var i = 0; i < upAct.length; i++) {
             upAct[i].addEventListener("click", moveUp, false);
@@ -746,6 +784,10 @@ $.ajaxSetup({
 
         for (var i = 0; i < dowAct.length; i++) {
             dowAct[i].addEventListener("click", moveDown, false);
+        }
+
+        for (var i = 0; i < backActividad.length; i++) {
+            backActividad[i].addEventListener("keyup", backEnable, false);
         }
 
         function moveUp(e) {
@@ -766,10 +808,71 @@ $.ajaxSetup({
             delActDoc[i].addEventListener("click", removeAct, false);
         }
 
+        var backAct = document.getElementsByClassName('btnBack');
+
+        for (var i = 0; i < backAct.length; i++) {
+            backAct[i].addEventListener("click", actBack, false);
+        }
+
+        function actBack() {
+          //document.execCommand("undo", false, null);
+          var act = this.getAttribute('data-ba'), uni = this.getAttribute('data-bu'), mes = this.getAttribute('data-bm');
+          this.parentNode.querySelector('.item2').textContent=act;
+          this.parentNode.querySelector('.item3').textContent=uni;
+          var mesArr = mes.split(",");
+          //console.log(mesArr.length)
+          mesArr.length>0 ? 's' : 's' ;
+          for (var i = 0; i < this.parentNode.children[4].children.length; i++) {
+            this.parentNode.children[4].children[i].textContent=mesArr[i];
+          } 
+
+          this.parentNode.classList.contains("newAct") ? btnBackReset(this) : finActEdit(this);
+          
+        }
+
+        function btnBackReset(t){
+          t.style.pointerEvents = "none";
+          t.style.color = "#eceff1";
+        }
+
+        function finActEdit(t) {
+          //console.log(act,uni,mes);
+            var btnOff = document.getElementsByClassName('btnOff');
+                for (var i = 0; i < btnOff.length; i++) {
+                    btnOff[i].style.pointerEvents = '';
+                    btnOff[i].style.color = '';
+                }
+            t.parentNode.querySelector('.resetBack').setAttribute("data-edit", '0');
+            t.parentNode.style.borderBottom = "#fff solid 1px";
+            t.parentNode.querySelector('.resetBack').classList.remove('fa-check');
+            t.parentNode.querySelector('.resetBack').classList.add('fa-pencil-square-o');
+            t.parentNode.querySelector('.resetBack').classList.add('btnOff');
+            t.parentNode.querySelector('.resetBack').style.color = "";
+            t.parentNode.querySelector('.resetBack').style.backgroundColor = "";
+            t.parentNode.querySelector('.resetBack').setAttribute('data-original-title', 'Editar');
+            t.parentNode.querySelector('.delAct').classList.add('btnOff');
+            t.parentNode.querySelector('.item2').contentEditable = "false";
+            t.parentNode.querySelector('.item2').style.backgroundColor = "";
+            t.parentNode.querySelector('.item3').contentEditable = "false";
+            t.parentNode.querySelector('.item3').style.backgroundColor = "";
+            for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
+              t.parentNode.children[4].children[i].contentEditable = "false";
+              t.parentNode.children[4].children[i].textContent != 0 ? t.parentNode.children[4].children[i].style.backgroundColor = "#cfd8dc" : t.parentNode.children[4].children[i].style.backgroundColor = "";
+            } 
+
+            t.style.pointerEvents = "none";
+            t.style.color = "#eceff1";
+        }
+
         function removeAct() {
           this.parentNode.remove();
           reCountAct();
           sumTPM();
+          var btnOff = document.getElementsByClassName('btnOff');
+          for (var i = 0; i < btnOff.length; i++) {
+              btnOff[i].style.pointerEvents = '';
+              btnOff[i].style.color = '';
+          }
         }
         //////////////////////////////////////////////////////////////////////
         function reCountAct() {
@@ -795,6 +898,9 @@ $.ajaxSetup({
             this.style.color = "#fff",
             this.style.backgroundColor = "#EA0D94",
             this.setAttribute('data-original-title', 'Terminar la edición'),
+            this.parentNode.querySelector('.delAct').classList.remove('btnOff'),
+            //this.parentNode.querySelector('.btnBack').style.pointerEvents="none",
+            //this.parentNode.querySelector('.btnBack').style.color="#546e7a",
             offBtn(this)
             ) : (
             this.setAttribute("data-edit", '0'),
@@ -805,9 +911,19 @@ $.ajaxSetup({
             this.style.color = "",
             this.style.backgroundColor = "",
             this.setAttribute('data-original-title', 'Editar'),
+            this.parentNode.querySelector('.delAct').classList.add('btnOff'),
             onBtn(this)
             );
 
+        }
+
+        function backEnable(){
+            this.parentNode.classList.contains("allItemMes") ? 
+            (this.parentNode.parentNode.querySelector('.btnBack').style.pointerEvents='',
+            this.parentNode.parentNode.querySelector('.btnBack').style.color='#546e7a')
+            :
+            (this.parentNode.querySelector('.btnBack').style.pointerEvents='',
+            this.parentNode.querySelector('.btnBack').style.color='#546e7a');
         }
 
   function onBtn(t){
@@ -858,6 +974,7 @@ $.ajaxSetup({
                 var btnOff = document.getElementsByClassName('btnOff');
                 for (var i = 0; i < btnOff.length; i++) {
                     btnOff[i].style.pointerEvents = '';
+                    btnOff[i].style.color = '';
                 }
 
                 t.parentNode.querySelector('.item2').contentEditable = "false";
@@ -869,6 +986,9 @@ $.ajaxSetup({
                   t.parentNode.children[4].children[i].textContent != 0 ? t.parentNode.children[4].children[i].style.backgroundColor = "#cfd8dc" : t.parentNode.children[4].children[i].style.backgroundColor = "";
                 } 
       
+                ///////////////////////////////////////////////////////////////////////
+                t.parentNode.querySelector('.btnBack').style.pointerEvents='none';
+                t.parentNode.querySelector('.btnBack').style.color='#eceff1';
                 ///////////////////////////////////////////////////////////////////////
                 t.parentNode.classList.remove('newAct');
                 sumTPM();
@@ -896,6 +1016,7 @@ $.ajaxSetup({
           var btnOff = document.getElementsByClassName('btnOff');
           for (var i = 0; i < btnOff.length; i++) {
               btnOff[i].style.pointerEvents = 'none';
+              btnOff[i].style.color = '#eceff1';
           }
 
           t.parentNode.querySelector('.item2').contentEditable = "true";
@@ -1052,7 +1173,6 @@ function sumTPM(){
 }
 
 sumTPM();
-
 
 
 
