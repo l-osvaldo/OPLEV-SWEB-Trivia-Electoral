@@ -696,6 +696,7 @@ $.ajaxSetup({
           editar.setAttribute('aria-hidden', 'true');
           editar.setAttribute('data-toggle', 'tooltip');
           editar.setAttribute('data-placement', 'right');
+          editar.setAttribute('data-insert', '0');
           editar.setAttribute('title', 'Editar');
           editar.setAttribute('data-edit', '0');
           editar.addEventListener("click", editAct, false);
@@ -821,12 +822,13 @@ $.ajaxSetup({
           this.parentNode.querySelector('.item3').textContent=uni;
           var mesArr = mes.split(",");
           //console.log(mesArr.length)
-          mesArr.length>0 ? 's' : 's' ;
+          //mesArr.length>0 ? 's' : 's' ;
           for (var i = 0; i < this.parentNode.children[4].children.length; i++) {
             this.parentNode.children[4].children[i].textContent=mesArr[i];
           } 
 
           this.parentNode.classList.contains("newAct") ? btnBackReset(this) : finActEdit(this);
+          this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','0') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','0'); 
           
         }
 
@@ -924,6 +926,8 @@ $.ajaxSetup({
             :
             (this.parentNode.querySelector('.btnBack').style.pointerEvents='',
             this.parentNode.querySelector('.btnBack').style.color='#546e7a');
+            
+            this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','1') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','1');        
         }
 
   function onBtn(t){
@@ -989,8 +993,14 @@ $.ajaxSetup({
                 ///////////////////////////////////////////////////////////////////////
                 t.parentNode.querySelector('.btnBack').style.pointerEvents='none';
                 t.parentNode.querySelector('.btnBack').style.color='#eceff1';
+                
+                
                 ///////////////////////////////////////////////////////////////////////
                 t.parentNode.classList.remove('newAct');
+
+                ///////////////////////////////////////////////////////////////////////
+                t.getAttribute('data-insert') == '1' ? alert('insertado') : alert('No insertado');
+                t.setAttribute('data-insert','0');
                 sumTPM();
               });
           })

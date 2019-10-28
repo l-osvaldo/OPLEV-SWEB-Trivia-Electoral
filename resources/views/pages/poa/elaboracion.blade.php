@@ -168,7 +168,7 @@
           <div class="item5">ENE</div>
           <div class="item6">DIC</div>
 
-          <i class="iconBH fa fa-pencil-square-o btnEdit btnOff resetBack" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Editar"></i>
+          <i class="iconBH fa fa-pencil-square-o btnEdit btnOff resetBack" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" data-insert="0" title="Editar"></i>
 
           <i class="iconBH fa fa-ban btnBack btnOn" style="color: #eceff1;pointer-events: none;" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Cancelar edición" data-ba="Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales." data-bu="Informe" data-bm="1,1,1,1,1,1,0,0,0,0,0,0"></i>
 
