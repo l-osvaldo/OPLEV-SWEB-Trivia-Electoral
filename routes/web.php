@@ -33,7 +33,7 @@ Route::get('/poatrimestral', 'AdminController@poatrimestral')->name('admin.poa.t
 Route::get('/mail/send', 'MailController@send')->name('emailsend');
 // ALERT&AS
 Route::get('/alertames', 'PoaController@alertames')->name('alertames');
-Route::get('/elaboracion', 'PoaController@elaboracion')->name('elaboracion');
+
 Route::get('/bitacora', 'ReportesController@bitacora')->name('bitacora');
 Route::get('/bitacorames', 'ReportesController@bitacorames')->name('bitacorames');
 Route::get('/tablames', 'ReportesController@tablames')->name('tablames');
@@ -67,6 +67,9 @@ Route::post('/buscaentre', 'ReportesController@buscaentre')->name('buscaentre');
 
 Route::get('/change-password', 'ChangePasswordController@index');
 Route::post('/change-password', 'ChangePasswordController@store')->name('change.password');
+// POA CREACION
+Route::get('/elaboracion', 'PoaController@elaboracion')->name('elaboracion');
+Route::post('/sendactividad', 'PoaController@sendactividad')->name('sendactividad');
 
 });
 

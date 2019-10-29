@@ -41,7 +41,6 @@
 .item3{width: 8.5%; border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;}
 .item4{width: 8.5%; border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;}
 .itemMes{float: left;background:#fff;border-right:solid 4px #f5f5f5;height: 100%;}
-.itemMesF{float: left;background:#fff;height: 100%;}
 .allItemMes{width: 40.7%;border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;position: relative;}
 .item5{width: 3.5555555%; border-right: solid 4px #f5f5f5;background: #fff;text-align: center;height: auto;text-transform: uppercase;}
 .item6{width: 3.5%; background: #fff;text-align: center;height: auto;line-height: normal;text-transform: uppercase;}
@@ -76,13 +75,29 @@
           <small>Programa general:</small>
         </div>
         <div class="col-md-4 textCPOA" style="background-color: #fff;float: left;height: 45px; line-height: 38px;border-bottom:solid 4px #f5f5f5;border-right:solid 4px #f5f5f5;">
-          <small>Clave: <strong>E3 03</strong></small>
+          <small>Clave: <strong>E1 01</strong></small>
         </div>
         <div class="col-md-8 textCPOA" style="background-color: #fff;float: left;height: 45px; line-height: 38px;border-bottom:solid 4px #f5f5f5;">
-          <small> <i class="iconInfo fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Seleccione un programa"></i> <strong>Cartera de proyectos</strong></small>
+          <!--small> <i class="iconInfo fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Seleccione un programa"></i> <strong>Cartera de proyectos</strong></small-->
+
+          
+            <!--div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div-->
+            <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="ePrograma" name="eprograma">
+              @foreach( $programas as $programa )
+              <option value="{{$programa->idprograma}}">{{$programa->descprograma}}</option>
+               @endforeach
+            </select>
+         
+
         </div>
         <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;">
-          <small><strong>Capacitación permanente</strong></small>
+          <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eProgramaEsp" name="eprogramaesp">
+              @foreach( $programaesp as $programae )
+              <option value="{{$programae->autoprogramaesp}}">{{$programae->descprogramaesp}}</option>
+               @endforeach
+            </select>
         </div>
       </div>
       <!--COLUMNAS-->
@@ -145,7 +160,7 @@
 
 
       <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;min-height: 100px;">
-        <div class="row rowAct insertAct">
+        <div class="row rowAct insertAct" data-id="1">
 
           <div class="item1">1</div>
           <div class="item2 backAct">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales.</div>
@@ -163,7 +178,7 @@
             <div class="col-md-1 itemMes numerico backAct" data-mes="sep">0</div>
             <div class="col-md-1 itemMes numerico backAct" data-mes="oct">0</div>
             <div class="col-md-1 itemMes numerico backAct" data-mes="nov">0</div>
-            <div class="col-md-1 itemMesF numerico backAct" data-mes="dic">0</div>
+            <div class="col-md-1 itemMes numerico backAct" style="border-right:0 !important;" data-mes="dic">0</div>
           </div>
           <div class="item5">ENE</div>
           <div class="item6">DIC</div>

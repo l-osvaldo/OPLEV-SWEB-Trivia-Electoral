@@ -7,6 +7,7 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use App\Alerta;
+use App\actividadesdos;
 use Alert;
 
 class PoaController extends Controller
@@ -198,8 +199,63 @@ class PoaController extends Controller
       $user   = auth()->user();
       $userId = $user->id;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
-      //dd($resultado);exit;
-      return view('pages.poa.elaboracion')->with( compact('resultado'));
+      $programas = DB::table('programas')->get();
+      $programaesp = DB::table('programasesp')->where('idprograma', 1)->where('idarea', $userId)->get();
+      return view('pages.poa.elaboracion')->with( compact('resultado','programas','programaesp'));
+    }
+
+    public function sendactividad(Request $request)
+    {
+      if (Auth::check()) {
+        $idArea = Auth::user()->idarea;
+        $acttext = $request->a;
+        $uni = $request->b;
+        $c = $request->c;
+        $d = $request->d;
+        $e = $request->e;
+        $f = $request->f;
+        $g = $request->g;
+        $h = $request->h;
+        $i = $request->i;
+        $j = $request->j;
+        $k = $request->k;
+        $l = $request->l;
+        $m = $request->m;
+        $n = $request->n;
+        $o = $request->ida;
+
+        switch ($o) {
+            case '0':
+                $act = new actividadesdos();
+                $act->reprogramacion = 1;
+                $act->autoactividades = 1;
+                $act->idprograma = 1;
+                $act->idprogramaesp = 1;
+                $act->idarea = $idArea;
+                $act->numactividad = 1;
+                $act->descactividad = $acttext;
+                $act->unidadmedida = $uni;
+                $act->cantidadanual = 1;
+                $act->idporcentajep = 1;
+                $act->idporcentajer = 1;
+                $act->observatrim = 'Meta Rebasada';
+                $act->bandera = 1;
+                $act->act_estatus = 1;
+                $act->save();
+                break;
+            default:
+                $act = actividadesdos::find($o);
+                $act->descactividad = $acttext;
+                $act->unidadmedida = $uni;
+                $act->idarea = $idArea;
+                $act->save();
+        }
+
+        return response()->json([$act]);
+
+      } else {
+        return route('auth/login');
+      }
     }
 
     /**

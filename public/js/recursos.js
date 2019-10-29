@@ -542,7 +542,8 @@ $.ajaxSetup({
         function agregaActividad() {
 
           var rowAct = document.createElement("DIV");
-          rowAct.className = "row rowAct newAct"; 
+          rowAct.className = "row rowAct newAct";
+          rowAct.setAttribute('data-id', '0') 
 
           var item1 = document.createElement("DIV");   // Create a <button> element
           item1.innerHTML = '';
@@ -670,10 +671,11 @@ $.ajaxSetup({
 
           var itemMes12 = document.createElement("DIV");
           itemMes12.innerHTML = "0";
-          itemMes12.className = "col-md-1 itemMesF";
+          itemMes12.className = "col-md-1 itemMes";
           itemMes12.setAttribute('data-mes', 'dic');
           itemMes12.addEventListener("keyup", backEnable, false);
           itemMes12.addEventListener("keyup", validaNumeros, false);
+          itemMes12.style.borderRight = "0";
 
           allItemMes.appendChild(itemMes12)
 
@@ -999,8 +1001,8 @@ $.ajaxSetup({
                 t.parentNode.classList.remove('newAct');
 
                 ///////////////////////////////////////////////////////////////////////
-                t.getAttribute('data-insert') == '1' ? alert('insertado') : alert('No insertado');
-                t.setAttribute('data-insert','0');
+                t.getAttribute('data-insert') == '1' ? insertactividad(t.parentNode) : t.setAttribute('data-insert','0');
+                ;
                 sumTPM();
               });
           })
@@ -1016,6 +1018,34 @@ $.ajaxSetup({
           });
 
 
+    }
+
+    function insertactividad(t){
+      var a = t.querySelector('.item2').textContent;
+      var b = t.querySelector('.item3').textContent;
+      var c = t.querySelector('.allItemMes').children[0].textContent;
+      var d = t.querySelector('.allItemMes').children[1].textContent;
+      var e = t.querySelector('.allItemMes').children[2].textContent;
+      var f = t.querySelector('.allItemMes').children[3].textContent;
+      var g = t.querySelector('.allItemMes').children[4].textContent;
+      var h = t.querySelector('.allItemMes').children[5].textContent;
+      var i = t.querySelector('.allItemMes').children[6].textContent;
+      var j = t.querySelector('.allItemMes').children[7].textContent;
+      var k = t.querySelector('.allItemMes').children[8].textContent;
+      var l = t.querySelector('.allItemMes').children[9].textContent;
+      var m = t.querySelector('.allItemMes').children[10].textContent;
+      var n = t.querySelector('.allItemMes').children[11].textContent;
+      var ida = t.getAttribute('data-id');
+
+      $.ajax({
+             type:'POST',
+             url:"sendactividad",
+             data:{"_token": token,ida:ida,a:a,b:b,c:c,d:d,e:e,f:f,g:g,h:h,i:i,j:j,k:k,l:l,m:m,n:n},
+             success:function(data){ 
+                t.setAttribute('data-id',data[0].id);
+                t.children[7].setAttribute('data-insert','0');
+            }
+          });
     }
 
         function sumArray(total, num) {
