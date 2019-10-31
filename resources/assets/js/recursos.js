@@ -569,118 +569,22 @@ $.ajaxSetup({
 
           var allItemMes = document.createElement("DIV");
           allItemMes.className = "allItemMes"; 
+
+          var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']; 
+
+          for (var i = 0; i < meses.length; i++) {
+            var itemMes1 = document.createElement("DIV");
+            itemMes1.innerHTML = "0";
+            itemMes1.className = "col-md-1 itemMes";
+            itemMes1.setAttribute('data-mes', meses[i]);
+            itemMes1.addEventListener("keyup", backEnable, false);
+            itemMes1.addEventListener("keyup", validaNumeros, false);
+
+            allItemMes.appendChild(itemMes1)
+          }
           
-          var itemMes1 = document.createElement("DIV");
-          itemMes1.innerHTML = "0";
-          itemMes1.className = "col-md-1 itemMes";
-          itemMes1.setAttribute('data-mes', 'ene');
-          itemMes1.addEventListener("keyup", backEnable, false);
-          itemMes1.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes1)
-
-          var itemMes2 = document.createElement("DIV");
-          itemMes2.innerHTML = "0";
-          itemMes2.className = "col-md-1 itemMes";
-          itemMes2.setAttribute('data-mes', 'feb');
-          itemMes2.addEventListener("keyup", backEnable, false);
-          itemMes2.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes2)
-
-          var itemMes3 = document.createElement("DIV");
-          itemMes3.innerHTML = "0";
-          itemMes3.className = "col-md-1 itemMes";
-          itemMes3.setAttribute('data-mes', 'mar');
-          itemMes3.addEventListener("keyup", backEnable, false);
-          itemMes3.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes3)
-
-          var itemMes4 = document.createElement("DIV");
-          itemMes4.innerHTML = "0";
-          itemMes4.className = "col-md-1 itemMes";
-          itemMes4.setAttribute('data-mes', 'abr');
-          itemMes4.addEventListener("keyup", backEnable, false);
-          itemMes4.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes4)
-
-          var itemMes5 = document.createElement("DIV");
-          itemMes5.innerHTML = "0";
-          itemMes5.className = "col-md-1 itemMes";
-          itemMes5.setAttribute('data-mes', 'may');
-          itemMes5.addEventListener("keyup", backEnable, false);
-          itemMes5.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes5)
-
-          var itemMes6 = document.createElement("DIV");
-          itemMes6.innerHTML = "0";
-          itemMes6.className = "col-md-1 itemMes";
-          itemMes6.setAttribute('data-mes', 'jun');
-          itemMes6.addEventListener("keyup", backEnable, false);
-          itemMes6.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes6)
-
-          var itemMes7 = document.createElement("DIV");
-          itemMes7.innerHTML = "0";
-          itemMes7.className = "col-md-1 itemMes";
-          itemMes7.setAttribute('data-mes', 'jul');
-          itemMes7.addEventListener("keyup", backEnable, false);
-          itemMes7.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes7)
-
-          var itemMes8 = document.createElement("DIV");
-          itemMes8.innerHTML = "0";
-          itemMes8.className = "col-md-1 itemMes";
-          itemMes8.setAttribute('data-mes', 'ago');
-          itemMes8.addEventListener("keyup", backEnable, false);
-          itemMes8.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes8)
-
-          var itemMes9 = document.createElement("DIV");
-          itemMes9.innerHTML = "0";
-          itemMes9.className = "col-md-1 itemMes";
-          itemMes9.setAttribute('data-mes', 'sep');
-          itemMes9.addEventListener("keyup", backEnable, false);
-          itemMes9.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes9)
-
-          var itemMes10 = document.createElement("DIV");
-          itemMes10.innerHTML = "0";
-          itemMes10.className = "col-md-1 itemMes";
-          itemMes10.setAttribute('data-mes', 'oct');
-          itemMes10.addEventListener("keyup", backEnable, false);
-          itemMes10.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes10)
-
-          var itemMes11 = document.createElement("DIV");
-          itemMes11.innerHTML = "0";
-          itemMes11.className = "col-md-1 itemMes";
-          itemMes11.setAttribute('data-mes', 'nov');
-          itemMes11.addEventListener("keyup", backEnable, false);
-          itemMes11.addEventListener("keyup", validaNumeros, false);
-
-          allItemMes.appendChild(itemMes11)
-
-          var itemMes12 = document.createElement("DIV");
-          itemMes12.innerHTML = "0";
-          itemMes12.className = "col-md-1 itemMes";
-          itemMes12.setAttribute('data-mes', 'dic');
-          itemMes12.addEventListener("keyup", backEnable, false);
-          itemMes12.addEventListener("keyup", validaNumeros, false);
-          itemMes12.style.borderRight = "0";
-
-          allItemMes.appendChild(itemMes12)
 
           rowAct.appendChild(allItemMes); 
-
 
 
           var item5 = document.createElement("DIV");
@@ -762,7 +666,8 @@ $.ajaxSetup({
 
 
 
-          act.appendChild(rowAct);  
+          act.appendChild(rowAct);
+          act.style.backgroundColor='';  
           reCountAct();
           $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
@@ -831,7 +736,8 @@ $.ajaxSetup({
 
           this.parentNode.classList.contains("newAct") ? btnBackReset(this) : finActEdit(this);
           this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','0') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','0'); 
-          
+          //reCountAct();
+          sumTPM();
         }
 
         function btnBackReset(t){
@@ -932,6 +838,215 @@ $.ajaxSetup({
             this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','1') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','1');        
         }
 
+   document.getElementById('ePrograma').addEventListener("change", changePro, false);  
+   
+  function changePro(){
+    var pro = this.options[this.selectedIndex].value;
+    pro == '0' ? document.getElementById('eProgramaEsp').disabled=true: getProEsp(pro);
+  }
+
+  function getProEsp(pro){
+    document.getElementById("eProgramaEsp").innerHTML='<option value="0">Seleccione un programa</option>';
+    $.ajax({
+       type:'POST',
+       url:"sendporgramaesp",
+       data:{"_token": token,id:pro},
+       success:function(data){ 
+          data[0].length == 0 ? emptyPrograma() : document.getElementById('eProgramaEsp').disabled=false;
+           for (var i = 0; i < data[0].length; i++) {
+              //var option = new Option(data[0][i].descprogramaesp, data[0][i].idprogramaesp);
+              //document.getElementById("eProgramaEsp").appendChild(option);
+              var option = document.createElement("option");
+              option.text = data[0][i].descprogramaesp;
+              option.value = data[0][i].idprogramaesp;
+              option.setAttribute('data-clave',data[0][i].claveprogramaesp);
+              option.setAttribute('data-objetivo',data[0][i].objprogramaesp);
+              document.getElementById("eProgramaEsp").appendChild(option);
+           }
+          
+      }
+    });
+  }
+
+  document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false); 
+
+  function changeProEsp(){
+    var proesp = this.options[this.selectedIndex].value;
+    var clave = this.options[this.selectedIndex].getAttribute('data-clave');
+    var objetivo = this.options[this.selectedIndex].getAttribute('data-objetivo');
+    document.getElementById('claveProEsp').textContent = clave;
+    document.getElementById('objetivoProEsp').textContent = objetivo;
+    //console.log(proesp);
+    ///////////////////////////////////////////////////////////////////////////////// ajax de actividades
+    $.ajax({
+       type:'POST',
+       url:"getAct",
+       data:{"_token": token,proesp:proesp},
+       success:function(data){ 
+          document.getElementById('contActividades').innerHTML='';
+          data[0].length == 0 ? document.getElementById('contActividades').style.backgroundColor='#fff' : document.getElementById('contActividades').style.backgroundColor='';
+          //console.log(data[0]);
+          var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+          for (var j = 0; j < data[0].length; j++) {
+
+          var rowAct = document.createElement("DIV");
+          rowAct.className = "row rowAct";
+          rowAct.setAttribute('data-id', data[0][j].id) 
+
+          var item1 = document.createElement("DIV");   // Create a <button> element
+          item1.innerHTML = '';
+          item1.className = "item1";                 // Insert text
+          rowAct.appendChild(item1);  
+
+          var item2 = document.createElement("DIV");
+          item2.innerHTML = data[0][j].descactividad;
+          item2.className = "item2";                 // Insert text
+          item2.addEventListener("keyup", backEnable, false);
+          rowAct.appendChild(item2);
+
+          var item3 = document.createElement("DIV");
+          item3.innerHTML = data[0][j].unidadmedida;
+          item3.className = "item3";                 // Insert text
+          item3.addEventListener("keyup", backEnable, false);
+          rowAct.appendChild(item3);
+
+          var item4 = document.createElement("DIV");
+          item4.className = "item4";                 // Insert text
+          rowAct.appendChild(item4);
+
+          var allItemMes = document.createElement("DIV");
+          allItemMes.className = "allItemMes"; 
+
+          var me = [];
+          var sumNum = [];
+          for (var i = 0; i < meses.length; i++) {
+            var itemMes1 = document.createElement("DIV");
+            var mesp = meses[i]+'p';
+            sumNum.push(data[0][j][mesp]);
+            itemMes1.innerHTML = data[0][j][mesp];
+            itemMes1.className = "col-md-1 itemMes";
+            itemMes1.setAttribute('data-mes', meses[i]);
+            itemMes1.addEventListener("keyup", backEnable, false);
+            itemMes1.addEventListener("keyup", validaNumeros, false);
+            data[0][j][mesp] != 0 ? (itemMes1.style.backgroundColor = "#cfd8dc",me.push(meses[i])) : itemMes1.style.backgroundColor = "";
+
+            allItemMes.appendChild(itemMes1)
+          }
+
+          var programado = sumNum.reduce(sumArray);
+          item4.innerHTML=programado;
+          
+          
+
+          rowAct.appendChild(allItemMes); 
+
+          var item5 = document.createElement("DIV");
+          item5.innerHTML = "MES";
+          item5.className = "item5";                 // Insert text
+          rowAct.appendChild(item5);
+
+          var item6 = document.createElement("DIV");
+          item6.innerHTML = "MES";
+          item6.className = "item6";                 // Insert text
+          rowAct.appendChild(item6);
+
+          switch (me.length) {
+            case 0:
+              item5.innerHTML='MES';
+              item6.innerHTML='MES';
+              break;
+            case 1:
+              item5.innerHTML=me[0];
+              item6.innerHTML=me[0];
+              break;
+            default:
+              var totalMes = me.length-1;
+              item5.innerHTML=me[0];
+              item6.innerHTML=me[me.length-1]
+          }
+
+          var editar = document.createElement("I");
+          editar.className = "iconBH fa fa-pencil-square-o resetBack";   
+          editar.setAttribute('aria-hidden', 'true');
+          editar.setAttribute('data-toggle', 'tooltip');
+          editar.setAttribute('data-placement', 'right');
+          editar.setAttribute('data-insert', '0');
+          editar.setAttribute('title', 'Editar');
+          editar.setAttribute('data-edit', '0');
+          editar.addEventListener("click", editAct, false);
+
+          rowAct.appendChild(editar);
+
+          var back = document.createElement("I");
+          back.className = "iconBH fa fa-ban btnBack btnOn";   
+          back.setAttribute('aria-hidden', 'true');
+          back.setAttribute('data-toggle', 'tooltip');
+          back.setAttribute('data-placement', 'right');
+          back.setAttribute('title', 'Cancelar edición');
+          back.setAttribute('data-ba', data[0][j].descactividad);
+          back.setAttribute('data-bu', data[0][j].unidadmedida);
+          back.setAttribute('data-bm', sumNum.join());
+          back.style.color='#eceff1';
+          back.style.pointerEvents='none';
+          back.addEventListener("click", actBack, false);
+
+          rowAct.appendChild(back);
+
+          var up = document.createElement("I");
+          up.className = "iconBH fa fa-arrow-circle-up up btnOff";   
+          up.setAttribute('aria-hidden', 'true');
+          up.setAttribute('data-toggle', 'tooltip');
+          up.setAttribute('data-placement', 'right');
+          up.setAttribute('title', 'Subir');
+          up.addEventListener("click", moveUp);
+
+          rowAct.appendChild(up);
+
+          var down = document.createElement("I");
+          down.className = "iconBH fa fa-arrow-circle-down down btnOff";   
+          down.setAttribute('aria-hidden', 'true');
+          down.setAttribute('data-toggle', 'tooltip');
+          down.setAttribute('data-placement', 'right');
+          down.setAttribute('title', 'Bajar');
+          down.addEventListener("click", moveDown);
+
+          rowAct.appendChild(down);
+
+          var del = document.createElement("I");
+          del.className = "iconBH fa fa-trash delAct";   
+          del.setAttribute('aria-hidden', 'true');
+          del.setAttribute('data-toggle', 'tooltip');
+          del.setAttribute('data-placement', 'right');
+          del.setAttribute('title', 'Eliminar');
+          del.addEventListener("click", removeAct);
+
+          rowAct.appendChild(del);
+
+          act.appendChild(rowAct);
+          act.style.backgroundColor='';  
+
+          }
+
+          reCountAct();
+          $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+          });
+
+          document.getElementById('addAct').style.pointerEvents = '';
+          document.getElementById('addAct').style.color = '';
+         sumTPM();
+      }
+    });
+
+  }
+
+  function emptyPrograma(){
+    document.getElementById('eProgramaEsp').disabled=true;
+    document.getElementById('claveProEsp').textContent = '-- --';
+    document.getElementById('objetivoProEsp').textContent = '----';
+  }
+
   function onBtn(t){
           
       var nu = [];
@@ -1021,26 +1136,35 @@ $.ajaxSetup({
     }
 
     function insertactividad(t){
-      var a = t.querySelector('.item2').textContent;
-      var b = t.querySelector('.item3').textContent;
-      var c = t.querySelector('.allItemMes').children[0].textContent;
-      var d = t.querySelector('.allItemMes').children[1].textContent;
-      var e = t.querySelector('.allItemMes').children[2].textContent;
-      var f = t.querySelector('.allItemMes').children[3].textContent;
-      var g = t.querySelector('.allItemMes').children[4].textContent;
-      var h = t.querySelector('.allItemMes').children[5].textContent;
-      var i = t.querySelector('.allItemMes').children[6].textContent;
-      var j = t.querySelector('.allItemMes').children[7].textContent;
-      var k = t.querySelector('.allItemMes').children[8].textContent;
-      var l = t.querySelector('.allItemMes').children[9].textContent;
-      var m = t.querySelector('.allItemMes').children[10].textContent;
-      var n = t.querySelector('.allItemMes').children[11].textContent;
+      var act = t.querySelector('.item2').textContent;
+      var uni = t.querySelector('.item3').textContent;
+      var ene = t.querySelector('.allItemMes').children[0].textContent;
+      var feb = t.querySelector('.allItemMes').children[1].textContent;
+      var mar = t.querySelector('.allItemMes').children[2].textContent;
+      var abr = t.querySelector('.allItemMes').children[3].textContent;
+      var may = t.querySelector('.allItemMes').children[4].textContent;
+      var jun = t.querySelector('.allItemMes').children[5].textContent;
+      var jul = t.querySelector('.allItemMes').children[6].textContent;
+      var ago = t.querySelector('.allItemMes').children[7].textContent;
+      var sep = t.querySelector('.allItemMes').children[8].textContent;
+      var oct = t.querySelector('.allItemMes').children[9].textContent;
+      var nov = t.querySelector('.allItemMes').children[10].textContent;
+      var dic = t.querySelector('.allItemMes').children[11].textContent;
       var ida = t.getAttribute('data-id');
+      var can = t.querySelector('.item4').textContent;
+      var ord = t.querySelector('.item1').textContent;
+      var pro = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].value;
+      var esp = document.getElementById('eProgramaEsp').options[document.getElementById('eProgramaEsp').selectedIndex].value;
+      var ini = t.querySelector('.item5').textContent;
+      var ter = t.querySelector('.item6').textContent;
+      var inif = ini.toUpperCase();
+      var terf = ter.toUpperCase();
 
       $.ajax({
              type:'POST',
              url:"sendactividad",
-             data:{"_token": token,ida:ida,a:a,b:b,c:c,d:d,e:e,f:f,g:g,h:h,i:i,j:j,k:k,l:l,m:m,n:n},
+             data:{
+              "_token": token,ida:ida,act:act,uni:uni,ene:ene,feb:feb,mar:mar,abr:abr,may:may,jun:jun,jul:jul,ago:ago,sep:sep,oct:oct,nov:nov,dic:dic,pro:pro,esp:esp,can:can,ord:ord,ini:inif,ter:terf},
              success:function(data){ 
                 t.setAttribute('data-id',data[0].id);
                 t.children[7].setAttribute('data-insert','0');
@@ -1088,6 +1212,7 @@ function validaNumeros() {
 
 function sumTPM(){
   var tpm = document.getElementsByClassName("item4");
+  //console.log(tpm);
   var tpmArr = [];
   for (var i = 0; i < tpm.length; i++) {
     tpmArr.push(Number(tpm[i].textContent));
@@ -1183,6 +1308,7 @@ function sumTPM(){
   document.getElementById('r2M11').textContent=m20+m21+m22+m23+m24+m25+m26+m27+m28+m29+m210+m211;
 
   /////////////////////////////////////////////////////////////////////////
+  tpmResult == 0 ? tpmResult = 1 : '';
   document.getElementById('r3M0').textContent=((am0/tpmResult)*100).toFixed(2);
   document.getElementById('r3M1').textContent=((am1/tpmResult)*100).toFixed(2);
   document.getElementById('r3M2').textContent=((am2/tpmResult)*100).toFixed(2);

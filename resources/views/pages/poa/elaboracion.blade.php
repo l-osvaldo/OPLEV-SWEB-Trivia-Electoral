@@ -57,6 +57,8 @@
 .totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;font-size: 14px;background: #fff;}
 .allItemTotal{width: 40.7%;text-align: center;height: auto;margin-top: 1%;}
 .contTotale{float: left;}
+#ePrograma,#eProgramaEsp{color:#EA0D94;}
+.form-control:disabled, .form-control[readonly]{color: #ccc !important;}
 </style>
 
 <div class="col-md-12">
@@ -75,7 +77,7 @@
           <small>Programa general:</small>
         </div>
         <div class="col-md-4 textCPOA" style="background-color: #fff;float: left;height: 45px; line-height: 38px;border-bottom:solid 4px #f5f5f5;border-right:solid 4px #f5f5f5;">
-          <small>Clave: <strong>E1 01</strong></small>
+          <small>Clave: <strong id="claveProEsp">-- --</strong></small>
         </div>
         <div class="col-md-8 textCPOA" style="background-color: #fff;float: left;height: 45px; line-height: 38px;border-bottom:solid 4px #f5f5f5;">
           <!--small> <i class="iconInfo fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Seleccione un programa"></i> <strong>Cartera de proyectos</strong></small-->
@@ -85,6 +87,7 @@
               <span class="input-group-text">@</span>
             </div-->
             <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="ePrograma" name="eprograma">
+              <option value="0">Seleccione un programa</option>
               @foreach( $programas as $programa )
               <option value="{{$programa->idprograma}}">{{$programa->descprograma}}</option>
                @endforeach
@@ -92,11 +95,9 @@
          
 
         </div>
-        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;">
-          <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eProgramaEsp" name="eprogramaesp">
-              @foreach( $programaesp as $programae )
-              <option value="{{$programae->autoprogramaesp}}">{{$programae->descprogramaesp}}</option>
-               @endforeach
+        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;padding-top: 5px;">
+          <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eProgramaEsp" name="eprogramaesp" disabled="">
+              <option value="0">Seleccione un programa especifico</option>
             </select>
         </div>
       </div>
@@ -106,10 +107,11 @@
           <small>Ejercicio <strong>2020</strong></small>
         </div>
         <div class="col-md-9 textCPOA" style="background-color: #fff;float: left;height: 72px; line-height: 30px;border-bottom:solid 4px #f5f5f5;">
-          <small>Unidad responsable:<br><strong>Unidad Técnica del Centro de Formación y Desarrollo</strong></small>
+          <small>Unidad responsable:<br><strong>{{ Auth::user()->name }}</strong></small>
         </div>
-        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;">
-          <small>Objetivo: <strong>Fomentar el desarrollo académico y de profesionalización del personal de Organismo Público Local Electoral del Estado de Veracruz</strong></small>
+        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;overflow: hidden;font-size: small;white-space: nowrap;
+  text-overflow: ellipsis">
+          Objetivo: <strong id="objetivoProEsp">---</strong>
         </div>
       </div>
 
@@ -122,7 +124,7 @@
         <small>
           <strong>Actividad</strong> 
         </small>
-        <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad">
+        <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad" style="pointer-events: none; color: rgb(236, 239, 241);">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </div>
       </div>
@@ -159,8 +161,8 @@
       </div-->
 
 
-      <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;min-height: 100px;">
-        <div class="row rowAct insertAct" data-id="1">
+      <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;min-height: 100px;background-color: #fff;">
+        <!--div class="row rowAct insertAct" data-id="1">
 
           <div class="item1">1</div>
           <div class="item2 backAct">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales.</div>
@@ -193,7 +195,7 @@
 
           <i class="iconBHD fa fa-trash delAct btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eliminar"></i>
 
-        </div>
+        </div-->
       </div>
 
       <div class="col-md-12 contTotale">

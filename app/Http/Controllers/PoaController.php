@@ -199,59 +199,157 @@ class PoaController extends Controller
       $user   = auth()->user();
       $userId = $user->id;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
-      $programas = DB::table('programas')->get();
-      $programaesp = DB::table('programasesp')->where('idprograma', 1)->where('idarea', $userId)->get();
-      return view('pages.poa.elaboracion')->with( compact('resultado','programas','programaesp'));
+      $programas = DB::table('programas')->where('reprogramacion', 0)->get();
+      //$programaesp = DB::table('programasesp')->where('idprograma', 1)->where('idarea', $userId)->get();
+      return view('pages.poa.elaboracion')->with( compact('resultado','programas'));
     }
 
     public function sendactividad(Request $request)
     {
       if (Auth::check()) {
         $idArea = Auth::user()->idarea;
-        $acttext = $request->a;
-        $uni = $request->b;
-        $c = $request->c;
-        $d = $request->d;
-        $e = $request->e;
-        $f = $request->f;
-        $g = $request->g;
-        $h = $request->h;
-        $i = $request->i;
-        $j = $request->j;
-        $k = $request->k;
-        $l = $request->l;
-        $m = $request->m;
-        $n = $request->n;
-        $o = $request->ida;
+        $acttext = $request->act;
+        $uni = $request->uni;
+        $ene = $request->ene;
+        $feb = $request->feb;
+        $mar = $request->mar;
+        $abr = $request->abr;
+        $may = $request->may;
+        $jun = $request->jun;
+        $jul = $request->jul;
+        $ago = $request->ago;
+        $sep = $request->sep;
+        $oct = $request->oct;
+        $nov = $request->nov;
+        $dic = $request->dic;
+        $ida = $request->ida;
+        $pro = $request->pro;
+        $esp = $request->esp;
+        $can = $request->can;
+        $ord = $request->ord;
+        $ini = $request->ini;
+        $ter = $request->ter;
 
-        switch ($o) {
+        switch ($ida) {
             case '0':
                 $act = new actividadesdos();
                 $act->reprogramacion = 1;
-                $act->autoactividades = 1;
-                $act->idprograma = 1;
-                $act->idprogramaesp = 1;
+                $act->autoactividades = $act->id;
+                $act->idprograma = $pro;
+                $act->idprogramaesp = $esp;
                 $act->idarea = $idArea;
-                $act->numactividad = 1;
+                $act->numactividad = $ord;
                 $act->descactividad = $acttext;
                 $act->unidadmedida = $uni;
-                $act->cantidadanual = 1;
-                $act->idporcentajep = 1;
-                $act->idporcentajer = 1;
-                $act->observatrim = 'Meta Rebasada';
+                $act->cantidadanual = $can;
+                $act->idporcentajep = $act->id;
+                $act->idporcentajer = $act->id;
+                $act->observatrim = '';
                 $act->bandera = 1;
                 $act->act_estatus = 1;
                 $act->save();
+
+                $actup = actividadesdos::find($act->id);
+                $actup->autoactividades = $act->id;
+                $actup->idporcentajep = $act->id;
+                $actup->idporcentajer = $act->id;
+                $actup->save();
+
+                $pp = new PorcProgramado();
+                $pp->idporcentajep = $act->id;
+                $pp->enep = $ene;
+                $pp->febp = $feb;
+                $pp->marp = $mar;
+                $pp->abrp = $abr;
+                $pp->mayp = $may;
+                $pp->junp = $jun;
+                $pp->julp = $jul;
+                $pp->agop = $ago;
+                $pp->sepp = $sep;
+                $pp->octp = $oct;
+                $pp->novp = $nov;
+                $pp->dicp = $dic;
+                $pp->inicio = $ini;
+                $pp->termino = $ter;
+                
+                $pp->save();
+
+                $pr = new PorcRealizado();
+                $pr->idporcentajer = $act->id;
+                $pr->ener = 0;
+                $pr->febr = 0;
+                $pr->marr = 0;
+                $pr->abrr = 0;
+                $pr->mayr = 0;
+                $pr->junr = 0;
+                $pr->julr = 0;
+                $pr->agor = 0;
+                $pr->sepr = 0;
+                $pr->octr = 0;
+                $pr->novr = 0;
+                $pr->dicr = 0;
+                $pr->autoactividades = $act->id;
+                
+                $pr->save();
                 break;
             default:
-                $act = actividadesdos::find($o);
+                $act = actividadesdos::find($ida);
                 $act->descactividad = $acttext;
                 $act->unidadmedida = $uni;
                 $act->idarea = $idArea;
                 $act->save();
+
+                //////////////////////////////////////////////////////ERROR TABLA NO TIENE ID/////////////
+                $pp = PorcProgramado::find($act->id);
+                $pp->enep = $ene;
+                $pp->febp = $feb;
+                $pp->marp = $mar;
+                $pp->abrp = $abr;
+                $pp->mayp = $may;
+                $pp->junp = $jun;
+                $pp->julp = $jul;
+                $pp->agop = $ago;
+                $pp->sepp = $sep;
+                $pp->octp = $oct;
+                $pp->novp = $nov;
+                $pp->dicp = $dic;
+                $pp->inicio = $ini;
+                $pp->termino = $ter;
+                
+                $pp->save();
         }
 
         return response()->json([$act]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function sendporgramaesp(Request $request)
+    {
+      if (Auth::check()) {
+        $idArea = Auth::user()->idarea;
+        $id = $request->id;
+        $proesp = DB::table('programasesp')->where('idprograma', $id)->where('idarea', $idArea)->get();
+
+        return response()->json([$proesp]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+    public function getAct(Request $request)
+    {
+      if (Auth::check()) {
+        $idArea = Auth::user()->idarea;
+        $id = $request->proesp;
+        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->get();
+
+
+        return response()->json([$actAdd]);
 
       } else {
         return route('auth/login');

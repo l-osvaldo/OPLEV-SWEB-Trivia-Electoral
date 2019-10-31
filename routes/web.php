@@ -70,6 +70,7 @@ Route::post('/change-password', 'ChangePasswordController@store')->name('change.
 // POA CREACION
 Route::get('/elaboracion', 'PoaController@elaboracion')->name('elaboracion');
 Route::post('/sendactividad', 'PoaController@sendactividad')->name('sendactividad');
-
+Route::post('/sendporgramaesp', 'PoaController@sendporgramaesp')->name('sendporgramaesp');
+Route::post('/getAct', 'PoaController@getAct')->name('getAct');
 });
 
