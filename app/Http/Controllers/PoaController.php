@@ -299,27 +299,65 @@ class PoaController extends Controller
                 $act->idarea = $idArea;
                 $act->save();
 
-                //////////////////////////////////////////////////////ERROR TABLA NO TIENE ID/////////////
-                $pp = PorcProgramado::find($act->id);
-                $pp->enep = $ene;
-                $pp->febp = $feb;
-                $pp->marp = $mar;
-                $pp->abrp = $abr;
-                $pp->mayp = $may;
-                $pp->junp = $jun;
-                $pp->julp = $jul;
-                $pp->agop = $ago;
-                $pp->sepp = $sep;
-                $pp->octp = $oct;
-                $pp->novp = $nov;
-                $pp->dicp = $dic;
-                $pp->inicio = $ini;
-                $pp->termino = $ter;
-                
-                $pp->save();
+                //////////////////////////////////////////////////////
+
+                DB::table('porcentajep')->where('idporcentajep', $act->id)->update([
+                  'enep' => $ene,
+                  'febp' => $feb,
+                  'marp' => $mar,
+                  'abrp' => $abr,
+                  'mayp' => $may,
+                  'junp' => $jun,
+                  'julp' => $jul,
+                  'agop' => $ago,
+                  'sepp' => $sep,
+                  'octp' => $oct,
+                  'novp' => $nov,
+                  'dicp' => $dic,
+                  'inicio' => $ini,
+                  'termino' => $ter
+                ]);
         }
 
         return response()->json([$act]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function cambiarnumero(Request $request)
+    {
+      if (Auth::check()) {
+
+        $data = $request->data;
+        
+        foreach ($data  as $datas) {
+          $idNum = explode("|",$datas);
+          $updateNum= DB::table('actividadesdos')->where('id', $idNum[0])->update(['numactividad' => $idNum[1]]);
+        }
+
+        return response()->json([implode(",",$data)]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function deleteactividad(Request $request)
+    {
+      if (Auth::check()) {
+
+        $data = $request->data;
+        
+        DB::table('actividadesdos')->where('id', $data)->delete();
+        DB::table('porcentajep')->where('idporcentajep', $data)->delete();
+        DB::table('porcentajer')->where('idporcentajer', $data)->delete();
+        
+
+        return response()->json('listo');
 
       } else {
         return route('auth/login');
@@ -346,7 +384,7 @@ class PoaController extends Controller
       if (Auth::check()) {
         $idArea = Auth::user()->idarea;
         $id = $request->proesp;
-        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->get();
+        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
 
         return response()->json([$actAdd]);

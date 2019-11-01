@@ -72,5 +72,7 @@ Route::get('/elaboracion', 'PoaController@elaboracion')->name('elaboracion');
 Route::post('/sendactividad', 'PoaController@sendactividad')->name('sendactividad');
 Route::post('/sendporgramaesp', 'PoaController@sendporgramaesp')->name('sendporgramaesp');
 Route::post('/getAct', 'PoaController@getAct')->name('getAct');
+Route::post('/cambiarnumero', 'PoaController@cambiarnumero')->name('cambiarnumero');
+Route::post('/deleteactividad', 'PoaController@deleteactividad')->name('deleteactividad');
 });
 

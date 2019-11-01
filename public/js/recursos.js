@@ -702,11 +702,13 @@ $.ajaxSetup({
           if(e.target.parentNode.previousElementSibling)
             e.target.parentNode.parentNode.insertBefore(e.target.parentNode, e.target.parentNode.previousElementSibling);
           reCountAct();
+          insertNum();
         }
         function moveDown(e) {
           if(e.target.parentNode.nextElementSibling)
             e.target.parentNode.parentNode.insertBefore(e.target.parentNode.nextElementSibling, e.target.parentNode);
           reCountAct();
+          insertNum();
         }
 
         //////////////////////////////////////////////////////////////////////
@@ -775,14 +777,26 @@ $.ajaxSetup({
         }
 
         function removeAct() {
+
+          var idDel = this.parentNode.getAttribute('data-id');
           this.parentNode.remove();
-          reCountAct();
-          sumTPM();
-          var btnOff = document.getElementsByClassName('btnOff');
-          for (var i = 0; i < btnOff.length; i++) {
-              btnOff[i].style.pointerEvents = '';
-              btnOff[i].style.color = '';
-          }
+
+          $.ajax({
+             type:'POST',
+             url:"deleteactividad",
+             data:{"_token": token,data:idDel},
+             success:function(data){ 
+                reCountAct();
+                sumTPM();
+                var btnOff = document.getElementsByClassName('btnOff');
+                for (var i = 0; i < btnOff.length; i++) {
+                    btnOff[i].style.pointerEvents = '';
+                    btnOff[i].style.color = '';
+                }
+                insertNum();
+            }
+          });
+          
         }
         //////////////////////////////////////////////////////////////////////
         function reCountAct() {
@@ -790,6 +804,22 @@ $.ajaxSetup({
           for (var i = 0; i < numAct.length; i++) {
             numAct[i].querySelector('.item1').innerHTML = i+1;
           }
+        }
+        //////////////////////////////////////////////////////////////////////
+        function insertNum() {
+          var numAct = document.getElementsByClassName('rowAct');
+          var arrayNum = [];
+          for (var i = 0; i < numAct.length; i++) {
+            arrayNum.push(numAct[i].getAttribute('data-id')+'|'+(i+1));
+          }
+          $.ajax({
+             type:'POST',
+             url:"cambiarnumero",
+             data:{"_token": token,data:arrayNum},
+             success:function(data){ 
+                console.log(data);
+            }
+          });
         }
         /////////////////////////////////////////////////////////////////////
         var btnEdit = document.getElementsByClassName('btnEdit');
