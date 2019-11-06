@@ -535,7 +535,7 @@ $.ajaxSetup({
 
         function checkActStatus(){
           var na = document.getElementsByClassName('newAct')
-          na.length == 0 ? agregaActividad() : alert('Tiene una actividad sin Finalizar');
+          na.length == 0 ? agregaActividad() : swal('Tiene una actividad sin Finalizar', "", "warning");
         }
 
 
@@ -780,6 +780,7 @@ $.ajaxSetup({
 
           var idDel = this.parentNode.getAttribute('data-id');
           this.parentNode.remove();
+          $('.tooltip').tooltip('hide');
 
           $.ajax({
              type:'POST',
@@ -817,7 +818,7 @@ $.ajaxSetup({
              url:"cambiarnumero",
              data:{"_token": token,data:arrayNum},
              success:function(data){ 
-                console.log(data);
+                //console.log(data);
             }
           });
         }
@@ -872,7 +873,7 @@ $.ajaxSetup({
    
   function changePro(){
     var pro = this.options[this.selectedIndex].value;
-    pro == '0' ? document.getElementById('eProgramaEsp').disabled=true: getProEsp(pro);
+    pro == '0' ? document.getElementById('eProgramaEsp').disabled=true : getProEsp(pro);
   }
 
   function getProEsp(pro){
@@ -881,7 +882,8 @@ $.ajaxSetup({
        type:'POST',
        url:"sendporgramaesp",
        data:{"_token": token,id:pro},
-       success:function(data){ 
+       success:function(data){
+       //console.log(data); 
           data[0].length == 0 ? emptyPrograma() : document.getElementById('eProgramaEsp').disabled=false;
            for (var i = 0; i < data[0].length; i++) {
               //var option = new Option(data[0][i].descprogramaesp, data[0][i].idprogramaesp);
@@ -906,6 +908,7 @@ $.ajaxSetup({
     var objetivo = this.options[this.selectedIndex].getAttribute('data-objetivo');
     document.getElementById('claveProEsp').textContent = clave;
     document.getElementById('objetivoProEsp').textContent = objetivo;
+    document.getElementById('objetivoProEsp').setAttribute('title', objetivo);
     //console.log(proesp);
     ///////////////////////////////////////////////////////////////////////////////// ajax de actividades
     $.ajax({
@@ -1075,6 +1078,8 @@ $.ajaxSetup({
     document.getElementById('eProgramaEsp').disabled=true;
     document.getElementById('claveProEsp').textContent = '-- --';
     document.getElementById('objetivoProEsp').textContent = '----';
+    document.getElementById('contActividades').innerHTML="";
+    sumTPM();
   }
 
   function onBtn(t){
@@ -1106,18 +1111,18 @@ $.ajaxSetup({
 
       ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
       var actPromesa = new Promise( (resolve, reject) => {
-          programado > 0 ? resolve('A') :reject(new Error('La Programación Mensual deve tener almenos un mes con un numero distinto a 0.'));
+          programado > 0 ? resolve('A') :reject('La Programación Mensual deve tener almenos un mes con un numero distinto a 0.');
       })
 
       actPromesa
           .then( () => {
                return new Promise((resolve, reject) => {
-                 t.parentNode.querySelector('.item3').textContent ? resolve() : reject(new Error('Ingrese una Unidad de Medida.'));
+                 t.parentNode.querySelector('.item3').textContent ? resolve() : reject('Ingrese una Unidad de Medida.');
               });
           })
           .then( () => {
               return new Promise((resolve, reject) => {
-                t.parentNode.querySelector('.item2').textContent ? resolve() : reject(new Error('Ingrese una Descripción de la actividad.'));
+                t.parentNode.querySelector('.item2').textContent ? resolve() : reject('Ingrese una Descripción de la actividad.');
               });
           })
           .then( () => {
@@ -1152,7 +1157,9 @@ $.ajaxSetup({
               });
           })
           .catch( (err) => {
-              alert(err);
+            //console.log(err)
+              swal(err, "", "warning");
+              //alert(err);
               t.setAttribute("data-edit", '1');
               t.classList.add('fa-check');
               t.classList.remove('fa-pencil-square-o');
@@ -1369,6 +1376,66 @@ function sumTPM(){
 }
 
 sumTPM();
+
+//////////////////////////////////////////////////////////////////////
+document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false);
+function pdfelaboracion() {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'http://sipseiv2.test/pdfelaboracion';
+  form.target = '_blank';
+  form.style.display='none';
+
+  var ip1 = document.createElement('input');
+  ip1.name = '_token';
+  ip1.value = token;
+  form.appendChild(ip1);
+
+  var pro = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].value;
+  var esp = document.getElementById('eProgramaEsp').options[document.getElementById('eProgramaEsp').selectedIndex].value;
+
+
+  var ip2 = document.createElement('input');
+  ip2.name = 'programa';
+  ip2.value = pro;
+  form.appendChild(ip2);
+
+  var ip3 = document.createElement('input');
+  ip3.name = 'progesp';
+  ip3.value = esp;
+  form.appendChild(ip3);
+
+  var ip4 = document.createElement('input');
+  ip4.name = 'result';
+  ip4.value = document.getElementById('resultTPM').textContent;
+  form.appendChild(ip4);
+
+  for (var i = 0; i < 12; i++) {
+    var ipd = document.createElement('input');
+    ipd.name = 'r1M'+[i];
+    ipd.value = document.getElementById('r1M'+[i]).textContent;
+    form.appendChild(ipd);
+
+    var ipd2 = document.createElement('input');
+    ipd2.name = 'r2M'+[i];
+    ipd2.value = document.getElementById('r2M'+[i]).textContent;
+    form.appendChild(ipd2);
+
+    var ipd3 = document.createElement('input');
+    ipd3.name = 'r3M'+[i];
+    ipd3.value = document.getElementById('r3M'+[i]).textContent;
+    form.appendChild(ipd3);
+
+    var ipd4 = document.createElement('input');
+    ipd4.name = 'r4M'+[i];
+    ipd4.value = document.getElementById('r4M'+[i]).textContent;
+    form.appendChild(ipd4);
+  }
+  
+  
+  document.body.append(form);
+  form.submit();
+}
 
 
 

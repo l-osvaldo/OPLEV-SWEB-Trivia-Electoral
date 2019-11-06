@@ -66,7 +66,7 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020</div>
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-plus-circle" aria-hidden="true" id="pdfela"></i></div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">
         <img src="{{ asset('images/logoople.png') }}" alt="OPLE" class="ImgLogo" width="80%">
@@ -111,7 +111,7 @@
         </div>
         <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;overflow: hidden;font-size: small;white-space: nowrap;
   text-overflow: ellipsis">
-          Objetivo: <strong id="objetivoProEsp">---</strong>
+          Objetivo: <strong id="objetivoProEsp" data-toggle="tooltip" data-placement="top">---</strong>
         </div>
       </div>
 

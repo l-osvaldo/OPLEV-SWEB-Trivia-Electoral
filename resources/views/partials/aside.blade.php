@@ -79,7 +79,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <!--li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link" style="background-color: #909821;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -89,19 +89,19 @@
             </a>
             <ul class="nav nav-treeview" style="display: block;">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link" style="color: #f1ff2b;">
+                <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}" style="color: #f1ff2b;">
                   <i class="fa fa-registered nav-icon" aria-hidden="true"></i>
                   <p>Registro de Actividades</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link" style="color: #f1ff2b;">
+                <a href="#" class="nav-link" style="color: #f1ff2b;">
                   <i class="nav-icon fa fa-file-text-o" aria-hidden="true"></i>
-                  <p>Cedulas de Indicadores</p>
+                  <p>Reportes</p>
                 </a>
               </li>
             </ul>
-          </li-->
+          </li>
 
 
           <li class="nav-item has-treeview menu-open">

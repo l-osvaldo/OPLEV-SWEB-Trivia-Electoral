@@ -74,5 +74,6 @@ Route::post('/sendporgramaesp', 'PoaController@sendporgramaesp')->name('sendporg
 Route::post('/getAct', 'PoaController@getAct')->name('getAct');
 Route::post('/cambiarnumero', 'PoaController@cambiarnumero')->name('cambiarnumero');
 Route::post('/deleteactividad', 'PoaController@deleteactividad')->name('deleteactividad');
+Route::post('/pdfelaboracion', 'ReportesController@pdfelaboracion')->name('reportes.pdfelaboracion');
 });
 

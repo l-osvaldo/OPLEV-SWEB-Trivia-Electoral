@@ -583,6 +583,157 @@ class ReportesController extends Controller
 
 
 
+
+
+
+  public function pdfelaboracion(Request $request)
+    {
+      if ( Auth::check() )
+      {   
+
+        $idArea = Auth::user()->idarea;
+        $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
+
+
+        $pdfs = PDFS::loadView('pages.poa.pdfelaboracion',[
+          'actividades'=>$actPdf,
+          'result'=>$request->result,
+          'r1M0'=>$request->r1M0,
+          'r1M1'=>$request->r1M1,
+          'r1M2'=>$request->r1M2,
+          'r1M3'=>$request->r1M3,
+          'r1M4'=>$request->r1M4,
+          'r1M5'=>$request->r1M5,
+          'r1M6'=>$request->r1M6,
+          'r1M7'=>$request->r1M7,
+          'r1M8'=>$request->r1M8,
+          'r1M9'=>$request->r1M9,
+          'r1M10'=>$request->r1M10,
+          'r1M11'=>$request->r1M11,
+
+          'r2M0'=>$request->r2M0,
+          'r2M1'=>$request->r2M1,
+          'r2M2'=>$request->r2M2,
+          'r2M3'=>$request->r2M3,
+          'r2M4'=>$request->r2M4,
+          'r2M5'=>$request->r2M5,
+          'r2M6'=>$request->r2M6,
+          'r2M7'=>$request->r2M7,
+          'r2M8'=>$request->r2M8,
+          'r2M9'=>$request->r2M9,
+          'r2M10'=>$request->r2M10,
+          'r2M11'=>$request->r2M11,
+
+          'r3M0'=>$request->r3M0,
+          'r3M1'=>$request->r3M1,
+          'r3M2'=>$request->r3M2,
+          'r3M3'=>$request->r3M3,
+          'r3M4'=>$request->r3M4,
+          'r3M5'=>$request->r3M5,
+          'r3M6'=>$request->r3M6,
+          'r3M7'=>$request->r3M7,
+          'r3M8'=>$request->r3M8,
+          'r3M9'=>$request->r3M9,
+          'r3M10'=>$request->r3M10,
+          'r3M11'=>$request->r3M11,
+
+          'r4M0'=>$request->r4M0,
+          'r4M1'=>$request->r4M1,
+          'r4M2'=>$request->r4M2,
+          'r4M3'=>$request->r4M3,
+          'r4M4'=>$request->r4M4,
+          'r4M5'=>$request->r4M5,
+          'r4M6'=>$request->r4M6,
+          'r4M7'=>$request->r4M7,
+          'r4M8'=>$request->r4M8,
+          'r4M9'=>$request->r4M9,
+          'r4M10'=>$request->r4M10,
+          'r4M11'=>$request->r4M11,
+        ])->setPaper('letter', 'landscape');
+        //$pdfs = PDFS::loadHtml('<h3>'.$request->programa.'</h3>')->setPaper('letter', 'landscape');
+        $pdfs->setOption('margin-top', 50);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 15);
+        $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+
+        $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <html><body>
+          <table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+    <th style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="5">PROGRAMA OPERATIVO ANUAL 2020</th>
+  </tr>
+  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+    <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="'.public_path('images/logoople.png').'" alt="OPLE" width="100px"></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>Dirección Ejecutiva de Administración</strong></td>
+  </tr>
+  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>E1 0117</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><strong>Desarrollo y Fortalecimiento Institucional</strong></td>
+  </tr>
+
+  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>Administración y Gestión de Recursos Materiales, Servicios Generales, Inventarios y Adquisiciones.</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="4">Objetivo: <strong>Realizar los procesos de adquisiciones y contratación de arrendamientos y servicios generales requeridos por las áreas del Organismo Público Local Electoral del Estado de Veracruz, para el cumplimiento de las funciones y atribuciones que le son inherentes, realizando los procesos de contratación en estricto apego a las disposiciones legales y administrativas aplicables.</strong></td>
+  </tr>
+  <tr style="border:1px solid #fff;border-bottom:1px solid #000;height:10px;">
+    <td style="border:1px solid #fff;border-bottom:1px solid #000;" colspan="5"></td>
+  </tr>
+</table>
+
+<table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
+  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
+
+    <td style="width:2%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">No.</td>
+    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Actividad</td>
+
+    <td style="width:16%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="3">Meta</td>
+
+    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Programación mensual</td>
+
+    <td style="width:4%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Fecha</td>
+    
+  </tr>
+  <tr style="background: #eeeeee;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:6%;">Unidad de<br> medida</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:10%;" colspan="2">Cantidad<br> anual</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ene</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Feb</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Mar</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Abr</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">May</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jun</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jul</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ago</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Sep</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Oct</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Nov</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Dic</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width="2%">Inicio</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width="2%">Termino</td>
+  </tr>
+</table>
+
+        </body></html>');
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
+
+
+      }
+      else
+      {
+        return redirect()->route('login');
+      }       
+    }
+
+
+
+
+
     public function adicionales(Request $request)
     {
       if ( Auth::check() )
