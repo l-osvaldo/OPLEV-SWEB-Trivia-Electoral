@@ -710,8 +710,6 @@ $.ajaxSetup({
           $('#modalOpservaciones').modal('show');
         }
 
-        $('#modalOpservaciones').modal('show');
-
         document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
 
         function addObservaciones(){
