@@ -1441,9 +1441,11 @@ sumTPM();
 //////////////////////////////////////////////////////////////////////
 document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false);
 function pdfelaboracion() {
+  var urlPdf;
+  $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = '/pdfelaboracion';
+  form.action = urlPdf+'pdfelaboracion';
   form.target = '_blank';
   form.style.display='none';
 
