@@ -317,9 +317,11 @@ class PoaController extends Controller
                   'inicio' => $ini,
                   'termino' => $ter
                 ]);
+
+                 $pp = DB::table('porcentajep')->where('idporcentajep',  $act->id)->first();
         }
 
-        return response()->json([$act]);
+        return response()->json([$act,$pp]);
 
       } else {
         return route('auth/login');

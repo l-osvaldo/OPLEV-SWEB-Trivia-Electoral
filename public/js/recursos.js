@@ -654,6 +654,26 @@ $.ajaxSetup({
 
           rowAct.appendChild(down);
 
+          var indi = document.createElement("I");
+          indi.className = "iconBH fa fa-info-circle btnOff";   
+          indi.setAttribute('aria-hidden', 'true');
+          indi.setAttribute('data-toggle', 'tooltip');
+          indi.setAttribute('data-placement', 'right');
+          indi.setAttribute('title', 'Indicador');
+          indi.addEventListener("click", creaIndicador);
+
+          rowAct.appendChild(indi);
+
+          var observa = document.createElement("I");
+          observa.className = "iconBH fa fa-eye btnOff";   
+          observa.setAttribute('aria-hidden', 'true');
+          observa.setAttribute('data-toggle', 'tooltip');
+          observa.setAttribute('data-placement', 'right');
+          observa.setAttribute('title', 'observaciones');
+          observa.addEventListener("click", verObservaciones);
+
+          rowAct.appendChild(observa);
+
           var del = document.createElement("I");
           del.className = "iconBH fa fa-trash delAct";   
           del.setAttribute('aria-hidden', 'true');
@@ -680,6 +700,25 @@ $.ajaxSetup({
               btnOff[i].style.color = '#eceff1';
           }
 
+        }
+        //////////////////////////////////////////////////////////////////////
+        function creaIndicador(){
+          $('#modalIndicador').modal('show');
+        }
+
+        function verObservaciones(){
+          $('#modalOpservaciones').modal('show');
+        }
+
+        $('#modalOpservaciones').modal('show');
+
+        document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
+
+        function addObservaciones(){
+          var obs = document.createElement("DIV");
+          obs.contentEditable = "true";
+          obs.className = "obsTexto";                 // Insert text
+          document.getElementById('contObservaciones').appendChild(obs);
         }
         //////////////////////////////////////////////////////////////////////
         var upAct = document.getElementsByClassName('up');
@@ -739,7 +778,7 @@ $.ajaxSetup({
           this.parentNode.classList.contains("newAct") ? btnBackReset(this) : finActEdit(this);
           this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','0') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','0'); 
           //reCountAct();
-          sumTPM();
+          //sumTPM();
         }
 
         function btnBackReset(t){
@@ -1000,7 +1039,7 @@ $.ajaxSetup({
           }
 
           var editar = document.createElement("I");
-          editar.className = "iconBH fa fa-pencil-square-o resetBack";   
+          editar.className = "iconBH fa fa-pencil-square-o resetBack btnOff";   
           editar.setAttribute('aria-hidden', 'true');
           editar.setAttribute('data-toggle', 'tooltip');
           editar.setAttribute('data-placement', 'right');
@@ -1046,8 +1085,28 @@ $.ajaxSetup({
 
           rowAct.appendChild(down);
 
+          var indi = document.createElement("I");
+          indi.className = "iconBH fa fa-info-circle btnOff";   
+          indi.setAttribute('aria-hidden', 'true');
+          indi.setAttribute('data-toggle', 'tooltip');
+          indi.setAttribute('data-placement', 'right');
+          indi.setAttribute('title', 'Indicador');
+          indi.addEventListener("click", creaIndicador);
+
+          rowAct.appendChild(indi);
+
+          var observa = document.createElement("I");
+          observa.className = "iconBH fa fa-eye btnOff";   
+          observa.setAttribute('aria-hidden', 'true');
+          observa.setAttribute('data-toggle', 'tooltip');
+          observa.setAttribute('data-placement', 'right');
+          observa.setAttribute('title', 'observaciones');
+          observa.addEventListener("click", verObservaciones);
+
+          rowAct.appendChild(observa);
+
           var del = document.createElement("I");
-          del.className = "iconBH fa fa-trash delAct";   
+          del.className = "iconBH fa fa-trash delAct btnOff";   
           del.setAttribute('aria-hidden', 'true');
           del.setAttribute('data-toggle', 'tooltip');
           del.setAttribute('data-placement', 'right');
@@ -1203,7 +1262,11 @@ $.ajaxSetup({
              data:{
               "_token": token,ida:ida,act:act,uni:uni,ene:ene,feb:feb,mar:mar,abr:abr,may:may,jun:jun,jul:jul,ago:ago,sep:sep,oct:oct,nov:nov,dic:dic,pro:pro,esp:esp,can:can,ord:ord,ini:inif,ter:terf},
              success:function(data){ 
+              console.log(data[1]);
                 t.setAttribute('data-id',data[0].id);
+                t.querySelector('.btnBack').setAttribute('data-ba',data[0].descactividad);
+                t.querySelector('.btnBack').setAttribute('data-bu',data[0].unidadmedida);
+                t.querySelector('.btnBack').setAttribute('data-bm',data[1].enep+','+data[1].febp+','+data[1].marp+','+data[1].abrp+','+data[1].mayp+','+data[1].junp+','+data[1].julp+','+data[1].agop+','+data[1].sepp+','+data[1].octp+','+data[1].novp+','+data[1].dicp);
                 t.children[7].setAttribute('data-insert','0');
             }
           });
@@ -1382,7 +1445,7 @@ document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false)
 function pdfelaboracion() {
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'http://sipseiv2.test/pdfelaboracion';
+  form.action = '/pdfelaboracion';
   form.target = '_blank';
   form.style.display='none';
 

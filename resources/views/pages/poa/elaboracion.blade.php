@@ -59,6 +59,10 @@
 .contTotale{float: left;}
 #ePrograma,#eProgramaEsp{color:#EA0D94;}
 .form-control:disabled, .form-control[readonly]{color: #ccc !important;}
+.indLabel{background: #cfd8dc;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
+.indEdit{background: #fff;margin-bottom: 1px;border:solid 2px #f8bbd0;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
+.indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
+.obsTexto{border:solid 1px #f8bbd0;margin:3px 0;}
 </style>
 
 <div class="col-md-12">
@@ -66,7 +70,7 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-plus-circle" aria-hidden="true" id="pdfela"></i></div>
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-file-pdf-o" aria-hidden="true" id="pdfela"></i></div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">
         <img src="{{ asset('images/logoople.png') }}" alt="OPLE" class="ImgLogo" width="80%">
@@ -280,6 +284,208 @@
 
 
   </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modalIndicador" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: center !important;">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cédula Descriptiva de Indicadores 2020</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 indLabel">Área responsable:</div>
+            <div class="col-md-8 indBlanco" style="text-align: center;">{{ Auth::user()->name }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 indLabel">Identificador de indicador</div>
+            <div class="col-md-7 indLabel">Nombre del indicador</div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 indBlanco"></div>
+            <div class="col-md-7 indEdit" contenteditable="true">Eficacia en la actualización y modernización de la plataforma tecnológica del portal Web</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 indLabel">Objetivo</div>
+            <div class="col-md-9 indEdit" contenteditable="true">Contar con una plataforma Web actualizada para la difusión de sus actividades.</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 indLabel">Meta</div>
+            <div class="col-md-6 indLabel">Periodo de cumplimiento</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 indBlanco">100%</div>
+            <div class="col-md-6 indBlanco">Enero - Diciembre 2019</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 indLabel">Programa Presupuestario</div>
+            <div class="col-md-3 indBlanco">01. Desarrollo y Fortalecimiento Institucional</div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco">03. Cartera de Proyectos</div>
+            <div class="col-md-3 indBlanco">04. Prerrogativas y Partidos Políticos</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 indLabel"></div>
+            <div class="col-md-3 indBlanco">X</div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-3 indBlanco"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 indLabel">Definición</div>
+            <div class="col-md-6 indLabel">Dimensión a medir</div>
+            <div class="col-md-3 indLabel">Unidad de medida</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 indLabel">Llevar a cabo las actualizaciones del portal web</div>
+            <div class="col-md-6">
+              <div class="row">
+
+                  <div class="col-md-3 indBlanco">Eficacia</div>
+                  <div class="col-md-3 indBlanco">Eficiencia</div>
+                  <div class="col-md-3 indBlanco">Economía</div>
+                  <div class="col-md-3 indBlanco">Calidad</div>
+
+                  <div class="col-md-3 indBlanco">( X )</div>
+                  <div class="col-md-3 indBlanco"></div>
+                  <div class="col-md-3 indBlanco"></div>
+                  <div class="col-md-3 indBlanco"></div>
+
+              </div>
+            </div>
+            <div class="col-md-3 indLabel">Porcentaje</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 indLabel">Método de Cálculo</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 indBlanco">PNA = (NAA/NAS)  x   100</div>
+          </div>
+
+           <div class="row">
+            <div class="col-md-4 indLabel">Variable</div>
+            <div class="col-md-4 indLabel">Descripción de la variable</div>
+            <div class="col-md-4 indLabel">Fuentes de Información</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 indEdit" contenteditable="true">NAA = Número de Actualizaciones Atendidas</div>
+            <div class="col-md-4 indEdit" contenteditable="true">Número de Actualizaciones del Portal Web que se atendieron.</div>
+            <div class="col-md-4 indEdit" contenteditable="true">Informes</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 indEdit" contenteditable="true">NAS = Número de Actualizaciones Solicitadas</div>
+            <div class="col-md-4 indEdit" contenteditable="true">Número de Actualizaciones del Portal Web que se solicitaron.</div>
+            <div class="col-md-4 indEdit" contenteditable="true">Orden del día, agenda institucional, tarjeta, oficio o correo electrónico de la solicitud</div>
+          </div>
+
+           <div class="row">
+            <div class="col-md-12 indLabel">Frecuencia de medición</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2 indBlanco">Mensual</div>
+            <div class="col-md-3 indBlanco">Trimestral</div>
+            <div class="col-md-2 indBlanco">Semestral</div>
+            <div class="col-md-2 indBlanco">Anual</div>
+            <div class="col-md-3 indBlanco">Otro (especificar)</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2 indEdit" contenteditable="true">( X )</div>
+            <div class="col-md-3 indEdit" contenteditable="true"></div>
+            <div class="col-md-2 indEdit" contenteditable="true"></div>
+            <div class="col-md-2 indEdit" contenteditable="true"></div>
+            <div class="col-md-3 indEdit" contenteditable="true"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 indLabel">Fundamento Jurídico</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 indEdit" contenteditable="true">Reglamento Interior del Organismo Público Local Electoral del Estado de Veracruz, artículo 52, numeral 1, inciso m).</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 indLabel">Línea Base</div>
+            <div class="col-md-8 indLabel">Comportamiento del indicador hacia la meta</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 indBlanco">Valor</div>
+            <div class="col-md-2 indBlanco">Año</div>
+            <div class="col-md-2 indBlanco">Ascendente</div>
+            <div class="col-md-2 indBlanco">Descendente</div>
+            <div class="col-md-2 indBlanco">Regular</div>
+            <div class="col-md-2 indBlanco">Nominal</div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 indLabel">Nombre, cargo y firma del titular de la Unidad Responsable</div>
+            <div class="col-md-8 indBlanco">Mtro. Junior Abraham Cruz Ancona Titular de la Unidad Técnica de Servicios Informáticos</div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Continuar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="modalOpservaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Observaciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <i class="fa fa-plus-circle" aria-hidden="true" id="addObservaciones"></i>
+            <div class="col-md-12" id="contObservaciones"></div>
+            <hr>
+            <div class="row">
+              <div class="col-md-10">Observacion 1 ejemplo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car"></div>
+              <div class="col-md-10">Observacion 2 ejemplo despliegue</div>
+              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car"></div>
+              <div class="col-md-10">Observacion 3 ejemplo despliegue</div>
+              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car" checked></div> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Continuar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
