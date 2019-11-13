@@ -8,6 +8,9 @@ use DB;
 use Auth;
 use App\Alerta;
 use App\actividadesdos;
+use App\porcprogramado2020;
+use App\porcrealizado2020;
+use App\programasesp2020;
 use Alert;
 
 class PoaController extends Controller
@@ -199,7 +202,7 @@ class PoaController extends Controller
       $user   = auth()->user();
       $userId = $user->id;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
-      $programas = DB::table('programas')->where('reprogramacion', 0)->get();
+      $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
       //$programaesp = DB::table('programasesp')->where('idprograma', 1)->where('idarea', $userId)->get();
       return view('pages.poa.elaboracion')->with( compact('resultado','programas'));
     }
@@ -233,7 +236,7 @@ class PoaController extends Controller
         switch ($ida) {
             case '0':
                 $act = new actividadesdos();
-                $act->reprogramacion = 1;
+                $act->reprogramacion = 0;
                 $act->autoactividades = $act->id;
                 $act->idprograma = $pro;
                 $act->idprogramaesp = $esp;
@@ -245,17 +248,17 @@ class PoaController extends Controller
                 $act->idporcentajep = $act->id;
                 $act->idporcentajer = $act->id;
                 $act->observatrim = '';
-                $act->bandera = 1;
+                $act->bandera = 0;
                 $act->act_estatus = 1;
                 $act->save();
 
-                $actup = actividadesdos::find($act->id);
-                $actup->autoactividades = $act->id;
-                $actup->idporcentajep = $act->id;
-                $actup->idporcentajer = $act->id;
-                $actup->save();
+                $act = actividadesdos::find($act->id);
+                $act->autoactividades = $act->id;
+                $act->idporcentajep = $act->id;
+                $act->idporcentajer = $act->id;
+                $act->save();
 
-                $pp = new PorcProgramado();
+                $pp = new porcprogramado2020();
                 $pp->idporcentajep = $act->id;
                 $pp->enep = $ene;
                 $pp->febp = $feb;
@@ -274,7 +277,7 @@ class PoaController extends Controller
                 
                 $pp->save();
 
-                $pr = new PorcRealizado();
+                $pr = new porcrealizado2020();
                 $pr->idporcentajer = $act->id;
                 $pr->ener = 0;
                 $pr->febr = 0;
@@ -301,7 +304,7 @@ class PoaController extends Controller
 
                 //////////////////////////////////////////////////////
 
-                DB::table('porcentajep')->where('idporcentajep', $act->id)->update([
+                DB::table('porcentajep2020')->where('idporcentajep', $act->id)->update([
                   'enep' => $ene,
                   'febp' => $feb,
                   'marp' => $mar,
@@ -318,7 +321,7 @@ class PoaController extends Controller
                   'termino' => $ter
                 ]);
 
-                 $pp = DB::table('porcentajep')->where('idporcentajep',  $act->id)->first();
+                 $pp = DB::table('porcentajep2020')->where('idporcentajep',  $act->id)->first();
         }
 
         return response()->json([$act,$pp]);
@@ -355,8 +358,8 @@ class PoaController extends Controller
         $data = $request->data;
         
         DB::table('actividadesdos')->where('id', $data)->delete();
-        DB::table('porcentajep')->where('idporcentajep', $data)->delete();
-        DB::table('porcentajer')->where('idporcentajer', $data)->delete();
+        DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
+        DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
         
 
         return response()->json('listo');
@@ -372,7 +375,7 @@ class PoaController extends Controller
       if (Auth::check()) {
         $idArea = Auth::user()->idarea;
         $id = $request->id;
-        $proesp = DB::table('programasesp')->where('idprograma', $id)->where('idarea', $idArea)->get();
+        $proesp = DB::table('programasesp2020')->where('idprograma', $id)->where('idarea', $idArea)->get();
 
         return response()->json([$proesp]);
 
@@ -386,7 +389,7 @@ class PoaController extends Controller
       if (Auth::check()) {
         $idArea = Auth::user()->idarea;
         $id = $request->proesp;
-        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
+        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
 
         return response()->json([$actAdd]);

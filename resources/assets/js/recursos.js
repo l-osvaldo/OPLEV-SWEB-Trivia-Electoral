@@ -1140,7 +1140,7 @@ $.ajaxSetup({
   }
 
   function onBtn(t){
-          
+         
       var nu = [];
       var me = [];
       for (var i = 0; i < t.parentNode.children[4].children.length; i++) {
@@ -1148,7 +1148,8 @@ $.ajaxSetup({
         isNaN(t.parentNode.children[4].children[i].textContent) || t.parentNode.children[4].children[i].textContent === '0' || t.parentNode.children[4].children[i].textContent === '' ? t.parentNode.children[4].children[i].textContent = "0" : me.push(t.parentNode.children[4].children[i].getAttribute('data-mes'));
       } 
       var programado = nu.reduce(sumArray);
-      isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
+      //console.log(programado);
+      //isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
       
       ////////////////////////////////////////////////////////////////////////
       switch (me.length) {
@@ -1168,7 +1169,7 @@ $.ajaxSetup({
 
       ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
       var actPromesa = new Promise( (resolve, reject) => {
-          programado > 0 ? resolve('A') :reject('La Programación Mensual deve tener almenos un mes con un numero distinto a 0.');
+          programado > 0 ? resolve('A') :reject('La Programación Mensual deve tener al menos un mes con un numero distinto a 0.');
       })
 
       actPromesa
@@ -1208,8 +1209,11 @@ $.ajaxSetup({
                 t.parentNode.classList.remove('newAct');
 
                 ///////////////////////////////////////////////////////////////////////
+                //console.log(programado);
+                isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
+                ///////////////////////////////////////////////////////////////////////
                 t.getAttribute('data-insert') == '1' ? insertactividad(t.parentNode) : t.setAttribute('data-insert','0');
-                ;
+                
                 sumTPM();
               });
           })
@@ -1224,6 +1228,7 @@ $.ajaxSetup({
               t.style.color = "#fff";
               t.style.backgroundColor = "#EA0D94";
               t.setAttribute('data-original-title', 'Terminar la edición');
+              //console.log('hola no');
           });
 
 
@@ -1253,6 +1258,7 @@ $.ajaxSetup({
       var ter = t.querySelector('.item6').textContent;
       var inif = ini.toUpperCase();
       var terf = ter.toUpperCase();
+      //console.log(can);
 
       $.ajax({
              type:'POST',
@@ -1260,7 +1266,7 @@ $.ajaxSetup({
              data:{
               "_token": token,ida:ida,act:act,uni:uni,ene:ene,feb:feb,mar:mar,abr:abr,may:may,jun:jun,jul:jul,ago:ago,sep:sep,oct:oct,nov:nov,dic:dic,pro:pro,esp:esp,can:can,ord:ord,ini:inif,ter:terf},
              success:function(data){ 
-              console.log(data[1]);
+              //console.log(data[1]);
                 t.setAttribute('data-id',data[0].id);
                 t.querySelector('.btnBack').setAttribute('data-ba',data[0].descactividad);
                 t.querySelector('.btnBack').setAttribute('data-bu',data[0].unidadmedida);
@@ -1309,6 +1315,7 @@ function validaNumeros() {
 }
 
 function sumTPM(){
+  //console.log('hola sumTPM');
   var tpm = document.getElementsByClassName("item4");
   //console.log(tpm);
   var tpmArr = [];
