@@ -543,7 +543,7 @@ $.ajaxSetup({
 
           var rowAct = document.createElement("DIV");
           rowAct.className = "row rowAct newAct";
-          rowAct.setAttribute('data-id', '0') 
+          rowAct.setAttribute('data-id', '0');
 
           var item1 = document.createElement("DIV");   // Create a <button> element
           item1.innerHTML = '';
@@ -680,7 +680,7 @@ $.ajaxSetup({
           del.setAttribute('data-toggle', 'tooltip');
           del.setAttribute('data-placement', 'right');
           del.setAttribute('title', 'Eliminar');
-          del.addEventListener("click", removeAct);
+          del.addEventListener("click", removeActModal);
 
           rowAct.appendChild(del);
 
@@ -752,7 +752,7 @@ $.ajaxSetup({
         var delActDoc = document.getElementsByClassName('delAct');
 
         for (var i = 0; i < delActDoc.length; i++) {
-            delActDoc[i].addEventListener("click", removeAct, false);
+            delActDoc[i].addEventListener("click", removeActModal, false);
         }
 
         var backAct = document.getElementsByClassName('btnBack');
@@ -815,26 +815,86 @@ $.ajaxSetup({
 
         function removeAct() {
 
-          var idDel = this.parentNode.getAttribute('data-id');
-          this.parentNode.remove();
+          var idDel = this.getAttribute('data-id');
+          var clave = document.getElementById("claveEliminar").value;
           $('.tooltip').tooltip('hide');
+           if(clave !== null && clave !== '') {
 
-          $.ajax({
-             type:'POST',
-             url:"deleteactividad",
-             data:{"_token": token,data:idDel},
-             success:function(data){ 
-                reCountAct();
-                sumTPM();
+                document.getElementById("errorEmail").classList.add('hidden');
+                 $.ajax({
+                   type:'POST',
+                   url:"deleteactividad",
+                   data:{"_token": token,data:idDel,cla:clave},
+                   success:function(data){
+                    if (data=='1') {
+                      $('#modaldelete').modal('hide');
+                      document.getElementById('act'+idDel).remove(); 
+                      swal('Actividad eliminada', "", "success");
+                      reCountAct();
+                      sumTPM();
+                      var btnOff = document.getElementsByClassName('btnOff');
+                      for (var i = 0; i < btnOff.length; i++) {
+                          btnOff[i].style.pointerEvents = '';
+                          btnOff[i].style.color = '';
+                      }
+                      insertNum();
+                      clave.value='';
+                      }
+                      else {
+                        swal('Su clave no coincide', "", "error");
+                        $('#modaldelete').on('hide.bs.modal', function () {
+                          document.getElementById("claveEliminar").value="";
+                          document.getElementById("errorEmail").classList.add('hidden');
+                        })
+                      }
+                  },
+                   error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    $('#modaldelete').modal('hide');
+                     swal('Error al eliminar', "", "error");
+                     //location.reload();
+                  }    
+                });
+
+            } else {
+
+            document.getElementById("errorEmail").classList.remove('hidden');
+            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave!';
+
+            }
+          
+        }
+
+        $('#modaldelete').on('hide.bs.modal', function () {
+          document.getElementById("claveEliminar").value="";
+          document.getElementById("errorEmail").classList.add('hidden');
+        })
+
+        function removeActModal() {
+          var idDel = this.parentNode.getAttribute('data-id');
+          idDel == 0 ? removeActNew(this) : removeActInsert(this);
+        }
+
+        document.getElementById('borraActividad').addEventListener('click', removeAct, false);
+
+        function removeActInsert(d){
+          var id = d.parentNode.getAttribute('data-id');
+          document.getElementById('borraActividad').setAttribute('data-id',id);
+          //document.getElementById('borraActividad').addEventListener('click', removeAct, false);
+          $('#modaldelete').modal('show');
+        }
+
+
+        function removeActNew(p) {
+          p.parentNode.remove();
+          $('.tooltip').tooltip('hide');
+          //reCountAct();
+          //sumTPM();
                 var btnOff = document.getElementsByClassName('btnOff');
                 for (var i = 0; i < btnOff.length; i++) {
                     btnOff[i].style.pointerEvents = '';
                     btnOff[i].style.color = '';
                 }
-                insertNum();
-            }
-          });
-          
+          //insertNum();
         }
         //////////////////////////////////////////////////////////////////////
         function reCountAct() {
@@ -915,6 +975,8 @@ $.ajaxSetup({
 
   function getProEsp(pro){
     document.getElementById("eProgramaEsp").innerHTML='<option value="0">Seleccione un programa</option>';
+    document.getElementById('contActividades').style.backgroundColor='#fff'
+    emptyPrograma();
     $.ajax({
        type:'POST',
        url:"sendporgramaesp",
@@ -962,7 +1024,8 @@ $.ajaxSetup({
 
           var rowAct = document.createElement("DIV");
           rowAct.className = "row rowAct";
-          rowAct.setAttribute('data-id', data[0][j].id) 
+          rowAct.setAttribute('data-id', data[0][j].id)
+          rowAct.setAttribute('id', 'act'+data[0][j].id)  
 
           var item1 = document.createElement("DIV");   // Create a <button> element
           item1.innerHTML = '';
@@ -1109,7 +1172,7 @@ $.ajaxSetup({
           del.setAttribute('data-toggle', 'tooltip');
           del.setAttribute('data-placement', 'right');
           del.setAttribute('title', 'Eliminar');
-          del.addEventListener("click", removeAct);
+          del.addEventListener("click", removeActModal);
 
           rowAct.appendChild(del);
 
@@ -1150,22 +1213,6 @@ $.ajaxSetup({
       var programado = nu.reduce(sumArray);
       //console.log(programado);
       //isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
-      
-      ////////////////////////////////////////////////////////////////////////
-      switch (me.length) {
-        case 0:
-          t.parentNode.querySelector('.item5').innerHTML='MES';
-          t.parentNode.querySelector('.item6').innerHTML='MES';
-          break;
-        case 1:
-          t.parentNode.querySelector('.item5').innerHTML=me[0];
-          t.parentNode.querySelector('.item6').innerHTML=me[0];
-          break;
-        default:
-          var totalMes = me.length-1;
-          t.parentNode.querySelector('.item5').innerHTML=me[0];
-          t.parentNode.querySelector('.item6').innerHTML=me[me.length-1]
-      }
 
       ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
       var actPromesa = new Promise( (resolve, reject) => {
@@ -1211,6 +1258,22 @@ $.ajaxSetup({
                 ///////////////////////////////////////////////////////////////////////
                 //console.log(programado);
                 isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
+                
+                ////////////////////////////////////////////////////////////////////////
+                  switch (me.length) {
+                    case 0:
+                      t.parentNode.querySelector('.item5').innerHTML='MES';
+                      t.parentNode.querySelector('.item6').innerHTML='MES';
+                      break;
+                    case 1:
+                      t.parentNode.querySelector('.item5').innerHTML=me[0];
+                      t.parentNode.querySelector('.item6').innerHTML=me[0];
+                      break;
+                    default:
+                      var totalMes = me.length-1;
+                      t.parentNode.querySelector('.item5').innerHTML=me[0];
+                      t.parentNode.querySelector('.item6').innerHTML=me[me.length-1]
+                  }
                 ///////////////////////////////////////////////////////////////////////
                 t.getAttribute('data-insert') == '1' ? insertactividad(t.parentNode) : t.setAttribute('data-insert','0');
                 
@@ -1268,6 +1331,7 @@ $.ajaxSetup({
              success:function(data){ 
               //console.log(data[1]);
                 t.setAttribute('data-id',data[0].id);
+                t.setAttribute('id','act'+data[0].id);
                 t.querySelector('.btnBack').setAttribute('data-ba',data[0].descactividad);
                 t.querySelector('.btnBack').setAttribute('data-bu',data[0].unidadmedida);
                 t.querySelector('.btnBack').setAttribute('data-bm',data[1].enep+','+data[1].febp+','+data[1].marp+','+data[1].abrp+','+data[1].mayp+','+data[1].junp+','+data[1].julp+','+data[1].agop+','+data[1].sepp+','+data[1].octp+','+data[1].novp+','+data[1].dicp);

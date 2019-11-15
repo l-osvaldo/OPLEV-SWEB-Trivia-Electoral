@@ -355,14 +355,23 @@ class PoaController extends Controller
     {
       if (Auth::check()) {
 
+        $user   = auth()->user();
+        $usu_clave = $user->usu_clave;
+
         $data = $request->data;
+        $send_clave = $request->cla;
+
+        if ($send_clave === $usu_clave) {
         
         DB::table('actividadesdos')->where('id', $data)->delete();
         DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
         DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
         
-
-        return response()->json('listo');
+          return response()->json('1');
+        }
+        else {
+          return response()->json('0');
+        }
 
       } else {
         return route('auth/login');

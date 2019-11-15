@@ -488,6 +488,34 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingrese su clave de confirmación.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3"><i class="fa fa-key" aria-hidden="true"></i></span>
+          </div>
+          <input type="password" class="form-control" id="claveEliminar" name="claveEliminar" aria-describedby="basic-addon3" maxlength="6">
+
+        </div>
+        <div id="errorEmail" class="hidden" style="color: red;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="borraActividad" data-mes="">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 @endsection
