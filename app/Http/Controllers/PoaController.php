@@ -9,6 +9,7 @@ use Auth;
 use App\Alerta;
 use App\actividadesdos;
 use App\porcprogramado2020;
+use App\observaciones;
 use App\porcrealizado2020;
 use App\programasesp2020;
 use Alert;
@@ -198,13 +199,46 @@ class PoaController extends Controller
     /***/
     public function elaboracion()
     {
-        //
+
+    if (Auth::check()) {
+
       $user   = auth()->user();
       $userId = $user->id;
-      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
-      $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
-      //$programaesp = DB::table('programasesp')->where('idprograma', 1)->where('idarea', $userId)->get();
-      return view('pages.poa.elaboracion')->with( compact('resultado','programas'));
+
+      if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+            
+            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
+
+            $unidades = DB::table('users')->where('usu_tipo', 1)->get();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+            $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+            $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
+            $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades'));
+        }
+        else { 
+          
+            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+            $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+            $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
+            $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas'));
+
+        }
+      }
+      else {
+        return route('auth/login');
+      }
     }
 
     public function sendactividad(Request $request)
@@ -351,6 +385,85 @@ class PoaController extends Controller
     }
 
 
+    public function sendidObs(Request $request)
+    {
+      if (Auth::check()) {
+
+        $data = $request->data;
+        
+        foreach ($data  as $datas) {
+          $idNum = explode("|",$datas);
+          $updateNum= DB::table('observaciones')->where('id', $idNum[0])->update(['obs_status' => $idNum[1]]);
+        }
+
+        return response()->json([implode(",",$data)]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function sendobservacion(Request $request)
+    {
+      if (Auth::check()) {
+
+        $data = $request->data;
+        $id = $request->id;
+
+        $user   = auth()->user();
+        $userId = $user->id;
+        $userName = $user->name;
+        $acronimo = $user->usu_acronimo;
+            
+        foreach ($data  as $datas) {
+
+            $obs = new Observaciones();
+            $obs->obs_desc =  $datas;
+            $obs->obs_idactividad = $id;
+            $obs->obs_status = '0';
+            $obs->obs_date = date('Y-m-d H:i:s');
+            $obs->save();
+
+        }
+
+        return response()->json('listo');
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function getindicador(Request $request)
+    {
+      if (Auth::check()) {
+
+        $id = $request->data;
+        $data = DB::table('infocedulas2020')->where('idcontrol', $id)->get();
+
+        return response()->json($data);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+    public function getobservacion(Request $request)
+    {
+      if (Auth::check()) {
+
+        $id = $request->id;
+        $obs =  DB::table('observaciones')->where('obs_idactividad', $id)->get();;
+
+        return response()->json($obs);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
     public function deleteactividad(Request $request)
     {
       if (Auth::check()) {
@@ -382,7 +495,15 @@ class PoaController extends Controller
     public function sendporgramaesp(Request $request)
     {
       if (Auth::check()) {
-        $idArea = Auth::user()->idarea;
+
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta'))
+        {
+          $idArea = $request->uni;
+        }
+        else {
+          $idArea = Auth::user()->idarea;
+        }
+          
         $id = $request->id;
         $proesp = DB::table('programasesp2020')->where('idprograma', $id)->where('idarea', $idArea)->get();
 
@@ -396,7 +517,13 @@ class PoaController extends Controller
     public function getAct(Request $request)
     {
       if (Auth::check()) {
-        $idArea = Auth::user()->idarea;
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta'))
+        {
+          $idArea = $request->uni;
+        }
+        else {
+          $idArea = Auth::user()->idarea;
+        }
         $id = $request->proesp;
         $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 

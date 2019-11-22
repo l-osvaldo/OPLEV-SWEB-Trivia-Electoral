@@ -505,7 +505,7 @@ $.ajaxSetup({
             document.getElementById("loader").classList.remove('hidden');
             var mes = this.getAttribute('data-mes');
             var mesc = $('.mesesOn').attr('data-mesc');
-            console.log(mesc);
+            //console.log(mesc);
             var clave = document.getElementById("clave").value;
             if(clave !== null && clave !== '') {
 
@@ -704,20 +704,185 @@ $.ajaxSetup({
         //////////////////////////////////////////////////////////////////////
         function creaIndicador(){
           $('#modalIndicador').modal('show');
+          var id = this.parentNode.getAttribute('data-id');
+          var periodo = this.parentNode.children[5].textContent+' - '+this.parentNode.children[6].textContent+' 2020';
+          //console.log(periodo);
+          $.ajax({
+             type:'POST',
+             url:"getindicador",
+             data:{"_token": token,data:id},
+             success:function(data){ 
+              document.getElementById('identificadorindicador').textContent=data[0].identificadorindicador;
+              document.getElementById('nombreindicador').textContent=data[0].nombreindicador;
+              document.getElementById('objetivoindicador').textContent=data[0].objetivoindicador;
+              document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
+              document.getElementById('periodocumplimiento').innerHTML=data[0].periodocumplimiento+'<br>'+periodo;
+              data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
+              document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
+              data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              document.getElementById('unidadmedida').textContent=data[0].unidadmedida;
+              document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
+              document.getElementById('variable1').textContent=data[0].variable1;
+              document.getElementById('descripcionvariable1').textContent=data[0].descripcionvariable1;
+              document.getElementById('fuentesinfovariable1').textContent=data[0].fuentesinfovariable1;
+              document.getElementById('variable2').textContent=data[0].variable2;
+              document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
+              document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+              document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
+              document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
+              document.getElementById('lineabasev').textContent=data[0].lineabasev;
+              document.getElementById('lineabasea').textContent=data[0].lineabasea;
+              data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
+              document.getElementById('pdfIndicador').setAttribute('data-id',id);
+            }
+          });
+        }
+
+        $('#modalIndicador').on('hide.bs.modal', function () {
+          document.getElementById('identificadorindicador').textContent='';
+              document.getElementById('nombreindicador').textContent='';
+              document.getElementById('objetivoindicador').textContent='';
+              document.getElementById('metaindicador').textContent='';
+              document.getElementById('periodocumplimiento').textContent='';
+              document.getElementById('idprograma1').checked='false';
+              document.getElementById('idprograma2').checked='false';
+              document.getElementById('idprograma3').checked='false';
+              document.getElementById('idprograma4').checked='false';
+              document.getElementById('definicionindicador').textContent='';
+              document.getElementById('dimensionmedir1').textContent='';
+              document.getElementById('dimensionmedir2').textContent='';
+              document.getElementById('dimensionmedir3').textContent='';
+              document.getElementById('dimensionmedir4').textContent='';
+              document.getElementById('unidadmedida').textContent='';
+              document.getElementById('metodocalculo').textContent='';
+              document.getElementById('variable1').textContent='';
+              document.getElementById('descripcionvariable1').textContent='';
+              document.getElementById('fuentesinfovariable1').textContent='';
+              document.getElementById('variable2').textContent='';
+              document.getElementById('descripcionvariable2').textContent='';
+              document.getElementById('fuentesinfovariable2').textContent='';
+              document.getElementById('frecuenciamedicion1').textContent='';
+              document.getElementById('frecuenciamedicion2').textContent='';
+              document.getElementById('frecuenciamedicion3').textContent='';
+              document.getElementById('frecuenciamedicion4').textContent='';
+              document.getElementById('frecuenciamedicion5').textContent='';
+              document.getElementById('fundamentojuridico').textContent='';
+              document.getElementById('lineabasev').textContent='';
+              document.getElementById('lineabasea').textContent='';
+              document.getElementById('comportamientoindicador1').textContent='';
+              document.getElementById('comportamientoindicador2').textContent='';
+              document.getElementById('comportamientoindicador3').textContent='';
+              document.getElementById('comportamientoindicador4').textContent='';
+              document.getElementById('nombretitular').innerHTML='';
+              document.getElementById('pdfIndicador').setAttribute('data-id','');
+        })
+
+        //////////////////////////////////////////////////////////////////////
+        document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false);
+        function pdfindicador() {
+          var id = this.getAttribute('data-id');
+          //$.ajax({
+          //   type:'POST',
+          //   url:"pdfindicador",
+          //   data:{"_token": token,data:id},
+          //   success:function(data){ 
+          //      console.log(data);
+          //  }
+          //});
+          var urlPdf;
+          $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = urlPdf+'pdfindicador';
+          form.target = '_blank';
+          form.style.display='none';
+
+          var ip1 = document.createElement('input');
+          ip1.name = '_token';
+          ip1.value = token;
+          form.appendChild(ip1);
+
+          var ip2 = document.createElement('input');
+          ip2.name = 'data';
+          ip2.value = id;
+          form.appendChild(ip2);
+          
+          document.body.append(form);
+          form.submit();
         }
 
         function verObservaciones(){
           $('#modalOpservaciones').modal('show');
+           var id = this.parentNode.getAttribute('data-id');
+           //console.log(id);
+           document.getElementById('sendObservaciones').setAttribute('data-id', id);
+           $.ajax({
+             type:'POST',
+             url:"getobservacion",
+             data:{"_token": token,id:id},
+             success:function(data){
+              //console.log(data)
+              for (var i = 0; i < data.length; i++) {
+                var child = document.createElement('div');
+                    child.innerHTML = data[i].obs_desc+' <span class="dateObs">'+data[i].obs_date+'</span>';
+                    child.className='col-md-11 contObstext';
+                document.getElementById('getObs').appendChild(child); 
+                if (data[i].obs_status == '0') {
+                  var child2 = document.createElement('div');
+                    child2.innerHTML = '<input type="checkbox" data-id="'+data[i].id+'" class="checkObs" name="checkObs'+i+'" value="1">';
+                    child2.className='col-md-1';
+                  document.getElementById('getObs').appendChild(child2);
+                } else {
+                  var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObs fa fa-check-square-o" aria-hidden="true"></i>';
+                    child2.className='col-md-1';
+                  document.getElementById('getObs').appendChild(child2);
+                }
+              }
+            }
+          });
         }
 
-        document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
+        $('#modalOpservaciones').on('hide.bs.modal', function () {
+          document.getElementById('sendObservaciones').setAttribute('data-id', '');
+          document.getElementById('getObs').innerHTML="";
+        })
 
-        function addObservaciones(){
-          var obs = document.createElement("DIV");
-          obs.contentEditable = "true";
-          obs.className = "obsTexto";                 // Insert text
-          document.getElementById('contObservaciones').appendChild(obs);
+        document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false);
+
+        function sendOBS() {
+          var obs = document.getElementsByClassName('checkObs');
+          var arrayObs = [];
+          for (var i = 0; i < obs.length; i++) {
+            if (obs[i].checked == true){
+              arrayObs.push(obs[i].getAttribute('data-id')+'|'+obs[i].value);
+            }
+          }
+          //console.log(arrayObs)
+          $.ajax({
+             type:'POST',
+             url:"sendidObs",
+             data:{"_token": token,data:arrayObs},
+             success:function(data){ 
+              swal('Actividad eliminada', "", "success");
+              swal({
+                title: "Datos enviados",
+                text: "",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true
+              },
+              function(isConfirm) {
+                if (isConfirm) {
+                  $('#modalOpservaciones').modal('hide');
+                }
+              });
+            }
+          });
         }
+
         //////////////////////////////////////////////////////////////////////
         var upAct = document.getElementsByClassName('up');
         var dowAct = document.getElementsByClassName('down');
@@ -965,6 +1130,7 @@ $.ajaxSetup({
             
             this.classList.contains('itemMes') ? this.parentNode.parentNode.querySelector('.resetBack').setAttribute('data-insert','1') : this.parentNode.querySelector('.resetBack').setAttribute('data-insert','1');        
         }
+
 
    document.getElementById('ePrograma').addEventListener("change", changePro, false);  
    

@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <style type="text/css">
 #titPOA{width: 100%; background-color: #f8bbd0; color: #000;text-align: center;padding: .5% 0;float: left;border-bottom:solid 4px #f5f5f5;}
 .colPOA{float: left;height: 125px;}
@@ -28,6 +26,9 @@
 
 .iconBH{cursor: pointer;font-size: 1.2em !important; color: #546e7a;float: left;background-color: #fff; margin-right: .5%;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;}
 .iconBH:hover{color: #EA0D94;}
+
+.iconOb{cursor: pointer;font-size: 1.2em !important; color: #546e7a;float: left;background-color: #fff; float: right;cursor: pointer;}
+.iconOb:hover{color: #EA0D94;}
 
 .iconBHD{cursor: pointer;font-size: 1.2em !important; color: #546e7a;background-color: #fff;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;float: left;}
 .iconBHD:hover{color: #EA0D94;}
@@ -57,15 +58,18 @@
 .totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;font-size: 14px;background: #fff;}
 .allItemTotal{width: 40.7%;text-align: center;height: auto;margin-top: 1%;}
 .contTotale{float: left;}
-#ePrograma,#eProgramaEsp{color:#EA0D94;}
+#ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad{color:#EA0D94;}
 .form-control:disabled, .form-control[readonly]{color: #ccc !important;}
 .indLabel{background: #cfd8dc;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .indEdit{background: #fff;margin-bottom: 1px;border:solid 2px #f8bbd0;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
 .indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
-.obsTexto{border:solid 1px #f8bbd0;margin:3px 0;}
+.obsTexto{border:solid 1px #f8bbd0;margin:3px 0;width: 98%;float: left;}
+#addObservaciones{cursor: pointer;}
+.iconObs{color: #EA0D94; font-size: 18px;}
+.contObstext{background-color: #eceff1; margin-bottom:5px; padding: 3px; border-radius: 5px;}
+.dateObs{background-color: #EA0D94;color: #fff; border-radius: 5px; padding: 0px 2px;}
 </style>
 
-<div class="col-md-12">
   <!-- Main content -->
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
@@ -84,25 +88,42 @@
           <small>Clave: <strong id="claveProEsp">-- --</strong></small>
         </div>
         <div class="col-md-8 textCPOA" style="background-color: #fff;float: left;height: 45px; line-height: 38px;border-bottom:solid 4px #f5f5f5;">
-          <!--small> <i class="iconInfo fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Seleccione un programa"></i> <strong>Cartera de proyectos</strong></small-->
-
           
-            <!--div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div-->
-            <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="ePrograma" name="eprograma">
+
+          @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+         <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="ePrograma" name="eprograma" disabled="">
               <option value="0">Seleccione un programa</option>
               @foreach( $programas as $programa )
               <option value="{{$programa->idprograma}}">{{$programa->descprograma}}</option>
                @endforeach
-            </select>
+          </select>
+        @else
+          <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="ePrograma" name="eprograma">
+                <option value="0">Seleccione un programa</option>
+                @foreach( $programas as $programa )
+                <option value="{{$programa->idprograma}}">{{$programa->descprograma}}</option>
+                 @endforeach
+              </select>
+        @endif
+
+            
          
 
         </div>
         <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;padding-top: 5px;">
+
+          
+
+        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+         <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eProgramaEsp" name="eprogramaesp" disabled="">
+              <option value="0">Seleccione un programa especifico</option>
+            </select>
+        @else
           <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eProgramaEsp" name="eprogramaesp" disabled="">
               <option value="0">Seleccione un programa especifico</option>
             </select>
+        @endif
+
         </div>
       </div>
       <!--COLUMNAS-->
@@ -111,9 +132,24 @@
           <small>Ejercicio <strong>2020</strong></small>
         </div>
         <div class="col-md-9 textCPOA" style="background-color: #fff;float: left;height: 72px; line-height: 30px;border-bottom:solid 4px #f5f5f5;">
-          <small>Unidad responsable:<br><strong>{{ Auth::user()->name }}</strong></small>
+          <!-- Aside -->
+
+
+      @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+         <small>Unidad responsable:<br>
+         <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eunidad" name="eunidad">
+                <option value="0">Seleccione una unidad</option>
+                @foreach( $unidades as $unidad )
+                <option value="{{$unidad->idarea}}">{{$unidad->name}}</option>
+                 @endforeach
+          </select>
+      @else
+        <small>Unidad responsable:<br><strong>{{ Auth::user()->name }}</strong></small>
+      @endif
+
+          
         </div>
-        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;overflow: hidden;font-size: small;white-space: nowrap;
+        <div class="col-md-12 textCPOA" style="background-color: #fff;float: left;height: 53px; line-height: 53px;border-bottom:solid 4px #f5f5f5;overflow: hidden;font-size: small;
   text-overflow: ellipsis">
           Objetivo: <strong id="objetivoProEsp" data-toggle="tooltip" data-placement="top">---</strong>
         </div>
@@ -128,9 +164,19 @@
         <small>
           <strong>Actividad</strong> 
         </small>
-        <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad" style="pointer-events: none; color: rgb(236, 239, 241);">
+
+
+
+        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+           
+        @else
+          <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad" style="pointer-events: none; color: rgb(236, 239, 241);">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        </div>
+          </div>
+        @endif
+
+
+        
       </div>
       <div class="colPOA2da" id="colPOA6">
         <div class="col-md-12" style="line-height: 30px;height: 30px;"><small><strong>Meta</strong></small></div>
@@ -166,40 +212,7 @@
 
 
       <div class="col-md-12" id="contActividades" style="float: left;margin-top: 4px;height: auto;min-height: 100px;background-color: #fff;">
-        <!--div class="row rowAct insertAct" data-id="1">
-
-          <div class="item1">1</div>
-          <div class="item2 backAct">Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales.</div>
-          <div class="item3 backAct">Informe</div>
-          <div class="item4">6</div>
-          <div class="allItemMes">
-            <div class="col-md-1 itemMes numerico backAct" data-mes="ene">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="feb">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="mar">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="abr">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="may">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="jun">1</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="jul">0</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="ago">0</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="sep">0</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="oct">0</div>
-            <div class="col-md-1 itemMes numerico backAct" data-mes="nov">0</div>
-            <div class="col-md-1 itemMes numerico backAct" style="border-right:0 !important;" data-mes="dic">0</div>
-          </div>
-          <div class="item5">ENE</div>
-          <div class="item6">DIC</div>
-
-          <i class="iconBH fa fa-pencil-square-o btnEdit btnOff resetBack" data-edit="0" aria-hidden="true" data-toggle="tooltip" data-placement="right" data-insert="0" title="Editar"></i>
-
-          <i class="iconBH fa fa-ban btnBack btnOn" style="color: #eceff1;pointer-events: none;" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Cancelar edición" data-ba="Fortalecer las competencias de planeación para un Programa Anual de Trabajo estratégico de las Asociaciones Políticas Estatales." data-bu="Informe" data-bm="1,1,1,1,1,1,0,0,0,0,0,0"></i>
-
-          <i class="iconBH fa fa-arrow-circle-up up btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Subir"></i>
-
-          <i class="iconBH fa fa-arrow-circle-down down btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Bajar"></i>
-
-          <i class="iconBHD fa fa-trash delAct btnOff" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eliminar"></i>
-
-        </div-->
+        
       </div>
 
       <div class="col-md-12 contTotale">
@@ -308,34 +321,34 @@
             <div class="col-md-7 indLabel">Nombre del indicador</div>
           </div>
           <div class="row">
-            <div class="col-md-5 indBlanco"></div>
-            <div class="col-md-7 indEdit" contenteditable="true">Eficacia en la actualización y modernización de la plataforma tecnológica del portal Web</div>
+            <div class="col-md-5 indBlanco" id="identificadorindicador"></div>
+            <div class="col-md-7 indEdit" contenteditable="true" id="nombreindicador"></div>
           </div>
           <div class="row">
             <div class="col-md-3 indLabel">Objetivo</div>
-            <div class="col-md-9 indEdit" contenteditable="true">Contar con una plataforma Web actualizada para la difusión de sus actividades.</div>
+            <div class="col-md-9 indEdit" contenteditable="true" id="objetivoindicador"></div>
           </div>
           <div class="row">
             <div class="col-md-6 indLabel">Meta</div>
             <div class="col-md-6 indLabel">Periodo de cumplimiento</div>
           </div>
           <div class="row">
-            <div class="col-md-6 indBlanco">100%</div>
-            <div class="col-md-6 indBlanco">Enero - Diciembre 2019</div>
+            <div class="col-md-6 indBlanco" id="metaindicador">100%</div>
+            <div class="col-md-6 indBlanco" id="periodocumplimiento">Enero - Diciembre 2019</div>
           </div>
           <div class="row">
             <div class="col-md-2 indLabel">Programa Presupuestario</div>
             <div class="col-md-3 indBlanco">01. Desarrollo y Fortalecimiento Institucional</div>
-            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco">02. Proceso Electoral</div>
             <div class="col-md-2 indBlanco">03. Cartera de Proyectos</div>
             <div class="col-md-3 indBlanco">04. Prerrogativas y Partidos Políticos</div>
           </div>
           <div class="row">
             <div class="col-md-2 indLabel"></div>
-            <div class="col-md-3 indBlanco">X</div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-3 indBlanco"></div>
+            <div class="col-md-3 indBlanco" id="idprograma1"></div>
+            <div class="col-md-2 indBlanco" id="idprograma2"></div>
+            <div class="col-md-2 indBlanco" id="idprograma3"></div>
+            <div class="col-md-3 indBlanco" id="idprograma4"></div>
           </div>
           <div class="row">
             <div class="col-md-3 indLabel">Definición</div>
@@ -343,7 +356,7 @@
             <div class="col-md-3 indLabel">Unidad de medida</div>
           </div>
           <div class="row">
-            <div class="col-md-3 indLabel">Llevar a cabo las actualizaciones del portal web</div>
+            <div class="col-md-3 indLabel" id="definicionindicador">Llevar a cabo las actualizaciones del portal web</div>
             <div class="col-md-6">
               <div class="row">
 
@@ -352,14 +365,14 @@
                   <div class="col-md-3 indBlanco">Economía</div>
                   <div class="col-md-3 indBlanco">Calidad</div>
 
-                  <div class="col-md-3 indBlanco">( X )</div>
-                  <div class="col-md-3 indBlanco"></div>
-                  <div class="col-md-3 indBlanco"></div>
-                  <div class="col-md-3 indBlanco"></div>
+                  <div class="col-md-3 indBlanco" id="dimensionmedir1"></div>
+                  <div class="col-md-3 indBlanco" id="dimensionmedir2"></div>
+                  <div class="col-md-3 indBlanco" id="dimensionmedir3"></div>
+                  <div class="col-md-3 indBlanco" id="dimensionmedir4"></div>
 
               </div>
             </div>
-            <div class="col-md-3 indLabel">Porcentaje</div>
+            <div class="col-md-3 indLabel" id="unidadmedida"></div>
           </div>
 
           <div class="row">
@@ -367,7 +380,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12 indBlanco">PNA = (NAA/NAS)  x   100</div>
+            <div class="col-md-12 indBlanco" id="metodocalculo"></div>
           </div>
 
            <div class="row">
@@ -377,15 +390,15 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4 indEdit" contenteditable="true">NAA = Número de Actualizaciones Atendidas</div>
-            <div class="col-md-4 indEdit" contenteditable="true">Número de Actualizaciones del Portal Web que se atendieron.</div>
-            <div class="col-md-4 indEdit" contenteditable="true">Informes</div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="variable1"></div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="descripcionvariable1"></div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="fuentesinfovariable1"></div>
           </div>
 
           <div class="row">
-            <div class="col-md-4 indEdit" contenteditable="true">NAS = Número de Actualizaciones Solicitadas</div>
-            <div class="col-md-4 indEdit" contenteditable="true">Número de Actualizaciones del Portal Web que se solicitaron.</div>
-            <div class="col-md-4 indEdit" contenteditable="true">Orden del día, agenda institucional, tarjeta, oficio o correo electrónico de la solicitud</div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="variable2"></div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="descripcionvariable2"></div>
+            <div class="col-md-4 indEdit" contenteditable="true" id="fuentesinfovariable2"></div>
           </div>
 
            <div class="row">
@@ -401,11 +414,11 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2 indEdit" contenteditable="true">( X )</div>
-            <div class="col-md-3 indEdit" contenteditable="true"></div>
-            <div class="col-md-2 indEdit" contenteditable="true"></div>
-            <div class="col-md-2 indEdit" contenteditable="true"></div>
-            <div class="col-md-3 indEdit" contenteditable="true"></div>
+            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion1"></div>
+            <div class="col-md-3 indEdit" contenteditable="true" id="frecuenciamedicion2"></div>
+            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion3"></div>
+            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion4"></div>
+            <div class="col-md-3 indEdit" contenteditable="true" id="frecuenciamedicion5"></div>
           </div>
 
           <div class="row">
@@ -413,7 +426,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12 indEdit" contenteditable="true">Reglamento Interior del Organismo Público Local Electoral del Estado de Veracruz, artículo 52, numeral 1, inciso m).</div>
+            <div class="col-md-12 indEdit" contenteditable="true" id="fundamentojuridico"></div>
           </div>
 
           <div class="row">
@@ -429,23 +442,24 @@
             <div class="col-md-2 indBlanco">Nominal</div>
           </div>
           <div class="row">
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
-            <div class="col-md-2 indBlanco"></div>
+            <div class="col-md-2 indBlanco" id="lineabasev"></div>
+            <div class="col-md-2 indBlanco" id="lineabasea"></div>
+            <div class="col-md-2 indBlanco" id="comportamientoindicador1"></div>
+            <div class="col-md-2 indBlanco" id="comportamientoindicador2"></div>
+            <div class="col-md-2 indBlanco" id="comportamientoindicador3"></div>
+            <div class="col-md-2 indBlanco" id="comportamientoindicador4"></div>
           </div>
 
           <div class="row">
             <div class="col-md-4 indLabel">Nombre, cargo y firma del titular de la Unidad Responsable</div>
-            <div class="col-md-8 indBlanco">Mtro. Junior Abraham Cruz Ancona Titular de la Unidad Técnica de Servicios Informáticos</div>
+            <div class="col-md-8 indBlanco" id="nombretitular"></div>
           </div>
 
         </div>
 
       </div>
       <div class="modal-footer">
+        <i class="fa fa-file-pdf-o" aria-hidden="true" id="pdfIndicador" data-id=""></i>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary">Continuar</button>
       </div>
@@ -458,7 +472,13 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Observaciones</h5>
+
+        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+          <h5 class="modal-title" id="exampleModalLongTitle">Crear Observaciones</h5>
+        @else
+          <h5 class="modal-title" id="exampleModalLongTitle">Observaciones</h5>
+        @endif
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -466,23 +486,39 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
+
+            @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+
             <i class="fa fa-plus-circle" aria-hidden="true" id="addObservaciones"></i>
-            <div class="col-md-12" id="contObservaciones"></div>
-            <hr>
-            <div class="row">
-              <div class="col-md-10">Observacion 1 ejemplo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car"></div>
-              <div class="col-md-10">Observacion 2 ejemplo despliegue</div>
-              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car"></div>
-              <div class="col-md-10">Observacion 3 ejemplo despliegue</div>
-              <div class="col-md-2"><input type="checkbox" name="vehicle" value="Car" checked></div> 
+            <div class="row" style="margin-bottom: 10px;">
+              <div class="col-md-12" id="contObservaciones"></div>
             </div>
+            <hr>
+
+            <div class="row" id="getObs">
+               
+            </div>
+            @else
+
+            <div class="row" id="getObs">
+
+            </div>
+
+            @endif
+
+
           </div>
         </div>
       </div>
       <div class="modal-footer">
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Continuar</button>
+        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+          <button type="button" class="btn btn-primary" id="sendObservaciones">Enviar Observaciones</button>
+        @else
+          <button type="button" class="btn btn-primary" id="sendObservaciones">Enviar reporte</button>
+        @endif
+        
       </div>
     </div>
   </div>
@@ -515,7 +551,6 @@
     </div>
   </div>
 </div>
-
 
 
 @endsection

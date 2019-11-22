@@ -591,7 +591,13 @@ class ReportesController extends Controller
       if ( Auth::check() )
       {   
 
-        $idArea = Auth::user()->idarea;
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta'))
+        {
+          $idArea = $request->unidad;
+        }
+        else {
+          $idArea = Auth::user()->idarea;
+        }
         $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
 
@@ -721,6 +727,38 @@ class ReportesController extends Controller
         $pdfs->setOption('load-error-handling','ignore');
         $pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('reporte.pdf');
+
+
+      }
+      else
+      {
+        return redirect()->route('login');
+      }       
+    }
+
+
+
+
+    public function pdfindicador(Request $request)
+    {
+      if ( Auth::check() )
+      {   
+
+        $id = $request->data;
+        $indPdf = DB::table('infocedulas2020')->where('idcontrol', $id)->first();
+
+
+        $pdfs = PDFS::loadView('pages.poa.pdfindicador',['indicadores'=>$indPdf])->setPaper('letter', 'portrait');
+        $pdfs->setOption('margin-top', 10);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 15);
+        $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('indicador.pdf');
 
 
       }

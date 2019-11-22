@@ -89,6 +89,12 @@
             </a>
           </li>
 
+          <li class="nav-item has-treeview">
+            <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar-check-o"></i> <p>POA 2020</p>
+            </a>
+          </li>
+
           </ul>
           </li>
 
@@ -104,19 +110,19 @@
             <ul class="nav nav-treeview">
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('tablames') }}" class="textSideOption nav-link {!! Request::is('tablames') ? 'active activeOn' : '' !!}" style="color: #f1ff2b;">
               <i class="fa fa-list-alt"></i> <p>Concentrado mensual</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('bitacorames') }}" class="textSideOption nav-link {!! Request::is('bitacorames') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('bitacorames') }}" class="textSideOption nav-link {!! Request::is('bitacorames') ? 'active activeOn' : '' !!}" style="color: #f1ff2b;">
               <i class="fa fa-list-alt"></i> <p>Termino mensual</p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('bitacora') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('bitacora') }}" class="textSideOption nav-link {!! Request::is('bitacora') ? 'active activeOn' : '' !!}" style="color: #f1ff2b;">
               <i class="fa fa-list-alt"></i> <p>Acciones por actividad</p>
             </a>
           </li>

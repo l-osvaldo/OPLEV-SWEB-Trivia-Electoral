@@ -94,12 +94,12 @@
                   <p>Registro de Actividades</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!--li class="nav-item">
                 <a href="#" class="nav-link" style="color: #f1ff2b;">
                   <i class="nav-icon fa fa-file-text-o" aria-hidden="true"></i>
                   <p>Reportes</p>
                 </a>
-              </li>
+              </li-->
             </ul>
           </li>
 
