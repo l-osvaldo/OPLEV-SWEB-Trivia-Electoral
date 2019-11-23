@@ -530,6 +530,19 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
           });
         }
 
+        document.getElementById("iconAlertObs").addEventListener("click", hiddenAlertafin);
+        function hiddenAlertafin () {
+            $.ajax({
+             type:'POST',
+             url:"clickalertasobs",
+             data:{"_token": token},
+             success:function(data){ 
+                //console.log(data);
+                //document.getElementById('campanaAlertobs').classList.add("hidden");
+            }
+          });
+        }
+
 
 //document.getElementById("buscarMes").addEventListener("click", busquedames);
 $("#buscarMes").click(function(){
@@ -684,6 +697,7 @@ $("#dates").change(function(){
        url:"getAct",
        data:{"_token": token,proesp:proesp,uni:uni},
        success:function(data){ 
+        console.log(data);
           document.getElementById('contActividades').innerHTML='';
           data[0].length == 0 ? document.getElementById('contActividades').style.backgroundColor='#fff' : document.getElementById('contActividades').style.backgroundColor='';
 
@@ -837,6 +851,7 @@ $("#dates").change(function(){
           observa.setAttribute('data-toggle', 'tooltip');
           observa.setAttribute('data-placement', 'right');
           observa.setAttribute('title', 'observaciones');
+          data[0][j].act_obs_edit == 0 ? '' : (observa.style.backgroundColor='#ff6f00',observa.style.color='#000'); 
           observa.addEventListener("click", verObservaciones);
 
           rowAct.appendChild(observa);
@@ -1125,6 +1140,9 @@ function sumArray(total, num) {
         function verObservaciones(){
           $('#modalOpservaciones').modal('show');
            var id = this.parentNode.getAttribute('data-id');
+           var act = this.parentNode.children[0].textContent;
+           var cla = document.getElementById('claveProEsp').textContent;
+           var uni = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].textContent;
            //console.log(id);
            document.getElementById('sendObservaciones').setAttribute('data-id', id);
            $.ajax({
@@ -1132,19 +1150,49 @@ function sumArray(total, num) {
              url:"getobservacion",
              data:{"_token": token,id:id},
              success:function(data){
-              //console.log(data)
+              console.log(data)
+              document.getElementById('ModalTitle').innerHTML=uni+" | Actividad: "+act+" | "+cla;
               for (var i = 0; i < data.length; i++) {
+
+                var ini = Date.parse(data[i].obs_date);
+                var pri = new Date(ini);
+                var dos = Date.parse(data[i].obs_date_fin);
+                var seg = new Date(dos);
+                var datestring;
+                isNaN(seg.getDate()) ? datestring = '' : datestring = ' | '+seg.getDate()+'/'+(seg.getMonth()+1)+'/'+seg.getFullYear();
+                
+
                 var child = document.createElement('div');
-                    child.innerHTML = data[i].obs_desc+' <span class="dateObs">'+data[i].obs_date+'</span>';
+                    child.innerHTML = data[i].obs_desc+' <span class="dateObs">'+pri.getDate()+'/'+(pri.getMonth()+1)+'/'+pri.getFullYear()+datestring+'</span>';
                     child.className='col-md-11 contObstext';
                 document.getElementById('getObs').appendChild(child); 
                 if (data[i].obs_status == '1') {
                   var child2 = document.createElement('div');
                     child2.innerHTML = '<i class="iconObs fa fa-check-square-o" aria-hidden="true"></i>';
-                    child2.className='col-md-1';
+                    child2.className='col-md-1 contIconObs';
+                    child2.setAttribute('aria-hidden', 'true');
+                    child2.setAttribute('data-toggle', 'tooltip');
+                    child2.setAttribute('data-placement', 'right');
+                    child2.setAttribute('title', 'Realizado');
+                    //child2.style.pointerEvents = 'none';
                   document.getElementById('getObs').appendChild(child2);
-                } 
+                } else {
+                  var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObs fa fa-square-o" aria-hidden="true"></i>';
+                    child2.className='col-md-1 contIconObs';
+                    child2.setAttribute('aria-hidden', 'true');
+                    child2.setAttribute('data-toggle', 'tooltip');
+                    child2.setAttribute('data-placement', 'right');
+                    child2.setAttribute('title', 'Por Concluir');
+                    //child2.style.pointerEvents = 'none';
+                  document.getElementById('getObs').appendChild(child2);
+                }
               }
+
+              $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();   
+              });
+
             }
           });
         }
@@ -1153,6 +1201,7 @@ function sumArray(total, num) {
           document.getElementById('sendObservaciones').setAttribute('data-id', '');
           document.getElementById('contObservaciones').innerHTML="";
           document.getElementById('getObs').innerHTML="";
+           document.getElementById('ModalTitle').innerHTML="";
         })
 
         document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
@@ -1164,12 +1213,12 @@ function sumArray(total, num) {
 
           var obs = document.createElement("DIV");
           obs.contentEditable = "true";
-          obs.className = "obsTexto";
+          obs.className = "obsTexto col-md-12";
 
           pad.appendChild(obs);
 
           var del = document.createElement("I");
-          del.className = "iconOb fa fa-trash delAct";   
+          del.className = "iconObs fa fa-trash delAct";   
           del.setAttribute('aria-hidden', 'true');
           del.setAttribute('data-toggle', 'tooltip');
           del.setAttribute('data-placement', 'right');
@@ -1202,15 +1251,18 @@ function sumArray(total, num) {
         function sendOBS() {
           var id = this.getAttribute('data-id');
           var obs = document.getElementsByClassName('obsTexto');
+          var cla = document.getElementById('claveProEsp').textContent;
           var arrayObs = [];
           for (var i = 0; i < obs.length; i++) {
-            arrayObs.push(obs[i].textContent);
+            obs[i].textContent ? arrayObs.push(obs[i].textContent) : '';
           }
-          //console.log(arrayObs)
+          //console.log(arrayObs.length)
+          if (arrayObs.length>0) {
+
           $.ajax({
              type:'POST',
              url:"sendobservacion",
-             data:{"_token": token,id:id,data:arrayObs},
+             data:{"_token": token,id:id,data:arrayObs,cla:cla},
              success:function(data){ 
               swal('Actividad eliminada', "", "success");
               swal({
@@ -1224,10 +1276,17 @@ function sumArray(total, num) {
               function(isConfirm) {
                 if (isConfirm) {
                   $('#modalOpservaciones').modal('hide');
+                  document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#ff6f00';
+                  document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
                 }
               });
             }
           });
+
+        } else {
+          swal('Agregue al menos una observación', "", "warning");
+        }
+
         }
 
         //////////////////////////////////////////////////////////////////////

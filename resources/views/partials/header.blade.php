@@ -41,9 +41,10 @@
 <style type="text/css">
   .alerta-texto{white-space: nowrap; overflow: hidden;text-overflow: ellipsis;text-transform: uppercase;border-bottom: 1px solid #fff;cursor: inherit;font-size: 12px;}
   .nueva-alerta{font-weight:bolder;}
-  .alerta-final{background: #cfd8dc;border-right:solid 1px #fff; }
-  .alerta-edit{background: #b0bec5;border-right:solid 1px #fff; }
-  .alerta-logout{background:#90a4ae;border-right:solid 1px #fff; }
+  .alerta-final{background: #b0bec5;border-right:solid 1px #fff; }
+  .alerta-obs{background: #cfd8dc;border-right:solid 1px #fff; }
+  .alerta-edit{background: #90a4ae;border-right:solid 1px #fff; }
+  .alerta-logout{background:#78909c;border-right:solid 1px #fff; }
   .navbar-light .navbar-nav .nav-link{color: #EA0D94;}
   .tiempofuera:after {
     content: "\00a0 \f071";
@@ -56,6 +57,37 @@
       <div id="repEmail"></div>
 
       <!-- Notifications Dropdown Menu -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link alerta-obs" id="iconAlertObs" data-toggle="dropdown" href="#">
+          <i class="fa fa-eye"></i>
+          @if(count($observaciones) > 0)         
+            <span id="campanaAlertObs" class="badge badge-warning navbar-badge">{{count($observaciones)}}</span>
+            @else
+            <span id="campanaAlertObs" ></span>               
+          @endif
+          
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header" style="text-transform: uppercase;background: #eceff1; color: #EA0D94;">Observaciones</span>
+          <div class="dropdown-divider"></div>
+          <!--a href="#" class="dropdown-item texto-negro">
+            <i class="fa fa-file"></i>  4 nuevos documentos
+            <span class="float-right text-muted text-sm">3 min</span>
+          </a-->
+
+          @foreach( $observaciones as $obs )
+            <a href="#" class="dropdown-item texto-negro alerta-texto {{ $obs->obs_tipo === 1 ? 'nueva-alerta' : 'no' }}">
+            <div style="display: inline-block;float: left;">{{$obs->obs_clave}} - {{$obs->obs_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date_fin)) }}</div>
+            </a>
+          @endforeach
+
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">Ver todas las notificaciones</a>
+        </div>
+      </li>  
+
+
 
       <li class="nav-item dropdown">
         <a class="nav-link alerta-final" id="iconAlertfin" data-toggle="dropdown" href="#">

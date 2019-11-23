@@ -80,5 +80,6 @@ Route::post('/pdfindicador', 'ReportesController@pdfindicador')->name('reportes.
 Route::post('/sendobservacion', 'PoaController@sendobservacion')->name('sendobservacion');
 Route::post('/getobservacion', 'PoaController@getobservacion')->name('getobservacion');
 Route::post('/sendidObs', 'PoaController@sendidObs')->name('sendidObs');
+Route::post('/clickalertasobs', 'PoaController@clickalertas')->name('clickalertasobs');
 });
 

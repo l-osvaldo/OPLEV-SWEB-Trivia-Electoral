@@ -40,13 +40,15 @@ class PoaController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
-          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin'));
+          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones'));
         }
         else
         { 
           $meses = Mes::all();
-          return view('pages.poa.index')->with( compact('meses'));
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date_fin', 'desc')->get();
+          return view('pages.poa.index')->with( compact('meses','observaciones'));
         }
       }
       else
@@ -177,6 +179,13 @@ class PoaController extends Controller
         return response()->json(['edicion']);
     }
 
+    public function clickalertasobs()
+    {
+        //
+        //DB::table('observaciones')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->update(['ale_tipo' => 0]);
+        return response()->json(['edicion']);
+    }
+
     public function clickalertasfin()
     {
         //
@@ -219,7 +228,10 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades'));
+            $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+
+
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades','observaciones'));
         }
         else { 
           
@@ -232,7 +244,10 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas'));
+            $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date_fin', 'desc')->get();
+
+
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones'));
 
         }
       }
@@ -388,15 +403,28 @@ class PoaController extends Controller
     public function sendidObs(Request $request)
     {
       if (Auth::check()) {
+        $user   = auth()->user();
+        $acronimo = $user->usu_acronimo;
 
         $data = $request->data;
-        
+        $id  = $request->id;
         foreach ($data  as $datas) {
           $idNum = explode("|",$datas);
-          $updateNum= DB::table('observaciones')->where('id', $idNum[0])->update(['obs_status' => $idNum[1]]);
+          $updateNum= DB::table('observaciones')->where('id', $idNum[0])->update([
+            'obs_status' => $idNum[1],
+            'obs_date_fin'=>date('Y-m-d H:i:s'),
+            'obs_acronimo'=>$acronimo,
+            'obs_tipo'=>'0'
+          ]);
         }
 
-        return response()->json([implode(",",$data)]);
+        $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '0')->count();
+
+        $act2 = actividadesdos::find($id);
+        $act2->act_obs = $count;
+        $act2->save();
+
+        return response()->json($count);
 
       } else {
         return route('auth/login');
@@ -410,6 +438,7 @@ class PoaController extends Controller
 
         $data = $request->data;
         $id = $request->id;
+        $cla = $request->cla;
 
         $user   = auth()->user();
         $userId = $user->id;
@@ -423,9 +452,20 @@ class PoaController extends Controller
             $obs->obs_idactividad = $id;
             $obs->obs_status = '0';
             $obs->obs_date = date('Y-m-d H:i:s');
+            $obs->obs_clave = $cla;
+            $obs->obs_acronimo = 'UTP';
+            $obs->obs_tipo = '1';
             $obs->save();
 
         }
+
+        $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '0')->count();
+
+        $act2 = actividadesdos::find($id);
+        $act2->act_obs = $count;
+        $act2->save();
+
+
 
         return response()->json('listo');
 
@@ -454,7 +494,7 @@ class PoaController extends Controller
       if (Auth::check()) {
 
         $id = $request->id;
-        $obs =  DB::table('observaciones')->where('obs_idactividad', $id)->get();;
+        $obs =  DB::table('observaciones')->where('obs_idactividad', $id)->orderBy('obs_date', 'desc')->get();;
 
         return response()->json($obs);
 

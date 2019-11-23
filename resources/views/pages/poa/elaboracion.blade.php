@@ -58,16 +58,19 @@
 .totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;font-size: 14px;background: #fff;}
 .allItemTotal{width: 40.7%;text-align: center;height: auto;margin-top: 1%;}
 .contTotale{float: left;}
-#ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad{color:#EA0D94;}
+#ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad,#ModalTitle{color:#EA0D94;}
 .form-control:disabled, .form-control[readonly]{color: #ccc !important;}
 .indLabel{background: #cfd8dc;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .indEdit{background: #fff;margin-bottom: 1px;border:solid 2px #f8bbd0;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
 .indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
-.obsTexto{border:solid 1px #f8bbd0;margin:3px 0;width: 98%;float: left;}
+.obsTexto{border:solid 1px #f8bbd0;margin:3px 0;position: relative;background: #fff;}
 #addObservaciones{cursor: pointer;}
-.iconObs{color: #EA0D94; font-size: 18px;}
-.contObstext{background-color: #eceff1; margin-bottom:5px; padding: 3px; border-radius: 5px;}
-.dateObs{background-color: #EA0D94;color: #fff; border-radius: 5px; padding: 0px 2px;}
+.contIconObs{background: #eceff1;margin: 0 0 5px 0;display: flex;align-items: center;justify-content: center;border-radius: 0 5px 5px 0;}
+.iconObs{color: #EA0D94; font-size: 18px;cursor: pointer;}
+.contObstext{background-color: #eceff1; margin-bottom:5px; padding: 3px; border-radius: 5px 0 0 5px;}
+.dateObs{color: #EA0D94; font-weight: bold;text-align: center;background: #efefef;margin: 0 0 5px 0;display: flex;align-items: center;}
+#contObservaciones{padding: 5px; min-height: 20px; height: 20px; height: auto !important; }
+.contObse{margin: 4px 0;background: #eceff1;padding: 5px; border-radius: 5px;}
 </style>
 
   <!-- Main content -->
@@ -144,7 +147,7 @@
                  @endforeach
           </select>
       @else
-        <small>Unidad responsable:<br><strong>{{ Auth::user()->name }}</strong></small>
+        <small>Unidad responsable:<br><strong id="eunidad">{{ Auth::user()->name }}</strong></small>
       @endif
 
           
@@ -473,11 +476,7 @@
     <div class="modal-content">
       <div class="modal-header">
 
-        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
-          <h5 class="modal-title" id="exampleModalLongTitle">Crear Observaciones</h5>
-        @else
-          <h5 class="modal-title" id="exampleModalLongTitle">Observaciones</h5>
-        @endif
+          <h5 class="modal-title" id="ModalTitle"></h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -489,17 +488,17 @@
 
             @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
 
-            <i class="fa fa-plus-circle" aria-hidden="true" id="addObservaciones"></i>
+            <h5 id="addObservaciones">Nueva Observación <i class="fa fa-plus-circle" aria-hidden="true"></i></h5>
             <div class="row" style="margin-bottom: 10px;">
               <div class="col-md-12" id="contObservaciones"></div>
             </div>
             <hr>
-
+            <h5>Historial</h5>
             <div class="row" id="getObs">
                
             </div>
             @else
-
+            <h5>Historial</h5>
             <div class="row" id="getObs">
 
             </div>
