@@ -697,7 +697,7 @@ $("#dates").change(function(){
        url:"getAct",
        data:{"_token": token,proesp:proesp,uni:uni},
        success:function(data){ 
-        console.log(data);
+        //console.log(data);
           document.getElementById('contActividades').innerHTML='';
           data[0].length == 0 ? document.getElementById('contActividades').style.backgroundColor='#fff' : document.getElementById('contActividades').style.backgroundColor='';
 
@@ -851,7 +851,26 @@ $("#dates").change(function(){
           observa.setAttribute('data-toggle', 'tooltip');
           observa.setAttribute('data-placement', 'right');
           observa.setAttribute('title', 'observaciones');
-          data[0][j].act_obs_edit == 0 ? '' : (observa.style.backgroundColor='#ff6f00',observa.style.color='#000'); 
+          switch (data[0][j].act_obs_edit) {
+            case 1:
+              observa.style.backgroundColor='#f48fb1';
+              observa.style.color='#000';
+              break;
+            case 2:
+              observa.style.backgroundColor='#ffb300';
+              observa.style.color='#000';
+              break;
+            case 3:
+              observa.style.backgroundColor='#ffb300';
+              observa.style.color='#000';
+              break;
+            case 4:
+              observa.style.backgroundColor='#c0ca33';
+              observa.style.color='#000';
+              break;
+            default:
+             observa.style.backgroundColor='#fff';
+          }
           observa.addEventListener("click", verObservaciones);
 
           rowAct.appendChild(observa);
@@ -1139,55 +1158,115 @@ function sumArray(total, num) {
 
         function verObservaciones(){
           $('#modalOpservaciones').modal('show');
+          /////////////////////////////////////////////////////
+          addObservaciones();
+          /////////////////////////////////////////////////////
            var id = this.parentNode.getAttribute('data-id');
            var act = this.parentNode.children[0].textContent;
            var cla = document.getElementById('claveProEsp').textContent;
            var uni = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].textContent;
            //console.log(id);
            document.getElementById('sendObservaciones').setAttribute('data-id', id);
+           document.getElementById('sendObsVal').setAttribute('data-id', id);
            $.ajax({
              type:'POST',
              url:"getobservacion",
              data:{"_token": token,id:id},
              success:function(data){
-              console.log(data)
-              document.getElementById('ModalTitle').innerHTML=uni+" | Actividad: "+act+" | "+cla;
-              for (var i = 0; i < data.length; i++) {
+              var arrayEnable = [];
 
-                var ini = Date.parse(data[i].obs_date);
-                var pri = new Date(ini);
-                var dos = Date.parse(data[i].obs_date_fin);
-                var seg = new Date(dos);
-                var datestring;
-                isNaN(seg.getDate()) ? datestring = '' : datestring = ' | '+seg.getDate()+'/'+(seg.getMonth()+1)+'/'+seg.getFullYear();
+              data.length==0 ? 
+              document.getElementById('dataHistorial').textContent="Sin observaciones" 
+              :
+              document.getElementById('dataHistorial').textContent="Historial de observaciones";
+
+              document.getElementById('ModalTitle').innerHTML=uni+" | Actividad: "+act+" | "+cla;
+
+              for (var i = 0; i < data.length; i++) {
+                arrayEnable.push(data[i].obs_status);
+                var pri = new Date(Date.parse(data[i].obs_date));
+                var seg = new Date(Date.parse(data[i].obs_date_dos));
+                var tres = new Date(Date.parse(data[i].obs_date_tres));
                 
 
                 var child = document.createElement('div');
-                    child.innerHTML = data[i].obs_desc+' <span class="dateObs">'+pri.getDate()+'/'+(pri.getMonth()+1)+'/'+pri.getFullYear()+datestring+'</span>';
-                    child.className='col-md-11 contObstext';
-                document.getElementById('getObs').appendChild(child); 
-                if (data[i].obs_status == '1') {
+                    child.innerHTML = data[i].obs_desc;
+                    child.className='col-md-10 contObstext';
+                document.getElementById('getObs').appendChild(child);
+
+
+
+
+                switch (data[i].obs_status) {
+                  case '0':
+                    var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObsVer fa fa-paper-plane-o edoColor" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+'" aria-hidden="true"></i>';
+                    child2.className='col-md-1 contIconObs actDos';
+                    child2.style.backgroundColor="#f48fb1";
+                    document.getElementById('getObs').appendChild(child2);
+
+                    var child3 = document.createElement('div');
+                    child3.innerHTML = '<i class="iconObs fa fa-cogs" data-toggle="tooltip" style="color:#000;" data-placement="top" title="Por Concluir" aria-hidden="true"></i>';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#e082a2";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '1':
                   var child2 = document.createElement('div');
-                    child2.innerHTML = '<i class="iconObs fa fa-check-square-o" aria-hidden="true"></i>';
+                    child2.innerHTML = 
+                    '<div class="row"><div class="col-md-12" style="text-align:center;background:#f57f17;padding-top:3px;border-radius:3px 3px 0 0;color:#fff;font-zise:10px;">'+
+                    '<input type="radio" style="color:#000;cursor:pointer" data-toggle="tooltip" data-placement="top" title="Validar" aria-hidden="true" data-id="'+data[i].id+'" class="checkObsVal edoColor edoColorVal" name="checkObsVal'+i+'" value="2">'+
+                    '</div>'+
+                    '<div class="col-md-12" style="text-align:center;background:#dd2c00;padding-top:3px;border-radius:0 0 3px 3px;color:#fff;font-zise:10px;">'+
+                    '<input type="radio" style="color:#000;cursor:pointer" data-toggle="tooltip" data-placement="bottom" title="No Validar" aria-hidden="true" data-id="'+data[i].id+'" class="checkObsVal" name="checkObsVal'+i+'" value="3">'+
+                    '</div></div>';
                     child2.className='col-md-1 contIconObs';
-                    child2.setAttribute('aria-hidden', 'true');
-                    child2.setAttribute('data-toggle', 'tooltip');
-                    child2.setAttribute('data-placement', 'right');
-                    child2.setAttribute('title', 'Realizado');
-                    //child2.style.pointerEvents = 'none';
+                    child2.style.backgroundColor="#bdbdbd";
+                    child2.style.padding="5px";
                   document.getElementById('getObs').appendChild(child2);
-                } else {
+
+                  var child3 = document.createElement('div');
+                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+'" aria-hidden="true"></i>';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#ffa000";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '2':
+                    var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObsVer fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                    child2.className='col-md-1 contIconObs';
+                    child2.style.backgroundColor="#afb42b";
+                    document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#9e9d24";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '3':
                   var child2 = document.createElement('div');
-                    child2.innerHTML = '<i class="iconObs fa fa-square-o" aria-hidden="true"></i>';
-                    child2.className='col-md-1 contIconObs';
-                    child2.setAttribute('aria-hidden', 'true');
-                    child2.setAttribute('data-toggle', 'tooltip');
-                    child2.setAttribute('data-placement', 'right');
-                    child2.setAttribute('title', 'Por Concluir');
-                    //child2.style.pointerEvents = 'none';
+                  child2.innerHTML = '<i class="iconObsVer fa fa-times-circle-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child2.className='col-md-1 contIconObs';
+                  child2.style.backgroundColor="#ff5252";
                   document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                  child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child3.className='col-md-1 contIconObsVal';
+                  child3.style.backgroundColor="#ff1744";
+                  document.getElementById('getObs').appendChild(child3);
+                    break;
+                  default:
+                    alert('Error');
                 }
+
+
+
+
               }
+              arrayEnable.includes("1")?document.getElementById('sendObsVal').disabled=false:document.getElementById('sendObsVal').disabled=true;
+              //console.log(arrayEnable);
 
               $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();   
@@ -1197,11 +1276,100 @@ function sumArray(total, num) {
           });
         }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        document.getElementById('sendObsVal').addEventListener('click', sendObsVal, false);
+
+        function sendObsVal() {
+          var obs = document.getElementsByClassName('checkObsVal');
+          var aoe = document.getElementsByClassName('edoColorVal');
+          var activa = document.getElementsByClassName('edoColorVal')[0];
+          var actdos = document.getElementsByClassName('actDos')[0];
+
+          var id = this.getAttribute('data-id');
+          var arrayObs = [];
+          for (var i = 0; i < obs.length; i++) {
+            if (obs[i].checked){
+              arrayObs.push(obs[i].getAttribute('data-id')+'|'+obs[i].value);
+            }
+          }
+          
+
+
+          //////////////////////////////////////////////////////////////////////////////////////
+          console.log(arrayObs.length,aoe.length);
+
+          var varColor;
+          arrayObs.length==aoe.length?varColor=4:varColor=2;
+          arrayObs.length==aoe.length&&actdos?varColor=1:'';
+          //arrayObs.length<aoe.length?varColor=2:'';
+          console.log(varColor);
+
+          //////////////////////////////////////////////////////////////////////////////////////
+
+
+
+          if (arrayObs.length>0) {
+
+          $.ajax({
+             type:'POST',
+             url:"sendidObsVal",
+             data:{"_token": token,id:id,data:arrayObs,color:varColor},
+             success:function(data){ 
+              //swal('Actividad eliminada', "", "success");
+              swal({
+                title: "Datos enviados",
+                text: "",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true
+              },
+              function(isConfirm) {
+                if (isConfirm) {
+                  $('#modalOpservaciones').modal('hide');
+                  //console.log(data);
+                  switch (varColor) {
+                    case 1:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#f48fb1';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    case 2:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#ffb300';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    case 3:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#ffb300';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    case 4:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#c0ca33';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    default:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='';
+                  }
+                }
+              });
+            }
+          });
+
+        } else {
+          swal('Seleccione al menos una observación', "", "warning");
+        }
+
+        }
+
+        
         $('#modalOpservaciones').on('hide.bs.modal', function () {
           document.getElementById('sendObservaciones').setAttribute('data-id', '');
+          document.getElementById('sendObsVal').setAttribute('data-id', '');
           document.getElementById('contObservaciones').innerHTML="";
           document.getElementById('getObs').innerHTML="";
-           document.getElementById('ModalTitle').innerHTML="";
+          document.getElementById('ModalTitle').innerHTML="";
+          document.getElementById('dataHistorial').textContent="";
+          document.getElementById('sendObsVal').disabled=true;
         })
 
         document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
@@ -1249,6 +1417,7 @@ function sumArray(total, num) {
         document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false);
 
         function sendOBS() {
+          var uni = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].value;
           var id = this.getAttribute('data-id');
           var obs = document.getElementsByClassName('obsTexto');
           var cla = document.getElementById('claveProEsp').textContent;
@@ -1256,14 +1425,23 @@ function sumArray(total, num) {
           for (var i = 0; i < obs.length; i++) {
             obs[i].textContent ? arrayObs.push(obs[i].textContent) : '';
           }
-          //console.log(arrayObs.length)
+          var varColor;
+          var aoe = document.getElementsByClassName('checkObsVal');
+          aoe.length>0?varColor=2:varColor=1;
+          console.log(varColor, aoe.length)
+
+          var obsCamp = parseInt(document.getElementById('campanaAlertObs').textContent);
+          isNaN(obsCamp)?obsCamp=0:'';
+
           if (arrayObs.length>0) {
 
           $.ajax({
              type:'POST',
              url:"sendobservacion",
-             data:{"_token": token,id:id,data:arrayObs,cla:cla},
+             data:{"_token": token,id:id,data:arrayObs,cla:cla,uni:uni,color:varColor},
              success:function(data){ 
+              console.log(data);
+              document.getElementById('campanaAlertObs').textContent=(arrayObs.length+parseInt(obsCamp));
               swal('Actividad eliminada', "", "success");
               swal({
                 title: "Datos enviados",
@@ -1276,8 +1454,21 @@ function sumArray(total, num) {
               function(isConfirm) {
                 if (isConfirm) {
                   $('#modalOpservaciones').modal('hide');
-                  document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#ff6f00';
-                  document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+
+                  switch (varColor) {
+                    case 2:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#ffb300';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    case 1:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#f48fb1';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000';
+                      break;
+                    default:
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='';
+                      document.getElementById('act'+id).querySelector('.fa-eye').style.color='';
+                  }
+
                 }
               });
             }

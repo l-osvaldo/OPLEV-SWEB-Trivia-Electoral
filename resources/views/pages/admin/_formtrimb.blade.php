@@ -201,7 +201,7 @@
 
 
 
-<form method="post" action="{{ route('reportes.poa.trimestral') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+<form method="get" action="{{ route('reportes.poa.trimestral') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
   {{ csrf_field() }}
 
   <div class="row">

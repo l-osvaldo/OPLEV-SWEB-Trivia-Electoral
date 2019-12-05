@@ -25,9 +25,12 @@ class ReportesController extends Controller
       if (Auth::user()->idarea==3)              
         $programas = Programa::where('reprogramacion', '<', 3)->get();
       else
+        $user   = auth()->user();
+      $areaId = $user->idarea;
         $programas = Programa::where('idprograma', '=', 1)->get();
       $action = route('reportes.poa');
-      return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses'));
+      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+      return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses','observaciones'));
     }
 
 
@@ -47,7 +50,7 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-           $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+           $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
 
           return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
         }
@@ -64,7 +67,9 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date_fin', 'desc')->get();
+          $user   = auth()->user();
+          $areaId = $user->idarea;
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
           return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
         }
       }
@@ -151,7 +156,7 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
          return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin','observaciones'));
     }
@@ -164,7 +169,7 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
 
           $mes_anterior  = date("m")-1;
 
@@ -193,7 +198,7 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
 
           $rfijo = DB::table('alertas')->select('ale_acronimo', 'ale_mes')->where('ale_clase', 'final')
         //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
@@ -375,13 +380,13 @@ class ReportesController extends Controller
     </tr>
     </table>
 
-     <table border="0" align="center" width="100%" style="border-collapse: collapse;text-align:center;margin:2px 0;">
-    <tr style="background:#ccc;text-align: center;border: 1px solid black;border-bottom:1px;font-weight: bold;font-size:14px;">
+     <table border="0" align="center" width="100%" style="border-collapse: collapse;text-align:center;margin:2px 0;border-top:1px solid black;">
+    <tr style="background:#ccc;text-align: center;border-bottom: .5px solid black;font-weight: bold;font-size:14px;">
         <td width="2%" colspan="1" style="border-left:1px solid black;">No. ACT.</td> 
         <td width="8%" colspan="1" style="border-left:1px solid black;">AVANCE MENSUAL<br><div style="width: 50%; float: left;text-align: center;">PROG.</div> <div style="width: 50%; float: left;text-align: center;">REAL.</div></td> 
         <td width="28%" colspan="1" style="border-left:1px solid black;">DESCRIPCIÓN</td> 
         <td width="22%" colspan="1" style="border-left:1px solid black;">SOPORTE</td> 
-        <td width="22%" colspan="1" style="border-left:1px solid black;">OBSERVACIONES</td>
+        <td width="22%" colspan="1" style="border-left:1px solid black;border-right:1px solid black;">OBSERVACIONES</td>
     </tr>
 
   </table>
@@ -1069,7 +1074,7 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
 
           return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
 

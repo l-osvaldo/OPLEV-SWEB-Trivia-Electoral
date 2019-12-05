@@ -18,9 +18,12 @@ class AdicionalesController extends Controller
     public function index()
     {
       if ( Auth::check() )
-      {        
+      { 
+        $user   = auth()->user();
+        $areaId = $user->idarea;
         $meses = Mes::all();
-        return view('pages.adicionales.index')->with( compact('meses') );
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+        return view('pages.adicionales.index')->with( compact('meses','observaciones') );
       }
       else
       {
@@ -52,6 +55,9 @@ class AdicionalesController extends Controller
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();                
         $existeAdicional = Adicional::select('descadicional', 'soporteadicional', 'observaadicional')->where('idarea', $idArea)->where('idmes', $idmesreportar)->exists();
+        $user   = auth()->user();
+        $areaId = $user->idarea;
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
 
 
         //devuelve false sino existe
@@ -61,13 +67,13 @@ class AdicionalesController extends Controller
           $adicional = Adicional::find($id[0]->id);
           $put = TRUE;
           $action = route('adicionales.update', ['adicional' => $adicional->id ]);
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones') );
         }
         else
         {
           $adicional = new Adicional();
           $action = route('adicionales.store');
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones') );
         }
       }
       else

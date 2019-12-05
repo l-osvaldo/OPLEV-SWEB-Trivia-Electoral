@@ -77,7 +77,7 @@
 
           @foreach( $observaciones as $obs )
             <a href="#" class="dropdown-item texto-negro alerta-texto {{ $obs->obs_tipo === 1 ? 'nueva-alerta' : 'no' }}">
-            <div style="display: inline-block;float: left;">{{$obs->obs_clave}} - {{$obs->obs_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date_fin)) }}</div>
+            <div style="display: inline-block;float: left;">{{$obs->obs_clave}} - {{$obs->obs_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
             </a>
           @endforeach
 

@@ -37,6 +37,7 @@ class DemoEmail extends Mailable
     {
         return $this->from('sipsei@oplever.org.mx')
                     ->view('mails.demo')
+                    ->subject('SIPSEI')
                     ->text('mails.demo_plain')
                     ->with(
                       [

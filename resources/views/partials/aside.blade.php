@@ -59,7 +59,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 <!-- Brand Logo -->
     <a href="{{ route('programa.index') }}" class="brand-link">
-      <img src="{{ asset('images/logosipseir.png') }}" width="100%" alt="SIPSEI Logo" class="elevation-3"><br>
+      <img src="{{ asset('images/logosipseir.png') }}" width="100%" alt="SIPSEI Logo" class=""><br>
       <div class="brand-text" style="font-size: .9rem;letter-spacing: 2px;line-height: 1 !important;text-align: center;padding: .5rem 0 0 0;">Sistema Integral de<br>Planeación, Seguimiento y<br>Evaluación Institucional</div>
     </a>
 

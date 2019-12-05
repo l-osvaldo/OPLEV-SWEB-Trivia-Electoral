@@ -523,7 +523,7 @@ $.ajaxSetup({
 
             document.getElementById("errorEmail").classList.remove('hidden');
             document.getElementById("loader").classList.add('hidden');
-            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave!';
+            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave';
 
             }
         });
@@ -825,37 +825,96 @@ $.ajaxSetup({
              url:"getobservacion",
              data:{"_token": token,id:id},
              success:function(data){
-              //console.log(data)
+              //console.log(data.length)
+              var arrayEnable = [];
+
+              data.length==0 ? 
+              document.getElementById('dataHistorial').textContent="Sin observaciones" 
+              :
+              document.getElementById('dataHistorial').textContent="Historial de observaciones";
+
               document.getElementById('ModalTitle').innerHTML=uni+" | Actividad: "+act+" | "+cla;
               for (var i = 0; i < data.length; i++) {
+                arrayEnable.push(data[i].obs_status);
+                var pri = new Date(Date.parse(data[i].obs_date));
+                var seg = new Date(Date.parse(data[i].obs_date_dos));
+                var tres = new Date(Date.parse(data[i].obs_date_tres));
 
-                var ini = Date.parse(data[i].obs_date);
-                var pri = new Date(ini);
-                var dos = Date.parse(data[i].obs_date_fin);
-                var seg = new Date(dos);
-                var datestring;
-                isNaN(seg.getDate()) ? datestring = '' : datestring = ' | '+seg.getDate()+'/'+(seg.getMonth()+1)+'/'+seg.getFullYear();
 
                 var child = document.createElement('div');
-                    child.innerHTML = data[i].obs_desc+' <span class="dateObs">'+pri.getDate()+'/'+(pri.getMonth()+1)+'/'+pri.getFullYear()+datestring+'</span>';
-                    child.className='col-md-11 contObstext';
+                    child.innerHTML = data[i].obs_desc;
+                    child.className='col-md-10 contObstext';
                 document.getElementById('getObs').appendChild(child); 
-                if (data[i].obs_status == '0') {
-                  var child2 = document.createElement('div');
-                    child2.innerHTML = '<input type="checkbox" data-id="'+data[i].id+'" class="checkObs" name="checkObs'+i+'" value="1">';
+
+
+
+                switch (data[i].obs_status) {
+                  case '0':
+                    var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObsVer fa fa-cogs" style="color:#000;" data-toggle="tooltip" data-placement="top" title="En proceso de concluir, enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+'" aria-hidden="true"></i>';
                     child2.className='col-md-1 contIconObs';
-                    child2.setAttribute('aria-hidden', 'true');
-                    child2.setAttribute('data-toggle', 'tooltip');
-                    child2.setAttribute('data-placement', 'right');
-                    child2.setAttribute('title', 'Por Concluir');
-                  document.getElementById('getObs').appendChild(child2);
-                } else {
+                    child2.style.backgroundColor="#f48fb1";
+                    document.getElementById('getObs').appendChild(child2);
+
+                    var child3 = document.createElement('div');
+                    child3.innerHTML = '<input type="checkbox" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Concluir" aria-hidden="true" data-id="'+data[i].id+'" class="checkObs edoColor" name="checkObs'+i+'" value="1">';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#e082a2";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '1':
                   var child2 = document.createElement('div');
-                    child2.innerHTML = '<i class="iconObs fa fa-check-square-o" aria-hidden="true"></i>';
+                    child2.innerHTML = '<i class="iconObsVer fa fa-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Por validar" aria-hidden="true"></i>';
                     child2.className='col-md-1 contIconObs';
+                    child2.style.backgroundColor="#f48fb1";
+                    document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+'" aria-hidden="true"></i>';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#e082a2";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '2':
+                    var child2 = document.createElement('div');
+                    child2.innerHTML = '<i class="iconObsVer fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                    child2.className='col-md-1 contIconObs';
+                    child2.style.backgroundColor="#afb42b";
+                    document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                    child3.className='col-md-1 contIconObsVal';
+                    child3.style.backgroundColor="#9e9d24";
+                    document.getElementById('getObs').appendChild(child3);
+                    break;
+                  case '3':
+                  var child2 = document.createElement('div');
+                  child2.innerHTML = '<i class="iconObsVer fa fa-times-circle-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child2.className='col-md-1 contIconObs';
+                  child2.style.backgroundColor="#ff5252";
                   document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                  child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child3.className='col-md-1 contIconObsVal';
+                  child3.style.backgroundColor="#ff1744";
+                  document.getElementById('getObs').appendChild(child3);
+                    break;
+                  default:
+                    alert('Error');
                 }
+
+
+
               }
+              arrayEnable.includes("0")?document.getElementById('sendObservaciones').disabled=false:document.getElementById('sendObservaciones').disabled=true;
+              //console.log(arrayEnable);
+
+              $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();   
+              });
+
             }
           });
         }
@@ -864,6 +923,8 @@ $.ajaxSetup({
           document.getElementById('sendObservaciones').setAttribute('data-id', '');
           document.getElementById('getObs').innerHTML="";
           document.getElementById('ModalTitle').innerHTML="";
+          document.getElementById('dataHistorial').textContent="";
+          document.getElementById('sendObservaciones').disabled=true;
         })
 
         document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false);
@@ -877,14 +938,38 @@ $.ajaxSetup({
               arrayObs.push(obs[i].getAttribute('data-id')+'|'+obs[i].value);
             }
           }
-          console.log(arrayObs)
+
+          //////////////////////////////////////////////////////////////////////////////////////
+          var aoe = document.getElementsByClassName('edoColor');
+          //console.log(arrayObs.length,aoe.length);
+
+          //var arrayAoe = [];
+          //for (var i = 0; i < aoe.length; i++) {
+          //    arrayObs.length>0?arrayAoe.push('2'):arrayAoe.push(aoe[i].getAttribute('data-aoe'));
+          //}
+
+          //const unique = (value, index, self) => {
+          //  return self.indexOf(value) === index
+          //}
+          //var tipoColor = arrayAoe.filter(unique);
+          var varColor;
+          arrayObs.length==aoe.length?varColor=3:varColor=2;
+          console.log(varColor);
+          //console.log(arrayObs,tipoColor);
+          //console.log(varColor);
+          //////////////////////////////////////////////////////////////////////////////////////
+
+
           if (arrayObs.length>0) {
+
+
 
           $.ajax({
              type:'POST',
              url:"sendidObs",
-             data:{"_token": token,id:id,data:arrayObs},
-             success:function(data){ 
+             data:{"_token": token,id:id,data:arrayObs,color:varColor},
+             success:function(data){
+              document.getElementById('campanaAlertfin').textContent=(aoe.length-arrayObs.length);
               swal('Actividad eliminada', "", "success");
               swal({
                 title: "Datos enviados",
@@ -897,8 +982,8 @@ $.ajaxSetup({
               function(isConfirm) {
                 if (isConfirm) {
                   $('#modalOpservaciones').modal('hide');
-                  console.log(data);
-                  data == 0 ? (document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='',document.getElementById('act'+id).querySelector('.fa-eye').style.color='') : '';
+                  //console.log(data);
+                  data == 0 ? (document.getElementById('act'+id).querySelector('.fa-eye').style.backgroundColor='#f48fb1',document.getElementById('act'+id).querySelector('.fa-eye').style.color='#000') : '';
                 }
               });
             }
@@ -1050,7 +1135,7 @@ $.ajaxSetup({
             } else {
 
             document.getElementById("errorEmail").classList.remove('hidden');
-            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave!';
+            document.getElementById("errorEmail").innerHTML = 'Ingrese su clave';
 
             }
           
@@ -1355,7 +1440,26 @@ $.ajaxSetup({
           observa.setAttribute('data-toggle', 'tooltip');
           observa.setAttribute('data-placement', 'right');
           observa.setAttribute('title', 'observaciones');
-           data[0][j].act_obs == 0 ? '' : (observa.style.backgroundColor='#ff6f00',observa.style.color='#000'); 
+          switch (data[0][j].act_obs_edit) {
+            case 1:
+              observa.style.backgroundColor='#f48fb1';
+              observa.style.color='#000';
+              break;
+            case 2:
+              observa.style.backgroundColor='#f48fb1';
+              observa.style.color='#000';
+              break;
+            case 3:
+              observa.style.backgroundColor='#f48fb1';
+              observa.style.color='#000';
+              break;
+            case 4:
+              observa.style.backgroundColor='#c0ca33';
+              observa.style.color='#000';
+              break;
+            default:
+             observa.style.backgroundColor='#fff';
+          } 
           observa.addEventListener("click", verObservaciones);
 
           rowAct.appendChild(observa);

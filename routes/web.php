@@ -39,19 +39,19 @@ Route::get('/bitacorames', 'ReportesController@bitacorames')->name('bitacorames'
 Route::get('/tablames', 'ReportesController@tablames')->name('tablames');
 
 
-Route::post('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');
-Route::post('/reportes/indicadores', 'ReportesController@indicadores')->name('reportes.indicadores');
+Route::get('/reportes/poa', 'ReportesController@poa')->name('reportes.poa');
+Route::get('/reportes/indicadores', 'ReportesController@indicadores')->name('reportes.indicadores');
 Route::resource('programa', 'PoaController');
 Auth::routes();
 Route::resource('adicionales', 'AdicionalesController');
-Route::post('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
+Route::get('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
 Route::post('/rtrimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 
 Route::put('/admin/guardarObsTrim', 'AdminController@guardarObsTrim')->name('admin.guardar.obs.trim');
 
 
-Route::post('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name('reportes.poa.trimestral');
+Route::get('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name('reportes.poa.trimestral');
 
 Route::resource('admin', 'AdminController');
 
@@ -80,6 +80,7 @@ Route::post('/pdfindicador', 'ReportesController@pdfindicador')->name('reportes.
 Route::post('/sendobservacion', 'PoaController@sendobservacion')->name('sendobservacion');
 Route::post('/getobservacion', 'PoaController@getobservacion')->name('getobservacion');
 Route::post('/sendidObs', 'PoaController@sendidObs')->name('sendidObs');
+Route::post('/sendidObsVal', 'PoaController@sendidObsVal')->name('sendidObsVal');
 Route::post('/clickalertasobs', 'PoaController@clickalertas')->name('clickalertasobs');
 });
 

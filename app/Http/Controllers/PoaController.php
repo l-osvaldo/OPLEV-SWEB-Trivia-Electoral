@@ -40,14 +40,16 @@ class PoaController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones'));
         }
         else
         { 
+          $user   = auth()->user();
+          $areaId = $user->idarea;
           $meses = Mes::all();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date_fin', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
           return view('pages.poa.index')->with( compact('meses','observaciones'));
         }
       }
@@ -84,8 +86,11 @@ class PoaController extends Controller
         else
           $programas = Programa::where('idprograma', '=', 1)->get();
         $action = route('programa.store');
+        $user   = auth()->user();
+        $areaId = $user->idarea;
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
         
-        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes') );
+        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones') );
       }
       else
       {
@@ -162,7 +167,7 @@ class PoaController extends Controller
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      Alert::success('', 'Notificación registrada')->autoclose(3500);
+      Alert::success('', 'Actividad guardada')->autoclose(3500);
       return redirect()->route('programa.index');
     }
 
@@ -199,10 +204,12 @@ class PoaController extends Controller
     {
         //
       $user   = auth()->user();
-      $userId = $user->id;
+      $userId = $user->iduser;
+      $areaId = $user->idarea;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
       //dd($resultado);exit;
-      return view('pages.poa.alertames')->with( compact('resultado'));
+      return view('pages.poa.alertames')->with( compact('resultado','observaciones'));
     }
 
     /***/
@@ -213,6 +220,7 @@ class PoaController extends Controller
 
       $user   = auth()->user();
       $userId = $user->id;
+      $areaId = $user->idarea;
 
       if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         {          
@@ -228,12 +236,14 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            $observaciones = DB::table('observaciones')->where('obs_status', 1)->orderBy('obs_date_fin', 'desc')->get();
+            $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
 
 
             return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades','observaciones'));
         }
         else { 
+
+          //dd($userId);exit;
           
             $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
             $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
@@ -244,7 +254,7 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date_fin', 'desc')->get();
+            $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
 
 
             return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones'));
@@ -408,11 +418,12 @@ class PoaController extends Controller
 
         $data = $request->data;
         $id  = $request->id;
+        $color  = $request->color;
         foreach ($data  as $datas) {
           $idNum = explode("|",$datas);
           $updateNum= DB::table('observaciones')->where('id', $idNum[0])->update([
             'obs_status' => $idNum[1],
-            'obs_date_fin'=>date('Y-m-d H:i:s'),
+            'obs_date_dos'=>date('Y-m-d H:i:s'),
             'obs_acronimo'=>$acronimo,
             'obs_tipo'=>'0'
           ]);
@@ -422,6 +433,41 @@ class PoaController extends Controller
 
         $act2 = actividadesdos::find($id);
         $act2->act_obs = $count;
+        $act2->act_obs_edit = $color;
+        $act2->save();
+
+        return response()->json($count);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function sendidObsVal(Request $request)
+    {
+      if (Auth::check()) {
+        $user   = auth()->user();
+        $acronimo = 'UTP';
+
+        $data = $request->data;
+        $id  = $request->id;
+        $color  = $request->color;
+        foreach ($data  as $datas) {
+          $idNum = explode("|",$datas);
+          $updateNum= DB::table('observaciones')->where('id', $idNum[0])->update([
+            'obs_status' => $idNum[1],
+            'obs_date_tres'=>date('Y-m-d H:i:s'),
+            'obs_acronimo'=>$acronimo,
+            'obs_tipo'=>'1'
+          ]);
+        }
+
+        $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '2')->count();
+
+        $act2 = actividadesdos::find($id);
+        $act2->act_obs = $count;
+        $act2->act_obs_edit = $color;
         $act2->save();
 
         return response()->json($count);
@@ -439,6 +485,8 @@ class PoaController extends Controller
         $data = $request->data;
         $id = $request->id;
         $cla = $request->cla;
+        $uni = $request->uni;
+        $color  = $request->color;
 
         $user   = auth()->user();
         $userId = $user->id;
@@ -452,6 +500,7 @@ class PoaController extends Controller
             $obs->obs_idactividad = $id;
             $obs->obs_status = '0';
             $obs->obs_date = date('Y-m-d H:i:s');
+            $obs->obs_id_area = $uni;
             $obs->obs_clave = $cla;
             $obs->obs_acronimo = 'UTP';
             $obs->obs_tipo = '1';
@@ -463,11 +512,12 @@ class PoaController extends Controller
 
         $act2 = actividadesdos::find($id);
         $act2->act_obs = $count;
+        $act2->act_obs_edit = $color;
         $act2->save();
 
 
 
-        return response()->json('listo');
+        return response()->json('listo UTP send');
 
       } else {
         return route('auth/login');
@@ -662,7 +712,8 @@ class PoaController extends Controller
       $idPrograma = $request->programa;
       $idProgramaEsp = $request->programaEsp;
 
-      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();
+      //$actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();
+      $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->where('reprogramacion','<=',3)->orderBy('numactividad')->get();
       return response()->json($actividades);
 
     }

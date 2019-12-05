@@ -65,13 +65,17 @@
 .indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .obsTexto{border:solid 1px #f8bbd0;margin:3px 0;position: relative;background: #fff;}
 #addObservaciones{cursor: pointer;}
-.contIconObs{background: #eceff1;margin: 0 0 5px 0;display: flex;align-items: center;justify-content: center;border-radius: 0 5px 5px 0;}
-.iconObs{color: #EA0D94; font-size: 18px;cursor: pointer;}
+.contIconObs{background: #eceff1;margin: 0 0 5px 0;display: flex;align-items: center;justify-content: center;color: #090 !important;}
+.contIconObsVal{background: #eceff1;margin: 0 0 5px 0;display: flex;align-items: center;justify-content: center;border-radius: 0 5px 5px 0;}
+.iconObs{color: #EA0D94; font-size: 18px;}
+.iconObsVer{color: #090; font-size: 18px;}
 .contObstext{background-color: #eceff1; margin-bottom:5px; padding: 3px; border-radius: 5px 0 0 5px;}
-.dateObs{color: #EA0D94; font-weight: bold;text-align: center;background: #efefef;margin: 0 0 5px 0;display: flex;align-items: center;}
 #contObservaciones{padding: 5px; min-height: 20px; height: 20px; height: auto !important; }
 .contObse{margin: 4px 0;background: #eceff1;padding: 5px; border-radius: 5px;}
+.checkObs,.checObsVal{cursor: pointer;}
 </style>
+
+
 
   <!-- Main content -->
   <section class="content" style="padding-top: .5%;">
@@ -474,7 +478,7 @@
 <div class="modal fade bd-example-modal-lg" id="modalOpservaciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background: #eceff1;">
 
           <h5 class="modal-title" id="ModalTitle"></h5>
         
@@ -490,19 +494,21 @@
 
             <h5 id="addObservaciones">Nueva Observación <i class="fa fa-plus-circle" aria-hidden="true"></i></h5>
             <div class="row" style="margin-bottom: 10px;">
-              <div class="col-md-12" id="contObservaciones"></div>
+              <div class="col-md-12" id="contObservaciones">
+                
+              </div>
             </div>
+
+            <button type="button" class="btn btn-primary" id="sendObservaciones">Enviar</button>
             <hr>
-            <h5>Historial</h5>
-            <div class="row" id="getObs">
-               
-            </div>
+            <h5 id="dataHistorial"></h5>
+            <div class="row" style="margin-bottom: 20px;" id="getObs"></div>
+
+            <button type="button" class="btn btn-primary" id="sendObsVal" disabled>Validar</button>
             @else
-            <h5>Historial</h5>
-            <div class="row" id="getObs">
-
-            </div>
-
+            <h5 id="dataHistorial"></h5>
+            <div class="row" style="margin-bottom: 20px;" id="getObs"></div>
+            <button type="button" class="btn btn-primary" id="sendObservaciones" disabled>Enviar reporte</button>
             @endif
 
 
@@ -511,12 +517,7 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
-          <button type="button" class="btn btn-primary" id="sendObservaciones">Enviar Observaciones</button>
-        @else
-          <button type="button" class="btn btn-primary" id="sendObservaciones">Enviar reporte</button>
-        @endif
+        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button-->
         
       </div>
     </div>

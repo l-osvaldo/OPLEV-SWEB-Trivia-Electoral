@@ -28,7 +28,7 @@
       </div>
     @endif
 
-<form method="post" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+<form method="get" action="{{ $action }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
   {{ csrf_field() }}
 
 

@@ -158,10 +158,18 @@
                   <div class="col-md-4" style="margin-bottom: 1em;">
                   <label>Realizado en el Mes Seleccionado: <span id="mesActual" class="textoPrincipal"></span></label>
                   
-                    @if(Auth::user()->hasRole('admin'))                         
+                    @if(Auth::user()->hasRole('admin')) 
+                    <div class="row">
+                      <div class="col-md-4">                         
                         <input type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
+                      </div>
+                    </div>
                     @else
+                    <div class="row">
+                      <div class="col-md-4"> 
                         <input disabled type="text" class="form-control cantidadrealizada" id="realizadomes_admin" name="realizadomes_admin" placeholder="" maxlength="3">
+                      </div>
+                    </div>
                     @endif
                   </div>
                   </div>
@@ -225,7 +233,7 @@
 </div>
 
 <div class="col-md-6" style="margin-bottom: 1em;">
-<form method="post" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" target="_blank">
+<form method="get" action="{{ route('reportes.poa') }}" enctype="multipart/form-data" target="_blank">
     {{ csrf_field() }}
      <input type="hidden" id="areareporte" name="areareporte" value="">
     <input type="hidden" id="mesreporte" name="mesreporte" value="">

@@ -149,8 +149,12 @@
     <div class="row">
     <div class="col-md-12" style="margin-bottom: 1em;">
 
-        <label>4. Realizado en este Mes - <span class="textoPrincipal">{{$mes[0]->mes}}</span></label>           
-        <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="" maxlength="3">
+        <label>4. Realizado en este Mes - <span class="textoPrincipal">{{$mes[0]->mes}}</span></label>
+        <div class="row">
+          <div class="col-md-6">            
+            <input type="text" class="form-control cantidadrealizada" id="realizadomes" name="realizadomes" placeholder="" maxlength="3">
+          </div>
+        </div>
 
     </div>
     </div>

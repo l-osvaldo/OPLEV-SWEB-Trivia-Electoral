@@ -29,7 +29,7 @@
 
 <div class="row">
 <div class="contPanel">
-    <h3 class="textoPrincipal">Notificación mensual</h3>
+    <h3 class="textoPrincipal">Notificación mensual a la Unidad Técnica de Planeación</h3>
     <div id="enero" data-mesc="enero" class="mesesRep">ENE</div>
     <div id="febrero" data-mesc="febrero" class="mesesRep">FEB</div>
     <div id="marzo" data-mesc="marzo" class="mesesRep">MAR</div>
@@ -40,7 +40,7 @@
     <div id="julio" data-mesc="julio" class="mesesRep" >JUL</div>
     <div id="agosto" data-mesc="agosto" class="mesesRep">AGO</div>
     <div id="septiembre" data-mesc="septiembre" class="mesesRep">SEP</div>
-    <div id="octubre" data-mesc="octubre" class="mesesOff">OCT</div>
+    <div id="octubre" data-mesc="octubre" class="mesesRep">OCT</div>
     <div id="noviembre" data-mesc="noviembre" class="mesesOff">NOV</div>
     <div id="diciembre" data-mesc="diciembre" class="mesesOff">DIC</div>
 </div>
@@ -115,7 +115,7 @@ function setid() {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="repEmail" data-mes="">Continuar y Notificar</button>
+        <button type="button" class="btn btn-primary" id="repEmail" data-mes="">Notificar a UTP</button>
       </div>
     </div>
   </div>
