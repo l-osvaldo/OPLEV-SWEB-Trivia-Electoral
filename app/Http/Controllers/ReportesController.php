@@ -29,8 +29,14 @@ class ReportesController extends Controller
       $areaId = $user->idarea;
         $programas = Programa::where('idprograma', '=', 1)->get();
       $action = route('reportes.poa');
-      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
-      return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses','observaciones'));
+      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->orderBy('obs_date', 'desc')->get();
+
+      $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->orderBy('obs_date', 'desc')->get();
+      return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses','observaciones', 'observacionesR'));
     }
 
 
@@ -50,9 +56,16 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-           $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
 
-          return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+          return view('pages.admin.repindicadores')->with( compact('action', 'programas', 'meses', 'areas','nfin', 'alertasfin','nalertas', 'alertas','observaciones', 'observacionesR'));
         }
         else
         { 
@@ -69,8 +82,14 @@ class ReportesController extends Controller
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
           $user   = auth()->user();
           $areaId = $user->idarea;
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
-          return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.reportes.repindicadores')->with( compact('action', 'programas', 'meses','nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
         }
       }
       else
@@ -156,9 +175,16 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
-         return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin','observaciones'));
+         return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
     }
 
      public function bitacorames(Request $request)
@@ -169,7 +195,14 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
 
           $mes_anterior  = date("m")-1;
 
@@ -186,7 +219,7 @@ class ReportesController extends Controller
         ->get();
 
           //dd($rfijo);exit;
-         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo', 'alertaMA','observaciones'));
+         return view('pages.admin.bitacorames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo', 'alertaMA','observaciones','observacionesR'));
     }
 
 
@@ -198,7 +231,14 @@ class ReportesController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
 
           $rfijo = DB::table('alertas')->select('ale_acronimo', 'ale_mes')->where('ale_clase', 'final')
         //->join('alertas', 'abreviatura', '=', 'ale_acronimo')
@@ -207,7 +247,7 @@ class ReportesController extends Controller
         ->get();
 
           //dd($rfijo);exit;
-         return view('pages.admin.tablames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo', 'observaciones'));
+         return view('pages.admin.tablames')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin', 'rfijo', 'observaciones','observacionesR'));
     }
 
 
@@ -1074,9 +1114,15 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
 
-          return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
+          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+          return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
 
 
 

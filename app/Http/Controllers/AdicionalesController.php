@@ -22,8 +22,13 @@ class AdicionalesController extends Controller
         $user   = auth()->user();
         $areaId = $user->idarea;
         $meses = Mes::all();
-        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
-        return view('pages.adicionales.index')->with( compact('meses','observaciones') );
+
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
+        return view('pages.adicionales.index')->with( compact('meses','observaciones','observacionesR') );
       }
       else
       {
@@ -57,7 +62,13 @@ class AdicionalesController extends Controller
         $existeAdicional = Adicional::select('descadicional', 'soporteadicional', 'observaadicional')->where('idarea', $idArea)->where('idmes', $idmesreportar)->exists();
         $user   = auth()->user();
         $areaId = $user->idarea;
-        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
+
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
 
 
         //devuelve false sino existe
@@ -67,13 +78,13 @@ class AdicionalesController extends Controller
           $adicional = Adicional::find($id[0]->id);
           $put = TRUE;
           $action = route('adicionales.update', ['adicional' => $adicional->id ]);
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones','observacionesR') );
         }
         else
         {
           $adicional = new Adicional();
           $action = route('adicionales.store');
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones','observacionesR') );
         }
       }
       else

@@ -83,7 +83,7 @@
             <a href="#" class="nav-link" style="background-color: #909821;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
-                POA
+                ELABORACIÓN POA
                 <i class="right fa fa-chevron-left" aria-hidden="true"></i>
               </p>
             </a>

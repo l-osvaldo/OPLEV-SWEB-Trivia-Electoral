@@ -530,7 +530,7 @@ $.ajaxSetup({
 
 
 
-        document.getElementById("addAct").addEventListener("click", checkActStatus);
+        document.getElementById("addAct")?document.getElementById("addAct").addEventListener("click", checkActStatus):'';
         var act = document.getElementById("contActividades");
 
         function checkActStatus(){
@@ -779,7 +779,7 @@ $.ajaxSetup({
         })
 
         //////////////////////////////////////////////////////////////////////
-        document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false);
+        document.getElementById('pdfIndicador')?document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false):'';
         function pdfindicador() {
           var id = this.getAttribute('data-id');
           //$.ajax({
@@ -927,7 +927,7 @@ $.ajaxSetup({
           document.getElementById('sendObservaciones').disabled=true;
         })
 
-        document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false);
+        document.getElementById('sendObservaciones')?document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false):'';
 
         function sendOBS() {
           var obs = document.getElementsByClassName('checkObs');
@@ -954,10 +954,14 @@ $.ajaxSetup({
           //var tipoColor = arrayAoe.filter(unique);
           var varColor;
           arrayObs.length==aoe.length?varColor=3:varColor=2;
-          console.log(varColor);
+          //console.log(arrayObs);
           //console.log(arrayObs,tipoColor);
           //console.log(varColor);
           //////////////////////////////////////////////////////////////////////////////////////
+          //////////////////////////////////////////////////////////////////////////////////////
+          //var obsCamp = parseInt(document.getElementById('campanaAlertfinR').textContent);
+          //isNaN(obsCamp)?obsCamp=0:'';
+          //document.getElementById('campanaAlertfinR').textContent=(parseInt(obsCamp-arrayObs.length));
 
 
           if (arrayObs.length>0) {
@@ -969,7 +973,32 @@ $.ajaxSetup({
              url:"sendidObs",
              data:{"_token": token,id:id,data:arrayObs,color:varColor},
              success:function(data){
-              document.getElementById('campanaAlertfin').textContent=(aoe.length-arrayObs.length);
+              console.log(data)
+              document.getElementById('campanaAlertfin').textContent=(data.length);
+              document.getElementById('obsDes1').innerHTML="";
+              for (var i = 0; i < data.length; i++) {
+                var d = new Date(Date.parse(data[i].obs_date));
+                var a1 = document.createElement('a');
+                a1.className="dropdown-item texto-negro alerta-texto";
+
+                var d1 = document.createElement('div');
+                d1.style.display='inline-block';
+                d1.style.float='left';
+                d1.textContent='Act.- '+data[i].numactividad+' | Prog.- '+data[i].obs_clave;
+                a1.appendChild(d1);
+
+                var d2 = document.createElement('div');
+                d2.style.display='inline-block';
+                d2.style.float='right';
+                d2.style.background='#EA0D94';
+                d2.style.color='#fff';
+                d2.style.borderRadius='5px';
+                d2.style.padding="1% 2%";
+                d2.textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+                a1.appendChild(d2);
+                document.getElementById('obsDes1').appendChild(a1);
+              }
+
               swal('Actividad eliminada', "", "success");
               swal({
                 title: "Datos enviados",
@@ -1151,7 +1180,7 @@ $.ajaxSetup({
           idDel == 0 ? removeActNew(this) : removeActInsert(this);
         }
 
-        document.getElementById('borraActividad').addEventListener('click', removeAct, false);
+        document.getElementById('borraActividad')?document.getElementById('borraActividad').addEventListener('click', removeAct, false):'';
 
         function removeActInsert(d){
           var id = d.parentNode.getAttribute('data-id');
@@ -1244,7 +1273,7 @@ $.ajaxSetup({
         }
 
 
-   document.getElementById('ePrograma').addEventListener("change", changePro, false);  
+   document.getElementById('ePrograma')?document.getElementById('ePrograma').addEventListener("change", changePro, false):'';  
    
   function changePro(){
     var pro = this.options[this.selectedIndex].value;
@@ -1277,7 +1306,7 @@ $.ajaxSetup({
     });
   }
 
-  document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false); 
+  document.getElementById('eProgramaEsp')?document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false):''; 
 
   function changeProEsp(){
     var proesp = this.options[this.selectedIndex].value;
@@ -1808,7 +1837,7 @@ function sumTPM(){
 sumTPM();
 
 //////////////////////////////////////////////////////////////////////
-document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false);
+document.getElementById('pdfela')?document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false):'';
 function pdfelaboracion() {
   var urlPdf;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';

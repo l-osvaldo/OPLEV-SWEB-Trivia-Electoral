@@ -62,6 +62,31 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
           <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #98989e;color: #c0ff00;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                ELABORACIÓN POA
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: block;">
+              <li class="nav-item">
+                <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <p>Registro de Actividades</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('reporteobs') }}" class="textSideOption nav-link {!! Request::is('reporteobs') ? 'active activeOn' : '' !!}">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  <p>Reporte Observaciones</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -89,11 +114,11 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+          <!--li class="nav-item has-treeview">
             <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar-check-o"></i> <p>POA 2020</p>
             </a>
-          </li>
+          </li-->
 
           </ul>
           </li>

@@ -634,7 +634,7 @@ $("#dates").change(function(){
           document.getElementById('buscarEntre').disabled = false;
         });
 
-  document.getElementById('eunidad').addEventListener("change", changeUnidad, false);
+  document.getElementById('eunidad')?document.getElementById('eunidad').addEventListener("change", changeUnidad, false):'';
    
   function changeUnidad(){
     var uni = this.options[this.selectedIndex].value;
@@ -645,7 +645,7 @@ $("#dates").change(function(){
     uni == '0' ? document.getElementById('ePrograma').disabled=true : (document.getElementById('ePrograma').disabled=false,getProEsp());
   }
 
-  document.getElementById('ePrograma').addEventListener("change", changePro, false);  
+  document.getElementById('ePrograma')?document.getElementById('ePrograma').addEventListener("change", changePro, false):'';  
    
   function changePro(){
     var pro = this.options[this.selectedIndex].value;
@@ -680,7 +680,7 @@ $("#dates").change(function(){
     });
   }
 
-  document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false); 
+  document.getElementById('eProgramaEsp')?document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false):''; 
 
   function changeProEsp(){
     var proesp = this.options[this.selectedIndex].value;
@@ -1123,7 +1123,7 @@ function sumArray(total, num) {
         })
 
         //////////////////////////////////////////////////////////////////////
-        document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false);
+        document.getElementById('pdfIndicador')?document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false):'';
         function pdfindicador() {
           var id = this.getAttribute('data-id');
           //$.ajax({
@@ -1206,7 +1206,7 @@ function sumArray(total, num) {
                     document.getElementById('getObs').appendChild(child2);
 
                     var child3 = document.createElement('div');
-                    child3.innerHTML = '<i class="iconObs fa fa-cogs" data-toggle="tooltip" style="color:#000;" data-placement="top" title="Por Concluir" aria-hidden="true"></i>';
+                    child3.innerHTML = '<i class="iconObs fa fa-cogs" data-toggle="tooltip" style="color:#000;" data-placement="top" title="Por atender" aria-hidden="true"></i>';
                     child3.className='col-md-1 contIconObsVal';
                     child3.style.backgroundColor="#e082a2";
                     document.getElementById('getObs').appendChild(child3);
@@ -1226,7 +1226,7 @@ function sumArray(total, num) {
                   document.getElementById('getObs').appendChild(child2);
 
                   var child3 = document.createElement('div');
-                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+'" aria-hidden="true"></i>';
+                    child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Atendido: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+'" aria-hidden="true"></i>';
                     child3.className='col-md-1 contIconObsVal';
                     child3.style.backgroundColor="#ffa000";
                     document.getElementById('getObs').appendChild(child3);
@@ -1278,7 +1278,7 @@ function sumArray(total, num) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        document.getElementById('sendObsVal').addEventListener('click', sendObsVal, false);
+        document.getElementById('sendObsVal')?document.getElementById('sendObsVal').addEventListener('click', sendObsVal, false):'';
 
         function sendObsVal() {
           var obs = document.getElementsByClassName('checkObsVal');
@@ -1306,7 +1306,8 @@ function sumArray(total, num) {
           console.log(varColor);
 
           //////////////////////////////////////////////////////////////////////////////////////
-
+          var obsCamp = parseInt(document.getElementById('campanaAlertObsR').textContent);
+          isNaN(obsCamp)?obsCamp=0:'';
 
 
           if (arrayObs.length>0) {
@@ -1317,6 +1318,31 @@ function sumArray(total, num) {
              data:{"_token": token,id:id,data:arrayObs,color:varColor},
              success:function(data){ 
               //swal('Actividad eliminada', "", "success");
+              console.log(data.length)
+              document.getElementById('campanaAlertObsR').textContent=(data.length);
+              document.getElementById('obsDesA').innerHTML="";
+              for (var i = 0; i < data.length; i++) {
+                var d = new Date(Date.parse(data[i].obs_date));
+                var a1 = document.createElement('a');
+                a1.className="dropdown-item texto-negro alerta-texto";
+
+                var d1 = document.createElement('div');
+                d1.style.display='inline-block';
+                d1.style.float='left';
+                d1.textContent='Act.- '+data[i].numactividad+' | Prog.- '+data[i].obs_clave;
+                a1.appendChild(d1);
+
+                var d2 = document.createElement('div');
+                d2.style.display='inline-block';
+                d2.style.float='right';
+                d2.style.background='#EA0D94';
+                d2.style.color='#fff';
+                d2.style.borderRadius='5px';
+                d2.style.padding="1% 2%";
+                d2.textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+                a1.appendChild(d2);
+                document.getElementById('obsDesA').appendChild(a1);
+              }
               swal({
                 title: "Datos enviados",
                 text: "",
@@ -1372,7 +1398,7 @@ function sumArray(total, num) {
           document.getElementById('sendObsVal').disabled=true;
         })
 
-        document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false);
+        document.getElementById('addObservaciones')?document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false):'';
 
         function addObservaciones(){
 
@@ -1414,7 +1440,7 @@ function sumArray(total, num) {
           }
         }
 
-        document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false);
+        document.getElementById('sendObservaciones')?document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false):'';
 
         function sendOBS() {
           var uni = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].value;
@@ -1441,7 +1467,30 @@ function sumArray(total, num) {
              data:{"_token": token,id:id,data:arrayObs,cla:cla,uni:uni,color:varColor},
              success:function(data){ 
               console.log(data);
-              document.getElementById('campanaAlertObs').textContent=(arrayObs.length+parseInt(obsCamp));
+              document.getElementById('campanaAlertObs').textContent=(data.length);
+              document.getElementById('obsDesB').innerHTML="";
+              for (var i = 0; i < data.length; i++) {
+                var d = new Date(Date.parse(data[i].obs_date));
+                var a1 = document.createElement('a');
+                a1.className="dropdown-item texto-negro alerta-texto";
+
+                var d1 = document.createElement('div');
+                d1.style.display='inline-block';
+                d1.style.float='left';
+                d1.textContent='Act.- '+data[i].numactividad+' | Prog.- '+data[i].obs_clave;
+                a1.appendChild(d1);
+
+                var d2 = document.createElement('div');
+                d2.style.display='inline-block';
+                d2.style.float='right';
+                d2.style.background='#EA0D94';
+                d2.style.color='#fff';
+                d2.style.borderRadius='5px';
+                d2.style.padding="1% 2%";
+                d2.textContent=d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+                a1.appendChild(d2);
+                document.getElementById('obsDesB').appendChild(a1);
+              }
               swal('Actividad eliminada', "", "success");
               swal({
                 title: "Datos enviados",
@@ -1481,7 +1530,7 @@ function sumArray(total, num) {
         }
 
         //////////////////////////////////////////////////////////////////////
-document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false);
+document.getElementById('pdfela')?document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false):'';
 function pdfelaboracion() {
   var urlPdf;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
@@ -1547,3 +1596,124 @@ function pdfelaboracion() {
   document.body.append(form);
   form.submit();
 }
+
+  document.getElementById('buscarOBS')?document.getElementById('buscarOBS').addEventListener('click', repObs, false):'';
+
+  function repObs(){
+    var idAO = document.getElementById("idAreaObs").value;
+    //console.log(idAO)
+  
+    $.ajax({
+       type:'POST',
+       url:"getidobs",
+       data:{"_token": token,id:idAO,},
+       success:function(data){
+       document.getElementById('resultObs').innerHTML="";
+
+       var tr1 = document.createElement("TR");
+
+       var fec = document.createElement("th");
+       fec.textContent = 'Fecha';
+       tr1.appendChild(fec);
+
+       var are = document.createElement("th");
+       are.textContent = 'Area';
+       tr1.appendChild(are);
+
+       var cla = document.createElement("th");
+       cla.textContent = 'Clave';
+       tr1.appendChild(cla);
+
+       var obs = document.createElement("th");
+       obs.textContent = 'Observación';
+       tr1.appendChild(obs);
+
+       var val = document.createElement("th");
+       val.textContent = 'Validado';
+       val.style.textAlign = "center";
+       tr1.appendChild(val);
+
+       var ate = document.createElement("th");
+       ate.textContent = 'Atendido';
+       ate.style.textAlign = "center";
+       tr1.appendChild(ate);
+
+       document.getElementById('resultObs').appendChild(tr1);
+
+       
+       console.log(data[0].length); 
+
+       for (var i = 0; i < data[0].length; i++) {
+        var tr = document.createElement("TR");
+
+        var fec = document.createElement("td");
+        fec.textContent = data[0][i].obs_date;
+        tr.appendChild(fec);
+
+        var are = document.createElement("td");
+        are.textContent = data[0][i].usu_acronimo;
+        tr.appendChild(are);
+
+        var cla = document.createElement("td");
+        cla.textContent = data[0][i].obs_clave;
+        tr.appendChild(cla);
+
+        var obs = document.createElement("td");
+        obs.textContent = data[0][i].obs_desc;
+        obs.style.width="50%";
+        tr.appendChild(obs);
+
+        var val = document.createElement("td");
+        val.style.textAlign = "center";
+        val.style.fontSize  = "23px";
+        var ic1 = document.createElement("i");
+
+        var ate = document.createElement("td");
+        ate.style.textAlign = "center";
+        ate.style.fontSize  = "23px";
+        var ic2 = document.createElement("i");
+
+        switch (data[0][i].obs_status) {
+          case '0':
+            val.innerHTML = '<i class="fa fa-paper-plane" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Enviado"></i>';
+            val.style.color = '#e082a2';
+            ate.innerHTML = '<i class="fa fa-cogs" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Por atender"></i>';
+            ate.style.color = '#e082a2';
+            break;
+          case '1':
+            val.innerHTML = '<i class="fa fa-square-o" aria-hidden="true" style="cursor:pointer;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Por validar"></i>';
+            val.style.color = '#ffa000';
+            ate.innerHTML = '<i class="fa fa-check-square-o" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: '+data[0][i].obs_date_dos+'"></i>';
+            ate.style.color = '#ffa000';
+            break;
+          case '2':
+            val.innerHTML = '<i class="fa fa-check-square-o" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Validado: '+data[0][i].obs_date_tres+'"></i>';
+            val.style.color = '#9e9d24';
+            ate.innerHTML = '<i class="fa fa-check-square-o" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: '+data[0][i].obs_date_dos+'"></i>';
+            ate.style.color = '#9e9d24';
+            break;
+          case '3':
+            val.innerHTML = '<i class="fa fa-times-circle" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="No validada: '+data[0][i].obs_date_tres+'"></i>';
+            val.style.color = '#ff1744';
+            ate.innerHTML = '<i class="fa fa-check-square-o" aria-hidden="true" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: '+data[0][i].obs_date_dos+'"></i>';
+            ate.style.color = '#ff1744';
+            break;
+          default:
+            val.innerHTML = '';
+            ate.innerHTML = '';
+        }
+
+        tr.appendChild(val);
+        tr.appendChild(ate);
+
+        document.getElementById('resultObs').appendChild(tr);
+       }
+
+       
+         $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+          });     
+
+      }
+    });
+  }

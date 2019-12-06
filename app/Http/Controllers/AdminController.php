@@ -187,8 +187,15 @@ class AdminController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
-          return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones'));
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.admin.poatrimestral')->with( compact('areas', 'trimestres', 'programas', 'action', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
 
         }
         else

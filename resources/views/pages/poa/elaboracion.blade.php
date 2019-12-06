@@ -58,7 +58,7 @@
 .totalesMes{border-right: solid 4px #f5f5f5;text-align: center;float: left;font-size: 14px;background: #fff;}
 .allItemTotal{width: 40.7%;text-align: center;height: auto;margin-top: 1%;}
 .contTotale{float: left;}
-#ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad,#ModalTitle{color:#EA0D94;}
+#ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad,#ModalTitle{color:#EA0D94;cursor: pointer;}
 .form-control:disabled, .form-control[readonly]{color: #ccc !important;}
 .indLabel{background: #cfd8dc;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .indEdit{background: #fff;margin-bottom: 1px;border:solid 2px #f8bbd0;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
@@ -73,6 +73,8 @@
 #contObservaciones{padding: 5px; min-height: 20px; height: 20px; height: auto !important; }
 .contObse{margin: 4px 0;background: #eceff1;padding: 5px; border-radius: 5px;}
 .checkObs,.checObsVal{cursor: pointer;}
+.btnpdfpoa{border:solid 1px #f9f9f9; background: #eceff1;border-radius: 3px; padding: 5px; margin-left: 30px;cursor: pointer;}
+.btnpdfpoa:hover{color: #EA0D94;background: #fff;}
 </style>
 
 
@@ -81,7 +83,7 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-file-pdf-o" aria-hidden="true" id="pdfela"></i></div>
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela"></i></div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">
         <img src="{{ asset('images/logoople.png') }}" alt="OPLE" class="ImgLogo" width="80%">
@@ -143,7 +145,7 @@
 
 
       @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
-         <small>Unidad responsable:<br>
+         <small>Unidad responsable:</small><br>
          <select class="form-control" style="border: 0;font-weight: bold;font-size: small;" id="eunidad" name="eunidad">
                 <option value="0">Seleccione una unidad</option>
                 @foreach( $unidades as $unidad )

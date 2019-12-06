@@ -40,17 +40,30 @@ class PoaController extends Controller
 
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
-          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones'));
+          return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
         }
         else
         { 
           $user   = auth()->user();
           $areaId = $user->idarea;
           $meses = Mes::all();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
-          return view('pages.poa.index')->with( compact('meses','observaciones'));
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.poa.index')->with( compact('meses','observaciones','observacionesR'));
         }
       }
       else
@@ -88,9 +101,16 @@ class PoaController extends Controller
         $action = route('programa.store');
         $user   = auth()->user();
         $areaId = $user->idarea;
-        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+        ->orderBy('obs_date', 'desc')->get();
+
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
         
-        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones') );
+        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR') );
       }
       else
       {
@@ -207,9 +227,99 @@ class PoaController extends Controller
       $userId = $user->iduser;
       $areaId = $user->idarea;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
-      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+      $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->orderBy('obs_date', 'desc')->get();
+
+      $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->orderBy('obs_date', 'desc')->get();
       //dd($resultado);exit;
-      return view('pages.poa.alertames')->with( compact('resultado','observaciones'));
+      return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR'));
+    }
+
+    public function reporteobs(Request $request)
+    {
+
+        if (Auth::check()) {
+
+      $user   = auth()->user();
+      $userId = $user->id;
+      $areaId = $user->idarea;
+
+      if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+            
+            $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+            $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+            $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
+            $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+            /////////////////////////////////////////////////////////////////////////////////////////
+            $observaciones = DB::table('observaciones')->where('obs_status', 0)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->orderBy('obs_date', 'desc')->get();
+
+            $obss = DB::table('observaciones')
+            //->where('obs_status', 2)->orWhere('obs_status', 3)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->orderBy('obs_date', 'desc')
+            ->limit(20)
+            ->get();
+
+            $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
+
+
+            return view('pages.admin.reporteobs')->with( compact('nfin','alertasfin','nalertas','alertas','observaciones', 'observacionesR','obss'));
+        }
+        else { 
+
+            return route('auth/login');
+
+        }
+      }
+      else {
+        return route('auth/login');
+      }
+    }
+
+    public function getidobs(Request $request)
+    {
+
+        if (Auth::check()) {
+
+      $user   = auth()->user();
+      $userId = $user->id;
+      $areaId = $user->idarea;
+      $id = $request->id;
+
+      if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+            $obss = DB::table('observaciones')->where('obs_id_area', $id)
+            //->where('obs_status', 2)->orWhere('obs_status', 3)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->orderBy('obs_date', 'desc')
+            ->limit(20)
+            ->get();
+
+            return response()->json([$obss]);
+            
+        }
+        else { 
+
+            return route('auth/login');
+
+        }
+      }
+      else {
+        return route('auth/login');
+      }
     }
 
     /***/
@@ -236,10 +346,17 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            $observaciones = DB::table('observaciones')->where('obs_status', 0)->orderBy('obs_date', 'desc')->get();
+            $observaciones = DB::table('observaciones')->where('obs_status', 0)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->orderBy('obs_date', 'desc')->get();
+
+            $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
 
 
-            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades','observaciones'));
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','unidades','observaciones', 'observacionesR'));
         }
         else { 
 
@@ -254,10 +371,17 @@ class PoaController extends Controller
             $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
-            $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->orderBy('obs_date', 'desc')->get();
+            $observaciones = DB::table('observaciones')
+            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
+            $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
+
+            //$observacionesR = DB::table('observaciones')->where('obs_status', 2)->orWhere('obs_status', 3)->orderBy('obs_date', 'desc')->get();
 
 
-            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones'));
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones', 'observacionesR'));
 
         }
       }
@@ -415,6 +539,7 @@ class PoaController extends Controller
       if (Auth::check()) {
         $user   = auth()->user();
         $acronimo = $user->usu_acronimo;
+        $areaId = $user->idarea;
 
         $data = $request->data;
         $id  = $request->id;
@@ -436,7 +561,12 @@ class PoaController extends Controller
         $act2->act_obs_edit = $color;
         $act2->save();
 
-        return response()->json($count);
+
+        $observaciones = DB::table('observaciones')
+            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
+
+        return response()->json($observaciones);
 
       } else {
         return route('auth/login');
@@ -470,7 +600,11 @@ class PoaController extends Controller
         $act2->act_obs_edit = $color;
         $act2->save();
 
-        return response()->json($count);
+        $observaciones = DB::table('observaciones')
+            ->where('obs_status', 1)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
+
+        return response()->json($observaciones);
 
       } else {
         return route('auth/login');
@@ -487,6 +621,7 @@ class PoaController extends Controller
         $cla = $request->cla;
         $uni = $request->uni;
         $color  = $request->color;
+        $num  = $request->num;
 
         $user   = auth()->user();
         $userId = $user->id;
@@ -515,9 +650,11 @@ class PoaController extends Controller
         $act2->act_obs_edit = $color;
         $act2->save();
 
+        $observaciones = DB::table('observaciones')
+            ->where('obs_status', 0)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->orderBy('obs_date', 'desc')->get();
 
-
-        return response()->json('listo UTP send');
+        return response()->json($observaciones);
 
       } else {
         return route('auth/login');
