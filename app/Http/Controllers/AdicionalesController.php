@@ -25,10 +25,11 @@ class AdicionalesController extends Controller
 
         $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
-        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
         ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
-        return view('pages.adicionales.index')->with( compact('meses','observaciones','observacionesR') );
+        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
+        return view('pages.adicionales.index')->with( compact('meses','observaciones','observacionesR','observacionesRn') );
       }
       else
       {
@@ -66,9 +67,10 @@ class AdicionalesController extends Controller
         ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
 
-        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
         ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
+        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
 
 
         //devuelve false sino existe
@@ -78,7 +80,7 @@ class AdicionalesController extends Controller
           $adicional = Adicional::find($id[0]->id);
           $put = TRUE;
           $action = route('adicionales.update', ['adicional' => $adicional->id ]);
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones','observacionesR') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
         }
         else
         {

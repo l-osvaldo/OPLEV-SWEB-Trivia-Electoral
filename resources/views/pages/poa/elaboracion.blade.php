@@ -18,19 +18,19 @@
 #colPOA7{width: 40.7%; border-right: solid 4px #f5f5f5;background: #cfd8dc;text-align: center;}
 #colPOA8{width: 7.1%; background: #cfd8dc;text-align: center;}
 
-#addAct{font-size: 1.2em; color: #546e7a;background-color: #fff;padding: 0 .5%;display: inline;border-radius: 5px;border:dashed 1px #ccc;}
+#addAct{font-size: 1.2em; color: #293338;background-color: #fff;padding: 0 .5%;display: inline;border-radius: 5px;border:dashed 1px #ccc;}
 #addAct:hover{color: #EA0D94;}
 
-.iconInfo{cursor: pointer;font-size: 1.2em !important; color: #546e7a;background-color: #fff;padding: 0 .5%;display: inline-block;}
+.iconInfo{cursor: pointer;font-size: 1.2em !important; color: #293338;background-color: #fff;padding: 0 .5%;display: inline-block;}
 .iconInfo:hover{color: #EA0D94;}
 
-.iconBH{cursor: pointer;font-size: 1.2em !important; color: #546e7a;float: left;background-color: #fff; margin-right: .5%;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;}
+.iconBH{cursor: pointer;font-size: 1.2em !important; color: #293338;float: left;background-color: #fff; margin-right: .5%;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;}
 .iconBH:hover{color: #EA0D94;}
 
-.iconOb{cursor: pointer;font-size: 1.2em !important; color: #546e7a;float: left;background-color: #fff; float: right;cursor: pointer;}
+.iconOb{cursor: pointer;font-size: 1.2em !important; color: #293338;float: left;background-color: #fff; float: right;cursor: pointer;}
 .iconOb:hover{color: #EA0D94;}
 
-.iconBHD{cursor: pointer;font-size: 1.2em !important; color: #546e7a;background-color: #fff;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;float: left;}
+.iconBHD{cursor: pointer;font-size: 1.2em !important; color: #293338;background-color: #fff;padding: 5px;border-radius: 5px;border:dashed 1px #ccc;margin: 4px 4px 4px 0;float: left;}
 .iconBHD:hover{color: #EA0D94;}
 
 .textCPOA{text-align: center;}
@@ -75,6 +75,9 @@
 .checkObs,.checObsVal{cursor: pointer;}
 .btnpdfpoa{border:solid 1px #f9f9f9; background: #eceff1;border-radius: 3px; padding: 5px; margin-left: 30px;cursor: pointer;}
 .btnpdfpoa:hover{color: #EA0D94;background: #fff;}
+.btnpdfpoaI{border:solid 1px #EA0D94; background: #EA0D94;border-radius: 3px; padding: 5px; margin-left: 10px;cursor: pointer;color: #fff;}
+.btnpdfpoaI:hover{color: #EA0D94;background: #fff;}
+.inputDime{cursor: pointer;}
 </style>
 
 
@@ -313,7 +316,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" style="text-align: center !important;">
-        <h5 class="modal-title" id="exampleModalLongTitle">Cédula Descriptiva de Indicadores 2020</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Cédula Descriptiva de Indicadores 2020</h5> <i class="fa fa-file-pdf-o btnpdfpoaI" aria-hidden="true" id="pdfIndicador" data-id=""></i>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -374,14 +377,22 @@
                   <div class="col-md-3 indBlanco">Economía</div>
                   <div class="col-md-3 indBlanco">Calidad</div>
 
-                  <div class="col-md-3 indBlanco" id="dimensionmedir1"></div>
-                  <div class="col-md-3 indBlanco" id="dimensionmedir2"></div>
-                  <div class="col-md-3 indBlanco" id="dimensionmedir3"></div>
-                  <div class="col-md-3 indBlanco" id="dimensionmedir4"></div>
+                  <div class="col-md-3 indBlanco">
+                    <input class="inputDime" type="radio" name="dimension" value="1" id="dimensionmedir1">
+                  </div>
+                  <div class="col-md-3 indBlanco">
+                    <input class="inputDime" type="radio" name="dimension" value="2" id="dimensionmedir2">
+                  </div>
+                  <div class="col-md-3 indBlanco">
+                    <input class="inputDime" type="radio" name="dimension" value="3" id="dimensionmedir3">
+                  </div>
+                  <div class="col-md-3 indBlanco">
+                    <input class="inputDime" type="radio" name="dimension" value="4" id="dimensionmedir4">
+                  </div>
 
               </div>
             </div>
-            <div class="col-md-3 indLabel" id="unidadmedida"></div>
+            <div class="col-md-3 indEdit" id="unidadmedida" contenteditable="true"></div>
           </div>
 
           <div class="row">
@@ -389,7 +400,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12 indBlanco" id="metodocalculo"></div>
+            <div class="col-md-12 indEdit" id="metodocalculo" contenteditable="true"></div>
           </div>
 
            <div class="row">
@@ -423,11 +434,24 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion1"></div>
-            <div class="col-md-3 indEdit" contenteditable="true" id="frecuenciamedicion2"></div>
-            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion3"></div>
-            <div class="col-md-2 indEdit" contenteditable="true" id="frecuenciamedicion4"></div>
-            <div class="col-md-3 indEdit" contenteditable="true" id="frecuenciamedicion5"></div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="frecuencia" value="1" id="frecuenciamedicion1">
+            </div>
+            <div class="col-md-3 indBlanco">
+              <input class="inputDime" type="radio" name="frecuencia" value="2" id="frecuenciamedicion2">
+            </div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="frecuencia" value="3" id="frecuenciamedicion3">
+            </div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="frecuencia" value="4" id="frecuenciamedicion4">
+            </div>
+            <div class="col-md-3 indBlanco">
+              <input class="inputDime" type="radio" name="frecuencia" value="5" id="frecuenciamedicion5">
+               <div class="row">
+                <div class="indEdit col-md-12" id="frecuenciaespecifique" contenteditable="true" style="display: none;"></div>
+              </div>
+            </div>
           </div>
 
           <div class="row">
@@ -451,26 +475,33 @@
             <div class="col-md-2 indBlanco">Nominal</div>
           </div>
           <div class="row">
-            <div class="col-md-2 indBlanco" id="lineabasev"></div>
-            <div class="col-md-2 indBlanco" id="lineabasea"></div>
-            <div class="col-md-2 indBlanco" id="comportamientoindicador1"></div>
-            <div class="col-md-2 indBlanco" id="comportamientoindicador2"></div>
-            <div class="col-md-2 indBlanco" id="comportamientoindicador3"></div>
-            <div class="col-md-2 indBlanco" id="comportamientoindicador4"></div>
+            <div class="col-md-2 indEdit" contenteditable="true" id="lineabasev"></div>
+            <div class="col-md-2 indEdit" contenteditable="true" id="lineabasea"></div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="comportamiento" value="1" id="comportamientoindicador1">
+            </div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="comportamiento" value="2" id="comportamientoindicador2">
+            </div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="comportamiento" value="3" id="comportamientoindicador3">
+            </div>
+            <div class="col-md-2 indBlanco">
+              <input class="inputDime" type="radio" name="comportamiento" value="4" id="comportamientoindicador4">
+            </div>
           </div>
 
           <div class="row">
             <div class="col-md-4 indLabel">Nombre, cargo y firma del titular de la Unidad Responsable</div>
-            <div class="col-md-8 indBlanco" id="nombretitular"></div>
+            <div class="col-md-8 indBlanco" id="nombretitular">{{ Auth::user()->titular }}<br>{{ Auth::user()->cargo }}</div>
           </div>
 
         </div>
 
       </div>
       <div class="modal-footer">
-        <i class="fa fa-file-pdf-o" aria-hidden="true" id="pdfIndicador" data-id=""></i>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Continuar</button>
+        <button type="button" class="btn btn-primary" id="updateIndicador">Actualizar</button>
       </div>
     </div>
   </div>

@@ -1126,14 +1126,6 @@ function sumArray(total, num) {
         document.getElementById('pdfIndicador')?document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false):'';
         function pdfindicador() {
           var id = this.getAttribute('data-id');
-          //$.ajax({
-          //   type:'POST',
-          //   url:"pdfindicador",
-          //   data:{"_token": token,data:id},
-          //   success:function(data){ 
-          //      console.log(data);
-          //  }
-          //});
           var urlPdf;
           $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
           const form = document.createElement('form');
@@ -1155,7 +1147,7 @@ function sumArray(total, num) {
           document.body.append(form);
           form.submit();
         }
-
+        ////////////////////////////////////////////////////////////////////
         function verObservaciones(){
           $('#modalOpservaciones').modal('show');
           /////////////////////////////////////////////////////
@@ -1257,6 +1249,19 @@ function sumArray(total, num) {
                   child3.style.backgroundColor="#ff1744";
                   document.getElementById('getObs').appendChild(child3);
                     break;
+                  case '4':
+                  var child2 = document.createElement('div');
+                  child2.innerHTML = '<i class="iconObsVer fa fa-times-circle-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child2.className='col-md-1 contIconObs';
+                  child2.style.backgroundColor="#ff5252";
+                  document.getElementById('getObs').appendChild(child2);
+
+                  var child3 = document.createElement('div');
+                  child3.innerHTML = '<i class="iconObs fa fa-check-square-o" style="color:#000;" data-toggle="tooltip" data-placement="top" title="Enviado: '+pri.getDate()+'-'+(pri.getMonth()+1)+'-'+pri.getFullYear()+', Realizado: '+seg.getDate()+'-'+(seg.getMonth()+1)+'-'+seg.getFullYear()+', No Validado: '+tres.getDate()+'-'+(tres.getMonth()+1)+'-'+tres.getFullYear()+'" aria-hidden="true"></i>';
+                  child3.className='col-md-1 contIconObsVal';
+                  child3.style.backgroundColor="#ff1744";
+                  document.getElementById('getObs').appendChild(child3);
+                  break;
                   default:
                     alert('Error');
                 }
@@ -1297,13 +1302,13 @@ function sumArray(total, num) {
 
 
           //////////////////////////////////////////////////////////////////////////////////////
-          console.log(arrayObs.length,aoe.length);
+          //console.log(arrayObs.length,aoe.length);
 
           var varColor;
           arrayObs.length==aoe.length?varColor=4:varColor=2;
           arrayObs.length==aoe.length&&actdos?varColor=1:'';
           //arrayObs.length<aoe.length?varColor=2:'';
-          console.log(varColor);
+          //console.log(varColor);
 
           //////////////////////////////////////////////////////////////////////////////////////
           var obsCamp = parseInt(document.getElementById('campanaAlertObsR').textContent);
@@ -1318,7 +1323,7 @@ function sumArray(total, num) {
              data:{"_token": token,id:id,data:arrayObs,color:varColor},
              success:function(data){ 
               //swal('Actividad eliminada', "", "success");
-              console.log(data.length)
+              //console.log(data.length)
               document.getElementById('campanaAlertObsR').textContent=(data.length);
               document.getElementById('obsDesA').innerHTML="";
               for (var i = 0; i < data.length; i++) {
@@ -1454,7 +1459,7 @@ function sumArray(total, num) {
           var varColor;
           var aoe = document.getElementsByClassName('checkObsVal');
           aoe.length>0?varColor=2:varColor=1;
-          console.log(varColor, aoe.length)
+          //console.log(varColor, aoe.length)
 
           var obsCamp = parseInt(document.getElementById('campanaAlertObs').textContent);
           isNaN(obsCamp)?obsCamp=0:'';
@@ -1466,7 +1471,7 @@ function sumArray(total, num) {
              url:"sendobservacion",
              data:{"_token": token,id:id,data:arrayObs,cla:cla,uni:uni,color:varColor},
              success:function(data){ 
-              console.log(data);
+              //console.log(data);
               document.getElementById('campanaAlertObs').textContent=(data.length);
               document.getElementById('obsDesB').innerHTML="";
               for (var i = 0; i < data.length; i++) {
@@ -1641,7 +1646,7 @@ function pdfelaboracion() {
        document.getElementById('resultObs').appendChild(tr1);
 
        
-       console.log(data[0].length); 
+       //console.log(data[0].length); 
 
        for (var i = 0; i < data[0].length; i++) {
         var tr = document.createElement("TR");

@@ -60,10 +60,11 @@ class PoaController extends Controller
           ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
 
-          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
           ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
-          return view('pages.poa.index')->with( compact('meses','observaciones','observacionesR'));
+          $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
+          return view('pages.poa.index')->with( compact('meses','observaciones','observacionesR','observacionesRn'));
         }
       }
       else
@@ -106,11 +107,12 @@ class PoaController extends Controller
         ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
         ->orderBy('obs_date', 'desc')->get();
 
-        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
         ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
+        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
         
-        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR') );
+        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn') );
       }
       else
       {
@@ -231,11 +233,13 @@ class PoaController extends Controller
       ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
 
-      $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+      $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
       ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
+
+      $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
       //dd($resultado);exit;
-      return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR'));
+      return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
     }
 
     public function reporteobs(Request $request)
@@ -374,14 +378,14 @@ class PoaController extends Controller
             $observaciones = DB::table('observaciones')
             ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
-            $observacionesR = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)
+            $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
             ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
-            //$observacionesR = DB::table('observaciones')->where('obs_status', 2)->orWhere('obs_status', 3)->orderBy('obs_date', 'desc')->get();
+             $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
 
 
-            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones', 'observacionesR'));
+            return view('pages.poa.elaboracion')->with( compact('resultado','programas','nfin','alertasfin','nalertas','alertas','observaciones', 'observacionesR', 'observacionesRn'));
 
         }
       }
@@ -393,7 +397,13 @@ class PoaController extends Controller
     public function sendactividad(Request $request)
     {
       if (Auth::check()) {
-        $idArea = Auth::user()->idarea;
+        $user   = auth()->user();
+        $userId = $user->id;
+        $idArea = $user->idarea;
+        $cargo = $user->cargo;
+        $titular = $user->titular;
+
+
         $acttext = $request->act;
         $uni = $request->uni;
         $ene = $request->ene;
@@ -415,6 +425,8 @@ class PoaController extends Controller
         $ord = $request->ord;
         $ini = $request->ini;
         $ter = $request->ter;
+        $area = $request->area;
+        $per = $request->per;
 
         switch ($ida) {
             case '0':
@@ -477,6 +489,40 @@ class PoaController extends Controller
                 $pr->autoactividades = $act->id;
                 
                 $pr->save();
+
+                DB::table('infocedulas2020')->insert([
+                  'reprogramacion' =>  0,
+                  'identificadorindicador' =>  '',
+                  'idcontrol' =>  $act->id,
+                  'idarea' =>  $idArea,
+                  'area' =>  $area,
+                  'nombreindicador' =>  '',
+                  'objetivoindicador' =>  '',
+                  'metaindicador' =>  '100',
+                  'periodocumplimiento' =>  $per,
+                  'abreviaturaperiodocump' => $ini.' - '.$ter,
+                  'dimensionmedir' =>  '',
+                  'idprograma' =>  '',
+                  'idprograma1' =>  $pro,
+                  'unidadmedida' =>  '',
+                  'metodocalculo' =>  '',
+                  'variable1' =>  '',
+                  'descripcionvariable1' =>  '',
+                  'fuentesinfovariable1' =>  '',
+                  'variable2' =>  '',
+                  'descripcionvariable2' =>  '',
+                  'fuentesinfovariable2' =>  '',
+                  'frecuenciamedicion' => 0,
+                  'frecuenciaespecifique' => '',
+                  'fundamentojuridico' => '',
+                  'lineabase' => null,
+                  'lineabasev' => '',
+                  'lineabasea' => '',
+                  'comportamientoindicador' => '',
+                  'nombretitular' => $titular,
+                  'cargo' => $cargo
+                ]);
+
                 break;
             default:
                 $act = actividadesdos::find($ida);
@@ -505,6 +551,12 @@ class PoaController extends Controller
                 ]);
 
                  $pp = DB::table('porcentajep2020')->where('idporcentajep',  $act->id)->first();
+
+
+                 DB::table('infocedulas2020')->where('idcontrol', $act->id)->update([
+                  'periodocumplimiento' =>  $per,
+                  'abreviaturaperiodocump' => $ini.' - '.$ter
+                ]);
         }
 
         return response()->json([$act,$pp]);
@@ -527,6 +579,39 @@ class PoaController extends Controller
         }
 
         return response()->json([implode(",",$data)]);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+
+    public function actindicador(Request $request)
+    {
+      if (Auth::check()) {
+        $user   = auth()->user();
+
+        DB::table('infocedulas2020')->where('idcontrol', $request->id)->where('idarea', $user->idarea)->update([
+                  'nombreindicador' =>  $request->noin,
+                  'objetivoindicador' =>  $request->obin,
+                  'dimensionmedir' =>  $request->dime,
+                  'unidadmedida' =>  $request->unme,
+                  'metodocalculo' =>  $request->meca,
+                  'variable1' =>  $request->var1,
+                  'descripcionvariable1' =>  $request->dev1,
+                  'fuentesinfovariable1' =>  $request->fui1,
+                  'variable2' =>  $request->var1,
+                  'descripcionvariable2' =>  $request->dev2,
+                  'fuentesinfovariable2' =>  $request->fui2,
+                  'frecuenciamedicion' => $request->frme,
+                  'frecuenciaespecifique' => $request->fres,
+                  'fundamentojuridico' => $request->fuju,
+                  'lineabasev' => $request->libv,
+                  'lineabasea' => $request->liba,
+                  'comportamientoindicador' => $request->coin
+                ]);
+
+        return response()->json([$request->id,$request->id]);
 
       } else {
         return route('auth/login');
@@ -681,8 +766,31 @@ class PoaController extends Controller
       if (Auth::check()) {
 
         $id = $request->id;
-        $obs =  DB::table('observaciones')->where('obs_idactividad', $id)->orderBy('obs_date', 'desc')->get();;
+        $obs =  DB::table('observaciones')->where('obs_idactividad', $id)->orderBy('obs_date', 'desc')->get();
+        //DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '3')->update(['obs_status' => '4']);
 
+
+        return response()->json($obs);
+
+      } else {
+        return route('auth/login');
+      }
+    }
+
+    public function deleteobserr(Request $request)
+    {
+      if (Auth::check()) {
+        $user   = auth()->user();
+        $userId = $user->idarea;
+        $arr = $request->arr;
+        foreach ($arr as $idObs) {
+             DB::table('observaciones')->where('id', $idObs)->update(['obs_status' => '4']);
+        }
+
+        $obs =  DB::table('observaciones')->where('obs_id_area', $userId)->where('obs_status', '3')->orWhere('obs_status', '4')
+        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
+        
         return response()->json($obs);
 
       } else {

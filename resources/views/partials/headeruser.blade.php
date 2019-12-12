@@ -66,8 +66,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link alerta-obsRed" id="iconAlertfin" data-toggle="dropdown" href="#">
           <i class="fa fa-exclamation-triangle alertaRed" aria-hidden="true"></i>
-          @if(count($observacionesR) > 0)         
-            <span id="campanaAlertfinR" class="badge badge-warningRed navbar-badge">{{count($observacionesR)}}</span>
+          @if(count($observacionesRn) > 0)         
+            <span id="campanaAlertfinR" class="badge badge-warningRed navbar-badge">{{count($observacionesRn)}}</span>
             @else
             <span id="campanaAlertfinR" ></span>               
           @endif
@@ -80,12 +80,13 @@
             <i class="fa fa-file"></i>  4 nuevos documentos
             <span class="float-right text-muted text-sm">3 min</span>
           </a-->
-
+          <div id="obsDes2">
           @foreach( $observacionesR as $obs )
             <a href="#" class="dropdown-item texto-negro alerta-texto">
-            <div style="display: inline-block;float: left;border-bottom:2px solid #dd2c00;">Act.- {{$obs->numactividad}} | Prog.- {{$obs->obs_clave}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
+            <div style="display: inline-block;float: left;{!!  $obs->obs_status==3 ? 'border-bottom:2px solid #dd2c00;' : '' !!}">Act.- {{$obs->numactividad}} | Prog.- {{$obs->obs_clave}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
             </a>
           @endforeach
+          </div>
 
           <div class="dropdown-divider"></div>
           <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ver todas las observaciones' : 'Sin observaciones' !!}</a>

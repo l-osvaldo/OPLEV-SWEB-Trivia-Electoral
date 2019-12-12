@@ -63,8 +63,8 @@ th {
                 <th>Area</th>
                 <th>Clave</th>
                 <th>Observación</th>
-                <th style="text-align: center;">Validado</th>
                 <th style="text-align: center;">Atendido</th>
+                <th style="text-align: center;">Validado</th>
               </tr>
                @foreach( $obss as $obs )
                   <tr>
@@ -76,35 +76,43 @@ th {
                       @switch($obs->obs_status)
                           @case('0')
                               <td style="text-align: center; color: #e082a2;font-size: 23px;">
-                                <i class="fa fa-paper-plane" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Enviado"></i>
-                              </td>
-                              <td style="text-align: center; color: #e082a2;font-size: 23px;">
                                 <i class="fa fa-cogs" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Por atender"></i>
                               </th>
+                              <td style="text-align: center; color: #e082a2;font-size: 23px;">
+                                <i class="fa fa-paper-plane" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Enviado"></i>
+                              </td>
                               @break
                           @case('1')
                               <td style="text-align: center; color: #ffa000;font-size: 23px;">
-                                <i class="fa fa-square-o" aria-hidden="true" style="cursor: pointer;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Por validar"></i>
-                              </td>
-                              <td style="text-align: center; color: #ffa000;font-size: 23px;">
                                 <i class="fa fa-check-square-o" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: {{$obs->obs_date_dos}}"></i>
                               </th>
+                              <td style="text-align: center; color: #ffa000;font-size: 23px;">
+                                <i class="fa fa-square-o" aria-hidden="true" style="cursor: pointer;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Por validar"></i>
+                              </td>
                               @break
                           @case('2')
                               <td style="text-align: center; color: #9e9d24;font-size: 23px;">
+                                <i class="fa fa-check-square-o" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: {{$obs->obs_date_dos}}"></i>
+                              </th>
+                              <td style="text-align: center; color: #9e9d24;font-size: 23px;">
                                 <i class="fa fa-check-square-o" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Validado: {{$obs->obs_date_tres}}"></i>
                               </td>
+                              @break
+                          @case('3')
                               <td style="text-align: center; color: #9e9d24;font-size: 23px;">
                                 <i class="fa fa-check-square-o" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: {{$obs->obs_date_dos}}"></i>
                               </th>
-                              @break
-                          @case('3')
                               <td style="text-align: center; color: #ff1744;font-size: 23px;">
                                 <i class="fa fa-times-circle" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="No validada: {{$obs->obs_date_tres}}"></i>
                               </td>
-                              <td style="text-align: center; color: #ff1744;font-size: 23px;">
+                              @break
+                          @case('4')
+                              <td style="text-align: center; color: #9e9d24;font-size: 23px;">
                                 <i class="fa fa-check-square-o" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="Atendido: {{$obs->obs_date_dos}}"></i>
                               </th>
+                              <td style="text-align: center; color: #ff1744;font-size: 23px;">
+                                <i class="fa fa-times-circle" aria-hidden="true" style="cursor: pointer;" data-toggle="tooltip" data-placement="top" title="No validada: {{$obs->obs_date_tres}}"></i>
+                              </td>
                               @break
                           @default
                               <td></td><td></th>

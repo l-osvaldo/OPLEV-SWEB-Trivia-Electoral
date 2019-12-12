@@ -15,37 +15,37 @@ table, th, td {
 <div class="col-md-12">
   <table style="width:1000px;">
   <tr>
-    <th colspan="8" style="background-color:#EA0D94; text-align: center;font-size: 20px;">Cédula Descriptiva de Indicadores 2020</th>
+    <th colspan="8" style="background-color:#fce4ec; text-align: center;font-size: 20px;">Cédula Descriptiva de Indicadores 2020</th>
   </tr>
   <tr>
     <th colspan="8" style="height: 20px;background-color: #fff;"></th>
   </tr>
   <tr>
-    <th colspan="1" style="height: 20px;background-color: #EA0D94;text-align: center;width: 20%;">Unidad responsable</th>
+    <th colspan="1" style="height: 20px;background-color: #fce4ec;text-align: center;width: 20%;">Unidad responsable</th>
     <th colspan="7" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->area}}</th>
   </tr>
   <tr>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;width: 50%;">Identificador de indicador</th>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Nombre del indicador</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;width: 50%;">Identificador de indicador</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Nombre del indicador</th>
   </tr>
   <tr>
     <th colspan="4" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->identificadorindicador}}</th>
     <th colspan="4" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->nombreindicador}}</th>
   </tr>
   <tr>
-    <th colspan="3" style="height: 20px;background-color: #EA0D94;text-align: center;">Objetivo</th>
+    <th colspan="3" style="height: 20px;background-color: #fce4ec;text-align: center;">Objetivo</th>
     <th colspan="5" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->objetivoindicador}}</th>
   </tr>
   <tr>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Meta</th>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Periodo de cumplimiento</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Meta</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Periodo de cumplimiento</th>
   </tr>
   <tr>
     <th colspan="4" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->metaindicador}}%</th>
     <th colspan="4" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->periodocumplimiento}}</th>
   </tr>
   <tr>
-    <th colspan="3" rowspan="2" style="height: 20px;background-color: #EA0D94;text-align: center;width: 20%;">Programa<br>Presupuestario</th>
+    <th colspan="3" rowspan="2" style="height: 20px;background-color: #fce4ec;text-align: center;width: 20%;">Programa<br>Presupuestario</th>
     <th style="height: 20px;background-color: #fff;text-align: center;">01. Desarrollo y Fortalecimiento Institucional.</th>
     <th style="height: 20px;background-color: #fff;text-align: center;">02. Proceso Electora</th>
     <th style="height: 20px;background-color: #fff;text-align: center;">03. Cartera de Proyectos</th>
@@ -58,9 +58,9 @@ table, th, td {
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;">{{ $indicadores->idprograma1 == 4 ? 'X' : '' }}</th>
   </tr>
   <tr>
-    <th colspan="3" style="height: 20px;background-color: #EA0D94;text-align: center;width: 30%;">Definición</th>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Dimensión a medir</th>
-    <th style="height: 20px;background-color: #EA0D94;text-align: center;">Unidad de medida</th>
+    <th colspan="3" style="height: 20px;background-color: #fce4ec;text-align: center;width: 30%;">Definición</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Dimensión a medir</th>
+    <th style="height: 20px;background-color: #fce4ec;text-align: center;">Unidad de medida</th>
   </tr>
    <tr>
     <th colspan="3" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->definicionindicador}}</th>
@@ -71,15 +71,15 @@ table, th, td {
     <th style="height: 20px;background-color: #fff;text-align: center;">{{ $indicadores->unidadmedida}}</th>
   </tr>
   <tr>
-    <th colspan="8" style="background-color:#EA0D94; text-align: center;">Método de Cálculo </th>
+    <th colspan="8" style="background-color:#fce4ec; text-align: center;">Método de Cálculo </th>
   </tr>
   <tr>
     <th colspan="8" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->metodocalculo}}</th>
   </tr>
   <tr>
-    <th colspan="3" style="height: 20px;background-color: #EA0D94;text-align: center;">Variable</th>
-    <th colspan="3" style="height: 20px;background-color: #EA0D94;text-align: center;">Descripción de la variable</th>
-    <th colspan="2" style="height: 20px;background-color: #EA0D94;text-align: center;">Fuentes de Información</th>
+    <th colspan="3" style="height: 20px;background-color: #fce4ec;text-align: center;">Variable</th>
+    <th colspan="3" style="height: 20px;background-color: #fce4ec;text-align: center;">Descripción de la variable</th>
+    <th colspan="2" style="height: 20px;background-color: #fce4ec;text-align: center;">Fuentes de Información</th>
   </tr>
   <tr>
     <th colspan="3" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->variable1}}</th>
@@ -92,7 +92,7 @@ table, th, td {
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;">{{$indicadores->fuentesinfovariable2}}</th>
   </tr>
   <tr>
-    <th colspan="8" style="background-color:#EA0D94; text-align: center;">Frecuencia de medición</th>
+    <th colspan="8" style="background-color:#fce4ec; text-align: center;">Frecuencia de medición</th>
   </tr>
   <tr>
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;">Mensual</th>
@@ -109,14 +109,14 @@ table, th, td {
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;">{{ $indicadores->frecuenciamedicion == 5 ? $indicadores->frecuenciaespecifique : '' }}</th>
   </tr>
   <tr>
-    <th colspan="8" style="background-color:#EA0D94; text-align: center;">Fundamento Jurídico</th>
+    <th colspan="8" style="background-color:#fce4ec; text-align: center;">Fundamento Jurídico</th>
   </tr>
   <tr>
     <th colspan="8" style="background-color:#fff; text-align: center;">{{ $indicadores->fundamentojuridico }}</th>
   </tr>
   <tr>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Línea Base</th>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Comportamiento del indicador hacia la meta</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Línea Base</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Comportamiento del indicador hacia la meta</th>
   </tr>
   <tr>
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;width: 10%;">Valor</th>
@@ -135,7 +135,7 @@ table, th, td {
     <th style="height: 20px;background-color: #fff;text-align: center;">{{ $indicadores->comportamientoindicador == 4 ? 'X' : '' }}</th>
   </tr>
   <tr>
-    <th colspan="4" style="height: 20px;background-color: #EA0D94;text-align: center;">Nombre, cargo y firma del titular de la Unidad Responsable</th>
+    <th colspan="4" style="height: 20px;background-color: #fce4ec;text-align: center;">Nombre, cargo y firma del titular de la Unidad Responsable</th>
     <th colspan="4" style="height: 20px;background-color: #fff;text-align: center;">{{ $indicadores->nombretitular }}<br>{{ $indicadores->cargo }}</th>
   </tr>
 </table>

@@ -85,5 +85,9 @@ Route::post('/clickalertasobs', 'PoaController@clickalertas')->name('clickalerta
 
 Route::get('/reporteobs', 'PoaController@reporteobs')->name('reporteobs');
 Route::post('/getidobs', 'PoaController@getidobs')->name('getidobs');
+
+Route::post('/actindicador', 'PoaController@actindicador')->name('actindicador');
+
+Route::post('/deleteobserr', 'PoaController@deleteobserr')->name('deleteobserr');
 });
 
