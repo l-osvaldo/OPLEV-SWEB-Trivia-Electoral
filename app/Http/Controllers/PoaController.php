@@ -17,9 +17,9 @@ use Alert;
 class PoaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 
      *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function index()
     {
@@ -814,6 +814,7 @@ class PoaController extends Controller
         DB::table('actividadesdos')->where('id', $data)->delete();
         DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
         DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
+        DB::table('infocedulas2020')->where('idcontrol', $data)->delete();
         
           return response()->json('1');
         }

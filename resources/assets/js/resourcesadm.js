@@ -3,13 +3,25 @@ $(function() {
 
   $('#btnGuardarInfo_admin').hide();
   $('#btnReporteMensual_admin').hide();
-  //var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
-  //  if(_prefix_url != ""){
-  //    _prefix_url = "/"+_prefix_url;
-  //  }
 
+
+/*************************************************************
+
+  Funcionalidad: Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
+  Parametros: Contenido de elemento
+  Respuesta: Define una variable
+
+***************************************************************/
   var _prefix_url;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+
+/*************************************************************
+
+  Funcionalidad: No permite el ingreso de caracteres
+  Parametros: Evento del elemento
+  Respuesta: 
+
+***************************************************************/
 
   $("input#realizadomes_admin").keydown(function (e)
   {
@@ -27,6 +39,14 @@ $(function() {
         e.preventDefault();
       }
   });
+
+/*************************************************************
+
+  Funcionalidad: Limpia el contenido del elemento
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
 
   function limpiaTablaAnalisis_admin()
   {
@@ -59,6 +79,13 @@ $(function() {
     $('#dicr_admin').html('');
   }
 
+/*************************************************************
+
+  Funcionalidad: Recarga los contenidos de los elemntos y obtiene los parametros requeridos
+  Parametros: area, programa
+  Respuesta: Crea el listado de los programas especificos
+
+***************************************************************/
 
   $("#programa_admin").change(function()
   {    
@@ -103,6 +130,14 @@ $(function() {
       disabledBTN();
   });
 
+/*************************************************************
+
+  Funcionalidad: Obtiene el objetivo del programa especifico 
+  Parametros: area, programa, programaEsp
+  Respuesta: Coloca en la vista el objetivo del programa especifico
+
+***************************************************************/
+
   function obtenObjetivos(area, programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
@@ -116,6 +151,14 @@ $(function() {
         $('#objetivo_admin').html(response[0]['objprogramaesp']);
     });
   }
+
+/*************************************************************
+
+  Funcionalidad: Obtiene el objetivo del programa especifico 
+  Parametros: area, programa, programaEsp
+  Respuesta: Coloca en la vista el objetivo del programa especifico
+
+***************************************************************/
 
   $("#programaEsp_admin").change(function() 
   {
