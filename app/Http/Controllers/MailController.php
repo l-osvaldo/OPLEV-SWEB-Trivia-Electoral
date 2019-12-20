@@ -9,6 +9,13 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Alerta;
 use DB;
+
+/**
+* Funcionalidad: Registra un reporte de termino mensual y envia un email al area utp con los valores del reporte
+* Parametros: $request
+* Respuesta: alerta de envio
+*
+*/
  
 class MailController extends Controller
 {

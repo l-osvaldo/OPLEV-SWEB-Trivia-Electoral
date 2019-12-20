@@ -10,11 +10,15 @@ use Alert;
 
 class AdicionalesController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Funcionalidad: Busca la vista index del sistema y realiza la busqueda correspondiente a las alertas y meses
+     * Parametros:
+     * Respuesta: Envio de la vista y sus parametros
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
       if ( Auth::check() )
@@ -42,7 +46,9 @@ class AdicionalesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Funcionalidad: Realiza la busqueda correspondiente a las alertas y a las adicionales
+     * Parametros: request
+     * Respuesta: Envio de la vista y sus parametros
      *
      * @return \Illuminate\Http\Response
      */
@@ -96,7 +102,9 @@ class AdicionalesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Funcionalidad: registra las adicionales y busca las alertas correspondientes alos parametros
+     * Parametros: request
+     * Respuesta: Envio de la vista y sus parametros
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -156,7 +164,9 @@ class AdicionalesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Funcionalidad: registra las adicionales
+     * Parametros: request, id
+     * Respuesta: Envio de la vista y sus parametros
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -188,7 +198,12 @@ class AdicionalesController extends Controller
     }
 
 
-    #Validación de formulario
+    /**
+     * Funcionalidad: validacion de formulario
+     * Parametros: $new
+     * Respuesta: 
+     *
+     */
     private function _rules( $new = True )
     {
 
@@ -217,7 +232,12 @@ class AdicionalesController extends Controller
         //
     }
 
-    #Validación de formulario adicionales
+    /**
+     * Funcionalidad: validacion de formulario adicionales
+     * Parametros: $new
+     * Respuesta: 
+     *
+     */
     private function _rulesadicionales( $new = True )
     {
 

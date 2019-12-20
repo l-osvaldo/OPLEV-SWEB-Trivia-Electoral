@@ -33,7 +33,9 @@ class ChangePasswordController extends Controller
     } 
    
     /**
-     * Show the application dashboard.
+     * Funcionalidad: Editar una contraseña
+     * Parametros: $request
+     * Respuesta:
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

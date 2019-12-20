@@ -17,9 +17,10 @@ use Alert;
 class PoaController extends Controller
 {
     /**
-     * 
+     * Funcionalidad: Busca la vista principal del sistema junto con los datos que la componen
+     * Parametros:
+     * Respuesta: la vista y los datos encontrados
      *
-     * 
      */
     public function index()
     {
@@ -74,7 +75,9 @@ class PoaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Funcionalidad: Busca la vista create del sistema junto con los datos que la componen
+     * Parametros:
+     * Respuesta: la vista y los datos encontrados
      *
      * @return \Illuminate\Http\Response
      */
@@ -121,7 +124,9 @@ class PoaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Funcionalidad: Busca, actulaiza y registra los datos conforme alos parametros de llegada
+     * Parametros: $request
+     * Respuesta: Derireccion a la vista principal del sistema
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -194,7 +199,9 @@ class PoaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Funcionalidad: Actulaiza el estatus de las alertas
+     * Parametros:
+     * Respuesta: json
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -206,6 +213,13 @@ class PoaController extends Controller
         return response()->json(['edicion']);
     }
 
+    /**
+     * Funcionalidad: Actulaiza el estatus de las alertas para las observaciones
+     * Parametros:
+     * Respuesta: json
+     *
+     */
+
     public function clickalertasobs()
     {
         //
@@ -213,12 +227,27 @@ class PoaController extends Controller
         return response()->json(['edicion']);
     }
 
+    /**
+     * Funcionalidad: Actulaiza el estatus de las alertas
+     * Parametros:
+     * Respuesta: json
+     *
+     */
+
     public function clickalertasfin()
     {
         //
         DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->update(['ale_tipo' => 0]);
         return response()->json(['fin']);
     }
+
+
+     /**
+     * Funcionalidad: busca los parametros y los devuelve la vista "alertames" junto con los parametros
+     * Parametros:
+     * Respuesta: regresa la vista, junto con los datos encontrados
+     *
+     */
 
 
     /***/
@@ -241,6 +270,13 @@ class PoaController extends Controller
       //dd($resultado);exit;
       return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
     }
+
+    /**
+     * Funcionalidad: busca los parametros y los devuelve la vista "reporteobs" junto con los parametros
+     * Parametros: $request
+     * Respuesta: regresa la vista, junto con los datos encontrados
+     *
+     */
 
     public function reporteobs(Request $request)
     {
@@ -291,6 +327,13 @@ class PoaController extends Controller
       }
     }
 
+    /**
+     * Funcionalidad: recibe los parametros de las observaciones a mostrar
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function getidobs(Request $request)
     {
 
@@ -325,6 +368,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: busca los datos relacionados a las actividades
+     * Parametros:
+     * Respuesta: regresa una vista jun con los datos encontrados
+     *
+     */
 
     /***/
     public function elaboracion()
@@ -393,6 +443,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Registra o actualiza una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function sendactividad(Request $request)
     {
@@ -567,6 +624,14 @@ class PoaController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Actualiza el orden de las actividades
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function cambiarnumero(Request $request)
     {
       if (Auth::check()) {
@@ -584,6 +649,14 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+
+    /**
+     * Funcionalidad: Actualiza los datos de un indicador
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
 
     public function actindicador(Request $request)
@@ -617,6 +690,14 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+
+    /**
+     * Funcionalidad: Actualiza el estatus de las observaciones
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
 
     public function sendidObs(Request $request)
@@ -659,6 +740,14 @@ class PoaController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Actualiza el estatus de las observaciones validas
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function sendidObsVal(Request $request)
     {
       if (Auth::check()) {
@@ -695,6 +784,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Registra las observaciones
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
 
     public function sendobservacion(Request $request)
@@ -747,6 +843,14 @@ class PoaController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Busca los datos de de un indicador en particular
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function getindicador(Request $request)
     {
       if (Auth::check()) {
@@ -760,6 +864,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Busca las observaciones referentes a una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function getobservacion(Request $request)
     {
@@ -776,6 +887,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Actualiza y busca los elementos de las obseravciones editadas
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function deleteobserr(Request $request)
     {
@@ -797,6 +915,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Borra una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
 
     public function deleteactividad(Request $request)
@@ -828,6 +953,14 @@ class PoaController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Busca un programa especifico
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function sendporgramaesp(Request $request)
     {
       if (Auth::check()) {
@@ -849,6 +982,13 @@ class PoaController extends Controller
         return route('auth/login');
       }
     }
+
+    /**
+     * Funcionalidad: Busca las actividades para una usuario
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function getAct(Request $request)
     {
@@ -916,6 +1056,12 @@ class PoaController extends Controller
         //
     }
 
+    /**
+     * Funcionalidad: Validación de formulario
+     * Parametros: $new
+     * Respuesta: array
+     *
+     */
 
     #Validación de formulario
     private function _rules( $new = True )
@@ -934,7 +1080,11 @@ class PoaController extends Controller
       return array( $rules, $messages );
     }
 
-
+    /* Funcionalidad: obtiende un programa especifico
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
 
     public function obtenProgramaEsp(Request $request) {
@@ -953,6 +1103,12 @@ class PoaController extends Controller
       }
     }
 
+    /* Funcionalidad: obtiende actividades
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenActividades(Request $request) {
       $idArea = Auth::user()->idarea;
       $idPrograma = $request->programa;
@@ -964,6 +1120,13 @@ class PoaController extends Controller
 
     }
 
+    /* Funcionalidad: obtiende el objetivo de una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function obtenObjetivoAct(Request $request) {
       $idArea = Auth::user()->idarea;
       $idPrograma = $request->programa;
@@ -973,17 +1136,36 @@ class PoaController extends Controller
       return response()->json($objetivo);
     }
 
+    /* Funcionalidad: obtiende porcentaje programado
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
+
     public function obtenPorcProgramado(Request $request) {
       $idActividad = $request->idActividad;
       $porcProgramado = PorcProgramado::where('porcentajep.idporcentajep', $idActividad)->leftJoin('actividades', 'actividades.autoactividades', 'porcentajep.idporcentajep')->get();
       return response()->json($porcProgramado);
     }
 
+    /* Funcionalidad: obtiende porcentaje realizado
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenPorcRealizado(Request $request) {
       $idActividad = $request->idActividad;
       $porcRealizado = PorcRealizado::where('idporcentajer', $idActividad)->get();
       return response()->json($porcRealizado);
     }
+
+    /* Funcionalidad: obtiende el detalle de una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function obtenDetallesActi(Request $request) {      
       $idActividad = $request->idActividad;

@@ -15,7 +15,9 @@ use Alert;
 class ReportesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Funcionalidad: Busca la vista principal del sistema
+     * Parametros: 
+     * Respuesta: regresa la vista junto con los datos para su creacion
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,6 +43,14 @@ class ReportesController extends Controller
       return view('pages.reportes.reppoa')->with( compact('action', 'programas', 'meses','observaciones', 'observacionesR', 'observacionesRn'));
     }
 
+
+    /**
+     * Funcionalidad: Busca la vista repindicadores del sistema
+     * Parametros: 
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     public function indexindicador()
     {
@@ -169,6 +179,13 @@ class ReportesController extends Controller
         //
     }
 
+    /**
+     * Funcionalidad: Busca la vista bitacora del sistema
+     * Parametros: $request
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
 
      public function bitacora(Request $request)
     {
@@ -190,6 +207,14 @@ class ReportesController extends Controller
           /////////////////////////////////////////////////////////////////////////////////////////
          return view('pages.admin.bitacora')->with( compact('alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
     }
+
+    /**
+     * Funcionalidad: Busca la vista bitacorames del sistema
+     * Parametros: $request
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
 
      public function bitacorames(Request $request)
     {
@@ -227,6 +252,15 @@ class ReportesController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Busca la vista tablames del sistema
+     * Parametros: $request
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
      public function tablames(Request $request)
     {
 
@@ -255,6 +289,15 @@ class ReportesController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Busca la vista buscarmes del sistema
+     * Parametros: $request
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
     public function buscarmes(Request $request)
     {
 
@@ -266,6 +309,15 @@ class ReportesController extends Controller
 
         return response()->json([$resultado]);
     }
+
+
+    /**
+     * Funcionalidad: Busca la vista buscaentre del sistema
+     * Parametros: $request
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function buscaentre(Request $request)
@@ -285,6 +337,14 @@ class ReportesController extends Controller
         return response()->json([$resultado]);
     }
 
+
+    /**
+     * Funcionalidad: Validación de formulario
+     * Parametros: $new
+     * Respuesta: regresa la vista junto con los datos para su creacion
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     #Validación de formulario
     private function _rulespoa( $new = True )
@@ -307,6 +367,15 @@ class ReportesController extends Controller
 
       return array( $rules, $messages );
     }
+
+
+    /**
+     * Funcionalidad: crea un pdf del poa apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function poa(Request $request)
@@ -448,6 +517,14 @@ class ReportesController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Validación de formulario
+     * Parametros: $new
+     * Respuesta: 
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     #Validación de formulario
     private function _rulesindicadores( $new = True )
     {
@@ -472,6 +549,15 @@ class ReportesController extends Controller
 
       return array( $rules, $messages );
     }
+
+
+  /**
+     * Funcionalidad: crea un pdf de indicadores, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function indicadores(Request $request)
@@ -636,7 +722,13 @@ class ReportesController extends Controller
     }
 
 
-
+  /**
+     * Funcionalidad: crea un pdf de la elaboracion del poa, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
 
@@ -791,7 +883,13 @@ class ReportesController extends Controller
     }
 
 
-
+  /**
+     * Funcionalidad: crea un pdf del indicador, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     public function pdfindicador(Request $request)
     {
@@ -823,7 +921,13 @@ class ReportesController extends Controller
     }
 
 
-
+  /**
+     * Funcionalidad: crea un pdf de las actividades adicionales, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function adicionales(Request $request)
@@ -893,6 +997,13 @@ class ReportesController extends Controller
       }       
     }
 
+    /**
+     * Funcionalidad: realiza una busqueda apartir de los parametros recibidos
+     * Parametros: $request
+     * Respuesta: regresa la vista poatrimestralb junto con los datos seleccionados
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     public function trimestral(Request $request)
     {
@@ -1136,6 +1247,13 @@ class ReportesController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: crea un pdf de trimestrales, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function poatrimestral(Request $request)

@@ -3,13 +3,25 @@ $(function() {
 
   $('#btnGuardarInfo_admin').hide();
   $('#btnReporteMensual_admin').hide();
-  //var _prefix_url =  $('meta[name="app-prefix"]').attr('content'); //Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
-  //  if(_prefix_url != ""){
-  //    _prefix_url = "/"+_prefix_url;
-  //  }
 
+
+/*************************************************************
+
+  Funcionalidad: Se genera un prefijo con el nombre de la carpeta en donde este almacenada la aplicación
+  Parametros: Contenido de elemento
+  Respuesta: Define una variable
+
+***************************************************************/
   var _prefix_url;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+
+/*************************************************************
+
+  Funcionalidad: No permite el ingreso de caracteres
+  Parametros: Evento del elemento
+  Respuesta: 
+
+***************************************************************/
 
   $("input#realizadomes_admin").keydown(function (e)
   {
@@ -27,6 +39,14 @@ $(function() {
         e.preventDefault();
       }
   });
+
+/*************************************************************
+
+  Funcionalidad: Limpia el contenido del elemento
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
 
   function limpiaTablaAnalisis_admin()
   {
@@ -59,6 +79,13 @@ $(function() {
     $('#dicr_admin').html('');
   }
 
+/*************************************************************
+
+  Funcionalidad: Recarga los contenidos de los elemntos y obtiene los parametros requeridos
+  Parametros: area, programa
+  Respuesta: Crea el listado de los programas especificos
+
+***************************************************************/
 
   $("#programa_admin").change(function()
   {    
@@ -103,6 +130,14 @@ $(function() {
       disabledBTN();
   });
 
+/*************************************************************
+
+  Funcionalidad: Obtiene el objetivos 
+  Parametros: area, programa, programaEsp
+  Respuesta: Coloca en la vista el objetivo del programa especifico
+
+***************************************************************/
+
   function obtenObjetivos(area, programa, programaEsp) {
     //Obtener objetivo de la actividad
     $.ajax({
@@ -116,6 +151,14 @@ $(function() {
         $('#objetivo_admin').html(response[0]['objprogramaesp']);
     });
   }
+
+/*************************************************************
+
+  Funcionalidad: Obtiene el objetivo del programa especifico 
+  Parametros: area, programa, programaEsp
+  Respuesta: Coloca en la vista el objetivo del programa especifico
+
+***************************************************************/
 
   $("#programaEsp_admin").change(function() 
   {
@@ -177,8 +220,14 @@ $(function() {
       disabledBTN();
   });
 
+/*************************************************************
 
-  //Generación de tabla y textareas de actividad, soporte, observaciones
+  Funcionalidad: Generación de tabla y textareas de actividad, soporte, observaciones
+  Parametros: idActividad: idActividad
+  Respuesta: Crea la tabla de actividades por mes
+
+***************************************************************/
+
   $("#actividades_admin").change(function()
   {
     $('#btnGuardarInfo_admin').hide();
@@ -277,6 +326,14 @@ $(function() {
     
   }); //Fin de codigo actividades
 
+/*************************************************************
+
+  Funcionalidad: Cambia los datos de la lista de opciones
+  Parametros: 
+  Respuesta: Pone la lista de nuevas opciones
+
+***************************************************************/
+
   $("#mes_admin").change(function()  
   {  
     $('#btnGuardarInfo_admin').hide();
@@ -302,6 +359,14 @@ $(function() {
     $('actividades_admin').attr('data-error', '1');
     disabledBTN();
   });
+
+/*************************************************************
+
+  Funcionalidad: Cambia los datos de la lista de opciones
+  Parametros: 
+  Respuesta: Pone la lista de nuevas opciones
+
+***************************************************************/
 
   $("#area_admin").change(function()  
   {  
@@ -335,6 +400,14 @@ $(function() {
   // ------- _formtrim  ------- //
   // ------- _formtrim  ------- //
   // ------- _formtrim  ------- //
+
+/*************************************************************
+
+  Funcionalidad: Cambia los datos de la lista de opciones
+  Parametros: 
+  Respuesta: Pone la lista de nuevas opciones
+
+***************************************************************/
   $("#area_trim").change(function()  
   {  
     $('#tablaresultados').html('');    
@@ -355,6 +428,14 @@ $(function() {
     $('#trimestre_trim').attr('data-error', '1');
     disabledBTN();
   });
+
+/*************************************************************
+
+  Funcionalidad: Cambia los datos de la lista de opciones
+  Parametros: area, programa
+  Respuesta: crea un combo de opciones con los balores solicitados
+
+***************************************************************/
 
   $("#programa_trim").change(function()
   {    
@@ -387,6 +468,14 @@ $(function() {
       disabledBTN();
   });
 
+/*************************************************************
+
+  Funcionalidad: Cambia los datos de la lista de opciones
+  Parametros: area, programa
+  Respuesta: crea un combo de opciones con los balores solicitados
+
+***************************************************************/
+
   $("#programa_trima").change(function()
   {    
     $('#tablaresultados').html('');    
@@ -417,11 +506,27 @@ $(function() {
       disabledBTN();
   });
 
+/*************************************************************
+
+  Funcionalidad: Limpia y oculta los elementos
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
   $("#programaEsp_trim").change(function()
   {  
     $('#tablaresultados').html('');    
     $('#btnReporteTrimestral').hide();    
   });
+
+/*************************************************************
+
+  Funcionalidad: Limpia y oculta los elementos
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
 
   $("#trimestre_trim").change(function()
   {  
@@ -429,6 +534,13 @@ $(function() {
     $('#btnReporteTrimestral').hide();    
   });
 
+/*************************************************************
+
+  Funcionalidad: Resetea y oculta los elementos
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
 
   $("#mes_trim").change(function()  
   {  
@@ -452,6 +564,15 @@ $(function() {
   });
 
 
+/*************************************************************
+
+  Funcionalidad:
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
+
   $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
   {     
     type : 'textarea',
@@ -467,9 +588,14 @@ $(function() {
   });
 
 
+/*************************************************************
 
+  Funcionalidad: Obtiene el mes seleccionado y lo remarca en color
+  Parametros: 
+  Respuesta: 
 
-    //document.getElementById("mes_admin").onchange = function(){
+***************************************************************/
+
       $("#mes_admin").change(function()  
   {  
       if (document.getElementById('mesActual')) {
@@ -504,6 +630,14 @@ var token = $('meta[name="csrf-token"]').attr('content');
           }
         });
 
+/*************************************************************
+
+  Funcionalidad: Al obtener el evento click delelemento, envia una peticion para editar los registros en la BD.
+  Parametros: token
+  Respuesta: Ocultar la campana de alertas
+
+***************************************************************/
+
 document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
         function hiddenAlerta () {
             $.ajax({
@@ -516,6 +650,14 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
             }
           });
         }
+
+/*************************************************************
+
+  Funcionalidad: Al obtener el evento click delelemento, envia una peticion para editar los registros en la BD.
+  Parametros: token
+  Respuesta: Ocultar la campana de alertas
+
+***************************************************************/
 
         document.getElementById("iconAlertfin").addEventListener("click", hiddenAlertafin);
         function hiddenAlertafin () {
@@ -530,6 +672,14 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
           });
         }
 
+/*************************************************************
+
+  Funcionalidad: Al obtener el evento click delelemento, envia una peticion para editar los registros en la BD.
+  Parametros: token
+  Respuesta: Ocultar la campana de alertas
+
+***************************************************************/
+
         document.getElementById("iconAlertObs").addEventListener("click", hiddenAlertafin);
         function hiddenAlertafin () {
             $.ajax({
@@ -542,6 +692,14 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
             }
           });
         }
+
+/*************************************************************
+
+  Funcionalidad: Embia la peticion para buscar la informacion.
+  Parametros: acr, token
+  Respuesta: crea la tabla de registros
+
+***************************************************************/
 
 
 //document.getElementById("buscarMes").addEventListener("click", busquedames);
@@ -583,6 +741,14 @@ $("#buscarMes").click(function(){
           
    });
 
+/*************************************************************
+
+  Funcionalidad: Embia la peticion para buscar la informacion por los parametros selelcionados
+  Parametros: datep, dates, acr, token
+  Respuesta: crea la tabla de registros
+
+***************************************************************/
+
         //document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
 $("#buscarEntre").click(function(){
 
@@ -621,6 +787,14 @@ $("#buscarEntre").click(function(){
           
         });
 
+/*************************************************************
+
+  Funcionalidad: cambia los parametros del atributo, deshabilita el elemento
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
          //document.getElementById("datep").addEventListener("change", changedatep);
 $("#datep").change(function(){
           var datep = document.getElementById('datep').value;
@@ -628,14 +802,30 @@ $("#datep").change(function(){
           document.getElementById('dates').disabled = false;
         });
 
+/*************************************************************
+
+  Funcionalidad: deshabilita el elemento
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
 $("#dates").change(function(){
         //document.getElementById("dates").addEventListener("change", changedates);
 
           document.getElementById('buscarEntre').disabled = false;
         });
-
-  document.getElementById('eunidad')?document.getElementById('eunidad').addEventListener("change", changeUnidad, false):'';
    
+/*************************************************************
+
+  Funcionalidad: Cambia, prepara los datos para seleccionar los valores correspondientes y habilita o deshabilita dependiendo la seleccion
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
+document.getElementById('eunidad')?document.getElementById('eunidad').addEventListener("change", changeUnidad, false):'';
+
   function changeUnidad(){
     var uni = this.options[this.selectedIndex].value;
     document.getElementById('contActividades').innerHTML='';
@@ -645,12 +835,28 @@ $("#dates").change(function(){
     uni == '0' ? document.getElementById('ePrograma').disabled=true : (document.getElementById('ePrograma').disabled=false,getProEsp());
   }
 
+/*************************************************************
+
+  Funcionalidad: Cambia, prepara los datos para seleccionar los valores correspondientes y habilita o deshabilita dependiendo la seleccion
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
   document.getElementById('ePrograma')?document.getElementById('ePrograma').addEventListener("change", changePro, false):'';  
    
   function changePro(){
     var pro = this.options[this.selectedIndex].value;
     pro == '0' ? document.getElementById('eProgramaEsp').disabled=true : getProEsp();
   }
+
+/*************************************************************
+
+  Funcionalidad: Obtiene los valores seleccionados para reaizar la busqueda de las actividades
+  Parametros: pro, uni, token
+  Respuesta: Crea lalista de opciones
+
+***************************************************************/
 
   function getProEsp(pro){
     document.getElementById("eProgramaEsp").innerHTML='<option value="0">Seleccione un programa</option>';
@@ -679,6 +885,14 @@ $("#dates").change(function(){
       }
     });
   }
+
+/*************************************************************
+
+  Funcionalidad: Obtiene los valores seleccionados para reaizar la busqueda de las actividades
+  Parametros: proesp, uni, token
+  Respuesta: Crea lalista de las actividades dependiendo los valores de cada una
+
+***************************************************************/
 
   document.getElementById('eProgramaEsp')?document.getElementById('eProgramaEsp').addEventListener("change", changeProEsp, false):''; 
 
@@ -905,6 +1119,14 @@ $("#dates").change(function(){
 
   }
 
+/*************************************************************
+
+  Funcionalidad: Limpia los elementos
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
+
   function emptyPrograma(){
     document.getElementById('eProgramaEsp').disabled=true;
     document.getElementById('claveProEsp').textContent = '-- --';
@@ -912,6 +1134,14 @@ $("#dates").change(function(){
     document.getElementById('contActividades').innerHTML="";
     sumTPM();
   }
+
+/*************************************************************
+
+  Funcionalidad: suma los valores obtenidos de todas las actividades
+  Parametros: 
+  Respuesta: Establece los valores apartir de los datos tratados
+
+***************************************************************/
 
   function sumTPM(){
   //console.log('hola sumTPM');
@@ -1042,11 +1272,26 @@ $("#dates").change(function(){
 
 }
 
+/*************************************************************
+
+  Funcionalidad: suma un arary
+  Parametros: total, num
+  Respuesta: la suma del array
+
+***************************************************************/
+
 function sumArray(total, num) {
           return total + num;
         }
 
-//////////////////////////////////////////////////////////////////////
+/*************************************************************
+
+  Funcionalidad: muestra la instancia del indicador seleccionado
+  Parametros: token, id
+  Respuesta: muestra la interfaz con los datos seleccionados
+
+***************************************************************/
+
         function creaIndicador(){
           $('#modalIndicador').modal('show');
           var id = this.parentNode.getAttribute('data-id');
@@ -1082,6 +1327,14 @@ function sumArray(total, num) {
             }
           });
         }
+
+/*************************************************************
+
+  Funcionalidad: limpia los elementos del modal
+  Parametros: 
+  Respuesta: 
+
+***************************************************************/
 
         $('#modalIndicador').on('hide.bs.modal', function () {
           document.getElementById('identificadorindicador').textContent='';
@@ -1122,7 +1375,14 @@ function sumArray(total, num) {
               document.getElementById('pdfIndicador').setAttribute('data-id','');
         })
 
-        //////////////////////////////////////////////////////////////////////
+/*************************************************************
+
+  Funcionalidad: crea un formulario para su emvio
+  Parametros: datos del formulario
+  Respuesta: crea un documento pdf con los parametros seleccionados
+
+***************************************************************/
+
         document.getElementById('pdfIndicador')?document.getElementById('pdfIndicador').addEventListener('click',pdfindicador,false):'';
         function pdfindicador() {
           var id = this.getAttribute('data-id');
@@ -1147,7 +1407,15 @@ function sumArray(total, num) {
           document.body.append(form);
           form.submit();
         }
-        ////////////////////////////////////////////////////////////////////
+
+/*************************************************************
+
+  Funcionalidad: busca las observaciones asociadas a una actividad
+  Parametros: token, id
+  Respuesta: musetra la intefaz con sus parametros de salida
+
+***************************************************************/
+
         function verObservaciones(){
           $('#modalOpservaciones').modal('show');
           /////////////////////////////////////////////////////
@@ -1281,7 +1549,13 @@ function sumArray(total, num) {
           });
         }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+/*************************************************************
+
+  Funcionalidad: selecciona los datos a evaluar
+  Parametros: token, arrayObs, varColor
+  Respuesta: alerta de datos enviados
+
+***************************************************************/
 
         document.getElementById('sendObsVal')?document.getElementById('sendObsVal').addEventListener('click', sendObsVal, false):'';
 
@@ -1300,17 +1574,10 @@ function sumArray(total, num) {
           }
           
 
-
-          //////////////////////////////////////////////////////////////////////////////////////
-          //console.log(arrayObs.length,aoe.length);
-
           var varColor;
           arrayObs.length==aoe.length?varColor=4:varColor=2;
           arrayObs.length==aoe.length&&actdos?varColor=1:'';
-          //arrayObs.length<aoe.length?varColor=2:'';
-          //console.log(varColor);
 
-          //////////////////////////////////////////////////////////////////////////////////////
           var obsCamp = parseInt(document.getElementById('campanaAlertObsR').textContent);
           isNaN(obsCamp)?obsCamp=0:'';
 
@@ -1392,6 +1659,14 @@ function sumArray(total, num) {
 
         }
 
+/*************************************************************
+
+  Funcionalidad: limpia los elementos del modal
+  Parametros:
+  Respuesta:
+
+***************************************************************/
+
         
         $('#modalOpservaciones').on('hide.bs.modal', function () {
           document.getElementById('sendObservaciones').setAttribute('data-id', '');
@@ -1402,6 +1677,14 @@ function sumArray(total, num) {
           document.getElementById('dataHistorial').textContent="";
           document.getElementById('sendObsVal').disabled=true;
         })
+
+/*************************************************************
+
+  Funcionalidad: crea y agrega un elemento dinamico
+  Parametros: 
+  Respuesta: elemnto creado
+
+***************************************************************/
 
         document.getElementById('addObservaciones')?document.getElementById('addObservaciones').addEventListener('click', addObservaciones, false):'';
 
@@ -1432,18 +1715,43 @@ function sumArray(total, num) {
             $('[data-toggle="tooltip"]').tooltip();   
           });
         }
-        //////////////////////////////////////////////////////////////////////
+
+/*************************************************************
+
+  Funcionalidad: Elimina el elemento seleccionado
+  Parametros: 
+  Respuesta:
+
+***************************************************************/
+
         function removeObs() {
           this.parentNode.remove();
           $('.tooltip').tooltip('hide');
         }
-        //////////////////////////////////////////////////////////////////////
+
+
+/*************************************************************
+
+  Funcionalidad: agrega un numero consecutivo alos elementos seleccionados
+  Parametros: 
+  Respuesta:
+
+***************************************************************/
+
         function reCountAct() {
           var numAct = document.getElementsByClassName('rowAct');
           for (var i = 0; i < numAct.length; i++) {
             numAct[i].querySelector('.item1').innerHTML = i+1;
           }
         }
+
+/*************************************************************
+
+  Funcionalidad: Envia las observaciones para su registro y establece el estatus de cada boton
+  Parametros: id,arrayObs,cla,uni,varColor
+  Respuesta: alerta de datos enviados
+
+***************************************************************/
 
         document.getElementById('sendObservaciones')?document.getElementById('sendObservaciones').addEventListener('click', sendOBS, false):'';
 
@@ -1534,7 +1842,14 @@ function sumArray(total, num) {
 
         }
 
-        //////////////////////////////////////////////////////////////////////
+/*************************************************************
+
+  Funcionalidad: crea un formulario para su envio
+  Parametros: Datos del formulario
+  Respuesta: crea un documento pdf
+
+***************************************************************/
+
 document.getElementById('pdfela')?document.getElementById('pdfela').addEventListener('click',pdfelaboracion,false):'';
 function pdfelaboracion() {
   var urlPdf;
@@ -1601,6 +1916,14 @@ function pdfelaboracion() {
   document.body.append(form);
   form.submit();
 }
+
+/*************************************************************
+
+  Funcionalidad: busca los registros relacionados al id del elemento
+  Parametros: toke, idAO
+  Respuesta: crea la interfaz de las observaciones y sus caracteristicas
+
+***************************************************************/
 
   document.getElementById('buscarOBS')?document.getElementById('buscarOBS').addEventListener('click', repObs, false):'';
 

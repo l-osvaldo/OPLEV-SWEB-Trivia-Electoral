@@ -32,7 +32,10 @@ class AdminController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Funcionalidad: Registro de actividades
+     * Parametros: $request
+     * Respuesta: Redireccionamiento
+     *
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -112,6 +115,13 @@ class AdminController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: Obtiene el programa especifico
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenProgramaEsp(Request $request)
     {
       if (Auth::check())
@@ -129,6 +139,13 @@ class AdminController extends Controller
       }
     }
 
+    /**
+     * Funcionalidad: Obtiene actividades
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenActividades(Request $request) {
       $idArea = $request->area;
       $idPrograma = $request->programa;
@@ -137,6 +154,13 @@ class AdminController extends Controller
       $actividades = Actividad::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->orderBy('numactividad')->get();
       return response()->json($actividades);
     }
+
+    /**
+     * Funcionalidad: Obtiene el objetivo de una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function obtenObjetivoAct(Request $request)
     {
@@ -148,17 +172,38 @@ class AdminController extends Controller
       return response()->json($objetivo);
     }
 
+    /**
+     * Funcionalidad: Obtiene el porcentaje programado
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenPorcProgramado(Request $request) {
       $idActividad = $request->idActividad;
       $porcProgramado = PorcProgramado::where('porcentajep.idporcentajep', $idActividad)->leftJoin('actividades', 'actividades.autoactividades', 'porcentajep.idporcentajep')->get();
       return response()->json($porcProgramado);
     }
 
+    /**
+     * Funcionalidad: Obtiene el porcentaje realizado
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
+
     public function obtenPorcRealizado(Request $request) {
       $idActividad = $request->idActividad;
       $porcRealizado = PorcRealizado::where('idporcentajer', $idActividad)->get();
       return response()->json($porcRealizado);
     }
+
+    /**
+     * Funcionalidad: Obtiene los detalles de una actividad
+     * Parametros: $request
+     * Respuesta: json
+     *
+     */
 
     public function obtenDetallesActi(Request $request) {      
       $idActividad = $request->idActividad;
@@ -168,7 +213,12 @@ class AdminController extends Controller
       //
     }
 
-
+    /**
+     * Funcionalidad: Obtiene los trimestrales
+     * Parametros: 
+     * Respuesta: regresa la vista seleccionada con los parametros especificos
+     *
+     */
 
     public function poatrimestral()
     {
@@ -208,6 +258,13 @@ class AdminController extends Controller
         return redirect()->route('login');        
       }
     }
+
+    /**
+     * Funcionalidad: Guarda las observaciones del trimestre
+     * Parametros: $request
+     * Respuesta: $modificacion
+     *
+     */
 
     public function guardarObsTrim(Request $request)
     {      
