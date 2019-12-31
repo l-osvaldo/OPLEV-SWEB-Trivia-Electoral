@@ -89,5 +89,8 @@ Route::post('/getidobs', 'PoaController@getidobs')->name('getidobs');
 Route::post('/actindicador', 'PoaController@actindicador')->name('actindicador');
 
 Route::post('/deleteobserr', 'PoaController@deleteobserr')->name('deleteobserr');
+
+Route::get('/sistemonoff', 'PoaController@sistemonoff')->name('sistemonoff');
+Route::post('/onOffsipsei', 'PoaController@onOffsipsei')->name('onOffsipsei');
 });
 

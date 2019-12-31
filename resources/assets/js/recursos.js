@@ -833,6 +833,99 @@ $.ajaxSetup({
               document.getElementById('variable2').textContent=data[0].variable2;
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
               document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+
+              document.getElementById('nombreindicador').contentEditable = true;
+              document.getElementById('objetivoindicador').contentEditable = true;
+              document.getElementById('unidadmedida').contentEditable = true;
+              document.getElementById('metodocalculo').contentEditable = true;
+              document.getElementById('variable1').contentEditable = true;
+              document.getElementById('descripcionvariable1').contentEditable = true;
+              document.getElementById('fuentesinfovariable1').contentEditable = true;
+              document.getElementById('variable2').contentEditable = true;
+              document.getElementById('descripcionvariable2').contentEditable = true;
+              document.getElementById('fuentesinfovariable2').contentEditable = true;
+              document.getElementById('fundamentojuridico').contentEditable = true;
+              document.getElementById('lineabasev').contentEditable = true;
+              document.getElementById('lineabasea').contentEditable = true;
+
+              document.getElementById('updateIndicador').disabled=false;
+
+              data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
+              data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique,document.getElementById('frecuenciaespecifique').contentEditable = true):document.getElementById('frecuenciaespecifique').style.display='none';
+              //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
+              document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
+              document.getElementById('lineabasev').textContent=data[0].lineabasev;
+              document.getElementById('lineabasea').textContent=data[0].lineabasea;
+              //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              //console.log(data[0].comportamientoindicador)
+              data[0].comportamientoindicador?document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).checked = true:'';
+              //document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
+              document.getElementById('pdfIndicador').setAttribute('data-id',id);
+            }
+          });
+        }
+
+
+/*************************************************************
+
+  Funcionalidad: muestra una instancia nueva de indicador para la reprogramacion inicial
+  Parametros: token, id
+  Respuesta: muestra la interfaz con los datos seleccionado
+
+***************************************************************/
+
+        function creaIndicadorDisable(){
+          $('#modalIndicador').modal('show');
+          var id = this.parentNode.getAttribute('data-id');
+
+          var mesco = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+          var mi = mesco.indexOf(this.parentNode.children[5].textContent);
+          var mt = mesco.indexOf(this.parentNode.children[6].textContent);
+          var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+          var periodo = meses[mi]+' - '+meses[mt]+' 2020';
+          //console.log(periodo);
+          $.ajax({
+             type:'POST',
+             url:"getindicador",
+             data:{"_token": token,data:id},
+             success:function(data){ 
+              document.getElementById('identificadorindicador').textContent=data[0].identificadorindicador;
+              document.getElementById('nombreindicador').textContent=data[0].nombreindicador;
+              document.getElementById('objetivoindicador').textContent=data[0].objetivoindicador;
+              document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
+              //document.getElementById('periodocumplimiento').innerHTML=data[0].periodocumplimiento+'<br>'+periodo;
+              document.getElementById('periodocumplimiento').textContent=periodo;
+              data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
+              document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
+              data[0].dimensionmedir?document.getElementById('dimensionmedir'+data[0].dimensionmedir).checked = true:'';
+              document.getElementById('unidadmedida').textContent=data[0].unidadmedida;
+              document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
+              document.getElementById('variable1').textContent=data[0].variable1;
+              document.getElementById('descripcionvariable1').textContent=data[0].descripcionvariable1;
+              document.getElementById('fuentesinfovariable1').textContent=data[0].fuentesinfovariable1;
+              document.getElementById('variable2').textContent=data[0].variable2;
+              document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
+              document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+
+              document.getElementById('dimensionmedir1').style.pointerEvents='none';
+              document.getElementById('dimensionmedir2').style.pointerEvents='none';
+              document.getElementById('dimensionmedir3').style.pointerEvents='none';
+              document.getElementById('dimensionmedir4').style.pointerEvents='none';
+
+              document.getElementById('frecuenciamedicion1').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion2').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion3').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion4').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion5').style.pointerEvents='none';
+
+              document.getElementById('comportamientoindicador1').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador2').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador3').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador4').style.pointerEvents='none';
+
+              document.getElementById('updateIndicador').disabled=true;
+
               data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
               data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique):document.getElementById('frecuenciaespecifique').style.display='none';
               //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
@@ -840,7 +933,7 @@ $.ajaxSetup({
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
               //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
-              console.log(data[0].comportamientoindicador)
+              //console.log(data[0].comportamientoindicador)
               data[0].comportamientoindicador?document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).checked = true:'';
               //document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
               document.getElementById('pdfIndicador').setAttribute('data-id',id);
@@ -1727,182 +1820,289 @@ $.ajaxSetup({
 
           for (var j = 0; j < data[0].length; j++) {
 
-          var rowAct = document.createElement("DIV");
-          rowAct.className = "row rowAct";
-          rowAct.setAttribute('data-id', data[0][j].id)
-          rowAct.setAttribute('id', 'act'+data[0][j].id)  
+                var rowAct = document.createElement("DIV");
+                rowAct.className = "row rowAct";
+                rowAct.setAttribute('data-id', data[0][j].id)
+                rowAct.setAttribute('id', 'act'+data[0][j].id)  
 
-          var item1 = document.createElement("DIV");   // Create a <button> element
-          item1.innerHTML = '';
-          item1.className = "item1";                 // Insert text
-          rowAct.appendChild(item1);  
+                var item1 = document.createElement("DIV");   // Create a <button> element
+                item1.innerHTML = '';
+                item1.className = "item1";                 // Insert text
+                rowAct.appendChild(item1);  
 
-          var item2 = document.createElement("DIV");
-          item2.innerHTML = data[0][j].descactividad;
-          item2.className = "item2";                 // Insert text
-          item2.addEventListener("keyup", backEnable, false);
-          rowAct.appendChild(item2);
+                var item2 = document.createElement("DIV");
+                item2.innerHTML = data[0][j].descactividad;
+                item2.className = "item2";                 // Insert text
+                item2.addEventListener("keyup", backEnable, false);
+                rowAct.appendChild(item2);
 
-          var item3 = document.createElement("DIV");
-          item3.innerHTML = data[0][j].unidadmedida;
-          item3.className = "item3";                 // Insert text
-          item3.addEventListener("keyup", backEnable, false);
-          rowAct.appendChild(item3);
+                var item3 = document.createElement("DIV");
+                item3.innerHTML = data[0][j].unidadmedida;
+                item3.className = "item3";                 // Insert text
+                item3.addEventListener("keyup", backEnable, false);
+                rowAct.appendChild(item3);
 
-          var item4 = document.createElement("DIV");
-          item4.className = "item4";                 // Insert text
-          rowAct.appendChild(item4);
+                var item4 = document.createElement("DIV");
+                item4.className = "item4";                 // Insert text
+                rowAct.appendChild(item4);
 
-          var allItemMes = document.createElement("DIV");
-          allItemMes.className = "allItemMes"; 
+                var allItemMes = document.createElement("DIV");
+                allItemMes.className = "allItemMes"; 
 
-          var me = [];
-          var sumNum = [];
-          for (var i = 0; i < meses.length; i++) {
-            var itemMes1 = document.createElement("DIV");
-            var mesp = meses[i]+'p';
-            sumNum.push(data[0][j][mesp]);
-            itemMes1.innerHTML = data[0][j][mesp];
-            itemMes1.className = "col-md-1 itemMes";
-            itemMes1.setAttribute('data-mes', meses[i]);
-            itemMes1.addEventListener("keyup", backEnable, false);
-            itemMes1.addEventListener("keyup", validaNumeros, false);
-            data[0][j][mesp] != 0 ? (itemMes1.style.backgroundColor = "#cfd8dc",me.push(meses[i])) : itemMes1.style.backgroundColor = "";
+                var me = [];
+                var sumNum = [];
+                for (var i = 0; i < meses.length; i++) {
+                  var itemMes1 = document.createElement("DIV");
+                  var mesp = meses[i]+'p';
+                  sumNum.push(data[0][j][mesp]);
+                  itemMes1.innerHTML = data[0][j][mesp];
+                  itemMes1.className = "col-md-1 itemMes";
+                  itemMes1.setAttribute('data-mes', meses[i]);
+                  itemMes1.addEventListener("keyup", backEnable, false);
+                  itemMes1.addEventListener("keypress", validaNumeros, false);
+                  data[0][j][mesp] != 0 ? (itemMes1.style.backgroundColor = "#cfd8dc",me.push(meses[i])) : itemMes1.style.backgroundColor = "";
 
-            allItemMes.appendChild(itemMes1)
-          }
+                  allItemMes.appendChild(itemMes1)
+                }
 
-          var programado = sumNum.reduce(sumArray);
-          item4.innerHTML=programado;
-          
-          
+                var programado = sumNum.reduce(sumArray);
+                item4.innerHTML=programado;
+                
+                
 
-          rowAct.appendChild(allItemMes); 
+                rowAct.appendChild(allItemMes); 
 
-          var item5 = document.createElement("DIV");
-          item5.innerHTML = "MES";
-          item5.className = "item5";                 // Insert text
-          rowAct.appendChild(item5);
+                var item5 = document.createElement("DIV");
+                item5.innerHTML = "MES";
+                item5.className = "item5";                 // Insert text
+                rowAct.appendChild(item5);
 
-          var item6 = document.createElement("DIV");
-          item6.innerHTML = "MES";
-          item6.className = "item6";                 // Insert text
-          rowAct.appendChild(item6);
+                var item6 = document.createElement("DIV");
+                item6.innerHTML = "MES";
+                item6.className = "item6";                 // Insert text
+                rowAct.appendChild(item6);
 
-          switch (me.length) {
-            case 0:
-              item5.innerHTML='MES';
-              item6.innerHTML='MES';
-              break;
-            case 1:
-              item5.innerHTML=me[0];
-              item6.innerHTML=me[0];
-              break;
-            default:
-              var totalMes = me.length-1;
-              item5.innerHTML=me[0];
-              item6.innerHTML=me[me.length-1]
-          }
+                switch (me.length) {
+                  case 0:
+                    item5.innerHTML='MES';
+                    item6.innerHTML='MES';
+                    break;
+                  case 1:
+                    item5.innerHTML=me[0];
+                    item6.innerHTML=me[0];
+                    break;
+                  default:
+                    var totalMes = me.length-1;
+                    item5.innerHTML=me[0];
+                    item6.innerHTML=me[me.length-1]
+                }
 
-          var editar = document.createElement("I");
-          editar.className = "iconBH fa fa-pencil-square-o resetBack btnOff";   
-          editar.setAttribute('aria-hidden', 'true');
-          editar.setAttribute('data-toggle', 'tooltip');
-          editar.setAttribute('data-placement', 'right');
-          editar.setAttribute('data-insert', '0');
-          editar.setAttribute('title', 'Editar');
-          editar.setAttribute('data-edit', '0');
-          editar.addEventListener("click", editAct, false);
 
-          rowAct.appendChild(editar);
+/////////////////////////////////////////////////////////////////////////////////////////////////////REPROGRAMACION ESTATUS
+                switch (data[0][j].act_tipo_estatus) {
+                  case 0:
 
-          var back = document.createElement("I");
-          back.className = "iconBH fa fa-ban btnBack btnOn";   
-          back.setAttribute('aria-hidden', 'true');
-          back.setAttribute('data-toggle', 'tooltip');
-          back.setAttribute('data-placement', 'right');
-          back.setAttribute('title', 'Cancelar edición');
-          back.setAttribute('data-ba', data[0][j].descactividad);
-          back.setAttribute('data-bu', data[0][j].unidadmedida);
-          back.setAttribute('data-bm', sumNum.join());
-          back.style.color='#eceff1';
-          back.style.pointerEvents='none';
-          back.addEventListener("click", actBack, false);
+                var editar = document.createElement("I");
+                editar.className = "iconBH fa fa-pencil-square-o resetBack btnOff";   
+                editar.setAttribute('aria-hidden', 'true');
+                editar.setAttribute('data-toggle', 'tooltip');
+                editar.setAttribute('data-placement', 'right');
+                editar.setAttribute('data-insert', '0');
+                editar.setAttribute('title', 'Editar');
+                editar.setAttribute('data-edit', '0');
+                editar.style.color='#eceff1';
+                editar.style.pointerEvents='none';
+                //editar.addEventListener("click", editAct, false);
 
-          rowAct.appendChild(back);
+                rowAct.appendChild(editar);
 
-          var up = document.createElement("I");
-          up.className = "iconBH fa fa-arrow-circle-up up btnOff";   
-          up.setAttribute('aria-hidden', 'true');
-          up.setAttribute('data-toggle', 'tooltip');
-          up.setAttribute('data-placement', 'right');
-          up.setAttribute('title', 'Subir');
-          up.addEventListener("click", moveUp);
+                var back = document.createElement("I");
+                back.className = "iconBH fa fa-ban btnBack btnOn";   
+                back.setAttribute('aria-hidden', 'true');
+                back.setAttribute('data-toggle', 'tooltip');
+                back.setAttribute('data-placement', 'right');
+                back.setAttribute('title', 'Cancelar edición');
+                back.setAttribute('data-ba', data[0][j].descactividad);
+                back.setAttribute('data-bu', data[0][j].unidadmedida);
+                back.setAttribute('data-bm', sumNum.join());
+                back.style.color='#eceff1';
+                back.style.pointerEvents='none';
+                //back.addEventListener("click", actBack, false);
 
-          rowAct.appendChild(up);
+                rowAct.appendChild(back);
 
-          var down = document.createElement("I");
-          down.className = "iconBH fa fa-arrow-circle-down down btnOff";   
-          down.setAttribute('aria-hidden', 'true');
-          down.setAttribute('data-toggle', 'tooltip');
-          down.setAttribute('data-placement', 'right');
-          down.setAttribute('title', 'Bajar');
-          down.addEventListener("click", moveDown);
+                var up = document.createElement("I");
+                up.className = "iconBH fa fa-arrow-circle-up up btnOff";   
+                up.setAttribute('aria-hidden', 'true');
+                up.setAttribute('data-toggle', 'tooltip');
+                up.setAttribute('data-placement', 'right');
+                up.setAttribute('title', 'Subir');
+                up.style.color='#eceff1';
+                up.style.pointerEvents='none';
+                //up.addEventListener("click", moveUp);
 
-          rowAct.appendChild(down);
+                rowAct.appendChild(up);
 
-          var indi = document.createElement("I");
-          indi.className = "iconBH fa fa-info-circle btnOff";   
-          indi.setAttribute('aria-hidden', 'true');
-          indi.setAttribute('data-toggle', 'tooltip');
-          indi.setAttribute('data-placement', 'right');
-          indi.setAttribute('title', 'Indicador');
-          indi.addEventListener("click", creaIndicador);
+                var down = document.createElement("I");
+                down.className = "iconBH fa fa-arrow-circle-down down btnOff";   
+                down.setAttribute('aria-hidden', 'true');
+                down.setAttribute('data-toggle', 'tooltip');
+                down.setAttribute('data-placement', 'right');
+                down.setAttribute('title', 'Bajar');
+                down.style.color='#eceff1';
+                down.style.pointerEvents='none';
+                //down.addEventListener("click", moveDown);
 
-          rowAct.appendChild(indi);
+                rowAct.appendChild(down);
 
-          var observa = document.createElement("I");
-          observa.className = "iconBH fa fa-eye btnOff";   
-          observa.setAttribute('aria-hidden', 'true');
-          observa.setAttribute('data-toggle', 'tooltip');
-          observa.setAttribute('data-placement', 'right');
-          observa.setAttribute('title', 'observaciones');
-          switch (data[0][j].act_obs_edit) {
-            case 1:
-              observa.style.backgroundColor='#f48fb1';
-              observa.style.color='#000';
-              break;
-            case 2:
-              observa.style.backgroundColor='#f48fb1';
-              observa.style.color='#000';
-              break;
-            case 3:
-              observa.style.backgroundColor='#f48fb1';
-              observa.style.color='#000';
-              break;
-            case 4:
-              observa.style.backgroundColor='#c0ca33';
-              observa.style.color='#000';
-              break;
-            default:
-             observa.style.backgroundColor='#fff';
-          } 
-          observa.addEventListener("click", verObservaciones);
+                var indi = document.createElement("I");
+                indi.className = "iconBH fa fa-info-circle btnOff";   
+                indi.setAttribute('aria-hidden', 'true');
+                indi.setAttribute('data-toggle', 'tooltip');
+                indi.setAttribute('data-placement', 'right');
+                indi.setAttribute('title', 'Indicador');
+                indi.addEventListener("click", creaIndicadorDisable);
 
-          rowAct.appendChild(observa);
+                rowAct.appendChild(indi);
 
-          var del = document.createElement("I");
-          del.className = "iconBH fa fa-trash delAct btnOff";   
-          del.setAttribute('aria-hidden', 'true');
-          del.setAttribute('data-toggle', 'tooltip');
-          del.setAttribute('data-placement', 'right');
-          del.setAttribute('title', 'Eliminar');
-          del.addEventListener("click", removeActModal);
+                var observa = document.createElement("I");
+                observa.className = "iconBH fa fa-eye btnOff";   
+                observa.setAttribute('aria-hidden', 'true');
+                observa.setAttribute('data-toggle', 'tooltip');
+                observa.setAttribute('data-placement', 'right');
+                observa.setAttribute('title', 'observaciones');
+                observa.style.color='#eceff1';
+                observa.style.pointerEvents='none';
+                //observa.addEventListener("click", verObservaciones);
 
-          rowAct.appendChild(del);
+                rowAct.appendChild(observa);
 
-          act.appendChild(rowAct);
-          act.style.backgroundColor='';  
+                var del = document.createElement("I");
+                del.className = "iconBH fa fa-trash delAct btnOff";   
+                del.setAttribute('aria-hidden', 'true');
+                del.setAttribute('data-toggle', 'tooltip');
+                del.setAttribute('data-placement', 'right');
+                del.setAttribute('title', 'Eliminar');
+                del.style.color='#eceff1';
+                del.style.pointerEvents='none';
+                //del.addEventListener("click", removeActModal);
+
+                rowAct.appendChild(del);
+
+                act.appendChild(rowAct);
+                act.style.backgroundColor='';
+
+                ////////////////////////////////////////////////////////////////////////////////////////
+                    
+                  break;
+                  case 1:
+                    var editar = document.createElement("I");
+                editar.className = "iconBH fa fa-pencil-square-o resetBack btnOff";   
+                editar.setAttribute('aria-hidden', 'true');
+                editar.setAttribute('data-toggle', 'tooltip');
+                editar.setAttribute('data-placement', 'right');
+                editar.setAttribute('data-insert', '0');
+                editar.setAttribute('title', 'Editar');
+                editar.setAttribute('data-edit', '0');
+                editar.addEventListener("click", editAct, false);
+
+                rowAct.appendChild(editar);
+
+                var back = document.createElement("I");
+                back.className = "iconBH fa fa-ban btnBack btnOn";   
+                back.setAttribute('aria-hidden', 'true');
+                back.setAttribute('data-toggle', 'tooltip');
+                back.setAttribute('data-placement', 'right');
+                back.setAttribute('title', 'Cancelar edición');
+                back.setAttribute('data-ba', data[0][j].descactividad);
+                back.setAttribute('data-bu', data[0][j].unidadmedida);
+                back.setAttribute('data-bm', sumNum.join());
+                back.style.color='#eceff1';
+                back.style.pointerEvents='none';
+                back.addEventListener("click", actBack, false);
+
+                rowAct.appendChild(back);
+
+                var up = document.createElement("I");
+                up.className = "iconBH fa fa-arrow-circle-up up btnOff";   
+                up.setAttribute('aria-hidden', 'true');
+                up.setAttribute('data-toggle', 'tooltip');
+                up.setAttribute('data-placement', 'right');
+                up.setAttribute('title', 'Subir');
+                up.addEventListener("click", moveUp);
+
+                rowAct.appendChild(up);
+
+                var down = document.createElement("I");
+                down.className = "iconBH fa fa-arrow-circle-down down btnOff";   
+                down.setAttribute('aria-hidden', 'true');
+                down.setAttribute('data-toggle', 'tooltip');
+                down.setAttribute('data-placement', 'right');
+                down.setAttribute('title', 'Bajar');
+                down.addEventListener("click", moveDown);
+
+                rowAct.appendChild(down);
+
+                var indi = document.createElement("I");
+                indi.className = "iconBH fa fa-info-circle btnOff";   
+                indi.setAttribute('aria-hidden', 'true');
+                indi.setAttribute('data-toggle', 'tooltip');
+                indi.setAttribute('data-placement', 'right');
+                indi.setAttribute('title', 'Indicador');
+                indi.addEventListener("click", creaIndicador);
+
+                rowAct.appendChild(indi);
+
+                var observa = document.createElement("I");
+                observa.className = "iconBH fa fa-eye btnOff";   
+                observa.setAttribute('aria-hidden', 'true');
+                observa.setAttribute('data-toggle', 'tooltip');
+                observa.setAttribute('data-placement', 'right');
+                observa.setAttribute('title', 'observaciones');
+                switch (data[0][j].act_obs_edit) {
+                  case 1:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 2:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 3:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 4:
+                    observa.style.backgroundColor='#c0ca33';
+                    observa.style.color='#000';
+                    break;
+                  default:
+                   observa.style.backgroundColor='#fff';
+                } 
+                observa.addEventListener("click", verObservaciones);
+
+                rowAct.appendChild(observa);
+
+                var del = document.createElement("I");
+                del.className = "iconBH fa fa-trash delAct btnOff";   
+                del.setAttribute('aria-hidden', 'true');
+                del.setAttribute('data-toggle', 'tooltip');
+                del.setAttribute('data-placement', 'right');
+                del.setAttribute('title', 'Eliminar');
+                del.addEventListener("click", removeActModal);
+
+                rowAct.appendChild(del);
+
+                act.appendChild(rowAct);
+                act.style.backgroundColor='';
+                    break;
+                  default:
+                   console.log('hola')
+                }
+
+              ///////////////////////////////////////////////////////////////////////////////////////FIN REPROGRAMACION
+
+                  
 
           }
 
@@ -1952,7 +2152,7 @@ $.ajaxSetup({
         isNaN(t.parentNode.children[4].children[i].textContent) || t.parentNode.children[4].children[i].textContent === '0' || t.parentNode.children[4].children[i].textContent === '' ? t.parentNode.children[4].children[i].textContent = "0" : me.push(t.parentNode.children[4].children[i].getAttribute('data-mes'));
       } 
       var programado = nu.reduce(sumArray);
-      //console.log(programado);
+      //console.log(nu);
       //isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
 
       ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
@@ -2150,7 +2350,9 @@ for (var i = 0; i < numericos.length; i++) {
 }
 
 function validaNumeros() {
-  //console.log(this.textContent);
+  //console.log(this.textContent[1]);
+  //|| this.textContent[0] == 0
+  this.textContent.length > 2 ? this.textContent = this.textContent.substring(0, this.textContent.length - 1):'';
   /^\d*$/.test(this.textContent) ? '' : this.textContent="0";
   //this.textContent ? '' : this.textContent="0";
 }

@@ -61,7 +61,8 @@
 #ePrograma,#eProgramaEsp,#eProgramaA,#eProgramaEspA,#eunidad,#ModalTitle{color:#EA0D94;cursor: pointer;}
 .form-control:disabled, .form-control[readonly]{color: #ccc !important;}
 .indLabel{background: #cfd8dc;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
-.indEdit{background: #fff;margin-bottom: 1px;border:solid 2px #f8bbd0;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
+.indEdit{background: #fce4ec;margin-bottom: 1px;text-align: left;min-height: 30px; height: 30px;height: auto !important;border-right: 2px solid #fff;border-left: 2px solid #fff;}
+.indEditE{background: #fce4ec;margin-bottom: 1px;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
 .indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .obsTexto{border:solid 1px #f8bbd0;margin:3px 0;position: relative;background: #fff;}
 #addObservaciones{cursor: pointer;}
@@ -334,11 +335,11 @@
           </div>
           <div class="row">
             <div class="col-md-5 indBlanco" id="identificadorindicador"></div>
-            <div class="col-md-7 indEdit" contenteditable="true" id="nombreindicador"></div>
+            <div class="col-md-7 indEdit" id="nombreindicador"></div>
           </div>
           <div class="row">
             <div class="col-md-3 indLabel">Objetivo</div>
-            <div class="col-md-9 indEdit" contenteditable="true" id="objetivoindicador"></div>
+            <div class="col-md-9 indEdit" id="objetivoindicador"></div>
           </div>
           <div class="row">
             <div class="col-md-6 indLabel">Meta</div>
@@ -392,7 +393,7 @@
 
               </div>
             </div>
-            <div class="col-md-3 indEdit" id="unidadmedida" contenteditable="true"></div>
+            <div class="col-md-3 indEdit" id="unidadmedida"></div>
           </div>
 
           <div class="row">
@@ -400,7 +401,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12 indEdit" id="metodocalculo" contenteditable="true"></div>
+            <div class="col-md-12 indEdit" id="metodocalculo"></div>
           </div>
 
            <div class="row">
@@ -410,15 +411,15 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4 indEdit" contenteditable="true" id="variable1"></div>
-            <div class="col-md-4 indEdit" contenteditable="true" id="descripcionvariable1"></div>
-            <div class="col-md-4 indEdit" contenteditable="true" id="fuentesinfovariable1"></div>
+            <div class="col-md-4 indEdit" id="variable1"></div>
+            <div class="col-md-4 indEdit" id="descripcionvariable1"></div>
+            <div class="col-md-4 indEdit" id="fuentesinfovariable1"></div>
           </div>
 
           <div class="row">
-            <div class="col-md-4 indEdit" contenteditable="true" id="variable2"></div>
-            <div class="col-md-4 indEdit" contenteditable="true" id="descripcionvariable2"></div>
-            <div class="col-md-4 indEdit" contenteditable="true" id="fuentesinfovariable2"></div>
+            <div class="col-md-4 indEdit" id="variable2"></div>
+            <div class="col-md-4 indEdit" id="descripcionvariable2"></div>
+            <div class="col-md-4 indEdit" id="fuentesinfovariable2"></div>
           </div>
 
            <div class="row">
@@ -449,7 +450,7 @@
             <div class="col-md-3 indBlanco">
               <input class="inputDime" type="radio" name="frecuencia" value="5" id="frecuenciamedicion5">
                <div class="row">
-                <div class="indEdit col-md-12" id="frecuenciaespecifique" contenteditable="true" style="display: none;"></div>
+                <div class="indEditE col-md-12" id="frecuenciaespecifique" style="display: none;"></div>
               </div>
             </div>
           </div>
@@ -459,7 +460,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12 indEdit" contenteditable="true" id="fundamentojuridico"></div>
+            <div class="col-md-12 indEdit" id="fundamentojuridico"></div>
           </div>
 
           <div class="row">
@@ -475,8 +476,8 @@
             <div class="col-md-2 indBlanco">Nominal</div>
           </div>
           <div class="row">
-            <div class="col-md-2 indEdit" contenteditable="true" id="lineabasev"></div>
-            <div class="col-md-2 indEdit" contenteditable="true" id="lineabasea"></div>
+            <div class="col-md-2 indEdit" id="lineabasev"></div>
+            <div class="col-md-2 indEdit" id="lineabasea"></div>
             <div class="col-md-2 indBlanco">
               <input class="inputDime" type="radio" name="comportamiento" value="1" id="comportamientoindicador1">
             </div>

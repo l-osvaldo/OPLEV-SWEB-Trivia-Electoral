@@ -1218,7 +1218,10 @@ class ReportesController extends Controller
 
       $areas = Area::all();
       $trimestres = Trimestre::all();
-      $programas = Programa::where('reprogramacion', '<', 3)->get();     
+      $programas = Programa::where('reprogramacion', '<', 3)->get(); 
+
+      $user   = auth()->user();
+      $areaId = $user->idarea;    
 
       $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
       $trimestral = Trimestral::all();
@@ -1229,17 +1232,16 @@ class ReportesController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
           $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
           $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
-          $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
           ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
 
-          $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-          ->orderBy('obs_date', 'desc')->get();
-
-           $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
-
-          return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR','observacionesRn'));
+          return view('pages.admin.poatrimestralb')->with( compact('areas', 'trimestres', 'programas', 'programaesp', 'action', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
 
 
 

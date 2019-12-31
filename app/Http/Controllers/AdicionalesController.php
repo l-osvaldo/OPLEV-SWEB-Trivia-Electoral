@@ -92,7 +92,7 @@ class AdicionalesController extends Controller
         {
           $adicional = new Adicional();
           $action = route('adicionales.store');
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones','observacionesR') );
+          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
         }
       }
       else

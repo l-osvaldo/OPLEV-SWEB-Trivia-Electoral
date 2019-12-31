@@ -214,6 +214,69 @@ class PoaController extends Controller
     }
 
     /**
+     * Funcionalidad: Abilita o deshabilita el sistema en general
+     * Parametros:
+     * Respuesta: json
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sistemonoff()
+    {
+      $meses = Mes::all();
+          $areas = Area::all();
+          $programas = Programa::where('reprogramacion', '<', 3)->get();
+          $action = route('admin.store');
+
+          /////////////////////////////////////////////////////////////////////////////////////////
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          /////////////////////////////////////////////////////////////////////////////////////////
+          return view('pages.admin.sistemonoff')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
+    }
+
+    /**
+     * Funcionalidad: Abilita o deshabilita el sistema en general
+     * Parametros:
+     * Respuesta: json
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function onOffsipsei(Request $request)
+    {
+      if (Auth::check()) {
+
+      if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+            
+          $data = $request->data;
+
+            DB::table('actividadesdos')->update(['act_tipo_estatus' => $data]);
+            return response()->json(['listo']);
+
+        }
+        else { 
+          return route('auth/login');
+        }
+      }
+      else {
+        return route('auth/login');
+      }
+    }
+
+    /**
      * Funcionalidad: Actulaiza el estatus de las alertas para las observaciones
      * Parametros:
      * Respuesta: json
@@ -223,7 +286,7 @@ class PoaController extends Controller
     public function clickalertasobs()
     {
         //
-        //DB::table('observaciones')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->update(['ale_tipo' => 0]);
+        DB::table('observaciones')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->update(['ale_tipo' => 0]);
         return response()->json(['edicion']);
     }
 
@@ -488,7 +551,7 @@ class PoaController extends Controller
         switch ($ida) {
             case '0':
                 $act = new actividadesdos();
-                $act->reprogramacion = 0;
+                $act->reprogramacion = 2;
                 $act->autoactividades = $act->id;
                 $act->idprograma = $pro;
                 $act->idprogramaesp = $esp;
@@ -583,6 +646,7 @@ class PoaController extends Controller
                 break;
             default:
                 $act = actividadesdos::find($ida);
+                $act->reprogramacion = 1;
                 $act->descactividad = $acttext;
                 $act->unidadmedida = $uni;
                 $act->idarea = $idArea;
@@ -637,9 +701,11 @@ class PoaController extends Controller
       if (Auth::check()) {
 
         $data = $request->data;
+        //CAMBIAR EL NUMERO SIEMPRE Y CUANDO LA PREGUNTA SEA INGRESADA ENTRE LOS NUMEROS ESENARIO DE MUCHO CUIDADO
         
         foreach ($data  as $datas) {
           $idNum = explode("|",$datas);
+          //$updateNum= DB::table('actividadesdos')->where('id', $idNum[0])->update(['reprogramacion' => 1,'numactividad' => $idNum[1]]);
           $updateNum= DB::table('actividadesdos')->where('id', $idNum[0])->update(['numactividad' => $idNum[1]]);
         }
 
@@ -935,11 +1001,15 @@ class PoaController extends Controller
         $send_clave = $request->cla;
 
         if ($send_clave === $usu_clave) {
+
+        DB::table('actividadesdos')->where('id', $data)->update([
+                  'reprogramacion' =>  5
+                ]);
         
-        DB::table('actividadesdos')->where('id', $data)->delete();
-        DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
-        DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
-        DB::table('infocedulas2020')->where('idcontrol', $data)->delete();
+        //DB::table('actividadesdos')->where('id', $data)->delete();
+        //DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
+        //DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
+        //DB::table('infocedulas2020')->where('idcontrol', $data)->delete();
         
           return response()->json('1');
         }
@@ -1001,7 +1071,7 @@ class PoaController extends Controller
           $idArea = Auth::user()->idarea;
         }
         $id = $request->proesp;
-        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
+        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->where('reprogramacion', '!=' , 5)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
 
         return response()->json([$actAdd]);

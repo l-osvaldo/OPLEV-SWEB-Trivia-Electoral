@@ -837,6 +837,29 @@ document.getElementById('eunidad')?document.getElementById('eunidad').addEventLi
 
 /*************************************************************
 
+  Funcionalidad: Habilita o deshabilita el sistema
+  Parametros: id
+  Respuesta: 
+
+***************************************************************/
+
+document.getElementById('selectOnOff')?document.getElementById('selectOnOff').addEventListener("change", onOffSistema, false):'';
+
+  function onOffSistema(){
+    var data = this.options[this.selectedIndex].value;
+    console.log(data);
+    $.ajax({
+       type:'POST',
+       url:"onOffsipsei",
+       data:{"_token": token,data:data},
+       success:function(mns){
+        data === '0' ? swal('Sistema Deshabilitado', "", "success"):swal('Sistema Habilitado', "", "success");
+      }
+    });
+  }
+
+/*************************************************************
+
   Funcionalidad: Cambia, prepara los datos para seleccionar los valores correspondientes y habilita o deshabilita dependiendo la seleccion
   Parametros: 
   Respuesta: 
@@ -996,6 +1019,7 @@ document.getElementById('eunidad')?document.getElementById('eunidad').addEventLi
               item6.innerHTML=me[me.length-1]
           }
 
+
           var editar = document.createElement("I");
           editar.className = "iconBH fa fa-pencil-square-o resetBack btnOn";   
           editar.setAttribute('aria-hidden', 'true');
@@ -1049,7 +1073,35 @@ document.getElementById('eunidad')?document.getElementById('eunidad').addEventLi
 
           rowAct.appendChild(down);
 
-          var indi = document.createElement("I");
+
+          switch (data[0][j].act_tipo_estatus) {
+            case 0:
+
+            var indi = document.createElement("I");
+            indi.className = "iconBH fa fa-info-circle btnOff";   
+            indi.setAttribute('aria-hidden', 'true');
+            indi.setAttribute('data-toggle', 'tooltip');
+            indi.setAttribute('data-placement', 'right');
+            indi.setAttribute('title', 'Indicador');
+            indi.addEventListener("click", creaIndicadorDisable);
+
+            rowAct.appendChild(indi);
+
+            var observa = document.createElement("I");
+            observa.className = "iconBH fa fa-eye btnOff";   
+            observa.setAttribute('aria-hidden', 'true');
+            observa.setAttribute('data-toggle', 'tooltip');
+            observa.setAttribute('data-placement', 'right');
+            observa.setAttribute('title', 'observaciones');
+            //observa.addEventListener("click", verObservaciones);
+            observa.style.color='#eceff1';
+            observa.style.pointerEvents='none';
+            rowAct.appendChild(observa);
+ 
+              break;
+            case 1:
+
+            var indi = document.createElement("I");
           indi.className = "iconBH fa fa-info-circle btnOff";   
           indi.setAttribute('aria-hidden', 'true');
           indi.setAttribute('data-toggle', 'tooltip');
@@ -1088,6 +1140,13 @@ document.getElementById('eunidad')?document.getElementById('eunidad').addEventLi
           observa.addEventListener("click", verObservaciones);
 
           rowAct.appendChild(observa);
+
+              break;
+            default:
+
+          }
+
+          
 
           var del = document.createElement("I");
           del.className = "iconBH fa fa-trash delAct btnOn";   
@@ -1305,7 +1364,7 @@ function sumArray(total, num) {
               document.getElementById('nombreindicador').textContent=data[0].nombreindicador;
               document.getElementById('objetivoindicador').textContent=data[0].objetivoindicador;
               document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
-              document.getElementById('periodocumplimiento').innerHTML=data[0].periodocumplimiento+'<br>'+periodo;
+              document.getElementById('periodocumplimiento').textContent=data[0].periodocumplimiento;
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
               data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
@@ -1324,6 +1383,54 @@ function sumArray(total, num) {
               data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
               document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
               document.getElementById('pdfIndicador').setAttribute('data-id',id);
+
+              document.getElementById('updateIndicador').disabled=false;
+            }
+          });
+        }
+
+/*************************************************************
+
+  Funcionalidad: muestra la instancia del indicador seleccionado Para la reprogramacion
+  Parametros: token, id
+  Respuesta: muestra la interfaz con los datos seleccionados
+
+***************************************************************/
+
+        function creaIndicadorDisable(){
+          $('#modalIndicador').modal('show');
+          var id = this.parentNode.getAttribute('data-id');
+          var periodo = this.parentNode.children[5].textContent+' - '+this.parentNode.children[6].textContent+' 2020';
+          $.ajax({
+             type:'POST',
+             url:"getindicador",
+             data:{"_token": token,data:id},
+             success:function(data){ 
+              document.getElementById('identificadorindicador').textContent=data[0].identificadorindicador;
+              document.getElementById('nombreindicador').textContent=data[0].nombreindicador;
+              document.getElementById('objetivoindicador').textContent=data[0].objetivoindicador;
+              document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
+              document.getElementById('periodocumplimiento').textContent=data[0].periodocumplimiento;
+              data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
+              document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
+              data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              document.getElementById('unidadmedida').textContent=data[0].unidadmedida;
+              document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
+              document.getElementById('variable1').textContent=data[0].variable1;
+              document.getElementById('descripcionvariable1').textContent=data[0].descripcionvariable1;
+              document.getElementById('fuentesinfovariable1').textContent=data[0].fuentesinfovariable1;
+              document.getElementById('variable2').textContent=data[0].variable2;
+              document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
+              document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+              document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
+              document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
+              document.getElementById('lineabasev').textContent=data[0].lineabasev;
+              document.getElementById('lineabasea').textContent=data[0].lineabasea;
+              data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
+              document.getElementById('pdfIndicador').setAttribute('data-id',id);
+
+              document.getElementById('updateIndicador').disabled=true;
             }
           });
         }
