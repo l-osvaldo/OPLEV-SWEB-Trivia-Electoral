@@ -318,7 +318,7 @@ class PoaController extends Controller
     {
         //
       $user   = auth()->user();
-      $userId = $user->iduser;
+      $userId = $user->id;
       $areaId = $user->idarea;
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
       $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
