@@ -1043,7 +1043,8 @@ $.ajaxSetup({
           var id = document.getElementById('pdfIndicador').getAttribute('data-id');
           var noin = document.getElementById('nombreindicador').textContent;
           var obin = document.getElementById('objetivoindicador').textContent;
-          var dime = document.querySelector('input[name="dimension"]:checked').value;
+          var dime;
+          document.querySelector('input[name="dimension"]:checked').value?dime = document.querySelector('input[name="dimension"]:checked').value:'';
           var unme = document.getElementById('unidadmedida').textContent;
           var meca = document.getElementById('metodocalculo').textContent;
           var var1 = document.getElementById('variable1').textContent;
@@ -1052,13 +1053,15 @@ $.ajaxSetup({
           var var2 = document.getElementById('variable2').textContent;
           var dev2 = document.getElementById('descripcionvariable2').textContent;
           var fui2 = document.getElementById('fuentesinfovariable2').textContent;
-          var frme = document.querySelector('input[name="frecuencia"]:checked').value;
+          var frme;
+          document.querySelector('input[name="frecuencia"]:checked')?frme = document.querySelector('input[name="frecuencia"]:checked').value:'';
           var fres = document.getElementById('frecuenciaespecifique').textContent;
           var fuju = document.getElementById('fundamentojuridico').textContent;
           var libv = document.getElementById('lineabasev').textContent;
           var liba = document.getElementById('lineabasea').textContent;
-          var coin = document.querySelector('input[name="comportamiento"]:checked').value;
-          console.log(coin);
+          var coin;
+          document.querySelector('input[name="comportamiento"]:checked')?coin = document.querySelector('input[name="comportamiento"]:checked').value:'';
+          //console.log(coin);
           $.ajax({
              type:'POST',
              url:"actindicador",
@@ -1075,7 +1078,7 @@ $.ajaxSetup({
               function(isConfirm) {
                 if (isConfirm) {
                   $('#modalIndicador').modal('hide');
-                  console.log(data);
+                  //console.log(data);
                 }
               });
             }
