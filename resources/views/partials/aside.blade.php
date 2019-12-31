@@ -83,7 +83,7 @@
             <a href="#" class="nav-link" style="background-color: #909821;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
-                ELABORACIÓN POA
+                POA 2020
                 <i class="right fa fa-chevron-left" aria-hidden="true"></i>
               </p>
             </a>
@@ -91,7 +91,7 @@
               <li class="nav-item">
                 <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}" style="color: #f1ff2b;">
                   <i class="fa fa-registered nav-icon" aria-hidden="true"></i>
-                  <p>Registro de Actividades</p>
+                  <p>Revisión de Actividades</p>
                 </a>
               </li>
               <!--li class="nav-item">

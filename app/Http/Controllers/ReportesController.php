@@ -26,7 +26,7 @@ class ReportesController extends Controller
       $meses = Mes::all();      
       if (Auth::user()->idarea==3)              
         $programas = Programa::where('reprogramacion', '<', 3)->get();
-      else
+      //else
         $user   = auth()->user();
       $areaId = $user->idarea;
         $programas = Programa::where('idprograma', '=', 1)->get();
