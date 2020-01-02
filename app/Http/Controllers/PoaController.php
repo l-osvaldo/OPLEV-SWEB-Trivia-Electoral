@@ -321,7 +321,7 @@ class PoaController extends Controller
       $userId = $user->id;
 
       $areaId = $user->idarea;
-      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2020)->get();
       $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
       ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
@@ -331,7 +331,7 @@ class PoaController extends Controller
       ->orderBy('obs_date', 'desc')->get();
 
       $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
-      dd($userId);exit;
+      //dd($userId);exit;
       return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
     }
 
