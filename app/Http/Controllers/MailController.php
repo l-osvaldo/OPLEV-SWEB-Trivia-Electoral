@@ -71,6 +71,8 @@ class MailController extends Controller
 
 
         //Mail::to("utp.seguimiento@outlook.com")->send(new DemoEmail($objDemo));
+        //Mail::to("planeaople18@gmail.com")->cc('utp.seguimiento@outlook.com')->bcc('carlos.reducindo@oplever.org.mx')->send(new DemoEmail($objDemo));
+
         Mail::to("ali.gutierrez@oplever.org.mx")->cc('aligutman1@gmail.com')->bcc('carlos.reducindo@oplever.org.mx')->send(new DemoEmail($objDemo));
 
 
