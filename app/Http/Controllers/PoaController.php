@@ -331,7 +331,7 @@ class PoaController extends Controller
       ->orderBy('obs_date', 'desc')->get();
 
       $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
-      dd($user);exit;
+      dd($userId);exit;
       return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
     }
 
