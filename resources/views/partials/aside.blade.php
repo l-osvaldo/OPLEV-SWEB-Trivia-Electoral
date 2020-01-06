@@ -116,7 +116,7 @@
 
           <li class="nav-item has-treeview">
             <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
-              <i class="fa fa-calendar-check-o"></i> <p>Poa</p>
+              <i class="fa fa-calendar-check-o"></i> <p>Captura de Poa</p>
             </a>
           </li>
 

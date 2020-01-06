@@ -2542,8 +2542,7 @@ function pdfelaboracion() {
   form.appendChild(ip1);
 
 
-  var unidadtit;
-  document.getElementById('eunidad')? unidadtit = document.getElementById('eunidad').textContent:unidadtit = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].textContent;
+  var unidadtit = document.getElementById('eunidad').textContent;
   var pro = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].velue;
   var esp = document.getElementById('eProgramaEsp').options[document.getElementById('eProgramaEsp').selectedIndex].value;
 

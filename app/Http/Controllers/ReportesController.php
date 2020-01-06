@@ -744,6 +744,7 @@ class ReportesController extends Controller
         else {
           $idArea = Auth::user()->idarea;
         }
+        
         $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
         //$actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->orderBy('numactividad', 'asc')->get();
@@ -823,7 +824,7 @@ class ReportesController extends Controller
     <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="'.public_path('images/logoople.png').'" alt="OPLE" width="100px"></td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>'.$request->unidad.'</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>'.$request->unidadtit.'</strong></td>
   </tr>
   <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>'.$request->clave.'</strong></td>
