@@ -321,7 +321,8 @@ class PoaController extends Controller
       $userId = $user->id;
 
       $areaId = $user->idarea;
-      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2020)->get();
+      $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
+      //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2020)->get();
       $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
       ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
@@ -453,7 +454,8 @@ class PoaController extends Controller
       if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         {          
             
-            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
             $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
 
             $unidades = DB::table('users')->where('usu_tipo', 1)->get();
@@ -480,7 +482,8 @@ class PoaController extends Controller
 
           //dd($userId);exit;
           
-            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
+            $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
             $programas = DB::table('programas2020')->where('reprogramacion', 0)->get();
             /////////////////////////////////////////////////////////////////////////////////////////
             $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
