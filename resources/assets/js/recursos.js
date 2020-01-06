@@ -1995,6 +1995,9 @@ $.ajaxSetup({
                 act.appendChild(rowAct);
                 act.style.backgroundColor='';
 
+                document.getElementById('addAct').style.pointerEvents = 'none';
+                document.getElementById('addAct').style.color = '#cfd8dc';
+
                 ////////////////////////////////////////////////////////////////////////////////////////
                     
                   break;
@@ -2098,6 +2101,11 @@ $.ajaxSetup({
 
                 act.appendChild(rowAct);
                 act.style.backgroundColor='';
+
+
+                document.getElementById('addAct').style.pointerEvents = '';
+                document.getElementById('addAct').style.color = '';
+
                     break;
                   default:
                    console.log('hola')
@@ -2114,8 +2122,7 @@ $.ajaxSetup({
             $('[data-toggle="tooltip"]').tooltip();   
           });
 
-          document.getElementById('addAct').style.pointerEvents = '';
-          document.getElementById('addAct').style.color = '';
+          
          sumTPM();
       }
     });

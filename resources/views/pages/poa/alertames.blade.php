@@ -52,7 +52,7 @@
   var demos = '{{$resultados->ale_mes}}';
   document.getElementById(demos).classList.remove('mesesOff');
   document.getElementById(demos).classList.add("mesesRep");
-  console.log(demos)
+  //console.log(demos)
 </script>
 @endforeach
 <script type="text/javascript">

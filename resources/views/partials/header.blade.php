@@ -7,7 +7,8 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block textoPrincipal">
-        Programa Operativo Anual 2019 <span class="textoSecundario">/ Perfil de Trabajo - {{ Auth::user()->name }}</span>
+        <!--Programa Operativo Anual 2019 <span class="textoSecundario">/ Perfil de Trabajo - {{ Auth::user()->name }}</span-->
+        <span class="textoSecundario">Perfil de Trabajo: {{ Auth::user()->name }}</span>
       </li>
     </ul>
 
@@ -59,7 +60,7 @@
 
       <!-- Notifications Dropdown Menu -->
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones contestadas">
         <a class="nav-link alerta-obsR" id="iconAlertObs" data-toggle="dropdown" href="#">
           <i class="fa fa-reply" aria-hidden="true"></i>
           @if(count($observacionesR) > 0)         
@@ -71,7 +72,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header" style="text-transform: uppercase;background: #eceff1; color: #EA0D94;">
-            Notificaciones
+            Observaciones contestadas
           </span>
           <div class="dropdown-divider"></div>
           <!--a href="#" class="dropdown-item texto-negro">
@@ -94,7 +95,7 @@
       </li>  
 
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones enviadas">
         <a class="nav-link alerta-obs" id="iconAlertObs" data-toggle="dropdown" href="#">
           <i class="fa fa-paper-plane-o"></i>
           @if(count($observaciones) > 0)         
@@ -105,7 +106,7 @@
           
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header" style="text-transform: uppercase;background: #eceff1; color: #EA0D94;">Observaciones</span>
+          <span class="dropdown-item dropdown-header" style="text-transform: uppercase;background: #eceff1; color: #EA0D94;">Observaciones enviadas</span>
           <div class="dropdown-divider"></div>
           <!--a href="#" class="dropdown-item texto-negro">
             <i class="fa fa-file"></i>  4 nuevos documentos
@@ -127,7 +128,7 @@
 
 
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación mensual">
         <a class="nav-link alerta-final" id="iconAlertfin" data-toggle="dropdown" href="#">
           <i class="fa fa-exclamation-circle" ></i>
           @if(count($nfin) > 0)         
@@ -157,7 +158,7 @@
       </li>  
 
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación de actividad">
         <a class="nav-link alerta-edit" id="iconAlert" data-toggle="dropdown" href="#">
           <i class="fa fa-bell-o"></i>
           @if(count($nalertas) > 0)         
@@ -186,7 +187,7 @@
         </div>
       </li>  
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Salir del Sistema">
         <a class="nav-link alerta-logout" data-toggle="dropdown" href="#">
           <i class="fa fa-user"></i>
         </a>
@@ -197,7 +198,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">Delegar cuenta</a>
           <div class="dropdown-divider"></div-->
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="salir" data-toggle="tooltip" title="" data-original-title="Logout"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a>
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="salir"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a>
         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>

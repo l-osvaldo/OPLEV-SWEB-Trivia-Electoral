@@ -569,6 +569,7 @@ class PoaController extends Controller
                 $act->observatrim = '';
                 $act->bandera = 0;
                 $act->act_estatus = 1;
+                $act->act_tipo_estatus = 1;
                 $act->save();
 
                 $act = actividadesdos::find($act->id);

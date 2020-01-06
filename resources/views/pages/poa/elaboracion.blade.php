@@ -198,18 +198,18 @@
       </div>
       <div class="colPOA2da" id="colPOA7" style="line-height: 30px;height: 30px;">
         <div class="col-md-12"><small><strong>Programación mensual</strong></small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>ene</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>feb</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>mar</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>abr</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>may</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>jun</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>jul</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>ago</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>sep</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>oct</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 2px #f5f5f5;"><small>nov</small></div>
-        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-left:solid 2px #f5f5f5;"><small>dic</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Ene</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Feb</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Mar</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Abr</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>May</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Jun</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Jul</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Ago</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Sep</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 4px #f5f5f5;"><small>Oct</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-right:solid 2px #f5f5f5;"><small>Nov</small></div>
+        <div class="col-md-1" style="line-height: 47px;float: left;background:#fafafa; height: 47px;border-left:solid 2px #f5f5f5;"><small>Dic</small></div>
       </div>
       <div class="colPOA2da" id="colPOA8" style="line-height: 30px;height: 30px;">
         <div class="col-md-12"><small><strong>Fecha</strong></small></div>
