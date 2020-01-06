@@ -746,6 +746,8 @@ class ReportesController extends Controller
         }
         $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->join('porcentajep', 'porcentajep.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
+        //dd($actPdf);exit;
+
 
         $pdfs = PDFS::loadView('pages.poa.pdfelaboracion',[
           'actividades'=>$actPdf,
@@ -819,16 +821,16 @@ class ReportesController extends Controller
     <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="'.public_path('images/logoople.png').'" alt="OPLE" width="100px"></td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>Dirección Ejecutiva de Administración</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>'.$request->unidad.'</strong></td>
   </tr>
   <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>E1 0117</strong></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><strong>Desarrollo y Fortalecimiento Institucional</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>'.$request->clave.'</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><strong>'.$request->protext.'</strong></td>
   </tr>
 
   <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>Administración y Gestión de Recursos Materiales, Servicios Generales, Inventarios y Adquisiciones.</strong></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="4">Objetivo: <strong>Realizar los procesos de adquisiciones y contratación de arrendamientos y servicios generales requeridos por las áreas del Organismo Público Local Electoral del Estado de Veracruz, para el cumplimiento de las funciones y atribuciones que le son inherentes, realizando los procesos de contratación en estricto apego a las disposiciones legales y administrativas aplicables.</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>'.$request->esptext.'</strong></td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="4">Objetivo: <strong>'.$request->objetivo.'</strong></td>
   </tr>
   <tr style="border:1px solid #fff;border-bottom:1px solid #000;height:10px;">
     <td style="border:1px solid #fff;border-bottom:1px solid #000;" colspan="5"></td>

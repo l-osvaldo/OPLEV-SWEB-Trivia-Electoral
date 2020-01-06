@@ -2534,8 +2534,14 @@ function pdfelaboracion() {
   ip1.value = token;
   form.appendChild(ip1);
 
-  var pro = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].value;
+
+  var unidadtit;
+  document.getElementById('eunidad')? unidadtit = document.getElementById('eunidad').textContent:unidadtit = document.getElementById('eunidad').options[document.getElementById('eunidad').selectedIndex].textContent;
+  var pro = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].velue;
   var esp = document.getElementById('eProgramaEsp').options[document.getElementById('eProgramaEsp').selectedIndex].value;
+
+  var protext = document.getElementById('ePrograma').options[document.getElementById('ePrograma').selectedIndex].textContent;
+  var esptext = document.getElementById('eProgramaEsp').options[document.getElementById('eProgramaEsp').selectedIndex].textContent;
 
 
   var ip2 = document.createElement('input');
@@ -2552,6 +2558,31 @@ function pdfelaboracion() {
   ip4.name = 'result';
   ip4.value = document.getElementById('resultTPM').textContent;
   form.appendChild(ip4);
+
+  var ip5 = document.createElement('input');
+  ip5.name = 'clave';
+  ip5.value = document.getElementById('claveProEsp').textContent;
+  form.appendChild(ip5);
+
+  var ip6 = document.createElement('input');
+  ip6.name = 'objetivo';
+  ip6.value = document.getElementById('objetivoProEsp').textContent;
+  form.appendChild(ip6);
+
+  var ip7 = document.createElement('input');
+  ip7.name = 'unidad';
+  ip7.value = unidadtit;
+  form.appendChild(ip7);
+
+  var ip8 = document.createElement('input');
+  ip8.name = 'protext';
+  ip8.value = protext;
+  form.appendChild(ip8);
+
+  var ip9 = document.createElement('input');
+  ip9.name = 'esptext';
+  ip9.value = esptext;
+  form.appendChild(ip9);
 
   for (var i = 0; i < 12; i++) {
     var ipd = document.createElement('input');
