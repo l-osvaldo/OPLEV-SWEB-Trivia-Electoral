@@ -82,14 +82,14 @@
           <div id="obsDesA">
           @foreach( $observacionesR as $obs )
             <a href="#" class="dropdown-item texto-negro alerta-texto">
-            <div style="display: inline-block;float: left;">Act.- {{$obs->numactividad}} - {{$obs->obs_clave}} - {{$obs->obs_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
+            <div style="display: inline-block;float: left;">{{$obs->obs_acronimo}} - Act.- {{$obs->numactividad}} - {{$obs->obs_clave}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
             </a>
           @endforeach
           </div>
 
           <div class="dropdown-divider"></div>
           <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">
-          {!! count($observacionesR)>0 ? 'Ver todas las notificaciones' : 'Sin notificaciones' !!}
+          {!! count($observacionesR)>0 ? 'Ir a la Revisión de Actividades' : 'Sin notificaciones' !!}
           </a>
         </div>
       </li>  
@@ -122,7 +122,7 @@
           </div>
 
           <div class="dropdown-divider"></div>
-          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ver todas las observaciones' : 'Sin observaciones' !!}</a>
+          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ir a la Revisión de Actividades' : 'Sin observaciones' !!}</a>
         </div>
       </li>  
 

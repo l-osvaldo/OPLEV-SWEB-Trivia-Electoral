@@ -90,7 +90,7 @@
           </div>
 
           <div class="dropdown-divider"></div>
-          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ver todas las observaciones' : 'Sin observaciones' !!}</a>
+          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ir a la Revisión de Actividades' : 'Sin observaciones' !!}</a>
         </div>
       </li>
 
@@ -123,7 +123,7 @@
           </div>
 
           <div class="dropdown-divider"></div>
-          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ver todas las observaciones' : 'Sin observaciones' !!}</a></a>
+          <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ir a la Revisión de Actividades' : 'Sin observaciones' !!}</a></a>
         </div>
       </li>  
 
