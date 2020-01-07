@@ -745,7 +745,7 @@ class ReportesController extends Controller
           $idArea = Auth::user()->idarea;
         }
         
-        $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
+        $actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->where('reprogramacion', '!=' , 5)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
         //$actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->orderBy('numactividad', 'asc')->get();
 
@@ -833,7 +833,7 @@ class ReportesController extends Controller
 
   <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>'.$request->esptext.'</strong></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="4">Objetivo: <strong>'.$request->objetivo.'</strong></td>
+    <td style="text-align: left;border: 1px solid black;font-size: small;border-collapse: collapse;padding:0 0 0 5px;" colspan="4">Objetivo: <strong>'.$request->objetivo.'</strong></td>
   </tr>
   <tr style="border:1px solid #fff;border-bottom:1px solid #000;height:10px;">
     <td style="border:1px solid #fff;border-bottom:1px solid #000;" colspan="5"></td>

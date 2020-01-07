@@ -1367,7 +1367,8 @@ function sumArray(total, num) {
               document.getElementById('periodocumplimiento').textContent=data[0].periodocumplimiento;
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
-              data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              //data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              data[0].dimensionmedir?document.getElementById('dimensionmedir'+data[0].dimensionmedir).checked = true:'';
               document.getElementById('unidadmedida').textContent=data[0].unidadmedida;
               document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
               document.getElementById('variable1').textContent=data[0].variable1;
@@ -1376,15 +1377,35 @@ function sumArray(total, num) {
               document.getElementById('variable2').textContent=data[0].variable2;
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
               document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
-              document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
+
+              data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
+              data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique,document.getElementById('frecuenciaespecifique').contentEditable = true):document.getElementById('frecuenciaespecifique').style.display='none';
+              //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
               document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
-              data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              data[0].comportamientoindicador?document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).checked = true:'';
               document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
               document.getElementById('pdfIndicador').setAttribute('data-id',id);
 
-              document.getElementById('updateIndicador').disabled=false;
+              document.getElementById('dimensionmedir1').style.pointerEvents='none';
+              document.getElementById('dimensionmedir2').style.pointerEvents='none';
+              document.getElementById('dimensionmedir3').style.pointerEvents='none';
+              document.getElementById('dimensionmedir4').style.pointerEvents='none';
+
+              document.getElementById('frecuenciamedicion1').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion2').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion3').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion4').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion5').style.pointerEvents='none';
+
+              document.getElementById('comportamientoindicador1').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador2').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador3').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador4').style.pointerEvents='none';
+
+              document.getElementById('updateIndicador').disabled=true;
             }
           });
         }
@@ -1413,7 +1434,8 @@ function sumArray(total, num) {
               document.getElementById('periodocumplimiento').textContent=data[0].periodocumplimiento;
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
-              data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              //data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
+              data[0].dimensionmedir?document.getElementById('dimensionmedir'+data[0].dimensionmedir).checked = true:'';
               document.getElementById('unidadmedida').textContent=data[0].unidadmedida;
               document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
               document.getElementById('variable1').textContent=data[0].variable1;
@@ -1422,13 +1444,33 @@ function sumArray(total, num) {
               document.getElementById('variable2').textContent=data[0].variable2;
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
               document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
-              document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
+
+              data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
+              data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique,document.getElementById('frecuenciaespecifique').contentEditable = true):document.getElementById('frecuenciaespecifique').style.display='none';
+              //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
               document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
-              data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
+              data[0].comportamientoindicador?document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).checked = true:'';
+              //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
               document.getElementById('nombretitular').innerHTML=data[0].nombretitular+'<br>'+data[0].cargo;
               document.getElementById('pdfIndicador').setAttribute('data-id',id);
+
+              document.getElementById('dimensionmedir1').style.pointerEvents='none';
+              document.getElementById('dimensionmedir2').style.pointerEvents='none';
+              document.getElementById('dimensionmedir3').style.pointerEvents='none';
+              document.getElementById('dimensionmedir4').style.pointerEvents='none';
+
+              document.getElementById('frecuenciamedicion1').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion2').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion3').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion4').style.pointerEvents='none';
+              document.getElementById('frecuenciamedicion5').style.pointerEvents='none';
+
+              document.getElementById('comportamientoindicador1').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador2').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador3').style.pointerEvents='none';
+              document.getElementById('comportamientoindicador4').style.pointerEvents='none';
 
               document.getElementById('updateIndicador').disabled=true;
             }

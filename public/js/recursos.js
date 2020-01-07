@@ -2576,7 +2576,7 @@ function pdfelaboracion() {
   form.appendChild(ip6);
 
   var ip7 = document.createElement('input');
-  ip7.name = 'unidad';
+  ip7.name = 'unidadtit';
   ip7.value = unidadtit;
   form.appendChild(ip7);
 
