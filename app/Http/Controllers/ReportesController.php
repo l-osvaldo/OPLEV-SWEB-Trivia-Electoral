@@ -1089,6 +1089,19 @@ class ReportesController extends Controller
         $trim_idactividad = $acti->idporcentajep;        
         $bandera = $acti->bandera;
         $reprog =  $acti->reprogramacion;
+
+
+        //cambio del segundo trimestre
+        //si es 1 ya se cerré ese trimestre
+        $trim1cerrado = $acti->trim1cerrado;
+        $trim2cerrado = $acti->trim2cerrado;
+        $trim3cerrado = $acti->trim3cerrado;
+        $trim4cerrado = $acti->trim4cerrado;
+        $bandera4 = $acti->bandera4;
+
+        //fin del cambio
+
+
         
         $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
         $trim_inicio = $porcentajep[0]->inicio;
@@ -1154,30 +1167,204 @@ class ReportesController extends Controller
         //Consideraciones para "SIN VARIACION"
         
 
-        if ($bandera == 0 )
+
+/*****Aqui comienzan los cambios derivados del segundo trimestre ***/
+
+      
+
+        if ($idTrimestre==1)
         {
-          if ($reprog == 3)
-            $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
-          else          
-            if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
-              $observatrim = "Meta Cumplida";
-            else 
-              if (($avtprogramado == 0) && ($avaprogramado == 0))
-                $observatrim = "Sin Variación";
-              else
-                if ($avaporcentaje == -100)
-                  $observatrim = "Meta No Cumplida";
-                else
-                  if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
-                    $observatrim = "Meta Parcialmente Cumplida";
+          if ($trim1cerrado==1)
+            $observatrim = $acti->observatrim;
+          else
+          {
+            if ($bandera == 0 )
+            {
+              if ($reprog == 3)
+                $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+              else          
+                if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                  $observatrim = "Meta Cumplida";
+                else 
+                  if (($avtprogramado == 0) && ($avaprogramado == 0))
+                    $observatrim = "Sin Variación";
                   else
-                    if ($avaporcentaje > 0)
-                      $observatrim = "Meta Rebasada";
-                    else 
-                      $observatrim = "";
+                    if ($avaporcentaje == -100)
+                      $observatrim = "Meta No Cumplida";
+                    else
+                      if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                        $observatrim = "Meta Parcialmente Cumplida";
+                      else
+                        if ($avaporcentaje > 0)
+                          $observatrim = "Meta Rebasada";
+                        else 
+                          $observatrim = "";
+            }
+            else
+              $observatrim = $acti->observatrim;
+
+            //Ahora hay que guardar la observacion en la tabla actividades 
+            //en la actividad numero trim_idactividad
+            if ($bandera == 0 )
+              Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim' => $observatrim]);             
+          }          
         }
         else
-          $observatrim = $acti->observatrim;
+        {
+          if ($idTrimestre==2)
+          {
+
+            /*
+            var_dump($avtprogramado);
+            var_dump($avtrealizado);
+            die();*/
+
+            if ($trim2cerrado==1)
+              $observatrim = $acti->observatrim2;
+            else            
+            {
+              if ($bandera2 == 0 )
+              {
+                if ($reprog == 3)
+                  $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+                else          
+                  if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                    $observatrim = "Meta Cumplida";
+                  else 
+                    if (($avtprogramado == 0) && ($avaprogramado == 0))
+                      $observatrim = "Sin Variación";
+                    else
+                      if ($avaporcentaje == -100)
+                        $observatrim = "Meta No Cumplida";
+                      else
+                        if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                          $observatrim = "Meta Parcialmente Cumplida";
+                        else
+                          if ($avaporcentaje > 0)
+                            $observatrim = "Meta Rebasada";
+                          else 
+                            $observatrim = "";
+              }
+              else
+                $observatrim = $acti->observatrim2;
+
+              //Ahora hay que guardar la observacion en la tabla actividades 
+              //en la actividad numero trim_idactividad
+              if ($bandera2 == 0 )
+                Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim2' => $observatrim]);             
+            } 
+
+          }
+          else
+          {
+
+
+            if ($idTrimestre==3)
+            {
+
+              /*
+              var_dump($avtprogramado);
+              var_dump($avtrealizado);
+              die();*/
+
+              if ($trim3cerrado==1)
+                $observatrim = $acti->observatrim3;
+              else            
+              {
+                if ($bandera3 == 0 )
+                {
+                  if ($reprog == 3)
+                    $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+                  else          
+                    //if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                    if (($avtprogramado == $avtrealizado) && ($avaprogramado == $avarealizado) && ($avarealizado!=0))
+                      $observatrim = "Meta Cumplida";
+                    else 
+                      if (($avtprogramado == 0) && ($avaprogramado == 0))
+                        $observatrim = "Sin Variación";
+                      else
+                        if ($avaporcentaje == -100)
+                          $observatrim = "Meta No Cumplida";
+                        else
+                          if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                            $observatrim = "Meta Parcialmente Cumplida";
+                          else
+                            if ($avaporcentaje > 0)
+                              $observatrim = "Meta Rebasada";
+                            else 
+                              $observatrim = "";
+                }
+                else
+                  $observatrim = $acti->observatrim3;
+
+                //Ahora hay que guardar la observacion en la tabla actividades 
+                //en la actividad numero trim_idactividad
+                if ($bandera3 == 0 )
+                  Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim3' => $observatrim]);
+              } 
+            }
+            else
+            {
+
+
+
+              if ($idTrimestre==4)
+              {
+
+                /*
+                var_dump($avtprogramado);
+                var_dump($avtrealizado);
+                die();*/
+
+                if ($trim4cerrado==1)
+                  $observatrim = $acti->observatrim3;
+                else            
+                {
+                  if ($bandera4 == 0 )
+                  {
+                    if ($reprog == 3)
+                      $observatrim = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+                    else          
+                      //if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                      if (($avtprogramado == $avtrealizado) && ($avaprogramado == $avarealizado) && ($avarealizado!=0))
+                        $observatrim = "Meta Cumplida";
+                      else 
+                        if (($avtprogramado == 0) && ($avaprogramado == 0))
+                          $observatrim = "Sin Variación";
+                        else
+                          if ($avaporcentaje == -100)
+                            $observatrim = "Meta No Cumplida";
+                          else
+                            if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                              $observatrim = "Meta Parcialmente Cumplida";
+                            else
+                              if ($avaporcentaje > 0)
+                                $observatrim = "Meta Rebasada";
+                              else 
+                                $observatrim = "";
+                  }
+                  else
+                    $observatrim = $acti->observatrim4;
+
+                  //Ahora hay que guardar la observacion en la tabla actividades 
+                  //en la actividad numero trim_idactividad
+                  if ($bandera4 == 0 )
+                    Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim4' => $observatrim]);
+                }
+              }              
+            }
+            //del idTrimestre==3
+          }
+          //del idTrimestre==2
+        }
+        //fin del else del segundo trimestre
+
+
+
+
+
+
+        // Termina el cambio  
 
         //Ahora hay que guardar la observacion en la tabla actividades 
         //en la actividad numero trim_idactividad
