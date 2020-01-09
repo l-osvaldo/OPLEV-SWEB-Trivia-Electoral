@@ -1540,7 +1540,7 @@ $.ajaxSetup({
                     if (data=='1') {
                       $('#modaldelete').modal('hide');
                       document.getElementById('act'+idDel).remove(); 
-                      swal('Actividad eliminada', "", "success");
+                      swal('Actividad Eliminada del POA', "", "success");
                       reCountAct();
                       sumTPM();
                       var btnOff = document.getElementsByClassName('btnOff');
@@ -1552,7 +1552,7 @@ $.ajaxSetup({
                       clave.value='';
                       }
                       else {
-                        swal('Su clave no coincide', "", "error");
+                        swal('Su clave de confirmación no coincide', "", "error");
                         $('#modaldelete').on('hide.bs.modal', function () {
                           document.getElementById("claveEliminar").value="";
                           document.getElementById("errorEmail").classList.add('hidden');
@@ -1561,7 +1561,7 @@ $.ajaxSetup({
                   },
                    error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     $('#modaldelete').modal('hide');
-                     swal('Error al eliminar', "", "error");
+                     swal('Error al Eliminar la Actividad', "", "error");
                      //location.reload();
                   }    
                 });
@@ -2167,7 +2167,7 @@ $.ajaxSetup({
 
       ///////////////////////////////////////////CHECAR PROMESAS Y ADAPTAR
       var actPromesa = new Promise( (resolve, reject) => {
-          programado > 0 ? resolve('A') :reject('La Programación Mensual deve tener al menos un mes con un numero distinto a 0.');
+          programado > 0 ? resolve('A') :reject('La Programación Mensual debe tener al menos un mes con un número distinto a 0.');
       })
 
       actPromesa
@@ -2208,7 +2208,7 @@ $.ajaxSetup({
 
                 ///////////////////////////////////////////////////////////////////////
                 //console.log(programado);
-                isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo numeros para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
+                isNaN(programado) ? (t.parentNode.querySelector('.item4').innerHTML='Ingrese solo números para la programación mensual',t.parentNode.querySelector('.item4').style.color="red") : (t.parentNode.querySelector('.item4').innerHTML=programado,t.parentNode.querySelector('.item4').style.color="");
                 
                 ////////////////////////////////////////////////////////////////////////
                   switch (me.length) {
