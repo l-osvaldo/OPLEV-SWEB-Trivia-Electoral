@@ -103,7 +103,7 @@
       </tr>
     
       <tr>        
-        <td colspan="8" ><div style="overflow:auto; height: 130px;">{{ $indicadores['observaciones'] }}</div></td>
+        <td colspan="5" ><div style="overflow:auto; height: 30px; min-height: 30px; height: auto !important;">{{ $indicadores['observaciones'] }}</div></td>
       </tr>          
     
       <tr>

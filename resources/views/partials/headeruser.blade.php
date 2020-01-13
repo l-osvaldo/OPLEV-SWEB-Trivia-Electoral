@@ -62,7 +62,12 @@
     <ul class="navbar-nav ml-auto">
 
 
-      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Manual de Usuario - Reprogramación" style="background: #060;margin-right:50px;border-radius: 5px;">
+        <a class="nav-link" href="http://sistemas.oplever.org.mx/sipseiv2/manual/Manual_SIPSEI2020_Reprogramacion.pdf" target="_blank" style="color: #fff;">
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </a>
+      </li>
+      
 
       <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Revisiones No Aprobadas">
         <a class="nav-link alerta-obsRed" id="iconAlertfin" data-toggle="dropdown" href="#">
