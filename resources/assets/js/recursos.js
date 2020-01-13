@@ -1051,7 +1051,7 @@ $.ajaxSetup({
           var noin = document.getElementById('nombreindicador').textContent;
           var obin = document.getElementById('objetivoindicador').textContent;
           var dime;
-          document.querySelector('input[name="dimension"]:checked').value?dime = document.querySelector('input[name="dimension"]:checked').value:'';
+          document.querySelector('input[name="dimension"]:checked')?dime = document.querySelector('input[name="dimension"]:checked').value:'';
           var unme = document.getElementById('unidadmedida').textContent;
           var meca = document.getElementById('metodocalculo').textContent;
           var var1 = document.getElementById('variable1').textContent;
