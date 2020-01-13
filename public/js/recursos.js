@@ -829,10 +829,10 @@ $.ajaxSetup({
               document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
               document.getElementById('variable1').textContent=data[0].variable1;
               document.getElementById('descripcionvariable1').textContent=data[0].descripcionvariable1;
-              document.getElementById('fuentesinfovariable1').textContent=data[0].fuentesinfovariable1;
+              document.getElementById('fuentesinfovariable1').innerHTML=data[0].fuentesinfovariable1;
               document.getElementById('variable2').textContent=data[0].variable2;
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
-              document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+              document.getElementById('fuentesinfovariable2').innerHTML=data[0].fuentesinfovariable2;
 
               document.getElementById('identificadorindicador').contentEditable = true;
               document.getElementById('definicionindicador').contentEditable = true;
@@ -856,7 +856,8 @@ $.ajaxSetup({
               data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
               data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique,document.getElementById('frecuenciaespecifique').contentEditable = true):document.getElementById('frecuenciaespecifique').style.display='none';
               //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
-              document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
+              console.log(data[0].fundamentojuridico)
+              document.getElementById('fundamentojuridico').innerHTML=data[0].fundamentojuridico;
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
               //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
@@ -906,10 +907,10 @@ $.ajaxSetup({
               document.getElementById('metodocalculo').textContent=data[0].metodocalculo;
               document.getElementById('variable1').textContent=data[0].variable1;
               document.getElementById('descripcionvariable1').textContent=data[0].descripcionvariable1;
-              document.getElementById('fuentesinfovariable1').textContent=data[0].fuentesinfovariable1;
+              document.getElementById('fuentesinfovariable1').innerHTML=data[0].fuentesinfovariable1;
               document.getElementById('variable2').textContent=data[0].variable2;
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
-              document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
+              document.getElementById('fuentesinfovariable2').innerHTML=data[0].fuentesinfovariable2;
 
               document.getElementById('dimensionmedir1').style.pointerEvents='none';
               document.getElementById('dimensionmedir2').style.pointerEvents='none';
@@ -932,7 +933,7 @@ $.ajaxSetup({
               data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
               data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique):document.getElementById('frecuenciaespecifique').style.display='none';
               //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
-              document.getElementById('fundamentojuridico').textContent=data[0].fundamentojuridico;
+              document.getElementById('fundamentojuridico').innerHTML=data[0].fundamentojuridico;
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
               //data[0].comportamientoindicador == '' || data[0].comportamientoindicador == '0' || data[0].comportamientoindicador == 0 ? '' : document.getElementById('comportamientoindicador'+data[0].comportamientoindicador).textContent='X';
@@ -1056,14 +1057,14 @@ $.ajaxSetup({
           var meca = document.getElementById('metodocalculo').textContent;
           var var1 = document.getElementById('variable1').textContent;
           var dev1 = document.getElementById('descripcionvariable1').textContent;
-          var fui1 = document.getElementById('fuentesinfovariable1').textContent;
+          var fui1 = document.getElementById('fuentesinfovariable1').innerHTML;
           var var2 = document.getElementById('variable2').textContent;
           var dev2 = document.getElementById('descripcionvariable2').textContent;
-          var fui2 = document.getElementById('fuentesinfovariable2').textContent;
+          var fui2 = document.getElementById('fuentesinfovariable2').innerHTML;
           var frme;
           document.querySelector('input[name="frecuencia"]:checked')?frme = document.querySelector('input[name="frecuencia"]:checked').value:'';
           var fres = document.getElementById('frecuenciaespecifique').textContent;
-          var fuju = document.getElementById('fundamentojuridico').textContent;
+          var fuju = document.getElementById('fundamentojuridico').innerHTML;
           var libv = document.getElementById('lineabasev').textContent;
           var liba = document.getElementById('lineabasea').textContent;
           var coin;
