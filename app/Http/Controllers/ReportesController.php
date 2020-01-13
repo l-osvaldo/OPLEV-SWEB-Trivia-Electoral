@@ -1317,7 +1317,7 @@ class ReportesController extends Controller
                 die();*/
 
                 if ($trim4cerrado==1)
-                  $observatrim = $acti->observatrim3;
+                  $observatrim = $acti->observatrim4;
                 else            
                 {
                   if ($bandera4 == 0 )
