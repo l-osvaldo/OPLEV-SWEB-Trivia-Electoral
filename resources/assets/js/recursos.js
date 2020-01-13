@@ -834,6 +834,9 @@ $.ajaxSetup({
               document.getElementById('descripcionvariable2').textContent=data[0].descripcionvariable2;
               document.getElementById('fuentesinfovariable2').textContent=data[0].fuentesinfovariable2;
 
+              document.getElementById('identificadorindicador').contentEditable = true;
+              document.getElementById('definicionindicador').contentEditable = true;
+
               document.getElementById('nombreindicador').contentEditable = true;
               document.getElementById('objetivoindicador').contentEditable = true;
               document.getElementById('unidadmedida').contentEditable = true;
@@ -955,10 +958,10 @@ $.ajaxSetup({
               document.getElementById('objetivoindicador').textContent='';
               document.getElementById('metaindicador').textContent='';
               document.getElementById('periodocumplimiento').textContent='';
-              document.getElementById('idprograma1').checked='false';
-              document.getElementById('idprograma2').checked='false';
-              document.getElementById('idprograma3').checked='false';
-              document.getElementById('idprograma4').checked='false';
+              document.getElementById('idprograma1').textContent='';
+              document.getElementById('idprograma2').textContent='';
+              document.getElementById('idprograma3').textContent='';
+              document.getElementById('idprograma4').textContent='';
               document.getElementById('definicionindicador').textContent='';
               document.getElementById('dimensionmedir1').checked = false;
               document.getElementById('dimensionmedir2').checked = false;
@@ -1011,7 +1014,7 @@ $.ajaxSetup({
           var urlPdf;
           $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
           const form = document.createElement('form');
-          form.method = 'POST';
+          form.method = 'GET';
           form.action = urlPdf+'pdfindicador';
           form.target = '_blank';
           form.style.display='none';
@@ -1041,6 +1044,10 @@ $.ajaxSetup({
         document.getElementById('updateIndicador')?document.getElementById('updateIndicador').addEventListener('click',upIndicador,false):'';
         function upIndicador() {
           var id = document.getElementById('pdfIndicador').getAttribute('data-id');
+
+          var idin = document.getElementById('identificadorindicador').textContent;
+          var dein = document.getElementById('definicionindicador').textContent;
+
           var noin = document.getElementById('nombreindicador').textContent;
           var obin = document.getElementById('objetivoindicador').textContent;
           var dime;
@@ -1065,7 +1072,7 @@ $.ajaxSetup({
           $.ajax({
              type:'POST',
              url:"actindicador",
-             data:{"_token": token,id:id,noin:noin,obin:obin,dime:dime,unme:unme,meca:meca,var1:var1,dev1:dev1,fui1:fui1,var2:var2,dev2:dev2,fui2:fui2,frme:frme,fres:fres,fuju:fuju,libv:libv,liba:liba,coin:coin},
+             data:{"_token": token,id:id,idin:idin,dein:dein,noin:noin,obin:obin,dime:dime,unme:unme,meca:meca,var1:var1,dev1:dev1,fui1:fui1,var2:var2,dev2:dev2,fui2:fui2,frme:frme,fres:fres,fuju:fuju,libv:libv,liba:liba,coin:coin},
              success:function(data){ 
                 swal({
                 title: "Datos actualizados",
@@ -1099,7 +1106,7 @@ $.ajaxSetup({
         document.getElementById('frecuenciamedicion4')?document.getElementById('frecuenciamedicion4').addEventListener('click',showIndique,false):'';
         document.getElementById('frecuenciamedicion5')?document.getElementById('frecuenciamedicion5').addEventListener('click',showIndique,false):'';
         function showIndique(){
-          document.getElementById('frecuenciamedicion5').checked?document.getElementById('frecuenciaespecifique').style.display='inline':(document.getElementById('frecuenciaespecifique').style.display='none',document.getElementById('frecuenciaespecifique').textContent='');
+          document.getElementById('frecuenciamedicion5').checked?(document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').contentEditable = true):(document.getElementById('frecuenciaespecifique').style.display='none',document.getElementById('frecuenciaespecifique').textContent='');
         }
 
 /*************************************************************
@@ -2531,7 +2538,7 @@ function pdfelaboracion() {
   var urlPdf;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
   const form = document.createElement('form');
-  form.method = 'POST';
+  form.method = 'GET';
   form.action = urlPdf+'pdfelaboracion';
   form.target = '_blank';
   form.style.display='none';

@@ -120,7 +120,7 @@
           <div id="obsDesB">
           @foreach( $observaciones as $obs )
             <a href="#" class="dropdown-item texto-negro alerta-texto">
-            <div style="display: inline-block;float: left;">Act.- {{$obs->obs_idactividad}} - {{$obs->obs_clave}} - {{$obs->usu_acronimo}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
+            <div style="display: inline-block;float: left;">{{$obs->usu_acronimo}} - Act.- {{$obs->obs_idactividad}} - {{$obs->obs_clave}}</div> <div style="display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;">{{ date('d/m/Y', strtotime($obs->obs_date)) }}</div>
             </a>
           @endforeach
           </div>

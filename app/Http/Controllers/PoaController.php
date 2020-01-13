@@ -618,6 +618,7 @@ class PoaController extends Controller
                 DB::table('infocedulas2020')->insert([
                   'reprogramacion' =>  0,
                   'identificadorindicador' =>  '',
+                  'definicionindicador' =>  '',
                   'idcontrol' =>  $act->id,
                   'idarea' =>  $idArea,
                   'area' =>  $area,
@@ -736,6 +737,9 @@ class PoaController extends Controller
         $user   = auth()->user();
 
         DB::table('infocedulas2020')->where('idcontrol', $request->id)->where('idarea', $user->idarea)->update([
+                  'identificadorindicador' =>  $request->idin,
+                  'definicionindicador' =>  $request->dein,
+
                   'nombreindicador' =>  $request->noin,
                   'objetivoindicador' =>  $request->obin,
                   'dimensionmedir' =>  $request->dime,

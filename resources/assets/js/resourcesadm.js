@@ -1365,6 +1365,7 @@ function sumArray(total, num) {
               document.getElementById('objetivoindicador').textContent=data[0].objetivoindicador;
               document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
               document.getElementById('periodocumplimiento').textContent=data[0].periodocumplimiento;
+              //console.log(data[0].idprograma1);
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
               //data[0].dimensionmedir == '' || data[0].dimensionmedir == '0' || data[0].dimensionmedir == 0 ? '' : document.getElementById('dimensionmedir'+data[0].dimensionmedir).textContent='X';
@@ -1491,10 +1492,10 @@ function sumArray(total, num) {
               document.getElementById('objetivoindicador').textContent='';
               document.getElementById('metaindicador').textContent='';
               document.getElementById('periodocumplimiento').textContent='';
-              document.getElementById('idprograma1').checked='false';
-              document.getElementById('idprograma2').checked='false';
-              document.getElementById('idprograma3').checked='false';
-              document.getElementById('idprograma4').checked='false';
+              document.getElementById('idprograma1').textContent='';
+              document.getElementById('idprograma2').textContent='';
+              document.getElementById('idprograma3').textContent='';
+              document.getElementById('idprograma4').textContent='';
               document.getElementById('definicionindicador').textContent='';
               document.getElementById('dimensionmedir1').textContent='';
               document.getElementById('dimensionmedir2').textContent='';
@@ -1538,7 +1539,7 @@ function sumArray(total, num) {
           var urlPdf;
           $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
           const form = document.createElement('form');
-          form.method = 'POST';
+          form.method = 'GET';
           form.action = urlPdf+'pdfindicador';
           form.target = '_blank';
           form.style.display='none';
@@ -2004,7 +2005,7 @@ function pdfelaboracion() {
   var urlPdf;
   $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlPdf='/' : urlPdf='/sipseiv2/';
   const form = document.createElement('form');
-  form.method = 'POST';
+  form.method = 'GET';
   form.action = urlPdf+'pdfelaboracion';
   form.target = '_blank';
   form.style.display='none';

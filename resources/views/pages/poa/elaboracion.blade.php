@@ -64,6 +64,7 @@
 .indEdit{background: #fce4ec;margin-bottom: 1px;text-align: left;min-height: 30px; height: 30px;height: auto !important;border-right: 2px solid #fff;border-left: 2px solid #fff;}
 .indEditE{background: #fce4ec;margin-bottom: 1px;text-align: left;min-height: 30px; height: 30px;height: auto !important;}
 .indBlanco{background: #eceff1;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
+.indRosa{background: #fce4ec;margin-bottom: 1px;border:solid 2px #fff;text-align: center;min-height: 30px; height: 30px;height: auto !important;}
 .obsTexto{border:solid 1px #f8bbd0;margin:3px 0;position: relative;background: #fff;}
 #addObservaciones{cursor: pointer;}
 .contIconObs{background: #eceff1;margin: 0 0 5px 0;display: flex;align-items: center;justify-content: center;color: #090 !important;}
@@ -334,7 +335,7 @@
             <div class="col-md-7 indLabel">Nombre del indicador</div>
           </div>
           <div class="row">
-            <div class="col-md-5 indBlanco" id="identificadorindicador"></div>
+            <div class="col-md-5 indEdit" id="identificadorindicador"></div>
             <div class="col-md-7 indEdit" id="nombreindicador"></div>
           </div>
           <div class="row">
@@ -369,7 +370,7 @@
             <div class="col-md-3 indLabel">Unidad de medida</div>
           </div>
           <div class="row">
-            <div class="col-md-3 indLabel" id="definicionindicador">Llevar a cabo las actualizaciones del portal web</div>
+            <div class="col-md-3 indEdit" id="definicionindicador">Llevar a cabo las actualizaciones del portal web</div>
             <div class="col-md-6">
               <div class="row">
 
@@ -378,16 +379,16 @@
                   <div class="col-md-3 indBlanco">Economía</div>
                   <div class="col-md-3 indBlanco">Calidad</div>
 
-                  <div class="col-md-3 indBlanco">
+                  <div class="col-md-3 indRosa">
                     <input class="inputDime" type="radio" name="dimension" value="1" id="dimensionmedir1">
                   </div>
-                  <div class="col-md-3 indBlanco">
+                  <div class="col-md-3 indRosa">
                     <input class="inputDime" type="radio" name="dimension" value="2" id="dimensionmedir2">
                   </div>
-                  <div class="col-md-3 indBlanco">
+                  <div class="col-md-3 indRosa">
                     <input class="inputDime" type="radio" name="dimension" value="3" id="dimensionmedir3">
                   </div>
-                  <div class="col-md-3 indBlanco">
+                  <div class="col-md-3 indRosa">
                     <input class="inputDime" type="radio" name="dimension" value="4" id="dimensionmedir4">
                   </div>
 
@@ -435,22 +436,22 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="frecuencia" value="1" id="frecuenciamedicion1">
             </div>
-            <div class="col-md-3 indBlanco">
+            <div class="col-md-3 indRosa">
               <input class="inputDime" type="radio" name="frecuencia" value="2" id="frecuenciamedicion2">
             </div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="frecuencia" value="3" id="frecuenciamedicion3">
             </div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="frecuencia" value="4" id="frecuenciamedicion4">
             </div>
-            <div class="col-md-3 indBlanco">
+            <div class="col-md-3 indRosa">
               <input class="inputDime" type="radio" name="frecuencia" value="5" id="frecuenciamedicion5">
                <div class="row">
-                <div class="indEditE col-md-12" id="frecuenciaespecifique" style="display: none;"></div>
+                <div class="indEditE col-md-12" id="frecuenciaespecifique" style="display: none;border-top: 4px solid #fff;"></div>
               </div>
             </div>
           </div>
@@ -478,16 +479,16 @@
           <div class="row">
             <div class="col-md-2 indEdit" id="lineabasev"></div>
             <div class="col-md-2 indEdit" id="lineabasea"></div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="comportamiento" value="1" id="comportamientoindicador1">
             </div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="comportamiento" value="2" id="comportamientoindicador2">
             </div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="comportamiento" value="3" id="comportamientoindicador3">
             </div>
-            <div class="col-md-2 indBlanco">
+            <div class="col-md-2 indRosa">
               <input class="inputDime" type="radio" name="comportamiento" value="4" id="comportamientoindicador4">
             </div>
           </div>
