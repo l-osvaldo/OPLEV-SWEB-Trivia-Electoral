@@ -748,7 +748,7 @@ class PoaController extends Controller
                   'variable1' =>  $request->var1,
                   'descripcionvariable1' =>  $request->dev1,
                   'fuentesinfovariable1' =>  $request->fui1,
-                  'variable2' =>  $request->var1,
+                  'variable2' =>  $request->var2,
                   'descripcionvariable2' =>  $request->dev2,
                   'fuentesinfovariable2' =>  $request->fui2,
                   'frecuenciamedicion' => $request->frme,
