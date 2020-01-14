@@ -272,7 +272,7 @@ class AdminController extends Controller
       $modificacion = $request->input('value');
       //$modificacion = strtr($modificacion,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
       //guardo la observacion en la tabla actividades
-      Actividad::where('autoactividades',$id)->update(['observatrim' => $modificacion, 'bandera' => 1]);
+      Actividad::where('autoactividades',$id)->update(['observatrim4' => $modificacion, 'bandera4' => 1]);
       //guardo la observación en la tabla trimestral
       Trimestral::where('idactividad',$id)->update(['observatrim' => $modificacion]);
       return $modificacion;      
