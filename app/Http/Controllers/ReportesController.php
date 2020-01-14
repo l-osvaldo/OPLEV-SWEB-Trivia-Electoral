@@ -876,7 +876,7 @@ class ReportesController extends Controller
         </body></html>');
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
         $pdfs->setOption('load-error-handling','ignore');
-        $pdfs->setOption('footer-right','[page] / [toPage]');
+        //$pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('reporte.pdf');
 
 
@@ -914,7 +914,7 @@ class ReportesController extends Controller
 
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
         $pdfs->setOption('load-error-handling','ignore');
-        $pdfs->setOption('footer-right','[page] / [toPage]');
+        //$pdfs->setOption('footer-right','[page] / [toPage]');
         return $pdfs->inline('indicador.pdf');
 
 
