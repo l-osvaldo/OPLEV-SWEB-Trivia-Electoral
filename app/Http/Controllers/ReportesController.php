@@ -868,8 +868,8 @@ class ReportesController extends Controller
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Oct</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Nov</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Dic</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width="2%">Inicio</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width="2%">Termino</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%">Inicio</td>
+    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%">Termino</td>
   </tr>
 </table>
 
@@ -886,6 +886,90 @@ class ReportesController extends Controller
         return redirect()->route('login');
       }       
     }
+
+
+
+    /**
+     * Funcionalidad: crea un pdf de la elaboracion del poa, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+  public function pdfelaboracionAll(Request $request)
+    {
+      if ( Auth::check() )
+      {   
+
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta'))
+        {
+          $idArea = $request->unidad;
+        }
+        else {
+          $idArea = Auth::user()->idarea;
+        }
+        
+        //$actPdf = DB::table('actividadesdos')->
+        //where('idprogramaesp', $request->progesp)->
+        //where('idarea', $idArea)->
+        //where('reprogramacion', '!=' , 5)->
+        //join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->
+        //orderBy('numactividad', 'asc')->
+        //get();
+
+        $actPdfDos = DB::table('programas2020')
+        
+        ->leftJoin('programasesp2020', 'programasesp2020.idprograma', '=', 'programas2020.idprograma')
+        ->leftJoin('actividadesdos', 'actividadesdos.idprogramaesp', '=', 'programasesp2020.idprogramaesp')
+        ->leftJoin('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'actividadesdos.autoactividades')
+        ->leftJoin('users', 'users.idarea', '=', 'actividadesdos.idarea')
+        ->select('claveprograma','descprograma', 'claveprogramaesp', 'descprogramaesp','objprogramaesp','name')
+        //->selectRaw('GROUP_CONCAT(CONCAT_WS("|",numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) SEPARATOR "/°°/") as act')
+
+        ->selectRaw('GROUP_CONCAT(DISTINCT numactividad, "/°/", descactividad, "/°/", unidadmedida, "/°/", cantidadanual, "/°/", enep, "/°/", febp, "/°/", marp, "/°/", abrp, "/°/", mayp, "/°/", junp, "/°/", julp, "/°/", agop, "/°/", sepp, "/°/", octp, "/°/", novp, "/°/", dicp, "/°/", inicio, "/°/", termino ORDER BY numactividad SEPARATOR "/°°/") as act')->distinct()
+        ->where('actividadesdos.idarea', $idArea)
+        ->where('actividadesdos.reprogramacion', '!=' , 5)
+        //->orderBy('actividadesdos.numactividad', 'asc')
+        ->groupBy('actividadesdos.idprogramaesp')
+        ->get();
+
+        //$actPdfDos = $actPdfDos->toArray();
+
+
+
+        //dd($actPdfDos);exit;
+
+        //$actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->orderBy('numactividad', 'asc')->get();
+
+        //dd($actPdf);exit;
+
+
+        $pdfs = PDFS::loadView('pages.poa.pdfelaall',['actividades'=>$actPdfDos])->setPaper('letter', 'landscape');
+        //$pdfs = PDFS::loadHtml('<h3>'.$request->programa.'</h3>')->setPaper('letter', 'landscape');
+        $pdfs->setOption('margin-top', 15);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 15);
+        $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+
+        
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        //$pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('reporte.pdf');
+
+
+      }
+      else
+      {
+        return redirect()->route('login');
+      }       
+    }
+
+
 
 
   /**

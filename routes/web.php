@@ -75,6 +75,9 @@ Route::post('/getAct', 'PoaController@getAct')->name('getAct');
 Route::post('/cambiarnumero', 'PoaController@cambiarnumero')->name('cambiarnumero');
 Route::post('/deleteactividad', 'PoaController@deleteactividad')->name('deleteactividad');
 Route::get('/pdfelaboracion', 'ReportesController@pdfelaboracion')->name('reportes.pdfelaboracion');
+
+Route::get('/pdfelaboracionAll', 'ReportesController@pdfelaboracionAll')->name('reportes.pdfelaboracionAll');
+
 Route::post('/getindicador', 'PoaController@getindicador')->name('getindicador');
 Route::get('/pdfindicador', 'ReportesController@pdfindicador')->name('reportes.pdfindicador');
 Route::post('/sendobservacion', 'PoaController@sendobservacion')->name('sendobservacion');

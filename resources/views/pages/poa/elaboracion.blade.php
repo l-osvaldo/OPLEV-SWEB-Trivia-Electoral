@@ -88,7 +88,11 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela"></i></div>
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 
+        <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela"></i> 
+
+        <!--i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfelaAll"></i-->
+      </div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">
         <img src="{{ asset('images/logoople.png') }}" alt="OPLE" class="ImgLogo" width="80%">
