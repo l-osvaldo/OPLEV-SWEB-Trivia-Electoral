@@ -89,9 +89,12 @@
     <!-- Espacio de Trabajo -->
 
       <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 
-        <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela"></i> 
 
-        <!--i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfelaAll"></i-->
+        <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela" data-toggle="tooltip" data-placement="right" title="POA Individual"></i> 
+
+        <i class="fa fa-files-o" style="border: solid 1px #f9f9f9;background: #EA0D94;border-radius: 3px;border-color: #EA0D94;padding: 5px;color: #fff;margin-left: 30px;cursor: pointer; margin-right: 10px;" aria-hidden="true" id="pdfelaAll" data-toggle="tooltip" data-placement="right" title="POA General"></i>
+
+        
       </div>
       <!--COLUMNAS-->
       <div class="colPOA" id="colPOA1">

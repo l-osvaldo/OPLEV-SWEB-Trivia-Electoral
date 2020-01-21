@@ -920,6 +920,7 @@ class ReportesController extends Controller
         //orderBy('numactividad', 'asc')->
         //get();
 
+        DB::statement('SET group_concat_max_len = 9999999999999');
         $actPdfDos = DB::table('programas2020')
         
         ->leftJoin('programasesp2020', 'programasesp2020.idprograma', '=', 'programas2020.idprograma')
@@ -929,20 +930,12 @@ class ReportesController extends Controller
         ->select('claveprograma','descprograma', 'claveprogramaesp', 'descprogramaesp','objprogramaesp','name')
         //->selectRaw('GROUP_CONCAT(CONCAT_WS("|",numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) SEPARATOR "/°°/") as act')
 
-        ->selectRaw('GROUP_CONCAT(DISTINCT numactividad, "/°/", descactividad, "/°/", unidadmedida, "/°/", cantidadanual, "/°/", enep, "/°/", febp, "/°/", marp, "/°/", abrp, "/°/", mayp, "/°/", junp, "/°/", julp, "/°/", agop, "/°/", sepp, "/°/", octp, "/°/", novp, "/°/", dicp, "/°/", inicio, "/°/", termino ORDER BY numactividad SEPARATOR "/°°/") as act')->distinct()
+        ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
         ->where('actividadesdos.idarea', $idArea)
         ->where('actividadesdos.reprogramacion', '!=' , 5)
         //->orderBy('actividadesdos.numactividad', 'asc')
         ->groupBy('actividadesdos.idprogramaesp')
         ->get();
-
-        //$actPdfDos = $actPdfDos->toArray();
-
-
-
-        //dd($actPdfDos);exit;
-
-        //$actPdf = DB::table('actividadesdos')->where('idprogramaesp', $request->progesp)->where('idarea', $idArea)->orderBy('numactividad', 'asc')->get();
 
         //dd($actPdf);exit;
 
@@ -959,7 +952,12 @@ class ReportesController extends Controller
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
         $pdfs->setOption('load-error-handling','ignore');
         //$pdfs->setOption('footer-right','[page] / [toPage]');
+        //$pdfs->setOption('enable-javascript', true);
+        //$pdfs->setOption('javascript-delay', 500);
+        //$pdfs->setOption('enable-smart-shrinking', true);
+        //$pdfs->setOption('no-stop-slow-scripts', true);
         return $pdfs->inline('reporte.pdf');
+        
 
 
       }

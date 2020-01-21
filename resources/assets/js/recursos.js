@@ -2297,14 +2297,14 @@ $.ajaxSetup({
       var mt = mesco.indexOf(ter);
       var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
       var per = meses[mi]+' - '+meses[mt]+' 2020';
-      //console.log(per);
+      console.log(can);
       $.ajax({
              type:'POST',
              url:"sendactividad",
              data:{
               "_token": token,ida:ida,act:act,uni:uni,ene:ene,feb:feb,mar:mar,abr:abr,may:may,jun:jun,jul:jul,ago:ago,sep:sep,oct:oct,nov:nov,dic:dic,pro:pro,esp:esp,can:can,ord:ord,ini:inif,ter:terf,area:area,per:per},
              success:function(data){ 
-              //console.log(data[1]);
+              console.log(data);
                 t.setAttribute('data-id',data[0].id);
                 t.setAttribute('id','act'+data[0].id);
                 t.querySelector('.btnBack').setAttribute('data-ba',data[0].descactividad);
@@ -2497,6 +2497,7 @@ function sumTPM(){
 
   /////////////////////////////////////////////////////////////////////////
   tpmResult == 0 ? tpmResult = 1 : '';
+  console.log(tpmResult)
   document.getElementById('r3M0')?document.getElementById('r3M0').textContent=((am0/tpmResult)*100).toFixed(2):'';
   document.getElementById('r3M1')?document.getElementById('r3M1').textContent=((am1/tpmResult)*100).toFixed(2):'';
   document.getElementById('r3M2')?document.getElementById('r3M2').textContent=((am2/tpmResult)*100).toFixed(2):'';

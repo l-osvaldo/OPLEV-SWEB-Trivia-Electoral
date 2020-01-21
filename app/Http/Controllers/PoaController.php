@@ -655,6 +655,7 @@ class PoaController extends Controller
                 $act->reprogramacion = 1;
                 $act->descactividad = $acttext;
                 $act->unidadmedida = $uni;
+                $act->cantidadanual = $can;
                 $act->idarea = $idArea;
                 $act->save();
 
