@@ -907,20 +907,8 @@ class ReportesController extends Controller
         if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta'))
         {
           $idArea = $request->unidad;
-        }
-        else {
-          $idArea = Auth::user()->idarea;
-        }
-        
-        //$actPdf = DB::table('actividadesdos')->
-        //where('idprogramaesp', $request->progesp)->
-        //where('idarea', $idArea)->
-        //where('reprogramacion', '!=' , 5)->
-        //join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->
-        //orderBy('numactividad', 'asc')->
-        //get();
 
-        DB::statement('SET group_concat_max_len = 9999999999999');
+          DB::statement('SET group_concat_max_len = 9999999999999');
         $actPdfDos = DB::table('programas2020')
         
         ->leftJoin('programasesp2020', 'programasesp2020.idprograma', '=', 'programas2020.idprograma')
@@ -928,14 +916,32 @@ class ReportesController extends Controller
         ->leftJoin('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'actividadesdos.autoactividades')
         ->leftJoin('users', 'users.idarea', '=', 'actividadesdos.idarea')
         ->select('claveprograma','descprograma', 'claveprogramaesp', 'descprogramaesp','objprogramaesp','name')
-        //->selectRaw('GROUP_CONCAT(CONCAT_WS("|",numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) SEPARATOR "/°°/") as act')
+
+        ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
+        ->where('actividadesdos.reprogramacion', '!=' , 5)
+        ->groupBy('actividadesdos.idprogramaesp')
+        ->get();
+        }
+        else {
+          $idArea = Auth::user()->idarea;
+
+          DB::statement('SET group_concat_max_len = 9999999999999');
+        $actPdfDos = DB::table('programas2020')
+        
+        ->leftJoin('programasesp2020', 'programasesp2020.idprograma', '=', 'programas2020.idprograma')
+        ->leftJoin('actividadesdos', 'actividadesdos.idprogramaesp', '=', 'programasesp2020.idprogramaesp')
+        ->leftJoin('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'actividadesdos.autoactividades')
+        ->leftJoin('users', 'users.idarea', '=', 'actividadesdos.idarea')
+        ->select('claveprograma','descprograma', 'claveprogramaesp', 'descprogramaesp','objprogramaesp','name')
 
         ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
         ->where('actividadesdos.idarea', $idArea)
         ->where('actividadesdos.reprogramacion', '!=' , 5)
-        //->orderBy('actividadesdos.numactividad', 'asc')
         ->groupBy('actividadesdos.idprogramaesp')
         ->get();
+        }
+        
+        
 
         //dd($actPdf);exit;
 
