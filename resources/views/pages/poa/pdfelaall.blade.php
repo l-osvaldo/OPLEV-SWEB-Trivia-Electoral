@@ -7,7 +7,7 @@
 <body>
 <style type="text/css">
 table, th, td {
-  border: 1px solid black;font-size: small;border-collapse: collapse;
+  border: 1px solid black;font-size: small;border-collapse: collapse;font-size: 13px
 }
 
 </style>
@@ -115,7 +115,7 @@ table, th, td {
         @endphp
    
       
-        @if($kpp == 11 || $kpp == 26)     
+        @if($kpp == 12 || $kpp == 26)     
         </table>  
 
 
