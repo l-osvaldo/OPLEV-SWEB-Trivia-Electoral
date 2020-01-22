@@ -2,12 +2,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>POA 2020</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
 </head>
 <body>
 <style type="text/css">
 table, th, td {
-  border: 1px solid black;font-size: small;border-collapse: collapse;padding: auto;
+  border: 1px solid black;font-size: small;border-collapse: collapse;
 }
 
 </style>
