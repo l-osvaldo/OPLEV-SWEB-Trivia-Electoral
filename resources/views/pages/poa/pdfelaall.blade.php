@@ -9,11 +9,6 @@
 table, th, td {
   border: 1px solid black;font-size: small;border-collapse: collapse;
 }
-    div.page
-    {
-        page-break-after: always;
-        page-break-inside: avoid;
-    }
 
 </style>
 
@@ -26,7 +21,7 @@ table, th, td {
     <th style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="5">PROGRAMA OPERATIVO ANUAL 2020</th>
   </tr>
   <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="http://sistemas.oplever.org.mx/sipseiv2/images/logoople.png" alt="OPLE" width="100px"></td>
+    <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="" alt="OPLE" width="100px"></td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
     <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>{{$actividad->name}}</strong></td>
