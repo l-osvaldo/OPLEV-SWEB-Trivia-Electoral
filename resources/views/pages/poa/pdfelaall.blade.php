@@ -7,7 +7,7 @@
 <body>
 <style type="text/css">
 table, th, td {
-  border: 1px solid black;font-size: small;border-collapse: collapse;font-size: 8px;
+  border: 1px solid black;font-size: small;border-collapse: collapse;
 }
 
 </style>
