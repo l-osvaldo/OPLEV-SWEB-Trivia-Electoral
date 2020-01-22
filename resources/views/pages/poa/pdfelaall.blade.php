@@ -115,7 +115,7 @@ table, th, td {
         @endphp
    
       
-        @if($kpp == 12)     
+        @if($kpp == 12 || $kpp == 26)     
         </table>  
 
 
