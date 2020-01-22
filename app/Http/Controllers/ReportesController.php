@@ -948,7 +948,7 @@ class ReportesController extends Controller
 
         $pdfs = PDFS::loadView('pages.poa.pdfelaall',['actividades'=>$actPdfDos])->setPaper('letter', 'landscape');
         //$pdfs = PDFS::loadHtml('<h3>'.$request->programa.'</h3>')->setPaper('letter', 'landscape');
-        $pdfs->setOption('margin-top', 15);
+        $pdfs->setOption('margin-top', 12);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 15);
         $pdfs->setOption('margin-right', 10);
