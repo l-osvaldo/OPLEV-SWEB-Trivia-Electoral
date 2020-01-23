@@ -898,7 +898,7 @@ document.getElementById('selectOnOff')?document.getElementById('selectOnOff').ad
               //var option = new Option(data[0][i].descprogramaesp, data[0][i].idprogramaesp);
               //document.getElementById("eProgramaEsp").appendChild(option);
               var option = document.createElement("option");
-              option.text = data[0][i].descprogramaesp;
+              option.text = data[0][i].claveprogramaesp+' - '+data[0][i].descprogramaesp;
               option.value = data[0][i].idprogramaesp;
               option.setAttribute('data-clave',data[0][i].claveprogramaesp);
               option.setAttribute('data-objetivo',data[0][i].objprogramaesp);
@@ -1093,9 +1093,29 @@ document.getElementById('selectOnOff')?document.getElementById('selectOnOff').ad
             observa.setAttribute('data-toggle', 'tooltip');
             observa.setAttribute('data-placement', 'right');
             observa.setAttribute('title', 'observaciones');
-            //observa.addEventListener("click", verObservaciones);
-            observa.style.color='#eceff1';
-            observa.style.pointerEvents='none';
+            switch (data[0][j].act_obs_edit) {
+                  case 1:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 2:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 3:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 4:
+                    observa.style.backgroundColor='#c0ca33';
+                    observa.style.color='#000';
+                    break;
+                  default:
+                   observa.style.backgroundColor='#fff';
+                } 
+            observa.addEventListener("click", verObservaciones);
+            //observa.style.color='#eceff1';
+            //observa.style.pointerEvents='none';
             rowAct.appendChild(observa);
  
               break;
