@@ -1836,7 +1836,8 @@ $.ajaxSetup({
        success:function(data){ 
           document.getElementById('contActividades').innerHTML='';
           data[0].length == 0 ? document.getElementById('contActividades').style.backgroundColor='#fff' : document.getElementById('contActividades').style.backgroundColor='';
-          //console.log(data[0]);
+          console.log(data[0].length);
+          data[0].length == 0 ? (document.getElementById('addAct').style.pointerEvents = 'none',document.getElementById('addAct').style.color = '#cfd8dc'):(document.getElementById('addAct').style.pointerEvents = '',document.getElementById('addAct').style.color = '');
           var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 
           for (var j = 0; j < data[0].length; j++) {
@@ -1920,6 +1921,7 @@ $.ajaxSetup({
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////REPROGRAMACION ESTATUS
+                console.log(data[0][j].act_tipo_estatus);
                 switch (data[0][j].act_tipo_estatus) {
                   case 0:
 
