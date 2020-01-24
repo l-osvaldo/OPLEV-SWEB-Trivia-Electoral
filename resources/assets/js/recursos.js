@@ -810,6 +810,7 @@ $.ajaxSetup({
           var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
           var periodo = meses[mi]+' - '+meses[mt]+' 2020';
+          var abreviatura = mesco[mi]+' - '+mesco[mt];
           //console.log(periodo);
           $.ajax({
              type:'POST',
@@ -822,6 +823,7 @@ $.ajaxSetup({
               document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
               //document.getElementById('periodocumplimiento').innerHTML=data[0].periodocumplimiento+'<br>'+periodo;
               document.getElementById('periodocumplimiento').textContent=periodo;
+              document.getElementById('abreviaturaperiodocump').textContent=abreviatura.toUpperCase();
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
               data[0].dimensionmedir?document.getElementById('dimensionmedir'+data[0].dimensionmedir).checked = true:'';
@@ -856,7 +858,7 @@ $.ajaxSetup({
               data[0].frecuenciamedicion?document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).checked = true:'';
               data[0].frecuenciamedicion == '5' ? (document.getElementById('frecuenciaespecifique').style.display='inline',document.getElementById('frecuenciaespecifique').textContent=data[0].frecuenciaespecifique,document.getElementById('frecuenciaespecifique').contentEditable = true):document.getElementById('frecuenciaespecifique').style.display='none';
               //document.getElementById('frecuenciamedicion'+data[0].frecuenciamedicion).innerHTML='X <br>'+data[0].frecuenciaespecifique;
-              console.log(data[0].fundamentojuridico)
+              //console.log(data[0].fundamentojuridico)
               document.getElementById('fundamentojuridico').innerHTML=data[0].fundamentojuridico;
               document.getElementById('lineabasev').textContent=data[0].lineabasev;
               document.getElementById('lineabasea').textContent=data[0].lineabasea;
@@ -888,6 +890,7 @@ $.ajaxSetup({
           var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
           var periodo = meses[mi]+' - '+meses[mt]+' 2020';
+          var abreviatura = mesco[mi]+' - '+mesco[mt];
           //console.log(periodo);
           $.ajax({
              type:'POST',
@@ -900,6 +903,7 @@ $.ajaxSetup({
               document.getElementById('metaindicador').textContent=data[0].metaindicador+'%';
               //document.getElementById('periodocumplimiento').innerHTML=data[0].periodocumplimiento+'<br>'+periodo;
               document.getElementById('periodocumplimiento').textContent=periodo;
+              document.getElementById('abreviaturaperiodocump').textContent=abreviatura.toUpperCase();
               data[0].idprograma1 == '' || data[0].idprograma1 == '0' || data[0].idprograma1 == 0 ? '' : document.getElementById('idprograma'+data[0].idprograma1).textContent='X';
               document.getElementById('definicionindicador').textContent=data[0].definicionindicador;
               data[0].dimensionmedir?document.getElementById('dimensionmedir'+data[0].dimensionmedir).checked = true:'';
@@ -959,6 +963,7 @@ $.ajaxSetup({
               document.getElementById('objetivoindicador').textContent='';
               document.getElementById('metaindicador').textContent='';
               document.getElementById('periodocumplimiento').textContent='';
+              document.getElementById('abreviaturaperiodocump').textContent='';
               document.getElementById('idprograma1').textContent='';
               document.getElementById('idprograma2').textContent='';
               document.getElementById('idprograma3').textContent='';
@@ -1048,6 +1053,9 @@ $.ajaxSetup({
 
           var idin = document.getElementById('identificadorindicador').textContent;
           var dein = document.getElementById('definicionindicador').textContent;
+          var pecu = document.getElementById('periodocumplimiento').textContent;
+          var abcu = document.getElementById('abreviaturaperiodocump').textContent;
+          
 
           var noin = document.getElementById('nombreindicador').textContent;
           var obin = document.getElementById('objetivoindicador').textContent;
@@ -1069,11 +1077,11 @@ $.ajaxSetup({
           var liba = document.getElementById('lineabasea').textContent;
           var coin;
           document.querySelector('input[name="comportamiento"]:checked')?coin = document.querySelector('input[name="comportamiento"]:checked').value:'';
-          //console.log(coin);
+          //console.log(pecu,abcu);
           $.ajax({
              type:'POST',
              url:"actindicador",
-             data:{"_token": token,id:id,idin:idin,dein:dein,noin:noin,obin:obin,dime:dime,unme:unme,meca:meca,var1:var1,dev1:dev1,fui1:fui1,var2:var2,dev2:dev2,fui2:fui2,frme:frme,fres:fres,fuju:fuju,libv:libv,liba:liba,coin:coin},
+             data:{"_token": token,id:id,idin:idin,dein:dein,noin:noin,obin:obin,dime:dime,unme:unme,meca:meca,var1:var1,dev1:dev1,fui1:fui1,var2:var2,dev2:dev2,fui2:fui2,frme:frme,fres:fres,fuju:fuju,libv:libv,liba:liba,coin:coin,pecu:pecu,abcu:abcu},
              success:function(data){ 
                 swal({
                 title: "Datos actualizados",
@@ -2317,14 +2325,14 @@ $.ajaxSetup({
       var mt = mesco.indexOf(ter);
       var meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
       var per = meses[mi]+' - '+meses[mt]+' 2020';
-      console.log(can);
+      //console.log(can);
       $.ajax({
              type:'POST',
              url:"sendactividad",
              data:{
               "_token": token,ida:ida,act:act,uni:uni,ene:ene,feb:feb,mar:mar,abr:abr,may:may,jun:jun,jul:jul,ago:ago,sep:sep,oct:oct,nov:nov,dic:dic,pro:pro,esp:esp,can:can,ord:ord,ini:inif,ter:terf,area:area,per:per},
              success:function(data){ 
-              console.log(data);
+              //console.log(data);
                 t.setAttribute('data-id',data[0].id);
                 t.setAttribute('id','act'+data[0].id);
                 t.querySelector('.btnBack').setAttribute('data-ba',data[0].descactividad);
@@ -2517,7 +2525,7 @@ function sumTPM(){
 
   /////////////////////////////////////////////////////////////////////////
   tpmResult == 0 ? tpmResult = 1 : '';
-  console.log(tpmResult)
+  //console.log(tpmResult)
   document.getElementById('r3M0')?document.getElementById('r3M0').textContent=((am0/tpmResult)*100).toFixed(2):'';
   document.getElementById('r3M1')?document.getElementById('r3M1').textContent=((am1/tpmResult)*100).toFixed(2):'';
   document.getElementById('r3M2')?document.getElementById('r3M2').textContent=((am2/tpmResult)*100).toFixed(2):'';

@@ -740,7 +740,9 @@ class PoaController extends Controller
         DB::table('infocedulas2020')->where('idcontrol', $request->id)->where('idarea', $user->idarea)->update([
                   'identificadorindicador' =>  $request->idin,
                   'definicionindicador' =>  $request->dein,
-
+                  'periodocumplimiento' =>  $request->pecu,
+                  'abreviaturaperiodocump' =>  $request->abcu,
+                  
                   'nombreindicador' =>  $request->noin,
                   'objetivoindicador' =>  $request->obin,
                   'dimensionmedir' =>  $request->dime,
