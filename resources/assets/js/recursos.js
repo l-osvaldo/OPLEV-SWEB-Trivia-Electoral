@@ -1836,7 +1836,7 @@ $.ajaxSetup({
        success:function(data){ 
           document.getElementById('contActividades').innerHTML='';
           data[0].length == 0 ? document.getElementById('contActividades').style.backgroundColor='#fff' : document.getElementById('contActividades').style.backgroundColor='';
-          console.log(data[0].length);
+          console.log(data[0]);
           data[0].length == 0 ? (document.getElementById('addAct').style.pointerEvents = 'none',document.getElementById('addAct').style.color = '#cfd8dc'):(document.getElementById('addAct').style.pointerEvents = '',document.getElementById('addAct').style.color = '');
           var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 
