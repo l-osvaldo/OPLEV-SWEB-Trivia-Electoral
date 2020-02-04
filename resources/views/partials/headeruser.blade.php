@@ -67,9 +67,9 @@
           <i class="fa fa-question-circle" aria-hidden="true"></i>
         </a>
       </li>
-      
 
-      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Revisiones No Aprobadas">
+
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Revisiones No Aprobadas" style="{!!global_function_example()===2 ? 'display: none' : "" !!}">
         <a class="nav-link alerta-obsRed" id="iconAlertfin" data-toggle="dropdown" href="#">
           <i class="fa fa-exclamation-triangle alertaRed" aria-hidden="true"></i>
           @if(count($observacionesRn) > 0)         
@@ -101,7 +101,7 @@
 
 
 
-      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones de Reprogramación">
+      <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones de Reprogramación" style="{!!global_function_example()===2 ? 'display: none' : "" !!}">
         <a class="nav-link alerta-obs" id="iconAlertfin" data-toggle="dropdown" href="#">
           <i class="fa fa-eye"></i>
           @if(count($observaciones) > 0)         
@@ -130,7 +130,9 @@
           <div class="dropdown-divider"></div>
           <a href="{{ route('elaboracion') }}" class="dropdown-item dropdown-footer" style="background: #eceff1;color: #000;">{!! count($observaciones)>0 ? 'Ir a la Revisión de Actividades' : 'Sin observaciones' !!}</a></a>
         </div>
-      </li>  
+      </li>
+       
+       <!--Termina el if de la variable global del sistema-->
 
       <!--li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">

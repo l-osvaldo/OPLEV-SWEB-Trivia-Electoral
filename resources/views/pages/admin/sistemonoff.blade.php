@@ -25,6 +25,7 @@
         <option selected>---</option>
         <option value="0">Deshabilitado</option>
         <option value="1">Habilitado</option>
+        <option value="2">Cerrado</option>
     </select>
 
     </div>

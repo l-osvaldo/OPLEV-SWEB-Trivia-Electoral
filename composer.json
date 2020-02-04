@@ -30,7 +30,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.2.15"
+        }
     },
     "extra": {
         "laravel": {
@@ -44,7 +47,8 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ]
+        ],
+        "files": ["app/Helpers/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {

@@ -7,11 +7,11 @@ use App\Entities\{Mes, ProgramaEsp, Actividad, PorcProgramado, PorcRealizado, De
 use DB;
 use Auth;
 use App\Alerta;
-use App\actividadesdos;
-use App\porcprogramado2020;
+use App\actividades;
+use App\porcprogramadon;
 use App\observaciones;
-use App\porcrealizado2020;
-use App\programasesp2020;
+use App\porcrealizadon;
+use App\programasesp;
 use Alert;
 
 class PoaController extends Controller
@@ -42,12 +42,12 @@ class PoaController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           $observaciones = DB::table('observaciones')->where('obs_status', 0)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
           ->orderBy('obs_date', 'desc')->get();
 
           $observacionesR = DB::table('observaciones')->where('obs_status', 1)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
           return view('pages.admin.index')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
@@ -58,11 +58,11 @@ class PoaController extends Controller
           $areaId = $user->idarea;
           $meses = Mes::all();
           $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
 
           $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
           $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
           return view('pages.poa.index')->with( compact('meses','observaciones','observacionesR','observacionesRn'));
@@ -106,12 +106,12 @@ class PoaController extends Controller
         $user   = auth()->user();
         $areaId = $user->idarea;
         $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-        ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+        ->join('users', 'users.idarea', '=', 'actividades.idarea')
         ->orderBy('obs_date', 'desc')->get();
 
         $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
         
@@ -235,12 +235,12 @@ class PoaController extends Controller
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           $observaciones = DB::table('observaciones')->where('obs_status', 0)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-          ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
           ->orderBy('obs_date', 'desc')->get();
 
           $observacionesR = DB::table('observaciones')->where('obs_status', 1)
-          ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
           /////////////////////////////////////////////////////////////////////////////////////////
           return view('pages.admin.sistemonoff')->with( compact('meses', 'areas', 'programas', 'action', 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
@@ -263,7 +263,7 @@ class PoaController extends Controller
             
           $data = $request->data;
 
-            DB::table('actividadesdos')->update(['act_tipo_estatus' => $data]);
+            DB::table('actividades')->update(['act_tipo_estatus' => $data]);
             return response()->json(['listo']);
 
         }
@@ -324,11 +324,11 @@ class PoaController extends Controller
       $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
       //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2020)->get();
       $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
-      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
 
       $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-      ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+      ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
       ->orderBy('obs_date', 'desc')->get();
 
       $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
@@ -362,20 +362,20 @@ class PoaController extends Controller
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
             $observaciones = DB::table('observaciones')->where('obs_status', 0)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividades.idarea')
             ->orderBy('obs_date', 'desc')->get();
 
             $obss = DB::table('observaciones')
             //->where('obs_status', 2)->orWhere('obs_status', 3)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividades.idarea')
             ->orderBy('obs_date', 'desc')
             ->limit(20)
             ->get();
 
             $observacionesR = DB::table('observaciones')->where('obs_status', 1)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
 
@@ -414,8 +414,8 @@ class PoaController extends Controller
 
             $obss = DB::table('observaciones')->where('obs_id_area', $id)
             //->where('obs_status', 2)->orWhere('obs_status', 3)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividades.idarea')
             ->orderBy('obs_date', 'desc')
             ->limit(20)
             ->get();
@@ -467,12 +467,12 @@ class PoaController extends Controller
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
             $observaciones = DB::table('observaciones')->where('obs_status', 0)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
-            ->join('users', 'users.idarea', '=', 'actividadesdos.idarea')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+            ->join('users', 'users.idarea', '=', 'actividades.idarea')
             ->orderBy('obs_date', 'desc')->get();
 
             $observacionesR = DB::table('observaciones')->where('obs_status', 1)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
 
@@ -493,10 +493,10 @@ class PoaController extends Controller
             $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
             /////////////////////////////////////////////////////////////////////////////////////////
             $observaciones = DB::table('observaciones')
-            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
             $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-            ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
              $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
@@ -554,7 +554,7 @@ class PoaController extends Controller
 
         switch ($ida) {
             case '0':
-                $act = new actividadesdos();
+                $act = new actividades();
                 $act->reprogramacion = 2;
                 $act->autoactividades = $act->id;
                 $act->idprograma = $pro;
@@ -572,7 +572,7 @@ class PoaController extends Controller
                 $act->act_tipo_estatus = 1;
                 $act->save();
 
-                $act = actividadesdos::find($act->id);
+                $act = actividades::find($act->id);
                 $act->autoactividades = $act->id;
                 $act->idporcentajep = $act->id;
                 $act->idporcentajer = $act->id;
@@ -651,7 +651,7 @@ class PoaController extends Controller
 
                 break;
             default:
-                $act = actividadesdos::find($ida);
+                $act = actividades::find($ida);
                 $act->reprogramacion = 1;
                 $act->descactividad = $acttext;
                 $act->unidadmedida = $uni;
@@ -712,8 +712,8 @@ class PoaController extends Controller
         
         foreach ($data  as $datas) {
           $idNum = explode("|",$datas);
-          //$updateNum= DB::table('actividadesdos')->where('id', $idNum[0])->update(['reprogramacion' => 1,'numactividad' => $idNum[1]]);
-          $updateNum= DB::table('actividadesdos')->where('id', $idNum[0])->update(['numactividad' => $idNum[1]]);
+          //$updateNum= DB::table('actividades')->where('id', $idNum[0])->update(['reprogramacion' => 1,'numactividad' => $idNum[1]]);
+          $updateNum= DB::table('actividades')->where('id', $idNum[0])->update(['numactividad' => $idNum[1]]);
         }
 
         return response()->json([implode(",",$data)]);
@@ -800,14 +800,14 @@ class PoaController extends Controller
 
         $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '0')->count();
 
-        $act2 = actividadesdos::find($id);
+        $act2 = actividades::find($id);
         $act2->act_obs = $count;
         $act2->act_obs_edit = $color;
         $act2->save();
 
 
         $observaciones = DB::table('observaciones')
-            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
         return response()->json($observaciones);
@@ -847,13 +847,13 @@ class PoaController extends Controller
 
         $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '2')->count();
 
-        $act2 = actividadesdos::find($id);
+        $act2 = actividades::find($id);
         $act2->act_obs = $count;
         $act2->act_obs_edit = $color;
         $act2->save();
 
         $observaciones = DB::table('observaciones')
-            ->where('obs_status', 1)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->where('obs_status', 1)->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
         return response()->json($observaciones);
@@ -904,13 +904,13 @@ class PoaController extends Controller
 
         $count = DB::table('observaciones')->where('obs_idactividad', $id)->where('obs_status', '0')->count();
 
-        $act2 = actividadesdos::find($id);
+        $act2 = actividades::find($id);
         $act2->act_obs = $count;
         $act2->act_obs_edit = $color;
         $act2->save();
 
         $observaciones = DB::table('observaciones')
-            ->where('obs_status', 0)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+            ->where('obs_status', 0)->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
             ->orderBy('obs_date', 'desc')->get();
 
         return response()->json($observaciones);
@@ -984,7 +984,7 @@ class PoaController extends Controller
         }
 
         $obs =  DB::table('observaciones')->where('obs_id_area', $userId)->where('obs_status', '3')->orWhere('obs_status', '4')
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         
         return response()->json($obs);
@@ -1014,11 +1014,11 @@ class PoaController extends Controller
 
         if ($send_clave === $usu_clave) {
 
-        DB::table('actividadesdos')->where('id', $data)->update([
+        DB::table('actividades')->where('id', $data)->update([
                   'reprogramacion' =>  5
                 ]);
         
-        //DB::table('actividadesdos')->where('id', $data)->delete();
+        //DB::table('actividades')->where('id', $data)->delete();
         //DB::table('porcentajep2020')->where('idporcentajep', $data)->delete();
         //DB::table('porcentajer2020')->where('idporcentajer', $data)->delete();
         //DB::table('infocedulas2020')->where('idcontrol', $data)->delete();
@@ -1083,7 +1083,7 @@ class PoaController extends Controller
           $idArea = Auth::user()->idarea;
         }
         $id = $request->proesp;
-        $actAdd = DB::table('actividadesdos')->where('idprogramaesp', $id)->where('idarea', $idArea)->where('reprogramacion', '!=' , 5)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
+        $actAdd = DB::table('actividades')->where('idprogramaesp', $id)->where('idarea', $idArea)->where('reprogramacion', '!=' , 5)->join('porcentajep2020', 'porcentajep2020.idporcentajep', '=', 'autoactividades')->orderBy('numactividad', 'asc')->get();
 
 
         return response()->json([$actAdd]);

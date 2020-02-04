@@ -88,7 +88,7 @@
   <section class="content" style="padding-top: .5%;">
     <!-- Espacio de Trabajo -->
 
-      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020 
+      <div  id="titPOA" class="col-md-12">PROGRAMA OPERATIVO ANUAL 2020
 
         <i class="fa fa-file-pdf-o btnpdfpoa" aria-hidden="true" id="pdfela" data-toggle="tooltip" data-placement="right" title="POA Individual"></i> 
 
@@ -191,7 +191,12 @@
         @if( Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
            
         @else
-          <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad" style="pointer-events: none; color: rgb(236, 239, 241);">
+          <div class="iconInfo btnOff" id="addAct" data-toggle="tooltip" data-placement="right" title="Agregar Actividad" 
+          style="
+          pointer-events: none;
+          color: rgb(236, 239, 241);
+          {!!global_function_example()===2 ? 'display: none' : "" !!}
+          ">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
           </div>
         @endif

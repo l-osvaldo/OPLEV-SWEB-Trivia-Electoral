@@ -680,7 +680,7 @@ document.getElementById("iconAlert").addEventListener("click", hiddenAlerta);
 
 ***************************************************************/
 
-        document.getElementById("iconAlertObs").addEventListener("click", hiddenAlertafin);
+         document.getElementById("iconAlertObs")?document.getElementById("iconAlertObs").addEventListener("click", hiddenAlertafin):'';
         function hiddenAlertafin () {
             $.ajax({
              type:'POST',
@@ -1073,6 +1073,18 @@ document.getElementById('selectOnOff')?document.getElementById('selectOnOff').ad
 
           rowAct.appendChild(down);
 
+          var del = document.createElement("I");
+          del.className = "iconBH fa fa-trash delAct btnOn";   
+          del.setAttribute('aria-hidden', 'true');
+          del.setAttribute('data-toggle', 'tooltip');
+          del.setAttribute('data-placement', 'right');
+          del.setAttribute('title', 'Eliminar');
+          del.style.color='#eceff1';
+          del.style.pointerEvents='none';
+          //del.addEventListener("click", removeActModal);
+
+          rowAct.appendChild(del);
+
 
           switch (data[0][j].act_tipo_estatus) {
             case 0:
@@ -1161,24 +1173,75 @@ document.getElementById('selectOnOff')?document.getElementById('selectOnOff').ad
 
           rowAct.appendChild(observa);
 
-              break;
+            break;
+          case 2:
+
+                
+                editar.style.display='none';
+                back.style.display='none';
+                up.style.display='none';
+                down.style.display='none';
+                del.style.display='none';
+
+                var indi = document.createElement("I");
+                indi.className = "iconBH fa fa-info-circle btnOff";   
+                indi.setAttribute('aria-hidden', 'true');
+                indi.setAttribute('data-toggle', 'tooltip');
+                indi.setAttribute('data-placement', 'right');
+                indi.setAttribute('title', 'Indicador');
+                //indi.style.display='none';
+                indi.addEventListener("click", creaIndicadorDisable);
+
+                rowAct.appendChild(indi);
+
+                var observa = document.createElement("I");
+                observa.className = "iconBH fa fa-eye btnOff";   
+                observa.setAttribute('aria-hidden', 'true');
+                observa.setAttribute('data-toggle', 'tooltip');
+                observa.setAttribute('data-placement', 'right');
+                observa.style.display='none';
+                observa.setAttribute('title', 'observaciones');
+              
+                switch (data[0][j].act_obs_edit) {
+                  case 1:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 2:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 3:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 4:
+                    observa.style.backgroundColor='#c0ca33';
+                    observa.style.color='#000';
+                    break;
+                  default:
+                   observa.style.backgroundColor='#fff';
+                } 
+                //observa.addEventListener("click", verObservaciones);
+
+                rowAct.appendChild(observa);
+
+                ////act.appendChild(rowAct);
+                ////act.style.backgroundColor='';
+
+                //document.getElementById('addAct').style.pointerEvents = 'none';
+                //document.getElementById('addAct').style.color = '#cfd8dc';
+
+                ////////////////////////////////////////////////////////////////////////////////////////
+                    
+                  break;
             default:
 
           }
 
           
 
-          var del = document.createElement("I");
-          del.className = "iconBH fa fa-trash delAct btnOn";   
-          del.setAttribute('aria-hidden', 'true');
-          del.setAttribute('data-toggle', 'tooltip');
-          del.setAttribute('data-placement', 'right');
-          del.setAttribute('title', 'Eliminar');
-          del.style.color='#eceff1';
-          del.style.pointerEvents='none';
-          //del.addEventListener("click", removeActModal);
-
-          rowAct.appendChild(del);
+          
 
           document.getElementById('contActividades').appendChild(rowAct);
           document.getElementById('contActividades').style.backgroundColor='';  

@@ -12,7 +12,7 @@
 .mesesOn{text-align: center;background-color: #fff;margin: 2% 2%;cursor: pointer;float: left;width: 12.6666666667%;border-radius: 5px;font-size: 2em;color: #333;}
 
 .mesesOn:hover{background-color: #EA0D94;color: #fff;}
-.contPanel{box-shadow: 0 2px 4px rgba(0,0,0,.15);background: #f5f5f5;width: 100%;margin-top: 5em;padding: 3%;}
+.contPanel{box-shadow: 0 2px 4px rgba(0,0,0,.15);background: #f5f5f5;width: 100%;padding: 3%;}
 
 .btn-primary:hover{background: #EA0D94; color: #fff; border:solid 1px #EA0D94; }
 .btn-primary{background: #f8bbd0; color: #000; border:solid 1px #f8bbd0; }
@@ -28,19 +28,19 @@
     <!-- Espacio de Trabajo -->
 
 <div class="row">
+  <h4 style="margin-top: 5em;">Notificación mensual a la Unidad Técnica de Planeación</h4>
 <div class="contPanel">
-    <h3 class="textoPrincipal">Notificación mensual a la Unidad Técnica de Planeación</h3>
-    <div id="enero" data-mesc="enero" class="mesesRep">ENE</div>
-    <div id="febrero" data-mesc="febrero" class="mesesRep">FEB</div>
-    <div id="marzo" data-mesc="marzo" class="mesesRep">MAR</div>
-    <div id="abril" data-mesc="abril" class="mesesRep">ABR</div>
-    <div id="mayo" data-mesc="mayo" class="mesesRep">MAY</div>
-    <div id="junio" data-mesc="junio" class="mesesRep">JUN</div>
+    <div id="enero" data-mesc="enero" class="mesesOff">ENE</div>
+    <div id="febrero" data-mesc="febrero" class="mesesOff">FEB</div>
+    <div id="marzo" data-mesc="marzo" class="mesesOff">MAR</div>
+    <div id="abril" data-mesc="abril" class="mesesOff">ABR</div>
+    <div id="mayo" data-mesc="mayo" class="mesesOff">MAY</div>
+    <div id="junio" data-mesc="junio" class="mesesOff">JUN</div>
     <!--div id="jul" class="mesesOn" data-toggle="modal" data-target="#exampleModalCenter">JUL</div-->
-    <div id="julio" data-mesc="julio" class="mesesRep" >JUL</div>
-    <div id="agosto" data-mesc="agosto" class="mesesRep">AGO</div>
-    <div id="septiembre" data-mesc="septiembre" class="mesesRep">SEP</div>
-    <div id="octubre" data-mesc="octubre" class="mesesRep">OCT</div>
+    <div id="julio" data-mesc="julio" class="mesesOff" >JUL</div>
+    <div id="agosto" data-mesc="agosto" class="mesesOff">AGO</div>
+    <div id="septiembre" data-mesc="septiembre" class="mesesOff">SEP</div>
+    <div id="octubre" data-mesc="octubre" class="mesesOff">OCT</div>
     <div id="noviembre" data-mesc="noviembre" class="mesesOff">NOV</div>
     <div id="diciembre" data-mesc="diciembre" class="mesesOff">DIC</div>
 </div>
@@ -52,14 +52,14 @@
   var demos = '{{$resultados->ale_mes}}';
   document.getElementById(demos).classList.remove('mesesOff');
   document.getElementById(demos).classList.add("mesesRep");
-  //console.log(demos)
+  console.log(demos)
 </script>
 @endforeach
 <script type="text/javascript">
 var ele = document.getElementsByClassName('mesesRep');
 
 if (ele.length===0) {
-  var ini = document.getElementById('octubre');
+  var ini = document.getElementById('enero');
     ini.classList.remove('mesesOff');
     ini.classList.add('mesesOn');
     ini.setAttribute('data-toggle', 'modal');

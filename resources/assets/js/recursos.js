@@ -2147,6 +2147,131 @@ $.ajaxSetup({
                 document.getElementById('addAct').style.color = '';
 
                     break;
+                     case 2:
+
+                var editar = document.createElement("I");
+                editar.className = "iconBH fa fa-pencil-square-o resetBack btnOff";   
+                editar.setAttribute('aria-hidden', 'true');
+                editar.setAttribute('data-toggle', 'tooltip');
+                editar.setAttribute('data-placement', 'right');
+                editar.setAttribute('data-insert', '0');
+                editar.setAttribute('title', 'Editar');
+                editar.setAttribute('data-edit', '0');
+                editar.style.color='#eceff1';
+                editar.style.display='none';
+                editar.style.pointerEvents='none';
+                //editar.addEventListener("click", editAct, false);
+
+                rowAct.appendChild(editar);
+
+                var back = document.createElement("I");
+                back.className = "iconBH fa fa-ban btnBack btnOn";   
+                back.setAttribute('aria-hidden', 'true');
+                back.setAttribute('data-toggle', 'tooltip');
+                back.setAttribute('data-placement', 'right');
+                back.setAttribute('title', 'Cancelar edición');
+                back.setAttribute('data-ba', data[0][j].descactividad);
+                back.setAttribute('data-bu', data[0][j].unidadmedida);
+                back.setAttribute('data-bm', sumNum.join());
+                back.style.color='#eceff1';
+                back.style.display='none';
+                back.style.pointerEvents='none';
+                //back.addEventListener("click", actBack, false);
+
+                rowAct.appendChild(back);
+
+                var up = document.createElement("I");
+                up.className = "iconBH fa fa-arrow-circle-up up btnOff";   
+                up.setAttribute('aria-hidden', 'true');
+                up.setAttribute('data-toggle', 'tooltip');
+                up.setAttribute('data-placement', 'right');
+                up.setAttribute('title', 'Subir');
+                up.style.color='#eceff1';
+                up.style.display='none';
+                up.style.pointerEvents='none';
+                //up.addEventListener("click", moveUp);
+
+                rowAct.appendChild(up);
+
+                var down = document.createElement("I");
+                down.className = "iconBH fa fa-arrow-circle-down down btnOff";   
+                down.setAttribute('aria-hidden', 'true');
+                down.setAttribute('data-toggle', 'tooltip');
+                down.setAttribute('data-placement', 'right');
+                down.setAttribute('title', 'Bajar');
+                down.style.color='#eceff1';
+                down.style.display='none';
+                down.style.pointerEvents='none';
+                //down.addEventListener("click", moveDown);
+
+                rowAct.appendChild(down);
+
+                var indi = document.createElement("I");
+                indi.className = "iconBH fa fa-info-circle btnOff";   
+                indi.setAttribute('aria-hidden', 'true');
+                indi.setAttribute('data-toggle', 'tooltip');
+                indi.setAttribute('data-placement', 'right');
+                indi.setAttribute('title', 'Indicador');
+                //indi.style.display='none';
+                indi.addEventListener("click", creaIndicadorDisable);
+
+                rowAct.appendChild(indi);
+
+                var observa = document.createElement("I");
+                observa.className = "iconBH fa fa-eye btnOff";   
+                observa.setAttribute('aria-hidden', 'true');
+                observa.setAttribute('data-toggle', 'tooltip');
+                observa.setAttribute('data-placement', 'right');
+                observa.style.display='none';
+                observa.setAttribute('title', 'observaciones');
+                //observa.style.color='#eceff1';
+                //observa.style.pointerEvents='none';
+                switch (data[0][j].act_obs_edit) {
+                  case 1:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 2:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 3:
+                    observa.style.backgroundColor='#f48fb1';
+                    observa.style.color='#000';
+                    break;
+                  case 4:
+                    observa.style.backgroundColor='#c0ca33';
+                    observa.style.color='#000';
+                    break;
+                  default:
+                   observa.style.backgroundColor='#fff';
+                } 
+                //observa.addEventListener("click", verObservaciones);
+
+                rowAct.appendChild(observa);
+
+                var del = document.createElement("I");
+                del.className = "iconBH fa fa-trash delAct btnOff";   
+                del.setAttribute('aria-hidden', 'true');
+                del.setAttribute('data-toggle', 'tooltip');
+                del.setAttribute('data-placement', 'right');
+                del.setAttribute('title', 'Eliminar');
+                del.style.color='#eceff1';
+                del.style.pointerEvents='none';
+                del.style.display='none';
+                //del.addEventListener("click", removeActModal);
+
+                rowAct.appendChild(del);
+
+                act.appendChild(rowAct);
+                act.style.backgroundColor='';
+
+                document.getElementById('addAct').style.pointerEvents = 'none';
+                document.getElementById('addAct').style.color = '#cfd8dc';
+
+                ////////////////////////////////////////////////////////////////////////////////////////
+                    
+                  break;
                   default:
                    console.log('hola')
                 }
