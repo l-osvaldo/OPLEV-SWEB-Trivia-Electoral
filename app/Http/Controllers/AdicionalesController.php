@@ -27,10 +27,10 @@ class AdicionalesController extends Controller
         $areaId = $user->idarea;
         $meses = Mes::all();
 
-        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
         return view('pages.adicionales.index')->with( compact('meses','observaciones','observacionesR','observacionesRn') );
@@ -71,11 +71,11 @@ class AdicionalesController extends Controller
         $user   = auth()->user();
         $areaId = $user->idarea;
         $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
 
         $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
-        ->join('actividadesdos', 'actividadesdos.autoactividades', '=', 'obs_idactividad')
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
 
