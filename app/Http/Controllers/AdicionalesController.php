@@ -130,11 +130,11 @@ class AdicionalesController extends Controller
       $adicional->mes = $arrMeses[$idmes];      
 
       $descadicional = trim($request->input('descadicional'));
-      $descadicional = strtr($descadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      //$descadicional = strtr($descadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
       $soporteadicional = trim($request->input('soporteadicional'));
-      $soporteadicional = strtr($soporteadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      //$soporteadicional = strtr($soporteadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
       $observaadicional = trim($request->input('observaadicional'));
-      $observaadicional = strtr($observaadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      //$observaadicional = strtr($observaadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
 
       $adicional->descadicional = $descadicional;
