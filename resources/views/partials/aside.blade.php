@@ -108,7 +108,7 @@
             <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
-                PERIODO 2020
+                PERÍODO 2020
                 <i class="right fa fa-chevron-left" aria-hidden="true"></i>
               </p>
             </a>
