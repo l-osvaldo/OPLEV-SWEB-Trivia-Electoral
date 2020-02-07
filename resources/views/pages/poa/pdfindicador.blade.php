@@ -46,8 +46,8 @@ table, th, td {
   </tr>
   <tr>
     <th colspan="3" rowspan="2" style="height: 20px;background-color: #fce4ec;text-align: center;width: 20%;">Programa<br>Presupuestario</th>
-    <th style="height: 20px;background-color: #fff;text-align: center;">01. Desarrollo y Fortalecimiento Institucional.</th>
-    <th style="height: 20px;background-color: #fff;text-align: center;">02. Proceso Electora</th>
+    <th style="height: 20px;background-color: #fff;text-align: center;">01. Desarrollo y Fortalecimiento Institucional</th>
+    <th style="height: 20px;background-color: #fff;text-align: center;">02. Proceso Electoral</th>
     <th style="height: 20px;background-color: #fff;text-align: center;">03. Cartera de Proyectos</th>
     <th colspan="2" style="height: 20px;background-color: #fff;text-align: center;">04. Prerrogativas y Partidos Políticos</th>
   </tr>
