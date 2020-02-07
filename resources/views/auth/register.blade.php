@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
 
-    <title>{{ config('app.name', 'POA2019') }}</title>
+    <title>{{ config('app.name', 'POA2020') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
       <meta name="app-prefix" content="{{config('app.app-prefix')}}">
 

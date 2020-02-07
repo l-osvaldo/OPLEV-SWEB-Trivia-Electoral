@@ -463,7 +463,7 @@ class ReportesController extends Controller
     <tr style="border: 1px solid black;background:#fff; height:75px; text-align:center;">
       <td colspan="6">
       <img class="logo" src="'.public_path('images/logoople.png').'" width="100" style="position:absolute;top:0px;">
-      ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
+      ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 
       </td>
     </tr>
 
@@ -703,7 +703,7 @@ class ReportesController extends Controller
             <tr style="border: 1px solid black;background:#fff; height:75px; text-align:center;">
               <td colspan="6">
               <img class="logo" src="'.public_path('images/logoople.png').'" width="100" style="position:absolute;top:0px;">
-              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2019 
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Cédula de Indicadores Aplicados <br> Indicadores y Metas del Programa Operativo Anual 2020 
               </td>
             </tr>
           </table>
@@ -1066,7 +1066,7 @@ class ReportesController extends Controller
             <tr style="border: 1px solid black;background:#fff; height:75px;">
               <th colspan="6">
               <img class="logo" src="'.public_path('images/logoople.png').'" width="100" style="position:absolute;top:0px;">
-              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 <br> Actividades Adicionales 
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 <br> Actividades Adicionales 
               </th>
             </tr>
           </table>
@@ -1561,7 +1561,7 @@ class ReportesController extends Controller
 
             <tr style="border: 1px solid black;background:#fff; height:75px;">
               <th colspan="6">
-              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2019 
+              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 
               </th>
             </tr>
           </table>

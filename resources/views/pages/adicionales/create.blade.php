@@ -2,12 +2,6 @@
 
 @section('content')
 
-  <section class="content-header">
-    <h4>
-      Actividades Adicionales. Captura y Reportes
-    </h4>
-  </section>
-
   <!-- Start Section -->
 
 <section class="content">

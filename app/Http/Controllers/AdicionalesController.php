@@ -66,7 +66,8 @@ class AdicionalesController extends Controller
         $idArea = Auth::user()->idarea;
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();                
-        $existeAdicional = Adicional::select('descadicional', 'soporteadicional', 'observaadicional')->where('idarea', $idArea)->where('idmes', $idmesreportar)->exists();
+        $adicionales = Adicional::select('descadicional', 'soporteadicional', 'observaadicional','id')->where('idarea', $idArea)->where('idmes', $idmesreportar)->get();
+        //dd($adicionales);exit;
         $user   = auth()->user();
         $areaId = $user->idarea;
         $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
@@ -78,22 +79,25 @@ class AdicionalesController extends Controller
         ->orderBy('obs_date', 'desc')->get();
         $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
 
+        return view('pages.adicionales.create')->with( compact('adicionales', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
 
         //devuelve false sino existe
-        if ($existeAdicional)
-        {          
-          $id = Adicional::select('id')->where('idarea', $idArea)->where('idmes', $idmesreportar)->get();
-          $adicional = Adicional::find($id[0]->id);
-          $put = TRUE;
-          $action = route('adicionales.update', ['adicional' => $adicional->id ]);
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
-        }
-        else
-        {
-          $adicional = new Adicional();
-          $action = route('adicionales.store');
-          return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
-        }
+        //if ($existeAdicional)
+        //{          
+        //  $id = Adicional::select('id')->where('idarea', $idArea)->where('idmes', $idmesreportar)->get();
+        //  $adicional = Adicional::find($id[0]->id);
+        //  $put = TRUE;
+        //  $action = route('adicionales.update', ['adicional' => $adicional->id ]);
+        //  return view('pages.adicionales.create')->with( compact('adicional', 'action', 'put', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
+        //}
+        //else
+        //{
+        //  $adicional = new Adicional();
+        //  $action = route('adicionales.store');
+        //  return view('pages.adicionales.create')->with( compact('adicional', 'action', 'idmesreportar', 'mes','observaciones','observacionesR','observacionesRn') );
+        //}
+
+
       }
       else
       {
@@ -125,11 +129,11 @@ class AdicionalesController extends Controller
       $adicional->idmes = $request->input('idmesreportar');
       $adicional->mes = $arrMeses[$idmes];      
 
-      $descadicional = trim(strtoupper($request->input('descadicional')));
+      $descadicional = trim($request->input('descadicional'));
       $descadicional = strtr($descadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-      $soporteadicional = trim(strtoupper($request->input('soporteadicional')));
+      $soporteadicional = trim($request->input('soporteadicional'));
       $soporteadicional = strtr($soporteadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-      $observaadicional = trim(strtoupper($request->input('observaadicional')));
+      $observaadicional = trim($request->input('observaadicional'));
       $observaadicional = strtr($observaadicional,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
 
@@ -188,13 +192,55 @@ class AdicionalesController extends Controller
       $adicional->area = $area[0]->nombrearea;
       $adicional->idmes = $request->input('idmesreportar');
       $adicional->mes = $arrMeses[$idmes];      
-      $adicional->descadicional = strtoupper($request->input('descadicional'));
-      $adicional->soporteadicional = strtoupper($request->input('soporteadicional'));
-      $adicional->observaadicional = strtoupper($request->input('observaadicional'));
+      $adicional->descadicional = $request->input('descadicional');
+      $adicional->soporteadicional = $request->input('soporteadicional');
+      $adicional->observaadicional = $request->input('observaadicional');
 
       $adicional->save();
       Alert::success('', 'Registro exitoso')->autoclose(3500);
       return redirect()->route('adicionales.index');  
+    }
+
+
+    public function newadicional(Request $request)
+    {
+
+      //$request);exit;      
+
+      $idArea = Auth::user()->idarea;        
+      $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+      $idmes = $request->input('idmes');
+      $id = $request->input('id');
+      $area = Auth::user()->name; 
+
+      if ($id=='0') {
+            $adicional = new Adicional();
+            $adicional->idarea = $idArea;
+            $adicional->area = $area;
+            $adicional->idmes = $request->input('idmes');
+            $adicional->mes = $arrMeses[$idmes];      
+            $adicional->descadicional = $request->input('desc');
+            $adicional->soporteadicional = $request->input('sopo');
+            $adicional->observaadicional = $request->input('obse');
+
+            $adicional->save();
+      } else {
+            $adicional = Adicional::find($id);
+            $adicional->idarea = $idArea;
+            $adicional->area = $area;
+            $adicional->idmes = $request->input('idmes');
+            $adicional->mes = $arrMeses[$idmes];      
+            $adicional->descadicional = $request->input('desc');
+            $adicional->soporteadicional = $request->input('sopo');
+            $adicional->observaadicional = $request->input('obse');
+
+            $adicional->save();
+      } 
+
+      $adicionales = Adicional::select('descadicional', 'soporteadicional', 'observaadicional','id')->where('idarea', $idArea)->where('idmes', $idmes)->get();
+     
+       return response()->json([$adicionales]);
+      
     }
 
 

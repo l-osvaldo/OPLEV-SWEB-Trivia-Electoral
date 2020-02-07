@@ -2213,7 +2213,7 @@ $.ajaxSetup({
                 indi.setAttribute('data-placement', 'right');
                 indi.setAttribute('title', 'Indicador');
                 //indi.style.display='none';
-                indi.addEventListener("click", creaIndicadorDisable);
+                indi.addEventListener("click", creaIndicador);
 
                 rowAct.appendChild(indi);
 
@@ -2882,3 +2882,137 @@ function pdfelaboracionAll() {
   form.submit();
 }
 
+/*************************************************************
+
+  Funcionalidad: obtiene el tipo de caso, ya sea un nuevo registro o una edicion a los datos
+  Parametros:  
+  Respuesta: crea un modal con los datos a enviar
+
+***************************************************************/
+
+  var eleAdic = document.getElementsByClassName('openModalAdicional');
+  //console.log(eleAdic);
+  for (var i = 0; i < eleAdic.length; i++) {
+    eleAdic[i].addEventListener("click", tipoAdicional, false);
+  }
+
+  function tipoAdicional () {
+    this.getAttribute('data-tipo')==='0'?registraAdicional(this):editaAdicional(this);
+    document.getElementById('descadicional').value=this.getAttribute('data-desc');
+    document.getElementById('soporteadicional').value=this.getAttribute('data-sopo');
+    document.getElementById('observaadicional').value=this.getAttribute('data-obse');
+  }
+
+  function registraAdicional (e) {
+    document.getElementById('modalTituloAdicional').textContent="Registra una nueva actividad";
+    document.getElementById('modalBtnAdicional').textContent="Registrar";
+    document.getElementById('modalBtnAdicional').setAttribute('data-tipo',e.getAttribute('data-tipo'));
+    document.getElementById('modalBtnAdicional').setAttribute('data-id','0');
+  }
+
+  function editaAdicional (e) {
+    document.getElementById('modalTituloAdicional').textContent="Actualizar actividad";
+    document.getElementById('modalBtnAdicional').textContent="Actualizar";
+    document.getElementById('modalBtnAdicional').setAttribute('data-tipo',e.getAttribute('data-tipo'));
+    document.getElementById('modalBtnAdicional').setAttribute('data-id',e.getAttribute('data-id'));
+  }
+
+  document.getElementById('modalBtnAdicional')?document.getElementById('modalBtnAdicional').addEventListener('click',embiaAdicional,false):'';
+
+  function embiaAdicional () {
+    var id = this.getAttribute('data-id');
+    var desc = document.getElementById('descadicional').value;
+    var sopo = document.getElementById('soporteadicional').value;
+    var obse = document.getElementById('observaadicional').value;
+    var idmes = document.getElementById('idmesreportar').value;
+    if (desc && sopo) {
+      $.ajax({
+        type:'POST',
+        url:"../newadicional",
+        data:{"_token": token,id:id,desc:desc,sopo:sopo,obse:obse,idmes:idmes},
+        success:function(data){
+          document.getElementById('contTableAdicionales').innerHTML="";
+          //console.log(data[0]);
+          for (var i = 0; i < data[0].length; i++) {
+            document.getElementById('contTableAdicionales').appendChild;
+
+            var tr = document.createElement("tr");
+
+            var th1 = document.createElement("td");
+            th1.textContent=data[0][i].descadicional;
+            tr.appendChild(th1);
+
+            var th2 = document.createElement("td");
+            th2.textContent=data[0][i].soporteadicional;
+            tr.appendChild(th2);
+
+            var th3 = document.createElement("td");
+            th3.textContent=data[0][i].observaadicional;
+            tr.appendChild(th3);
+
+            var th4 = document.createElement("td");
+            var iconE = document.createElement("i");
+            iconE.className="fa fa-pencil-square-o openModalAdicional";
+            iconE.setAttribute('aria-hidden', 'true');
+            iconE.setAttribute('data-tipo', '1');
+            iconE.setAttribute('data-id', data[0][i].id);
+            iconE.setAttribute('data-toggle', 'modal');
+            iconE.setAttribute('data-target', '.bd-example-modal-xl');
+            iconE.setAttribute('data-desc', data[0][i].descadicional);
+            iconE.setAttribute('data-sopo', data[0][i].soporteadicional);
+            iconE.setAttribute('data-obse', data[0][i].observaadicional);
+            iconE.addEventListener("click", tipoAdicional, false);
+            iconE.style.cursor="pointer";
+
+            th4.appendChild(iconE);
+            tr.appendChild(th4);
+
+            var th5 = document.createElement("th");
+            var iconD = document.createElement("i");
+            iconD.className="fa fa-pencil-square-o openModalAdicional";
+            iconD.setAttribute('aria-hidden', 'true');
+            iconD.setAttribute('data-tipo', '1');
+            iconD.setAttribute('data-id', data[0][i].id);
+            iconD.setAttribute('data-toggle', '');
+            iconD.setAttribute('data-target', '');
+            iconD.setAttribute('data-desc', '');
+            iconD.setAttribute('data-sopo', '');
+            iconD.setAttribute('data-obse', '');
+            //iconD.addEventListener("click", deleteAdicional, false);
+            iconD.style.display="none";
+
+            th5.appendChild(iconD);
+            tr.appendChild(th5);
+
+            var container = document.getElementById("contTableAdicionales");
+            container.appendChild(tr);
+          }
+          swal({
+                title: "Actividad adicional registrada",
+                text: "",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true
+              },
+              function(isConfirm) {
+                if (isConfirm) {
+                  $('#mdAdicionales').modal('hide');
+                  $('body').removeClass('modal-open');
+                  $('.modal-backdrop').remove();
+                  //location.reload();
+                }
+              });
+        }
+      });
+    } else  {
+      document.getElementById('errAdicional').textContent='Ingrese la descripción y el soporte de la actividad';
+    }   
+  }
+
+  $('#mdAdicionales').on('hide.bs.modal', function () {
+    document.getElementById('descadicional').value="";
+    document.getElementById('soporteadicional').value="";
+    document.getElementById('observaadicional').value="";
+    document.getElementById('errAdicional').textContent="";
+  })

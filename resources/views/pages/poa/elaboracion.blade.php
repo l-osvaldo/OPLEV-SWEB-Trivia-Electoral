@@ -360,7 +360,7 @@
           </div>
           <div class="row">
             <div class="col-md-6 indBlanco" id="metaindicador">100%</div>
-            <div class="col-md-6 indBlanco" id="periodocumplimiento">Enero - Diciembre 2019</div>
+            <div class="col-md-6 indBlanco" id="periodocumplimiento">Enero - Diciembre 2020</div>
             <div class="col-md-6 indBlanco" style="display: none;" id="abreviaturaperiodocump"></div>
           </div>
           <div class="row">

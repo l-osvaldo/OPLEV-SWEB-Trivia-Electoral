@@ -66,7 +66,7 @@
 
 
 
-		<form method="get" action="{{ route('reportes.adicionales') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
+		<!--form method="get" action="{{ route('reportes.adicionales') }}" enctype="multipart/form-data" class="col-md-12 col-12" target="_blank">
 		  {{ csrf_field() }}
 
 		<div class="row">
@@ -83,7 +83,7 @@
 				              			
 		    </div>		  	
 		  </div>
-		</form>
+		</form-->
 
 
 

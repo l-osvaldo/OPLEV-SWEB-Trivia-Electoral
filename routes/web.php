@@ -95,5 +95,7 @@ Route::post('/deleteobserr', 'PoaController@deleteobserr')->name('deleteobserr')
 
 Route::get('/sistemonoff', 'PoaController@sistemonoff')->name('sistemonoff');
 Route::post('/onOffsipsei', 'PoaController@onOffsipsei')->name('onOffsipsei');
+
+Route::post('/newadicional', 'AdicionalesController@newadicional')->name('newadicional');
 });
 

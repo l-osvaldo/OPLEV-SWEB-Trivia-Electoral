@@ -61,7 +61,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <li class="nav-item has-treeview menu-open">
+          <!--li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link" style="background-color: #98989e;color: #c0ff00;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -83,18 +83,25 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li-->
 
 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
-                POA 2020
+                PERIODO 2020
                 <i class="right fa fa-chevron-left" aria-hidden="true"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+          <li class="nav-item has-treeview">
+                <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}">
+                  <i class="fa fa-database" aria-hidden="true"></i>
+                  <p>Consulta de actividades</p>
+                </a>
+          </li>
 
           <li class="nav-item has-treeview">
             <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
@@ -128,7 +135,7 @@
             <a href="#" class="nav-link" style="background-color: #7d8c00;color: #FFF;">
               <i class="fa fa-flag" aria-hidden="true"></i>
               <p>
-                Bitacoras
+                Bitácoras
                 <i class="right fa fa-chevron-left" aria-hidden="true"></i>
               </p>
             </a>

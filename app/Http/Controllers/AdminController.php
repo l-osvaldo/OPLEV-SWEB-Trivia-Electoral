@@ -57,9 +57,9 @@ class AdminController extends Controller
       //en tabla detalleactividades se guarda los input descatividad,soporte,observaciones 
       //donde idmes=messeleccionado y el autoactividades sea igual al autoactividades de la actividad 
       //seleccionada
-      $descactividad = trim(strtoupper($request->input('descactividad_admin')));
+      $descactividad = trim($request->input('descactividad_admin'));
       $descactividad = strtr($descactividad,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-      $soporte = trim(strtoupper($request->input('soporte_admin')));
+      $soporte = trim($request->input('soporte_admin'));
       $soporte = strtr($soporte,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");            
       $observaciones = trim($request->input('observaciones_admin'));
       $observaciones = strtr($observaciones,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");      
