@@ -243,6 +243,16 @@ class AdicionalesController extends Controller
       
     }
 
+    public function deleteadicional(Request $request)
+    {
+     
+      $id = $request->input('id');
+      $adicionales = Adicional::where('id', $id)->delete();
+     
+       return response()->json([$adicionales]);
+      
+    }
+
 
     /**
      * Funcionalidad: validacion de formulario

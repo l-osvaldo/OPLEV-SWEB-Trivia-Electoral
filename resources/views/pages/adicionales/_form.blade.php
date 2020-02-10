@@ -16,6 +16,16 @@
 
 <h4 style="padding: 2em 0;">Actividades Adicionales. Captura y Reportes<br><span style="color: #777; font-size: 18px;">Mes en dónde se dio la actividad adicional</span> <span class="textoPrincipal"  style="font-size: 18px;">{{$mes[0]->mes}}</span></h4>
 
+
+<form method="post" action="{{ route('reportes.adicionales') }}" target="_blank">
+      {{ csrf_field() }}
+    <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
+    <button type="submit" class="btn btn-primary" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte <i class="fa fa-file-pdf-o"></i></button>                          
+</form>
+<!--div data-idmes="{{$idmesreportar}}">PDF</div-->
+
+
+
 <table class="table table-hover">
 <thead>
     <tr>
@@ -28,12 +38,12 @@
 </thead>
 <tbody id="contTableAdicionales">
   @foreach( $adicionales as $adicional )
-      <tr>
+      <tr id="tradicional{{$adicional->id}}">
         <td>{{$adicional->descadicional}}</td>
         <td>{{$adicional->soporteadicional}}</td>
         <td>{{$adicional->observaadicional}}</th>
         <th><i style="cursor: pointer;" class="fa fa-pencil-square-o openModalAdicional" aria-hidden="true" data-tipo="1" data-id="{{$adicional->id}}" data-toggle="modal" data-target=".bd-example-modal-xl" data-desc="{{$adicional->descadicional}}" data-sopo="{{$adicional->soporteadicional}}" data-obse="{{$adicional->observaadicional}}"></i></th>
-        <th><i style="display: none;" class="fa fa-trash" aria-hidden="true" data-id="{{$adicional->id}}"></i></th>
+        <th><i style="cursor: pointer;" data-toggle="modal" data-target="#delete-adicional" class="fa fa-trash deleteAdicional" aria-hidden="true" data-id="{{$adicional->id}}"></i></th>
       </tr>
   @endforeach
   </tbody>
@@ -69,6 +79,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button type="button" id="modalBtnAdicional" class="btn btn-primary">---</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="delete-adicional" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+        <h5 class="modal-title" id="modalTituloAdicional">Eliminar Actividad Adicional</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>¿Desea continuar?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btnAdicionalDelete" class="btn btn-primary">Continuar y Eliminar</button>
       </div>
     </div>
   </div>

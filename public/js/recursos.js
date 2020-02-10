@@ -2997,10 +2997,10 @@ function pdfelaboracionAll() {
               },
               function(isConfirm) {
                 if (isConfirm) {
-                  $('#mdAdicionales').modal('hide');
-                  $('body').removeClass('modal-open');
-                  $('.modal-backdrop').remove();
-                  //location.reload();
+                  //$('#mdAdicionales').modal('hide');
+                  //$('body').removeClass('modal-open');
+                  //$('.modal-backdrop').remove();
+                  location.reload();
                 }
               });
         }
@@ -3015,4 +3015,47 @@ function pdfelaboracionAll() {
     document.getElementById('soporteadicional').value="";
     document.getElementById('observaadicional').value="";
     document.getElementById('errAdicional').textContent="";
-  })
+  });
+
+  var delAdic = document.getElementsByClassName('deleteAdicional');
+  //console.log(eleAdic);
+  for (var i = 0; i < delAdic.length; i++) {
+    delAdic[i].addEventListener("click", eliminarAdicional, false);
+  }
+
+  function eliminarAdicional() {
+    var id = this.getAttribute('data-id');
+    document.getElementById('btnAdicionalDelete').setAttribute('data-id',id);
+  }
+
+  document.getElementById('btnAdicionalDelete')?document.getElementById('btnAdicionalDelete').addEventListener('click',continarDeleteAdicional, false):'';
+
+  function continarDeleteAdicional() {
+    var id = this.getAttribute('data-id');
+        $.ajax({
+        type:'POST',
+        url:"../deleteadicional",
+        data:{"_token": token,id:id},
+        success:function(data){
+          console.log(data);
+          document.getElementById('tradicional'+id).remove();
+          swal({
+                title: "Actividad Eliminada",
+                text: "",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Continuar",
+                closeOnConfirm: true
+              },
+              function(isConfirm) {
+                if (isConfirm) {
+                  //$('#delete-adicional').modal('hide');
+                  //$('body').removeClass('modal-open');
+                  //$('.modal-backdrop').remove();
+                  location.reload();
+                }
+              });
+        }
+      });
+
+  }

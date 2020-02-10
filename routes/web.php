@@ -44,7 +44,7 @@ Route::get('/reportes/indicadores', 'ReportesController@indicadores')->name('rep
 Route::resource('programa', 'PoaController');
 Auth::routes();
 Route::resource('adicionales', 'AdicionalesController');
-Route::get('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
+Route::post('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
 Route::post('/rtrimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 
@@ -97,5 +97,7 @@ Route::get('/sistemonoff', 'PoaController@sistemonoff')->name('sistemonoff');
 Route::post('/onOffsipsei', 'PoaController@onOffsipsei')->name('onOffsipsei');
 
 Route::post('/newadicional', 'AdicionalesController@newadicional')->name('newadicional');
+
+Route::post('/deleteadicional', 'AdicionalesController@deleteadicional')->name('deleteadicional');
 });
 

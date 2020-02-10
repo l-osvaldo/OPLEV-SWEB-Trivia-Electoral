@@ -32,9 +32,9 @@
       <td>MES</td>
     </tr>
     <tr style="height: 50px;">
-      <td>{{ $adicionales['area'] }}</td>
+      <td>{{ $adicional }}</td>
       <td></td>
-      <td>{{ $adicionales['mes'] }}</td>
+      <td>{{ $adicional }}</td>
     </tr>
 
       <tr class="gris">
@@ -55,12 +55,14 @@
 
 <!-- Wrap the content of your PDF inside a main tag -->
 <!--main-->
-
-          <tr class="datos">
-            <td class="jusText" width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['descadicional']))!!}</td>
-            <td class="jusText"  width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['soporteadicional']))!!}</td>
-            <td class="jusText" width="33.33333333%" valign="top">{!!nl2br(str_replace(" ", " &nbsp;", $adicionales['observaadicional']))!!}</td>
-          </tr>        
+@foreach ($adicional as $adicionales)
+    <tr class="datos">
+            <td class="jusText" width="33.33333333%" valign="top">{{$adicionales->descadicional}}</td>
+            <td class="jusText"  width="33.33333333%" valign="top">{{$adicionales->soporteadicional}}</td>
+            <td class="jusText" width="33.33333333%" valign="top">{{$adicionales->observaadicional}}</td>
+          </tr>    
+@endforeach
+              
       </table>
 
 <!--/main-->

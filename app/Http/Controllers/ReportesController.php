@@ -1033,26 +1033,30 @@ class ReportesController extends Controller
          
 
         $idArea = Auth::user()->idarea;        
-        $idMes = $request->idmesreporteadicional;      
-        $infoadicional = Adicional::where('idarea', $idArea)->where('idmes', $idMes)->get();
+        $idMes = $request->idmesreportar;
+
+       
+
+        $adicional = Adicional::where('idarea', $idArea)->where('idmes', $idMes)->get();
 
         //if (empty($idArea)||empty($idMes)) {
         //    Alert::error('Seleccione un mes', '¡Error!')->autoclose(3500);
         //}
 
-        if ($infoadicional->count() > 0)
+        if (count($adicional) > 0)
         {
-          $adicionales = array();      
-          $adicionales['area'] = $infoadicional[0]['area'];
-          $adicionales['mes'] = $infoadicional[0]['mes'];
-          $adicionales['descadicional'] = nl2br($infoadicional[0]['descadicional']);
-          $adicionales['soporteadicional'] = nl2br($infoadicional[0]['soporteadicional']);
-          $adicionales['observaadicional'] = nl2br($infoadicional[0]['observaadicional']);
+           //dd($idMes);exit;  
+          //$adicionales = array();      
+          //$adicionales['area'] = $infoadicional[0]['area'];
+         // $adicionales['mes'] = $infoadicional[0]['mes'];
+          //$adicionales['descadicional'] = nl2br($infoadicional[0]['descadicional']);
+          //$adicionales['soporteadicional'] = nl2br($infoadicional[0]['soporteadicional']);
+          //$adicionales['observaadicional'] = nl2br($infoadicional[0]['observaadicional']);
 
           //$pdf = PDF::loadView( 'pages.reportes.adicionales', ['adicionales'=>$adicionales] )->setPaper('letter', 'landscape');
          // return $pdf->stream();
 
-        $pdfs = PDFS::loadView('pages.reportes.adicionales', ['adicionales'=>$adicionales])->setPaper('letter', 'landscape');
+        $pdfs = PDFS::loadView('pages.reportes.adicionales', ['adicional'=>$adicional])->setPaper('letter', 'landscape');
         $pdfs->setOption('margin-top', 22);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
