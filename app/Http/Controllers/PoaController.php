@@ -22,6 +22,8 @@ class PoaController extends Controller
      * Respuesta: la vista y los datos encontrados
      *
      */
+//Aqui van mas comentarios
+
     public function index()
     {
 
