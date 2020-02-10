@@ -44,7 +44,7 @@ Route::get('/reportes/indicadores', 'ReportesController@indicadores')->name('rep
 Route::resource('programa', 'PoaController');
 Auth::routes();
 Route::resource('adicionales', 'AdicionalesController');
-Route::post('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
+Route::get('/reportes/adicionales', 'ReportesController@adicionales')->name('reportes.adicionales');
 Route::post('/rtrimestral', 'ReportesController@trimestral')->name('reportes.trimestral');
 
 

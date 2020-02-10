@@ -17,7 +17,7 @@
 <h4 style="padding: 2em 0;">Actividades Adicionales. Captura y Reportes<br><span style="color: #777; font-size: 18px;">Mes en dónde se dio la actividad adicional</span> <span class="textoPrincipal"  style="font-size: 18px;">{{$mes[0]->mes}}</span></h4>
 
 
-<form method="post" action="{{ route('reportes.adicionales') }}" target="_blank">
+<form method="get" action="{{ route('reportes.adicionales') }}" target="_blank">
       {{ csrf_field() }}
     <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
     <button type="submit" class="btn btn-primary" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte <i class="fa fa-file-pdf-o"></i></button>                          
