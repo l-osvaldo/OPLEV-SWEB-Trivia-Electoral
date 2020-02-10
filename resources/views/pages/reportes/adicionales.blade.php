@@ -32,9 +32,9 @@
       <td>MES</td>
     </tr>
     <tr style="height: 50px;">
-      <td>{{ $adicional }}</td>
+      <td>{{ $adicional[0]->area }}</td>
       <td></td>
-      <td>{{ $adicional }}</td>
+      <td>{{ $adicional[0]->mes }}</td>
     </tr>
 
       <tr class="gris">
