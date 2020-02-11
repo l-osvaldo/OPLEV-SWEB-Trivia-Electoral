@@ -1066,11 +1066,9 @@ class ReportesController extends Controller
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <html><body>
         <style>
-        table {
+        
+        .tatd {
           border-collapse: collapse;
-        }
-
-        table, th, td {
           border: 1px solid black;
         }
         </style>
@@ -1082,26 +1080,28 @@ class ReportesController extends Controller
             ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 <br> Actividades Adicionales 
             </th>
           </tr>
+          </table>
 
-          <tr >
-            <td style="width:33.33333%;background:#ccc;text-align:center;">UNIDAD RESPONSABLE</td>
-            <td style="width:33.33333%;background:#ccc;text-align:center;">FIRMA DEL RESPONSABLE</td>
-            <td style="width:33.33333%;background:#ccc;text-align:center;">MES</td>
+          <table width="100%" class="tatd">
+          <tr class="tatd" >
+            <td class="tatd" style="width:33.33333%;background:#ccc;text-align:center;">UNIDAD RESPONSABLE</td>
+            <td class="tatd" style="width:33.33333%;background:#ccc;text-align:center;">FIRMA DEL RESPONSABLE</td>
+            <td class="tatd" style="width:33.33333%;background:#ccc;text-align:center;">MES</td>
           </tr>
 
-          <tr style="height: 50px;">
-            <td style="text-align:center;">'.$adicional[0]->area.'</td>
-            <td style="text-align:center;"></td>
-            <td style="text-align:center;">'.$adicional[0]->mes.'</td>
+          <tr class="tatd" style="height: 50px;">
+            <td class="tatd" style="text-align:center;">'.$adicional[0]->area.'</td>
+            <td class="tatd" style="text-align:center;"></td>
+            <td class="tatd" style="text-align:center;">'.$adicional[0]->mes.'</td>
           </tr>
 
-          <tr class="gris">
-            <td style="text-align:center;background:#ccc; border: 1px solid black;">DESCRIPCIÓN</td> 
-            <td style="text-align:center;background:#ccc;">SOPORTE</td> 
-            <td style="text-align:center;background:#ccc;">OBSERVACIONES</td>
+          <tr class="tatd" class="gris">
+            <td class="tatd" style="text-align:center;background:#ccc; border: 1px solid black;">DESCRIPCIÓN</td> 
+            <td class="tatd" style="text-align:center;background:#ccc;">SOPORTE</td> 
+            <td class="tatd" style="text-align:center;background:#ccc;">OBSERVACIONES</td>
           </tr>
 
-          <tr style="border:none;">
+          <tr>
             <td sowspan="3" style="border:none;"></td>
           </tr>
 
