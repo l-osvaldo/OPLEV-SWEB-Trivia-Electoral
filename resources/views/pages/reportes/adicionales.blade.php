@@ -25,8 +25,8 @@
     </tr>
   </table-->
 
-  <table class="table" border="0" align="center" cellpadding="5px" width="100%">
-    <tr class="gris">
+  <table class="table" border="0" align="center" cellpadding="5px" width="100%" style="margin-top: 5px;">
+    <!--tr class="gris">
       <td>UNIDAD RESPONSABLE</td>
       <td>FIRMA DEL RESPONSABLE</td>
       <td>MES</td>
@@ -41,7 +41,7 @@
         <td>DESCRIPCIÓN</td> 
         <td>SOPORTE</td> 
         <td>OBSERVACIONES</td>
-      </tr>
+      </tr-->
 
 
 

@@ -1057,7 +1057,7 @@ class ReportesController extends Controller
          // return $pdf->stream();
 
         $pdfs = PDFS::loadView('pages.reportes.adicionales', ['adicional'=>$adicional])->setPaper('letter', 'landscape');
-        $pdfs->setOption('margin-top', 22);
+        $pdfs->setOption('margin-top', 45);
         $pdfs->setOption('margin-bottom', 10);
         $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
@@ -1065,14 +1065,46 @@ class ReportesController extends Controller
 
         $pdfs->setOption('header-html', '<!DOCTYPE html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <html><body>
-            <table border="0" align="center" width="100%">
+        <style>
+        table {
+          border-collapse: collapse;
+        }
 
-            <tr style="border: 1px solid black;background:#fff; height:75px;">
-              <th colspan="6">
-              <img class="logo" src="'.public_path('images/logoople.png').'" width="100" style="position:absolute;top:0px;">
-              ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 <br> Actividades Adicionales 
-              </th>
-            </tr>
+        table, th, td {
+          border: 1px solid black;
+        }
+        </style>
+          <table width="100%" >
+
+          <tr style="height:85px;">
+            <th colspan="6">
+            <img class="logo" src="'.public_path('images/logoople.png').'" width="100" style="position:absolute;top:5px;left:15px;">
+            ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 <br> Actividades Adicionales 
+            </th>
+          </tr>
+
+          <tr >
+            <td style="width:33.33333%;background:#ccc;text-align:center;">UNIDAD RESPONSABLE</td>
+            <td style="width:33.33333%;background:#ccc;text-align:center;">FIRMA DEL RESPONSABLE</td>
+            <td style="width:33.33333%;background:#ccc;text-align:center;">MES</td>
+          </tr>
+
+          <tr style="height: 50px;">
+            <td style="text-align:center;">'.$adicional[0]->area.'</td>
+            <td style="text-align:center;"></td>
+            <td style="text-align:center;">'.$adicional[0]->mes.'</td>
+          </tr>
+
+          <tr class="gris">
+            <td style="text-align:center;background:#ccc; border: 1px solid black;">DESCRIPCIÓN</td> 
+            <td style="text-align:center;background:#ccc;">SOPORTE</td> 
+            <td style="text-align:center;background:#ccc;">OBSERVACIONES</td>
+          </tr>
+
+          <tr style="border:none;">
+            <td sowspan="3" style="border:none;"></td>
+          </tr>
+
           </table>
         </body></html>');
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
