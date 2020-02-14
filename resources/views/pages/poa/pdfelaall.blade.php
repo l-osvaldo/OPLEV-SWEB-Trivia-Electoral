@@ -75,7 +75,7 @@ table, th, td {
 </table>
 
 
-<table style="width:100%;page-break-after: always;">
+<table style="width:100%;{{$key == (count($actividades)-1) ? '' : 'page-break-after: always;' }}">
 
     
 

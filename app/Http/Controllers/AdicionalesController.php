@@ -224,6 +224,7 @@ class AdicionalesController extends Controller
             $adicional->observaadicional = $request->input('obse');
 
             $adicional->save();
+            $tipo='n';
       } else {
             $adicional = Adicional::find($id);
             $adicional->idarea = $idArea;
@@ -235,11 +236,12 @@ class AdicionalesController extends Controller
             $adicional->observaadicional = $request->input('obse');
 
             $adicional->save();
+            $tipo='a';
       } 
 
       $adicionales = Adicional::select('descadicional', 'soporteadicional', 'observaadicional','id')->where('idarea', $idArea)->where('idmes', $idmes)->get();
      
-       return response()->json([$adicionales]);
+       return response()->json([$adicionales,$tipo]);
       
     }
 

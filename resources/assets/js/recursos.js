@@ -2932,7 +2932,7 @@ function pdfelaboracionAll() {
         data:{"_token": token,id:id,desc:desc,sopo:sopo,obse:obse,idmes:idmes},
         success:function(data){
           document.getElementById('contTableAdicionales').innerHTML="";
-          //console.log(data[0]);
+          //console.log(data[1]);
           for (var i = 0; i < data[0].length; i++) {
             document.getElementById('contTableAdicionales').appendChild;
 
@@ -2940,6 +2940,7 @@ function pdfelaboracionAll() {
 
             var th1 = document.createElement("td");
             th1.textContent=data[0][i].descadicional;
+
             tr.appendChild(th1);
 
             var th2 = document.createElement("td");
@@ -2988,7 +2989,7 @@ function pdfelaboracionAll() {
             container.appendChild(tr);
           }
           swal({
-                title: "Actividad adicional registrada",
+                title: data[1]=="n"?"Actividad adicional registrada":"Actividad adicional actualizada",
                 text: "",
                 type: "success",
                 confirmButtonClass: "btn-success",
@@ -2997,9 +2998,9 @@ function pdfelaboracionAll() {
               },
               function(isConfirm) {
                 if (isConfirm) {
-                  //$('#mdAdicionales').modal('hide');
-                  //$('body').removeClass('modal-open');
-                  //$('.modal-backdrop').remove();
+                  $('#mdAdicionales').modal('hide');
+                  $('body').removeClass('modal-open');
+                  $('.modal-backdrop').remove();
                   location.reload();
                 }
               });
@@ -3049,9 +3050,9 @@ function pdfelaboracionAll() {
               },
               function(isConfirm) {
                 if (isConfirm) {
-                  //$('#delete-adicional').modal('hide');
-                  //$('body').removeClass('modal-open');
-                  //$('.modal-backdrop').remove();
+                  $('#delete-adicional').modal('hide');
+                  $('body').removeClass('modal-open');
+                  $('.modal-backdrop').remove();
                   location.reload();
                 }
               });

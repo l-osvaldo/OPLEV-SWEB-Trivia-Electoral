@@ -14,19 +14,20 @@
 @endif
 
 
-<h4 style="padding: 2em 0;">Actividades Adicionales. Captura y Reportes<br><span style="color: #777; font-size: 18px;">Mes en dónde se dio la actividad adicional</span> <span class="textoPrincipal"  style="font-size: 18px;">{{$mes[0]->mes}}</span></h4>
-
-
-<form method="get" action="{{ route('reportes.adicionales') }}" target="_blank">
+<h4 style="padding: 2em 0;">Actividades Adicionales. Captura y Reportes<br><span style="color: #777; font-size: 18px;">Mes en dónde se dio la actividad adicional</span> <span class="textoPrincipal"  style="font-size: 18px;">{{$mes[0]->mes}}</span><br><form method="get" action="{{ route('reportes.adicionales') }}" target="_blank" style="margin-top: 1.5em;">
       {{ csrf_field() }}
     <input type="hidden" name="idmesreportar" value="{{$idmesreportar}}">
-    <button type="submit" class="btn btn-primary" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte <i class="fa fa-file-pdf-o"></i></button>                          
+    <button type="submit" class="btn btn-secondary" id="btnreporteadicional" name="btnreporteadicional">Generar Reporte <i class="fa fa-file-pdf-o"></i></button>                          
 </form>
+</h4>
+
+
+
 <!--div data-idmes="{{$idmesreportar}}">PDF</div-->
 
 
 
-<table class="table table-hover">
+<table class="table table-hover" style="background: #fff !important;border-color: #f5f5f5;">
 <thead>
     <tr>
       <th>Descripción</th>
@@ -42,17 +43,18 @@
         <td>{{$adicional->descadicional}}</td>
         <td>{{$adicional->soporteadicional}}</td>
         <td>{{$adicional->observaadicional}}</th>
-        <th><i style="cursor: pointer;" class="fa fa-pencil-square-o openModalAdicional" aria-hidden="true" data-tipo="1" data-id="{{$adicional->id}}" data-toggle="modal" data-target=".bd-example-modal-xl" data-desc="{{$adicional->descadicional}}" data-sopo="{{$adicional->soporteadicional}}" data-obse="{{$adicional->observaadicional}}"></i></th>
+        <th><i style="cursor: pointer;" class="fa fa-pencil-square-o openModalAdicional" aria-hidden="true" data-tipo="1" data-id="{{$adicional->id}}" data-toggle="modal" data-target="#mdAdicionales" data-desc="{{$adicional->descadicional}}" data-sopo="{{$adicional->soporteadicional}}" data-obse="{{$adicional->observaadicional}}"></i></th>
         <th><i style="cursor: pointer;" data-toggle="modal" data-target="#delete-adicional" class="fa fa-trash deleteAdicional" aria-hidden="true" data-id="{{$adicional->id}}"></i></th>
       </tr>
   @endforeach
   </tbody>
 </table>
 
-<button class="btn btn-primary openModalAdicional" style="margin-top: 1em;" data-tipo="0" name="btnGuardarAdicional" data-toggle="modal" data-target=".bd-example-modal-xl" data-desc="" data-sopo="" data-obse="">Crear nueva actividad adicional</button>
+<button class="btn btn-primary openModalAdicional" style="margin-top: 1em;" data-tipo="0" name="btnGuardarAdicional" data-toggle="modal" data-target="#mdAdicionales" data-desc="" data-sopo="" data-obse="">Crear nueva actividad adicional</button>
 
-<div id="mdAdicionales" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+
+<div id="mdAdicionales" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
      <div class="modal-header">
         <h5 class="modal-title" id="modalTituloAdicional">---</h5>
@@ -85,8 +87,8 @@
 </div>
 
 
-<div id="delete-adicional" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+<div id="delete-adicional" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
      <div class="modal-header">
         <h5 class="modal-title" id="modalTituloAdicional">Eliminar Actividad Adicional</h5>

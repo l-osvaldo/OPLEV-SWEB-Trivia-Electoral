@@ -922,7 +922,10 @@ class ReportesController extends Controller
         ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
         ->where('actividades.reprogramacion', '!=' , 5)
         ->groupBy('actividades.idprogramaesp')
+        ->orderBy('claveprogramaesp')
         ->get();
+
+        //dd($actPdfDos);
         }
         else {
           $idArea = Auth::user()->idarea;
