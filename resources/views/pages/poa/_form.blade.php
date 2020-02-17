@@ -146,6 +146,19 @@
       y.style.textAlign = "center";
     </script>
 
+   @if($msn == '1')
+    <script> 
+    swal({
+        "timer":3500,
+        "title":"Actividad guardada",
+        //"text":"Notificación Básica",
+        "showConfirmButton":true
+        });
+    </script>
+    @endif
+
+
+
     <div class="row">
     <div class="col-md-12" style="margin-bottom: 1em;">
 

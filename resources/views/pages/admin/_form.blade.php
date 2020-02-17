@@ -240,7 +240,7 @@
     <input type="hidden" id="programareporte" name="programareporte" value="">
     <input type="hidden" id="programaespreporte" name="programaespreporte" value="">    
     @if(Auth::user()->hasRole('admin'))   
-    <button type="submit" class="btn btn-purple" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
+    <button type="submit" class="btn btn-secondary" id="btnReporteMensual_admin" name="btnReporteMensual_admin">Reporte Mensual&nbsp;&nbsp;<i class="fa fa-file-pdf-o"></i></button>      
     @endif
   </form> 
 </div>

@@ -99,11 +99,14 @@ class PoaController extends Controller
 
         $idmesreportar = $request->input('idmesreportar');
         $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
+        //dd($idmesreportar);
+
         //si el area es prerrogativas
         if (Auth::user()->idarea==3)        
-          $programas = Programa::where('reprogramacion', '<', 3)->get();
+          $programas = Programa::where('reprogramacion', '!=', 0)->get();
         else
-          $programas = Programa::where('idprograma', '=', 1)->get();
+          $programas = Programa::where('reprogramacion', '=', 1)->get();
+
         $action = route('programa.store');
         $user   = auth()->user();
         $areaId = $user->idarea;
@@ -116,8 +119,10 @@ class PoaController extends Controller
         ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
         $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
+
+        $msn = '0';
         
-        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn') );
+        return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn', 'msn') );
       }
       else
       {
@@ -139,6 +144,7 @@ class PoaController extends Controller
       $nactividad = explode("&&&", $request->input('actividades'));
       $autoactividades = $nactividad[0];
       $idmesreportar = $request->input('idmesreportar');
+
 
       //en tabla porcentajer se guarda el input realizadomes en la columna del mes correspondiente:
       //ener,febr,marr,abrr, etc
@@ -168,6 +174,7 @@ class PoaController extends Controller
       $userId = $user->id;
       $userName = $user->name;
       $acronimo = $user->usu_acronimo;
+      $areaId = $user->idarea;
 
       $nomenclatura = explode(",", $request->input('programaEsp'));
       $id_programa = $nomenclatura[1];
@@ -196,8 +203,30 @@ class PoaController extends Controller
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+      //return redirect()->route('programa.index');
+
+      if (Auth::user()->idarea==3)        
+          $programas = Programa::where('reprogramacion', '<', 3)->get();
+        else
+          $programas = Programa::where('idprograma', '=', 1)->get();
+        $action = route('programa.store');
+
+       $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
+
+        $observaciones = DB::table('observaciones')->where('obs_status', 0)->where('obs_id_area', $areaId)
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+        ->join('users', 'users.idarea', '=', 'actividades.idarea')
+        ->orderBy('obs_date', 'desc')->get();
+
+        $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
+        ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+        ->orderBy('obs_date', 'desc')->get();
+        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
+
       Alert::success('', 'Actividad guardada')->autoclose(3500);
-      return redirect()->route('programa.index');
+      $msn = '1';
+      return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn','msn') );
     }
 
     /**
@@ -458,7 +487,15 @@ class PoaController extends Controller
             
             //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
             $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
-            $programas = DB::table('programas')->where('reprogramacion', 0)->get();
+            //$programas = DB::table('programas')->where('reprogramacion', '!=', 0)->get();
+            $programas = DB::table('programas')->get();
+
+            //if (Auth::user()->idarea==3)        
+            //  $programas = Programa::where('reprogramacion', '!=', 0)->get();
+            //else
+            //  $programas = Programa::where('reprogramacion', '=', 1)->get();
+
+            //dd($programas);exit;
 
             $unidades = DB::table('users')->where('usu_tipo', 1)->get();
             /////////////////////////////////////////////////////////////////////////////////////////
@@ -486,7 +523,11 @@ class PoaController extends Controller
           
             //$resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->whereYear('created_at', 2019)->get();
             $resultado = DB::table('alertas')->where('ale_id_usuario', $userId)->where('ale_clase', 'final')->get();
-            $programas = DB::table('programas')->where('reprogramacion', 0)->get();
+            //$programas = DB::table('programas')->where('reprogramacion', '!=', 0)->get();
+            if (Auth::user()->idarea==3)        
+              $programas = Programa::where('reprogramacion', '!=', 0)->get();
+            else
+              $programas = Programa::where('reprogramacion', '=', 1)->get();
             /////////////////////////////////////////////////////////////////////////////////////////
             $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
             $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();

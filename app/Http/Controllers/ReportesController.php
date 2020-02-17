@@ -63,7 +63,12 @@ class ReportesController extends Controller
         {          
           $meses = Mes::all();
           $areas = Area::all();
-          $programas = Programa::where('reprogramacion', '<', 3)->get();
+          //$programas = Programa::where('reprogramacion', '<', 3)->get();
+          if (Auth::user()->idarea==3)                        
+            $programas = Programa::where('reprogramacion', '!=', 0)->get();
+          else
+            $programas = Programa::where('reprogramacion', '=', 1)->get(); 
+          
           $action = route('reportes.indicadores');
 
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
@@ -85,9 +90,9 @@ class ReportesController extends Controller
         { 
           $meses = Mes::all();      
           if (Auth::user()->idarea==3)                        
-            $programas = Programa::where('reprogramacion', '<', 3)->get();
+            $programas = Programa::where('reprogramacion', '!=', 0)->get();
           else
-            $programas = Programa::where('idprograma', '=', 1)->get();        
+            $programas = Programa::where('reprogramacion', '=', 1)->get();        
           $action = route('reportes.indicadores');
 
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();

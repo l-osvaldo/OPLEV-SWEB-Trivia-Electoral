@@ -66,7 +66,7 @@ class AdminController extends Controller
 
       DB::table('detalleactividades')->where('idmes', $mesadmin)->where('autoactividades', $autoactividades)->update(['descripcion' => $descactividad, 'soporte' => $soporte, 'observaciones' => $observaciones]);
       Alert::success('', 'Registro exitoso')->autoclose(3500);
-      return redirect()->route('programa.index');
+      return redirect()->route('programa.index')->with('msn');
     }
 
     /**
@@ -132,6 +132,35 @@ class AdminController extends Controller
           ->where('idprograma', $programa)
           ->where('idarea', $idArea)->get();
         return response()->json($programaEsp);
+      }
+      else
+      {
+        return route('auth/login');
+      }
+    }
+
+    public function repadicionales()
+    {
+      if (Auth::check())
+      {        
+
+      /////////////////////////////////////////////////////////////////////////////////////////
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('created_at', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('created_at', 'desc')->take(15)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          /////////////////////////////////////////////////////////////////////////////////////////
+      //return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
+      return view('pages.admin.repadicionales')->with( compact( 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));
       }
       else
       {

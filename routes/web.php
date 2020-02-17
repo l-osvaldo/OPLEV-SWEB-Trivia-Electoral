@@ -99,5 +99,9 @@ Route::post('/onOffsipsei', 'PoaController@onOffsipsei')->name('onOffsipsei');
 Route::post('/newadicional', 'AdicionalesController@newadicional')->name('newadicional');
 
 Route::post('/deleteadicional', 'AdicionalesController@deleteadicional')->name('deleteadicional');
+
+
+Route::get('/repadicionales', 'AdminController@repadicionales')->name('repadicionales');
+
 });
 
