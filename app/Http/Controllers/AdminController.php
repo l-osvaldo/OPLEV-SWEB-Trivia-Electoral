@@ -158,6 +158,8 @@ class AdminController extends Controller
           $observacionesR = DB::table('observaciones')->where('obs_status', 1)
           ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
           ->orderBy('obs_date', 'desc')->get();
+
+          //$adicionales = DB::table('adicionales')->take(20)->get();
           /////////////////////////////////////////////////////////////////////////////////////////
       //return view('pages.poa.alertames')->with( compact('resultado','observaciones','observacionesR','observacionesRn'));
       return view('pages.admin.repadicionales')->with( compact( 'alertas', 'nalertas', 'alertasfin', 'nfin','observaciones','observacionesR'));

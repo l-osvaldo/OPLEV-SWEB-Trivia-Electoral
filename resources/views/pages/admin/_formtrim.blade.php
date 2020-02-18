@@ -65,8 +65,11 @@
       @endif      
       <input type="hidden" name="redirect" value="{{ route('programa.index') }}">
       @if(Auth::user()->hasRole('admin')) 
-        <button type="submit" class="btn btn-primary  EnaBtn" disabled="true" id="btnGenerar_trim" name="btnGenerar_trim">Generar Trimestral</button>      
+        <button type="submit" class="btn btn-primary  EnaBtn" disabled="true" id="btnGenerar_trim" name="btnGenerar_trim">Generar Trimestral Individual</button>      
       @endif      
+
+
+
 
 
 

@@ -396,7 +396,7 @@ th {
                   
                     var demos = '{{strtoupper($rfijos->ale_mes)}}{{strtoupper($rfijos->ale_acronimo)}}';
                     document.getElementById(demos).innerHTML='<i class="fa fa-check iconCheck"></i>';
-                  
+                    //alert(demos);
             @endforeach
             </script>
             <!--hr>

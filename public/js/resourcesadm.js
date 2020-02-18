@@ -789,6 +789,63 @@ $("#buscarEntre").click(function(){
 
 /*************************************************************
 
+  Funcionalidad: Embia la peticion para buscar las actividades adicionales por los parametros selelcionados
+  Parametros: unidad tecnica(chart), mes(chart), token
+  Respuesta: crea la tabla con las actividades seleccionadas
+
+***************************************************************/
+
+        //document.getElementById("buscarEntre").addEventListener("click", busquedaentre);
+$("#buscaAdicionales").click(function(){
+
+          document.getElementById("loader").classList.remove('hidden');
+          var uni = document.getElementById('unidadAdicional').value;
+          var mes = document.getElementById('mesAdicionales').value;
+
+          var uniName = document.getElementById('unidadAdicional').options[document.getElementById('unidadAdicional').selectedIndex].text;
+
+          //console.log(uni,mes);
+
+          $.ajax({
+               type:'POST',
+               url:"buscaadicionales",
+               data:{mes:mes,uni:uni,"_token": token},
+               success:function(data){ 
+
+                //console.log(data)
+                  document.getElementById('resultAdicionales').innerHTML ='';
+                  if (data[0].length>0) {
+
+                  document.getElementById('nameUni').textContent=', '+uniName;
+
+                  document.getElementById('resultAdicionales').innerHTML ='<tr><th>Descripción</th><th>Soporte</th><th>Observaciones</th></tr>';
+
+                    for (var i =  data[0].length - 1; i >= 0; i--) {
+                      var x = document.createElement("TR");
+                      document.getElementById('resultAdicionales').appendChild(x);
+                      x.innerHTML='<td>'+ data[0][i].descadicional+'</td><td>'+data[0][i].soporteadicional+'</td><td>'+data[0][i].observaadicional+'</th>';
+                    }
+
+                  document.getElementById('pdfAdicionalesGral').classList.remove('hidden');
+                  document.getElementById('datauni').value=uni;
+                  document.getElementById('idmesreportar').value=mes;
+
+                  } else {
+                     document.getElementById('resultAdicionales').innerHTML ='<tr><th>No se encontraron resultados</th></tr>';
+                     document.getElementById('pdfAdicionalesGral').classList.add('hidden');
+                     document.getElementById('datauni').value='0';
+                     document.getElementById('idmesreportar').value='0';
+                     document.getElementById('nameUni').textContent="";
+                  }
+
+                  document.getElementById("loader").classList.add('hidden');
+              }
+          });
+          
+        });
+
+/*************************************************************
+
   Funcionalidad: cambia los parametros del atributo, deshabilita el elemento
   Parametros: 
   Respuesta: 

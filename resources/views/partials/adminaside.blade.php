@@ -115,11 +115,11 @@
             </a>
           </li>
 
-          <!--li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="{{ route('repadicionales') }}" class="textSideOption nav-link {!! Request::is('repadicionales') ? 'active activeOn' : '' !!}">
               <i class="fa fa-clone"></i> <p>Reportes Adicionales</p>
             </a>
-          </li-->
+          </li>
 
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">

@@ -103,5 +103,9 @@ Route::post('/deleteadicional', 'AdicionalesController@deleteadicional')->name('
 
 Route::get('/repadicionales', 'AdminController@repadicionales')->name('repadicionales');
 
+Route::post('/buscaadicionales', 'AdicionalesController@buscaadicionales')->name('buscaadicionales');
+
+Route::get('/rtrimestralall', 'ReportesController@rtrimestralall')->name('reportes.rtrimestralall');
+
 });
 

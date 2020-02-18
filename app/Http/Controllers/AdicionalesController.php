@@ -256,6 +256,21 @@ class AdicionalesController extends Controller
     }
 
 
+
+    public function buscaadicionales(Request $request)
+    {
+
+      $uni = $request->input('uni');
+      $mes = $request->input('mes');
+
+
+      $adicionales = Adicional::select('descadicional', 'soporteadicional', 'observaadicional', 'area')->where('idarea', $uni)->where('idmes', $mes)->get();
+     
+       return response()->json([$adicionales]);
+      
+    }
+
+
     /**
      * Funcionalidad: validacion de formulario
      * Parametros: $new
