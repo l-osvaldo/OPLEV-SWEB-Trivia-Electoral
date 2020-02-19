@@ -6,76 +6,83 @@
   
 </head>
 <body>
-<style type="text/css">
-table, th, td {
-  border: 1px solid black;font-size: small;border-collapse: collapse;
-}
 
+<style>
+     table {
+      border-collapse: collapse;width: 100%
+    }
+
+    th, td {
+      font-size: 13px;padding: 10px 0 10px 5px;
+    }    
+    .gris{background: #ccc;font-weight: bold;}
 </style>
+
 
 
   @foreach ($actividades as $key => $actividad)  
 
 
-  <table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <th style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="5">PROGRAMA OPERATIVO ANUAL 2020</th>
+  <table border="0" align="center" width="100%">
+    <tr style="border:none !important;background:#fff; height:75px;">
+      <th colspan="6">
+      ORGANISMO PÚBLICO LOCAL ELECTORAL <br> Programa Operativo Anual 2020 
+      </th>
+    </tr>
+  </table>
+
+
+  <table border="1" style="border-collapse: collapse;">
+    <tr style="border: 1px solid black;">
+      <td rowspan="3" style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px;" width="8%"><img class="logo" src="{{ public_path('images/logoople.png') }}" width="100"></td>
+      <td style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;" width="8%">Programa</td>      
+      <td style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;" width="35%">{{$actividad->descprograma}}</td>
+      <td style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;"  width="10%">Unidad Responsable<br><span>{{$actividad->name}}</span></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td width="8%" style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Programa Específico</td>
+      <td style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;" width="35%">{{$actividad->descprogramaesp}}</td>
+      <td width="10%" style="border: 1px solid black;text-align: center;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Periodo Trimestral<br><span>{{$trimestre}}</span></td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td width="8%" style="border: 1px solid black;text-align: left;font-size: 13px;padding: 10px 0 10px 5px; background:#ccc;font-weight: bold;">Objetivo</td>
+      <td colspan="2" width="60%" style="border: 1px solid black;font-size: 13px;padding: 10px 0 10px 5px;">{{$actividad->objprogramaesp}}</td>
+    </tr>
+  </table>
+
+
+
+  <table class="table" border="1" align="center" cellpadding="5px" style="margin-top: -1px;">
+
+  <tr class="gris" style="text-align: center;">
+    <td style="border: 1px solid black;" rowspan="3">No.</td>
+    <td style="border: 1px solid black;" rowspan="3" width="28%">ACTIVIDAD</td>
+    <td style="border: 1px solid black;" colspan="2">META ANUAL</td>
+    <td style="border: 1px solid black;" rowspan="3">PERIODO <br>CALENDARIZADO</td>
+    <td style="border: 1px solid black;" colspan="3">AVANCE TRIMESTRAL</td>
+    <td style="border: 1px solid black;" colspan="4">AVANCE ACUMULADO</td>
+    <td style="border: 1px solid black;" rowspan="3" width="10%">OBSERVACIONES</td>
   </tr>
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="{{ public_path('images/logoople.png') }}" alt="OPLE" width="100px"></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>{{$actividad->name}}</strong></td>
+  <tr class="gris">
+    <td rowspan="2" style="border: 1px solid black;text-align: center;">UNIDAD DE<br>MEDIDA</td>
+    <td style="border: 1px solid black;" rowspan="2">CANTIDAD</td>
+    <td style="border: 1px solid black;" rowspan="2">PROGRAMADO</td>
+    <td style="border: 1px solid black;" rowspan="2">REALIZADO</td>
+    <td style="border: 1px solid black;" rowspan="2">VARIACION %</td>
+    <td style="border: 1px solid black;" rowspan="2">PROGRAMADO</td>
+    <td style="border: 1px solid black;" rowspan="2">REALIZADO</td>
+    <td colspan="2" style="border: 1px solid black;text-align: center;">VARIACION</td>
   </tr>
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>{{$actividad->claveprogramaesp}}</strong></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><strong>{{$actividad->descprograma}}</strong></td>
+  <tr class="gris">
+    <td width="5%" style="text-align: center;border: 1px solid black;">CANTIDAD</td>
+    <td width="5%" style="text-align: center;border: 1px solid black;">%</td>
   </tr>
 
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>{{$actividad->descprogramaesp}}</strong></td>
-    <td style="text-align: left;border: 1px solid black;font-size: small;border-collapse: collapse;padding:0 0 0 5px;" colspan="4">Objetivo: <strong>{{$actividad->objprogramaesp}}</strong></td>
-  </tr>
-  <tr style="border:1px solid #fff;border-bottom:1px solid #000;height:10px;">
-    <td style="border:1px solid #fff;border-bottom:1px solid #000;" colspan="5"></td>
-  </tr>
-</table>
-
-<table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
-
-    <td style="width:2%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">No.</td>
-    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Actividad</td>
-
-    <td style="width:16%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="3">Meta</td>
-
-    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Programación mensual</td>
-
-    <td style="width:4%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Fecha</td>
-    
-  </tr>
-  <tr style="background: #eeeeee;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:6%;">Unidad de<br> medida</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:10%;" colspan="2">Cantidad<br> anual</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ene</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Feb</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Mar</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Abr</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">May</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jun</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jul</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ago</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Sep</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Oct</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Nov</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Dic</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%" >Inicio</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%" >Termino</td>
-  </tr>
-</table>
+  </table>
 
 
-<table style="width:100%;{{$key == (count($actividades)-1) ? '' : 'page-break-after: always;' }}">
+
+<table class="table" border="1" style="border-collapse: collapse;width:100%;{{$key == (count($actividades)-1) ? '' : 'page-break-after: always;' }}">
 
     
 
@@ -113,112 +120,72 @@ table, th, td {
          $oct += intval($hijo[13]);
          $nov += intval($hijo[14]);
          $dic += intval($hijo[15]);
+
+
+         $programado = intval($hijo[4])+intval($hijo[5])+intval($hijo[6]);
+         $realizado = intval($hijo[18])+intval($hijo[19])+intval($hijo[20]);
+         $resta = $realizado - $programado;
+
+         $resta != 0 && $programado != 0 ? $variacion = ($resta * 100) / $programado : $variacion = 0;
+
         @endphp
    
       
+
+
+
         @if($kpp == 11 || $kpp == 26)     
         </table>  
 
 
-        <table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <th style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="5">PROGRAMA OPERATIVO ANUAL 2020</th>
-  </tr>
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td rowspan="3" style="padding: 3px;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><img src="{{ public_path('images/logoople.png') }}" alt="OPLE" width="100px"></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;width:29%;" colspan="2">Programa General:</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Ejercicio 2020</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Unidad Responsable:<br><strong>{{$actividad->name}}</strong></td>
-  </tr>
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Clave: <strong>{{$actividad->claveprogramaesp}}</strong></td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;"><strong>{{$actividad->descprograma}}</strong></td>
-  </tr>
-
-  <tr style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="2"><strong>{{$actividad->descprogramaesp}}</strong></td>
-    <td style="text-align: left;border: 1px solid black;font-size: small;border-collapse: collapse;padding:0 0 0 5px;" colspan="4">Objetivo: <strong>{{$actividad->objprogramaesp}}</strong></td>
-  </tr>
-  <tr style="border:1px solid #fff;border-bottom:1px solid #000;height:10px;">
-    <td style="border:1px solid #fff;border-bottom:1px solid #000;" colspan="5"></td>
-  </tr>
-</table>
-
-<table style="width:100%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">
-  <tr style="background: #ccc;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
-
-    <td style="width:2%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">No.</td>
-    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" rowspan="2">Actividad</td>
-
-    <td style="width:16%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="3">Meta</td>
-
-    <td style="width:30%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Programación mensual</td>
-
-    <td style="width:4%;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;" colspan="12">Fecha</td>
-    
-  </tr>
-  <tr style="background: #eeeeee;text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse">
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:6%;">Unidad de<br> medida</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; with:10%;" colspan="2">Cantidad<br> anual</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ene</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Feb</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Mar</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Abr</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">May</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jun</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Jul</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Ago</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Sep</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Oct</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Nov</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse;">Dic</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%" >Inicio</td>
-    <td style="text-align: center;border: 1px solid black;font-size: small;border-collapse: collapse; width:2%" >Termino</td>
-  </tr>
-</table>
-
 
         <table style="width:100%;{{$key == (count($actividades)-1) ? '' : 'page-break-after: always;' }}">  
              <tr>
-                <td style="text-align: center;width:2.3%;">{{$hijo[0]}}</td>
-                <td style="width:35.7%;">{{$hijo[1]}}</td><td style="text-align: center;width: 10.1%;">{{$hijo[2]}}</td>
-                <td style="text-align: center;width: 4%;">Programado</td>
+                <td style="text-align: center;width:1%;">{{$hijo[0]}}</td>
+                <td style="width:11%;">{{$hijo[1]}}</td>
+                <td style="text-align: center;width: 3%;">{{$hijo[2]}}</td>
                 <td style="text-align: center;width: 2.71%;">{{intval($hijo[4])+intval($hijo[5])+intval($hijo[6])+intval($hijo[7])+intval($hijo[8])+intval($hijo[9])+intval($hijo[10])+intval($hijo[11])+intval($hijo[12])+intval($hijo[13])+intval($hijo[14])+intval($hijo[15])}}</td>
-                <td style="text-align: center;width: 3.2%;">{{$hijo[4]}}</td>
-                <td style="text-align: center;width: 3%;">{{$hijo[5]}}</td>
-                <td style="text-align: center;width: 2.97%;">{{$hijo[6]}}</td>
-                <td style="text-align: center;width: 2.72%;">{{$hijo[7]}}</td>
-                <td style="text-align: center;width: 3.298%;">{{$hijo[8]}}</td>
-                <td style="text-align: center;width: 2.71%;">{{$hijo[9]}}</td>
-                <td style="text-align: center;width: 2.49%;">{{$hijo[10]}}</td>
-                <td style="text-align: center;width: 3.099%;">{{$hijo[11]}}</td>
-                <td style="text-align: center;width: 3.22%;">{{$hijo[12]}}</td>
-                <td style="text-align: center;width: 2.87%;">{{$hijo[13]}}</td>
-                <td style="text-align: center;width: 3.199%;">{{$hijo[14]}}</td>
-                <td style="text-align: center;width: 2.77%;">{{$hijo[15]}}</td>
-                <td style="text-align: center;width: 3.19%;">{{$hijo[16]}}</td>
-                <td style="text-align: center;">{{$hijo[17]}}</td>
+                <td style="text-align: center;width: 3%;">{{$hijo[16]}} - {{$hijo[17]}}</td>
+
+                <td style="text-align: center;width: 2.71%;">{{$programado}}</td>
+
+                <td style="text-align: center;width: 3.2%;">{{$realizado}}</td>
+                <td style="text-align: center;width: 3%;">
+                {{number_format($variacion, 2, '.', ',')}}
+                </td>
+
+
+                <td style="text-align: center;width: 2.71%;">{{intval($hijo[4])+intval($hijo[5])+intval($hijo[6])}}</td>
+
+                <td style="text-align: center;width: 3.2%;">{{intval($hijo[18])+intval($hijo[19])+intval($hijo[20])+intval($hijo[21])+intval($hijo[22])+intval($hijo[23])+intval($hijo[24])+intval($hijo[25])+intval($hijo[26])+intval($hijo[27])+intval($hijo[28])+intval($hijo[29])}}</td>
+                <td style="text-align: center;width: 3%;">{{$resta}}</td>
+
+                <td style="text-align: center;width: 3.199%;">---</td>
+                
+
             </tr>   
         @else
             <tr>
-                <td style="text-align: center;width:2.3%;">{{$hijo[0]}}</td>
-                <td style="width:35.7%;">{{$hijo[1]}}</td><td style="text-align: center;width: 10.1%;">{{$hijo[2]}}</td>
-                <td style="text-align: center;width: 4%;">Programado</td>
+                <td style="text-align: center;width:1%;">{{$hijo[0]}}</td>
+                <td style="width:11%;">{{$hijo[1]}}</td>
+                <td style="text-align: center;width: 3%;">{{$hijo[2]}}</td>
                 <td style="text-align: center;width: 2.71%;">{{intval($hijo[4])+intval($hijo[5])+intval($hijo[6])+intval($hijo[7])+intval($hijo[8])+intval($hijo[9])+intval($hijo[10])+intval($hijo[11])+intval($hijo[12])+intval($hijo[13])+intval($hijo[14])+intval($hijo[15])}}</td>
-                <td style="text-align: center;width: 3.2%;">{{$hijo[4]}}</td>
-                <td style="text-align: center;width: 3%;">{{$hijo[5]}}</td>
-                <td style="text-align: center;width: 2.97%;">{{$hijo[6]}}</td>
-                <td style="text-align: center;width: 2.72%;">{{$hijo[7]}}</td>
-                <td style="text-align: center;width: 3.298%;">{{$hijo[8]}}</td>
-                <td style="text-align: center;width: 2.71%;">{{$hijo[9]}}</td>
-                <td style="text-align: center;width: 2.49%;">{{$hijo[10]}}</td>
-                <td style="text-align: center;width: 3.099%;">{{$hijo[11]}}</td>
-                <td style="text-align: center;width: 3.22%;">{{$hijo[12]}}</td>
-                <td style="text-align: center;width: 2.87%;">{{$hijo[13]}}</td>
-                <td style="text-align: center;width: 3.199%;">{{$hijo[14]}}</td>
-                <td style="text-align: center;width: 2.77%;">{{$hijo[15]}}</td>
-                <td style="text-align: center;width: 3.19%;">{{$hijo[16]}}</td>
-                <td style="text-align: center;">{{$hijo[17]}}</td>
+                <td style="text-align: center;width: 3%;">{{$hijo[16]}} - {{$hijo[17]}}</td>
+
+                <td style="text-align: center;width: 2.71%;">{{$programado}}</td>
+
+                <td style="text-align: center;width: 3.2%;">{{$realizado}}</td>
+                 <td style="text-align: center;width: 3%;">
+                {{number_format($variacion, 2, '.', ',')}}
+                </td>
+
+                <td style="text-align: center;width: 2.71%;">{{intval($hijo[4])+intval($hijo[5])+intval($hijo[6])}}</td>
+
+                <td style="text-align: center;width: 3.2%;">{{intval($hijo[18])+intval($hijo[19])+intval($hijo[20])}}</td>
+                <td style="text-align: center;width: 3%;">{{$resta}}</td>
+
+                <td style="text-align: center;width: 2.77%;">---</td>
+
             </tr>         
         @endif
 
@@ -226,93 +193,27 @@ table, th, td {
 
  @endforeach
 
- @php
-    $sumTotal = intval($ene)+intval($feb)+intval($mar)+intval($abr)+intval($may)+intval($jun)+intval($jul)+intval($ago)+intval($sep)+intval($oct)+intval($nov)+intval($dic);
-@endphp
-
- <tr style="font-weight:bolder;">
-    <td colspan="4" style="text-align: right;background: #ccc;">Total programado mensual</td>
-    <td style="text-align: center;font-size:9px;">{{$sumTotal}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene}}</td>
-    <td style="text-align: center;font-size:9px;">{{$feb}}</td>
-    <td style="text-align: center;font-size:9px;">{{$mar}}</td>
-    <td style="text-align: center;font-size:9px;">{{$abr}}</td>
-    <td style="text-align: center;font-size:9px;">{{$may}}</td>
-    <td style="text-align: center;font-size:9px;">{{$jun}}</td>
-    <td style="text-align: center;font-size:9px;">{{$jul}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ago}}</td>
-    <td style="text-align: center;font-size:9px;">{{$sep}}</td>
-    <td style="text-align: center;font-size:9px;">{{$oct}}</td>
-    <td style="text-align: center;font-size:9px;">{{$nov}}</td>
-    <td style="text-align: center;font-size:9px;">{{$dic}}</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
-  </tr>
-  <tr style="font-weight:bolder;">
-    <td colspan="4" style="text-align: right;background: #ccc;">Total programado acumulado mensual</td>
-    <td></td>
-    <td style="text-align: center;font-size:9px;">{{$ene}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul+$ago}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct+$nov}}</td>
-    <td style="text-align: center;font-size:9px;">{{$ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct+$nov+$dic}}</td>
-    <td style="text-align: center;"></td>
-    <td style="text-align: center;"></td>
-  </tr>
-  <tr style="font-weight:bolder;">
-    <td colspan="4" style="text-align: right;background: #ccc;">Porcentaje mensual</td>
-    <td></td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($ene/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($feb/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($mar/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($abr/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($may/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($jun/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($jul/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($ago/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($sep/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($oct/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($nov/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($dic/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr style="font-weight:bolder;">
-    <td colspan="4" style="text-align: right;background: #ccc;">Porcentaje acumulado mensual</td>
-    <td></td>
-    <td style="text-align: center;font-size:9px;">{{number_format(($ene/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul+$ago)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct+$nov)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td style="text-align: center;font-size:9px;">{{number_format((($ene+$feb+$mar+$abr+$may+$jun+$jul+$ago+$sep+$oct+$nov+$dic)/$sumTotal)*100, 2, '.', ',')}}</td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-  @endforeach
-
-
-  
  
 
 
-<script type="text/javascript">
-    console.log('hola');
-</script>
+ <tr>
+            <td colspan="13" class="gris">
+              LAS FIRMAS AL CALCE AMPARAN LA TOTALIDAD DEL PRESENTE DOCUMENTO
+            </td>
+          </tr>
+
+          <tr style="height: 150px;">
+            <td colspan="6">
+              ELABORÓ<br>MTRA. PATRICIA PÉREZ HERNÁNDEZ<br>TITULAR DE LA UNIDAD TÉCNICA DE PLANEACIÓN
+            </td>
+            <td colspan="7">
+              Vo. Bo.<br>MTRO. HUGO ENRIQUE CASTRO BERNABE<br>SECRETARIO EJECUTIVO
+            </td>
+          </tr>
+
+
+ </table>
+  @endforeach
 
 
 </body>

@@ -206,10 +206,16 @@ class PoaController extends Controller
       
       //return redirect()->route('programa.index');
 
+      //if (Auth::user()->idarea==3)        
+      //    $programas = Programa::where('reprogramacion', '<', 3)->get();
+      //  else
+      //    $programas = Programa::where('idprograma', '=', 1)->get();
+
       if (Auth::user()->idarea==3)        
-          $programas = Programa::where('reprogramacion', '<', 3)->get();
+        $programas = Programa::where('reprogramacion', '!=', 0)->get();
         else
-          $programas = Programa::where('idprograma', '=', 1)->get();
+        $programas = Programa::where('reprogramacion', '=', 1)->get();
+
         $action = route('programa.store');
 
        $mes = Mes::select('mes')->where('idmes', $idmesreportar)->get();
