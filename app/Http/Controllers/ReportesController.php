@@ -1182,17 +1182,17 @@ class ReportesController extends Controller
 $programas = Programa::where('idprograma', '=', $idPrograma)->get();     
 
 
-      ////////if ($idPrograma==4)      
-        //////$programas = Programa::where('idprograma', '=', 4)->get();        
-      ////////else
-        ///////////$programas = Programa::where('reprogramacion', '<', 3)->get();
+      if ($idPrograma==4)      
+      $programas = Programa::where('idprograma', '=', 4)->get();        
+      else
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
       
 
       $trim_idprograma = $idPrograma;
       $trim_claveprograma = $programas[0]['claveprograma'];
       $trim_descprograma = $programas[0]['descprograma'];      
 
-      ///////////////////$programas = Programa::where('reprogramacion', '<', 3)->get();
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
 
       //Obtengo los campos del programa especial o subprograma
       $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
@@ -1243,6 +1243,9 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
         $trim2cerrado = $acti->trim2cerrado;
         $trim3cerrado = $acti->trim3cerrado;
         $trim4cerrado = $acti->trim4cerrado;
+
+        $bandera2 = $acti->bandera2;
+        $bandera3 = $acti->bandera3;
         $bandera4 = $acti->bandera4;
 
         //fin del cambio
@@ -1606,21 +1609,34 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
     public function rtrimestralall(Request $request)
     {
       
-    $idTrimestre = 1;
+    $idTrimestre = $request->trimestre_trim;
 
-    $idArea = $request->unidad;
+    switch ($idTrimestre) {
+          case '1':
+              $trimestre = "Enero - Marzo";
+              break;
+          case '2':
+              $trimestre = "Abril - Junio";
+              break;
+          case '3':
+              $trimestre = "Julio - Septiembre";
+              break;
+          case '4':
+              $trimestre = "Octubre - Diciembre";
+              break;
+          default:
+            return redirect()->route('login');
+      }
 
-          DB::statement('SET group_concat_max_len = 9999999999999');
+        DB::statement('SET group_concat_max_len = 9999999999999');
         $actPdfDos = DB::table('programas')
-        
         ->leftJoin('programasesp', 'programasesp.idprograma', '=', 'programas.idprograma')
         ->leftJoin('actividades', 'actividades.idprogramaesp', '=', 'programasesp.idprogramaesp')
         ->leftJoin('porcentajep', 'porcentajep.idporcentajep', '=', 'actividades.autoactividades')
         ->leftJoin('porcentajer', 'porcentajer.idporcentajer', '=', 'porcentajep.idporcentajep')
         ->leftJoin('users', 'users.idarea', '=', 'actividades.idarea')
         ->select('claveprograma','descprograma', 'claveprogramaesp', 'descprogramaesp','objprogramaesp','name')
-
-        ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino, ener, febr, marr, abrr, mayr, junr, julr, agor, sepr, octr, novr, dicr ) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
+        ->selectRaw('GROUP_CONCAT(DISTINCT CONCAT_WS("||", numactividad, descactividad, unidadmedida, cantidadanual, enep, febp, marp, abrp, mayp, junp, julp, agop, sepp, octp, novp, dicp, inicio, termino, ener, febr, marr, abrr, mayr, junr, julr, agor, sepr, octr, novr, dicr, observatrim, bandera, trim1cerrado, observatrim2, bandera2, trim2cerrado, observatrim3, bandera3, trim3cerrado, observatrim4, bandera4, trim4cerrado ) ORDER BY numactividad SEPARATOR "!*!") as act')->distinct()
         ->where('actividades.reprogramacion', '!=' , 5)
         ->groupBy('actividades.idprogramaesp')
         ->orderBy('claveprogramaesp')
@@ -1631,18 +1647,18 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
     if ( Auth::check() )
       {      
 
-        $pdfs = PDFS::loadView('pages.poa.pdftrimestralall',['actividades'=>$actPdfDos,'trimestre'=>$idTrimestre])->setPaper('legal', 'landscape');
+        $pdfs = PDFS::loadView('pages.poa.pdftrimestralall',['actividades'=>$actPdfDos,'idtrimestre'=>$idTrimestre,'trimestre'=>$trimestre])->setPaper('legal', 'landscape');
         //$pdfs = PDFS::loadHtml('<h3>'.$request->programa.'</h3>')->setPaper('letter', 'landscape');
-        $pdfs->setOption('margin-top', 10);
+        $pdfs->setOption('margin-top', 5);
         $pdfs->setOption('margin-bottom', 10);
-        $pdfs->setOption('margin-left', 15);
+        $pdfs->setOption('margin-left', 10);
         $pdfs->setOption('margin-right', 10);
         $pdfs->setOption('footer-font-size', 8);
 
         
         //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
         $pdfs->setOption('load-error-handling','ignore');
-        //$pdfs->setOption('footer-right','[page] / [toPage]');
+        $pdfs->setOption('footer-right','[page] / [toPage]');
         //$pdfs->setOption('enable-javascript', true);
         //$pdfs->setOption('javascript-delay', 500);
         //$pdfs->setOption('enable-smart-shrinking', true);

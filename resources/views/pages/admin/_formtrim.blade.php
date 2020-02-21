@@ -72,8 +72,8 @@
 </form>
 
 
-<hr>
+<!--hr>
       <form method="get" action="{{ route('reportes.rtrimestralall') }}" target="_blank">
         <input type="hidden" id="datatrimestre" name="datatrimestre" value="1">                    
         <button id="pdfAdicionalesGral" type="submit" class="btn btn-primary">Generar PDF General</button>
-      </form>
+      </form-->

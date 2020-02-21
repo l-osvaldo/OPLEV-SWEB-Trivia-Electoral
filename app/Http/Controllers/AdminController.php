@@ -291,6 +291,52 @@ class AdminController extends Controller
     }
 
     /**
+     * Funcionalidad: Obtiene la vista del reporte general del trimestre
+     * Parametros: 
+     * Respuesta: regresa la vista seleccionada con los parametros especificos
+     *
+     */
+
+    public function poatrimestralg()
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $areas = Area::all();
+          $trimestres = Trimestre::all();
+          $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
+          $action = route('reportes.trimestral');
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.admin.trimall')->with( compact('areas', 'trimestres', 'programas', 'action', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
+
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
+    /**
      * Funcionalidad: Guarda las observaciones del trimestre
      * Parametros: $request
      * Respuesta: $modificacion

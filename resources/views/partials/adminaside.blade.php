@@ -121,11 +121,11 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+          <!--li class="nav-item has-treeview">
             <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar-plus-o"></i> <p>Reporte Trimestral</p>
             </a>
-          </li>
+          </li-->
 
           <!--li class="nav-item has-treeview">
             <a href="{{ route('elaboracion') }}" class="textSideOption nav-link {!! Request::is('elaboracion') ? 'active activeOn' : '' !!}">
@@ -135,6 +135,37 @@
 
           </ul>
           </li>
+
+          <!----------------------------------------------------------------------------------->
+
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link" style="background-color: #106363;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                Reporte Trimestral
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-file-o" aria-hidden="true"></i> <p>Individual</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralg') }}" class="textSideOption nav-link {!! Request::is('poatrimestralg') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-clone"></i> <p>Global</p>
+            </a>
+          </li>
+
+          </ul>
+          </li>
+
+
+          <!----------------------------------------------------------------------------------->
 
 
           <li class="nav-item has-treeview menu-open">

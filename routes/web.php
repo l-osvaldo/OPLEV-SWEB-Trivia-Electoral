@@ -107,5 +107,7 @@ Route::post('/buscaadicionales', 'AdicionalesController@buscaadicionales')->name
 
 Route::get('/rtrimestralall', 'ReportesController@rtrimestralall')->name('reportes.rtrimestralall');
 
+Route::get('/poatrimestralg', 'AdminController@poatrimestralg')->name('admin.poa.trimestralg');
+
 });
 
