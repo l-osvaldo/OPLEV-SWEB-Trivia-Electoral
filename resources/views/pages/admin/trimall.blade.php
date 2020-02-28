@@ -11,6 +11,13 @@
   <div class="row">
 
      <div style="height: auto;padding: 3em 0; width: 100%;">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Reporte Trimestral</li>
+          <li class="breadcrumb-item active" style="color: #EA0D94;">Reporte Global</li>
+        </ol>
+      </nav>
     
     <div class="col align-self-center" style="background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
 

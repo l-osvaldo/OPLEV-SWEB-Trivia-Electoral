@@ -109,5 +109,20 @@ Route::get('/rtrimestralall', 'ReportesController@rtrimestralall')->name('report
 
 Route::get('/poatrimestralg', 'AdminController@poatrimestralg')->name('admin.poa.trimestralg');
 
+Route::get('/poatrimestralgperiodo', 'AdminController@poatrimestralgperiodo')->name('admin.poa.trimestralp');
+
+Route::post('/getprograma', 'AdminController@getprograma')->name('getprograma');
+
+Route::post('/getprogramaesp', 'AdminController@getprogramaesp')->name('getprogramaesp');
+
+Route::get('/rtrimestralperiodo', 'ReportesController@rtrimestralperiodo')->name('reportes.rtrimestralperiodo');
+
+Route::get('/rtrimestralperiodog', 'ReportesController@rtrimestralperiodog')->name('reportes.rtrimestralperiodog');
+
+Route::get('/poatrimestralgperiodoall', 'AdminController@poatrimestralgperiodoall')->name('admin.poa.trimestralpall');
+
+Route::get('/trimbuscar', 'ReportesController@trimbuscar')->name('reportes.trimbuscar');
+
+Route::post('/gettrimbuscar', 'ReportesController@gettrimbuscar')->name('gettrimbuscar');
 });
 

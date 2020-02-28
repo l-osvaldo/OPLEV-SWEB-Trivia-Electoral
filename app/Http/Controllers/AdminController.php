@@ -336,6 +336,162 @@ class AdminController extends Controller
       }
     }
 
+
+     /**
+     * Funcionalidad: Obtiene la vista del reporte por periodo del trimestre
+     * Parametros: 
+     * Respuesta: regresa la vista seleccionada con los parametros especificos
+     *
+     */
+
+    public function poatrimestralgperiodo()
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $areas = Area::orderBy('idarea','desc')->get();
+          //$programas = DB::table('programas')->where('reprogramacion', '=', 1)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.admin.triperiodo')->with( compact('areas', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
+
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
+
+    /**
+     * Funcionalidad: Obtiene la vista del reporte por periodo del trimestre
+     * Parametros: 
+     * Respuesta: regresa la vista seleccionada con los parametros especificos
+     *
+     */
+
+    public function poatrimestralgperiodoall()
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $areas = Area::orderBy('idarea','desc')->get();
+          //$programas = DB::table('programas')->where('reprogramacion', '=', 1)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.admin.triperiodoall')->with( compact('areas', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
+
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
+
+     /**
+     * Funcionalidad: Obtiene la lista de los programas
+     * Parametros: id
+     * Respuesta: regresa los resultados asociados al parametro
+     *
+     */
+
+    public function getprograma(Request $request)
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $idarea=$request->idarea;
+          $idarea === '3' ? $programas = DB::table('programas')->where('reprogramacion', '!=', 0)->get() : $programas = DB::table('programas')->where('reprogramacion', '=', 1)->get();
+          return response()->json($programas);
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
+
+      /**
+     * Funcionalidad: Obtiene la lista de los programas
+     * Parametros: id
+     * Respuesta: regresa los resultados asociados al parametro
+     *
+     */
+
+    public function getprogramaesp(Request $request)
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $idpro=$request->idpro;
+          $area=$request->area;
+          $programasesp = DB::table('programasesp')->where('idprograma', $idpro)->where('idarea', $area)->get();
+          return response()->json($programasesp);
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
+
     /**
      * Funcionalidad: Guarda las observaciones del trimestre
      * Parametros: $request

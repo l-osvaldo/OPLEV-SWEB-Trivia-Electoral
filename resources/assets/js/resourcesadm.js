@@ -2467,3 +2467,212 @@ function pdfelaboracionAll() {
       }
     });
   }
+
+
+  /*************************************************************
+
+  Funcionalidad: busca los registros relacionados al id
+  Parametros: value id
+  Respuesta: crea el combo de las opciones
+
+***************************************************************/
+document.getElementById('periodoarea')?document.getElementById('periodoarea').addEventListener('change', getProFun, false):'';
+
+function getProFun() {
+  var id=this.value;
+  document.getElementById('periodopro').innerHTML='<option value="0">Seleccione un Programa</option>';
+  document.getElementById('periodoproesp').innerHTML='<option value="0">Programa Específico</option>';
+
+   $.ajax({
+             type:'POST',
+             url:"getprograma",
+             data:{"_token": token,idarea:id},
+             success:function(data){ 
+              var opt='<option value="0">Seleccione un Programa</option>';
+              for (var i = 0; i < data.length; i++) {
+               opt += '<option value="'+data[i].idprograma+'">'+data[i].claveprograma+' '+data[i].descprograma+'</option>';
+              }
+              document.getElementById('periodopro').innerHTML=opt;
+            }
+          });
+}
+
+ /*************************************************************
+
+  Funcionalidad: busca los registros relacionados al id
+  Parametros: value id
+  Respuesta: crea el combo de las opciones
+
+***************************************************************/
+document.getElementById('periodopro')?document.getElementById('periodopro').addEventListener('change', getProEspFun, false):'';
+
+function getProEspFun() {
+  var id=this.value;
+  var area = document.getElementById('periodoarea').value;
+  document.getElementById('periodoproesp').innerHTML='<option value="0">Programa Específico</option>';
+   $.ajax({
+             type:'POST',
+             url:"getprogramaesp",
+             data:{"_token": token,idpro:id,area:area},
+             success:function(data){ 
+              var opt='<option value="0">Programa Específico</option>';
+              for (var i = 0; i < data.length; i++) {
+               opt += '<option value="'+data[i].idprogramaesp+'">'+data[i].claveprogramaesp+' '+data[i].descprogramaesp+'</option>';
+              }
+              document.getElementById('periodoproesp').innerHTML=opt;
+            }
+          });
+}
+
+ /*************************************************************
+
+  Funcionalidad: Determina el periodo en meses para la busqueda
+  Parametros: value id
+  Respuesta: crea el combo de las opciones
+
+***************************************************************/
+document.getElementById('minicial')?document.getElementById('minicial').addEventListener('change', addMesPeriodo, false):'';
+
+function addMesPeriodo() {
+  var id=this.value;
+    if (id=='0') {
+      document.getElementById('mfinal').innerHTML='<option value="0">Mes inicial</option>';
+    } else {
+
+      var inicio = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      
+      document.getElementById('mfinal').innerHTML='<option value="0">Mes inicial</option>';
+
+      var filtro = inicio.filter(function(value, index, arr){
+          return index >= id;
+      });
+
+      var opt='';
+      for (var i = 0; i < filtro.length; i++) {
+       opt += '<option value="'+inicio.indexOf(filtro[i])+'">'+filtro[i]+'</option>';
+      }
+      document.getElementById('mfinal').innerHTML=opt;
+      document.getElementById('mfinal').setAttribute('data-error','0');
+
+     }
+}
+
+ /*************************************************************
+
+  Funcionalidad: Busca las coicidencia junto con los terminos
+  Parametros: value id
+  Respuesta: crea el combo de las opciones
+
+***************************************************************/
+document.getElementById('btnBuscarPalabra')?document.getElementById('btnBuscarPalabra').addEventListener('click', getDataBuscar, false):'';
+
+
+
+function getDataBuscar() {
+  var idTri=document.getElementById('trimestre').value;
+  var palabra=document.getElementById('palabra').value;
+  document.getElementById('loader').classList.remove('hidden');
+
+  document.getElementById('resultBusqueda').innerHTML="";
+
+  $.ajax({
+     type:'POST',
+     url:"gettrimbuscar",
+     data:{"_token": token,tri:idTri,pal:palabra},
+     success:function(data){ 
+      console.log(data[0].length);
+      document.getElementById('loader').classList.add('hidden');
+      if (data[0].length>1) {
+
+         for (var i = 0; i < data[0].length; i++) {
+       var tr = document.createElement('tr');
+
+      var td1 = document.createElement('td');
+      td1.textContent=data[0][i].numactividad;
+      td1.className = 'tittabla';
+
+      tr.appendChild(td1);
+
+      var td2 = document.createElement('td');
+      td2.textContent=data[0][i].descactividad;
+      td2.className = 'justificado';
+
+      tr.appendChild(td2);
+
+      var td3 = document.createElement('td');
+      td3.textContent=data[0][i].unidadmedida;
+      td3.className = 'centrado';
+
+      tr.appendChild(td3);
+
+      var td4 = document.createElement('td');
+      td4.textContent=data[0][i].cantidadanual;
+      td4.className = 'centrado';
+
+      tr.appendChild(td4);
+
+      var td5 = document.createElement('td');
+      td5.textContent=data[0][i].inicio+' - '+data[0][i].termino;
+      td5.className = 'centrado';
+
+      tr.appendChild(td5);
+
+      var td6 = document.createElement('td');
+      td6.textContent=data[0][i].avtprogramado;
+      td6.className = 'centrado';
+
+      tr.appendChild(td6);
+
+      var td7 = document.createElement('td');
+      td7.textContent=data[0][i].avtrealizado;
+      td7.className = 'centrado';
+
+      tr.appendChild(td7);
+
+      var td8 = document.createElement('td');
+      td8.textContent=data[0][i].avtvariacion;
+      td8.className = 'centrado';
+
+      tr.appendChild(td8);
+
+      var td9 = document.createElement('td');
+      td9.textContent=data[0][i].avaprogramado;
+      td9.className = 'centrado';
+
+      tr.appendChild(td9);
+
+      var td10 = document.createElement('td');
+      td10.textContent=data[0][i].avarealizado;
+      td10.className = 'centrado';
+
+      tr.appendChild(td10);
+
+      var td11 = document.createElement('td');
+      td11.textContent=data[0][i].avacantidad;
+      td11.className = 'centrado';
+
+      tr.appendChild(td11);
+
+      var td12 = document.createElement('td');
+      td12.textContent=data[0][i].avaporcentaje;
+      td12.className = 'centrado';
+
+      tr.appendChild(td12);
+
+      var td13 = document.createElement('td');
+      td13.textContent=data[0][i].observatrim;
+      td13.className = 'observatrim';
+      td13.id = data[0][i].idactividad;
+
+      tr.appendChild(td13);
+
+      document.getElementById('resultBusqueda').appendChild(tr);
+        }
+
+      } else {
+        document.getElementById('resultBusqueda').innerHTML="<tr><td rowspan='10'>No se encontraron resultados</td></tr>";
+      }
+    }
+  });
+    
+}

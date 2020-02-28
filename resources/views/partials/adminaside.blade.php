@@ -138,8 +138,8 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link" style="background-color: #106363;color: #FFF;">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link" style="background-color: #a04e00;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
                 Reporte Trimestral
@@ -167,8 +167,95 @@
 
           <!----------------------------------------------------------------------------------->
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link" style="background-color: #297b86;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                Avance por Periodo
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
 
-          <li class="nav-item has-treeview menu-open">
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralp') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodo') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Individual</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralpall') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodoall') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Global</p>
+            </a>
+          </li>
+
+          </ul>
+          </li>
+
+
+          <!----------------------------------------------------------------------------------->
+
+          <!--li class="nav-item has-treeview">
+            <a href="#" class="nav-link" style="background-color: #690e4f;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                Avance por Indicador
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralp') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodo') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Individual</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralpall') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodoall') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Global</p>
+            </a>
+          </li>
+
+          </ul>
+          </li-->
+
+
+          <!----------------------------------------------------------------------------------->
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link" style="background-color: #321063;color: #FFF;">
+              <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
+              <p>
+                Observaciones
+                <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('reportes.trimbuscar') }}" class="textSideOption nav-link {!! Request::is('trimbuscar') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Búsqueda</p>
+            </a>
+          </li>
+
+          <!--li class="nav-item has-treeview">
+            <a href="{{ route('admin.poa.trimestralpall') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodoall') ? 'active activeOn' : '' !!}">
+              <i class="fa fa-calendar" aria-hidden="true"></i> <p>Estadístico</p>
+            </a>
+          </li-->
+
+          </ul>
+          </li>
+
+
+          <!----------------------------------------------------------------------------------->
+
+
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link" style="background-color: #7d8c00;color: #FFF;">
               <i class="fa fa-flag" aria-hidden="true"></i>
               <p>

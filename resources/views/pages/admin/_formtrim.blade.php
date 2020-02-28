@@ -19,7 +19,21 @@
 
 
 <div class="row">
+
+
+<div style="height: auto;padding: 3em 0; width: 100%;">
+
+<div class="row">
+      <nav class="col-md-12" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Reporte Trimestral</li>
+          <li class="breadcrumb-item active" style="color: #EA0D94;">Reporte individual</li>
+        </ol>
+      </nav>
+</div>
 <div class="col-md-12 form-row" style="margin: 1em 0 1em 0;padding: 1em 0;background: #eceff1;padding:1%;box-shadow: 0 2px 4px rgba(0,0,0,.15);">
+
+
 <div class="contInput">
   <label>1. Seleccione un Área</label>
     <select class="form-control validar" data-error="1" id="area_trim" name="area_trim" >
@@ -54,6 +68,7 @@
              @endforeach
           </select>
           <br>
+</div>
 </div>
 </div>
 </div>
