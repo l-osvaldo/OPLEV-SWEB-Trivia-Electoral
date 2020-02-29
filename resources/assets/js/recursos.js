@@ -106,7 +106,7 @@ $("#programaOP").change(function()
     //console.log(_prefix_url,'1');
 
     $.ajax({
-      url: _prefix_url+"obtenProgramaEspPoa",
+      url: "../obtenProgramaEspPoa",
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       type: 'GET',
       data: {programa: programa},

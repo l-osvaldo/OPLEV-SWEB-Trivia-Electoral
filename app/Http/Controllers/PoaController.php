@@ -203,7 +203,8 @@ class PoaController extends Controller
       $alerta->ale_date = date('Y-m-d H:i:s');
       $alerta->save();
       ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
+       Alert::success('', 'Actividad guardada')->autoclose(3500);
+      return redirect()->route('programa.index');
       //return redirect()->route('programa.index');
 
       //if (Auth::user()->idarea==3)        
@@ -211,7 +212,7 @@ class PoaController extends Controller
       //  else
       //    $programas = Programa::where('idprograma', '=', 1)->get();
 
-      if (Auth::user()->idarea==3)        
+      /*if (Auth::user()->idarea==3)        
         $programas = Programa::where('reprogramacion', '!=', 0)->get();
         else
         $programas = Programa::where('reprogramacion', '=', 1)->get();
@@ -228,11 +229,15 @@ class PoaController extends Controller
         $observacionesR = DB::table('observaciones')->where('obs_status', 3)->orWhere('obs_status', '4')->where('obs_id_area', $areaId)
         ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
         ->orderBy('obs_date', 'desc')->get();
-        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();
+        $observacionesRn = DB::table('observaciones')->where('obs_status', 3)->where('obs_id_area', $areaId)->get();*/
 
-      Alert::success('', 'Actividad guardada')->autoclose(3500);
-      $msn = '1';
-      return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn','msn') );
+      //Alert::success('', 'Actividad guardada')->autoclose(3500);
+     // $msn = '1';
+      //return view('pages.poa.create')->with( compact('idmesreportar', 'programas', 'action', 'mes','observaciones','observacionesR','observacionesRn','msn') );
+
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     
+
     }
 
     /**
