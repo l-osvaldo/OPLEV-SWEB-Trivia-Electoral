@@ -124,5 +124,9 @@ Route::get('/poatrimestralgperiodoall', 'AdminController@poatrimestralgperiodoal
 Route::get('/trimbuscar', 'ReportesController@trimbuscar')->name('reportes.trimbuscar');
 
 Route::post('/gettrimbuscar', 'ReportesController@gettrimbuscar')->name('gettrimbuscar');
+
+Route::get('/trimestadistico', 'ReportesController@trimestadistico')->name('reportes.trimestadistico');
+
+Route::post('/gettrimestadistico', 'ReportesController@gettrimestadistico')->name('gettrimestadistico');
 });
 

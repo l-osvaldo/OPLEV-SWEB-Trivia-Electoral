@@ -2580,12 +2580,18 @@ function getDataBuscar() {
      url:"gettrimbuscar",
      data:{"_token": token,tri:idTri,pal:palabra},
      success:function(data){ 
-      console.log(data[0].length);
+      //console.log(data[0]);
       document.getElementById('loader').classList.add('hidden');
       if (data[0].length>1) {
 
          for (var i = 0; i < data[0].length; i++) {
        var tr = document.createElement('tr');
+
+      var td0 = document.createElement('td');
+      td0.textContent=data[0][i].abreviatura;
+      td0.className = 'centrado';
+
+      tr.appendChild(td0);
 
       var td1 = document.createElement('td');
       td1.textContent=data[0][i].numactividad;
@@ -2663,6 +2669,8 @@ function getDataBuscar() {
       td13.textContent=data[0][i].observatrim;
       td13.className = 'observatrim';
       td13.id = data[0][i].idactividad;
+      td13.title = 'Clic para Modificar';
+      td13.style.cursor = 'pointer';
 
       tr.appendChild(td13);
 
@@ -2672,7 +2680,116 @@ function getDataBuscar() {
       } else {
         document.getElementById('resultBusqueda').innerHTML="<tr><td rowspan='10'>No se encontraron resultados</td></tr>";
       }
+
+      var _prefix_url;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+
+
+      $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
+          {     
+            type : 'textarea',
+            submitdata: { _method: "put" },
+            select : true,
+            cancel    : 'Cancelar',
+            submit    : 'Guardar',
+            rows: 4,
+            cols: 20,
+            onblur    : "ignore",    
+            indicator : "<img src='/images/guardar.gif'>",
+            tooltip   : "Clic para Modificar"
+          });
+
     }
   });
     
 }
+
+
+ /*************************************************************
+
+  Funcionalidad: Busca las coicidencia junto con los terminos
+  Parametros: obtiene el id del trimestre
+  Respuesta: crea la tabla de repórte estadistico
+
+***************************************************************/
+document.getElementById('btnEstadistico')?document.getElementById('btnEstadistico').addEventListener('click', getEstadistico, false):'';
+
+
+
+function getEstadistico() {
+  var idTri=document.getElementById('trimestre').value;
+  document.getElementById('loader').classList.remove('hidden');
+  document.getElementById('resultEstadistico').innerHTML="";
+
+  $.ajax({
+     type:'POST',
+     url:"gettrimestadistico",
+     data:{"_token": token,tri:idTri},
+     success:function(data){ 
+      //console.log(data[1]);
+
+      document.getElementById('loader').classList.add('hidden');
+      if (data[0].length>1) {
+
+        for (var i = 0; i < data[0].length; i++) {
+          var tr = document.createElement('tr');
+
+          var td0 = document.createElement('td');
+          td0.textContent=data[0][i].observatrim;
+          td0.className = 'centrado';
+
+          tr.appendChild(td0);
+
+          var td1 = document.createElement('td');
+          td1.textContent=data[0][i].total;
+          td1.className = 'centrado';
+
+          tr.appendChild(td1);
+
+          var td2 = document.createElement('td');
+          var num = (data[0][i].total*100)/data[1];
+          td2.textContent = num.toFixed(2)+'%';
+          td2.className = 'centrado';
+
+          tr.appendChild(td2);
+
+
+      document.getElementById('resultEstadistico').appendChild(tr);
+        }
+      document.getElementById('estTotal').innerHTML="Total de observaciones "+data[1];
+
+      } else {
+        document.getElementById('resultEstadistico').innerHTML="<tr><td rowspan='10'>No se encontraron resultados</td></tr>";
+      }
+
+      var _prefix_url;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+
+
+      $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
+          {     
+            type : 'textarea',
+            submitdata: { _method: "put" },
+            select : true,
+            cancel    : 'Cancelar',
+            submit    : 'Guardar',
+            rows: 4,
+            cols: 20,
+            onblur    : "ignore",    
+            indicator : "<img src='/images/guardar.gif'>",
+            tooltip   : "Clic para Modificar"
+          });
+
+    }
+  });
+    
+}
+
+
+/*************************************************************
+
+  Funcionalidad: cierra los menus y habre el que se esta utilizando
+  Parametros: clase active
+  Respuesta: crea la tabla de repórte estadistico
+
+***************************************************************/

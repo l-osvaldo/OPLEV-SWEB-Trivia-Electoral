@@ -1987,7 +1987,10 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
       $user   = auth()->user();
       $areaId = $user->idarea;    
 
-      $trimestral = Trimestral::where('observatrim', 'like', '%'.$palabra.'%')->get();
+      $trimestral = Trimestral::where('observatrim', 'like', '%'.$palabra.'%')
+      ->join('areas', 'trimestral.idarea', '=', 'areas.idarea')
+      ->groupBy('trimestral.idprogramaesp')
+      ->orderBy('trimestral.idarea','asc')->get();
       $action = route('reportes.trimestral');
 
 
@@ -2013,6 +2016,425 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    /**
+     * Funcionalidad: realiza una busqueda apartir de los parametros recibidos
+     * Parametros: $request
+     * Respuesta: regresa la vista poatrimestralb junto con los datos seleccionados
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function gettrimestadistico(Request $request)
+    {
+      
+
+     // $idArea = $request->area_trim;      
+     // $idPrograma = $request->programa_trim;
+     // $idProgramaEsp = $request->programaEsp_trim;    
+      $idTrimestre = $request->tri;
+     // $palabra = $request->pal; 
+
+      //campo de busqueda
+
+
+      //Obtengo los campos del área
+      /*
+      $areas = Area::where('idarea', $idArea)->get();
+      $trim_idarea = $idArea;
+      $trim_nombrearea = $areas[0]['nombrearea'];*/
+
+      //Obtengo los campos del programa
+
+
+      //$programas = Programa::where('idprograma', '=', $idPrograma)->get();     
+
+/*
+      if ($idPrograma==4)      
+      $programas = Programa::where('idprograma', '=', 4)->get();        
+      else
+      $programas = Programa::where('reprogramacion', '<', 3)->get();*/
+      
+/*
+      $trim_idprograma = $idPrograma;
+      $trim_claveprograma = $programas[0]['claveprograma'];
+      $trim_descprograma = $programas[0]['descprograma'];      */
+
+      //$programas = Programa::where('reprogramacion', '<', 3)->get();
+
+      //Obtengo los campos del programa especial o subprograma
+
+      /*
+      $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $trim_idprogramaesp = $idProgramaEsp;
+      $trim_claveprogramaesp = $programasesp[0]['claveprogramaesp'];
+      $trim_descprogramaesp = $programasesp[0]['descprogramaesp'];
+      $trim_objprogramaesp = $programasesp[0]['objprogramaesp'];  */
+
+      /*
+      Este seria un each global porque se tienen que hacer por cada una de las actividades las sig operaciones:
+      - recuperar el numero de la actividad, su descripcion, su unidad de medida y cantidad anual (estan en actividades)
+      - recuperar los campos inicio y termino (estan en porcentajep)
+      - Para el avance trimestral seleccionado, de la actividad involucrada:
+          recuperar los meses programados y sumar esas cantidades (estan en porcentajep)
+          recuperar los meses realizados y sumas esas cantidades (estan en porcentajer)
+          calcular la variacion (pendiente la formula)
+      - Para el avance acumulado de la actividad involucrada:          
+          recuperar los meses programados desde enero hasta el mes final que se obtiene con el ultimo del trimestral
+          recuperar los meses realizados desde enero hasta el mes final que se obtiene con el ultimo del trimestral
+          calcula la variacion
+      - En base a los cálculos trimestrales, guardar (aun se verá en donde) la observacion pertinente:
+          Meta Cumplida en su totalidad
+          Meta Rebasada          
+          personalizada tal como : Meta No Cumplida Por no registrarse Organizaciones de Observadores Electorales
+
+      */      
+      $actividades = Actividad::where('reprogramacion','<=',2)->orderBy('numactividad')->get();   
+      
+      DB::table('trimestral')->truncate();
+
+      foreach ($actividades as $key => $acti)
+      {
+        $reprogramacion = $acti->reprogramacion;
+        $trim_numactividad = $acti->numactividad;
+        $trim_descactividad = $acti->descactividad;
+        $trim_unidadmedida = $acti->unidadmedida;
+        $trim_cantidadanual = $acti->cantidadanual;
+        $actiporcentajep = $acti->idporcentajep;
+        $actiporcentajer = $acti->idporcentajer;
+        $trim_idactividad = $acti->idporcentajep;        
+        $bandera = $acti->bandera;
+        $reprog =  $acti->reprogramacion;
+
+
+        //cambio del segundo trimestre
+        //si es 1 ya se cerré ese trimestre
+        $trim1cerrado = $acti->trim1cerrado;
+        $trim2cerrado = $acti->trim2cerrado;
+        $trim3cerrado = $acti->trim3cerrado;
+        $trim4cerrado = $acti->trim4cerrado;
+
+        $bandera2 = $acti->bandera2;
+        $bandera3 = $acti->bandera3;
+        $bandera4 = $acti->bandera4;
+
+        //fin del cambio
+
+
+        
+        $porcentajep = PorcProgramado::where('idporcentajep', $actiporcentajep)->get();
+        $trim_inicio = $porcentajep[0]->inicio;
+        $trim_termino = $porcentajep[0]->termino;
+
+        //recuperar los meses programados, realizados y sumar esas cantidades (estan en porcentajep y porcentajer)
+        //recuperar los meses programados desde enero hasta el mes final que se obtiene con el ultimo del trimestral
+        $porcentajer = PorcRealizado::where('idporcentajer', $actiporcentajer)->get();
+        switch($idTrimestre)
+        {          
+          case 1:
+            $periodotrimestral = "Enero - Marzo";
+            $avtprogramado = $porcentajep[0]->enep + $porcentajep[0]->febp + $porcentajep[0]->marp;            
+            $avtrealizado = $porcentajer[0]->ener + $porcentajer[0]->febr + $porcentajer[0]->marr;
+            $avaprogramado = $porcentajep[0]->enep + $porcentajep[0]->febp + $porcentajep[0]->marp;            
+            $avarealizado = $porcentajer[0]->ener + $porcentajer[0]->febr + $porcentajer[0]->marr;
+            break;
+          case 2:
+            $periodotrimestral = "Abril - Junio";
+            $avtprogramado = $porcentajep[0]->abrp + $porcentajep[0]->mayp + $porcentajep[0]->junp;
+            $avtrealizado = $porcentajer[0]->abrr + $porcentajer[0]->mayr + $porcentajer[0]->junr;
+            $avaprogramado = $porcentajep[0]->enep + $porcentajep[0]->febp + $porcentajep[0]->marp + $porcentajep[0]->abrp + $porcentajep[0]->mayp + $porcentajep[0]->junp;
+            $avarealizado = $porcentajer[0]->ener + $porcentajer[0]->febr + $porcentajer[0]->marr + $porcentajer[0]->abrr + $porcentajer[0]->mayr + $porcentajer[0]->junr;
+            break;
+          case 3:
+            $periodotrimestral = "Julio - Septiembre";
+            $avtprogramado = $porcentajep[0]->julp + $porcentajep[0]->agop + $porcentajep[0]->sepp;
+            $avtrealizado = $porcentajer[0]->julr + $porcentajer[0]->agor + $porcentajer[0]->sepr;
+            $avaprogramado = $porcentajep[0]->enep + $porcentajep[0]->febp + $porcentajep[0]->marp + $porcentajep[0]->abrp + $porcentajep[0]->mayp + $porcentajep[0]->junp + $porcentajep[0]->julp + $porcentajep[0]->agop + $porcentajep[0]->sepp;
+            $avarealizado = $porcentajer[0]->ener + $porcentajer[0]->febr + $porcentajer[0]->marr + $porcentajer[0]->abrr + $porcentajer[0]->mayr + $porcentajer[0]->junr + $porcentajer[0]->julr + $porcentajer[0]->agor + $porcentajer[0]->sepr;
+            break;            
+          case 4:
+            $periodotrimestral = "Octubre - Diciembre";
+            $avtprogramado = $porcentajep[0]->octp + $porcentajep[0]->novp + $porcentajep[0]->dicp;
+            $avtrealizado = $porcentajer[0]->octr + $porcentajer[0]->novr + $porcentajer[0]->dicr;
+            $avaprogramado = $porcentajep[0]->enep + $porcentajep[0]->febp + $porcentajep[0]->marp + $porcentajep[0]->abrp + $porcentajep[0]->mayp + $porcentajep[0]->junp + $porcentajep[0]->julp + $porcentajep[0]->agop + $porcentajep[0]->sepp + $porcentajep[0]->octp + $porcentajep[0]->novp + $porcentajep[0]->dicp;
+            $avarealizado = $porcentajer[0]->ener + $porcentajer[0]->febr + $porcentajer[0]->marr + $porcentajer[0]->abrr + $porcentajer[0]->mayr + $porcentajer[0]->junr + $porcentajer[0]->julr + $porcentajer[0]->agor + $porcentajer[0]->sepr + $porcentajer[0]->octr + $porcentajer[0]->novr + $porcentajer[0]->dicr;            
+            break;            
+        }
+
+        //se calcula la variacion del avance trimestral
+        $resta = $avtrealizado - $avtprogramado;
+        if ( ($resta != 0) && ($avtprogramado != 0) )
+          $avtvariacion = ($resta * 100) / $avtprogramado;
+        else
+          $avtvariacion = 0;
+
+        //se calcula la cantidad y porcentaje de variacion del avance acumulado
+        $avacantidad = $avarealizado - $avaprogramado;
+        if ( ($avacantidad != 0) && ($avaprogramado != 0) )
+          $avaporcentaje = ($avacantidad * 100) / $avaprogramado;
+        else
+          $avaporcentaje = 0;
+
+        //faltan las observaciones que se guardaran en la tabla trimestral en el campo observatrim
+        // y guardarlo al mismo tiempo en otro campo en la tabla actividades, la cual debe de tener
+        //cuatro campos de observaciones, uno por cada trimestre.
+        //si $avaporcentaje = 0 "META CUMPLIDA"
+        //si $avaporcentaje = -100 "META NO CUMPLIDA"
+        //si $avaporcentaje <=-1 y >-100 "META PARCIALMENTE CUMPLIDA"
+        //si $avaporcentaje > 0 "META REBASADA"
+
+        //Consideraciones para "SIN VARIACION"
+        
+
+
+/*****Aqui comienzan los cambios derivados del segundo trimestre ***/
+
+      
+
+        if ($idTrimestre==1)
+        {
+          if ($trim1cerrado==1)
+            $observatrim = $acti->observatrim;
+          else
+          {
+            if ($bandera == 0 )
+            {        
+                if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                  $observatrim = "Meta Cumplida";
+                else 
+                  if (($avtprogramado == 0) && ($avaprogramado == 0))
+                    $observatrim = "Sin Variación";
+                  else
+                    if ($avaporcentaje == -100)
+                      $observatrim = "Meta No Cumplida";
+                    else
+                      if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                        $observatrim = "Meta Parcialmente Cumplida";
+                      else
+                        if ($avaporcentaje > 0)
+                          $observatrim = "Meta Rebasada";
+                        else 
+                          $observatrim = "";
+            }
+            else
+              $observatrim = $acti->observatrim;
+
+            //Ahora hay que guardar la observacion en la tabla actividades 
+            //en la actividad numero trim_idactividad
+            if ($bandera == 0 )
+              Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim' => $observatrim]);             
+          }          
+        }
+        else
+        {
+          if ($idTrimestre==2)
+          {
+
+            /*
+            var_dump($avtprogramado);
+            var_dump($avtrealizado);
+            die();*/
+
+            if ($trim2cerrado==1)
+              $observatrim = $acti->observatrim2;
+            else            
+            {
+              if ($bandera2 == 0 )
+              {
+        
+                  if (($avtprogramado == $avtrealizado) && ($avtprogramado!=0))
+                    $observatrim = "Meta Cumplida";
+                  else 
+                    if (($avtprogramado == 0) && ($avaprogramado == 0))
+                      $observatrim = "Sin Variación";
+                    else
+                      if ($avaporcentaje == -100)
+                        $observatrim = "Meta No Cumplida";
+                      else
+                        if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                          $observatrim = "Meta Parcialmente Cumplida";
+                        else
+                          if ($avaporcentaje > 0)
+                            $observatrim = "Meta Rebasada";
+                          else 
+                            $observatrim = "";
+              }
+              else
+                $observatrim = $acti->observatrim2;
+
+              //Ahora hay que guardar la observacion en la tabla actividades 
+              //en la actividad numero trim_idactividad
+              if ($bandera2 == 0 )
+                Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim2' => $observatrim]);             
+            } 
+
+          }
+          else
+          {
+
+            if ($idTrimestre==3)
+            {
+
+              /*
+              var_dump($avtprogramado);
+              var_dump($avtrealizado);
+              die();*/
+
+              if ($trim3cerrado==1)
+                $observatrim = $acti->observatrim3;
+              else            
+              {
+                if ($bandera3 == 0 )
+                {
+
+                    if (($avtprogramado == $avtrealizado) && ($avaprogramado == $avarealizado) && ($avarealizado!=0))
+                      $observatrim = "Meta Cumplida";
+                    else 
+                      if (($avtprogramado == 0) && ($avaprogramado == 0))
+                        $observatrim = "Sin Variación";
+                      else
+                        if ($avaporcentaje == -100)
+                          $observatrim = "Meta No Cumplida";
+                        else
+                          if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                            $observatrim = "Meta Parcialmente Cumplida";
+                          else
+                            if ($avaporcentaje > 0)
+                              $observatrim = "Meta Rebasada";
+                            else 
+                              $observatrim = "";
+                }
+                else
+                  $observatrim = $acti->observatrim3;
+
+                //Ahora hay que guardar la observacion en la tabla actividades 
+                //en la actividad numero trim_idactividad
+                if ($bandera3 == 0 )
+                  Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim3' => $observatrim]);
+              } 
+            }
+            else
+            {
+
+
+              if ($idTrimestre==4)
+              {
+
+                /*
+                var_dump($avtprogramado);
+                var_dump($avtrealizado);
+                die();*/
+
+                if ($trim4cerrado==1)
+                  $observatrim = $acti->observatrim4;
+                else            
+                {
+                  if ($bandera4 == 0 )
+                  {
+
+                      if (($avtprogramado == $avtrealizado) && ($avaprogramado == $avarealizado) && ($avarealizado!=0))
+                        $observatrim = "Meta Cumplida";
+                      else 
+                        if (($avtprogramado == 0) && ($avaprogramado == 0))
+                          $observatrim = "Sin Variación";
+                        else
+                          if ($avaporcentaje == -100)
+                            $observatrim = "Meta No Cumplida";
+                          else
+                            if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                              $observatrim = "Meta Parcialmente Cumplida";
+                            else
+                              if ($avaporcentaje > 0)
+                                $observatrim = "Meta Rebasada";
+                              else 
+                                $observatrim = "";
+                  }
+                  else
+                    $observatrim = $acti->observatrim4;
+
+                  //Ahora hay que guardar la observacion en la tabla actividades 
+                  //en la actividad numero trim_idactividad
+                  if ($bandera4 == 0 )
+                    Actividad::where('autoactividades',$trim_idactividad)->update(['observatrim4' => $observatrim]);
+                }
+              }              
+            }
+            //del idTrimestre==3
+          }
+          //del idTrimestre==2
+        }
+        //fin del else del segundo trimestre
+
+        //ahora vamos a guardar en la tabla auxiliar trimestral
+        $arrTrimestral = array(     
+          'reprogramacion' => $reprogramacion,     
+          'idactividad' => $trim_idactividad,
+          'idtrimestral' => $idTrimestre,
+          'periodotrimestral' => $periodotrimestral,
+          'idarea' => $actividades[$key]->idarea,
+          'nombrearea' => $actividades[$key]->idarea,
+          'idprograma' => $actividades[$key]->idprograma,
+          'claveprograma' => '',
+          'descprograma' => '',
+          'idprogramaesp' => $actividades[$key]->idprogramaesp,
+          'claveprogramaesp' => '',
+          'descprogramaesp' => '',
+          'objprogramaesp' => '',
+          'numactividad' => $trim_numactividad,
+          'descactividad' => $trim_descactividad,
+          'unidadmedida' => $trim_unidadmedida,
+          'cantidadanual' => $trim_cantidadanual,
+          'inicio' => $trim_inicio,
+          'termino' => $trim_termino,
+          'avtprogramado' => $avtprogramado,
+          'avtrealizado' => $avtrealizado,
+          'avtvariacion' => $avtvariacion,
+          'avaprogramado' => $avaprogramado,
+          'avarealizado' => $avarealizado,
+          'avacantidad' => $avacantidad,
+          'avaporcentaje' => $avaporcentaje,
+          'observatrim' => $observatrim
+          );
+
+        DB::table('trimestral')->insert($arrTrimestral);
+
+      }
+
+      ////////////////////$programas = Programa::where('reprogramacion', '<', 3)->get(); 
+
+      $user   = auth()->user();
+      $areaId = $user->idarea;    
+
+      $trimestral = Trimestral::select('observatrim', DB::raw('count(*) as total'))->groupby('observatrim')->get();
+      $tricount = Trimestral::count();
+      $action = route('reportes.trimestral');
+
+
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+
+          return response()->json([$trimestral,$tricount]);
+     
+    }
+
+
+
+
 
      /**
      * Funcionalidad: realiza una busqueda apartir de los parametros recibidos
@@ -2028,7 +2450,7 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
 
      
       $areas = Area::all();
-      $trimestres = Trimestre::orderBy('id', 'desc')->get();
+      $trimestres = Trimestre::orderBy('id', 'asc')->get();
       $user   = auth()->user();
       $areaId = $user->idarea;    
 
@@ -2055,6 +2477,45 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
 
 
 
+
+     /**
+     * Funcionalidad: realiza una busqueda de las estadisticas asociadas a los distintos resultados
+     * Parametros: $request
+     * Respuesta: regresa la vista trimestadistico junto con los datos seleccionados
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function trimestadistico(Request $request)
+    {
+      
+
+     
+      $areas = Area::all();
+      $trimestres = Trimestre::orderBy('id', 'asc')->get();
+      $user   = auth()->user();
+      $areaId = $user->idarea;    
+
+
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+
+          return view('pages.admin.trimestadistico')->with( compact('areas', 'trimestres', 'arrTrimestral', 'trimestral','nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
+
+
+
+     
+    }
 
 
 

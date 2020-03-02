@@ -242,11 +242,11 @@
             </a>
           </li>
 
-          <!--li class="nav-item has-treeview">
-            <a href="{{ route('admin.poa.trimestralpall') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodoall') ? 'active activeOn' : '' !!}">
+          <li class="nav-item has-treeview">
+            <a href="{{ route('reportes.trimestadistico') }}" class="textSideOption nav-link {!! Request::is('trimestadistico') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar" aria-hidden="true"></i> <p>Estadístico</p>
             </a>
-          </li-->
+          </li>
 
           </ul>
           </li>
