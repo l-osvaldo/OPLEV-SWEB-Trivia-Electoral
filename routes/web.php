@@ -50,6 +50,8 @@ Route::post('/rtrimestral', 'ReportesController@trimestral')->name('reportes.tri
 
 Route::put('/admin/guardarObsTrim', 'AdminController@guardarObsTrim')->name('admin.guardar.obs.trim');
 
+Route::put('/admin/guardarObsIndicador', 'AdminController@guardarObsIndicador')->name('admin.guardar.obs.indicador');
+
 
 Route::get('/reportes/poatrimestral', 'ReportesController@poatrimestral')->name('reportes.poa.trimestral');
 
@@ -128,5 +130,10 @@ Route::post('/gettrimbuscar', 'ReportesController@gettrimbuscar')->name('gettrim
 Route::get('/trimestadistico', 'ReportesController@trimestadistico')->name('reportes.trimestadistico');
 
 Route::post('/gettrimestadistico', 'ReportesController@gettrimestadistico')->name('gettrimestadistico');
+
+Route::get('/poatriindicador', 'AdminController@poatriindicador')->name('poatriindicador');
+
+Route::post('/gettriindicador', 'ReportesController@gettriindicador')->name('reportes.gettriindicador');
+
 });
 

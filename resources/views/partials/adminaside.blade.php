@@ -196,7 +196,7 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <!--li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link" style="background-color: #690e4f;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -208,19 +208,19 @@
 
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('admin.poa.trimestralp') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodo') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('poatriindicador') }}" class="textSideOption nav-link {!! Request::is('poatriindicador') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar" aria-hidden="true"></i> <p>Individual</p>
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+          <!--li class="nav-item has-treeview">
             <a href="{{ route('admin.poa.trimestralpall') }}" class="textSideOption nav-link {!! Request::is('poatrimestralgperiodoall') ? 'active activeOn' : '' !!}">
               <i class="fa fa-calendar" aria-hidden="true"></i> <p>Global</p>
             </a>
-          </li>
+          </li-->
 
           </ul>
-          </li-->
+          </li>
 
 
           <!----------------------------------------------------------------------------------->

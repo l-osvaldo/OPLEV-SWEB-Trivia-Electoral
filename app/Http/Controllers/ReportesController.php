@@ -27,6 +27,7 @@ class ReportesController extends Controller
       $user   = auth()->user();
       $areaId = $user->idarea; 
 
+      //Esto esta bien. 3/marzo/2020
       if (Auth::user()->idarea==3)              
         $programas = Programa::where('reprogramacion', '!=', 0)->get();
       else
@@ -63,7 +64,7 @@ class ReportesController extends Controller
         {          
           $meses = Mes::all();
           $areas = Area::all();
-          //$programas = Programa::where('reprogramacion', '<', 3)->get();
+          //Esto esta bien. 3/marzo/2020
           if (Auth::user()->idarea==3)                        
             $programas = Programa::where('reprogramacion', '!=', 0)->get();
           else
@@ -89,6 +90,7 @@ class ReportesController extends Controller
         else
         { 
           $meses = Mes::all();      
+          //Esto esta bien. 3/marzo/2020
           if (Auth::user()->idarea==3)                        
             $programas = Programa::where('reprogramacion', '!=', 0)->get();
           else
@@ -1177,22 +1179,14 @@ class ReportesController extends Controller
       $trim_nombrearea = $areas[0]['nombrearea'];
 
       //Obtengo los campos del programa
-
-
-$programas = Programa::where('idprograma', '=', $idPrograma)->get();     
-
-
-      if ($idPrograma==4)      
-      $programas = Programa::where('idprograma', '=', 4)->get();        
-      else
-      $programas = Programa::where('reprogramacion', '<', 3)->get();
-      
-
+      $programas = Programa::where('idprograma', '=', $idPrograma)->get();
       $trim_idprograma = $idPrograma;
       $trim_claveprograma = $programas[0]['claveprograma'];
       $trim_descprograma = $programas[0]['descprograma'];      
 
-      $programas = Programa::where('reprogramacion', '<', 3)->get();
+
+      //Este es para el select de la vista de seleccione un programa      
+      $programas = Programa::where('reprogramacion', '!=', 0)->get();
 
       //Obtengo los campos del programa especial o subprograma
       $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
@@ -2606,6 +2600,223 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
 
 
 
+    /**
+     * Funcionalidad: Genera un PDF general de los trimestrales
+     * Parametros: $request
+     * Respuesta: regresa la vista poatrimestralb junto con los datos seleccionados
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+     //Metodo para el botón Generar Reporte Indicadores Acumulado
+    public function indicadoracumulado(Request $request)
+    {
+      
+
+      $idArea = $request->area_trim;      
+      $idPrograma = $request->programa_trim;
+      $idProgramaEsp = $request->programaEsp_trim;          
+      $mesinicial = $request->mesinicial; 
+      $mesfinal = $request->mesfinal; 
+
+      $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+      $arrMesesAbr = [0,'ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];      
+
+      /*
+      var_dump($idArea);
+      var_dump($idPrograma);
+      var_dump($idProgramaEsp);
+      var_dump($mesinicial);
+      var_dump($mesfinal);*/
+
+      //Obtengo los campos del área
+      $areas = Area::where('idarea', $idArea)->get();
+      $cedulaacum_idarea = $idArea;
+      $cedulaacum_nombrearea = $areas[0]['nombrearea'];
+
+      //Obtengo los campos del programa
+      if ($idPrograma==4)      
+        $programas = Programa::where('idprograma', '=', 4)->get();        
+      else
+        $programas = Programa::where('reprogramacion', '<', 3)->get();
+      
+
+      $cedulaacum_idprograma = $idPrograma;
+      $cedulaacum_claveprograma = $programas[0]['claveprograma'];
+      $cedulaacum_descprograma = $programas[0]['descprograma'];      
+
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
+      //Obtengo los campos del programa especial o subprograma
+      $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $cedulaacum_idprogramaesp = $idProgramaEsp;
+      $cedulaacum_claveprogramaesp = $programasesp[0]['claveprogramaesp'];
+      $cedulaacum_descprogramaesp = $programasesp[0]['descprogramaesp'];
+      $cedulaacum_objprogramaesp = $programasesp[0]['objprogramaesp'];
+
+      DB::table('infocedulasacum')->truncate();     
+
+      //Aqui va todo el calculo habido y por haber
+      ///////
+
+
+
+      $listadoIndicadores = InfoCedula::where('actividades.idprograma', $idPrograma)->where('actividades.idprogramaesp', $idProgramaEsp)->where('actividades.idarea', $idArea)->where('infocedulas.reprogramacion', '<=', 2)->leftJoin('actividades', 'actividades.autoactividades', 'infocedulas.idcontrol')->leftJoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftJoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->get();
+
+
+
+      foreach ($listadoIndicadores as $indicador)
+      {
+
+
+        $reprogramacion = 0;
+        $cedulaacum_idactividad = $indicador->idcontrol;
+        $periodo = $arrMeses[$mesinicial] . " - " . $arrMeses[$mesfinal];
+        $cedulaacum_numindicador = 0;
+        $cedulaacum_nombreindicador = $indicador->nombreindicador;
+        $cedulaacum_identificadorindicador = $indicador->identificadorindicador;
+        $cedulaacum_abreviaturaperiodocump = $indicador->inicio . " - " . $indicador->termino;
+        $cedulaacum_unidadmedida = $indicador->unidadmedida;
+
+
+        //Es el total anual que se tiene proyectado realizar        
+        $cedulaacum_cantidadanual = $indicador->cantidadanual; 
+        /////
+
+        $banderaindicador = $indicador->banderaindicador;
+        $avaprogramado = 0;
+        $avarealizado = 0;
+        $avanceanual = 0;
+
+        //se obtiene el avance programado y realizado de enero al mes que se seleccionó
+        for ($i = 1; $i <= $mesfinal; $i++)
+        {
+          $mesp = $arrMesesAbr[$i]."p";
+          $mesr = $arrMesesAbr[$i]."r";
+          $avaprogramado = $avaprogramado + $indicador->$mesp;
+          $avarealizado = $avarealizado + $indicador->$mesr;
+        }
+
+
+
+        //se calcula la cantidad y porcentaje de variacion del avance acumulado
+        $avacantidad = $avarealizado - $avaprogramado;
+        if ( ($avacantidad != 0) && ($avaprogramado != 0) )
+          $avaporcentaje = ($avacantidad * 100) / $avaprogramado;
+        else
+          $avaporcentaje = 0;
+
+
+        $observaindicador = "";
+
+
+
+/*
+        if ($idTrimestre==1)
+        {
+          if ($trim1cerrado==1)
+            $observatrim = $acti->observatrim;
+          else
+          {*/
+            if ($banderaindicador == 0 )
+            {
+
+//$cedulaacum_cantidadanual
+
+              if ($indicador->reprogramacion == 3)
+                $observaindicador = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+              else          
+                  if ($avarealizado == $cedulaacum_cantidadanual)
+                //if (($avaprogramado == $avarealizado) && ($avaprogramado!=0))
+                  $observaindicador = "Meta Cumplida";
+                else 
+                  if (($avaprogramado == 0))
+                    $observaindicador = "Sin Variación";
+                  else
+                    if ($avaporcentaje == -100)
+                      $observaindicador = "Meta Faltante de Cumplimiento";
+                    else
+                        if ($avarealizado < $cedulaacum_cantidadanual)
+                      //if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                        $observaindicador = "Meta Parcialmente Cumplida";
+                      else
+                        if ($avarealizado > $cedulaacum_cantidadanual)
+                        //if ($avaporcentaje > 0)
+                          $observaindicador = "Meta Rebasada";
+                        else 
+                          $observaindicador = "";
+            
+            }
+            else
+              $observaindicador = $indicador->observaindicador;
+
+            //Ahora hay que guardar la observacion en la tabla infocedulas
+            if ($banderaindicador == 0 )
+              InfoCedula::where('idcontrol',$cedulaacum_idactividad)->update(['observaindicador' => $observaindicador]);
+
+            
+        //Ahora vamos a calcular el avance anual, para lo cual tengo que tomar $cedulaacum_cantidadanual
+        //y $avarealizado para obtener un porcentaje:
+        //$cedulaacum_cantidadanual es a 100
+        //$avarealizado es a x
+        //$avanceanual = round((($avarealizado * 100)/$cedulaacum_cantidadanual),2);
+        $avanceanual = ($avarealizado * 100)/$cedulaacum_cantidadanual;
+
+
+        //ahora vamos a guardar en la tabla auxiliar trimestral
+        $arrCedulaAcum = array(     
+          'reprogramacion' => $reprogramacion,     
+          'idactividad' => $cedulaacum_idactividad,          
+          'periodo' => $periodo,
+          'idarea' => $cedulaacum_idarea,
+          'nombrearea' => $cedulaacum_nombrearea,
+          'idprograma' => $cedulaacum_idprograma,
+          'claveprograma' => $cedulaacum_claveprograma,
+          'descprograma' => $cedulaacum_descprograma,
+          'idprogramaesp' => $cedulaacum_idprogramaesp,
+          'claveprogramaesp' => $cedulaacum_claveprogramaesp,
+          'descprogramaesp' => $cedulaacum_descprogramaesp,
+          'objprogramaesp' => $cedulaacum_objprogramaesp,
+          'numindicador' => $cedulaacum_numindicador,
+          'nombreindicador' => $cedulaacum_nombreindicador,
+          'identificadorindicador' => $cedulaacum_identificadorindicador,
+          'unidadmedida' => $cedulaacum_unidadmedida,
+          'cantidadanual' => $cedulaacum_cantidadanual,
+          'abreviaturaperiodocump' => $cedulaacum_abreviaturaperiodocump,
+          'avaprogramado' => $avaprogramado,
+          'avarealizado' => $avarealizado,
+          'avacantidad' => $avacantidad,
+          'avaporcentaje' => $avaporcentaje,
+          'avanceanual' => $avanceanual,
+          'observaindicador' => $observaindicador
+          );
+
+        DB::table('infocedulasacum')->insert($arrCedulaAcum);      
+      }
+
+
+
+      $areas = Area::all();      
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
+      $programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
+      $meses = Mes::all();
+      $infocedulasacum = InfoCedulaAcum::orderBy('identificadorindicador')->get();
+      //action del reporte pdf, cambiarlo
+      //$action = route('reportes.trimestral');
+      $action = route('reportes.indicadoracumulado');
+
+      return view('pages.admin.indicadoracumuladob')->with( compact('areas', 'programas', 'programaesp', 'action', 'arrCedulaAcum', 'infocedulasacum','mesinicial','mesfinal', 'meses'));
+
+
+
+
+    }
+
+
+
+
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2684,6 +2895,231 @@ $programas = Programa::where('idprograma', '=', $idPrograma)->get();
 
      
     }
+
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+
+
+    /**
+     * Funcionalidad: Genera un PDF por el periodo selecionada
+     * Parametros: $request
+     * Respuesta: regresa la vista poatrimestralperiodo junto con los datos seleccionados
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+
+
+    public function gettriindicador(Request $request)
+    {
+      
+    $idArea = $request->areai;
+    $idPrograma = $request->progi;
+    $idProgramaEsp = $request->pespi;
+    $mesinicial = $request->minii;
+    $mesfinal = $request->mfini;
+
+
+      $arrMeses = [0,'ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+      $arrMesesAbr = [0,'ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];      
+
+      /*
+      var_dump($idArea);
+      var_dump($idPrograma);
+      var_dump($idProgramaEsp);
+      var_dump($mesinicial);
+      var_dump($mesfinal);*/
+
+      //Obtengo los campos del área
+      $areas = Area::where('idarea', $idArea)->get();
+      $cedulaacum_idarea = $idArea;
+      $cedulaacum_nombrearea = $areas[0]['nombrearea'];
+
+      //Obtengo los campos del programa
+      if ($idPrograma==4)      
+        $programas = Programa::where('idprograma', '=', 4)->get();        
+      else
+        $programas = Programa::where('reprogramacion', '<', 3)->get();
+      
+
+      $cedulaacum_idprograma = $idPrograma;
+      $cedulaacum_claveprograma = $programas[0]['claveprograma'];
+      $cedulaacum_descprograma = $programas[0]['descprograma'];      
+
+      $programas = Programa::where('reprogramacion', '<', 3)->get();
+      //Obtengo los campos del programa especial o subprograma
+      $programasesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idprogramaesp', $idProgramaEsp)->where('idarea', $idArea)->get();
+      $cedulaacum_idprogramaesp = $idProgramaEsp;
+      $cedulaacum_claveprogramaesp = $programasesp[0]['claveprogramaesp'];
+      $cedulaacum_descprogramaesp = $programasesp[0]['descprogramaesp'];
+      $cedulaacum_objprogramaesp = $programasesp[0]['objprogramaesp'];
+
+      DB::table('infocedulasacum')->truncate();     
+
+      //Aqui va todo el calculo habido y por haber
+      ///////
+
+
+
+      $listadoIndicadores =  DB::table('infocedulas')->where('actividades.idprograma', $idPrograma)->where('actividades.idprogramaesp', $idProgramaEsp)->where('actividades.idarea', $idArea)->where('infocedulas.reprogramacion', '<=', 2)->leftJoin('actividades', 'actividades.autoactividades', 'infocedulas.idcontrol')->leftJoin('porcentajep', 'porcentajep.idporcentajep', 'actividades.idporcentajep')->leftJoin('porcentajer', 'porcentajer.idporcentajer', 'actividades.idporcentajer')->get();
+
+
+
+      foreach ($listadoIndicadores as $indicador)
+      {
+
+
+        $reprogramacion = 0;
+        $cedulaacum_idactividad = $indicador->idcontrol;
+        $periodo = $arrMeses[$mesinicial] . " - " . $arrMeses[$mesfinal];
+        $cedulaacum_numindicador = 0;
+        $cedulaacum_nombreindicador = $indicador->nombreindicador;
+        $cedulaacum_identificadorindicador = $indicador->identificadorindicador;
+        $cedulaacum_abreviaturaperiodocump = $indicador->inicio . " - " . $indicador->termino;
+        $cedulaacum_unidadmedida = $indicador->unidadmedida;
+
+
+        //Es el total anual que se tiene proyectado realizar        
+        $cedulaacum_cantidadanual = $indicador->cantidadanual; 
+        /////
+
+        $banderaindicador = $indicador->banderaindicador;
+        $avaprogramado = 0;
+        $avarealizado = 0;
+        $avanceanual = 0;
+
+        //se obtiene el avance programado y realizado de enero al mes que se seleccionó
+        for ($i = 1; $i <= $mesfinal; $i++)
+        {
+          $mesp = $arrMesesAbr[$i]."p";
+          $mesr = $arrMesesAbr[$i]."r";
+          $avaprogramado = $avaprogramado + $indicador->$mesp;
+          $avarealizado = $avarealizado + $indicador->$mesr;
+        }
+
+
+
+        //se calcula la cantidad y porcentaje de variacion del avance acumulado
+        $avacantidad = $avarealizado - $avaprogramado;
+        if ( ($avacantidad != 0) && ($avaprogramado != 0) )
+          $avaporcentaje = ($avacantidad * 100) / $avaprogramado;
+        else
+          $avaporcentaje = 0;
+
+
+        $observaindicador = "";
+
+
+
+/*
+        if ($idTrimestre==1)
+        {
+          if ($trim1cerrado==1)
+            $observatrim = $acti->observatrim;
+          else
+          {*/
+            if ($banderaindicador == 0 )
+            {
+
+//$cedulaacum_cantidadanual
+
+              if ($indicador->reprogramacion == 3)
+                $observaindicador = "Actividad afectada por la reprogramación de fecha 11 de marzo de 2019 según Acuerdo OPLEV/CG034/2019";
+              else          
+                  if ($avarealizado == $cedulaacum_cantidadanual)
+                //if (($avaprogramado == $avarealizado) && ($avaprogramado!=0))
+                  $observaindicador = "Meta Cumplida";
+                else 
+                  if (($avaprogramado == 0))
+                    $observaindicador = "Sin Variación";
+                  else
+                    if ($avaporcentaje == -100)
+                      $observaindicador = "Meta Faltante de Cumplimiento";
+                    else
+                        if ($avarealizado < $cedulaacum_cantidadanual)
+                      //if ( ($avaporcentaje < 0) && ($avaporcentaje > -100) )
+                        $observaindicador = "Meta Parcialmente Cumplida";
+                      else
+                        if ($avarealizado > $cedulaacum_cantidadanual)
+                        //if ($avaporcentaje > 0)
+                          $observaindicador = "Meta Rebasada";
+                        else 
+                          $observaindicador = "";
+            
+            }
+            else
+              $observaindicador = $indicador->observaindicador;
+
+            //Ahora hay que guardar la observacion en la tabla infocedulas
+            if ($banderaindicador == 0 )
+              DB::table('infocedulas')->where('idcontrol',$cedulaacum_idactividad)->update(['observaindicador' => $observaindicador]);
+
+            
+        //Ahora vamos a calcular el avance anual, para lo cual tengo que tomar $cedulaacum_cantidadanual
+        //y $avarealizado para obtener un porcentaje:
+        //$cedulaacum_cantidadanual es a 100
+        //$avarealizado es a x
+        //$avanceanual = round((($avarealizado * 100)/$cedulaacum_cantidadanual),2);
+        $avanceanual = ($avarealizado * 100)/$cedulaacum_cantidadanual;
+
+
+        //ahora vamos a guardar en la tabla auxiliar trimestral
+        $arrCedulaAcum = array(     
+          'reprogramacion' => $reprogramacion,     
+          'idactividad' => $cedulaacum_idactividad,          
+          'periodo' => $periodo,
+          'idarea' => $cedulaacum_idarea,
+          'nombrearea' => $cedulaacum_nombrearea,
+          'idprograma' => $cedulaacum_idprograma,
+          'claveprograma' => $cedulaacum_claveprograma,
+          'descprograma' => $cedulaacum_descprograma,
+          'idprogramaesp' => $cedulaacum_idprogramaesp,
+          'claveprogramaesp' => $cedulaacum_claveprogramaesp,
+          'descprogramaesp' => $cedulaacum_descprogramaesp,
+          'objprogramaesp' => $cedulaacum_objprogramaesp,
+          'numindicador' => $cedulaacum_numindicador,
+          'nombreindicador' => $cedulaacum_nombreindicador,
+          'identificadorindicador' => $cedulaacum_identificadorindicador,
+          'unidadmedida' => $cedulaacum_unidadmedida,
+          'cantidadanual' => $cedulaacum_cantidadanual,
+          'abreviaturaperiodocump' => $cedulaacum_abreviaturaperiodocump,
+          'avaprogramado' => $avaprogramado,
+          'avarealizado' => $avarealizado,
+          'avacantidad' => $avacantidad,
+          'avaporcentaje' => $avaporcentaje,
+          'avanceanual' => $avanceanual,
+          'observaindicador' => $observaindicador
+          );
+
+        DB::table('infocedulasacum')->insert($arrCedulaAcum);      
+      }
+
+
+
+      //$areas = Area::all();      
+      //$programas = Programa::where('reprogramacion', '<', 3)->get();
+      //$programaesp = ProgramaEsp::where('idprograma', $idPrograma)->where('idarea', $idArea)->get();
+      //$meses = Mes::all();
+      $infocedulasacum =  DB::table('infocedulasacum')->orderBy('identificadorindicador')->get();
+      //action del reporte pdf, cambiarlo
+      //$action = route('reportes.trimestral');
+      //$action = route('reportes.indicadoracumulado');
+
+      //return view('pages.admin.indicadoracumuladob')->with( compact('areas', 'programas', 'programaesp', 'action', 'arrCedulaAcum', 'infocedulasacum','mesinicial','mesfinal', 'meses'));
+
+      return response()->json([$infocedulasacum]);
+
+
+     
+    }
+
+
 
 
 

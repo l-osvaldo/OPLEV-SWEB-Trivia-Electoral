@@ -262,7 +262,9 @@ class AdminController extends Controller
 
           $areas = Area::all();
           $trimestres = Trimestre::all();
-          $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
+
+          $programas = Programa::where('reprogramacion', '!=', 0)->get();
+          
           $action = route('reportes.trimestral');
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
@@ -308,7 +310,9 @@ class AdminController extends Controller
 
           $areas = Area::all();
           $trimestres = Trimestre::all();
-          $programas = DB::table('programas')->where('reprogramacion', '<', 3)->get();
+
+          $programas = Programa::where('reprogramacion', '!=', 0)->get();
+
           $action = route('reportes.trimestral');
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
@@ -353,7 +357,7 @@ class AdminController extends Controller
         if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
         {          
 
-          $areas = Area::orderBy('idarea','desc')->get();
+          $areas = Area::orderBy('idarea','asc')->get();
           //$programas = DB::table('programas')->where('reprogramacion', '=', 1)->get();
           $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
           $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
@@ -380,6 +384,52 @@ class AdminController extends Controller
         return redirect()->route('login');        
       }
     }
+
+
+     /**
+     * Funcionalidad: Obtiene la vista del reporte por periodo del trimestre
+     * Parametros: 
+     * Respuesta: regresa la vista seleccionada con los parametros especificos
+     *
+     */
+
+    public function poatriindicador()
+    {
+
+      if (Auth::check())
+      {
+        
+        if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('consulta')) 
+        {          
+
+          $areas = Area::orderBy('idarea','asc')->get();
+          //$programas = DB::table('programas')->where('reprogramacion', '=', 1)->get();
+          $nfin = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'final')->get();
+          $alertasfin = DB::table('alertas')->where('ale_clase', 'final')->orderBy('ale_date', 'desc')->take(15)->get();
+          $alertas = DB::table('alertas')->where('ale_clase', 'edicion')->orderBy('ale_date', 'desc')->take(10)->get();
+          $nalertas = DB::table('alertas')->where('ale_tipo', 1)->where('ale_clase', 'edicion')->get();
+          $observaciones = DB::table('observaciones')->where('obs_status', 0)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->join('users', 'users.idarea', '=', 'actividades.idarea')
+          ->orderBy('obs_date', 'desc')->get();
+
+          $observacionesR = DB::table('observaciones')->where('obs_status', 1)
+          ->join('actividades', 'actividades.autoactividades', '=', 'obs_idactividad')
+          ->orderBy('obs_date', 'desc')->get();
+          return view('pages.admin.triindicador')->with( compact('areas', 'nfin', 'alertasfin','nalertas', 'alertas','observaciones','observacionesR'));
+
+        }
+        else
+        { 
+          return redirect()->route('login');
+        }
+      }
+      else
+      {
+        return redirect()->route('login');        
+      }
+    }
+
 
 
     /**
@@ -510,6 +560,39 @@ class AdminController extends Controller
       Trimestral::where('idactividad',$id)->update(['observatrim' => $modificacion]);
       return $modificacion;      
     }    
+
+
+     /**
+     * Funcionalidad: Guarda las observaciones del trimestre
+     * Parametros: $request
+     * Respuesta: $modificacion
+     *
+     */
+
+    public function guardarObsIndicador(Request $request)
+    {      
+      $id = $request->input('id');
+      $modificacion = $request->input('value');
+
+
+
+      //$modificacion = strtr($modificacion,"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      //guardo la observacion en la tabla actividades
+
+
+      //cambio en el segundo trimestral, comento la linea sig y sustituye por los campos del segundo trimestral observatrim2 bandera2
+      //Actividad::where('autoactividades',$id)->update(['observatrim' => $modificacion, 'bandera' => 1]);
+
+      DB::table('infocedulas')->where('idcontrol',$id)->update(['observaindicador' => $modificacion, 'banderaindicador' => 1]);
+
+
+      //fin del cambio
+
+      //guardo la observación en la tabla trimestral
+      DB::table('infocedulasacum')->where('idactividad',$id)->update(['observaindicador' => $modificacion]);
+      return $modificacion;      
+    }    
+
 
 
 

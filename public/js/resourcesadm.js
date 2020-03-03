@@ -2786,10 +2786,140 @@ function getEstadistico() {
 }
 
 
-/*************************************************************
+ /*************************************************************
 
-  Funcionalidad: cierra los menus y habre el que se esta utilizando
-  Parametros: clase active
-  Respuesta: crea la tabla de repórte estadistico
+  Funcionalidad: Busca las coicidencia junto con los terminos
+  Parametros: value id
+  Respuesta: crea el combo de las opciones
 
 ***************************************************************/
+document.getElementById('btnGetIndicadorAcum')?document.getElementById('btnGetIndicadorAcum').addEventListener('click', getindicadorAcum, false):'';
+
+
+
+function getindicadorAcum() {
+  var areai = document.getElementById('periodoarea').value;
+  var progi = document.getElementById('periodopro').value;
+  var pespi = document.getElementById('periodoproesp').value;
+  var minii = document.getElementById('minicial').value;
+  var mfini = document.getElementById('mfinal').value;
+  document.getElementById('loader').classList.remove('hidden');
+
+  document.getElementById('resultBusqueda').innerHTML="";
+
+  $.ajax({
+     type:'POST',
+     url:"gettriindicador",
+     data:{"_token": token,areai:areai,progi:progi,pespi:pespi,minii:minii,mfini:mfini},
+     success:function(data){ 
+      console.log(data[0]);
+      document.getElementById('loader').classList.add('hidden');
+      if (data[0].length>1) {
+
+         for (var i = 0; i < data[0].length; i++) {
+       var tr = document.createElement('tr');
+
+      var td1 = document.createElement('td');
+      td1.textContent=i+1;
+      td1.className = 'tittabla';
+
+      tr.appendChild(td1);
+
+      var td2 = document.createElement('td');
+      td2.textContent=data[0][i].nombreindicador;
+      td2.className = 'justificado';
+
+      tr.appendChild(td2);
+
+      var td3 = document.createElement('td');
+      td3.textContent=data[0][i].identificadorindicador;
+      td3.className = 'centrado';
+
+      tr.appendChild(td3);
+
+      var td4 = document.createElement('td');
+      td4.textContent=data[0][i].unidadmedida;
+      td4.className = 'centrado';
+
+      tr.appendChild(td4);
+
+      var td5 = document.createElement('td');
+      td5.textContent=data[0][i].cantidadanual;
+      td5.className = 'centrado';
+
+      tr.appendChild(td5);
+
+      var td6 = document.createElement('td');
+      td6.textContent=data[0][i].abreviaturaperiodocump;
+      td6.className = 'centrado';
+
+      tr.appendChild(td6);
+
+      var td10 = document.createElement('td');
+      td10.textContent=data[0][i].avaprogramado;
+      td10.className = 'centrado';
+
+      tr.appendChild(td10);
+
+      var td11 = document.createElement('td');
+      td11.textContent=data[0][i].avarealizado;
+      td11.className = 'centrado';
+
+      tr.appendChild(td11);
+
+      var td12 = document.createElement('td');
+      td12.textContent=data[0][i].avacantidad;
+      td12.className = 'centrado';
+
+      tr.appendChild(td12);
+
+      var td121 = document.createElement('td');
+      td121.textContent=data[0][i].avaporcentaje;
+      td121.className = 'centrado';
+
+      tr.appendChild(td121);
+
+      var td122 = document.createElement('td');
+      td122.textContent=data[0][i].avanceanual;
+      td122.className = 'centrado';
+
+      tr.appendChild(td122);
+
+      var td13 = document.createElement('td');
+      td13.textContent=data[0][i].observaindicador;
+      td13.className = 'observaindicador';
+      td13.id = data[0][i].idactividad;
+      td13.title = 'Clic para Modificar';
+      td13.style.cursor = 'pointer';
+
+      tr.appendChild(td13);
+
+      document.getElementById('resultBusqueda').appendChild(tr);
+        }
+
+      } else {
+        document.getElementById('resultBusqueda').innerHTML="<tr><td rowspan='10'>No se encontraron resultados</td></tr>";
+      }
+
+      var _prefix_url;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+
+
+      $('.observaindicador').editable(_prefix_url+'admin/guardarObsIndicador',
+          {     
+            type : 'textarea',
+            submitdata: { _method: "put" },
+            select : true,
+            cancel    : 'Cancelar',
+            submit    : 'Guardar',
+            rows: 4,
+            cols: 20,
+            onblur    : "ignore",    
+            indicator : "<img src='/images/guardar.gif'>",
+            tooltip   : "Clic para Modificar"
+          });
+
+    }
+  });
+    
+}
