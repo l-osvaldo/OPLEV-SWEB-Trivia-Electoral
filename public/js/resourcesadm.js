@@ -571,6 +571,8 @@ $(function() {
   Respuesta: 
 
 ***************************************************************/
+var urlload;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlload = "<img src='/images/guardar.gif'>" : urlload = "<img src='/sipseiv2/images/guardar.gif'>";
 
 
   $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
@@ -583,7 +585,7 @@ $(function() {
     rows: 4,
     cols: 20,
     onblur    : "ignore",    
-    indicator : "<img src='/images/guardar.gif'>",
+    indicator : urlload,
     tooltip   : "Clic para Modificar"
   });
 
@@ -2683,6 +2685,8 @@ function getDataBuscar() {
 
       var _prefix_url;
       $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+      var urlload;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlload = "<img src='/images/guardar.gif'>" : urlload = "<img src='/sipseiv2/images/guardar.gif'>";
 
 
       $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
@@ -2695,7 +2699,7 @@ function getDataBuscar() {
             rows: 4,
             cols: 20,
             onblur    : "ignore",    
-            indicator : "<img src='/images/guardar.gif'>",
+            indicator : urlload,
             tooltip   : "Clic para Modificar"
           });
 
@@ -2764,6 +2768,8 @@ function getEstadistico() {
 
       var _prefix_url;
       $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+      var urlload;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlload = "<img src='/images/guardar.gif'>" : urlload = "<img src='/sipseiv2/images/guardar.gif'>";
 
 
       $('.observatrim').editable(_prefix_url+'admin/guardarObsTrim',
@@ -2776,7 +2782,7 @@ function getEstadistico() {
             rows: 4,
             cols: 20,
             onblur    : "ignore",    
-            indicator : "<img src='/images/guardar.gif'>",
+            indicator : urlload,
             tooltip   : "Clic para Modificar"
           });
 
@@ -2906,6 +2912,9 @@ function getindicadorAcum() {
 
       var _prefix_url;
       $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? _prefix_url='/' : _prefix_url='./';
+      var urlload;
+      $('meta[name="app-prefix"]').attr('content') == 'http://sipseiv2.test' ? urlload = "<img src='/images/guardar.gif'>" : urlload = "<img src='/sipseiv2/images/guardar.gif'>";
+
 
 
       $('.observaindicador').editable(_prefix_url+'admin/guardarObsIndicador',
@@ -2918,7 +2927,7 @@ function getindicadorAcum() {
             rows: 4,
             cols: 20,
             onblur    : "ignore",    
-            indicator : "<img src='/images/guardar.gif'>",
+            indicator : urlload,
             tooltip   : "Clic para Modificar"
           });
 

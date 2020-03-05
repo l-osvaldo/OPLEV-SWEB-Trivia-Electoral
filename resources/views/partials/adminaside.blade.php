@@ -150,7 +150,7 @@
 
 
           <li class="nav-item has-treeview">
-            <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') ? 'active activeOn' : '' !!}">
+            <a href="{{ route('admin.poa.trimestral') }}" class="textSideOption nav-link {!! Request::is('poatrimestral') || Request::is('rtrimestral') ? 'active activeOn' : '' !!}">
               <i class="fa fa-file-o" aria-hidden="true"></i> <p>Individual</p>
             </a>
           </li>
