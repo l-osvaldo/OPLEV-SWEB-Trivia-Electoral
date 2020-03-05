@@ -123,7 +123,7 @@
 
         @endphp
 
-    @if($kpp == 7 || $kpp == 16 || $kpp == 24)    
+    @if($kpp == 7 || $kpp == 15 || $kpp == 23)    
 
       </table> <!--cerramos la tabla para realizar el salto-->
 
