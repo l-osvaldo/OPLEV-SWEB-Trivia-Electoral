@@ -2812,8 +2812,9 @@ function getindicadorAcum() {
      url:"gettriindicador",
      data:{"_token": token,areai:areai,progi:progi,pespi:pespi,minii:minii,mfini:mfini},
      success:function(data){ 
-      console.log(data[0]);
+      //console.log(data[0]);
       document.getElementById('loader').classList.add('hidden');
+      document.getElementById('tablaPDF').classList.remove('hidden');
       if (data[0].length>1) {
 
          for (var i = 0; i < data[0].length; i++) {
@@ -2897,6 +2898,8 @@ function getindicadorAcum() {
       document.getElementById('resultBusqueda').appendChild(tr);
         }
 
+      document.getElementById('pdfIndicadoracum').classList.remove('hidden');
+
       } else {
         document.getElementById('resultBusqueda').innerHTML="<tr><td rowspan='10'>No se encontraron resultados</td></tr>";
       }
@@ -2922,4 +2925,36 @@ function getindicadorAcum() {
     }
   });
     
+}
+
+/*************************************************************
+
+  Funcionalidad: habre el menu dependiendo de la ruta donde se encuentre el sistema
+  Parametros: elemento
+  Respuesta:
+
+***************************************************************/
+
+window.onload = function() {
+  closemenu();
+};
+
+function closemenu() {
+  var menustree = document.getElementsByClassName('menuClose');
+  for (var i = 0; i < menustree.length; i++) {
+    menustree[i].classList.remove('menu-open');
+    menustree[i].addEventListener("click", cierraMenu, false);
+   }
+  var pmenu = document.getElementsByClassName('activeOn')[0].parentNode.parentNode.parentNode;
+  pmenu.classList.add('menu-open');
+  pmenu.classList.add('activeMenu');
+  pmenu.querySelector('.nav-treeview').style.display="block";
+};
+
+function cierraMenu() {
+  this.classList.add('activeMenuClick');
+  var menustree = document.getElementsByClassName('menuClose');
+  for (var i = 0; i < menustree.length; i++) {
+    menustree[i].classList.contains('activeMenu') || menustree[i].classList.contains('activeMenuClick') ? menustree[i].classList.remove('activeMenuClick') : (menustree[i].classList.remove('menu-open'),menustree[i].children[1].style.display="none");
+  }
 }

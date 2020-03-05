@@ -135,5 +135,6 @@ Route::get('/poatriindicador', 'AdminController@poatriindicador')->name('poatrii
 
 Route::post('/gettriindicador', 'ReportesController@gettriindicador')->name('reportes.gettriindicador');
 
+Route::get('/pdfindicadoracum', 'ReportesController@pdfindicadoracum')->name('reportes.pdfindicadoracum');
 });
 

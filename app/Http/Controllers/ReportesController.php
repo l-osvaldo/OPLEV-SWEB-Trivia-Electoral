@@ -1026,6 +1026,45 @@ class ReportesController extends Controller
     }
 
 
+    /**
+     * Funcionalidad: crea un pdf del indicador acumulado, apartir de los datos recibidos
+     * Parametros: $request
+     * Respuesta: regresa un pdf
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function pdfindicadoracum(Request $request)
+    {
+      if ( Auth::check() )
+      {   
+
+        //$indPdf = DB::table('infocedulasacum')->get();
+
+        $InfoCedulaAcum =DB::table('infocedulasacum')->orderBy('identificadorindicador')->get();
+
+        //dd($InfoCedulaAcum);
+        $pdfs = PDFS::loadView('pages.poa.pdfindicadoracum',['InfoCedulaAcum'=>$InfoCedulaAcum])->setPaper('legal', 'landscape');
+        $pdfs->setOption('margin-top', 10);
+        $pdfs->setOption('margin-bottom', 10);
+        $pdfs->setOption('margin-left', 15);
+        $pdfs->setOption('margin-right', 10);
+        $pdfs->setOption('footer-font-size', 8);
+
+        //$pdfs->setOption('footer-html', date('Y-m-d H:i:s'));
+        $pdfs->setOption('load-error-handling','ignore');
+        //$pdfs->setOption('footer-right','[page] / [toPage]');
+        return $pdfs->inline('Reporte.pdf');
+
+
+      }
+      else
+      {
+        return redirect()->route('login');
+      }       
+    }
+
+
   /**
      * Funcionalidad: crea un pdf de las actividades adicionales, apartir de los datos recibidos
      * Parametros: $request

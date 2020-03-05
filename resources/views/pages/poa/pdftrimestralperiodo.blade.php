@@ -21,6 +21,7 @@
     .btable th, .btable td {
       border: 1px solid black;
     }
+     html {height: 0;}
 </style>
 
 
@@ -97,7 +98,7 @@
 
          $cantidad = intval($hijo[4])+intval($hijo[5])+intval($hijo[6])+intval($hijo[7])+intval($hijo[8])+intval($hijo[9])+intval($hijo[10])+intval($hijo[11])+intval($hijo[12])+intval($hijo[13])+intval($hijo[14])+intval($hijo[15]);
 
-         $periodo = $hijo[16].' - '.$hijo[17];
+         $periodo2 = $hijo[16].' - '.$hijo[17];
 
          $mesesp = ['',$hijo[4],$hijo[5],$hijo[6],$hijo[7],$hijo[8],$hijo[9],$hijo[10],$hijo[11],$hijo[12],$hijo[13],$hijo[14],$hijo[15]];
 
@@ -189,7 +190,7 @@
                 <td style="">{{$hijo[1]}}</td>
                 <td style="text-align: center;">{{$hijo[2]}}</td>
                 <td style="text-align: center;">{{$cantidad}}</td>
-                <td style="text-align: center;">{{$periodo}}</td>
+                <td style="text-align: center;">{{$periodo2}}</td>
                 <td style="text-align: center;">{{$programado}}</td>
                 <td style="text-align: center;">{{$realizado}}</td>
                 <td style="text-align: center;">{{number_format($variacion, 2, '.', ',')}}</td>
@@ -206,7 +207,7 @@
                 <td style="">{{$hijo[1]}}</td>
                 <td style="text-align: center;">{{$hijo[2]}}</td>
                 <td style="text-align: center;">{{$cantidad}}</td>
-                <td style="text-align: center;">{{$periodo}}</td>
+                <td style="text-align: center;">{{$periodo2}}</td>
                 <td style="text-align: center;">{{$programado}}</td>
                 <td style="text-align: center;">{{$realizado}}</td>
                 <td style="text-align: center;">{{number_format($variacion, 2, '.', ',')}}</td>

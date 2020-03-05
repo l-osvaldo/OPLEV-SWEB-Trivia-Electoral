@@ -82,7 +82,7 @@
   <hr>
 
 
-  <table border="3" style="font-size: .8em;text-align: center;border:solid 2px #f4f6f9; width: 100%;background: #fff;">
+  <table id="tablaPDF" class="hidden" border="3" style="font-size: .8em;text-align: center;border:solid 2px #f4f6f9; width: 100%;background: #fff;">
 
           
             <tr class="avances" style="background: #fce4ec;font-size: .8em;">
@@ -113,12 +113,14 @@
         </table>
 
 
-</div>
 
-      <!--form method="get" action="{{ route('reportes.rtrimestralall') }}" target="_blank" class="col-md-12 col-12">
-        <input type="hidden" id="datatrimestre" name="datatrimestre" value="1">                    
-        <button id="pdfAdicionalesGral" type="submit" class="btn btn-primary">Generar PDF General</button>
-      </form-->
+        <form method="get" action="{{ route('reportes.pdfindicadoracum') }}" target="_blank" class="col-md-12 col-12"> 
+        {{ csrf_field() }}                  
+        <button id="pdfIndicadoracum" type="submit" class="btn btn-primary hidden" style="margin: 20px 0;">Generar PDF</button>
+        </form>
+
+
+</div>
 
  
 

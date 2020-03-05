@@ -21,6 +21,7 @@
     .btable th, .btable td {
       border: 1px solid black;
     }
+     html {height: 0;}
 </style>
 
 

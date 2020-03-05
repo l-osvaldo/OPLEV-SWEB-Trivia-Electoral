@@ -86,7 +86,7 @@
           </li-->
 
 
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #EA0D94;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -138,7 +138,7 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #a04e00;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -167,7 +167,7 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #297b86;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -196,7 +196,7 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #690e4f;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -225,7 +225,7 @@
 
           <!----------------------------------------------------------------------------------->
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #321063;color: #FFF;">
               <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
               <p>
@@ -255,7 +255,7 @@
           <!----------------------------------------------------------------------------------->
 
 
-          <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menuClose">
             <a href="#" class="nav-link" style="background-color: #7d8c00;color: #FFF;">
               <i class="fa fa-flag" aria-hidden="true"></i>
               <p>
