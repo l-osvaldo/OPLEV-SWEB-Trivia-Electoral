@@ -123,7 +123,7 @@
 
         @endphp
 
-    @if($kpp == 8 || $kpp == 16 || $kpp == 24)    
+    @if($kpp == 7 || $kpp == 16 || $kpp == 24)    
 
       </table> <!--cerramos la tabla para realizar el salto-->
 
@@ -223,7 +223,7 @@
 
 <!--imprecion de la tabla para firmas-->
 
- @if($key == 79 || $key == 81 || $key == 82)
+ @if($key == 56 || $key == 81 || $key == 82)
 
 <tr>
   <td colspan="13" borde="0" style="border-right:solid 1px #fff;border-left:solid 1px #fff;">
