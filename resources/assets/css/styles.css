@@ -1,81 +1,78 @@
-.textoPrincipal{color: #EA0D94; font-weight: initial;font-size: 1.1em;}
-.salir{color: #EA0D94 !important;font-weight: initial; padding: .5rem 1rem;display: block}
-.imgUser{border-radius: 5px;}
-.textoSecundario{color: #333;font-size: 1.1em;}
-.navAdminLite{position: fixed;z-index: 949;top: 0;right: 0;left: 0;background: #fff;}
-.footerAdminLite{position: fixed;z-index: 949;bottom: 0;right: 0;left: 0;background: #fff;}
-.wrapperPading{padding: 57px 0;}
-.textSideOption{font-size: .95em;}
-.btn-primary:hover{background:#EA0D94 !important; }
-.info{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 
+/********************************HEADER.BLADE*******************************************************************************/
+.o-titulo-alertas{text-transform: uppercase;background: #eceff1; color: #EA0D94;}
+.o-alerta-texto{white-space: nowrap; overflow: hidden;text-overflow: ellipsis;text-transform: uppercase;border-bottom: 1px solid #fff;cursor: inherit;font-size: 12px;}
+.o-nueva-alerta{font-weight:bolder;}
+.o-alerta-final{background: #f3f3f4;border-right:solid 1px #f3f3f4; }
+.o-alerta-obsR{background: #f3f3f4;border-right:solid 1px #f3f3f4; }
+.o-alerta-obs{background: #f3f3f4;border-right:solid 1px #f3f3f4; }
+.o-alerta-edit{background: #f3f3f4;border-right:solid 1px #f3f3f4; }
+.o-alerta-logout{background:#f3f3f4;border-right:solid 1px #f3f3f4; }
+.navbar-light .navbar-nav .nav-link{color: #555;}
+.o-tiempo-fuera:after {content: "\00a0 \f071";font-family: FontAwesome;color: #EA0D94;}
+.o-alerta-vista{display: inline-block;float: left;}
+.o-alerta-vista-fecha{display: inline-block;float: right;background: #EA0D94; color: #fff; border-radius: 5px; padding: 1% 2%;}
+.o-alerta-footer{background: #eceff1;color: #000;}
+.o-nav-adminLite{position: fixed;z-index: 949;top: 0;right: 0;left: 0;background: #f3f3f4;box-shadow: 0px 4px 9px -3px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 4px 9px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 4px 9px -3px rgba(0,0,0,0.75);}
+.o-titulo-sistema{color: #555;font-size: 1em;display: inline-block;font-weight: bold;}
+.o-titulo-unidad{color: #555;font-size: .9em;display: inline-block;}
+.badge-warning{background: #EA0D94; color: #fff;}
+.o-salir{color: #EA0D94 !important;font-weight: initial;padding: .5rem 1rem;display: block;}
+/***********************************HEADER.BLADE******************************************************************************/
+
+
+/***********************************ASIDE.BLADE*******************************************************************************/
+.o-titulo-sistema-aside{font-size: .9rem;letter-spacing: 2px;line-height: 1 !important;text-align: center;padding: .5rem 0 0 0;}
+.o-pading-logo{background: #ccc;padding: .1rem;}
+.o-menu-principal{background-color: #EA0D94 !important;}
+.o-menu-secundario{background-color: #7d8c00 !important;}
+.o-menu-tres{background-color: #297b86 !important;}
+.o-menu-cuatro{background-color: #321063 !important;}
+.o-menu-sinco{background-color: #690e4f !important;}
+.o-menu-seis{background-color: #a04e00 !important;}
+.o-color-menu{color: #fff;}
+.o-logo-center{text-align: center;}
+.o-color-sub-menu{color: #f1ff2b !important;}
 .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover{background-color: #505050;color: #fff;}
+/***********************************ASIDE.BLADE*******************************************************************************/
 
 
-.badge-warning{background: #6d5622; color: #fff;}
-.hidden{display: none !important;}
-.inputMes{cursor: pointer;}
-.secForm{padding: 2% 4% 0 4%;}
-.card-header:first-child{background: #fce4ec; color: #000;}
-.contInput{height: auto;width: 100%;margin-bottom: 2%;}
+/***********************************AREA-TRABAJO.BLADE************************************************************************/
+.o-area-trabajo{background: #fff;min-height: 100vh; height: 100vh; height: auto !important;}
+.o-area-descripcion{border: solid 2px #ffa500;box-shadow: none;}
+.o-area-descripcion-icon{color:#ffa500;}
+.o-texto-color-ople{color: #EA0D94; font-weight: initial;font-size: 1.1em;}
+/***********************************AREA-TRABAJO.BLADE************************************************************************/
 
 
+/***********************************FOOTER.BLADE******************************************************************************/
+.o-footer-adminLite{position: fixed;z-index: 949;bottom: 0;right: 0;left: 0;background: #fff;}
+/***********************************FOOTER.BLADE******************************************************************************/
 
+
+/***********************************GENERAL.BLADE*****************************************************************************/
+.o-wrapper-pading{padding: 57px 0;}
+.o-btn-ople:hover{background:#EA0D94 !important; }
+.form-control:focus {border-color: #EA0D94;box-shadow: none;}
+/***********************************GENERAL.BLADE*****************************************************************************/
+
+
+/**********************************LOADER.BLADE*******************************************************************************/
+.o-hidden-loader{display: none !important;}
 #loader{position: fixed;width: 100vw; height: 100vh;background: #f9f9f9; opacity: .8;top: 0;left: 0;z-index: 9999999999999;}
-  .cubes {
-   width: 40px;
-   height: 40px;
-   margin: 100px auto;z-index: 9999;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   margin-top: -40px; /* Half the height */
-   margin-left: -40px; /* Half the width */
-  }
-  
-  .cubes .sk-cube {
-   width: 33%;
-   height: 33%;
-   background-color: #E71096;
-   float: left;
-   animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  }
-  
-  .cubes .sk-cube1 {
-   animation-delay: 0.2s;
-  }
-  
-  .cubes .sk-cube2 {
-   animation-delay: 0.3s;
-  }
-  
-  .cubes .sk-cube3 {
-   animation-delay: 0.4s;
-  }
-  
-  .cubes .sk-cube4 {
-   animation-delay: 0.1s;
-  }
-  
-  .cubes .sk-cube5 {
-   animation-delay: 0.2s;
-  }
-  
-  .cubes .sk-cube6 {
-   animation-delay: 0.3s;
-  }
-  
-  .cubes .sk-cube7 {
-   animation-delay: 0s;
-  }
-  
-  .cubes .sk-cube8 {
-   animation-delay: 0.1s;
-  }
-  
-  .cubes .sk-cube9 {
-   animation-delay: 0.2s;
-  }
+.cubes {width: 40px;height: 40px;margin: 100px auto;z-index: 9999;position: absolute;top: 50%;left: 50%;margin-top: -40px;margin-left: -40px;}
+.cubes .sk-cube {width: 33%;height: 33%;background-color: #E71096;float: left;animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;}
+.cubes .sk-cube1 {animation-delay: 0.2s;}
+.cubes .sk-cube2 {animation-delay: 0.3s;}
+.cubes .sk-cube3 {animation-delay: 0.4s;}
+.cubes .sk-cube4 {animation-delay: 0.1s;}
+.cubes .sk-cube5 {animation-delay: 0.2s;}
+.cubes .sk-cube6 {animation-delay: 0.3s;}
+.cubes .sk-cube7 {animation-delay: 0s;}
+.cubes .sk-cube8 {animation-delay: 0.1s;}
+.cubes .sk-cube9 {animation-delay: 0.2s;}
   
   @keyframes sk-cubeGridScaleDelay {
    0%,
@@ -87,6 +84,5 @@
     transform: scale3D(0, 0, 1);
    }
   }
-
-
+/**********************************LOADER.BLADE******************************************************************************/
 

@@ -29,7 +29,7 @@
               @csrf                
 
               <div class="form-group">
-                <input id="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="Nombre de usuario">
+                <input id="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" autofocus placeholder="Nombre de usuario">
                 @if ($errors->has('username'))
                   <span class="invalid-feedback" role="alert">
                   <strong>{{ $errors->first('username') }}</strong>
@@ -38,7 +38,7 @@
               </div>
 
               <div class="form-group">
-                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Contraseña">
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Contraseña">
                 @if ($errors->has('password'))
                   <span class="invalid-feedback" role="alert">
                   <strong>{{ $errors->first('password') }}</strong>
