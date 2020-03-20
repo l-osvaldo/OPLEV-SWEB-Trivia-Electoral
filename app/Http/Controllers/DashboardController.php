@@ -32,6 +32,18 @@ class DashboardController extends Controller
     {
         Auth::check() ? $vista = view('loaderEjemplo') : $vista = redirect()->route('login');
         return $vista;
-    }   
+    }
+
+    public function widgetspagina()
+    {
+        Auth::check() ? $vista = view('sweetAlertExample') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function tablaspagina()
+    {
+        Auth::check() ? $vista = view('dataTables') : $vista = redirect()->route('login');
+        return $vista;
+    }      
 
 }

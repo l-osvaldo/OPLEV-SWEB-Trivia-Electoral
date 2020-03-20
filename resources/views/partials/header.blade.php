@@ -16,7 +16,7 @@
       <!---------------------------------------------------- ALERTA 1 ----------------------------------------------------->
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones contestadas">
           <a class="nav-link o-alerta-obsR" id="iconAlertObs" data-toggle="dropdown" href="#">
-            <i class="fa fa-reply" aria-hidden="true"></i>
+            <i class="fas fa-reply-all" aria-hidden="true"></i>
             <span id="campanaAlertObsR" class="badge badge-warning navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -35,7 +35,7 @@
       <!----------------------------------------------------- ALERTA 2 ------------------------------------------------------>
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones enviadas">
           <a class="nav-link o-alerta-obs" id="iconAlertObs" data-toggle="dropdown" href="#">
-            <i class="fa fa-paper-plane-o"></i>       
+            <i class="fas fa-paper-plane"></i>       
             <span id="campanaAlertObs" class="badge badge-warning navbar-badge">1</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -59,7 +59,7 @@
       <!----------------------------------------------------- ALERTA 3 ------------------------------------------------------>
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación mensual">
           <a class="nav-link o-alerta-final" id="iconAlertfin" data-toggle="dropdown" href="#">
-            <i class="fa fa-exclamation-circle" ></i>  
+            <i class="fas fa-exclamation-triangle" ></i>  
               <span class="badge badge-warning navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -80,7 +80,7 @@
       <!------------------------------------------------------- ALERTA 4 ------------------------------------------------------->
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación de actividad">
           <a class="nav-link o-alerta-edit" id="iconAlert" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell-o"></i>      
+            <i class="far fa-bell"></i>      
             <span class="badge badge-warning navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -101,7 +101,7 @@
       <!-- logout -->
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Cerrar sesión">
           <a class="nav-link o-alerta-logout" data-toggle="dropdown" href="#">
-            <i class="fa fa-user"></i>
+            <i class="fas fa-user-tie"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="o-salir"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a>
