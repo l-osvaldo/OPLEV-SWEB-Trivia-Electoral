@@ -13,11 +13,7 @@
   <meta name="app-prefix" content="{{ url('/') }}">
   <!-- LARAVEL JAVASCRIPT -->
   <script src="{{ asset('js/app.js') }}"></script>
-  <!-- ADMINLITE style -->
-  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <!-- ICONS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> 
-  <!-- OPLE style --> 
+   <!-- OPLE style --> 
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <!-- CSS's DE LARAVEL -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -68,10 +64,6 @@
 <!-- DataTables -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<!-- Scripts -->
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<!-- DESARROLLO -->
 <script src="{{ asset('js/dashboard.js') }}"></script>     
 <script src="{{ asset('js/validainput.js') }}"></script>
 <script src="{{ asset('js/datatables.js') }}"></script>
