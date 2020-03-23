@@ -15,8 +15,6 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <!-- CSS's DE LARAVEL -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <!-- DATATABLES -->
-  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

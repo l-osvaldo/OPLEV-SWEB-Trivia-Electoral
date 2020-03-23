@@ -2,6 +2,10 @@
 @import 'variables';
 //AdminLTE
 @import '~admin-lte/dist/css/adminlte.css';
+//OPLE scripts
+@import "../assets/css/styles.css";
+//Responsive dataTables
+@import "../assets/plugins/dataTables/dataTables.bootstrap4.min.css";
 $fa-font-path:        "../webfonts";
 
 //Font Awesome
@@ -13,5 +17,3 @@ $fa-font-path:        "../webfonts";
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-//OPLE scripts
-@import "../assets/css/styles.css";
