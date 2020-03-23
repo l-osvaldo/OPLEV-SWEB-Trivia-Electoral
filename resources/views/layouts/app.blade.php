@@ -13,8 +13,6 @@
   <meta name="app-prefix" content="{{ url('/') }}">
   <!-- LARAVEL JAVASCRIPT -->
   <script src="{{ asset('js/app.js') }}"></script>
-   <!-- OPLE style --> 
-  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <!-- CSS's DE LARAVEL -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <!-- DATATABLES -->

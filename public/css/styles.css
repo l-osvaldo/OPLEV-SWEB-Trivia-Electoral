@@ -18,7 +18,7 @@
 -moz-box-shadow: 0px 4px 9px -3px rgba(0,0,0,0.75);}
 .o-titulo-sistema{color: #555;font-size: 1em;display: inline-block;font-weight: bold;}
 .o-titulo-unidad{color: #555;font-size: .9em;display: inline-block;}
-.badge-warning{background: #EA0D94; color: #fff;}
+.badge-oplever{background: #EA0D94; color: #fff;}
 .o-salir{color: #EA0D94 !important;font-weight: initial;padding: .5rem 1rem;display: block;}
 /***********************************HEADER.BLADE******************************************************************************/
 

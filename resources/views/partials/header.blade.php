@@ -15,9 +15,9 @@
       <div id="repEmail"></div>
       <!---------------------------------------------------- ALERTA 1 ----------------------------------------------------->
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones contestadas">
-          <a class="nav-link o-alerta-obsR" id="iconAlertObs" data-toggle="dropdown" href="#">
+          <a class="nav-link" id="iconAlertObs" data-toggle="dropdown" href="#">
             <i class="fas fa-reply-all" aria-hidden="true"></i>
-            <span id="campanaAlertObsR" class="badge badge-warning navbar-badge">2</span>
+            <span id="campanaAlertObsR" class="badge badge-oplever navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header o-titulo-alertas">Observaciones contestadas</span>
@@ -36,7 +36,7 @@
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Observaciones enviadas">
           <a class="nav-link o-alerta-obs" id="iconAlertObs" data-toggle="dropdown" href="#">
             <i class="fas fa-paper-plane"></i>       
-            <span id="campanaAlertObs" class="badge badge-warning navbar-badge">1</span>
+            <span id="campanaAlertObs" class="badge badge-oplever navbar-badge">1</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header o-titulo-alertas">Observaciones enviadas</span>
@@ -59,8 +59,8 @@
       <!----------------------------------------------------- ALERTA 3 ------------------------------------------------------>
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación mensual">
           <a class="nav-link o-alerta-final" id="iconAlertfin" data-toggle="dropdown" href="#">
-            <i class="fas fa-exclamation-triangle" ></i>  
-              <span class="badge badge-warning navbar-badge">2</span>
+            <i class="fas fa-exclamation-triangle"></i>  
+              <span class="badge badge-oplever navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header o-titulo-alertas">Notificación mensual</span>
@@ -81,7 +81,7 @@
         <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title="" data-original-title="Notificación de actividad">
           <a class="nav-link o-alerta-edit" id="iconAlert" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>      
-            <span class="badge badge-warning navbar-badge">2</span>
+            <span class="badge badge-oplever navbar-badge">2</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header o-titulo-alertas">Notificación de actividad</span>
