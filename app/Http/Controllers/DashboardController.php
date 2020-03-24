@@ -50,6 +50,6 @@ class DashboardController extends Controller
     {
         Auth::check() ? $vista = view('widgets') : $vista = redirect()->route('login');
         return $vista;
-    }   
+    }
 
 }
