@@ -1,7 +1,3 @@
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-
 /*************************************************************
 
   Funcionalidad: habre el menu dependiendo de la ruta donde se encuentre el sistema

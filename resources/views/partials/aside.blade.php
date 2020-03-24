@@ -117,7 +117,7 @@
         <!----------------------------------------------------------------------------------->
 
         <li class="nav-item has-treeview menuClose">
-          <a href="#" class="nav-link o-menu-sinco">
+          <a href="#" class="nav-link o-menu-cinco">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
               Lorem ipsum dolor

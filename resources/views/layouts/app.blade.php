@@ -53,15 +53,7 @@
     <b>OPLE</b> VERACRUZ
   </div>
 </footer>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<!-- jQuery UI-->
-<script src="{{ asset('js/jQueryUI/jquery-ui.min.js') }}"></script> 
-<!-- DataTables -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('js/dashboard.js') }}"></script>     
-<script src="{{ asset('js/validainput.js') }}"></script>
-<script src="{{ asset('js/datatables.js') }}"></script>
+<!-- PROJECT JAVASCRIPT -->
+<script src="js/all.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,7 +18,16 @@ mix.webpackConfig({
       'assets': path.resolve('resources/assets')
     }
   }
-});
+}); 
+
+mix.scripts([
+	'node_modules/admin-lte/plugins/jquery/jquery.min.js',
+	'node_modules/admin-lte/plugins/jquery/jquery-ui.min.js',
+    'node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js',
+    'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap4.min.js',
+    'resources/assets/js/dashboard.js',
+    'resources/assets/js/datatables.js'
+], 'public/js/all.js');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
