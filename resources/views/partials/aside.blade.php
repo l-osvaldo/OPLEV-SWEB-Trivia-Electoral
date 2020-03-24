@@ -62,15 +62,21 @@
           <a href="#" class="nav-link o-menu-seis">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
-              Widgets
+              UI Elements
               <i class="right fa fa-chevron-left" aria-hidden="true"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
 
-
             <li class="nav-item has-treeview">
               <a href="{{ route('front.widgets') }}" class="textSideOption nav-link {!! Request::is('widgets') ? 'active activeOn' : '' !!}">
+                <i class="far fa-star"></i> <p>Widgets</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.swal') }}" class="textSideOption nav-link {!! Request::is('swal') ? 'active activeOn' : '' !!}">
                 <i class="fas fa-exclamation-triangle"></i> <p>Sweet Alert</p>
               </a>
             </li>

@@ -1,11 +1,14 @@
 //Variables
 @import 'variables';
+
 //AdminLTE
 @import '~admin-lte/dist/css/adminlte.css';
-//Responsive dataTables
-@import '~admin-lte/plugins/datatables/dataTables.bootstrap4.min.css';
+
 //OPLE scripts
 @import "../assets/css/styles.css";
+
+//Responsive dataTables
+@import '~admin-lte/plugins/datatables/dataTables.bootstrap4.min.css';
 
 $fa-font-path:        "../webfonts";
 

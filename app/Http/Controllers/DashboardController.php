@@ -34,7 +34,7 @@ class DashboardController extends Controller
         return $vista;
     }
 
-    public function widgetspagina()
+    public function swal()
     {
         Auth::check() ? $vista = view('sweetAlertExample') : $vista = redirect()->route('login');
         return $vista;
@@ -44,6 +44,12 @@ class DashboardController extends Controller
     {
         Auth::check() ? $vista = view('dataTables') : $vista = redirect()->route('login');
         return $vista;
-    }      
+    }
+
+    public function widgets()
+    {
+        Auth::check() ? $vista = view('widgets') : $vista = redirect()->route('login');
+        return $vista;
+    }   
 
 }

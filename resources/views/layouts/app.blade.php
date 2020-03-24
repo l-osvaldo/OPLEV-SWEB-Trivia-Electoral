@@ -19,7 +19,7 @@
 
 <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div id="app"></div>
-  <div class="wrapper o-wrapper-pading">
+  <div class="wrapper">
     <!-- Aside -->
     @include('partials.header')
     @include('partials.aside')
