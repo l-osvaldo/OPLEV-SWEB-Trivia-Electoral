@@ -164,92 +164,6 @@
 		<!-- /.row -->
 
 		<!-- =========================================================== -->
-		<h5 class="mt-4 mb-2">Info Box Con<code>bg-gradient-*</code></h5>
-		<div class="row">
-			<div class="col-md-3 col-sm-6 col-12">
-				<div class="info-box bg-gradient-info">
-					<span class="info-box-icon"><i class="far fa-bookmark"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Marcadores</span>
-						<span class="info-box-number">41,410</span>
-
-						<div class="progress">
-							<div class="progress-bar" style="width: 70%"></div>
-						</div>
-						<span class="progress-description">
-							70% Incremento en 30 Días
-						</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-md-3 col-sm-6 col-12">
-				<div class="info-box bg-gradient-success">
-					<span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Me Gusta</span>
-						<span class="info-box-number">41,410</span>
-
-						<div class="progress">
-							<div class="progress-bar" style="width: 70%"></div>
-						</div>
-						<span class="progress-description">
-							70% Incremento en 30 Días
-						</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-md-3 col-sm-6 col-12">
-				<div class="info-box bg-gradient-warning">
-					<span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Eventos</span>
-						<span class="info-box-number">41,410</span>
-
-						<div class="progress">
-							<div class="progress-bar" style="width: 70%"></div>
-						</div>
-						<span class="progress-description">
-							70% Incremento en 30 Días
-						</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-md-3 col-sm-6 col-12">
-				<div class="info-box bg-gradient-danger">
-					<span class="info-box-icon"><i class="fas fa-comments"></i></span>
-
-					<div class="info-box-content">
-						<span class="info-box-text">Comentarios</span>
-						<span class="info-box-number">41,410</span>
-
-						<div class="progress">
-							<div class="progress-bar" style="width: 70%"></div>
-						</div>
-						<span class="progress-description">
-							70% Incremento en 30 Días
-						</span>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-		</div>
-		<!-- /.row -->
-
-		<!-- =========================================================== -->
 
 		<!-- Small Box (Stat card) -->
 		<h5 class="mb-2 mt-4">Small Box</h5>
@@ -324,10 +238,9 @@
 			<!-- ./col -->
 		</div>
 		<!-- /.row -->
-		<section class="content-header">
-			<div class="container-fluid">	
+		<h5 class="mb-2 mt-4">Social Widgets</h5>	
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col">
 						<!-- Widget: user widget style 2 -->
 						<div class="card card-widget widget-user-2">
 							<!-- Add the bg color to the header using any of the bg-* classes -->
@@ -337,28 +250,28 @@
 								</div>
 								<!-- /.widget-user-image -->
 								<h3 class="widget-user-username">Nadia Carmichael</h3>
-								<h5 class="widget-user-desc">Lead Developer</h5>
+								<h5 class="widget-user-desc">Lorem Ipsum</h5>
 							</div>
 							<div class="card-footer p-0">
 								<ul class="nav flex-column">
 									<li class="nav-item">
 										<a href="#" class="nav-link">
-											Projects <span class="float-right badge bg-primary">31</span>
+											Lorem Ipsum <span class="float-right badge bg-primary">31</span>
 										</a>
 									</li>
 									<li class="nav-item">
 										<a href="#" class="nav-link">
-											Tasks <span class="float-right badge bg-info">5</span>
+											Lorem Ipsum <span class="float-right badge bg-info">5</span>
 										</a>
 									</li>
 									<li class="nav-item">
 										<a href="#" class="nav-link">
-											Completed Projects <span class="float-right badge bg-success">12</span>
+											Lorem Ipsum <span class="float-right badge bg-success">12</span>
 										</a>
 									</li>
 									<li class="nav-item">
 										<a href="#" class="nav-link">
-											Followers <span class="float-right badge bg-danger">842</span>
+											Lorem Ipsum <span class="float-right badge bg-danger">842</span>
 										</a>
 									</li>
 								</ul>
@@ -367,13 +280,13 @@
 						<!-- /.widget-user -->
 					</div>
 					<!-- /.col -->
-					<div class="col-md-4">
+					<div class="col">
 						<!-- Widget: user widget style 1 -->
 						<div class="card card-widget widget-user">
 							<!-- Add the bg color to the header using any of the bg-* classes -->
 							<div class="widget-user-header bg-info">
 								<h3 class="widget-user-username">Alexander Pierce</h3>
-								<h5 class="widget-user-desc">Founder & CEO</h5>
+								<h5 class="widget-user-desc">Lorem Ipsum</h5>
 							</div>
 							<div class="widget-user-image">
 								<img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
@@ -383,7 +296,7 @@
 									<div class="col-sm-4 border-right">
 										<div class="description-block">
 											<h5 class="description-header">3,200</h5>
-											<span class="description-text">SALES</span>
+											<span class="description-text">Lorem Ipsum</span>
 										</div>
 										<!-- /.description-block -->
 									</div>
@@ -391,7 +304,7 @@
 									<div class="col-sm-4 border-right">
 										<div class="description-block">
 											<h5 class="description-header">13,000</h5>
-											<span class="description-text">FOLLOWERS</span>
+											<span class="description-text">Lorem Ipsum</span>
 										</div>
 										<!-- /.description-block -->
 									</div>
@@ -399,7 +312,7 @@
 									<div class="col-sm-4">
 										<div class="description-block">
 											<h5 class="description-header">35</h5>
-											<span class="description-text">PRODUCTS</span>
+											<span class="description-text">Lorem Ipsum</span>
 										</div>
 										<!-- /.description-block -->
 									</div>
@@ -410,7 +323,45 @@
 						</div>
 						<!-- /.widget-user -->
 					</div>
-					<!-- /.col -->
 				</div>
-			</section>	
-			@endsection
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+		<!-- /.col -->
+		<!-- /.col (left) -->
+		<div class="col-md-6">
+			<h5 class="mb-2 mt-4">Progress Bars</h5>	
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Progress bars</h3>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<div class="progress mb-3">
+						<div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+						aria-valuemax="100" style="width: 40%">
+						<span class="sr-only">40% Complete (success)</span>
+					</div>
+				</div>
+				<div class="progress mb-3">
+					<div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+					aria-valuemax="100" style="width: 20%">
+					<span class="sr-only">20% Complete</span>
+				</div>
+			</div>
+			<div class="progress mb-3">
+				<div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+				aria-valuemax="100" style="width: 60%">
+				<span class="sr-only">60% Complete (warning)</span>
+			</div>
+		</div>
+		<div class="progress mb-3">
+			<div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+			aria-valuemax="100" style="width: 80%">
+			<span class="sr-only">80% Complete</span>
+		</div>
+	</div>
+	<!-- /.col (right) -->
+</div>
+</section>	
+@endsection
