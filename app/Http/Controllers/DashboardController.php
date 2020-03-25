@@ -52,4 +52,10 @@ class DashboardController extends Controller
         return $vista;
     }
 
+    public function cuadros()
+    {
+        Auth::check() ? $vista = view('cuadros') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
 }

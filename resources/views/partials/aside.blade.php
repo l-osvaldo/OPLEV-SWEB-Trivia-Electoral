@@ -75,17 +75,10 @@
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="{{ route('front.swal') }}" class="textSideOption nav-link {!! Request::is('swal') ? 'active activeOn' : '' !!}">
-                <i class="fas fa-exclamation-triangle"></i> <p>Sweet Alert</p>
+              <a href="{{ route('front.cuadros') }}" class="textSideOption nav-link {!! Request::is('cuadros') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-window-restore"></i> <p>Cuadros</p>
               </a>
             </li>
-
-            <li class="nav-item has-treeview">
-              <a href="{{ route('front.tables') }}" class="textSideOption nav-link {!! Request::is('tables') ? 'active activeOn' : '' !!}">
-                <i class="fas fa-table"></i> <p>Tablas</p>
-              </a>
-            </li>
-
           </ul>
         </li>
 

@@ -78,7 +78,7 @@
 		<!-- /.row -->
 
 		<!-- =========================================================== -->
-		<h5 class="mt-4 mb-2">Info Box Con <code>bg-*</code></h5>
+		<h5 class="mt-4 mb-2">Info Box</h5>
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-12">
 				<div class="info-box bg-info">

@@ -15560,6 +15560,15 @@ textarea.form-control.is-warning {
   background-color: #007bff;
 }
 
+.card-oplever:not(.card-outline) > .card-header {
+  background-color: #EA0D94;
+}
+
+.card-oplever:not(.card-outline) > .card-header,
+.card-oplever:not(.card-outline) > .card-header a {
+  color: #ffffff;
+}
+
 .card-primary:not(.card-outline) > .card-header,
 .card-primary:not(.card-outline) > .card-header a {
   color: #ffffff;
@@ -15571,6 +15580,10 @@ textarea.form-control.is-warning {
 
 .card-primary.card-outline {
   border-top: 3px solid #007bff;
+}
+
+.card-oplever.card-outline {
+  border-top: 3px solid #EA0D94;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
