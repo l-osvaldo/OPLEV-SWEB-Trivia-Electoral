@@ -24,7 +24,7 @@ const mix = require('laravel-mix');
    'node_modules/admin-lte/plugins/jquery/jquery.min.js',
    'node_modules/admin-lte/plugins/jquery/jquery-ui.min.js',
    'node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js',
-   'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap4.min.js',
+   'node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
    'resources/assets/js/dashboard.js',
    'resources/assets/js/datatables.js'
    ], 'public/js/all.js');
