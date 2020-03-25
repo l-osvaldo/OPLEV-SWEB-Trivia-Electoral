@@ -22,3 +22,5 @@ Route::get('/tables', 'DashboardController@tablaspagina')->name('front.tables');
 Route::get('/tables', 'DashboardController@tablaspagina')->name('front.tables');
 Route::get('/widgets', 'DashboardController@widgets')->name('front.widgets');
 
+});
+
