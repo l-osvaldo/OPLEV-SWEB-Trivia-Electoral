@@ -1,4 +1,4 @@
-  <!-- Navbar -->
+<!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom o-nav-adminLite">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
