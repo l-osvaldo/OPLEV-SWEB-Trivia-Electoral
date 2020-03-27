@@ -58,4 +58,46 @@ class DashboardController extends Controller
         return $vista;
     }
 
+    public function validacion()
+    {
+        Auth::check() ? $vista = view('validaciones') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function modalspagina()
+    {
+        Auth::check() ? $vista = view('modals') : $vista = redirect()->route('login');
+        return $vista;
+    }  
+
+    public function ribbonspagina()
+    {
+        Auth::check() ? $vista = view('ribbons') : $vista = redirect()->route('login');
+        return $vista;
+    } 
+
+     public function generalpagina()
+    {
+        Auth::check() ? $vista = view('general') : $vista = redirect()->route('login');
+        return $vista;
+    }  
+
+     public function tabspagina()
+    {
+        Auth::check() ? $vista = view('tabs') : $vista = redirect()->route('login');
+        return $vista;
+    } 
+
+    public function timelinepagina()
+    {
+        Auth::check() ? $vista = view('timeline') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function formulariopagina()
+    {
+        Auth::check() ? $vista = view('formulario') : $vista = redirect()->route('login');
+        return $vista;
+    }  
+
 }

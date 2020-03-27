@@ -34,6 +34,10 @@
 .o-color-menu{color: #fff;}
 .o-logo-center{text-align: center;}
 .o-color-sub-menu{color: #f1ff2b !important;}
+.o-img-fondo-gray{background: url('/images/back.png');background-size:100%;filter: grayscale(100%);background-repeat:  no-repeat;}
+.o-img-fondo{ background: url('/images/back.png');background-size:100%; background-repeat: no-repeat;}
+.o-nombre-usuario{font-size: 2vh;color: #fff !important;text-shadow: 2px 2px 4px #000000; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.o-icon-usuario{font-size: 5vh;color: #fff !important;}
 .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active, .sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover{background-color: #505050;color: #fff;}
 /***********************************ASIDE.BLADE*******************************************************************************/
 
@@ -85,3 +89,16 @@
   }
 /**********************************LOADER.BLADE******************************************************************************/
 
+/**********************************VALIDACIONES.OPLE*************************************************************************/
+
+.error{color: #EA0C97;width: 95%;}
+.string{width: 5%;text-align: center;background: #f7f7f7;border-radius: 0 0 5px 5px;border: solid 1px #ccc;}
+
+/**********************************VALIDACIONES.OPLE*************************************************************************/
+
+/**********************************COLORES.OPLE******************************************************************************/
+
+.o-fondo-primario{background: #EA0D94 !important; color: #fff !important;}
+.o-color-primario{color: #EA0D94 !important;}
+
+/**********************************COLORES.OPLE******************************************************************************/

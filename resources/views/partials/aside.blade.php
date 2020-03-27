@@ -2,19 +2,21 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link o-logo-center">
-    <img src="{{ asset('images/logosipseir.png') }}" width="80%" alt="Proyecto Logo" class=""><br>
-    <div class="brand-text o-titulo-sistema-aside">Lorem ipsum dolor sit<br>consectetur adipiscing elit<br>ut labore et dolore</div>
+  <a href="/" class="brand-link o-logo-center mb-3">
+    <img src="{{ asset('images/logosipseir.png') }}" width="60%" alt="Proyecto Logo" class="">
+    <!--span class="brand-text font-weight-light">AdminLTE 3</span-->
   </a>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2 o-pading-logo" alt="User Image">
-      </div>
-      <div class="info nav-header">
+    <div class="user-panel mt-2 pt-4 pb-3 mb-3 d-flex text-center o-img-fondo-gray">
+      <!--div class="image">
+        <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" alt="User Image">
+      </div-->
+      <div class="nav-header col-md-12 o-nombre-usuario">
+       <!--i class="fas fa-user-circle"  style="font-size: 5vh;color: #fff;text-shadow: 2px 2px 4px #000000;"></i-->
+       <i class="fas fa-user-astronaut o-icon-usuario"></i><br>
         Lorem ipsum dolor
       </div>
     </div>
@@ -49,7 +51,7 @@
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
+              <a href="{{ route('front.formulario') }}" class="textSideOption nav-link {!! Request::is('formulario') ? 'active activeOn' : '' !!}">
                 <i class="fab fa-wpforms"></i> <p>Formularios</p>
               </a>
             </li>
@@ -79,6 +81,39 @@
                 <i class="fas fa-window-restore"></i> <p>Cuadros</p>
               </a>
             </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.tabs') }}" class="textSideOption nav-link {!! Request::is('tabs') ? 'active activeOn' : '' !!}">
+                <i class="far fa-address-card"></i> <p>Tabs</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.general') }}" class="textSideOption nav-link {!! Request::is('general') ? 'active activeOn' : '' !!}">
+                <i class="fab fa-adn"></i> <p>Alertas y modal</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.modals') }}" class="textSideOption nav-link {!! Request::is('modals') ? 'active activeOn' : '' !!}">
+                <i class="far fa-window-maximize"></i> <p>Modals</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.timeline') }}" class="textSideOption nav-link {!! Request::is('timeline') ? 'active activeOn' : '' !!}">
+                <i class="fab fa-algolia"></i> <p>Timeline</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.ribbons') }}" class="textSideOption nav-link {!! Request::is('ribbons') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-project-diagram"></i> <p>Ribbons</p>
+              </a>
+            </li>
+
+            
+
           </ul>
         </li>
 
@@ -89,7 +124,7 @@
           <a href="#" class="nav-link o-menu-tres">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
-              Lorem ipsum dolor
+              VALIDACIÓN OPLE
               <i class="right fa fa-chevron-left" aria-hidden="true"></i>
             </p>
           </a>
@@ -97,14 +132,8 @@
 
 
             <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
-                <i class="far fa-circle" aria-hidden="true"></i> <p>Lorem ipsum</p>
-              </a>
-            </li>
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
-                <i class="far fa-circle" aria-hidden="true"></i> <p>Lorem ipsum</p>
+             <a href="{{ route('front.validacion') }}" class="textSideOption nav-link {!! Request::is('validacion') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-exclamation-triangle"></i> <p>Validaciones</p>
               </a>
             </li>
 
