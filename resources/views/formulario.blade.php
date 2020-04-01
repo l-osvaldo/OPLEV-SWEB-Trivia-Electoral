@@ -2,49 +2,65 @@
 
 @section('content')
 
+<section class="content-header pt-5">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Formularios</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+          <li class="breadcrumb-item active">Formularios</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
 <section class="content">
       <div class="container-fluid">
-        <div class="row pt-3">
+        <div class="row">
           <!-- left column -->
           <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+            <div class="card card-primary card-outline">
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">Formulario ejemplo</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label for="exampleInputEmail1" class="o-form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1" class="o-form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
+                    <label for="exampleInputFile" class="o-form-label">Adjuntar PDF</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label class="custom-file-label" for="exampleInputFile">PDF</label>
                       </div>
                       <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
+                        <span class="input-group-text o-fondo-1" id="">Subir</span>
                       </div>
                     </div>
                   </div>
                   <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <label class="form-check-label" for="exampleCheck1">Permanecer con la sesión activa</label>
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary o-fondo-1">Enviar</button>
                 </div>
               </form>
             </div>
@@ -52,8 +68,8 @@
 
             <!-- Form Element sizes -->
             <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">Different Height</h3>
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">Inputs con distintas alturas y sus clases </h3>
               </div>
               <div class="card-body">
                 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
@@ -67,8 +83,8 @@
             <!-- /.card -->
 
             <div class="card card-danger">
-              <div class="card-header">
-                <h3 class="card-title">Different Width</h3>
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">Inputs con distintos anchos y sus clases </h3>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -89,15 +105,15 @@
 
             <!-- Input addon -->
             <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Input Addon</h3>
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">Complementos</h3>
               </div>
               <div class="card-body">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Username">
+                  <input type="text" class="form-control" placeholder="Usuario">
                 </div>
 
                 <div class="input-group mb-3">
@@ -117,7 +133,7 @@
                   </div>
                 </div>
 
-                <h4>With icons</h4>
+                <h4 class="o-form-label">Iconos</h4>
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -141,11 +157,11 @@
                   </div>
                   <input type="text" class="form-control">
                   <div class="input-group-append">
-                    <div class="input-group-text"><i class="fas fa-ambulance"></i></div>
+                    <div class="input-group-text"><i class="fas fa-chart-pie"></i></div>
                   </div>
                 </div>
 
-                <h5 class="mt-4 mb-2">With checkbox and radio inputs</h5>
+                <h5 class="mt-4 mb-2 o-form-label">Checkbox y radio inputs</h5>
 
                 <div class="row">
                   <div class="col-lg-6">
@@ -173,21 +189,21 @@
                 </div>
                 <!-- /.row -->
 
-                <h5 class="mt-4 mb-2">With buttons</h5>
+                <h5 class="mt-4 mb-2">Botones</h5>
 
-                <p>Large: <code>.input-group.input-group-lg</code></p>
+                <p>Largo: </p>
 
                 <div class="input-group input-group-lg mb-3">
                   <div class="input-group-prepend">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                      Action
+                    <button type="button" class="btn btn-warning dropdown-toggle o-fondo-1" data-toggle="dropdown">
+                      Lista
                     </button>
                     <ul class="dropdown-menu">
-                      <li class="dropdown-item"><a href="#">Action</a></li>
-                      <li class="dropdown-item"><a href="#">Another action</a></li>
-                      <li class="dropdown-item"><a href="#">Something else here</a></li>
+                      <li class="dropdown-item"><a href="#">Acción</a></li>
+                      <li class="dropdown-item"><a href="#">Otra acción</a></li>
+                      <li class="dropdown-item"><a href="#">Algo más</a></li>
                       <li class="dropdown-divider"></li>
-                      <li class="dropdown-item"><a href="#">Separated link</a></li>
+                      <li class="dropdown-item"><a href="#">Acción separad</a></li>
                     </ul>
                   </div>
                   <!-- /btn-group -->
@@ -198,18 +214,18 @@
                 <p>Normal</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <button type="button" class="btn btn-danger">Action</button>
+                    <button type="button" class="btn btn-danger o-fondo-1">Acción</button>
                   </div>
                   <!-- /btn-group -->
                   <input type="text" class="form-control">
                 </div>
                 <!-- /input-group -->
 
-                <p>Small <code>.input-group.input-group-sm</code></p>
+                <p>Pequeño </p>
                 <div class="input-group input-group-sm">
                   <input type="text" class="form-control">
                   <span class="input-group-append">
-                    <button type="button" class="btn btn-info btn-flat">Go!</button>
+                    <button type="button" class="btn btn-info btn-flat o-fondo-1">Enviar</button>
                   </span>
                 </div>
                 <!-- /input-group -->
@@ -217,45 +233,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <!-- Horizontal Form -->
-            <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Horizontal Form</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">Remember me</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Sign in</button>
-                  <button type="submit" class="btn btn-default float-right">Cancel</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
+
 
           </div>
           <!--/.col (left) -->
@@ -263,8 +241,8 @@
           <div class="col-md-6">
             <!-- general form elements disabled -->
             <div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">General Elements</h3>
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">General</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -273,14 +251,14 @@
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Text</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <label class="o-form-label">Text</label>
+                        <input type="text" class="form-control" placeholder="Texto">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Text Disabled</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." disabled="">
+                        <label class="o-form-label">Deshabilitar input</label>
+                        <input type="text" class="form-control" placeholder="Texto" disabled="">
                       </div>
                     </div>
                   </div>
@@ -288,33 +266,16 @@
                     <div class="col-sm-6">
                       <!-- textarea -->
                       <div class="form-group">
-                        <label>Textarea</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <label class="o-form-label">Textarea</label>
+                        <textarea class="form-control" rows="3" placeholder="Texto"></textarea>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Textarea Disabled</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled=""></textarea>
+                        <label class="o-form-label">Deshabilitar Textarea</label>
+                        <textarea class="form-control" rows="3" placeholder="Texto" disabled=""></textarea>
                       </div>
                     </div>
-                  </div>
-
-                  <!-- input states -->
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> Input with
-                      success</label>
-                    <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
-                  </div>
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Input with
-                      warning</label>
-                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
-                  </div>
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> Input with
-                      error</label>
-                    <input type="text" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
                   </div>
 
                   <div class="row">
@@ -323,15 +284,15 @@
                       <div class="form-group">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox">
-                          <label class="form-check-label">Checkbox</label>
+                          <label class="form-check-label o-form-label">Checkbox</label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" checked="">
-                          <label class="form-check-label">Checkbox checked</label>
+                          <label class="form-check-label o-form-label">Checkbox checked</label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" disabled="">
-                          <label class="form-check-label">Checkbox disabled</label>
+                          <label class="form-check-label o-form-label">Checkbox disabled</label>
                         </div>
                       </div>
                     </div> 
@@ -340,15 +301,15 @@
                       <div class="form-group">
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="radio1">
-                          <label class="form-check-label">Radio</label>
+                          <label class="form-check-label o-form-label">Radio</label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="radio1" checked="">
-                          <label class="form-check-label">Radio checked</label>
+                          <label class="form-check-label o-form-label">Radio checked</label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="radio" disabled="">
-                          <label class="form-check-label">Radio disabled</label>
+                          <label class="form-check-label o-form-label">Radio disabled</label>
                         </div>
                       </div>
                     </div>
@@ -358,25 +319,25 @@
                     <div class="col-sm-6">
                       <!-- select -->
                       <div class="form-group">
-                        <label>Select</label>
+                        <label class="o-form-label">Select</label>
                         <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Select Disabled</label>
+                        <label class="o-form-label">Select Deshabilitado</label>
                         <select class="form-control" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
@@ -386,25 +347,25 @@
                     <div class="col-sm-6">
                       <!-- Select multiple-->
                       <div class="form-group">
-                        <label>Select Multiple</label>
+                        <label class="o-form-label">Select Multiple</label>
                         <select multiple="" class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Select Multiple Disabled</label>
+                        <label class="o-form-label">Select Multiple Deshabilitado</label>
                         <select multiple="" class="form-control" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
@@ -416,8 +377,8 @@
             <!-- /.card -->
             <!-- general form elements disabled -->
             <div class="card card-secondary">
-              <div class="card-header">
-                <h3 class="card-title">Custom Elements</h3>
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title">Elementos</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -428,15 +389,15 @@
                       <div class="form-group">
                         <div class="custom-control custom-checkbox">
                           <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                          <label for="customCheckbox1" class="custom-control-label">Custom Checkbox</label>
+                          <label for="customCheckbox1" class="custom-control-label o-form-label">Checkbox</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                           <input class="custom-control-input" type="checkbox" id="customCheckbox2" checked="">
-                          <label for="customCheckbox2" class="custom-control-label">Custom Checkbox checked</label>
+                          <label for="customCheckbox2" class="custom-control-label o-form-label">Checkbox checked</label>
                         </div>
                         <div class="custom-control custom-checkbox">
                           <input class="custom-control-input" type="checkbox" id="customCheckbox3" disabled="">
-                          <label for="customCheckbox3" class="custom-control-label">Custom Checkbox disabled</label>
+                          <label for="customCheckbox3" class="custom-control-label o-form-label">Checkbox Deshabilitado</label>
                         </div>
                       </div>
                     </div> 
@@ -445,15 +406,15 @@
                       <div class="form-group">
                         <div class="custom-control custom-radio">
                           <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
-                          <label for="customRadio1" class="custom-control-label">Custom Radio</label>
+                          <label for="customRadio1" class="custom-control-label o-form-label">Radio</label>
                         </div>
                         <div class="custom-control custom-radio">
                           <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked="">
-                          <label for="customRadio2" class="custom-control-label">Custom Radio checked</label>
+                          <label for="customRadio2" class="custom-control-label o-form-label">Radio checked</label>
                         </div>
                         <div class="custom-control custom-radio">
                           <input class="custom-control-input" type="radio" id="customRadio3" disabled="">
-                          <label for="customRadio3" class="custom-control-label">Custom Radio disabled</label>
+                          <label for="customRadio3" class="custom-control-label o-form-label">Radio Deshabilitado</label>
                         </div>
                       </div>
                     </div>
@@ -463,25 +424,25 @@
                     <div class="col-sm-6">
                       <!-- select -->
                       <div class="form-group">
-                        <label>Custom Select</label>
+                        <label class="o-form-label">Select</label>
                         <select class="custom-select">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Custom Select Disabled</label>
+                        <label class="o-form-label">Select Deshabilitado</label>
                         <select class="custom-select" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
@@ -491,25 +452,25 @@
                     <div class="col-sm-6">
                       <!-- Select multiple-->
                       <div class="form-group">
-                        <label>Custom Select Multiple</label>
+                        <label class="o-form-label">Select Multiple</label>
                         <select multiple="" class="custom-select">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Custom Select Multiple Disabled</label>
+                        <label class="o-form-label">Select Multiple Deshabilitado</label>
                         <select multiple="" class="custom-select" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option>Opción 1</option>
+                          <option>Opción 2</option>
+                          <option>Opción 3</option>
+                          <option>Opción 4</option>
+                          <option>Opción 5</option>
                         </select>
                       </div>
                     </div>
@@ -518,39 +479,39 @@
                   <div class="form-group">
                     <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                      <label class="custom-control-label" for="customSwitch1">Toggle this custom switch element</label>
+                      <label class="custom-control-label o-form-label" for="customSwitch1">Interruptor</label>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                       <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                      <label class="custom-control-label" for="customSwitch3">Toggle this custom switch element with custom colors danger/success</label>
+                      <label class="custom-control-label o-form-label" for="customSwitch3">Interruptor colores</label>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input" disabled="" id="customSwitch2">
-                      <label class="custom-control-label" for="customSwitch2">Disabled custom switch element</label>
+                      <label class="custom-control-label o-form-label" for="customSwitch2">Interruptor Deshabilitado</label>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="customRange1">Custom range</label>
+                    <label for="customRange1" class="o-form-label">Rango</label>
                     <input type="range" class="custom-range" id="customRange1">
                   </div>
-                  <div class="form-group">
-                    <label for="customRange1">Custom range (custom-range-danger)</label>
+                  <!--div class="form-group">
+                    <label for="customRange1">Rango color</label>
                     <input type="range" class="custom-range custom-range-danger" id="customRange1">
                   </div>
                   <div class="form-group">
-                    <label for="customRange1">Custom range (custom-range-teal)</label>
+                    <label for="customRange1">Rango color</label>
                     <input type="range" class="custom-range custom-range-teal" id="customRange1">
-                  </div>
+                  </div-->
                   <div class="form-group">
                     <!-- <label for="customFile">Custom File</label> -->
 
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Choose file</label>
+                      <label class="custom-file-label o-form-label" for="customFile">PDF</label>
                     </div>
                   </div>
                   <div class="form-group">
@@ -558,6 +519,45 @@
                 </form>
               </div>
               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+                        <!-- Horizontal Form -->
+            <div class="card card-info">
+              <div class="card-header o-fondo-5">
+                <h3 class="card-title o-form-label">Formulario horizontal</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label o-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label o-form-label">Contraseña</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                        <label class="form-check-label o-form-label" for="exampleCheck2">Recordarme</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-info o-fondo-1">Continuar</button>
+                  <button type="submit" class="btn btn-default float-right">Cancelar</button>
+                </div>
+                <!-- /.card-footer -->
+              </form>
             </div>
             <!-- /.card -->
           </div>

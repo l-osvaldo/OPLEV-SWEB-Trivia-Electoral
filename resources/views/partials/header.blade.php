@@ -6,8 +6,8 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <span class="o-titulo-sistema">Esta dato es uan variable global {{global_function_example()}}</span><br>
-        <span class="o-titulo-unidad">Tempor incididunt ut labore et dolore</span>
+        <span class="o-titulo-sistema">Aquí se coloca el nombre completo del {{global_function_example()}}</span><br>
+        <span class="o-titulo-unidad">Característica adicional del sistema</span>
       </li>
     </ul>
   <!-- Right navbar links -->

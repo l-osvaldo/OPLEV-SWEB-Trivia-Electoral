@@ -1,49 +1,62 @@
 @extends('layouts.app')
 @section('content')
 <!-- Main content -->
-<section class="content" style="padding-top: 2em;">
+
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2 mt-3">
+          <div class="col-sm-6">
+            <h1>Cuadros</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Cuadros</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+<section class="content">
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card card-oplever card-outline">
-					<div class="card-header">
-						<h3 class="card-title">
-							<i class="fas fa-edit"></i>
-							Ejemplo 1
-						</h3>
-					</div>
-					<div class="card-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
+      <div class="row">
+    
+			<div class="card card-oplever card-outline">
+				<div class="card-header">
+					<h3 class="card-title">
+						<i class="fas fa-edit"></i>
+						Ejemplo 1
+					</h3>
+				</div>
+				<div class="card-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				<div class="card card-oplever">
-					<div class="card-header">
-						<h3 class="card-title">
-							<i class="fas fa-edit"></i>
-							Ejemplo 2
-						</h3>
-					</div>
-					<!-- /.card-header -->
-					<div class="card-body">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<!-- /.card-body -->
+
+      <div class="info-box mb-12 o-area-descripcion">
+         <span class="info-box-icon elevation-1"><i class="fa fa-exclamation-circle o-area-descripcion-icon" aria-hidden="true"></i></span>
+         <div class="info-box-content">
+           <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+         </div>
+      </div>
+			
+			<div class="card card-oplever">
+				<div class="card-header">
+					<h3 class="card-title">
+						<i class="fas fa-edit"></i>
+						Ejemplo 2
+					</h3>
 				</div>
-				<!-- /.card -->
+				<!-- /.card-header -->
+				<div class="card-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<!-- /.card-body -->
 			</div>
-			<!-- /.col -->
-		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container-fluid -->
-	<div class="container-fluid">
-		<div class="row">
+			<!-- /.card -->
+	
 			<!-- ./col -->
           <div class="col-md-6">
             <div class="card">
@@ -102,7 +115,10 @@
             <!-- /.card -->
           </div>
           <!-- ./col -->
-		</div>
-	</div>
+
+        </div>
+      </div>
+
+
 </section>
 @endsection

@@ -7,6 +7,6 @@
 
 function global_function_example()
 {
-	$user   = auth()->user();
-    return $user->name;
+	$user   = 'Sistema';
+    return $user;
 }

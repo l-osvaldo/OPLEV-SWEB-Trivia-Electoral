@@ -6,14 +6,14 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row mb-2 mt-3">
           <div class="col-sm-6">
-            <h1>Ribbons</h1>
+            <h1>Cintillas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Ribbons</li>
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Cintillas</li>
             </ol>
           </div>
         </div>
@@ -26,8 +26,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Ribbons</h3>
+              <div class="card-header o-fondo-1">
+                <h3 class="card-title">Rubro</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -35,22 +35,22 @@
                   <div class="col-sm-4">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper">
-                        <div class="ribbon bg-primary">
-                          Ribbon
+                        <div class="ribbon bg-primary o-fondo-1">
+                          Texto
                         </div>
                       </div>
-                      Ribbon Default <br>
+                      Cintialla Default <br>
                       <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-lg">
-                        <div class="ribbon bg-info">
-                          Ribbon Large
+                        <div class="ribbon bg-info o-fondo-6">
+                          Texto extra
                         </div>
                       </div>
-                      Ribbon Large <br>
+                      Cintilla larga <br>
                       <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
                     </div>
                   </div>
@@ -58,10 +58,10 @@
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
                         <div class="ribbon bg-secondary">
-                          Ribbon Extra Large
+                          Texto extra ejemplo
                         </div>
                       </div>
-                      Ribbon Extra Large <br>
+                      Cintilla Extra Largo <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon</small>
                     </div>
                   </div>
@@ -70,33 +70,33 @@
                   <div class="col-sm-4">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-lg">
-                        <div class="ribbon bg-success text-lg">
-                          Ribbon
+                        <div class="ribbon bg-success text-lg o-fondo-3">
+                          Texto
                         </div>
                       </div>
-                      Ribbon Large <br> with Large Text <br>
+                      Cintilla Extra Texto <br>
                       <small>.ribbon-wrapper.ribbon-lg .ribbon.text-lg</small>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-warning text-lg">
-                          Ribbon
+                        <div class="ribbon bg-warning text-lg o-fondo-4">
+                          Texto
                         </div>
                       </div>
-                      Ribbon Extra Large <br> with Large Text <br>
+                      Cintilla Extra Larga <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon.text-lg</small>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-danger text-xl">
-                          Ribbon
+                        <div class="ribbon bg-danger text-xl o-fondo-6">
+                          Texto
                         </div>
                       </div>
-                      Ribbon Extra Large <br> with Extra Large Text <br>
+                      Cintilla Extra Larga <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon.text-xl</small>
                     </div>
                   </div>
