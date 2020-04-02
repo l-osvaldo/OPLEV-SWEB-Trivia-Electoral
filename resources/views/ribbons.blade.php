@@ -61,7 +61,7 @@
                           Texto extra ejemplo
                         </div>
                       </div>
-                      Cintilla Extra Largo <br>
+                      Cintilla Texto Largo <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon</small>
                     </div>
                   </div>
@@ -74,7 +74,7 @@
                           Texto
                         </div>
                       </div>
-                      Cintilla Extra Texto <br>
+                      Cintilla Texto Alto <br>
                       <small>.ribbon-wrapper.ribbon-lg .ribbon.text-lg</small>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
                           Texto
                         </div>
                       </div>
-                      Cintilla Extra Larga <br>
+                      Cintilla Texto Medio <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon.text-lg</small>
                     </div>
                   </div>
@@ -96,7 +96,7 @@
                           Texto
                         </div>
                       </div>
-                      Cintilla Extra Larga <br>
+                      Cintilla Texto Extra Alto <br>
                       <small>.ribbon-wrapper.ribbon-xl .ribbon.text-xl</small>
                     </div>
                   </div>

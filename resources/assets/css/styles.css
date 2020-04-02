@@ -34,7 +34,7 @@
 .o-color-menu{color: #fff;}
 .o-logo-center{text-align: center;}
 .o-color-sub-menu{color: #f1ff2b !important;}
-.o-img-fondo-gray{background: url('/images/backu.png');background-size:100%;filter: grayscale(100%);background-repeat:  no-repeat;}
+.o-img-fondo-gray{background: url('/images/backu.png');background-size:100%;filter: grayscale(100%);}
 .o-img-fondo{ background: url('/images/backu.png');background-size:100%; background-repeat: repeat;}
 .o-nombre-usuario{font-size: 2vh;color: #fff !important;text-shadow: 2px 2px 4px #000000; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .o-icon-usuario{font-size: 5vh;color: #fff !important;}

@@ -67,7 +67,7 @@
             <!-- /.card -->
 
             <!-- Form Element sizes -->
-            <div class="card card-success">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">Inputs con distintas alturas y sus clases </h3>
               </div>
@@ -82,7 +82,7 @@
             </div>
             <!-- /.card -->
 
-            <div class="card card-danger">
+            <div class="card card-danger card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">Inputs con distintos anchos y sus clases </h3>
               </div>
@@ -104,7 +104,7 @@
             <!-- /.card -->
 
             <!-- Input addon -->
-            <div class="card card-info">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">Complementos</h3>
               </div>
@@ -240,7 +240,7 @@
           <!-- right column -->
           <div class="col-md-6">
             <!-- general form elements disabled -->
-            <div class="card card-warning">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">General</h3>
               </div>
@@ -376,7 +376,7 @@
             </div>
             <!-- /.card -->
             <!-- general form elements disabled -->
-            <div class="card card-secondary">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">Elementos</h3>
               </div>
@@ -522,7 +522,7 @@
             </div>
             <!-- /.card -->
                         <!-- Horizontal Form -->
-            <div class="card card-info">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title o-form-label">Formulario horizontal</h3>
               </div>

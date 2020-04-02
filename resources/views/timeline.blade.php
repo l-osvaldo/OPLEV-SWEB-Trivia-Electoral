@@ -55,7 +55,7 @@
               <div>
                 <i class="fas fa-user bg-green"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 5 min.</span>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i> Hace 5 min.</span>
                   <h3 class="timeline-header no-border"><a href="#" class="o-color-primario">Nombre Usuario </a>ha realizado una acción</h3>
                 </div>
               </div>
@@ -64,8 +64,8 @@
               <div>
                 <i class="fas fa-comments bg-yellow"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 27 min.</span>
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>realizo comentario</h3>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i> Hace 27 min.</span>
+                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>realizó comentario</h3>
                   <div class="timeline-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </div>
@@ -84,8 +84,8 @@
               <div>
                 <i class="fa fa-camera bg-purple"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 2 días</span>
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>adjunto estos archivos</h3>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i> Hace 2 días</span>
+                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>adjuntó estos archivos</h3>
                   <div class="timeline-body">
                     <img src="http://placehold.it/150x100" alt="...">
                     <img src="http://placehold.it/150x100" alt="...">
@@ -95,26 +95,6 @@
                   </div>
                 </div>
               </div>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <!--div>
-                <i class="fas fa-video bg-maroon"></i>
-
-                <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i> 5 days ago</span>
-
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Mr. Doe</a> shared a video</h3>
-
-                  <div class="timeline-body">
-                    <div class="embed-responsive embed-responsive-16by9">
-                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" frameborder="0" allowfullscreen=""></iframe>
-                    </div>
-                  </div>
-                  <div class="timeline-footer">
-                    <a href="#" class="btn btn-sm bg-maroon o-fondo-primario">See comments</a>
-                  </div>
-                </div>
-              </div-->
               <!-- END timeline item -->
               <div>
                 <i class="fas fa-clock bg-gray"></i>

@@ -24,6 +24,8 @@ Route::get('/widgets', 'DashboardController@widgets')->name('front.widgets');
 Route::get('/cuadros', 'DashboardController@cuadros')->name('front.cuadros');
 
 Route::get('/validacion', 'DashboardController@validacion')->name('front.validacion');
+Route::post('/ejemplovalidacion', 'DashboardController@ejemplovalidacion')->name('ejemplovalidacion');
+
 Route::get('/modals', 'DashboardController@modalspagina')->name('front.modals');
 Route::get('/ribbons', 'DashboardController@ribbonspagina')->name('front.ribbons');
 Route::get('/general', 'DashboardController@generalpagina')->name('front.general');
