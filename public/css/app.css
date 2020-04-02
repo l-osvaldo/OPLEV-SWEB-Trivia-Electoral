@@ -15560,15 +15560,6 @@ textarea.form-control.is-warning {
   background-color: #007bff;
 }
 
-.card-oplever:not(.card-outline) > .card-header {
-  background-color: #EA0D94;
-}
-
-.card-oplever:not(.card-outline) > .card-header,
-.card-oplever:not(.card-outline) > .card-header a {
-  color: #ffffff;
-}
-
 .card-primary:not(.card-outline) > .card-header,
 .card-primary:not(.card-outline) > .card-header a {
   color: #ffffff;
@@ -30130,7 +30121,14 @@ a.text-muted:hover {
 /**********************************VALIDACIONES.OPLE*************************************************************************/
 
 /**********************************COLORES.OPLE******************************************************************************/
+.card-oplever:not(.card-outline) > .card-header {
+  background-color: #EA0D94;
+}
 
+.card-oplever:not(.card-outline) > .card-header,
+.card-oplever:not(.card-outline) > .card-header a {
+  color: #ffffff;
+}
 .o-fondo-primario{background: #EA0D94 !important; color: #fff !important;}
 .o-color-primario{color: #EA0D94 !important;}
 
