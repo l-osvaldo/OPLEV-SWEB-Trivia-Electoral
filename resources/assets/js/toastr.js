@@ -10,13 +10,13 @@ $(function() {
 
     $('.swalDefaultSuccess').click(function() {
       Toast.fire({
-        type: 'success',
+        type: 'Éxito',
         title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.swalDefaultInfo').click(function() {
       Toast.fire({
-        type: 'info',
+        type: 'información',
         title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
@@ -28,13 +28,13 @@ $(function() {
     });
     $('.swalDefaultWarning').click(function() {
       Toast.fire({
-        type: 'warning',
+        type: 'Precausión',
         title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.swalDefaultQuestion').click(function() {
       Toast.fire({
-        type: 'question',
+        type: 'Pregunta',
         title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
@@ -54,34 +54,34 @@ $(function() {
 
     $('.toastsDefaultDefault').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultTopLeft').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         position: 'topLeft',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultBottomRight').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         position: 'bottomRight',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultBottomLeft').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         position: 'bottomLeft',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultAutohide').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         autohide: true,
         delay: 750,
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
@@ -89,7 +89,7 @@ $(function() {
     });
     $('.toastsDefaultNotFixed').click(function() {
       $(document).Toasts('create', {
-        title: 'Toast Title',
+        title: 'Rubro',
         fixed: false,
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
@@ -97,16 +97,16 @@ $(function() {
     $('.toastsDefaultFull').click(function() {
       $(document).Toasts('create', {
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         icon: 'fas fa-envelope fa-lg',
       })
     });
     $('.toastsDefaultFullImage').click(function() {
       $(document).Toasts('create', {
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         image: '../../dist/img/user3-128x128.jpg',
         imageAlt: 'User Picture',
       })
@@ -114,40 +114,40 @@ $(function() {
     $('.toastsDefaultSuccess').click(function() {
       $(document).Toasts('create', {
         class: 'bg-success', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultInfo').click(function() {
       $(document).Toasts('create', {
         class: 'bg-info', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultWarning').click(function() {
       $(document).Toasts('create', {
         class: 'bg-warning', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultDanger').click(function() {
       $(document).Toasts('create', {
         class: 'bg-danger', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });
     $('.toastsDefaultMaroon').click(function() {
       $(document).Toasts('create', {
         class: 'bg-maroon', 
-        title: 'Toast Title',
-        subtitle: 'Subtitle',
+        title: 'Rubro',
+        subtitle: 'Tema',
         body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
       })
     });

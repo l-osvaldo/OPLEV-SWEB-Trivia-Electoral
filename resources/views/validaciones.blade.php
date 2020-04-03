@@ -335,12 +335,12 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="customFile">Adjuntar ECXEL</label>
+                    <label for="customFile">Adjuntar EXCEL</label>
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input validacion-o" id="fileECXEL" data-type="ecxel" placeholder="Archivo Ecxel" data-error="1">
-                      <label id="fileLabel-fileECXEL" class="custom-file-label" for="customFile"></label>
-                      <div id="error-fileECXEL" class="error"></div>
+                      <input type="file" class="custom-file-input validacion-o" id="fileEXCEL" data-type="excel" placeholder="Archivo Excel" data-error="1">
+                      <label id="fileLabel-fileEXCEL" class="custom-file-label" for="customFile"></label>
+                      <div id="error-fileEXCEL" class="error"></div>
                     </div>
                   </div>
 

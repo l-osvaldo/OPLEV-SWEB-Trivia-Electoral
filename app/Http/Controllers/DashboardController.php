@@ -105,4 +105,10 @@ class DashboardController extends Controller
         return $vista;
     }
 
+    public function visorpdf()
+    {
+        Auth::check() ? $vista = view('visorpdf') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
 }
