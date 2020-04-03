@@ -1,32 +1,11 @@
 var inputsValidar = document.getElementsByClassName('validacion-o');
 var btnSubmint = document.getElementsByClassName('btn-submit-o');
 
-inputsValidar.length > 0 ? loadForm() : '' ;
-
-function loadForm(){
-  //alert('hey');
-}
+/****************************************************************************************************************/
 
 for (var i = 0; i < btnSubmint.length; i++) {
   btnSubmint[i].addEventListener("click", checkForm, false);
 }
-
-for (var i = 0; i < inputsValidar.length; i++) {
-  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'switch' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("keyup", validaInput, false) ;
-
-  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'switch' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("focus", validaInput, false) ;
-
-  inputsValidar[i].addEventListener("change", validaInput, false);
-
-  //inputsValidar[i].classList.add('is-warning');
-
-  inputsValidar[i].getAttribute('maxlength') ? 
-  document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent=inputsValidar[i].getAttribute('maxlength') 
-  : 
-  document.getElementById('string-'+inputsValidar[i].getAttribute('id')).style.display='none';
-}
-
-
 
 function checkForm(){
 
@@ -35,22 +14,40 @@ function checkForm(){
   var arrVal = [];
 
   for (var i = 0; i < allVal.length; i++) {
-    allVal[i].getAttribute('data-error') === '1' ? arrVal.push(1) : arrVal.push(0);
-    allVal[i].getAttribute('data-type') === 'checkbox' || allVal[i].getAttribute('data-type') === 'radio' || allVal[i].getAttribute('data-type') === 'switch' ? formValGroup(allVal[i]) : formValOne(allVal[i]);
+
+    allVal[i].getAttribute('data-error') === '1' ? (arrVal.push(1),forOne(allVal[i])) : arrVal.push(0);
+
   }
 
-  //console.log(arrVal);
+  function forOne(e){
 
-  function formValOne(e){
-    document.getElementById('error-'+e.getAttribute('id')).textContent="Campo requerido";
+    document.getElementById('error-'+e.getAttribute('data-group')) && 
+    document.getElementById('error-'+e.getAttribute('data-group')).textContent === '' ? 
+    document.getElementById('error-'+e.getAttribute('data-group')).textContent='El campo '+e.getAttribute('placeholder')+' es requerido' : '';
+
+    document.getElementById('error-'+e.getAttribute('id')) && 
+    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent='El campo '+e.getAttribute('placeholder')+' es requerido' : '';
   }
 
-  function formValGroup(e){
-    document.getElementById('error-'+e.getAttribute('data-group')).textContent="Campo requerido";
-  }
+  arrVal.includes(1) ? '' : (alert('valido'),document.getElementById(this.getAttribute('data-form')).submit());
 
-  //arrVal.includes(1) ? '' : (alert('valido'),document.getElementById(this.getAttribute('data-form')).submit());
-  arrVal.includes(1) ? '' : alert('valido');
+}
+
+/****************************************************************************************************************/
+
+for (var i = 0; i < inputsValidar.length; i++) {
+  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("keyup", validaInput, false) ;
+
+  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("focus", validaInput, false) ;
+
+  inputsValidar[i].addEventListener("change", validaInput, false);
+
+  //inputsValidar[i].classList.add('is-warning');
+
+  document.getElementById('string-'+inputsValidar[i].getAttribute('id')) ? 
+  document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent=inputsValidar[i].getAttribute('maxlength') 
+  : 
+  '';
 }
 
 
@@ -69,37 +66,41 @@ function validaInput(e) {
   //var typePDF = ['pdf'];
   //var typeECXEL = ['xlsx'];
 
+  console.log(this);
+
+  //console.log(val,tip,max,min,ide,ele,err,str,nam)
+
 
   let validar = new Promise((resolve, reject) => {
-    //console.log(val);
-    str.textContent=max;
-      val ? resolve([tip,val,max,min,ele,err,str]) : reject(new Error("El campo "+nam+" es requerido"));
+    //console.log(err);
+    str ? str.textContent=max : '';
+      val ? resolve([tip,val,max,min,ele,err,str]) : reject("El campo "+nam+" es requerido");
 
   });
 
   validar
   .then((d) => {
-
     switch (d[0]) {
+      /*******************************************************/
       case 'text':
-
         var type = typeof d[1] === 'string' ? true : false ;
         var number = isNaN( parseInt( d[1] ) ) ? true : false ;
         var match = /^[a-zA-Z]+$/.test( d[1] ) ;
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) throw 'Ingresa solo texto para el campo '+nam;
-        if(!number) throw 'No se permiten numeros en el campo '+nam;
-        if(!match) throw 'No se permiten numeros o caracteres especiales dentro del campo '+nam;
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&ma) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
-        
+        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
+        if(!number)         return Promise.reject('No se permiten numeros en el campo '+nam);
+        if(!match)          return Promise.reject('No se permiten numeros o caracteres especiales dentro del campo '+nam);
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&ma)  return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+
         return d;
         
         break;
+      /*******************************************************/
       case 'number':
 
         var type = typeof d[1] === 'string' ? true : false ;
@@ -108,17 +109,18 @@ function validaInput(e) {
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) throw 'Ingresa solo numeros para el campo '+nam;
-        if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!match) throw 'No se permite texto o caracteres especiales dentro del campo '+nam;
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
+        if(!type)           return Promise.reject('Ingresa solo numeros para el campo '+nam);
+        if(!number)         return Promise.reject('No se permiten letras en el campo '+nam);
+        if(!match)          return Promise.reject('No se permite texto o caracteres especiales dentro del campo '+nam);
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
         
         return d;
         
         break;
+      /*******************************************************/
       case 'email':
 
         var match = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test( d[1] ) ;
@@ -137,13 +139,14 @@ function validaInput(e) {
           document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','1')
         );
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!match) throw 'Ingresa un email';
+        if(!match) return Promise.reject('Ingresa un email');
 
         return d;
         
         break;
+      /*******************************************************/
       case 'password':
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 )+1 ? true : false ;
@@ -164,25 +167,27 @@ function validaInput(e) {
           document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','1')
         );
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
-        if(!matchNumero) throw 'El campo '+nam+' debe contener un numero';
-        if(!matchUppercase) throw 'El campo '+nam+' debe contener una letra mayuscula';
-        if(!matchLowercase) throw 'El campo '+nam+' debe contener una letra minuscula';
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!matchNumero)    return Promise.reject('El campo '+nam+' debe contener un numero');
+        if(!matchUppercase) return Promise.reject('El campo '+nam+' debe contener una letra mayuscula');
+        if(!matchLowercase) return Promise.reject('El campo '+nam+' debe contener una letra minuscula');
 
         return d;
         break;
+      /*******************************************************/
       case 'confirm-value':
-  
+
         var check = ide.split('-');
         var match = document.getElementById(check[0]).value === d[1] ? true : false;
 
-        if(!match) throw 'El campo '+nam+' no coincide';
+        if(!match) return Promise.reject('El campo '+nam+' no coincide');
 
         return d;
         break;
+      /*******************************************************/
       case 'textarea':
         
         var type = typeof d[1] === 'string' ? true : false ;
@@ -190,35 +195,37 @@ function validaInput(e) {
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) throw 'Ingresa solo texto para el campo '+nam;
-        if(!match) throw 'No se permiten caracteres especiales dentro del campo '+nam;
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
+        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
+        if(!match)          return Promise.reject('No se permiten caracteres especiales dentro del campo '+nam);
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
-        case 'url':
-        
+      /*******************************************************/
+      case 'url':
+        console.log(d);
         var type = typeof d[1] === 'string' ? true : false ;
         //var number = isNaN( parseInt( d[1] ) ) ? true : false ;
         var match = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test( d[1] ) ;
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!type) throw 'Ingresa solo texto para el campo '+nam;
-        if(!match) throw 'Ingrese una url valida';
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
+        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
+        if(!match)          return Promise.reject('Ingrese una url valida');
+        if(!minLength && min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength && max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
-        case 'telephone':
+      /*******************************************************/
+      case 'telephone':
         
-        var x = ele.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,2})(\d{0,2})(\d{0,2})/);
+        var x = ele.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
         ele.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
 
         var type = typeof d[1] === 'string' ? true : false ;
@@ -227,17 +234,18 @@ function validaInput(e) {
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) throw 'Ingresa solo texto para el campo '+nam;
-        if(!match) throw 'Ingresa solo numeros para el campo '+nam;
+        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
+        if(!match)          return Promise.reject('Ingresa solo numeros para el campo '+nam);
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
-        case 'credit-card':
+      /*******************************************************/
+      case 'credit-card':
         
         var x = ele.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
         ele.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
@@ -248,17 +256,18 @@ function validaInput(e) {
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6].textContent=max - d[1].length;
+        d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) throw 'Ingresa solo texto para el campo '+nam;
-        if(!match) throw 'Ingresa solo numeros para el campo '+nam;
+        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
+        if(!match)          return Promise.reject('Ingresa solo numeros para el campo '+nam);
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) throw 'El numero minimo de caracteres para el campo '+nam+' es '+min;
-        if(!maxLength&&max) throw 'El numero maximo de caracteres para el campo '+nam+' es '+max;
+        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
-        case 'date':
+      /*******************************************************/
+      case 'date':
         
 
         //var match = /[0-9()-]/.test( d[1] ) ;
@@ -268,7 +277,8 @@ function validaInput(e) {
 
         return d;
         break;
-        case 'list':
+      /*******************************************************/
+      case 'list':
         
         //console.log(d[1]);
         //var match = /[0-9()-]/.test( d[1] ) ;
@@ -278,7 +288,45 @@ function validaInput(e) {
 
         return d;
         break;
-        case 'switch':
+      /*******************************************************/
+      case 'switch':
+        
+      //console.log(d[1],d[4])
+
+        //var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
+        //var arrGr = [];
+        //for (var i = 0; i < gr.length; i++) {
+        //  gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
+        //}
+
+        var match = d[4].checked == true ? true : false;
+
+        //console.log(match);
+        
+        if(!match) return Promise.reject('Habilete el campo '+nam);
+
+        return d;
+        break;
+      /*******************************************************/
+      case 'checkbox':
+        
+        //console.log(d);
+
+        var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
+        var arrGr = [];
+        for (var i = 0; i < gr.length; i++) {
+          gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
+        }
+
+        var match = arrGr.includes(1) ? true : false;
+        
+        if(!match) return Promise.reject('Seleccione al menos una casilla');
+
+
+        return d;
+        break;
+      /*******************************************************/
+      case 'radio':
         
         //console.log('hola');
         var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
@@ -289,63 +337,28 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) throw 'Habilete el campo '+nam;
-
-
-        return d;
-        break;
-        case 'checkbox':
-        
-        //console.log('hola');
-        var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
-        var arrGr = [];
-        for (var i = 0; i < gr.length; i++) {
-          gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
-        }
-        //console.log(arrGr);
-        var match = arrGr.includes(1) ? true : false;
-        
-        if(!match) throw 'Seleccione al menos una casilla';
-
+        if(!match) return Promise.reject('Seleccione al menos una casilla');
 
         return d;
         break;
-        case 'radio':
-        
-        //console.log('hola');
-        var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
-        var arrGr = [];
-        for (var i = 0; i < gr.length; i++) {
-          gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
-        }
-        //console.log(arrGr);
-        var match = arrGr.includes(1) ? true : false;
-        
-        if(!match) throw 'Seleccione al menos una casilla';
-
-
-        return d;
-        break;
-        case 'pdf':
-        
-       
+      /*******************************************************/
+      case 'pdf':
+  
         var num = e.target.files.length === 1 ? true : false ;
         var typ = e.target.files[0].type === 'application/pdf' ? true : false ;
         var siz = e.target.files[0].size < 99698 ? true : false ;
-        
-        //console.log(e.target.files[0].size,siz);
 
-        if(!num) throw 'Solo se permite un archivo';
-        if(!typ) throw 'El archivo '+e.target.files[0].name+' no es un PDF';
-        if(!siz) throw 'El archivo '+e.target.files[0].name+' excede el peso permitido';
+        if(!num) return Promise.reject('Solo se permite un archivo');
+        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un PDF');
+        if(!siz) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
+
         num && typ && siz ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
-
 
         return d;
         break;
-        case 'ecxel':
+      /*******************************************************/
+      case 'ecxel':
         
-       
         var num = e.target.files.length === 1 ? true : false ;
         var typ = e.target.files[0].type === 'application/vnd.ms-excel' ||
         e.target.files[0].type === 'application/xml' || 
@@ -355,27 +368,24 @@ function validaInput(e) {
         e.target.files[0].type === 'application/vnd.ms-excel.sheet.macroEnabled.12' ? true : false ;
         var siz = e.target.files[0].size < 99698 ? true : false ;
         
-        //console.log(e.target.files[0].size,siz);
+        if(!num) return Promise.reject('Solo se permite un archivo');
+        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo ecxel');
+        if(!siz) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
 
-        if(!num) throw 'Solo se permite un archivo';
-        if(!typ) throw 'El archivo '+e.target.files[0].name+' no es un archivo ecxel';
-        if(!siz) throw 'El archivo '+e.target.files[0].name+' excede el peso permitido';
         num && typ && siz ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
-
 
         return d;
         break;
-
+       /*******************************************************/
       default:
-        var error = new Error('Error de validacion XXX001.')
-        return error;
+        return Promise.reject('Error de validacion XXX001.');
     }
   })
   .then((d) => {
 
-      d[0] === 'checkbox' || d[0] === 'switch' || d[0] === 'radio' ? typeGroup() : typeOne() ;
+      d[0] === 'checkbox' || d[0] === 'radio' ? typeGroup() : typeOne() ;
 
-      //console.log(d[0]);
+      //console.log(d);
 
       function typeGroup(){
         var group = document.getElementsByClassName(d[4].getAttribute('data-group'));
@@ -392,7 +402,6 @@ function validaInput(e) {
         d[4].classList.add('is-valid');
         d[5].textContent='';
         d[4].setAttribute('data-error','0');
-        console.log('holast');
         //this.parentNode.parentNode.querySelector('.btn').disabled=false;
       }
 
@@ -401,7 +410,7 @@ function validaInput(e) {
     //var arrErr = ['Campo requerido.','Error de validación']
       //console.log(e);
 
-      tip === 'checkbox' || tip === 'switch' || tip === 'radio' ? typeGroupErr() :typeOneErr();
+      tip === 'checkbox' || tip === 'radio' ? typeGroupErr() :typeOneErr();
 
       function typeGroupErr(){
         var group = document.getElementsByClassName(ele.getAttribute('data-group'));
@@ -416,7 +425,6 @@ function validaInput(e) {
         ele.classList.add('is-invalid');
         err.textContent=e;
         ele.setAttribute('data-error','1');
-        console.log('holase');
         //this.parentNode.parentNode.querySelector('.btn').disabled=true;
       }
 

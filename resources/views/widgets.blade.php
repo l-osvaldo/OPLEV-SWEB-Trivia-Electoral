@@ -178,7 +178,7 @@
 						<i class="fas fa-shopping-cart"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional
 					</a>
 				</div>
 			</div>
@@ -195,7 +195,7 @@
 						<i class="fas fa-chart-bar"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional
 					</a>
 				</div>
 			</div>
@@ -212,7 +212,7 @@
 						<i class="fas fa-user-plus"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional
 					</a>
 				</div>
 			</div>
@@ -229,7 +229,7 @@
 						<i class="fas fa-chart-pie"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional
 					</a>
 				</div>
 			</div>

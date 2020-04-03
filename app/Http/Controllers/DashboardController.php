@@ -64,6 +64,11 @@ class DashboardController extends Controller
         return $vista;
     }
 
+     public function ejemplovalidacion()
+    {
+        return redirect('validacion');
+    }  
+
     public function modalspagina()
     {
         Auth::check() ? $vista = view('modals') : $vista = redirect()->route('login');
@@ -98,6 +103,6 @@ class DashboardController extends Controller
     {
         Auth::check() ? $vista = view('formulario') : $vista = redirect()->route('login');
         return $vista;
-    }  
+    }
 
 }
