@@ -13,6 +13,12 @@
 //TOASTR
 @import '~admin-lte/plugins/toastr/toastr.min.css';
 
+//HighCharts
+@import '~highcharts/css/highcharts.scss';
+@import '~highcharts/css/themes/dark-unica.scss';
+@import '~highcharts/css/themes/grid-light.scss';
+@import '~highcharts/css/themes/sand-signika.scss';
+
 $fa-font-path:        "../webfonts";
 
 //Font Awesome

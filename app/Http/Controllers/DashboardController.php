@@ -111,4 +111,10 @@ class DashboardController extends Controller
         return $vista;
     }
 
+    public function highcharts()
+    {
+        Auth::check() ? $vista = view('highcharts') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
 }
