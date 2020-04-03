@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="content-header">
+<section class="content-header pt-5">
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Widgets</h1>
+				<h1>Cajas de información</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-					<li class="breadcrumb-item active">Widgets</li>
+					<li class="breadcrumb-item active">Cajas de información</li>
 				</ol>
 			</div>
 		</div>
@@ -20,7 +20,6 @@
 <!-- Main content -->
 <section class="content">
 	<div class="container-fluid">
-		<h5 class="mb-2">Info Box</h5>
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-12">
 				<div class="info-box">
@@ -78,7 +77,7 @@
 		<!-- /.row -->
 
 		<!-- =========================================================== -->
-		<h5 class="mt-4 mb-2">Info Box</h5>
+		
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-12">
 				<div class="info-box bg-info">
@@ -166,7 +165,6 @@
 		<!-- =========================================================== -->
 
 		<!-- Small Box (Stat card) -->
-		<h5 class="mb-2 mt-4">Small Box</h5>
 		<div class="row">
 			<div class="col-lg-3 col-6">
 				<!-- small card -->
@@ -180,7 +178,7 @@
 						<i class="fas fa-shopping-cart"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Más Info <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
 					</a>
 				</div>
 			</div>
@@ -197,7 +195,7 @@
 						<i class="fas fa-chart-bar"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Más info <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
 					</a>
 				</div>
 			</div>
@@ -214,7 +212,7 @@
 						<i class="fas fa-user-plus"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Más info <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
 					</a>
 				</div>
 			</div>
@@ -231,26 +229,35 @@
 						<i class="fas fa-chart-pie"></i>
 					</div>
 					<a href="#" class="small-box-footer">
-						Más info <i class="fas fa-arrow-circle-right"></i>
+						Comentario adicional <i class="fas fa-arrow-circle-right"></i>
 					</a>
 				</div>
 			</div>
 			<!-- ./col -->
 		</div>
 		<!-- /.row -->
-		<h5 class="mb-2 mt-4">Social Widgets</h5>	
+		<h5 class="mb-2 mt-4">Tabla con datos</h5>	
 				<div class="row">
 					<div class="col">
 						<!-- Widget: user widget style 2 -->
 						<div class="card card-widget widget-user-2">
 							<!-- Add the bg color to the header using any of the bg-* classes -->
 							<div class="widget-user-header bg-warning">
-								<div class="widget-user-image">
+								<!--div class="widget-user-image">
 									<img class="img-circle elevation-2" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
+								</div-->
+								<div class="row">
+								<div class="col-2">
+									<div class="o-icon-cuadros-2">
+										<i class="fas fa-chart-line"></i>
+									</div>
 								</div>
-								<!-- /.widget-user-image -->
-								<h3 class="widget-user-username">Nadia Carmichael</h3>
-								<h5 class="widget-user-desc">Lorem Ipsum</h5>
+								<div class="col-10">
+									<!-- /.widget-user-image -->
+									<h3 class="">Rubro principal</h3>
+									<h5 class="">Lorem Ipsum</h5>
+								</div>
+								</div>
 							</div>
 							<div class="card-footer p-0">
 								<ul class="nav flex-column">
@@ -285,12 +292,16 @@
 						<div class="card card-widget widget-user">
 							<!-- Add the bg color to the header using any of the bg-* classes -->
 							<div class="widget-user-header bg-info">
-								<h3 class="widget-user-username">Alexander Pierce</h3>
+								<h3 class="widget-user-username">Rubro principal</h3>
 								<h5 class="widget-user-desc">Lorem Ipsum</h5>
+								<div class="o-icon-cuadros-1">
+									<i class="fas fa-chart-line"></i>
+								</div>
+								
 							</div>
-							<div class="widget-user-image">
-								<img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
-							</div>
+							<!--div class="widget-user-image"-->
+								<!--img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar"-->
+							<!--/div-->
 							<div class="card-footer">
 								<div class="row">
 									<div class="col-sm-4 border-right">
@@ -330,10 +341,10 @@
 		<!-- /.col -->
 		<!-- /.col (left) -->
 		<div class="col-md-6">
-			<h5 class="mb-2 mt-4">Progress Bars</h5>	
+			<h5 class="mb-2 mt-4">Barras de progreso</h5>	
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Progress bars</h3>
+					<h3 class="card-title">Rubro</h3>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">

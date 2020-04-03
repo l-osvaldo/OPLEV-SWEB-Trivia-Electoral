@@ -3,26 +3,29 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/" class="brand-link o-logo-center mb-3">
-    <img src="{{ asset('images/logosipseir.png') }}" width="60%" alt="Proyecto Logo" class="">
+    <h2 style="color: #fff;">SISTEMA</h2>
+    <!--img src="{{ asset('images/logosipseir.png') }}" width="60%" alt="Proyecto Logo" class=""-->
     <!--span class="brand-text font-weight-light">AdminLTE 3</span-->
   </a>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-2 pt-4 pb-3 mb-3 d-flex text-center o-img-fondo-gray">
+      <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-5 pt-5 pb-3 mb-3 d-flex text-center o-img-fondo-gray">
       <!--div class="image">
         <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" alt="User Image">
       </div-->
       <div class="nav-header col-md-12 o-nombre-usuario">
-       <!--i class="fas fa-user-circle"  style="font-size: 5vh;color: #fff;text-shadow: 2px 2px 4px #000000;"></i-->
-       <i class="fas fa-user-astronaut o-icon-usuario"></i><br>
+       <i class="fas fa-user-circle o-icon-usuario"></i><br>
+       <!--i class="fas fa-user-astronaut o-icon-usuario"></i><br-->
         Lorem ipsum dolor
       </div>
     </div>
 
+  <!-- Sidebar -->
+  <div class="sidebar" style="margin-top: 0;">
+
+
     <!-- Sidebar Menu -->
-    <nav class="mt-2">
+    <nav>
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
         <!----------------------------------------------------------------------------------->
@@ -31,7 +34,7 @@
           <a href="#" class="nav-link o-menu-principal">
             <i class="nav-icon fas fa-tachometer-alt o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
-              DASHBOARD
+              Panel
               <i class="right fa fa-chevron-left" aria-hidden="true"></i>
             </p>
           </a>
@@ -44,11 +47,11 @@
               </a>
             </li>
 
-            <li class="nav-item has-treeview">
+            <!--li class="nav-item has-treeview">
               <a href="{{ route('programa.index') }}" class="textSideOption nav-link {!! Request::is('programa') ? 'active activeOn' : '' !!}">
                 <i class="fas fa-tachometer-alt"></i> <p>Dashboard</p>
               </a>
-            </li>
+            </li-->
 
             <li class="nav-item has-treeview">
               <a href="{{ route('front.formulario') }}" class="textSideOption nav-link {!! Request::is('formulario') ? 'active activeOn' : '' !!}">
@@ -61,7 +64,7 @@
         <!----------------------------------------------------------------------------------->
 
         <li class="nav-item has-treeview menuClose">
-          <a href="#" class="nav-link o-menu-seis">
+          <a href="#" class="nav-link o-menu-secundario">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
               UI Elements
@@ -71,7 +74,7 @@
           <ul class="nav nav-treeview">
 
             <li class="nav-item has-treeview">
-              <a href="{{ route('front.widgets') }}" class="textSideOption nav-link {!! Request::is('widgets') ? 'active activeOn' : '' !!}">
+              <a href="{{ route('front.widgets') }}" class="textSideOption nav-link {!! Request::is('widgets') ||  Request::is('/') ? 'active activeOn' : '' !!}">
                 <i class="far fa-star"></i> <p>Widgets</p>
               </a>
             </li>
@@ -90,15 +93,15 @@
 
             <li class="nav-item has-treeview">
               <a href="{{ route('front.general') }}" class="textSideOption nav-link {!! Request::is('general') ? 'active activeOn' : '' !!}">
-                <i class="fab fa-adn"></i> <p>Alertas y modal</p>
+                <i class="fab fa-adn"></i> <p>Alertas y modales</p>
               </a>
             </li>
 
-            <li class="nav-item has-treeview">
+            <!--li class="nav-item has-treeview">
               <a href="{{ route('front.modals') }}" class="textSideOption nav-link {!! Request::is('modals') ? 'active activeOn' : '' !!}">
                 <i class="far fa-window-maximize"></i> <p>Modals</p>
               </a>
-            </li>
+            </li-->
 
             <li class="nav-item has-treeview">
               <a href="{{ route('front.timeline') }}" class="textSideOption nav-link {!! Request::is('timeline') ? 'active activeOn' : '' !!}">
@@ -124,7 +127,7 @@
           <a href="#" class="nav-link o-menu-tres">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
-              VALIDACIÓN OPLE
+              Validación OPLE
               <i class="right fa fa-chevron-left" aria-hidden="true"></i>
             </p>
           </a>
@@ -143,7 +146,7 @@
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        <!--li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-cinco">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -161,12 +164,12 @@
             </li>
 
           </ul>
-        </li>
+        </li-->
 
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        <!--li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-cuatro">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -190,13 +193,13 @@
             </li>
 
           </ul>
-        </li>
+        </li-->
 
 
         <!----------------------------------------------------------------------------------->
 
 
-        <li class="nav-item has-treeview menuClose">
+        <!--li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-secundario">
             <i class="fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -219,7 +222,7 @@
             </li>
 
           </ul>
-        </li>
+        </li-->
 
 
       </ul>

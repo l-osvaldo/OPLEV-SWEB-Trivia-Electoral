@@ -3,17 +3,35 @@
 @section('content')
 
 
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2 mt-3">
+          <div class="col-sm-6">
+            <h1>Línea de tiempo</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Línea de tiempo</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
 <section class="content">
       <div class="container-fluid">
         
         <!-- Timelime example  -->
-        <div class="row pt-5">
+        <div class="row">
           <div class="col-md-12">
             <!-- The time line -->
             <div class="timeline">
               <!-- timeline time label -->
               <div class="time-label">
-                <span class="bg-red">10 Feb. 2014</span>
+                <span class="bg-red">01 Ene. 2020</span>
               </div>
               <!-- /.timeline-label -->
               <!-- timeline item -->
@@ -21,17 +39,14 @@
                 <i class="fas fa-envelope bg-blue"></i>
                 <div class="timeline-item">
                   <span class="time o-color-primario"><i class="fas fa-clock"></i> 12:05</span>
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Support Team</a> sent you an email</h3>
+                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Correo recibido</a></h3>
 
                   <div class="timeline-body">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                    quora plaxo ideeli hulu weebly balihoo...
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
                   </div>
                   <div class="timeline-footer">
-                    <a class="btn btn-primary btn-sm">Read more</a>
-                    <a class="btn btn-danger btn-sm">Delete</a>
+                    <a class="btn btn-primary btn-sm">Leer</a>
+                    <a class="btn btn-danger btn-sm">Borrar</a>
                   </div>
                 </div>
               </div>
@@ -40,8 +55,8 @@
               <div>
                 <i class="fas fa-user bg-green"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i> 5 mins ago</span>
-                  <h3 class="timeline-header no-border"><a href="#" class="o-color-primario">Sarah Young</a> accepted your friend request</h3>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 5 min.</span>
+                  <h3 class="timeline-header no-border"><a href="#" class="o-color-primario">Nombre Usuario </a>ha realizado una acción</h3>
                 </div>
               </div>
               <!-- END timeline item -->
@@ -49,30 +64,28 @@
               <div>
                 <i class="fas fa-comments bg-yellow"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i> 27 mins ago</span>
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Jay White</a> commented on your post</h3>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 27 min.</span>
+                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>realizo comentario</h3>
                   <div class="timeline-body">
-                    Take me to your leader!
-                    Switzerland is small and neutral!
-                    We are more like Germany, ambitious and misunderstood!
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   </div>
                   <div class="timeline-footer">
-                    <a class="btn btn-warning btn-sm">View comment</a>
+                    <a class="btn btn-warning btn-sm">Ver comentario</a>
                   </div>
                 </div>
               </div>
               <!-- END timeline item -->
               <!-- timeline time label -->
               <div class="time-label">
-                <span class="bg-green">3 Jan. 2014</span>
+                <span class="bg-green">01 Ene. 2020</span>
               </div>
               <!-- /.timeline-label -->
               <!-- timeline item -->
               <div>
                 <i class="fa fa-camera bg-purple"></i>
                 <div class="timeline-item">
-                  <span class="time o-color-primario"><i class="fas fa-clock"></i> 2 days ago</span>
-                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Mina Lee</a> uploaded new photos</h3>
+                  <span class="time o-color-primario"><i class="fas fa-clock"></i>Hace 2 días</span>
+                  <h3 class="timeline-header"><a href="#" class="o-color-primario">Nombre Usuario </a>adjunto estos archivos</h3>
                   <div class="timeline-body">
                     <img src="http://placehold.it/150x100" alt="...">
                     <img src="http://placehold.it/150x100" alt="...">
@@ -84,7 +97,7 @@
               </div>
               <!-- END timeline item -->
               <!-- timeline item -->
-              <div>
+              <!--div>
                 <i class="fas fa-video bg-maroon"></i>
 
                 <div class="timeline-item">
@@ -101,7 +114,7 @@
                     <a href="#" class="btn btn-sm bg-maroon o-fondo-primario">See comments</a>
                   </div>
                 </div>
-              </div>
+              </div-->
               <!-- END timeline item -->
               <div>
                 <i class="fas fa-clock bg-gray"></i>

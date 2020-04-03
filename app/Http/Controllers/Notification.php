@@ -27,7 +27,6 @@ class Notification extends Controller
 
 	public function sendNotification(){
 		event(new MyEvent('hello world'));
-
 	}
 
 

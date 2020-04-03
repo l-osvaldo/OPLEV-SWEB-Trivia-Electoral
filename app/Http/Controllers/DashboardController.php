@@ -17,7 +17,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        Auth::check() ? $vista = view('dashboard') : $vista = redirect()->route('login');
+        Auth::check() ? $vista = view('widgets') : $vista = redirect()->route('login');
         return $vista;
     }   
 
