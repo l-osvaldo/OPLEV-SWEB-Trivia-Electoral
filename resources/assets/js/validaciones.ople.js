@@ -92,10 +92,10 @@ function validaInput(e) {
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
         if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!number)         return Promise.reject('No se permiten numeros en el campo '+nam);
-        if(!match)          return Promise.reject('No se permiten numeros o caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&ma)  return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!number)         return Promise.reject('No se permiten números en el campo '+nam);
+        if(!match)          return Promise.reject('No se permiten números o caracteres especiales dentro del campo '+nam);
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&ma)  return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         
@@ -111,11 +111,11 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject('Ingresa solo numeros para el campo '+nam);
+        if(!type)           return Promise.reject('Ingresa solo números para el campo '+nam);
         if(!number)         return Promise.reject('No se permiten letras en el campo '+nam);
         if(!match)          return Promise.reject('No se permite texto o caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
         
         return d;
         
@@ -141,7 +141,7 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!match) return Promise.reject('Ingresa un email');
+        if(!match) return Promise.reject('Ingrese un correo valido');
 
         return d;
         
@@ -150,7 +150,7 @@ function validaInput(e) {
       case 'password':
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 )+1 ? true : false ;
-        var matchNumero = /\d+/.test( d[1] );
+        var matchNúmero = /\d+/.test( d[1] );
         var matchUppercase = /[A-Z]/.test( d[1] );
         var matchLowercase = /[a-z]/.test( d[1] );
 
@@ -169,11 +169,11 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
-        if(!matchNumero)    return Promise.reject('El campo '+nam+' debe contener un numero');
-        if(!matchUppercase) return Promise.reject('El campo '+nam+' debe contener una letra mayuscula');
-        if(!matchLowercase) return Promise.reject('El campo '+nam+' debe contener una letra minuscula');
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!matchNúmero)    return Promise.reject('El campo '+nam+' debe contener un número');
+        if(!matchUppercase) return Promise.reject('El campo '+nam+' debe contener una letra mayúscula');
+        if(!matchLowercase) return Promise.reject('El campo '+nam+' debe contener una letra minúscula');
 
         return d;
         break;
@@ -199,8 +199,8 @@ function validaInput(e) {
        
         if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
         if(!match)          return Promise.reject('No se permiten caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
@@ -217,8 +217,8 @@ function validaInput(e) {
 
         if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
         if(!match)          return Promise.reject('Ingrese una url valida');
-        if(!minLength && min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength && max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength && min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength && max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
@@ -237,10 +237,10 @@ function validaInput(e) {
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
         if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('Ingresa solo numeros para el campo '+nam);
+        if(!match)          return Promise.reject('Ingresa solo números para el campo '+nam);
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
@@ -259,10 +259,10 @@ function validaInput(e) {
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
         if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('Ingresa solo numeros para el campo '+nam);
+        if(!match)          return Promise.reject('Ingresa solo números para el campo '+nam);
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) return Promise.reject('El numero minimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El numero maximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
+        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
 
         return d;
         break;
@@ -272,7 +272,7 @@ function validaInput(e) {
 
         //var match = /[0-9()-]/.test( d[1] ) ;
         
-        //if(!match) throw 'Ingresa solo numeros para el campo '+nam;
+        //if(!match) throw 'Ingresa solo números para el campo '+nam;
 
 
         return d;
@@ -283,7 +283,7 @@ function validaInput(e) {
         //console.log(d[1]);
         //var match = /[0-9()-]/.test( d[1] ) ;
         
-        //if(!match) throw 'Ingresa solo numeros para el campo '+nam;
+        //if(!match) throw 'Ingresa solo números para el campo '+nam;
 
 
         return d;
@@ -320,7 +320,7 @@ function validaInput(e) {
 
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una casilla');
+        if(!match) return Promise.reject('Seleccione al menos una opción');
 
 
         return d;
@@ -337,7 +337,7 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una casilla');
+        if(!match) return Promise.reject('Seleccione al menos una opción');
 
         return d;
         break;
@@ -357,7 +357,7 @@ function validaInput(e) {
         return d;
         break;
       /*******************************************************/
-      case 'ecxel':
+      case 'excel':
         
         var num = e.target.files.length === 1 ? true : false ;
         var typ = e.target.files[0].type === 'application/vnd.ms-excel' ||
@@ -369,7 +369,7 @@ function validaInput(e) {
         var siz = e.target.files[0].size < 99698 ? true : false ;
         
         if(!num) return Promise.reject('Solo se permite un archivo');
-        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo ecxel');
+        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo excel');
         if(!siz) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
 
         num && typ && siz ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';

@@ -47,46 +47,46 @@
                       <div id="string-tipotext" class="string">0</div>
                   </div>
 
-                  <label class="col-form-label" for="inputSuccess">Email</label>
+                  <label class="col-form-label" for="inputSuccess">Correo Electrónico</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Email" data-type="email" data-error="1" autocomplete="off" maxlength="50">
+                      <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Correo Electrónico" data-type="email" data-error="1" autocomplete="off" maxlength="50">
                       <div id="error-tipoemail" class="error"></div>
                       <div id="string-tipoemail" class="string">0</div>
                   </div>
 
-                  <label class="col-form-label" for="inputSuccess">Confirmar Email</label>
+                  <label class="col-form-label" for="inputSuccess">Confirmar Correo Electrónico</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Email" data-type="confirm-value" data-error="1" autocomplete="off">
+                      <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm-value" data-error="1" autocomplete="off">
                       <div id="error-tipoemail-check" class="error"></div>
                       <!--div id="string-tipoemail-check" class="string">0</div-->
                   </div>
 
-                  <label class="col-form-label" for="inputSuccess">Password</label>
+                  <label class="col-form-label" for="inputSuccess">Contraseña</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="password" id="password" name="password" class="form-control validacion-o" placeholder="Password" data-type="password" data-error="1" autocomplete="off" maxlength="8" minlength="6">
+                      <input type="password" id="password" name="password" class="form-control validacion-o" placeholder="Contraseña" data-type="password" data-error="1" autocomplete="off" maxlength="8" minlength="6">
                       <div id="error-password" class="error"></div>
                       <div id="string-password" class="string">0</div>
                   </div>
 
-                  <label class="col-form-label" for="inputSuccess">Confirmar Password</label>
+                  <label class="col-form-label" for="inputSuccess">Confirmar Contraseña</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="password" data-type="confirm-value" data-error="1" autocomplete="off">
+                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm-value" data-error="1" autocomplete="off">
                       <div id="error-password-check" class="error"></div>
                       <!--div id="string-password-check" class="string">0</div-->
                   </div>
@@ -119,7 +119,7 @@
                 <div class="card-body">
 
 
-                  <label class="col-form-label" for="inputSuccess">Ingres un número</label>
+                  <label class="col-form-label" for="inputSuccess">Ingrese un número</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
@@ -146,15 +146,15 @@
                    <div class="form-group">
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox1" data-type="checkbox" data-group="grupoDemo" placeholder="Color" data-error="1">
-                      <label for="customCheckbox1" class="custom-control-label">Rrubro 1</label>
+                      <label for="customCheckbox1" class="custom-control-label">Rubro 1</label>
                     </div>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox2" data-type="checkbox" data-group="grupoDemo" placeholder="Color" data-error="1">
-                      <label for="customCheckbox2" class="custom-control-label">Rrubro 2</label>
+                      <label for="customCheckbox2" class="custom-control-label">Rubro 2</label>
                     </div>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox3" data-type="checkbox" data-group="grupoDemo" placeholder="Color" data-error="1">
-                      <label for="customCheckbox3" class="custom-control-label">Rrubro 3</label>
+                      <label for="customCheckbox3" class="custom-control-label">Rubro 3</label>
                     </div>
 
                     <div id="error-grupoDemo" class="error"></div>
@@ -177,7 +177,7 @@
 
                   <div class="form-group">
                     <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input validacion-o" id="customSwitch1" placeholder="switch" data-type="switch" data-error="1">
+                      <input type="checkbox" class="custom-control-input validacion-o" id="customSwitch1" placeholder="notificaciones" data-type="switch" data-error="1">
                       <label class="custom-control-label" for="customSwitch1">Desea recibir notificaciones</label>
 
                       <div id="error-customSwitch1" class="error"></div>
@@ -235,7 +235,7 @@
 
 
 
-                  <label class="col-form-label" for="inputSuccess">Numero de Teléfono</label>
+                  <label class="col-form-label" for="inputSuccess">Número de Teléfono</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">@</span>
@@ -335,12 +335,12 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="customFile">Adjuntar ECXEL</label>
+                    <label for="customFile">Adjuntar EXCEL</label>
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input validacion-o" id="fileECXEL" data-type="ecxel" placeholder="Archivo Ecxel" data-error="1">
-                      <label id="fileLabel-fileECXEL" class="custom-file-label" for="customFile"></label>
-                      <div id="error-fileECXEL" class="error"></div>
+                      <input type="file" class="custom-file-input validacion-o" id="fileEXCEL" data-type="excel" placeholder="Archivo Excel" data-error="1">
+                      <label id="fileLabel-fileEXCEL" class="custom-file-label" for="customFile"></label>
+                      <div id="error-fileEXCEL" class="error"></div>
                     </div>
                   </div>
 

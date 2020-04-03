@@ -12,7 +12,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="app-prefix" content="{{ url('/') }}">
   <!-- LARAVEL JAVASCRIPT -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <!--script src="{{ asset('js/app.js') }}"></script-->
   <!-- CSS's DE LARAVEL -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
