@@ -121,44 +121,4 @@
 
 
 </section>
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2 mt-3">
-      <div class="col-sm-6">
-        <h1>Cuadro con Visor PDF</h1>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-
-  <div class="div-pdf">
-    <div class="card card-oplever">
-      <div class="card-header">
-        <h3 class="card-title">Ejemplo de Visor PDF Expandible</h3>
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-          </button>
-        </div>
-        <!-- /.card-tools -->
-      </div>
-      <!-- /.card-header -->
-      <div class="card-body container-pdf" id="pdfExample">
-        <script src="/js/pdfobject.js"></script>
-        <script>
-              var options = {
-                pdfOpenParams: {
-                  view: 'FitV',
-                  pagemode: 'thumbs',
-                  search: 'lorem ipsum'
-                }
-              };
-            PDFObject.embed("{{ url('/docs/PDFIlustrativo.pdf')}}", "#pdfExample", options);</script>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-</section>
 @endsection
