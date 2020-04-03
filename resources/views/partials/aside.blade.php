@@ -74,7 +74,7 @@
           <ul class="nav nav-treeview">
 
             <li class="nav-item has-treeview">
-              <a href="{{ route('front.widgets') }}" class="textSideOption nav-link {!! Request::is('widgets') ||  Request::is('/') ? 'active activeOn' : '' !!}">
+              <a href="{{ route('front.widgets') }}" class="textSideOption nav-link {!! Request::is('programa') || Request::is('widgets') ||  Request::is('/') ? 'active activeOn' : '' !!}">
                 <i class="far fa-star"></i> <p>Widgets</p>
               </a>
             </li>

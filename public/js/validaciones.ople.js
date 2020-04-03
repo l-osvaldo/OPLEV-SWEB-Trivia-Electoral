@@ -141,7 +141,7 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!match) return Promise.reject('Ingresa un email');
+        if(!match) return Promise.reject('Ingrese un correo valido');
 
         return d;
         
@@ -320,7 +320,7 @@ function validaInput(e) {
 
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una casilla');
+        if(!match) return Promise.reject('Seleccione al menos una opción');
 
 
         return d;
@@ -337,7 +337,7 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una casilla');
+        if(!match) return Promise.reject('Seleccione al menos una opción');
 
         return d;
         break;

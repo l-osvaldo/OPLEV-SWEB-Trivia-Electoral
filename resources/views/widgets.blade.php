@@ -177,9 +177,9 @@
 					<div class="icon">
 						<i class="fas fa-shopping-cart"></i>
 					</div>
-					<a href="#" class="small-box-footer">
+					<span class="small-box-footer">
 						Comentario adicional
-					</a>
+					</span>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -194,9 +194,9 @@
 					<div class="icon">
 						<i class="fas fa-chart-bar"></i>
 					</div>
-					<a href="#" class="small-box-footer">
+					<span class="small-box-footer">
 						Comentario adicional
-					</a>
+					</span>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -211,9 +211,9 @@
 					<div class="icon">
 						<i class="fas fa-user-plus"></i>
 					</div>
-					<a href="#" class="small-box-footer">
+					<span class="small-box-footer">
 						Comentario adicional
-					</a>
+					</span>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -228,9 +228,9 @@
 					<div class="icon">
 						<i class="fas fa-chart-pie"></i>
 					</div>
-					<a href="#" class="small-box-footer">
+					<span class="small-box-footer">
 						Comentario adicional
-					</a>
+					</span>
 				</div>
 			</div>
 			<!-- ./col -->
