@@ -43,6 +43,7 @@
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="text" id="tipotext" name="usuario" class="form-control validacion-o" placeholder="Usuario" data-type="text" data-error="1" autocomplete="off" maxlength="15" minlength="5">
+                      
                       <div id="error-tipotext" class="error"></div>
                       <div id="string-tipotext" class="string">0</div>
                   </div>

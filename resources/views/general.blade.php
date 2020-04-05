@@ -52,8 +52,8 @@
 
       <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
+          <div class="modal-content card-primary card-outline">
+            <div class="modal-header o-fondo-2">
               <h4 class="modal-title">Rubro o tema</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>

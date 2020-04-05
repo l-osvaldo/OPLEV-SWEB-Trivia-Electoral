@@ -82,7 +82,7 @@
             </div>
             <!-- /.card -->
 
-            <div class="card card-danger card-outline">
+            <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
                 <h3 class="card-title">Inputs con distintos anchos y sus clases </h3>
               </div>
