@@ -542,3 +542,9 @@
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
+
+.highcharts-figure .chart-container {
+  width: 300px;
+  height: 200px;
+  float: left;
+}

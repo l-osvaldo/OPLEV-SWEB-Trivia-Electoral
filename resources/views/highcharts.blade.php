@@ -24,6 +24,52 @@
     <div class="row">
       <div class="col">
         <figure class="highcharts-figure">
+          <div id="containerseven"></div>
+          <p class="highcharts-description">
+            Gráfico de Columna Básico que muestra el promedio mensual de lluvias entre diferentes ciudades.
+          </p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <figure class="highcharts-figure">
+          <div id="containereight"></div>
+          <p class="highcharts-description">
+            Gráfico de área básico.
+
+            Los gráficos de área son similares a los gráficos de líneas, pero se usan comúnmente para visualizar
+            volúmenes.
+          </p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <figure class="highcharts-figure">
+          <div id="containerten"></div>
+          <div id="container-speed" class="chart-container"></div>
+    <div id="container-rpm" class="chart-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <figure class="highcharts-figure">
           <div id="container"></div>
           <p class="highcharts-description">
             Gráfico que muestra la colocación superpuesta de columnas, utilizando diferentes series de datos. El gráfico también está utilizando múltiples ejes y, lo que permite visualizar datos en diferentes rangos en el mismo gráfico.
@@ -93,6 +139,7 @@
 
       <script src="/highcharts.js"></script>
       <script src="/highcharts-more.js"></script>
+      <script src="/modules/solid-gauge.js"></script>
       <script type="text/javascript">
 
         Highcharts.chart('container', {
@@ -886,5 +933,303 @@ Highcharts.chart('containerfive', {
         }]
       });
 
-    </script>
-    @endsection
+Highcharts.chart('containerseven', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: 'Promedio de Lluvia Mensual'
+  },
+  subtitle: {
+    text: 'Fuente: WorldClimate.com'
+  },
+  xAxis: {
+    categories: [
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dic'
+    ],
+    crosshair: true
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: 'Lluvia (mm)'
+    }
+  },
+  tooltip: {
+    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+    footerFormat: '</table>',
+    shared: true,
+    useHTML: true
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
+  },
+  series: [{
+    name: 'Tokio',
+    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+  }, {
+    name: 'Nueva York',
+    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+  }, {
+    name: 'Londrés',
+    data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+  }, {
+    name: 'Berlín',
+    data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+  }]
+});
+
+Highcharts.chart('containereight', {
+  chart: {
+    type: 'area'
+  },
+  accessibility: {
+    description: 'Descripción de la Imagen: Un gráfico de área compara las reservas nucleares de los EE. UU. Y la URSS / Rusia entre 1945 y 2017. La cantidad de armas nucleares se representa en el eje Y y los años en el eje X. El gráfico es interactivo, y los niveles de existencias anuales se pueden rastrear para cada país. Estados Unidos tiene un arsenal de 6 armas nucleares en los albores de la era nuclear en 1945. Este número aumentó gradualmente a 369 en 1950 cuando la URSS ingresó a la carrera armamentista con 6 armas. En este punto, Estados Unidos comienza a construir rápidamente su arsenal que culminó en 32.040 ojivas nucleares en 1966 en comparación con las 7.089 de la URSS. A partir de este pico en 1966, la reserva de EE. UU. Disminuye gradualmente a medida que se expande la reserva de la URSS. Para 1978, la URSS había cerrado la brecha nuclear en 25.393. El arsenal de la URSS continúa creciendo hasta alcanzar un pico de 45,000 en 1986 en comparación con el arsenal de los Estados Unidos de 24,401. A partir de 1986, las reservas nucleares de ambos países comienzan a caer. Para el año 2000, los números han caído a 10,577 y 21,000 para los Estados Unidos y Rusia, respectivamente. Las disminuciones continúan hasta 2017, momento en el que Estados Unidos posee 4.018 armas en comparación con las 4.500 de Rusia.'
+  },
+  title: {
+    text: 'US y USSR reservas nucleares'
+  },
+  subtitle: {
+    text: 'Fuentes: <a href="https://thebulletin.org/2006/july/global-nuclear-stockpiles-1945-2006">' +
+    'thebulletin.org</a> &amp; <a href="https://www.armscontrol.org/factsheets/Nuclearweaponswhohaswhat">' +
+    'armscontrol.org</a>'
+  },
+  xAxis: {
+    allowDecimals: false,
+    labels: {
+      formatter: function () {
+                return this.value; // clean, unformatted number for year
+              }
+            },
+            accessibility: {
+              rangeDescription: 'Rango: 1940 to 2017.'
+            }
+          },
+          yAxis: {
+            title: {
+              text: 'Estados de armas nucleares'
+            },
+            labels: {
+              formatter: function () {
+                return this.value / 1000 + 'k';
+              }
+            }
+          },
+          tooltip: {
+            pointFormat: '{series.name} had stockpiled <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+          },
+          plotOptions: {
+            area: {
+              pointStart: 1940,
+              marker: {
+                enabled: false,
+                symbol: 'circle',
+                radius: 2,
+                states: {
+                  hover: {
+                    enabled: true
+                  }
+                }
+              }
+            }
+          },
+          series: [{
+            name: 'USA',
+            data: [
+            null, null, null, null, null, 6, 11, 32, 110, 235,
+            369, 640, 1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468,
+            20434, 24126, 27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342,
+            26662, 26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
+            24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344, 23586, 22380,
+            21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950, 10871, 10824,
+            10577, 10527, 10475, 10421, 10358, 10295, 10104, 9914, 9620, 9326,
+            5113, 5113, 4954, 4804, 4761, 4717, 4368, 4018
+            ]
+          }, {
+            name: 'USSR/Russia',
+            data: [null, null, null, null, null, null, null, null, null, null,
+            5, 25, 50, 120, 150, 200, 426, 660, 869, 1060,
+            1605, 2471, 3322, 4238, 5221, 6129, 7089, 8339, 9399, 10538,
+            11643, 13092, 14478, 15915, 17385, 19055, 21205, 23044, 25393, 27935,
+            30062, 32049, 33952, 35804, 37431, 39197, 45000, 43000, 41000, 39000,
+            37000, 35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
+            21000, 20000, 19000, 18000, 18000, 17000, 16000, 15537, 14162, 12787,
+            12600, 11400, 5500, 4512, 4502, 4502, 4500, 4500
+            ]
+          }]
+        });
+
+
+var gaugeOptions = {
+    chart: {
+        type: 'solidgauge'
+    },
+
+    title: 'Solid Gauges',
+
+    pane: {
+        center: ['50%', '85%'],
+        size: '140%',
+        startAngle: -90,
+        endAngle: 90,
+        background: {
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            innerRadius: '60%',
+            outerRadius: '100%',
+            shape: 'arc'
+        }
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    // the value axis
+    yAxis: {
+        stops: [
+            [0.1, '#55BF3B'], // green
+            [0.5, '#DDDF0D'], // yellow
+            [0.9, '#DF5353'] // red
+        ],
+        lineWidth: 0,
+        tickWidth: 0,
+        minorTickInterval: null,
+        tickAmount: 2,
+        title: {
+            y: -70
+        },
+        labels: {
+            y: 16
+        }
+    },
+
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                y: 5,
+                borderWidth: 0,
+                useHTML: true
+            }
+        }
+    }
+};
+
+// The speed gauge
+var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
+    yAxis: {
+        min: 0,
+        max: 200,
+        title: {
+            text: 'Speed'
+        }
+    },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Speed',
+        data: [80],
+        dataLabels: {
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px">{y}</span><br/>' +
+                '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+                '</div>'
+        },
+        tooltip: {
+            valueSuffix: ' km/h'
+        }
+    }]
+
+}));
+
+// The RPM gauge
+var chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
+    yAxis: {
+        min: 0,
+        max: 5,
+        title: {
+            text: 'RPM'
+        }
+    },
+
+    series: [{
+        name: 'RPM',
+        data: [1],
+        dataLabels: {
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px">{y:.1f}</span><br/>' +
+                '<span style="font-size:12px;opacity:0.4">' +
+                '* 1000 / min' +
+                '</span>' +
+                '</div>'
+        },
+        tooltip: {
+            valueSuffix: ' revolutions/min'
+        }
+    }]
+
+}));
+
+// Bring life to the dials
+setInterval(function () {
+    // Speed
+    var point,
+        newVal,
+        inc;
+
+    if (chartSpeed) {
+        point = chartSpeed.series[0].points[0];
+        inc = Math.round((Math.random() - 0.5) * 100);
+        newVal = point.y + inc;
+
+        if (newVal < 0 || newVal > 200) {
+            newVal = point.y - inc;
+        }
+
+        point.update(newVal);
+    }
+
+    // RPM
+    if (chartRpm) {
+        point = chartRpm.series[0].points[0];
+        inc = Math.random() - 0.5;
+        newVal = point.y + inc;
+
+        if (newVal < 0 || newVal > 5) {
+            newVal = point.y - inc;
+        }
+
+        point.update(newVal);
+    }
+}, 2000);
+      </script>
+      @endsection
