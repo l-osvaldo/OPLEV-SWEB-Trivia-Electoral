@@ -510,6 +510,12 @@
             </li>
 
             <li class="nav-item has-treeview">
+              <a href="{{ route('front.tables') }}" class="textSideOption nav-link {!! Request::is('tables') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-table"></i> <p>Tablas</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
               <a href="{{ route('front.tabs') }}" class="textSideOption nav-link {!! Request::is('tabs') ? 'active activeOn' : '' !!}">
                 <i class="far fa-address-card"></i> <p>Tabs</p>
               </a>
