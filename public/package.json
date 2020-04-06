@@ -1,32 +1,28 @@
 {
-  "_args": [
-    [
-      "highcharts@8.0.4",
-      "C:\\Users\\OPLE\\code\\dashboardclon"
-    ]
-  ],
-  "_from": "highcharts@8.0.4",
+  "_from": "highcharts",
   "_id": "highcharts@8.0.4",
   "_inBundle": false,
   "_integrity": "sha512-RD86/w7VNwuY96c2Pv16dtZujJ4vg5viiVjbFF/TCrvFpmtQRzBIECG90ww0JtiK6+6TKlwCYf0an+kgQshnRw==",
   "_location": "/highcharts",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "tag",
     "registry": true,
-    "raw": "highcharts@8.0.4",
+    "raw": "highcharts",
     "name": "highcharts",
     "escapedName": "highcharts",
-    "rawSpec": "8.0.4",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "8.0.4"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/highcharts/-/highcharts-8.0.4.tgz",
-  "_spec": "8.0.4",
-  "_where": "C:\\Users\\OPLE\\code\\dashboardclon",
+  "_shasum": "a717434012bd5f9b82b94b737d62acec501d360c",
+  "_spec": "highcharts",
+  "_where": "/home/vagrant/code/dashboardclon",
   "author": {
     "name": "Highsoft AS",
     "email": "support@highcharts.com",
@@ -35,6 +31,8 @@
   "bugs": {
     "url": "https://github.com/highcharts/highcharts/issues"
   },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "JavaScript charting framework",
   "homepage": "http://www.highcharts.com",
   "keywords": [

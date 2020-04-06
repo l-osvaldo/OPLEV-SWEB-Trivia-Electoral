@@ -500,4 +500,6 @@ Route::get('/formulario', 'DashboardController@formulariopagina')->name('front.f
 Route::get('/visorpdf', 'DashboardController@visorpdf')->name('front.visorpdf');
 Route::get('/highcharts', 'DashboardController@highcharts')->name('front.highcharts');
 });
+Route::post('/authchannel', 'Notification@authorizeUser')->name('authchannel');
+Route::get('/sendNotification', 'Notification@sendNotification')->name('sendNotification');
 
