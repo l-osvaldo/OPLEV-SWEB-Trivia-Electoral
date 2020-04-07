@@ -564,6 +564,12 @@
               </a>
             </li>
 
+            <li class="nav-item has-treeview">
+             <a href="{{ route('front.encrypt') }}" class="textSideOption nav-link {!! Request::is('encrypt') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-code"></i> <p>Encrypt</p>
+              </a>
+            </li>
+
           </ul>
         </li>
 

@@ -26,7 +26,7 @@ const mix = require('laravel-mix');
 'node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js',
 'node_modules/admin-lte/plugins/datatables/jquery.dataTables.min.js',
 'node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
-'node_modules/admin-lte/plugins/sweetalert2/sweetalert2.min.js',
+'node_modules/admin-lte/plugins/sweetalert2/sweetalert2.all.js',
 'node_modules/admin-lte/plugins/toastr/toastr.min.js',
 'node_modules/admin-lte/dist/js/adminlte.min.js',
 'resources/assets/js/dashboard.js',

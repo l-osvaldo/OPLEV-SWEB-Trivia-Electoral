@@ -30,7 +30,8 @@ Route::get('/general', 'DashboardController@generalpagina')->name('front.general
 Route::get('/tabs', 'DashboardController@tabspagina')->name('front.tabs');
 Route::get('/timeline', 'DashboardController@timelinepagina')->name('front.timeline');
 Route::get('/formulario', 'DashboardController@formulariopagina')->name('front.formulario');
-
+Route::get('/encrypt', 'DashboardController@encrypt')->name('front.encrypt');
+Route::post('/encrypted', 'DashboardController@encrypted')->name('front.encrypted');
 
 
 

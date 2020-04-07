@@ -225,7 +225,7 @@
 
             <div class="card card-primary card-outline">
               <div class="card-header o-fondo-5">
-                <h3 class="card-title">Datos Genrales</h3>
+                <h3 class="card-title">Datos Generales</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -253,7 +253,7 @@
                         <span class="input-group-text">@</span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Numero tarjeta" data-type="credit-card" data-error="1" autocomplete="off" maxlength="19" minlength="19">
+                      <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="credit-card" data-error="1" autocomplete="off" maxlength="19" minlength="19">
                       <div id="error-card" class="error"></div>
                       <div id="string-card" class="string">0</div>
                   </div>
