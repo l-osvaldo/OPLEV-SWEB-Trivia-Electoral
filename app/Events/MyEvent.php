@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Notify;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -20,11 +21,11 @@ class MyEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public $message;
+    public $notify;
 
-    public function __construct($message)
+    public function __construct(Notify $notify)
     {
-       $this->message = $message;
+       $this->notify = $notify;
     }
 
     public function broadcastOn()

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
-use App\User;
 use Illuminate\Support\Facades\Session;
 use Pusher\Pusher;
 use App\Events\MyEvent;
@@ -26,8 +27,22 @@ class Notification extends Controller
 	}
 
 	public function sendNotification(){
-		event(new MyEvent('hello world'));
+		$usuario = auth()->user();
+		$idUser = $usuario->id;
+    $mensaje = 'Alerta del Sistema';
+		$notify = new Notify([
+			'idUser'    => $idUser,
+			'mensaje'    =>  Crypt::encryptString($mensaje)
+		]);
+		$notify->save();
+		event(new MyEvent($notify));
 	}
 
+	public function decryptstring(Request $request)
+    {
+      $mensaje = $request->input('mensaje');
+      $men = Crypt::decryptString($mensaje);
+      return response()->json(['success'=>compact('men')]);
+    }
 
 }
