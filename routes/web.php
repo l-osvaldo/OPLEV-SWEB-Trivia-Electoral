@@ -502,4 +502,5 @@ Route::get('/highcharts', 'DashboardController@highcharts')->name('front.highcha
 });
 Route::post('/authchannel', 'Notification@authorizeUser')->name('authchannel');
 Route::get('/sendNotification', 'Notification@sendNotification')->name('sendNotification');
+Route::get('/ver-pdf/{id}', 'PDFController@view');
 

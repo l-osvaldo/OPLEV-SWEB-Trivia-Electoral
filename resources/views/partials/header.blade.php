@@ -28,6 +28,10 @@
             <div class="o-alerta-vista">UTSI - Act.- 2 - 23</div>
             <div class="o-alerta-vista-fecha">17/03/2020</div>
           </a>
+           <a href="#" class="dropdown-item texto-negro o-alerta-texto">
+            <div class="o-alerta-vista">Harry Jackson</div>
+            <div class="o-alerta-vista-fecha">17/03/2020</div>
+          </a>
         </div>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item dropdown-footer o-alerta-footer">Ir a la Revisión de Actividades</a>
@@ -87,7 +91,6 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">Notificaciones (<span class="notif-count"></span>)</span>
         <div class="test" >
-          <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" style="color:#594b57;">
             <i class="fas fa-user-astronaut"></i>
