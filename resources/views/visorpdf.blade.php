@@ -75,7 +75,9 @@
                   Ventana modal ejemplo
                 </h3>
               </div>
+              
               <div class="card-body">
+
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-xl">
                   Invocar ventana
                 </button>

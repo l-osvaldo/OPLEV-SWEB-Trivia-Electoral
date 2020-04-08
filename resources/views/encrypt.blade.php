@@ -36,7 +36,9 @@
         <form method="post" action="/encrypted">
           {{ csrf_field() }}
           <input type="hidden" name="user_id" value="{{$varVista}}">
+
           <button type="submit" class="btn o-fondo-1">Continuar</button>
+          
         </form>
 
       </div>

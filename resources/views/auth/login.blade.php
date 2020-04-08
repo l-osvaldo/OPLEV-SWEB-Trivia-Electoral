@@ -49,11 +49,13 @@
 
               <div class="row">
                 <div class="col-12">
+
                   <p>
                     @isset($aviso)
                       {{ $aviso }}
                     @endisset
                   </p>
+                  
                   <button type="submit" class="btn btn-dark btn-block">Ingresar</button>
                 </div>
               </div>
