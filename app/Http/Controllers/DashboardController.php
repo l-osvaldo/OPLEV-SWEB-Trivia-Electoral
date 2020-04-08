@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Encryption\DecryptException;
+//use Illuminate\Support\Facades\Crypt
+use Illuminate\Http\Request;
+use Crypt;
 use DB;
 use Auth;
-use Alert;
 
 class DashboardController extends Controller
 {
@@ -115,6 +118,40 @@ class DashboardController extends Controller
     {
         Auth::check() ? $vista = view('highcharts') : $vista = redirect()->route('login');
         return $vista;
+    }
+
+    public function encrypt()
+    {
+
+        $encrypted = Crypt::encrypt('100');
+
+        //dd($encrypted);
+
+        $parte1 = substr($encrypted, 0, 15);//eyJpdiI6I
+        $parte2 = substr($encrypted, 15); //eyJpdiI6I
+
+        $varVista = $parte1.str_random(10).$parte2;
+
+        $respuesta = '';
+
+        Auth::check() ? $vista = view('encrypt')->with( compact('encrypted','parte1','parte2','varVista','respuesta')) : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function encrypted(Request $request)
+    {
+
+        $parte1 = substr($request->user_id, 0, 15);//eyJpdiI6I
+        $parte2 = substr($request->user_id, 25); //eyJpdiI6I
+
+        try {
+            $decrypted = decrypt($parte1.$parte2);
+            $respuesta = $decrypted;
+        } catch (DecryptException $e) {
+            $respuesta = 'Error de validación';
+        }
+       
+       return redirect()->route('front.encrypt', compact('respuesta'));
     }
 
 }
