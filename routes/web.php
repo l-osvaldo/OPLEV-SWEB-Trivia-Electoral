@@ -502,5 +502,7 @@ Route::get('/visorpdf', 'DashboardController@visorpdf')->name('front.visorpdf');
 Route::get('/highcharts', 'DashboardController@highcharts')->name('front.highcharts');
 });
 Route::post('/authchannel', 'Notification@authorizeUser')->name('authchannel');
+Route::post('/notifyservice', 'Notification@decryptstring')->name('notifyservice');
 Route::get('/sendNotification', 'Notification@sendNotification')->name('sendNotification');
+Route::get('/ver-pdf/{id}', 'PDFController@view');
 
