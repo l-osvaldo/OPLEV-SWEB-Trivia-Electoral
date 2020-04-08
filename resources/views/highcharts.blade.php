@@ -137,9 +137,9 @@
       </section>
 
 
-      <script src="/highcharts.js"></script>
-      <script src="/highcharts-more.js"></script>
-      <script src="/modules/solid-gauge.js"></script>
+      <script src="highcharts.js"></script>
+      <script src="highcharts-more.js"></script>
+      <script src="modules/solid-gauge.js"></script>
       <script type="text/javascript">
 
         Highcharts.chart('container', {
