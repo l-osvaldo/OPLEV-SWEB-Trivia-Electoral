@@ -141,17 +141,20 @@ class DashboardController extends Controller
     public function encrypted(Request $request)
     {
 
-        $parte1 = substr($request->user_id, 0, 15);//eyJpdiI6I
-        $parte2 = substr($request->user_id, 25); //eyJpdiI6I
+        $parte1 = substr($request->user_id, 0, 15);
+        $parte2 = substr($request->user_id, 25);
 
         try {
-            $decrypted = decrypt($parte1.$parte2);
-            $respuesta = $decrypted;
+            $Alert_texto='Valor decriptado: '.decrypt($parte1.$parte2);
+            $Alert_subtitulo='OK!';
+            $Alert_tipo='success';
         } catch (DecryptException $e) {
-            $respuesta = 'Error de validación';
+            $Alert_texto='Error de validación';
+            $Alert_subtitulo='Error!';
+            $Alert_tipo='error';
         }
        
-       return redirect()->route('front.encrypt', compact('respuesta'));
+       return redirect()->route('front.encrypt', compact('Alert_texto','Alert_subtitulo','Alert_tipo'));
     }
 
 }

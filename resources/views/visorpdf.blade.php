@@ -107,11 +107,10 @@
               </button>
             </div>
             <div class="modal-body">
-              <p> <iframe src="{{ url('/docs/PDFIlustrativo.pdf')}}" width="100%" height="800"></iframe> </p>
+              <p> <iframe src="/docs/PDFIlustrativo.pdf" width="100%" height="800"></iframe> </p>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary o-fondo-1">Guardar</button>
             </div>
           </div>
           <!-- /.modal-content -->

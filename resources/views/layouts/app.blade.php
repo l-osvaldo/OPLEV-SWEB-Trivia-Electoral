@@ -55,5 +55,17 @@
 </footer>
 <!-- PROJECT JAVASCRIPT -->
 <script src="js/all.js"></script>
+
+@if (app('request')->input('Alert_texto'))
+<script type="text/javascript">
+Swal.fire({
+  text: "{!! app('request')->input('Alert_texto') !!}",
+  title: "{!! app('request')->input('Alert_subtitulo') !!}",
+  type: "{!! app('request')->input('Alert_tipo') !!}",
+  confirmButtonColor: '#EA0D94'
+});
+</script>
+@endif
+
 </body>
 </html>

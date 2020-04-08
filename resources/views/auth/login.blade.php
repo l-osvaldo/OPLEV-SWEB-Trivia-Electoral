@@ -4,12 +4,12 @@
 
 <header>
   <div class="logo-container">
-    <img src="{{ asset('images/logosipseir.png') }}" class="logo-image" />
+    <img src="{{ asset('images/logoGenerico.png') }}" class="logo-image" />
   </div>
   <div class="title-container">
     <div class="title-text">
-      Sistema Integral de Planeación, Seguimiento y Evaluación Institucional  <br>
-      <small>Unidad Técnica de Planeación</small>
+      Nombre del Sistema Informático<br>
+      <small>Nombre del área responsable</small>
     </div>
   </div>  
 </header>
@@ -32,7 +32,7 @@
                 <input id="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" autofocus placeholder="Nombre de usuario">
                 @if ($errors->has('username'))
                   <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('username') }}</strong>
+                  <strong>{{ $errors->first('username') == 'El username es requerido.' ? "El usuario es requerido." : $errors->first('username') }}</strong>
                   </span>
                 @endif
               </div>
@@ -41,7 +41,8 @@
                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Contraseña">
                 @if ($errors->has('password'))
                   <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('password') }}</strong>
+                  <!--strong>{{ $errors->first('password') }}</strong-->
+                  <strong>La contraseña es requerida.</strong>
                   </span>
                 @endif
               </div>
@@ -72,7 +73,7 @@
     </div>
     <div class="footer-middle">
       <div class="footer-text">
-        Sistema Integral de Planeación, Seguimiento y Evaluación Institucional<br>
+        Nombre del área responsable<br>
         <small>Compatibilidad óptima con Google Chrome</small>
       </div>
     </div>

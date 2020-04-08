@@ -39,9 +39,6 @@
           <button type="submit" class="btn o-fondo-1">Continuar</button>
         </form>
 
-        <br>
-        <strong>Respuesta: </strong>{{ app('request')->input('respuesta') }}
-
       </div>
     </div>
 
