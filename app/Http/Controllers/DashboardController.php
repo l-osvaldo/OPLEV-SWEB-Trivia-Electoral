@@ -145,13 +145,17 @@ class DashboardController extends Controller
         $parte2 = substr($request->user_id, 25);
 
         try {
+            
             $Alert_texto='Valor decriptado: '.decrypt($parte1.$parte2);
             $Alert_subtitulo='OK!';
             $Alert_tipo='success';
+
         } catch (DecryptException $e) {
+
             $Alert_texto='Error de validación';
             $Alert_subtitulo='Error!';
             $Alert_tipo='error';
+
         }
        
        return redirect()->route('front.encrypt', compact('Alert_texto','Alert_subtitulo','Alert_tipo'));

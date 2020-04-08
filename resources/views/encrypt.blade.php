@@ -34,11 +34,13 @@
         <h6 style="white-space: pre-wrap;word-break: break-word;">Nomenclatura: <br>{{$varVista}}</h6><br>
 
         <form method="post" action="/encrypted">
+
           {{ csrf_field() }}
+          
           <input type="hidden" name="user_id" value="{{$varVista}}">
 
           <button type="submit" class="btn o-fondo-1">Continuar</button>
-          
+
         </form>
 
       </div>
