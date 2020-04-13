@@ -31,11 +31,16 @@ const mix = require('laravel-mix');
 'node_modules/admin-lte/plugins/sweetalert2/sweetalert2.min.js',
 'node_modules/admin-lte/plugins/toastr/toastr.min.js',
 'node_modules/admin-lte/dist/js/adminlte.min.js',
+'node_modules/highcharts/highcharts.js',
+'node_modules/highcharts/highcharts-more.js',
+'node_modules/highcharts/modules/solid-gauge.js',
 'resources/assets/js/dashboard.js',
 'resources/assets/js/validaciones.ople.js',
 'resources/assets/js/datatables.js',
 'resources/assets/js/toastr.js',
-'resources/assets/js/pdfobject.js'
+'resources/assets/js/pdfobject.js',
+'resources/assets/js/pusher.js',
+'resources/assets/js/highcharts.js'
 ], 'public/js/all.js');
 
  mix.js('resources/js/app.js', 'public/js')
@@ -47,8 +52,3 @@ const mix = require('laravel-mix');
  mix.copyDirectory('resources/assets/js', 'public/js');
  mix.copyDirectory('resources/assets/vendor_components', 'public/vendor_components');
  mix.copyDirectory('resources/assets/vendor_plugins', 'public/vendor_plugins');
-
-
-
-
-mix.copyDirectory('node_modules/highcharts', 'public');

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Crypt;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Pusher\Pusher;
 use App\Events\MyEvent;
 use Carbon\Carbon;
 

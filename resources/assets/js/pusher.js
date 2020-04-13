@@ -1,51 +1,48 @@
 var token = $('meta[name="csrf-token"]').attr('content');
-var notificationsWrapper   = $('.dropdown-notifications');
-var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
-var notificationsCountElem = notificationsToggle.find('i[data-count]');
-var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-var notifications          = notificationsWrapper.find('div.test');
-if (notificationsCount <= 0) {
-  notificationsWrapper.hide();
-}
-var key = "{{ env('PUSHER_APP_KEY') }}";
-var pusher = new Pusher(key, {
-  authEndpoint: '/sicli/'+'/authchannel',
-  auth: {
-    headers: {
-      'X-CSRF-Token': $("[name='csrf-token']").attr('content')
-    }
-  },
-  cluster: 'us2',
-  forceTLS: true
-});
+  var notificationsWrapper   = $('.dropdown-notifications');
+  var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
+  var notificationsCountElem = notificationsToggle.find('i[data-count]');
+  var notificationsCount     = parseInt(notificationsCountElem.data('count'));
+  var notifications          = notificationsWrapper.find('div.test');
+  if (notificationsCount <= 0) {
+    notificationsWrapper.hide();
+  }
+  var key = "c298b7f80f6c55437712";
+  var pusher = new Pusher(key, {
+    authEndpoint:'/authchannel',
+    auth: {
+      headers: {
+        'X-CSRF-Token': $("[name='csrf-token']").attr('content')
+      }
+    },
+    cluster: 'us2',
+    forceTLS: true
+  });
 
-Pusher.logToConsole = true;
+  Pusher.logToConsole = true;
 
-var privateChannel = pusher.subscribe('private-notify');
-privateChannel.bind('notificacion', function(data) {
-  $.each(data, function(i, item) {
-   var usuario = item.usuario;
-   var mensaje = item.mensaje;
-   var ruta = item.ruta;
-   var a = item.a;
-   var ape = item.ape;
-   $.ajax({
-     type:'POST',
-     url:'/sicli'+"/notifyservice",
-     header: {"X-CSRF-Token": token},
-     data:{usuario:usuario, mensaje:mensaje, ruta:ruta, a:a, ape:ape},
-     success:function(data){
-      if (data.success.a != '{{Auth::user()->id}}'){
-       if (data.success.ape == '{{Auth::user()->id_area}}'){
+  var privateChannel = pusher.subscribe('private-example');
+  privateChannel.bind('example', function(data) {
+    $.each(data, function(i, item) {
+      var mensaje = item.mensaje;
+      console.log(mensaje);
+      $.ajax({
+       type:'POST',
+       url:'/notifyservice',
+       headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       },
+       data:{mensaje:mensaje},
+       success:function(data){
         var existingNotifications = notifications.html();
         var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
         var newNotificationHtml = `
         <div class="dropdown-divider"></div>
-        <a href="{{ config('app.url')}}/`+data.success.ruta+`" class="dropdown-item">
-        <img src="{{ asset('images/`+data.success.ruta+`.png')}}" class="img-circle" alt="50x50" style="width: 50px; height: 50px;"><strong style="padding-left:5px;">`+data.success.usuario+`</strong>
+        <a href="#" class="dropdown-item">
+        <i class="fas fa-user-astronaut"></i><strong style="padding-left:5px;">Usuario de Ejemplo</strong>
         <br>
-        <span>`+data.success.mensaje+`</span>
-        <span class="float-right text-muted text-sm">`+data.success.dt+`</span>
+        <span>`+data.success.men+`</span>
+        <span class="float-right text-muted text-sm">Hace 1 segundo</span>
         </a>
         `;
         notifications.html(newNotificationHtml + existingNotifications);
@@ -54,9 +51,6 @@ privateChannel.bind('notificacion', function(data) {
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
       }
-    }
-  }
-});
- });
-});
-</script>
+    });
+    });
+  });

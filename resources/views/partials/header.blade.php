@@ -92,13 +92,7 @@
         <span class="dropdown-item dropdown-header">Notificaciones (<span class="notif-count"></span>)</span>
         <div class="test" >
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" style="color:#594b57;">
-            <i class="fas fa-user-astronaut"></i>
-            <strong style="padding-left:5px;">Usuario de Ejemplo</strong>
-            <br>
-            <span>Esto es un mensaje</span>
-            <span class="float-right text-muted text-sm">Hace 1 segundo</span>
-          </a>
+
         </div>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las Notificaciones</a>
@@ -123,61 +117,3 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
-<script type="text/javascript">
-  var token = $('meta[name="csrf-token"]').attr('content');
-  var notificationsWrapper   = $('.dropdown-notifications');
-  var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
-  var notificationsCountElem = notificationsToggle.find('i[data-count]');
-  var notificationsCount     = parseInt(notificationsCountElem.data('count'));
-  var notifications          = notificationsWrapper.find('div.test');
-  if (notificationsCount <= 0) {
-    notificationsWrapper.hide();
-  }
-  var key = "c298b7f80f6c55437712";
-  var pusher = new Pusher(key, {
-    authEndpoint:'/authchannel',
-    auth: {
-      headers: {
-        'X-CSRF-Token': $("[name='csrf-token']").attr('content')
-      }
-    },
-    cluster: 'us2',
-    forceTLS: true
-  });
-
-  Pusher.logToConsole = true;
-
-  var privateChannel = pusher.subscribe('private-example');
-  privateChannel.bind('example', function(data) {
-    $.each(data, function(i, item) {
-      var mensaje = item.mensaje;
-      console.log(mensaje);
-      $.ajax({
-       type:'POST',
-       url:'/notifyservice',
-       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-       },
-       data:{mensaje:mensaje},
-       success:function(data){
-        var existingNotifications = notifications.html();
-        var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
-        var newNotificationHtml = `
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-        <i class="fas fa-user-astronaut"></i><strong style="padding-left:5px;">Usuario de Ejemplo</strong>
-        <br>
-        <span>`+data.success.men+`</span>
-        <span class="float-right text-muted text-sm">Hace 1 segundo</span>
-        </a>
-        `;
-        notifications.html(newNotificationHtml + existingNotifications);
-        notificationsCount += 1;
-        notificationsCountElem.attr('data-count', notificationsCount);
-        notificationsWrapper.find('.notif-count').text(notificationsCount);
-        notificationsWrapper.show();
-      }
-    });
-    });
-  });
-</script>
