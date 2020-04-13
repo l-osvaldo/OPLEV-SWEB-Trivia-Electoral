@@ -39,7 +39,7 @@
                   <label class="col-form-label" for="tipotext">Usuario</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="text" id="tipotext" name="usuario" class="form-control validacion-o" placeholder="Usuario" data-type="text" data-error="1" autocomplete="off" maxlength="15" minlength="5">
@@ -51,7 +51,7 @@
                   <label class="col-form-label" for="inputSuccess">Correo Electrónico</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Correo Electrónico" data-type="email" data-error="1" autocomplete="off" maxlength="50">
@@ -62,7 +62,7 @@
                   <label class="col-form-label" for="inputSuccess">Confirmar Correo Electrónico</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm-value" data-error="1" autocomplete="off">
@@ -73,7 +73,7 @@
                   <label class="col-form-label" for="inputSuccess">Contraseña</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="password" id="password" name="password" class="form-control validacion-o" placeholder="Contraseña" data-type="password" data-error="1" autocomplete="off" maxlength="8" minlength="6">
@@ -84,7 +84,7 @@
                   <label class="col-form-label" for="inputSuccess">Confirmar Contraseña</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm-value" data-error="1" autocomplete="off">
@@ -123,7 +123,7 @@
                   <label class="col-form-label" for="inputSuccess">Ingrese un número</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-sort-numeric-up-alt"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="text" id="tiponumber" name="numero" class="form-control validacion-o" placeholder="Edad" data-type="number" data-error="1" autocomplete="off" maxlength="10" minlength="5">
@@ -136,7 +136,7 @@
                   <label class="col-form-label" for="inputSuccess">Observaciones</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="far fa-eye"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <textarea id="tipotextarea" name="username" class="form-control validacion-o" placeholder="Mensaje" data-type="textarea" data-error="1" autocomplete="off" maxlength="100" minlength="20"></textarea>
@@ -239,7 +239,7 @@
                   <label class="col-form-label" for="inputSuccess">Número de Teléfono</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="tel" id="tipotel" name="username" class="form-control validacion-o" placeholder="Teléfono" data-type="telephone" data-error="1" autocomplete="off" maxlength="15" minlength="15">
@@ -250,7 +250,7 @@
                   <label class="col-form-label" for="inputSuccess">Número de Cuenta</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="far fa-credit-card"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="credit-card" data-error="1" autocomplete="off" maxlength="19" minlength="19">
@@ -261,7 +261,7 @@
                   <label class="col-form-label" for="inputSuccess">Fecha de Nacimiento</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="date" id="fecha" name="fache" class="form-control validacion-o" placeholder="Fecha" data-type="date" data-error="1" autocomplete="off">
@@ -272,7 +272,7 @@
                   <label class="col-form-label" for="inputSuccess">Municipio</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-home"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <select id="lista" name="fache" class="form-control validacion-o" placeholder="lista" data-type="list" data-error="1" autocomplete="off">
@@ -317,7 +317,7 @@
               <label class="col-form-label" for="inputSuccess">Url</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">@</span>
+                        <span class="input-group-text"><i class="fas fa-link"></i></span>
                     </div>
                     <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
                       <input type="url" id="tipourl" name="username" class="form-control validacion-o" placeholder="Url" data-type="url" data-error="1" autocomplete="off">
