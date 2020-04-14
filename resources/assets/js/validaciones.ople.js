@@ -1,3 +1,5 @@
+
+
 var inputsValidar = document.getElementsByClassName('validacion-o');
 var btnSubmint = document.getElementsByClassName('btn-submit-o');
 
@@ -23,10 +25,10 @@ function checkForm(){
 
     document.getElementById('error-'+e.getAttribute('data-group')) && 
     document.getElementById('error-'+e.getAttribute('data-group')).textContent === '' ? 
-    document.getElementById('error-'+e.getAttribute('data-group')).textContent='El campo '+e.getAttribute('placeholder')+' es requerido' : '';
+    document.getElementById('error-'+e.getAttribute('data-group')).textContent='El campo '+e.getAttribute('data-inputname')+' es requerido' : '';
 
     document.getElementById('error-'+e.getAttribute('id')) && 
-    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent='El campo '+e.getAttribute('placeholder')+' es requerido' : '';
+    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent='El campo '+e.getAttribute('data-inputname')+' es requerido' : '';
   }
 
   arrVal.includes(1) ? '' : (alert('valido'),document.getElementById(this.getAttribute('data-form')).submit());
@@ -62,19 +64,18 @@ function validaInput(e) {
   var ele=document.getElementById(ide);
   var err=document.getElementById('error-'+ide);
   var str=document.getElementById('string-'+ide);
-  var nam=this.getAttribute('placeholder');
-  //var typePDF = ['pdf'];
-  //var typeECXEL = ['xlsx'];
+  var nam=this.getAttribute('data-inputname');
 
-  console.log(this);
-
-  //console.log(val,tip,max,min,ide,ele,err,str,nam)
-
+  var mapObj = { 
+            INPUTNAME: nam, 
+            MINLENGTH: min, 
+            MAXLENGTH: max 
+        }; 
 
   let validar = new Promise((resolve, reject) => {
     //console.log(err);
     str ? str.textContent=max : '';
-      val ? resolve([tip,val,max,min,ele,err,str]) : reject("El campo "+nam+" es requerido");
+      val ? resolve([tip,val,max,min,ele,err,str]) : reject(messages[tip].required.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
   });
 
@@ -90,12 +91,20 @@ function validaInput(e) {
         var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
+
+
+        //messages[tip].minlength.replace(/(minlength)|(maxlength)|(inputName)/gi, function(matched){return mapObj[matched];})     
        
-        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!number)         return Promise.reject('No se permiten números en el campo '+nam);
-        if(!match)          return Promise.reject('No se permiten números o caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&ma)  return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!number)         return Promise.reject(messages[tip].number.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
 
         return d;
         
@@ -111,11 +120,15 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject('Ingresa solo números para el campo '+nam);
-        if(!number)         return Promise.reject('No se permiten letras en el campo '+nam);
-        if(!match)          return Promise.reject('No se permite texto o caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!number)         return Promise.reject(messages[tip].number.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
         
         return d;
         
@@ -141,7 +154,7 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!match) return Promise.reject('Ingrese un correo valido');
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         
@@ -150,7 +163,7 @@ function validaInput(e) {
       case 'password':
         var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
         var maxLength = d[1].length <= parseInt( d[2] , 10 )+1 ? true : false ;
-        var matchNúmero = /\d+/.test( d[1] );
+        var matchNumber = /\d+/.test( d[1] );
         var matchUppercase = /[A-Z]/.test( d[1] );
         var matchLowercase = /[a-z]/.test( d[1] );
 
@@ -169,21 +182,25 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
-        if(!matchNúmero)    return Promise.reject('El campo '+nam+' debe contener un número');
-        if(!matchUppercase) return Promise.reject('El campo '+nam+' debe contener una letra mayúscula');
-        if(!matchLowercase) return Promise.reject('El campo '+nam+' debe contener una letra minúscula');
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!matchNumber)    return Promise.reject(messages[tip].matchNumber.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!matchUppercase) return Promise.reject(messages[tip].matchUppercase.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!matchLowercase) return Promise.reject(messages[tip].matchLowercase.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
       /*******************************************************/
-      case 'confirm-value':
+      case 'confirm':
 
         var check = ide.split('-');
         var match = document.getElementById(check[0]).value === d[1] ? true : false;
 
-        if(!match) return Promise.reject('El campo '+nam+' no coincide');
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
@@ -197,16 +214,19 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('No se permiten caracteres especiales dentro del campo '+nam);
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!type) return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
       /*******************************************************/
       case 'url':
-        console.log(d);
+        
         var type = typeof d[1] === 'string' ? true : false ;
         //var number = isNaN( parseInt( d[1] ) ) ? true : false ;
         var match = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test( d[1] ) ;
@@ -215,10 +235,13 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('Ingrese una url valida');
-        if(!minLength && min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength && max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!type)             return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match)            return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!minLength && min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength && max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
@@ -236,16 +259,19 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('Ingresa solo números para el campo '+nam);
+        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
       /*******************************************************/
-      case 'credit-card':
+      case 'creditCard':
         
         var x = ele.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
         ele.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
@@ -258,11 +284,13 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject('Ingresa solo texto para el campo '+nam);
-        if(!match)          return Promise.reject('Ingresa solo números para el campo '+nam);
+        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) return Promise.reject('El número mínimo de caracteres para el campo '+nam+' es '+min);
-        if(!maxLength&&max) return Promise.reject('El número máximo de caracteres para el campo '+nam+' es '+max);
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
@@ -303,7 +331,7 @@ function validaInput(e) {
 
         //console.log(match);
         
-        if(!match) return Promise.reject('Habilete el campo '+nam);
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
@@ -320,7 +348,7 @@ function validaInput(e) {
 
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una opción');
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
 
         return d;
@@ -337,42 +365,52 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject('Seleccione al menos una opción');
+        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
         return d;
         break;
       /*******************************************************/
       case 'pdf':
   
-        var num = e.target.files.length === 1 ? true : false ;
-        var typ = e.target.files[0].type === 'application/pdf' ? true : false ;
-        var siz = e.target.files[0].size < 99698 ? true : false ;
+        var numberFile = e.target.files.length === 1 ? true : false ;
+        var typeFile = e.target.files[0].type === 'application/pdf' ? true : false ;
+        var sizeFile = e.target.files[0].size < 99698 ? true : false ;
 
-        if(!num) return Promise.reject('Solo se permite un archivo');
-        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un PDF');
-        if(!siz) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
+        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
-        num && typ && siz ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
+        if(!typeFile) return Promise.reject(messages[tip].typeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!sizeFile) return Promise.reject(messages[tip].sizeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un PDF');
+        //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
+
+        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
 
         return d;
         break;
       /*******************************************************/
       case 'excel':
         
-        var num = e.target.files.length === 1 ? true : false ;
-        var typ = e.target.files[0].type === 'application/vnd.ms-excel' ||
+        var numberFile = e.target.files.length === 1 ? true : false ;
+        var typeFile = e.target.files[0].type === 'application/vnd.ms-excel' ||
         e.target.files[0].type === 'application/xml' || 
         e.target.files[0].type === 'text/csv' ||
         e.target.files[0].type === 'application/excel' ||
         e.target.files[0].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
         e.target.files[0].type === 'application/vnd.ms-excel.sheet.macroEnabled.12' ? true : false ;
-        var siz = e.target.files[0].size < 99698 ? true : false ;
+        var sizeFile = e.target.files[0].size < 99698 ? true : false ;
         
-        if(!num) return Promise.reject('Solo se permite un archivo');
-        if(!typ) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo excel');
-        if(!siz) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
+        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
 
-        num && typ && siz ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
+        if(!typeFile) return Promise.reject(messages[tip].typeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        if(!sizeFile) return Promise.reject(messages[tip].sizeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+
+        //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo excel');
+        //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
+
+        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
 
         return d;
         break;
