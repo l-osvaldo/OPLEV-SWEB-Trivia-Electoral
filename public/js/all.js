@@ -962,6 +962,99 @@ function loader() {
 
  
 
+let messages = {
+  text:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+    number: 'No se permiten números en el campo {{INPUTNAME}}.',
+    match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  number:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingrese solo números para el campo {{INPUTNAME}}.',
+    number: 'No se permiten letras en el campo {{INPUTNAME}}.',
+    match: 'No se permite texto o caracteres especiales dentro del campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  email:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    match: 'Ingrese un correo valido para el campo {{INPUTNAME}}.'
+  },
+  password:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    matchLowercase: 'El campo {{INPUTNAME}} debe contener una letra minúscula.',
+    matchUppercase: 'El campo {{INPUTNAME}} debe contener una letra mayúscula.',
+    matchNumber: 'El campo {{INPUTNAME}} debe contener un número.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  confirm:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    match: 'El campo {{INPUTNAME}} no coincide.'
+  },
+  textarea:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+    match: 'No se permiten caracteres especiales dentro del campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  url:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+    match: 'Ingrese una url valida pa el campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  telephone:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+    match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 10.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  creditCard:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+    match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
+    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 16.',
+    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+  },
+  date:{
+    required: 'El campo {{INPUTNAME}} es requerido.'
+  },
+  list:{
+    required: 'El campo {{INPUTNAME}} es requerido.'
+  },
+  switch:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    match: 'Habilete el campo {{INPUTNAME}}.'
+  },
+  checkbox:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
+  },
+  radio:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
+  },
+  pdf:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    numberFile: 'Solo se permite un archivo.',
+    typeFile: 'no es un un archivo PDF.',
+    sizeFile: 'excede el peso permitido.'
+  },
+  excel:{
+    required: 'El campo {{INPUTNAME}} es requerido.',
+    numberFile: 'Solo se permite un archivo.',
+    typeFile: 'no es un un archivo Excel.',
+    sizeFile: 'excede el peso permitido.'
+  } 
+};
+
 
 var inputsValidar = document.getElementsByClassName('validacion-o');
 var btnSubmint = document.getElementsByClassName('btn-submit-o');
@@ -980,18 +1073,28 @@ function checkForm(){
 
   for (var i = 0; i < allVal.length; i++) {
 
-    allVal[i].getAttribute('data-error') === '1' ? (arrVal.push(1),forOne(allVal[i])) : arrVal.push(0);
+    allVal[i].getAttribute('data-error') ? (arrVal.push(1),forOne(allVal[i])) : arrVal.push(0);
 
   }
 
+  //console.log(arrVal);
+
   function forOne(e){
+
+    var mapObj = { 
+            INPUTNAME: e.getAttribute('data-inputname'), 
+            MINLENGTH: e.getAttribute('minLength'), 
+            MAXLENGTH: e.getAttribute('maxlength') 
+        }; 
 
     document.getElementById('error-'+e.getAttribute('data-group')) && 
     document.getElementById('error-'+e.getAttribute('data-group')).textContent === '' ? 
-    document.getElementById('error-'+e.getAttribute('data-group')).textContent='El campo '+e.getAttribute('data-inputname')+' es requerido' : '';
+    document.getElementById('error-'+e.getAttribute('data-group')).textContent=messages[e.getAttribute('data-type')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}) : '';
 
     document.getElementById('error-'+e.getAttribute('id')) && 
-    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent='El campo '+e.getAttribute('data-inputname')+' es requerido' : '';
+    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent= messages[e.getAttribute('data-type')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}) : '';
   }
 
   arrVal.includes(1) ? '' : (alert('valido'),document.getElementById(this.getAttribute('data-form')).submit());
@@ -1001,18 +1104,23 @@ function checkForm(){
 /****************************************************************************************************************/
 
 for (var i = 0; i < inputsValidar.length; i++) {
+  inputsValidar[i].setAttribute('data-error','1');
+
   inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("keyup", validaInput, false) ;
 
   inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("focus", validaInput, false) ;
 
   inputsValidar[i].addEventListener("change", validaInput, false);
 
-  //inputsValidar[i].classList.add('is-warning');
-
-  document.getElementById('string-'+inputsValidar[i].getAttribute('id')) ? 
+  document.getElementById('string-'+inputsValidar[i].getAttribute('id')) && inputsValidar[i].getAttribute('data-type') != 'telephone' && inputsValidar[i].getAttribute('data-type') != 'creditCard'  ? 
   document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent=inputsValidar[i].getAttribute('maxlength') 
   : 
-  '';
+  maxMinMask(inputsValidar[i]);
+
+  function maxMinMask(mask){
+    mask.getAttribute('data-type') === 'telephone' ? document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='10' : '';
+    mask.getAttribute('data-type') === 'creditCard' ? document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='16' : '';
+  }
 }
 
 
@@ -1036,9 +1144,10 @@ function validaInput(e) {
         }; 
 
   let validar = new Promise((resolve, reject) => {
-    //console.log(err);
-    str ? str.textContent=max : '';
-      val ? resolve([tip,val,max,min,ele,err,str]) : reject(messages[tip].required.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+    
+    str && tip != 'telephone' && tip != 'creditCard' ? str.textContent=max : '';
+      val ? resolve([tip,val,max,min,ele,err,str]) : reject(messages[tip].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
   });
 
@@ -1055,18 +1164,21 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-
-        //messages[tip].minlength.replace(/(minlength)|(maxlength)|(inputName)/gi, function(matched){return mapObj[matched];})     
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!number)         return Promise.reject(messages[tip].number.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!number)         return Promise.reject(messages[tip].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
 
         return d;
@@ -1083,15 +1195,20 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!number)         return Promise.reject(messages[tip].number.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!number)         return Promise.reject(messages[tip].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
         
         return d;
         
@@ -1107,7 +1224,7 @@ function validaInput(e) {
           document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-invalid'),
           document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-valid'),
           document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent="",
-          document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','0')
+          document.getElementById(ele.getAttribute('id')+'-check').removeAttribute('data-error')
         ) : ( 
           document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-invalid'),
           document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-valid'),
@@ -1117,7 +1234,8 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         
@@ -1135,7 +1253,7 @@ function validaInput(e) {
           document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-invalid'),
           document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-valid'),
           document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent="",
-          document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','0')
+          document.getElementById(ele.getAttribute('id')+'-check').removeAttribute('data-error')
         ) : ( 
           document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-invalid'),
           document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-valid'),
@@ -1145,15 +1263,20 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!matchNumber)    return Promise.reject(messages[tip].matchNumber.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!matchNumber)    return Promise.reject(messages[tip].matchNumber.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!matchUppercase) return Promise.reject(messages[tip].matchUppercase.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!matchUppercase) return Promise.reject(messages[tip].matchUppercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!matchLowercase) return Promise.reject(messages[tip].matchLowercase.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!matchLowercase) return Promise.reject(messages[tip].matchLowercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1163,7 +1286,8 @@ function validaInput(e) {
         var check = ide.split('-');
         var match = document.getElementById(check[0]).value === d[1] ? true : false;
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1177,13 +1301,17 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
        
-        if(!type) return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type) return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1198,13 +1326,17 @@ function validaInput(e) {
 
         d[6] ? d[6].textContent=max - d[1].length : '' ;
 
-        if(!type)             return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type)             return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match)            return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match)            return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!minLength && min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength && min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength && max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength && max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1215,21 +1347,25 @@ function validaInput(e) {
         ele.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
 
         var type = typeof d[1] === 'string' ? true : false ;
-        //var number = isNaN( parseInt( d[1] ) ) ? true : false ;
+        
         var match = /[0-9()-]/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        var minLength = x[0].length >= 10 ? true : false ;
+        var maxLength = x[0].length <= 10 ? true : false ;
+
+        d[6] ? d[6].textContent = 10 - x[0].length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
-        //if(!number) throw 'No se permiten letras en el campo '+nam;
+        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1240,20 +1376,24 @@ function validaInput(e) {
         ele.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
 
         var type = typeof d[1] === 'string' ? true : false ;
-        //var number = isNaN( parseInt( d[1] ) ) ? true : false ;
+        
         var match = /[0-9()-]/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
+        var minLength = x[0].length >= 16 ? true : false ;
+        var maxLength = x[0].length <= 16 ? true : false ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        d[6] ? d[6].textContent= 16 - x[0].length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
         //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!minLength) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!maxLength) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1294,7 +1434,8 @@ function validaInput(e) {
 
         //console.log(match);
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1311,7 +1452,8 @@ function validaInput(e) {
 
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
 
         return d;
@@ -1328,7 +1470,8 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         return d;
         break;
@@ -1339,11 +1482,14 @@ function validaInput(e) {
         var typeFile = e.target.files[0].type === 'application/pdf' ? true : false ;
         var sizeFile = e.target.files[0].size < 99698 ? true : false ;
 
-        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!typeFile) return Promise.reject(messages[tip].typeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!sizeFile) return Promise.reject(messages[tip].sizeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un PDF');
         //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
@@ -1364,11 +1510,14 @@ function validaInput(e) {
         e.target.files[0].type === 'application/vnd.ms-excel.sheet.macroEnabled.12' ? true : false ;
         var sizeFile = e.target.files[0].size < 99698 ? true : false ;
         
-        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!typeFile) return Promise.reject(messages[tip].typeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
-        if(!sizeFile) return Promise.reject(messages[tip].sizeFile.replace(/MINLENGTH|MAXLENGTH|INPUTNAME/gi, function(matched){return mapObj[matched];}));
+        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
 
         //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo excel');
         //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
@@ -1394,7 +1543,7 @@ function validaInput(e) {
           //group[i].classList.remove('is-invalid');
           //group[i].classList.add('is-valid');
           document.getElementById('error-'+ele.getAttribute('data-group')).textContent='';
-          group[i].setAttribute('data-error','0');
+          group[i].removeAttribute('data-error');
         }
       }
 
@@ -1402,7 +1551,7 @@ function validaInput(e) {
         d[4].classList.remove('is-invalid');
         d[4].classList.add('is-valid');
         d[5].textContent='';
-        d[4].setAttribute('data-error','0');
+        d[4].removeAttribute('data-error');
         //this.parentNode.parentNode.querySelector('.btn').disabled=false;
       }
 

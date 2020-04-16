@@ -41,11 +41,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="text" id="tipotext" name="usuario" class="form-control validacion-o" placeholder="Ingreses su nombre de Usuario" data-type="text" data-error="1" autocomplete="off" maxlength="15" minlength="5" data-inputname="Usuario">
-                      
-                      <div id="error-tipotext" class="error"></div>
-                      <div id="string-tipotext" class="string">0</div>
+                      <input type="text" id="tipotext" name="usuario" class="form-control validacion-o" placeholder="Ingreses su nombre de Usuario" data-type="text" autocomplete="off" maxlength="15" minlength="5" data-inputname="Usuario">
+                      <div class="boxMesNum">
+                      <div id="error-tipotext" class="errorMessage"></div>
+                      <div id="string-tipotext" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Correo Electrónico</label>
@@ -53,10 +53,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Ingrese su Correo Electrónico" data-type="email" data-error="1" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
-                      <div id="error-tipoemail" class="error"></div>
-                      <div id="string-tipoemail" class="string">0</div>
+                      <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Ingrese su Correo Electrónico" data-type="email" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
+                      <div class="boxMesNum">
+                      <div id="error-tipoemail" class="errorMessage"></div>
+                      <div id="string-tipoemail" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Confirmar Correo Electrónico</label>
@@ -64,10 +65,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" data-error="1" autocomplete="off" data-inputname="Correo Electrónico">
-                      <div id="error-tipoemail-check" class="error"></div>
-                      <!--div id="string-tipoemail-check" class="string">0</div-->
+                      <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" autocomplete="off" data-inputname="Correo Electrónico">
+                      <div class="boxMesNum">
+                      <div id="error-tipoemail-check" class="errorMessage"></div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Contraseña</label>
@@ -75,10 +76,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="password" id="password" name="password" class="form-control validacion-o" placeholder="Ingrese su Contraseña" data-type="password" data-error="1" autocomplete="off" maxlength="8" minlength="6" data-inputname="Contraseña">
-                      <div id="error-password" class="error"></div>
-                      <div id="string-password" class="string">0</div>
+                      <input type="password" id="password" name="password" class="form-control validacion-o" placeholder="Ingrese su Contraseña" data-type="password" autocomplete="off" maxlength="8" minlength="6" data-inputname="Contraseña">
+                      <div class="boxMesNum">
+                      <div id="error-password" class="errorMessage"></div>
+                      <div id="string-password" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Confirmar Contraseña</label>
@@ -86,10 +88,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm" data-error="1" autocomplete="off" data-inputname="Contraseña">
-                      <div id="error-password-check" class="error"></div>
-                      <!--div id="string-password-check" class="string">0</div-->
+                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm" autocomplete="off" data-inputname="Contraseña">
+                      <div class="boxMesNum">
+                      <div id="error-password-check" class="errorMessage"></div>
+                      </div>
                   </div>
 
 
@@ -125,10 +127,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-sort-numeric-up-alt"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="text" id="tiponumber" name="numero" class="form-control validacion-o" placeholder="Edad" data-type="number" data-error="1" autocomplete="off" maxlength="10" minlength="5" data-inputname="Número">
-                      <div id="error-tiponumber" class="error"></div>
-                      <div id="string-tiponumber" class="string">0</div>
+                      <input type="text" id="tiponumber" name="numero" class="form-control validacion-o" placeholder="Edad" data-type="number" autocomplete="off" maxlength="10" minlength="5" data-inputname="Número">
+                      <div class="boxMesNum">
+                      <div id="error-tiponumber" class="errorMessage"></div>
+                      <div id="string-tiponumber" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   
@@ -138,50 +141,55 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-eye"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <textarea id="tipotextarea" name="username" class="form-control validacion-o" placeholder="Mensaje" data-type="textarea" data-error="1" autocomplete="off" maxlength="100" minlength="20" data-inputname="Observaciones"></textarea>
-                      <div id="error-tipotextarea" class="error"></div>
-                      <div id="string-tipotextarea" class="string">0</div>
+                      <textarea id="tipotextarea" name="username" class="form-control validacion-o" placeholder="Mensaje" data-type="textarea" autocomplete="off" maxlength="100" minlength="20" data-inputname="Observaciones"></textarea>
+                      <div class="boxMesNum">
+                      <div id="error-tipotextarea" class="errorMessage"></div>
+                      <div id="string-tipotextarea" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                    <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox1" data-type="checkbox" data-group="grupoDemo" data-error="1" data-inputname="Rubro">
+                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox1" data-type="checkbox" data-group="grupoDemo" data-inputname="Rubro">
                       <label for="customCheckbox1" class="custom-control-label">Rubro 1</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox2" data-type="checkbox" data-group="grupoDemo" data-error="1" data-inputname="Rubro">
+                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox2" data-type="checkbox" data-group="grupoDemo" data-inputname="Rubro">
                       <label for="customCheckbox2" class="custom-control-label">Rubro 2</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox3" data-type="checkbox" data-group="grupoDemo" data-error="1" data-inputname="Rubro">
+                      <input class="custom-control-input validacion-o grupoDemo" type="checkbox" id="customCheckbox3" data-type="checkbox" data-group="grupoDemo" data-inputname="Rubro">
                       <label for="customCheckbox3" class="custom-control-label">Rubro 3</label>
                     </div>
-
-                    <div id="error-grupoDemo" class="error"></div>
+                    <div class="boxMesNum">
+                    <div id="error-grupoDemo" class="errorMessage"></div>
+                    </div>
                     <!----------------------------------------------------------------->
                   </div>
 
                   <div class="form-group">
                     <div class="custom-control custom-radio">
-                      <input class="custom-control-input validacion-o grupoRadio" type="radio" id="customRadio1" data-group="grupoRadio" data-type="radio" name="customRadio" data-error="1" data-inputname="Rubro">
+                      <input class="custom-control-input validacion-o grupoRadio" type="radio" id="customRadio1" data-group="grupoRadio" data-type="radio" name="customRadio" data-inputname="Rubro">
                       <label for="customRadio1" class="custom-control-label">Rubro 1</label>
                     </div>
                     <div class="custom-control custom-radio">
-                      <input class="custom-control-input validacion-o grupoRadio" type="radio" id="customRadio2" data-group="grupoRadio" data-type="radio" name="customRadio" data-error="1" data-inputname="Rubro">
+                      <input class="custom-control-input validacion-o grupoRadio" type="radio" id="customRadio2" data-group="grupoRadio" data-type="radio" name="customRadio" data-inputname="Rubro">
                       <label for="customRadio2" class="custom-control-label">Rubro 2</label>
                     </div>
                     <!------------------------------------------------------------------->
-                    <div id="error-grupoRadio" class="error"></div>
+                    <div class="boxMesNum">
+                    <div id="error-grupoRadio" class="errorMessage"></div>
+                    </div>
                     <!------------------------------------------------------------------->
                   </div>
 
                   <div class="form-group">
                     <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input validacion-o" id="customSwitch1" placeholder="notificaciones" data-type="switch" data-error="1" data-inputname="Notificaciones">
+                      <input type="checkbox" class="custom-control-input validacion-o" id="customSwitch1" placeholder="notificaciones" data-type="switch" data-inputname="Notificaciones">
                       <label class="custom-control-label" for="customSwitch1" style="color: #000 !important;">Desea recibir notificaciones</label>
-
-                      <div id="error-customSwitch1" class="error"></div>
+                      <div class="boxMesNum">
+                      <div id="error-customSwitch1" class="errorMessage"></div>
+                      </div>
                     </div>
                   </div>
 
@@ -241,10 +249,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="tel" id="tipotel" name="username" class="form-control validacion-o" placeholder="Teléfono" data-type="telephone" data-error="1" autocomplete="off" maxlength="15" minlength="15" data-inputname="Teléfono">
-                      <div id="error-tipotel" class="error"></div>
-                      <div id="string-tipotel" class="string">0</div>
+                      <input type="tel" id="tipotel" name="username" class="form-control validacion-o" placeholder="Teléfono" data-type="telephone" autocomplete="off" data-inputname="Teléfono">
+                      <div class="boxMesNum">
+                      <div id="error-tipotel" class="errorMessage"></div>
+                      <div id="string-tipotel" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Número de Cuenta</label>
@@ -252,10 +261,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-credit-card"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="creditCard" data-error="1" autocomplete="off" maxlength="19" minlength="19" data-inputname="Cuenta">
-                      <div id="error-card" class="error"></div>
-                      <div id="string-card" class="string">0</div>
+                      <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="creditCard" autocomplete="off" data-inputname="Cuenta">
+                      <div class="boxMesNum">
+                      <div id="error-card" class="errorMessage"></div>
+                      <div id="string-card" class="stringNumber">0</div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Fecha de Nacimiento</label>
@@ -263,10 +273,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="date" id="fecha" name="fache" class="form-control validacion-o" placeholder="Fecha" data-type="date" data-error="1" autocomplete="off" data-inputname="Fecha de Nacimiento">
-                      <div id="error-fecha" class="error"></div>
-                      <!--div id="string-fecha" class="string">0</div-->
+                      <input type="date" id="fecha" name="fache" class="form-control validacion-o" placeholder="Fecha" data-type="date" autocomplete="off" data-inputname="Fecha de Nacimiento">
+                      <div class="boxMesNum">
+                      <div id="error-fecha" class="errorMessage"></div>
+                      </div>
                   </div>
 
                   <label class="col-form-label" for="inputSuccess">Municipio</label>
@@ -274,14 +284,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-home"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <select id="lista" name="fache" class="form-control validacion-o" placeholder="lista" data-type="list" data-error="1" autocomplete="off" data-inputname="Municipio">
+                      <select id="lista" name="fache" class="form-control validacion-o" placeholder="lista" data-type="list" autocomplete="off" data-inputname="Municipio">
                         <option disabled selected value>Selecciona un municipio</option>
                         <option value="1">Xalapa</option>
                         <option value="2">Veracruz</option>
                       </select>
-                      <div id="error-lista" class="error"></div>
-                      <!--div id="string-lista" class="string">0</div-->
+                      <div class="boxMesNum">
+                      <div id="error-lista" class="errorMessage"></div>
+                      </div>
                   </div>
 
 
@@ -319,19 +329,21 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-link"></i></span>
                     </div>
-                    <!--Los atributos requeridos para la validacion son: name, data-type, data-max, data-min, data-error="1"-->
-                      <input type="url" id="tipourl" name="username" class="form-control validacion-o" placeholder="Url" data-type="url" data-error="1" autocomplete="off" data-inputname="Url">
-                      <div id="error-tipourl" class="error"></div>
-                      <!--div id="string-tipourl" class="string">0</div-->
+                      <input type="url" id="tipourl" name="username" class="form-control validacion-o" placeholder="Url" data-type="url" autocomplete="off" data-inputname="Url">
+                      <div class="boxMesNum">
+                      <div id="error-tipourl" class="errorMessage"></div>
+                      </div>
                   </div>
 
                 <div class="form-group">
                     <label for="customFile">Adjuntar PDF</label>
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input validacion-o" id="filePDF" data-type="pdf" placeholder="Archivo PDF" data-error="1" data-inputname="PDF">
+                      <input type="file" class="custom-file-input validacion-o" id="filePDF" data-type="pdf" placeholder="Archivo PDF" data-inputname="PDF">
                       <label id="fileLabel-filePDF" class="custom-file-label" for="customFile"></label>
-                      <div id="error-filePDF" class="error"></div>
+                      <div class="boxMesNum">
+                      <div id="error-filePDF" class="errorMessage"></div>
+                      </div>
                     </div>
                   </div>
 
@@ -339,9 +351,11 @@
                     <label for="customFile">Adjuntar EXCEL</label>
 
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input validacion-o" id="fileEXCEL" data-type="excel" placeholder="Archivo Excel" data-error="1" data-inputname="Excel">
+                      <input type="file" class="custom-file-input validacion-o" id="fileEXCEL" data-type="excel" placeholder="Archivo Excel" data-inputname="Excel">
                       <label id="fileLabel-fileEXCEL" class="custom-file-label" for="customFile"></label>
-                      <div id="error-fileEXCEL" class="error"></div>
+                      <div class="boxMesNum">
+                      <div id="error-fileEXCEL" class="errorMessage"></div>
+                      </div>
                     </div>
                   </div>
 
@@ -370,101 +384,5 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-
-
-<script type="text/javascript">
-let messages = {
-  text:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingrese solo texto para el campo INPUTNAME',
-    number: 'No se permiten números en el campo INPUTNAME',
-    match: 'No se permiten números o caracteres especiales dentro del campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  number:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingrese solo números para el campo INPUTNAME',
-    number: 'No se permiten letras en el campo INPUTNAME',
-    match: 'No se permite texto o caracteres especiales dentro del campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  email:{
-    required: 'El campo INPUTNAME es requerido',
-    match: 'Ingrese un correo valido para el campo INPUTNAME'
-  },
-  password:{
-    required: 'El campo INPUTNAME es requerido',
-    matchLowercase: 'El campo INPUTNAME debe contener una letra minúscula',
-    matchUppercase: 'El campo INPUTNAME debe contener una letra mayúscula',
-    matchNumber: 'El campo INPUTNAME debe contener un número',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  confirm:{
-    required: 'El campo INPUTNAME es requerido',
-    match: 'El campo INPUTNAME no coincide'
-  },
-  textarea:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingrese solo texto para el campo INPUTNAME',
-    match: 'No se permiten caracteres especiales dentro del campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  url:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingresa solo texto para el campo INPUTNAME',
-    match: 'Ingrese una url valida pa el campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  telephone:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingresa solo texto para el campo INPUTNAME',
-    match: 'Ingresa solo números para el campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  creditCard:{
-    required: 'El campo INPUTNAME es requerido',
-    type: 'Ingresa solo texto para el campo INPUTNAME',
-    match: 'Ingresa solo números para el campo INPUTNAME',
-    minlength: 'El número mínimo de caracteres para el campo INPUTNAME es MINLENGTH',
-    maxlength: 'El número máximo de caracteres para el campo INPUTNAME es MAXLENGTH'
-  },
-  date:{
-    required: 'El campo INPUTNAME es requerido'
-  },
-  list:{
-    required: 'El campo INPUTNAME es requerido'
-  },
-  switch:{
-    required: 'El campo INPUTNAME es requerido',
-    match: 'Habilete el campo INPUTNAME'
-  },
-  checkbox:{
-    required: 'El campo INPUTNAME es requerido',
-    match: 'Seleccione al menos una opción para INPUTNAME'
-  },
-  radio:{
-    required: 'El campo INPUTNAME es requerido',
-    match: 'Seleccione al menos una opción para INPUTNAME'
-  },
-  pdf:{
-    required: 'El campo INPUTNAME es requerido',
-    numberFile: 'Solo se permite un archivo',
-    typeFile: 'El archivo ingresado no es un PDF',
-    sizeFile: 'El archivo ingresado excede el peso permitido'
-  },
-  excel:{
-    required: 'El campo INPUTNAME es requerido',
-    numberFile: 'Solo se permite un archivo',
-    typeFile: 'El archivo ingresado no es un archivo excel',
-    sizeFile: 'El archivo ingresado excede el peso permitido'
-  } 
-};
-</script>
 
 @endsection
