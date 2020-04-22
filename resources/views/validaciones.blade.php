@@ -41,10 +41,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                      <input type="text" id="tipotext" name="usuario" class="form-control validacion-o" placeholder="Ingreses su nombre de Usuario" data-type="text" autocomplete="off" maxlength="15" minlength="5" data-inputname="Usuario">
+                      <input type="text" id="usuario" name="usuario" class="form-control validacion-o" placeholder="Ingreses su nombre de Usuario" data-type="text" autocomplete="off" maxlength="15" minlength="5" data-inputname="Usuario">
                       <div class="boxMesNum">
-                      <div id="error-tipotext" class="errorMessage"></div>
-                      <div id="string-tipotext" class="stringNumber">0</div>
+                      <div id="error-usuario" class="errorMessage"></div>
+                      <div id="string-usuario" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -53,10 +53,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
-                      <input type="email" id="tipoemail" name="email" class="form-control validacion-o" placeholder="Ingrese su Correo Electrónico" data-type="email" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
+                      <input type="email" id="email" name="email" class="form-control validacion-o" placeholder="Ingrese su Correo Electrónico" data-type="email" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
                       <div class="boxMesNum">
-                      <div id="error-tipoemail" class="errorMessage"></div>
-                      <div id="string-tipoemail" class="stringNumber">0</div>
+                      <div id="error-email" class="errorMessage"></div>
+                      <div id="string-email" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -65,9 +65,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
-                      <input type="email" id="tipoemail-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" autocomplete="off" data-inputname="Correo Electrónico">
+                      <input type="email" id="email-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
                       <div class="boxMesNum">
-                      <div id="error-tipoemail-check" class="errorMessage"></div>
+                      <div id="error-email-check" class="errorMessage"></div>
+                      <div id="string-email-check" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -88,9 +89,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm" autocomplete="off" data-inputname="Contraseña">
+                      <input type="password"  id="password-check" name="passwordconfirme" class="form-control validacion-o" placeholder="Contraseña" data-type="confirm" autocomplete="off" maxlength="8" minlength="6" data-inputname="Contraseña">
                       <div class="boxMesNum">
                       <div id="error-password-check" class="errorMessage"></div>
+                      <div id="string-password-check" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -127,10 +129,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-sort-numeric-up-alt"></i></span>
                     </div>
-                      <input type="text" id="tiponumber" name="numero" class="form-control validacion-o" placeholder="Edad" data-type="number" autocomplete="off" maxlength="10" minlength="5" data-inputname="Número">
+                      <input type="text" id="input_numero" name="input_numero" class="form-control validacion-o" placeholder="Edad" data-type="number" autocomplete="off" maxlength="10" minlength="5" data-inputname="Número">
                       <div class="boxMesNum">
-                      <div id="error-tiponumber" class="errorMessage"></div>
-                      <div id="string-tiponumber" class="stringNumber">0</div>
+                      <div id="error-input_numero" class="errorMessage"></div>
+                      <div id="string-input_numero" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -141,10 +143,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-eye"></i></span>
                     </div>
-                      <textarea id="tipotextarea" name="username" class="form-control validacion-o" placeholder="Mensaje" data-type="textarea" autocomplete="off" maxlength="100" minlength="20" data-inputname="Observaciones"></textarea>
+                      <textarea id="observaciones" name="observaciones" class="form-control validacion-o" placeholder="Mensaje" data-type="textarea" autocomplete="off" maxlength="100" minlength="20" data-inputname="Observaciones"></textarea>
                       <div class="boxMesNum">
-                      <div id="error-tipotextarea" class="errorMessage"></div>
-                      <div id="string-tipotextarea" class="stringNumber">0</div>
+                      <div id="error-observaciones" class="errorMessage"></div>
+                      <div id="string-observaciones" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -249,10 +251,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
-                      <input type="tel" id="tipotel" name="username" class="form-control validacion-o" placeholder="Teléfono" data-type="telephone" autocomplete="off" data-inputname="Teléfono">
+                      <input type="tel" id="telefono" name="telefono" class="form-control validacion-o" placeholder="Teléfono" data-type="phone" autocomplete="off" data-inputname="Teléfono">
                       <div class="boxMesNum">
-                      <div id="error-tipotel" class="errorMessage"></div>
-                      <div id="string-tipotel" class="stringNumber">0</div>
+                      <div id="error-telefono" class="errorMessage"></div>
+                      <div id="string-telefono" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -261,10 +263,10 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-credit-card"></i></span>
                     </div>
-                      <input type="text" id="card" name="credit-card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="creditCard" autocomplete="off" data-inputname="Cuenta">
+                      <input type="text" id="credit_Card" name="credit_Card" class="form-control validacion-o" placeholder="Número de cuenta" data-type="creditCard" autocomplete="off" data-inputname="Cuenta">
                       <div class="boxMesNum">
-                      <div id="error-card" class="errorMessage"></div>
-                      <div id="string-card" class="stringNumber">0</div>
+                      <div id="error-credit_Card" class="errorMessage"></div>
+                      <div id="string-credit_Card" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -273,9 +275,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                      <input type="date" id="fecha" name="fache" class="form-control validacion-o" placeholder="Fecha" data-type="date" autocomplete="off" data-inputname="Fecha de Nacimiento">
+                      <input type="date" id="inicio_fecha" name="inicio_fecha" class="form-control validacion-o" placeholder="Fecha" data-type="date" autocomplete="off" data-inputname="Fecha de Nacimiento">
                       <div class="boxMesNum">
-                      <div id="error-fecha" class="errorMessage"></div>
+                      <div id="error-inicio_fecha" class="errorMessage"></div>
                       </div>
                   </div>
 
@@ -284,13 +286,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-home"></i></span>
                     </div>
-                      <select id="lista" name="fache" class="form-control validacion-o" placeholder="lista" data-type="list" autocomplete="off" data-inputname="Municipio">
+                      <select id="municipio" name="fache" class="form-control validacion-o" placeholder="lista" data-type="list" autocomplete="off" data-inputname="Municipio">
                         <option disabled selected value>Selecciona un municipio</option>
                         <option value="1">Xalapa</option>
                         <option value="2">Veracruz</option>
                       </select>
                       <div class="boxMesNum">
-                      <div id="error-lista" class="errorMessage"></div>
+                      <div id="error-municipio" class="errorMessage"></div>
                       </div>
                   </div>
 
@@ -329,9 +331,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-link"></i></span>
                     </div>
-                      <input type="url" id="tipourl" name="username" class="form-control validacion-o" placeholder="Url" data-type="url" autocomplete="off" data-inputname="Url">
+                      <input type="url" id="facebook" name="username" class="form-control validacion-o" placeholder="Url" data-type="url" autocomplete="off" data-inputname="Url">
                       <div class="boxMesNum">
-                      <div id="error-tipourl" class="errorMessage"></div>
+                      <div id="error-facebook" class="errorMessage"></div>
                       </div>
                   </div>
 

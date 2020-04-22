@@ -962,97 +962,119 @@ function loader() {
 
  
 
-let messages = {
-  text:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-    number: 'No se permiten números en el campo {{INPUTNAME}}.',
-    match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  number:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingrese solo números para el campo {{INPUTNAME}}.',
-    number: 'No se permiten letras en el campo {{INPUTNAME}}.',
-    match: 'No se permite texto o caracteres especiales dentro del campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  email:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    match: 'Ingrese un correo valido para el campo {{INPUTNAME}}.'
-  },
-  password:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    matchLowercase: 'El campo {{INPUTNAME}} debe contener una letra minúscula.',
-    matchUppercase: 'El campo {{INPUTNAME}} debe contener una letra mayúscula.',
-    matchNumber: 'El campo {{INPUTNAME}} debe contener un número.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  confirm:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    match: 'El campo {{INPUTNAME}} no coincide.'
-  },
-  textarea:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-    match: 'No se permiten caracteres especiales dentro del campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  url:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
-    match: 'Ingrese una url valida pa el campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  telephone:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
-    match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 10.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  creditCard:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
-    match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
-    minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 16.',
-    maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
-  },
-  date:{
-    required: 'El campo {{INPUTNAME}} es requerido.'
-  },
-  list:{
-    required: 'El campo {{INPUTNAME}} es requerido.'
-  },
-  switch:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    match: 'Habilete el campo {{INPUTNAME}}.'
-  },
-  checkbox:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
-  },
-  radio:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
-  },
-  pdf:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    numberFile: 'Solo se permite un archivo.',
-    typeFile: 'no es un un archivo PDF.',
-    sizeFile: 'excede el peso permitido.'
-  },
-  excel:{
-    required: 'El campo {{INPUTNAME}} es requerido.',
-    numberFile: 'Solo se permite un archivo.',
-    typeFile: 'no es un un archivo Excel.',
-    sizeFile: 'excede el peso permitido.'
-  } 
+
+let messagesErrVjs = {
+
+'formejemplo-1':{
+
+      ////////////////////////////////////////////////////////////////////////////formejemplo-1
+      'usuario':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'email':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'Ingrese un correo valido para el campo {{INPUTNAME}}.'
+      },
+      'email-check':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'El campo {{INPUTNAME}} no coincide.'
+      },
+      'password':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        matchLowercase: 'El campo {{INPUTNAME}} debe contener una letra minúscula.',
+        matchUppercase: 'El campo {{INPUTNAME}} debe contener una letra mayúscula.',
+        matchNumber: 'El campo {{INPUTNAME}} debe contener un número.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'password-check':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'El campo {{INPUTNAME}} no coincide.'
+      },
+      
+  }, ////////////////////////////////////////////////////////////////////////////formejemplo-2
+
+  'formejemplo-2':{
+    'input_numero':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo números para el campo {{INPUTNAME}}.',
+        number: 'No se permiten letras en el campo {{INPUTNAME}}.',
+        match: 'No se permite texto o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'observaciones':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        match: 'No se permiten caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'grupoDemo':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
+      },
+      'grupoRadio':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
+      },
+      'customSwitch1':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'Habilete el campo {{INPUTNAME}}.'
+      },
+  }, ////////////////////////////////////////////////////////////////////////////formejemplo-3
+
+  'formejemplo-3':{
+    'telefono':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+        match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 10.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'credit_Card':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+        match: 'Ingresa solo números para el campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es 16.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'municipio':{
+        required: 'El campo {{INPUTNAME}} es requerido.'
+      },
+      'inicio_fecha':{
+        required: 'El campo {{INPUTNAME}} es requerido.'
+      }
+  },  ////////////////////////////////////////////////////////////////////////////formejemplo-3
+
+  'formejemplo-4':{
+      'facebook':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingresa solo texto para el campo {{INPUTNAME}}.',
+        match: 'Ingrese una url valida pa el campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'filePDF':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        numberFile: 'Solo se permite un archivo.',
+        typeFile: 'no es un un archivo PDF.',
+        sizeFile: 'excede el peso permitido.'
+      },
+      'fileEXCEL':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        numberFile: 'Solo se permite un archivo.',
+        typeFile: 'no es un un archivo Excel.',
+        sizeFile: 'excede el peso permitido.'
+      } 
+  }
+
+
 };
 
 
@@ -1067,13 +1089,15 @@ for (var i = 0; i < btnSubmint.length; i++) {
 
 function checkForm(){
 
+  //console.log(this.form);
+
   var allVal = document.getElementById(this.getAttribute('data-form')).elements;
 
   var arrVal = [];
 
   for (var i = 0; i < allVal.length; i++) {
 
-    allVal[i].getAttribute('data-error') ? (arrVal.push(1),forOne(allVal[i])) : arrVal.push(0);
+    allVal[i].getAttribute('data-errvjs') ? (arrVal.push(1),forOne(allVal[i])) : arrVal.push(0);
 
   }
 
@@ -1089,37 +1113,71 @@ function checkForm(){
 
     document.getElementById('error-'+e.getAttribute('data-group')) && 
     document.getElementById('error-'+e.getAttribute('data-group')).textContent === '' ? 
-    document.getElementById('error-'+e.getAttribute('data-group')).textContent=messages[e.getAttribute('data-type')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    document.getElementById('error-'+e.getAttribute('data-group')).textContent=messagesErrVjs[e.form.getAttribute('id')][e.getAttribute('data-group')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}) : '';
 
     document.getElementById('error-'+e.getAttribute('id')) && 
-    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent= messages[e.getAttribute('data-type')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    document.getElementById('error-'+e.getAttribute('id')).textContent === '' ? document.getElementById('error-'+e.getAttribute('id')).textContent= messagesErrVjs[e.form.getAttribute('id')][e.getAttribute('id')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}) : '';
   }
 
+
   arrVal.includes(1) ? '' : (alert('valido'),document.getElementById(this.getAttribute('data-form')).submit());
+
 
 }
 
 /****************************************************************************************************************/
 
 for (var i = 0; i < inputsValidar.length; i++) {
-  inputsValidar[i].setAttribute('data-error','1');
+  inputsValidar[i].setAttribute('data-errvjs','1');
 
-  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("keyup", validaInput, false) ;
+  /////////////////////////////////////////////////////////////////////////////////////}
 
-  inputsValidar[i].getAttribute('data-type') ==='checkbox' || inputsValidar[i].getAttribute('data-type') === 'radio' ? '' : inputsValidar[i].addEventListener("focus", validaInput, false) ;
+  inputsValidar[i].getAttribute('data-type') ==='checkbox' || 
+  inputsValidar[i].getAttribute('data-type') === 'radio' 
+  ? 
+  '' 
+  : 
+  inputsValidar[i].addEventListener("keyup", validaInput, false) ;
+
+  /////////////////////////////////////////////////////////////////////////////////////
+
+  inputsValidar[i].getAttribute('data-type') ==='checkbox' ||
+  inputsValidar[i].getAttribute('data-type') === 'radio' 
+  ? 
+  '' 
+  : 
+  inputsValidar[i].addEventListener("focus", validaInput, false) ;
+
+  /////////////////////////////////////////////////////////////////////////////////////
 
   inputsValidar[i].addEventListener("change", validaInput, false);
+  inputsValidar[i].addEventListener("keydown", validaInput, false);
 
-  document.getElementById('string-'+inputsValidar[i].getAttribute('id')) && inputsValidar[i].getAttribute('data-type') != 'telephone' && inputsValidar[i].getAttribute('data-type') != 'creditCard'  ? 
+  /////////////////////////////////////////////////////////////////////////////////////
+
+  document.getElementById('string-'+inputsValidar[i].getAttribute('id')) && 
+  inputsValidar[i].getAttribute('data-type') != 'phone' &&
+  inputsValidar[i].getAttribute('data-type') != 'countryPhone' &&
+  inputsValidar[i].getAttribute('data-type') != 'interbankKey' && 
+  inputsValidar[i].getAttribute('data-type') != 'creditCard'  ? 
   document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent=inputsValidar[i].getAttribute('maxlength') 
   : 
   maxMinMask(inputsValidar[i]);
 
   function maxMinMask(mask){
-    mask.getAttribute('data-type') === 'telephone' ? document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='10' : '';
-    mask.getAttribute('data-type') === 'creditCard' ? document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='16' : '';
+    mask.getAttribute('data-type') === 'phone' ? 
+    document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='10' : '';
+
+    mask.getAttribute('data-type') === 'countryPhone' ? 
+    document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='12' : '';
+
+    mask.getAttribute('data-type') === 'creditCard' ? 
+    document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='16' : '';
+
+    mask.getAttribute('data-type') === 'interbankKey' ? 
+    document.getElementById('string-'+inputsValidar[i].getAttribute('id')).textContent='18' : '';
   }
 }
 
@@ -1127,57 +1185,75 @@ for (var i = 0; i < inputsValidar.length; i++) {
 function validaInput(e) {
 
   
-  var val=this.value;
-  var tip=this.getAttribute('data-type');
-  var max=this.getAttribute('maxlength');
-  var min=this.getAttribute('minLength');
-  var ide=this.getAttribute('id');
-  var ele=document.getElementById(ide);
-  var err=document.getElementById('error-'+ide);
-  var str=document.getElementById('string-'+ide);
-  var nam=this.getAttribute('data-inputname');
+  //var val=this.value;
+  //var tip=this.getAttribute('data-type');
+  //var max=this.getAttribute('maxlength');
+  //var min=this.getAttribute('minLength');
+  //var ide=this.getAttribute('id');
+  //var ele=document.getElementById(this.getAttribute('id'));
+  //console.log(document.getElementById(ide));
+  //var err=document.getElementById('error-'+ide);
+  //var str=document.getElementById('string-'+this.getAttribute('id'));
+  //var nam=this.getAttribute('data-inputname');
+
+  console.log(this.form.getAttribute('id'));
 
   var mapObj = { 
-            INPUTNAME: nam, 
-            MINLENGTH: min, 
-            MAXLENGTH: max 
+            INPUTNAME: this.getAttribute('data-inputname'), 
+            MINLENGTH: this.getAttribute('minLength'), 
+            MAXLENGTH: this.getAttribute('maxlength') 
         }; 
 
   let validar = new Promise((resolve, reject) => {
     
-    str && tip != 'telephone' && tip != 'creditCard' ? str.textContent=max : '';
-      val ? resolve([tip,val,max,min,ele,err,str]) : reject(messages[tip].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    document.getElementById('string-'+this.getAttribute('id')) && 
+    this.getAttribute('data-type') != 'phone' && 
+    this.getAttribute('data-type') != 'countryPhone' && 
+    this.getAttribute('data-type') != 'creditCard' && 
+    this.getAttribute('data-type') != 'interbankKey' 
+    ? 
+    document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') 
+    : 
+    '';
+
+    //console.log(this.value.length);
+
+    this.value
+    ? 
+    resolve() 
+    : 
+    reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].required.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
   });
 
   validar
   .then((d) => {
-    switch (d[0]) {
+    switch (this.getAttribute('data-type')) {
       /*******************************************************/
       case 'text':
-        var type = typeof d[1] === 'string' ? true : false ;
-        var number = isNaN( parseInt( d[1] ) ) ? true : false ;
-        var match = /^[a-zA-Z]+$/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
+        var number = isNaN( parseInt( this.value ) ) ? true : false ;
+        var match = /^[a-zA-Z]+$/.test( this.value ) ;
+        var minLength = this.value.length >= parseInt( this.getAttribute('minLength') , 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
 
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!number)         return Promise.reject(messages[tip].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!number)         return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength&&this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength&&this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
 
@@ -1185,29 +1261,59 @@ function validaInput(e) {
         
         break;
       /*******************************************************/
+      case 'textNumber':
+
+        var type = typeof this.value === 'string' ? true : false ;
+        var number = isNaN( parseInt( this.value ) ) ? false : true ;
+        var match = /^\d+$/.test( this.value ) ; 
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
+
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
+       
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!number)         return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!minLength&&this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!maxLength&&this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+        
+        return d;
+        
+        break;
+    /*******************************************************/
       case 'number':
 
-        var type = typeof d[1] === 'string' ? true : false ;
-        var number = isNaN( parseInt( d[1] ) ) ? false : true ;
-        var match = /^\d+$/.test( d[1] ) ; 
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
+        var number = isNaN( parseInt( this.value ) ) ? false : true ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        var match = this.getAttribute('min') < 0 ? /^-?\d+(\.\d{1,2})?$/.test( this.value ) : /^\d+$/.test( this.value ) ; 
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
+
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!number)         return Promise.reject(messages[tip].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!number)         return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].number.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength&&this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength&&this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
         
         return d;
@@ -1216,25 +1322,31 @@ function validaInput(e) {
       /*******************************************************/
       case 'email':
 
-        var match = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
-        document.getElementById(ele.getAttribute('id')+'-check') && document.getElementById(ele.getAttribute('id')+'-check').value === d[1] ? 
+        var match = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test( this.value ) ;
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
+
+        document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check') && 
+        document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').value === this.value 
+        ? 
         ( 
-          document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-invalid'),
-          document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-valid'),
-          document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent="",
-          document.getElementById(ele.getAttribute('id')+'-check').removeAttribute('data-error')
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.remove('is-invalid'),
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.add('is-valid'),
+          document.getElementById('error-'+document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').textContent="",
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').removeAttribute('data-errvjs')
         ) : ( 
-          document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-invalid'),
-          document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-valid'),
-          document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent='El campo '+nam+' no coincide',
-          document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','1')
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.add('is-invalid'),
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.remove('is-valid'),
+          document.getElementById('error-'+document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').textContent='El campo '+this.getAttribute('data-inputname')+' no coincide',
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').setAttribute('data-errvjs','1')
         );
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) 
+        ? 
+        document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length 
+        : '' ;
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1242,40 +1354,41 @@ function validaInput(e) {
         break;
       /*******************************************************/
       case 'password':
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 )+1 ? true : false ;
-        var matchNumber = /\d+/.test( d[1] );
-        var matchUppercase = /[A-Z]/.test( d[1] );
-        var matchLowercase = /[a-z]/.test( d[1] );
+        //this.setAttribute('maxlength',this.getAttribute('maxlength'));
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 )+1 ? true : false ;
+        var matchNumber = /\d+/.test( this.value );
+        var matchUppercase = /[A-Z]/.test( this.value );
+        var matchLowercase = /[a-z]/.test( this.value );
 
-        document.getElementById(ele.getAttribute('id')+'-check') && document.getElementById(ele.getAttribute('id')+'-check').value === d[1] ? 
+        document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check') && document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').value === this.value ? 
         ( 
-          document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-invalid'),
-          document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-valid'),
-          document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent="",
-          document.getElementById(ele.getAttribute('id')+'-check').removeAttribute('data-error')
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.remove('is-invalid'),
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.add('is-valid'),
+          document.getElementById('error-'+document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').textContent="",
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').removeAttribute('data-errvjs')
         ) : ( 
-          document.getElementById(ele.getAttribute('id')+'-check').classList.add('is-invalid'),
-          document.getElementById(ele.getAttribute('id')+'-check').classList.remove('is-valid'),
-          document.getElementById('error-'+ele.getAttribute('id')+'-check').textContent='El campo '+nam+' no coincide',
-          document.getElementById(ele.getAttribute('id')+'-check').setAttribute('data-error','1')
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.add('is-invalid'),
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').classList.remove('is-valid'),
+          document.getElementById('error-'+document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').textContent='El campo '+this.getAttribute('data-inputname')+' no coincide',
+          document.getElementById(document.getElementById(this.getAttribute('id')).getAttribute('id')+'-check').setAttribute('data-errvjs','1')
         );
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength&&this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength&&this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!matchNumber)    return Promise.reject(messages[tip].matchNumber.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!matchNumber)    return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].matchNumber.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!matchUppercase) return Promise.reject(messages[tip].matchUppercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!matchUppercase) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].matchUppercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!matchLowercase) return Promise.reject(messages[tip].matchLowercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!matchLowercase) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].matchLowercase.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1283,10 +1396,13 @@ function validaInput(e) {
       /*******************************************************/
       case 'confirm':
 
-        var check = ide.split('-');
-        var match = document.getElementById(check[0]).value === d[1] ? true : false;
+        var check = this.getAttribute('id').split('-');
+        //this.setAttribute('maxlength',document.getElementById(check[0]).getAttribute('maxlength'));
+        var match = document.getElementById(check[0]).value === this.value ? true : false;
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        document.getElementById('string-'+check[0]) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
+
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1294,23 +1410,23 @@ function validaInput(e) {
       /*******************************************************/
       case 'textarea':
         
-        var type = typeof d[1] === 'string' ? true : false ;
-        var match = /^[a-zA-Z ñ,áéíóú.;:0-9!()#"]+$/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
+        var match = /^[a-zA-Z ñ,áéíóú.;:0-9!()#"]+$/.test( this.value ) ;
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
        
-        if(!type) return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!minLength&&min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength&&this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength&&max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength&&this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1318,53 +1434,84 @@ function validaInput(e) {
       /*******************************************************/
       case 'url':
         
-        var type = typeof d[1] === 'string' ? true : false ;
-        //var number = isNaN( parseInt( d[1] ) ) ? true : false ;
-        var match = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test( d[1] ) ;
-        var minLength = d[1].length >= parseInt(d[3], 10) ? true : false ;
-        var maxLength = d[1].length <= parseInt( d[2] , 10 ) ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
+        //var number = isNaN( parseInt( this.value ) ) ? true : false ;
+        //var match = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g.test( this.value ) ;
+        var match = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm.test( this.value ) ;
+        var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false ;
+        var maxLength = this.value.length <= parseInt( this.getAttribute('maxlength') , 10 ) ? true : false ;
 
-        d[6] ? d[6].textContent=max - d[1].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent=this.getAttribute('maxlength') - this.value.length : '' ;
 
-        if(!type)             return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type)             return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match)            return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match)            return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!minLength && min) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength && this.getAttribute('minlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength && max) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength && this.getAttribute('maxlength')) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
         break;
       /*******************************************************/
-      case 'telephone':
+      case 'phone':
         
-        var x = ele.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-        ele.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+        var x = document.getElementById(this.getAttribute('id')).value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        document.getElementById(this.getAttribute('id')).value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
 
-        var type = typeof d[1] === 'string' ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
         
-        var match = /[0-9()-]/.test( d[1] ) ;
+        var match = /[0-9()-]/.test( this.value ) ;
 
         var minLength = x[0].length >= 10 ? true : false ;
         var maxLength = x[0].length <= 10 ? true : false ;
 
-        d[6] ? d[6].textContent = 10 - x[0].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent = 10 - x[0].length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!minLength) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!minLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        return d;
+        break;
+
+    /*******************************************************/
+      case 'countryPhone':
+        
+        var x = document.getElementById(this.getAttribute('id')).value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+        document.getElementById(this.getAttribute('id')).value = !x[2] ? x[1] : '(' + x[1] + ') ' + '(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+
+        var type = typeof this.value === 'string' ? true : false ;
+        
+        var match = /[0-9()-]/.test( this.value ) ;
+
+        var minLength = x[0].length >= 12 ? true : false ;
+        var maxLength = x[0].length <= 12 ? true : false ;
+
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent = 12 - x[0].length : '' ;
+       
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!minLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!maxLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1372,27 +1519,56 @@ function validaInput(e) {
       /*******************************************************/
       case 'creditCard':
         
-        var x = ele.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
-        ele.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+        var x = document.getElementById(this.getAttribute('id')).value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+        document.getElementById(this.getAttribute('id')).value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
 
-        var type = typeof d[1] === 'string' ? true : false ;
+        var type = typeof this.value === 'string' ? true : false ;
         
-        var match = /[0-9()-]/.test( d[1] ) ;
+        var match = /[0-9()-]/.test( this.value ) ;
         var minLength = x[0].length >= 16 ? true : false ;
         var maxLength = x[0].length <= 16 ? true : false ;
 
-        d[6] ? d[6].textContent= 16 - x[0].length : '' ;
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent= 16 - x[0].length : '' ;
        
-        if(!type)           return Promise.reject(messages[tip].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!match)          return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
-        //if(!number) throw 'No se permiten letras en el campo '+nam;
-        if(!minLength) return Promise.reject(messages[tip].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        //if(!number) throw 'No se permiten letras en el campo '+this.getAttribute('data-inputname');
+        if(!minLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!maxLength) return Promise.reject(messages[tip].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!maxLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        return d;
+        break;
+
+    /*******************************************************/
+      case 'interbankKey':
+        
+        var x = document.getElementById(this.getAttribute('id')).value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,11})(\d{0,1})/);
+        document.getElementById(this.getAttribute('id')).value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+
+        var type = typeof this.value === 'string' ? true : false ;
+        
+        var match = /[0-9()-]/.test( this.value ) ;
+        var minLength = x[0].length >= 18 ? true : false ;
+        var maxLength = x[0].length <= 18 ? true : false ;
+
+        document.getElementById('string-'+this.getAttribute('id')) ? document.getElementById('string-'+this.getAttribute('id')).textContent= 18 - x[0].length : '' ;
+       
+        if(!type)           return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].type.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!match)          return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+        //if(!number) throw 'No se permiten letras en el campo '+this.getAttribute('data-inputname');
+        if(!minLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].minlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return mapObj[match]}));
+
+        if(!maxLength) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].maxlength.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1401,9 +1577,9 @@ function validaInput(e) {
       case 'date':
         
 
-        //var match = /[0-9()-]/.test( d[1] ) ;
+        //var match = /[0-9()-]/.test( this.value ) ;
         
-        //if(!match) throw 'Ingresa solo números para el campo '+nam;
+        //if(!match) throw 'Ingresa solo números para el campo '+this.getAttribute('data-inputname');
 
 
         return d;
@@ -1411,10 +1587,10 @@ function validaInput(e) {
       /*******************************************************/
       case 'list':
         
-        //console.log(d[1]);
-        //var match = /[0-9()-]/.test( d[1] ) ;
+        //console.log(this.value);
+        //var match = /[0-9()-]/.test( this.value ) ;
         
-        //if(!match) throw 'Ingresa solo números para el campo '+nam;
+        //if(!match) throw 'Ingresa solo números para el campo '+this.getAttribute('data-inputname');
 
 
         return d;
@@ -1422,19 +1598,19 @@ function validaInput(e) {
       /*******************************************************/
       case 'switch':
         
-      //console.log(d[1],d[4])
+      //console.log(this.value,document.getElementById(this.getAttribute('id')))
 
-        //var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
+        //var gr = document.getElementsByClassName(document.getElementById(this.getAttribute('id')).getAttribute('data-group'));
         //var arrGr = [];
         //for (var i = 0; i < gr.length; i++) {
         //  gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
         //}
 
-        var match = d[4].checked == true ? true : false;
+        var match = document.getElementById(this.getAttribute('id')).checked == true ? true : false;
 
         //console.log(match);
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1444,15 +1620,20 @@ function validaInput(e) {
         
         //console.log(d);
 
-        var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
+        var gr = document.getElementsByClassName(document.getElementById(this.getAttribute('id')).getAttribute('data-group'));
+        
         var arrGr = [];
         for (var i = 0; i < gr.length; i++) {
           gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
         }
 
+
+
         var match = arrGr.includes(1) ? true : false;
+
+        //console.log(arrGr,match);
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('data-group')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
 
@@ -1462,7 +1643,7 @@ function validaInput(e) {
       case 'radio':
         
         //console.log('hola');
-        var gr = document.getElementsByClassName(d[4].getAttribute('data-group'));
+        var gr = document.getElementsByClassName(document.getElementById(this.getAttribute('id')).getAttribute('data-group'));
         var arrGr = [];
         for (var i = 0; i < gr.length; i++) {
           gr[i].checked == true ? arrGr.push(1):arrGr.push(0);
@@ -1470,7 +1651,7 @@ function validaInput(e) {
         //console.log(arrGr);
         var match = arrGr.includes(1) ? true : false;
         
-        if(!match) return Promise.reject(messages[tip].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!match) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('data-group')].match.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         return d;
@@ -1482,19 +1663,19 @@ function validaInput(e) {
         var typeFile = e.target.files[0].type === 'application/pdf' ? true : false ;
         var sizeFile = e.target.files[0].size < 99698 ? true : false ;
 
-        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!numberFile) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un PDF');
         //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
 
-        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
+        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+this.getAttribute('id')).textContent=e.target.files[0].name:'';
 
         return d;
         break;
@@ -1510,19 +1691,19 @@ function validaInput(e) {
         e.target.files[0].type === 'application/vnd.ms-excel.sheet.macroEnabled.12' ? true : false ;
         var sizeFile = e.target.files[0].size < 99698 ? true : false ;
         
-        if(!numberFile) return Promise.reject(messages[tip].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!numberFile) return Promise.reject(messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].numberFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!typeFile) return Promise.reject(e.target.files[0].name+' '+messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].typeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
-        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messages[tip].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+        if(!sizeFile) return Promise.reject(e.target.files[0].name+' '+messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].sizeFile.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
     return mapObj[match]}));
 
         //if(!typeFile) return Promise.reject('El archivo '+e.target.files[0].name+' no es un archivo excel');
         //if(!sizeFile) return Promise.reject('El archivo '+e.target.files[0].name+' excede el peso permitido');
 
-        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+ide).textContent=e.target.files[0].name:'';
+        numberFile && typeFile && sizeFile ? document.getElementById('fileLabel-'+this.getAttribute('id')).textContent=e.target.files[0].name:'';
 
         return d;
         break;
@@ -1533,48 +1714,54 @@ function validaInput(e) {
   })
   .then((d) => {
 
-      d[0] === 'checkbox' || d[0] === 'radio' ? typeGroup() : typeOne() ;
+    //console.log(this);
+
+      this.getAttribute('data-type') === 'checkbox' || this.getAttribute('data-type') === 'radio' ? typeGroup(this) : typeOne(this) ;
 
       //console.log(d);
 
-      function typeGroup(){
-        var group = document.getElementsByClassName(d[4].getAttribute('data-group'));
+      function typeGroup(elevjs){
+        //console.log(elevjs);
+        var group = document.getElementsByClassName(elevjs.getAttribute('data-group'));
         for (var i = 0; i < group.length; i++) {
           //group[i].classList.remove('is-invalid');
           //group[i].classList.add('is-valid');
-          document.getElementById('error-'+ele.getAttribute('data-group')).textContent='';
-          group[i].removeAttribute('data-error');
+          document.getElementById('error-'+elevjs.getAttribute('data-group')).textContent='';
+          group[i].removeAttribute('data-errvjs');
         }
       }
 
-      function typeOne(){
-        d[4].classList.remove('is-invalid');
-        d[4].classList.add('is-valid');
-        d[5].textContent='';
-        d[4].removeAttribute('data-error');
+      function typeOne(elevjs){
+        //console.log(elevjs);
+        elevjs.classList.remove('is-invalid');
+        elevjs.classList.add('is-valid');
+        document.getElementById('error-'+elevjs.getAttribute('id')).textContent='';
+        elevjs.removeAttribute('data-errvjs');
         //this.parentNode.parentNode.querySelector('.btn').disabled=false;
       }
 
   })
   .catch((e) => {
     //var arrErr = ['Campo requerido.','Error de validación']
-      //console.log(e);
+      
 
-      tip === 'checkbox' || tip === 'radio' ? typeGroupErr() :typeOneErr();
+      this.getAttribute('data-type') === 'checkbox' || this.getAttribute('data-type') === 'radio' ? typeGroupErr(this) :typeOneErr(this);
 
-      function typeGroupErr(){
-        var group = document.getElementsByClassName(ele.getAttribute('data-group'));
+      function typeGroupErr(elevjs){
+        console.log(e);
+        var group = document.getElementsByClassName(elevjs.getAttribute('data-group'));
         for (var i = 0; i < group.length; i++) {
-          document.getElementById('error-'+ele.getAttribute('data-group')).textContent=e;
-          group[i].setAttribute('data-error','1');
+          document.getElementById('error-'+elevjs.getAttribute('data-group')).textContent=e;
+          group[i].setAttribute('data-errvjs','1');
         }
       }
 
-      function typeOneErr(){
-        ele.classList.remove('is-valid');
-        ele.classList.add('is-invalid');
-        err.textContent=e;
-        ele.setAttribute('data-error','1');
+      function typeOneErr(elevjs){
+        //console.log(elevjs.getAttribute('id'));
+        elevjs.classList.remove('is-valid');
+        elevjs.classList.add('is-invalid');
+        document.getElementById('error-'+elevjs.getAttribute('id')).textContent=e;
+        elevjs.setAttribute('data-errvjs','1');
         //this.parentNode.parentNode.querySelector('.btn').disabled=true;
       }
 
