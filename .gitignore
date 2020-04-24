@@ -21,3 +21,10 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+# Se ignora el contenido de Public que se genera con NPM
+public/*
+
+# Se conservan .htacces e index.php que son necesarios para Laravel
+!public/.htaccess
+!public/index.php
