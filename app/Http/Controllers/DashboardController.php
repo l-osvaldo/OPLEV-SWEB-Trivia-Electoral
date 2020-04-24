@@ -161,4 +161,10 @@ class DashboardController extends Controller
        return redirect()->route('front.encrypt', compact('Alert_texto','Alert_subtitulo','Alert_tipo'));
     }
 
+     public function sellodigital()
+    {
+        Auth::check() ? $vista = view('selloOple') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
 }

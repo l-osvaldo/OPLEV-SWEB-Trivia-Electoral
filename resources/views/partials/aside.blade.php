@@ -582,92 +582,28 @@
 
         <!----------------------------------------------------------------------------------->
 
-        <!--li class="nav-item has-treeview menuClose">
-          <a href="#" class="nav-link o-menu-cinco">
-            <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
-            <p class="o-color-menu">
-              Lorem ipsum dolor
-              <i class="right fa fa-chevron-left" aria-hidden="true"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
-                <i class="far fa-circle" aria-hidden="true"></i> <p>Lorem ipsum</p>
-              </a>
-            </li>
-
-          </ul>
-        </li-->
-
-
-        <!----------------------------------------------------------------------------------->
-
-        <!--li class="nav-item has-treeview menuClose">
+        <li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-cuatro">
-            <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
+            <i class="nav-icon fas fa-qrcode o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
-              Lorem ipsum dolor
+              Sello Digital OPLE
               <i class="right fa fa-chevron-left" aria-hidden="true"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
-
-
             <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
-                <i class="far fa-circle" aria-hidden="true"></i> <p>Lorem ipsum</p>
+             <a href="{{ route('front.sello-digital') }}" class="textSideOption nav-link {!! Request::is('sello-digital') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-bolt"></i> <p>Validador de Reportes</p>
               </a>
             </li>
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption nav-link">
-                <i class="far fa-circle" aria-hidden="true"></i> <p>Lorem ipsum</p>
-              </a>
-            </li>
-
           </ul>
-        </li-->
-
-
+        </li>
         <!----------------------------------------------------------------------------------->
-
-
-        <!--li class="nav-item has-treeview menuClose">
-          <a href="#" class="nav-link o-menu-secundario">
-            <i class="fas fa-list-ol o-color-menu" aria-hidden="true"></i>
-            <p class="o-color-menu">
-              Lorem ipsum dolor
-              <i class="right fa fa-chevron-left" aria-hidden="true"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption o-color-sub-menu nav-link">
-                <i class="far fa-circle"></i> <p>Lorem ipsum</p>
-              </a>
-            </li>
-
-            <li class="nav-item has-treeview">
-              <a href="#" class="textSideOption o-color-sub-menu nav-link">
-                <i class="far fa-circle"></i> <p>Lorem ipsum</p>
-              </a>
-            </li>
-
-          </ul>
-        </li-->
-
-
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->
-
-
 </aside>
 
 
