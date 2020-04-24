@@ -1,0 +1,19 @@
+/***********************************GENERAL.BLADE*****************************************************************************/
+.o-wrapper-pading{padding: 57px 0;}
+.o-btn-ople:hover{background:#EA0D94 !important; }
+.form-control:focus {border-color: #EA0D94;box-shadow: none;}
+/***********************************GENERAL.BLADE*****************************************************************************/
+
+
+/***********************************FOOTER.BLADE******************************************************************************/
+.o-footer-adminLite{position: fixed;z-index: 949;bottom: 0;right: 0;left: 0;background: #fff;}
+/***********************************FOOTER.BLADE******************************************************************************/
+
+
+/**********************************CUADROS.OPLE******************************************************************************/
+.o-icon-cuadros-1{border-radius: 50%;padding: 1% 2%;font-size: 1.5em; border-radius: 50%;display: inline-block;}
+.o-icon-cuadros-2{border-radius: 50%;padding: 1% 15%;font-size: 2.5em; border-radius: 50%;display: inline-block;}
+/**********************************CUADROS.OPLE******************************************************************************/
+
+
+.navbar-laravel { background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); }

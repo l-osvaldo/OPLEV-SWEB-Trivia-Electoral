@@ -1,0 +1,80 @@
+.o-titulo-sistema-aside {
+    font-size: .9rem;
+    letter-spacing: 2px;
+    line-height: 1 !important;
+    text-align: center;
+    padding: .5rem 0 0 0;
+}
+
+.o-pading-logo {
+    background: #ccc;
+    padding: .1rem;
+}
+
+.o-menu-principal {
+    background-color: #EA0D94 !important;
+}
+
+.o-menu-secundario {
+    background-color: #7d8c00 !important;
+}
+
+.o-menu-tres {
+    background-color: #297b86 !important;
+}
+
+.o-menu-cuatro {
+    background-color: #321063 !important;
+}
+
+.o-menu-cinco {
+    background-color: #690e4f !important;
+}
+
+.o-menu-seis {
+    background-color: #a04e00 !important;
+}
+
+.o-color-menu {
+    color: #fff;
+}
+
+.o-logo-center {
+    text-align: center;
+}
+
+.o-color-sub-menu {
+    color: #f1ff2b !important;
+}
+
+.o-img-fondo-gray {
+    background: url('/images/backu.png');
+    background-size: 100%;
+    filter: grayscale(100%);
+}
+
+.o-img-fondo {
+    background: url('/images/backu.png');
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+.o-nombre-usuario {
+    font-size: 2vh;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.o-icon-usuario {
+    font-size: 5vh;
+    color: #fff !important;
+}
+
+.sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active,
+.sidebar-dark-primary .nav-treeview>.nav-item>.nav-link.active:hover {
+    background-color: #505050;
+    color: #fff;
+}

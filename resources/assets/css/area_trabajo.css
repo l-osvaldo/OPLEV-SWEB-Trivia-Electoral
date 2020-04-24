@@ -1,0 +1,21 @@
+.o-area-trabajo {
+    background: #fff;
+    min-height: 100vh;
+    height: 100vh;
+    height: auto !important;
+}
+
+.o-area-descripcion {
+    border: solid 2px #ffa500;
+    box-shadow: none;
+}
+
+.o-area-descripcion-icon {
+    color: #ffa500;
+}
+
+.o-texto-color-ople {
+    color: #EA0D94;
+    font-weight: initial;
+    font-size: 1.1em;
+}

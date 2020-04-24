@@ -1,21 +1,11 @@
+/* En este archivo se declaran variables para sobrescribir valores de Bootstrap y/o AdminLTE predeterminados */
 
-// Body
-$body-bg: #f8fafc;
+// Nuevo color ople-pink
+$ople-pink: #EA0D94;
 
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-$fa-font-path:        "../webfonts";
+/* Se declara ople-pink como el nuevo color primario de Bootstrap:
+   .primary, .btn-primary, .bg-primary, etc. serán color rosa ople por defecto, incluyendo :hover y :active.
+*/
+$primary: $ople-pink;
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$enable-responsive-font-sizes: true;
