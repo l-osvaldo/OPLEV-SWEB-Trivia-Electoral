@@ -34,6 +34,7 @@ const mix = require('laravel-mix');
 'node_modules/highcharts/highcharts.js',
 'node_modules/highcharts/highcharts-more.js',
 'node_modules/highcharts/modules/solid-gauge.js',
+'resources/assets/js/bootstrap.methods.js',
 'resources/assets/js/dashboard.js',
 'resources/assets/js/validaciones.ople.js',
 'resources/assets/js/datatables.js',
@@ -45,7 +46,6 @@ const mix = require('laravel-mix');
 
  mix.js('resources/js/app.js', 'public/js')
  .sass('resources/sass/app.scss', 'public/css');
-
- mix.copyDirectory('resources/assets/css', 'public/css');
+ 
+ mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');
- mix.copyDirectory('resources/assets/js', 'public/js');
