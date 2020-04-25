@@ -1,24 +1,26 @@
 <!doctype html>
 <html lang="es-MX">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config('app.name', 'SIPSEIV2') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('public/images/favicon.ico') }}" type="image/x-icon">
-
-    <title>{{ config('app.name', 'SIPSEIV2') }}</title>
+    <!--COMBIAR NOMBRE DE PROYECTO Y VINCULAR LA RUTA CON EL FABICON-->
+    <link rel="icon"
+        href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app-prefix" content="{{ url('/') }}">
+    <!-- LARAVEL JAVASCRIPT -->
+    <!--script src="{{ asset('js/app.js') }}"></script-->
+    <!-- CSS's DE LARAVEL -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
 
-    <!-- Bootstrap 4.0-->
-    <link rel="stylesheet" href="{{ asset('vendor_components/bootstrap/dist/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-
-  </head>
-
-  <body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100">
     @yield('content')
-  </body>
+</body>
+
 </html>
