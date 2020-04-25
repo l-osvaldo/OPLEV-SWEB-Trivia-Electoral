@@ -39,7 +39,6 @@ const mix = require('laravel-mix');
 'resources/assets/js/validaciones.ople.js',
 'resources/assets/js/datatables.js',
 'resources/assets/js/toastr.js',
-'resources/assets/js/pdfobject.js',
 'resources/assets/js/pusher.js',
 'resources/assets/js/highcharts.js'
 ], 'public/js/all.js');
@@ -47,5 +46,6 @@ const mix = require('laravel-mix');
  mix.js('resources/js/app.js', 'public/js')
  .sass('resources/sass/app.scss', 'public/css');
  
+ mix.copy('resources/assets/js/pdfobject.js', 'public/js/pdfobject.js')
  mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');
