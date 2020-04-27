@@ -1,0 +1,81 @@
+.card-oplever:not(.card-outline)>.card-header {
+    background-color: #EA0D94;
+}
+
+.card-oplever:not(.card-outline)>.card-header,
+.card-oplever:not(.card-outline)>.card-header a {
+    color: #ffffff;
+}
+
+.o-fondo-primario {
+    background: #EA0D94 !important;
+    color: #fff !important;
+}
+
+.o-color-primario {
+    color: #EA0D94 !important;
+}
+
+.o-fondo-1 {
+    background: #EA0D94 !important;
+    color: #fff !important;
+    border-color: #EA0D94 !important;
+}
+
+.o-color-1 {
+    color: #EA0D94 !important;
+}
+
+.o-fondo-2 {
+    background: #efefef !important;
+    color: #000 !important;
+    border-color: #efefef !important;
+}
+
+.o-color-2 {
+    color: #efefef !important;
+}
+
+.o-fondo-3 {
+    background: #f8b6de !important;
+    color: #000 !important;
+    border-color: #f8b6de !important;
+}
+
+.o-color-3 {
+    color: #f8b6de !important;
+}
+
+.o-fondo-4 {
+    background: #fce6f4 !important;
+    color: #000 !important;
+    border-color: #fce6f4 !important;
+}
+
+.o-color-4 {
+    color: #fce6f4 !important;
+}
+
+.o-fondo-5 {
+    background: #e0e0e0 !important;
+    color: #000 !important;
+    border-color: #e0e0e0 !important;
+}
+
+.o-color-5 {
+    color: #e0e0e0 !important;
+}
+
+.o-fondo-6 {
+    background: #7d8c00 !important;
+    color: #fff !important;
+    border-color: #7d8c00 !important;
+}
+
+.o-color-6 {
+    color: #7d8c00 !important;
+}
+
+.o-form-label {
+    color: #444 !important;
+}

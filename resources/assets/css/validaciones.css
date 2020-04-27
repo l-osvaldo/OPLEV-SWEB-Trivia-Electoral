@@ -1,0 +1,18 @@
+.errorMessage {
+    color: #EA0C97;
+    width: 90%;
+}
+
+.stringNumber {
+    width: 10%;
+    text-align: center;
+    background: #f7f7f7;
+    border-radius: 0 0 5px 5px;
+    border: dashed 1px #ccc;
+}
+
+.boxMesNum {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}

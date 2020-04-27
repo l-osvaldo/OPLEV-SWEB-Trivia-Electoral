@@ -34,21 +34,18 @@ const mix = require('laravel-mix');
 'node_modules/highcharts/highcharts.js',
 'node_modules/highcharts/highcharts-more.js',
 'node_modules/highcharts/modules/solid-gauge.js',
+'resources/assets/js/bootstrap.methods.js',
 'resources/assets/js/dashboard.js',
 'resources/assets/js/validaciones.ople.js',
 'resources/assets/js/datatables.js',
 'resources/assets/js/toastr.js',
-'resources/assets/js/pdfobject.js',
 'resources/assets/js/pusher.js',
 'resources/assets/js/highcharts.js'
 ], 'public/js/all.js');
 
  mix.js('resources/js/app.js', 'public/js')
  .sass('resources/sass/app.scss', 'public/css');
-
+ 
+ mix.copy('resources/assets/js/pdfobject.js', 'public/js/pdfobject.js')
  mix.copyDirectory('resources/assets/docs', 'public/docs');
- mix.copyDirectory('resources/assets/css', 'public/css');
  mix.copyDirectory('resources/assets/images', 'public/images');
- mix.copyDirectory('resources/assets/js', 'public/js');
- mix.copyDirectory('resources/assets/vendor_components', 'public/vendor_components');
- mix.copyDirectory('resources/assets/vendor_plugins', 'public/vendor_plugins');
