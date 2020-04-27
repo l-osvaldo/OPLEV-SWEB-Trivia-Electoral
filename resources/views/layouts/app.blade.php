@@ -13,9 +13,6 @@
         href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-prefix" content="{{ url('/') }}">
-    <!-- LARAVEL JAVASCRIPT -->
-    <!--script src="{{ asset('js/app.js') }}"></script-->
-    <!-- CSS's DE LARAVEL -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
