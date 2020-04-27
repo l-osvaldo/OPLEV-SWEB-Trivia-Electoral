@@ -36,6 +36,7 @@ const mix = require('laravel-mix');
 'node_modules/highcharts/modules/solid-gauge.js',
 'resources/assets/js/bootstrap.methods.js',
 'resources/assets/js/dashboard.js',
+'resources/assets/js/validacion.errores.ople.js',
 'resources/assets/js/validaciones.ople.js',
 'resources/assets/js/datatables.js',
 'resources/assets/js/toastr.js',
