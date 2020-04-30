@@ -28,7 +28,7 @@
 		<div style="text-align: left;"><strong>REVISADO POR: </strong>NOMBRE DEL ENCARGADO</div>
 		<div style="text-align: left;"><strong>FECHA Y HORA DE EMISIÓN: </strong> {{ $dataHora }}</div>
 		<div style="text-align: left;"><strong>IDENTIFICADOR ÚNICO DEL EMISOR: </strong> {{ $identificador }}</div>
-		<div style="text-align: left; overflow: hidden;text-overflow: ellipsis;"><strong>SELLO DIGITAL DEL ÁREA: </strong> {{ $selloDigital }}</div>
+		<div style="text-align: left; overflow: hidden;text-overflow: ellipsis;"><strong>SELLO DIGITAL DEL ÁREA: </strong> {{ $sello_digital }}</div>
 		<div style="text-align: left;"><strong>FOLIO INTERNO: </strong>{{$rest1.'-'.$rest2.'-'.$rest3.'-'.$rest4.'-'.$rest5}}</div>
 		<div colspan="2" style="text-align: left;"><strong>Haz clic en el siguiente link para revisar la integridad de este documento: </strong><br><span style="color: blue;">http://dashboardclon.test/verificador</span></div>
 	</div>
