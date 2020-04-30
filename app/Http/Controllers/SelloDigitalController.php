@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use PDFS;
 use App\User;
-use App\Areas;
+use App\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +16,7 @@ class SelloDigitalController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function sellodigital()
+	public function selloDigital()
 	{
 		function encrypt_decrypt($action, $string) {
 			$output = false;
@@ -37,7 +37,7 @@ class SelloDigitalController extends Controller
 		}
 
 		$id = 1;
-		$area = Areas::find($id);
+		$area = Area::find($id);
 
 		$users = DB::table("users")->get();
 
@@ -45,7 +45,7 @@ class SelloDigitalController extends Controller
 		$hashDoc = "";
 		$dataHora = "";
 
-		$selloDigital = $area->selloDigital;
+		$sello_digital = $area->sello_digital;
 		$identificador = $area->identificador;
 		$rfc = 'OPLE456789D9';
 
@@ -60,7 +60,7 @@ class SelloDigitalController extends Controller
 		$rest4 = substr($encrypted_txt, 20, 6);
 		$rest5 = substr($encrypted_txt, 26, 6);
 
-		$pdf = PDFS::loadView('pdfUsersSello', compact('hashDoc', 'dataHora', 'rest1', 'rest2', 'rest3', 'rest4', 'rest5', 'selloDigital','plain_txt', 'identificador', 'rfc','users'))->setPaper('letter', 'portrait');
+		$pdf = PDFS::loadView('pdfUsersSello', compact('hashDoc', 'dataHora', 'rest1', 'rest2', 'rest3', 'rest4', 'rest5', 'sello_digital','plain_txt', 'identificador', 'rfc','users'))->setPaper('letter', 'portrait');
 
 		return $pdf->stream();
 

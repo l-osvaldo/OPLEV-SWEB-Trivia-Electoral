@@ -18,7 +18,7 @@ class CreateAreasTable extends Migration
             $table->text('nombre');
             $table->string('abreviatura',15);
             $table->string('identificador',15);
-            $table->string('selloDigital',250);
+            $table->string('sello_digital',250);
             $table->timestamps();
         });
     }
