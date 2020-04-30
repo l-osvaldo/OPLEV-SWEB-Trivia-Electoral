@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
 
       //Los usuarios necesitaran los roles previamente generados
       $this->call(UserTableSeeder::class);
+
+      // Crear el catálogo de áreas del OPLE
+      $this->call(AreasTableSeeder::class);
     }
 }
