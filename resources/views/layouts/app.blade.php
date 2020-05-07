@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!--COMBIAR NOMBRE DE PROYECTO Y VINCULAR LA RUTA CON EL FABICON-->
     <link rel="icon"
-        href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
+    href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-prefix" content="{{ url('/') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -54,18 +54,6 @@
     </footer>
     <!-- PROJECT JAVASCRIPT -->
     <script src="js/all.js"></script>
-
-    @if (app('request')->input('Alert_texto'))
-    <script type="text/javascript">
-        Swal.fire({
-            text: "{!! app('request')->input('Alert_texto') !!}",
-            title: "{!! app('request')->input('Alert_subtitulo') !!}",
-            type: "{!! app('request')->input('Alert_tipo') !!}",
-            confirmButtonColor: '#EA0D94'
-        });
-
-    </script>
-    @endif
 
 </body>
 
