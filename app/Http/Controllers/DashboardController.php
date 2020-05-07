@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Session;
 //use Illuminate\Support\Facades\Crypt
 use Illuminate\Http\Request;
 use Crypt;
@@ -145,25 +147,26 @@ class DashboardController extends Controller
         $parte2 = substr($request->user_id, 25);
 
         try {
-            
-            $Alert_texto='Valor decriptado: '.decrypt($parte1.$parte2);
-            $Alert_subtitulo='OK!';
-            $Alert_tipo='success';
+            alert()->success('Valor decriptado: '.decrypt($parte1.$parte2), 'Encriptación');
 
         } catch (DecryptException $e) {
 
-            $Alert_texto='Error de validación';
-            $Alert_subtitulo='Error!';
-            $Alert_tipo='error';
+            alert()->error('Error en la Validación', 'Encriptación');
 
         }
        
-       return redirect()->route('front.encrypt', compact('Alert_texto','Alert_subtitulo','Alert_tipo'));
+       return redirect()->route('front.encrypt');
     }
 
-     public function selloDigital()
+    public function selloDigital()
     {
         Auth::check() ? $vista = view('selloOple') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function verificador()
+    {
+        Auth::check() ? $vista = view('verificador') : $vista = redirect()->route('login');
         return $vista;
     }
 

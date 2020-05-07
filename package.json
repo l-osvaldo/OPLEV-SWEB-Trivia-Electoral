@@ -31,6 +31,7 @@
         "@fortawesome/fontawesome-free": "^5.12.1",
         "admin-lte": "^3.0.2",
         "highcharts": "^8.0.4",
+        "inputmask": "^5.0.3",
         "laravel-echo": "^1.6.1",
         "pdfobject": "^2.1.1",
         "pusher-js": "^5.1.1",

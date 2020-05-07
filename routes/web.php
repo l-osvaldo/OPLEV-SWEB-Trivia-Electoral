@@ -39,6 +39,7 @@ Route::group(['middleware' => 'disablepreventback'],function()
 	Route::get('/sendNotification', 'Notification@sendNotification')->name('sendNotification');
 	Route::get('/generate-pdf', 'PDFController@pdfview')->name('generate-pdf');
 	Route::get('/sello-digital', 'DashboardController@selloDigital')->name('front.sello-digital');
+	Route::get('/verificador-sello', 'DashboardController@verificador')->name('front.verificador-sello');
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
 Route::get('/generar_sello', 'selloDigitalController@selloDigital')->name('generar_sello');

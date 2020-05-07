@@ -48,5 +48,6 @@ const mix = require('laravel-mix');
  .sass('resources/sass/app.scss', 'public/css');
  
  mix.copy('resources/assets/js/pdfobject.js', 'public/js/pdfobject.js')
+ mix.copyDirectory('node_modules/inputmask', 'public/inputmask');
  mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');

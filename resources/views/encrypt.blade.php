@@ -1,7 +1,14 @@
 @extends('layouts.app')
-
 @section('content')
-
+@if(Session::has('sweet_alert.alert'))
+<script type="module">
+  Swal.fire({
+    text: "{!! Session::get('sweet_alert.text') !!}",
+    title: "{!! Session::get('sweet_alert.title') !!}",
+    type: "{!! Session::get('sweet_alert.icon') !!}"
+  });
+</script>
+@endif
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2 mt-2">
