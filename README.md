@@ -114,7 +114,7 @@ Por último, corre las migraciones junto con el seeder para crear y pre-cargar l
 ```
 $ php artisan migrate:refresh --seed
 ```
-_Como el .env está configurado como Production, va a preguntar si queremos proseguir con el comando, a lo que debes escribir **yes**_:
+_Como el .env está configurado como Production, va a preguntar si quieres proseguir con el comando, a lo que debes escribir **yes**_:
 ``` 
 **************************************
 *     Application In Production!     *
@@ -295,21 +295,17 @@ Switched to branch 'usuario-primer-rama'
 
 Una vez en tu rama de trabajo, realiza los cambios que necesitas y sigue el mismo proceso de hacer `git add` y `git commit` para guardar tus avances. Cuando estés listo para mandar tus cambios al repositorio remoto en vez de correr `git push origin master` debes correr `git push origin usuario-primer-rama`. Esto va a crear una nueva rama con el mismo nombre en el repositorio remoto.
 
-En el momento en que creas que tus cambios estan listos para integrarse a **master** debes dirigirte al listado de branches (ramas) en gitlab: [dashboardclon/branches](https://gitlab.com/opleveracruz/dashboardclon/-/branches):
+En el momento en que creas que tus cambios estan listos para integrarse a **master** debes dirigirte al listado de branches (ramas) en gitlab: [dashboardclon/branches](https://gitlab.com/opleveracruz/dashboardclon/-/branches) y presionar el boton **Merge Request**
 
-<Imagen>
+![](resources/assets/readme/branches.png)
 
-Presiona el boton **Merge Request**
-
-<Imagen>
-
-**1)** Asegúrate de ingresar un titulo adecuado así como una descripción detallada y justificada de los cambios que estas realizando.
+**1** Asegúrate de ingresar un titulo adecuado así como una descripción detallada y justificada de los cambios que estas realizando.
 
 **2)** Asigna a un compañero del equipo para que revise los cambios. Este paso es importante ya que tu compañero podría tener sugerencias de mejoras en tu implementación, detectar errores que no hayas identificado o pedirte una descripción mas detallada en alguna parte de tus cambios.
 
-**3)** Presiona el botón Send Merge Request.
+**3)** Presiona el botón Submit merge request.
 
-<Imagen>
+![](resources/assets/readme/merge_request.png)
 
 Una vez aprobado el cambio por tu compañero, la rama se borra automáticamente del repositorio remoto, pero para conservar tu repositorio local limpio también es necesario borrarla ahí. Primero hay que regresar a la rama maestra y después borrar la rama terminada:
 ```
@@ -319,7 +315,7 @@ $ git branch -D usuario-primer-rama
 Deleted branch usuario-primer-rama (was xxxxxx).
 ``` 
 
-Como regresamos a la rama maestra, es como si no se hubiera hecho ningún cambio en el repositorio local, por lo que hay que bajar los cambios de __master__ `$ git pull origin master`.
+Como regresaste a la rama maestra, es como si no se hubiera hecho ningún cambio en el repositorio local, por lo que debes bajar los cambios de __master__ `$ git pull origin master`.
 
 Asegúrate correr `composer update` o `composer update` si agregaste o actualizaste algún componente de PHP, `npm install` si agregaste alguna libreria de javascript y `npm run dev` si actualizaste el css o javascript del proyecto.
 
