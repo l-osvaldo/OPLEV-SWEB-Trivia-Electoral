@@ -2,15 +2,20 @@
 
 _Plantilla de Laravel 5.8 para el desarrollo de aplicaciones del OPLE Veracruz_
 
-## Tabla de Contenidos  
+# Tabla de Contenidos  
 
-- 1 [Comenzando](#comenzando)
-- 2 [Pre-requisitos](#pre-requisitos)
-- 3 [Instalación](#instalación)
-- 4 [Configuración de git](#configuración-de-git)
-- 5 [Corre tu Proyecto](#corre-tu-proyecto)
-- 6 [Actualizar Proyecto](#actualizar-proyecto)
-- 7 [Contribuyendo](#contribuyendo)
+- ### [Comenzando](#comenzando)
+- ### [Pre-requisitos](#pre-requisitos)
+- ### [Instalación](#instalación)
+- ### [Configuración de git](#configuración-de-git)
+    - ### [Verificar configuración local](Verificar configuración local)
+    - ### [Renombrar origin](renombrar-origin)
+    - ### [Crear nuevo origin](crear-nuevo-origin)
+- ### [Correr Proyecto](#correr-proyecto)
+- ### [Actualizar Proyecto](#actualizar-proyecto)
+    - ### [Bajar cambios de dashboardclon](bajar-cambios-de-dashboardclon)
+    - ### [Arreglar conflictos](arreglar-conflictos)
+- ### [Contribuyendo](#contribuyendo)
 
 ## Comenzando 🚀
 
@@ -109,7 +114,7 @@ Por último, corre las migraciones junto con el seeder para crear y pre-cargar l
 ```
 $ php artisan migrate:refresh --seed
 ```
-^_Como el .env está configurado como Production, va a preguntar si queremos proseguir con el comando, a lo que debes escribir **yes**_:^
+_Como el .env está configurado como Production, va a preguntar si queremos proseguir con el comando, a lo que debes escribir **yes**_:
 ``` 
 **************************************
 *     Application In Production!     *
@@ -122,7 +127,7 @@ Do you really wish to run this command? (yes/no) [no]:
 
 Para poder trabajar en tu nuevo proyecto pero aún poder recibir actualizaciones a la plantilla en un futuro, se deben realizar unos cambios a los **remote**, que son _aliases_ de los repositorios a los que se apunta en los comandos `git fetch`, `git pull`, `gut push`, entre otros.
 
-#### 1. Verificar que la configuración de git local es correcta
+#### Verificar configuración local
 
 Debido a que se pueden realizar cambios de parte de diferentes usuarios en la plantilla, es esencial configurar el nombre de usuario y correo para identificar correctamente a los usuarios en el historial de commits, utiliza el correo que tienes registrado en gitlab:
 
@@ -130,7 +135,7 @@ Debido a que se pueden realizar cambios de parte de diferentes usuarios en la pl
 $ git config --global user.name "Mi Nombre"
 $ git config --global user.email "micorreo@correo.com"
 ```
-#### 2. Renombrar origin
+#### Renombrar origin
 
 Cuando escribes el comando `git remote -v` te aparece una lista de los remotes (aliases) y el repositorio (url) al que apuntan:
 
@@ -146,7 +151,7 @@ Por conveniencia y buena práctica el remote **origin** siempre debe ser corresp
 
 Renombra **origin** a **dashboard** con el comando `git remote rename origin dashboard`
 
-#### 3. Crear nuevo origin 
+#### Crear nuevo origin 
 
 Crea el un nuevo remote **origin**:
 
@@ -164,7 +169,7 @@ origin  https://gitlab.com/opleveracruz/nuevo-proyecto.git (push)
 
 ```
 
-## Corre tu proyecto
+## Correr proyecto
 
 Abre tu navegador y dirígete a [http://nuevo-proyecto.test](http://nuevo-proyecto.test). Debes ver una pantalla similar a la siguiente imagen:
 
@@ -186,7 +191,7 @@ nothing to commit, working tree clean
 
 Si te muestra que aún tienes cambios pendientes, asegúrate de guardarlos con los comandos `git add` y `git commit` y enviándolos a tu repositorio con `git push origin` para evitar perder tus avances en caso de que algo no salga como esperado.
 
-#### 1. Bajar cambios de dashboardclon
+#### Bajar cambios de dashboardclon
 
 Corre el comando `git pull dashboard master` para bajar las actualizaciones de la plantilla. Si todo sale bien verás un listado de los cambios:
 
@@ -216,7 +221,7 @@ CONFLICT (add/add): merge conflict in file1.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-#### 2. Arreglar conflictos
+#### Arreglar conflictos
 
 Los conflictos se pueden localizar por los identificadores que git añade a los archivos señalados:
 ```
