@@ -8,13 +8,13 @@ _Plantilla de Laravel 5.8 para el desarrollo de aplicaciones del OPLE Veracruz_
 - ### [Pre-requisitos](#pre-requisitos)
 - ### [Instalación](#instalación)
 - ### [Configuración de git](#configuración-de-git)
-    - ### [Verificar configuración local](Verificar configuración local)
-    - ### [Renombrar origin](renombrar-origin)
-    - ### [Crear nuevo origin](crear-nuevo-origin)
+    - ### [Verificar configuración local](#verificar-configuración-local)
+    - ### [Renombrar origin](#renombrar-origin)
+    - ### [Crear nuevo origin](#crear-nuevo-origin)
 - ### [Correr Proyecto](#correr-proyecto)
 - ### [Actualizar Proyecto](#actualizar-proyecto)
-    - ### [Bajar cambios de dashboardclon](bajar-cambios-de-dashboardclon)
-    - ### [Arreglar conflictos](arreglar-conflictos)
+    - ### [Bajar cambios de dashboardclon](#bajar-cambios-de-dashboardclon)
+    - ### [Arreglar conflictos](#arreglar-conflictos)
 - ### [Contribuyendo](#contribuyendo)
 
 ## Comenzando 🚀
@@ -173,7 +173,7 @@ origin  https://gitlab.com/opleveracruz/nuevo-proyecto.git (push)
 
 Abre tu navegador y dirígete a [http://nuevo-proyecto.test](http://nuevo-proyecto.test). Debes ver una pantalla similar a la siguiente imagen:
 
-<Imagen>
+![](resources/assets/readme/dashboard_login.png)
 
 ## Actualizar proyecto 📡
 
