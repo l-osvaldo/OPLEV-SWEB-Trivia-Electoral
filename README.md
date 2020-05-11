@@ -299,11 +299,13 @@ En el momento en que creas que tus cambios estan listos para integrarse a **mast
 
 ![](resources/assets/readme/branches.png)
 
-**1** Asegúrate de ingresar un titulo adecuado así como una descripción detallada y justificada de los cambios que estas realizando.
+**1** Asegúrate de ingresar un titulo adecuado.
 
-**2)** Asigna a un compañero del equipo para que revise los cambios. Este paso es importante ya que tu compañero podría tener sugerencias de mejoras en tu implementación, detectar errores que no hayas identificado o pedirte una descripción mas detallada en alguna parte de tus cambios.
+**2)** Ingresa una descripción detallada y justificada de los cambios realizados.
 
-**3)** Presiona el botón Submit merge request.
+**3)** Asigna a un compañero del equipo para que revise los cambios. Este paso es importante ya que tu compañero podría tener sugerencias de mejoras en tu implementación, detectar errores que no hayas identificado o pedirte una descripción mas detallada en alguna parte de tus cambios.
+
+**4)** Presiona el botón Submit merge request.
 
 ![](resources/assets/readme/merge_request.png)
 
