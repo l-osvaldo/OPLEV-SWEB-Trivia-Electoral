@@ -58,6 +58,12 @@
                 <i class="fab fa-wpforms"></i> <p>Formularios</p>
               </a>
             </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.fechas') }}" class="textSideOption nav-link {!! Request::is('fechas') ? 'active activeOn' : '' !!}">
+                <i class="far fa-calendar"></i> <p>Fechas</p>
+              </a>
+            </li>
           </ul>
         </li>
 
