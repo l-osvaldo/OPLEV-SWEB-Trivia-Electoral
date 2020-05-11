@@ -16,4 +16,11 @@
 /**********************************CUADROS.OPLE******************************************************************************/
 
 
+/**********************************TEMPUSDOMINUS.DATEPICKER******************************************************************/
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover,
+.bootstrap-datetimepicker-widget table td span.active { background-color: #EA0D94 !important; }
+.bootstrap-datetimepicker-widget table td.today:before { border-bottom-color: #EA0D94 !important; }
+/**********************************TEMPUSDOMINUS.DATEPICKER******************************************************************/
+
 .navbar-laravel { background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); }

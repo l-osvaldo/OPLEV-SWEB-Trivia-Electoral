@@ -26,6 +26,9 @@
 //Alert
 @import '~admin-lte/plugins/sweetalert2/sweetalert2.css';
 
+//Tempusdominus:  Time and date picker
+@import '~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css';
+
 //HighCharts
 @import '~highcharts/css/highcharts.scss';
 @import '~highcharts/css/themes/dark-unica.scss';
@@ -41,8 +44,4 @@ $fa-font-path: "../webfonts";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 //Proyecto
-/*
-    TODO: Establecer forma de poder crear CSS para cada proyecto y que se guarde
-    en el repositorio del proyecto pero no el de dashboardclon.
-*/
 // @import "../assets/css/proyecto_style.css";
