@@ -32,10 +32,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="evento_fecha_hora">Fecha y Hora</label>
+                                        <label class="col-form-label" for="evento_fecha_hora">Fecha y hora</label>
                                         <input type="text" id="evento_fecha_hora" name="fecha_hora"
                                             class="form-control datetimepicker-input date-time-picker"
-                                            placeholder="DD/MM/AAAA" data-type="text" autocomplete="off"
+                                            placeholder="DD/MM/AAAA HH:MM" data-type="text" autocomplete="off"
                                             data-toggle="datetimepicker" data-target="#evento_fecha_hora"
                                             data-inputname="evento_fecha_hora"
                                             value="{{ old('fecha', $evento->fecha ?? null) }}">
@@ -65,7 +65,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="col-form-label" for="evento_fecha_hora_rango_inicio">Rango de
-                                            Fecha y Hora</label>
+                                            fechas con hora</label>
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <input type="text" id="evento_fecha_hora_rango_inicio" name="fecha_inicio"
@@ -96,7 +96,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="col-form-label" for="evento_fecha_rango_inicio">Rango de
-                                            Fechas</label>
+                                            sólo fechas</label>
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <input type="text" id="evento_fecha_rango_inicio" name="fecha_inicio"
@@ -142,7 +142,7 @@
                         <div class="card-body">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    <label class="col-form-label" for="evento_hora">Sólo Hora</label>
+                                    <label class="col-form-label" for="evento_hora">Sólo hora</label>
                                     <input type="text" id="evento_hora" name="hora"
                                         class="form-control datetimepicker-input time-picker" placeholder="HH:MM A"
                                         data-type="text" autocomplete="off" data-toggle="datetimepicker"
