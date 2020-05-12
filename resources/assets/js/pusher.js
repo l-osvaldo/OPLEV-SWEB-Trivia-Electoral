@@ -7,7 +7,7 @@ var token = $('meta[name="csrf-token"]').attr('content');
   if (notificationsCount <= 0) {
     notificationsWrapper.hide();
   }
-  var key = "c298b7f80f6c55437712";
+  var key = "mi-key-de-pusher";
   var pusher = new Pusher(key, {
     authEndpoint:'/authchannel',
     auth: {

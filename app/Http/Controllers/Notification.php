@@ -7,17 +7,17 @@ use App\Notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Events\MyEvent;
 use Carbon\Carbon;
+use DateTime;
 
 class Notification extends Controller
 {
 	public function authorizeUser(Request $request) {
-		$key = 'c298b7f80f6c55437712';
-		$secret = 'a10337694b00b4a49d79';
+		$key = env('PUSHER_APP_KEY');
+		$secret = env('PUSHER_APP_SECRET');
 		$channel_name = $request->channel_name;
 		$socket_id = $request->socket_id;
 		$string_to_sign = $socket_id.':'.$channel_name;
@@ -28,7 +28,7 @@ class Notification extends Controller
 	public function sendNotification(){
 		$usuario = auth()->user();
 		$idUser = $usuario->id;
-    $mensaje = 'Alerta del Sistema';
+		$mensaje = 'Alerta del Sistema';
 		$notify = new Notify([
 			'idUser'    => $idUser,
 			'mensaje'    =>  Crypt::encryptString($mensaje)
