@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-body{
+body.login{
     background: url('../images/backc.jpg') center center; font-family: 'Roboto', sans-serif;
 }
 header {
