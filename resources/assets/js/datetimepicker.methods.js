@@ -6,41 +6,63 @@
 
 ***************************************************************/
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    // Time and date
+    // Fecha y Hora
     $('.date-time-picker').datetimepicker({
-        locale: 'es'
-    });
+        locale: 'es',
+        icons: {
+            time: 'fas fa-clock'
+        }
+    })
 
-    // Date only
+    // Sólo Fecha
     $('.date-picker').datetimepicker({
         locale: 'es',
         format: 'L'
-    });
+    })
 
-    // Time only
+    // Sólo Hora
     $('.time-picker').datetimepicker({
         format: 'LT'
-    });
-    
-    // Linked pickers
-    $('.date-picker-end').datetimepicker({
-        useCurrent: false
-    });
-    $(".date-picker-start").on("change.datetimepicker", function (e) {
-        $('.date-picker-end').datetimepicker('minDate', e.date);
-    });
-    $(".date-picker-end").on("change.datetimepicker", function (e) {
-        $('.date-picker-start').datetimepicker('maxDate', e.date);
-    });
+    })
 
-    // Actualizar iconos de FontAwesome 5
-    $('.datetimepicker-input').datetimepicker({
+    // Rango de Fecha con Hora
+    $('.date-time-picker-start').datetimepicker({
+        locale: 'es',
         icons: {
-            time: 'fas fa-clock',
-            date: 'far fa-calendar'
+            time: 'fas fa-clock'
+        }
+    });
+    $('.date-time-picker-end').datetimepicker({
+        useCurrent: false,
+        locale: 'es',
+        icons: {
+            time: 'fas fa-clock'
         }
     })
-      
+    $(".date-time-picker-start").on("change.datetimepicker", function (e) {
+        $('.date-time-picker-end').datetimepicker('minDate', e.date);
+    })
+    $(".date-time-picker-end").on("change.datetimepicker", function (e) {
+        $('.date-time-picker-start').datetimepicker('maxDate', e.date);
+    })
+
+    // Rango de sólo Fecha
+    $('.date-picker-start').datetimepicker({
+        locale: 'es',
+        format: 'L'
+    });
+    $('.date-picker-end').datetimepicker({
+        useCurrent: false,
+        locale: 'es',
+        format: 'L',
+    })
+    $(".date-picker-start").on("change.datetimepicker", function (e) {
+        $('.date-picker-end').datetimepicker('minDate', e.date);
+    })
+    $(".date-picker-end").on("change.datetimepicker", function (e) {
+        $('.date-picker-start').datetimepicker('maxDate', e.date);
+    })
+
 });

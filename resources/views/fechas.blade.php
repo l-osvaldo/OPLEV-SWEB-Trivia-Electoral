@@ -64,6 +64,37 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
+                                        <label class="col-form-label" for="evento_fecha_hora_rango_inicio">Rango de
+                                            Fecha y Hora</label>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <input type="text" id="evento_fecha_hora_rango_inicio" name="fecha_inicio"
+                                                    class="form-control datetimepicker-input date-time-picker-start"
+                                                    placeholder="DD/MM/AAAA HH:MM" data-type="text" autocomplete="off"
+                                                    data-toggle="datetimepicker"
+                                                    data-target="#evento_fecha_hora_rango_inicio"
+                                                    data-inputname="evento_fecha_hora_rango_inicio"
+                                                    value="{{ old('fecha_hora_inicio', $evento->fecha_inicio ?? null) }}">
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <input type="text" id="evento_fecha_hora_rango_fin" name="fecha_fin"
+                                                    class="form-control datetimepicker-input date-time-picker-end"
+                                                    placeholder="DD/MM/AAAA HH:MM" data-type="text" autocomplete="off"
+                                                    data-toggle="datetimepicker" data-target="#evento_fecha_hora_rango_fin"
+                                                    data-inputname="evento_fecha_hora_rango_fin"
+                                                    value="{{ old('fecha_hora_fin', $evento->fecha_fin ?? null) }}">
+                                            </div>
+                                        </div>
+                                        <div class="boxMesNum">
+                                            <div id="error-evento_fecha_rango" class="errorMessage">
+                                                {{ $errors->first('fecha_inicio') }}
+                                                {{ $errors->first('fecha_fin') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
                                         <label class="col-form-label" for="evento_fecha_rango_inicio">Rango de
                                             Fechas</label>
                                         <div class="row">
@@ -132,5 +163,4 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </section>
-
 @endsection
