@@ -13,6 +13,7 @@
     href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-prefix" content="{{ url('/') }}">
+    <meta name="pusher-key" content="{{ env('PUSHER_APP_KEY') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
