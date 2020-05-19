@@ -11,6 +11,8 @@
     padding: .1rem;
 }
 
+.brand-ople{position: initial !important;}
+
 .o-menu-principal {
     background-color: #EA0D94 !important;
 }
@@ -55,17 +57,20 @@
 
 .o-img-fondo {
     background: url('/images/backu.png');
-    background-size: 100%;
-    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
 }
 
 .o-nombre-usuario {
     font-size: 2vh;
     color: #fff !important;
     text-shadow: 2px 2px 4px #000000;
-    white-space: nowrap;
+    /*white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis;*/
+    white-space: normal;
+    padding: 1em;
 }
 
 .o-icon-usuario {

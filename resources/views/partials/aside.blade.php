@@ -1,21 +1,17 @@
-
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link o-logo-center mb-3">
+  <a href="/" class="brand-link brand-ople o-logo-center">
     <h2 style="color: #fff;">SISTEMA</h2>
-    <!--img src="{{ asset('images/logosipseir.png') }}" width="60%" alt="Proyecto Logo" class=""-->
+    <!--img src="{{ asset('images/tuimagen.png') }}" width="70%" alt="Proyecto Logo" class=""-->
     <!--span class="brand-text font-weight-light">AdminLTE 3</span-->
   </a>
 
       <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-5 pt-5 pb-3 mb-3 d-flex text-center o-img-fondo-gray">
-      <!--div class="image">
-        <img src="{{ asset('images/usuario.png') }}" class="img-circle elevation-2" alt="User Image">
-      </div-->
+    <div class="user-panel d-flex text-center o-img-fondo mb-3">
+      
       <div class="nav-header col-md-12 o-nombre-usuario">
        <i class="fas fa-user-circle o-icon-usuario"></i><br>
-       <!--i class="fas fa-user-astronaut o-icon-usuario"></i><br-->
         Lorem ipsum dolor
       </div>
     </div>
