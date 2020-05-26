@@ -56,7 +56,7 @@
                     @endisset
                   </p>
                   
-                  <button type="submit" class="btn btn-dark btn-block">Ingresar</button>
+                  <button type="submit" class="btn btnople btn-dark btn-block">Ingresar</button>
                 </div>
               </div>
             </form>
