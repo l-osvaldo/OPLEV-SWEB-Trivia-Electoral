@@ -86,6 +86,11 @@
                 <i class="fas fa-window-restore"></i> <p>Cuadros</p>
               </a>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="{{ route('front.cuadros_dos') }}" class="textSideOption nav-link {!! Request::is('cuadros') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-th-large"></i> <p>Cuadros 2</p>
+              </a>
+            </li>
 
 
 
