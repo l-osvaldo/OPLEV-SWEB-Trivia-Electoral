@@ -79,3 +79,83 @@
 .o-form-label {
     color: #444 !important;
 }
+
+.borde-rojo{
+    border-left: 4px solid #FF2300 !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-rojo h5{
+    color:#FF2300 !important;
+    font-weight: bold !important;
+}
+
+.borde-azul{
+    border-left: 4px solid #0068FF !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-azul h5{
+    color:#0068FF  !important;
+    font-weight: bold !important;
+}
+
+.borde-amarillo{
+    border-left: 4px solid #FFB900  !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-amarillo h5{
+    color: #FFB900   !important;
+    font-weight: bold !important;
+}
+
+.borde-negro{
+    border-left: 4px solid #000000   !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-negro h5{
+    color: #616161    !important;
+    font-weight: bold !important;
+}
+
+.borde-verde{
+    border-top: 4px solid #009C13   !important;
+    border-bottom: 4px solid #009C13   !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-verde h5{
+    color: #009C13     !important;
+    font-weight: bold !important;
+}
+
+.borde-naranja{
+    border-top: 4px solid #FF9300    !important;
+    border-bottom: 4px solid #FF9300    !important;
+    padding-bottom: 3% !important;
+}
+
+.borde-naranja h5{
+    color: #FF9300      !important;
+    font-weight: bold !important;
+}
+
+.card-icon-right {
+    width: 4% !important;
+    position: absolute !important;
+    right: 1em !important;
+    top: 0 !important;
+    height: 100% !important;
+  }
+  
+  .card-icon-right i {
+    text-align: center;
+    margin-top: 3em;
+    margin-right: 3em;
+  }
+
+
+
+

@@ -40,6 +40,8 @@ Route::group(['middleware' => 'disablepreventback'],function()
 	Route::get('/sello-digital', 'DashboardController@selloDigital')->name('front.sello-digital');
 	Route::get('/verificador-sello', 'DashboardController@verificador')->name('front.verificador-sello');
 	Route::get('/fechas', 'DashboardController@fechaspagina')->name('front.fechas');
+	Route::get('/cuadros_dos', 'DashboardController@cuadrosdos')->name('front.cuadros_dos');
+
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
 Route::get('/generar_sello', 'selloDigitalController@selloDigital')->name('generar_sello');
