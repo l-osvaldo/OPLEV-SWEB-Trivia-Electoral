@@ -1,6 +1,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light o-nav-adminLite">
+<nav class="main-header navbar navbar-expand border-bottom border-dark navbar-white navbar-light o-nav-adminLite">
   <div class="collapse navbar-collapse flex-column" id="navbar" style="margin-bottom: -0.5em !important;">
     <ul class="navbar-nav nav w-100">
       <li class="nav-item">
@@ -111,9 +111,9 @@
     </li>
   </ul>
     </ul>
-    <ul class="navbar-nav navbar-white navbar-light nav w-100" style="padding-left: 2em !important;">
+    <ul class="navbar-nav navbar-dark navbar-darkgrey" style="width: 102% !important; padding-left: 2.8em !important; height: 30px !important;">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Nombre del módulo</a>
+        <a href="#" class="nav-link active" style="color: #fff !important; margin-top: -5px !important; font-weight:bold !important;">Nombre del Módulo</a>
       </li>
     </ul>
   </div>
