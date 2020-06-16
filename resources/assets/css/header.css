@@ -85,7 +85,6 @@
 }
 
 .o-titulo-sistema {
-    color: #555;
     font-size: 1em;
     display: inline-block;
     font-weight: bold;
@@ -107,4 +106,8 @@
     font-weight: initial;
     padding: .5rem 1rem;
     display: block;
+}
+
+.navbar-deepgray {
+    background: linear-gradient(rgba(52,58,64) 10%, rgba(52,58,64) 50%, #eeeeef 20%) !important;
 }
