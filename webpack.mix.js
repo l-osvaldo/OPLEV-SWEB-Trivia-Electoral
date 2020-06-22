@@ -43,6 +43,7 @@ const mix = require('laravel-mix');
 'node_modules/highcharts/highcharts.js',
 'node_modules/highcharts/highcharts-more.js',
 'node_modules/highcharts/modules/solid-gauge.js',
+'resources/assets/js/sellodigital.js',
 'resources/assets/js/bootstrap.methods.js',
 'resources/assets/js/datetimepicker.methods.js',
 'resources/assets/js/dashboard.js',
