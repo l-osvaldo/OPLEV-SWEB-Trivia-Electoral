@@ -5,7 +5,9 @@ $(document).ready(function() {
     "processing": true,
     "fixedHeader": true,
     "sSearch": "Filter Data",
-    "dom":     "lBfrtip",
+    "dom":  "<'row'<'col-sm-2'l><'col-sm-6 text-left'B><'col-sm-4 text-right'f>>" +
+    "<'row'<'col-sm-12'tr>>" +
+    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     "language": {
 
       "sProcessing":     "Procesando...",
