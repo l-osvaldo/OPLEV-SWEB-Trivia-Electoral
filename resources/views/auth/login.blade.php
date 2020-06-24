@@ -29,10 +29,10 @@
               @csrf                
 
               <div class="form-group">
-                <input id="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" autofocus placeholder="Nombre de usuario">
-                @if ($errors->has('username'))
+                <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" autofocus placeholder="Nombre de usuario">
+                @if ($errors->has('email'))
                   <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('username') == 'El username es requerido.' ? "El usuario es requerido." : $errors->first('username') }}</strong>
+                  <strong>{{ $errors->first('email') == 'El email es requerido.' ? "El usuario es requerido." : $errors->first('email') }}</strong>
                   </span>
                 @endif
               </div>
