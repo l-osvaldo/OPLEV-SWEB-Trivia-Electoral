@@ -79,8 +79,8 @@ class RouteServiceProvider extends ServiceProvider
             'prefix'     => 'api',
         ], function ($router) {
 
-            // articulos
             Route::post('/ws/registrarUsuarioApp', 'WS\WSAppUsersController@registrarUsuarioApp');
+            Route::post('/ws/loginUsuarioApp', 'WS\WSAppUsersController@loginUserApp');
 
         });
 

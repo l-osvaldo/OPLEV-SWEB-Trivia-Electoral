@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WS;
 
 use App\AppUser;
 use App\Http\Controllers\Controller;
+use Hash;
 use Illuminate\Http\Request;
 
 class WSAppUsersController extends Controller
@@ -27,6 +28,26 @@ class WSAppUsersController extends Controller
             $usuario->save();
 
             $data = array('done' => true, 'message' => "Usuario Registrado", 'id' => $usuario->id);
+        }
+
+        return response()->json($data);
+    }
+
+    public function loginUserApp(Request $request)
+    {
+        $password = $request->password;
+        $email    = $request->email;
+        $user     = AppUser::where('email', $email)->first();
+
+        if (!empty($user)) {
+
+            if (Hash::check($password, $user->password)) {
+                $data = array('done' => true, 'message' => "Logueado", 'id' => $user->id);
+            } else {
+                $data = array('done' => false, 'message' => "Contraseña Incorrecta", 'id' => 0);
+            }
+        } else {
+            $data = array('done' => false, 'message' => "El email no esta registrado", 'id' => 0);
         }
 
         return response()->json($data);
