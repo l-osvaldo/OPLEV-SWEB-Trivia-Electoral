@@ -16,7 +16,7 @@ class WSAppUsersController extends Controller
         $usuario->edad      = $request->edad;
         $usuario->sexo      = $request->sexo;
         $usuario->municipio = $request->municipio;
-        $usuario->password  = $request->password;
+        $usuario->password  = bcrypt($request->password);
         $usuario->save();
 
         return response()->json($usuario);
