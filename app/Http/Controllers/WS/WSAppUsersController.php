@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WS;
 
 use App\AppUser;
 use App\Http\Controllers\Controller;
+use App\Pregunta;
 use Hash;
 use Illuminate\Http\Request;
 
@@ -51,5 +52,11 @@ class WSAppUsersController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    public function allPreguntas()
+    {
+        $allPreguntas = Pregunta::all();
+        return response()->json($allPreguntas);
     }
 }

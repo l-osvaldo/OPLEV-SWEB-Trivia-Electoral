@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 
 class TriviaController extends Controller
@@ -13,7 +14,18 @@ class TriviaController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check()) {
+
+            $usuario      = auth()->user();
+            $nombreModulo = "Gestión de Usuarios";
+
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
     }
 
     /**
@@ -80,5 +92,21 @@ class TriviaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function estadisticas()
+    {
+        if (Auth::check()) {
+
+            $usuario      = auth()->user();
+            $nombreModulo = "Estadísticas";
+
+            $vista = view('trivia.estadisticas', compact('usuario', 'nombreModulo'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
     }
 }
