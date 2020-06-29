@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/" class="brand-link brand-ople o-logo-center">
-    <h2 style="color: #fff;">SISTEMA</h2>
+    <h2 style="color: #fff;">Trivia</h2>
     <!--img src="{{ asset('images/tuimagen.png') }}" width="70%" alt="Proyecto Logo" class=""-->
     <!--span class="brand-text font-weight-light">AdminLTE 3</span-->
   </a>
@@ -12,7 +12,7 @@
       
       <div class="nav-header col-md-12 o-nombre-usuario">
        <i class="fas fa-user-circle o-icon-usuario"></i><br>
-        Lorem ipsum dolor
+        {{ $usuario->email }}
       </div>
     </div>
 
@@ -26,7 +26,7 @@
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        {{-- <li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-principal">
             <i class="nav-icon fas fa-tachometer-alt o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -61,11 +61,11 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> --}}
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        {{-- <li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-secundario">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -90,7 +90,7 @@
               <a href="{{ route('front.cuadros_dos') }}" class="textSideOption nav-link {!! Request::is('cuadros') ? 'active activeOn' : '' !!}">
                 <i class="fas fa-th-large"></i> <p>Cuadros 2</p>
               </a>
-            </li>
+            </li> --}}
 
 
 
@@ -504,7 +504,7 @@
 
 
 
-            <li class="nav-item has-treeview">
+            {{-- <li class="nav-item has-treeview">
               <a href="{{ route('front.visorpdf') }}" class="textSideOption nav-link {!! Request::is('visorpdf') ? 'active activeOn' : '' !!}">
                 <i class="far fa-file-pdf"></i> <p>Visor PDF</p>
               </a>
@@ -555,12 +555,12 @@
             
 
           </ul>
-        </li>
+        </li> --}}
 
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        {{-- <li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-tres">
             <i class="nav-icon fas fa-list-ol o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -584,12 +584,12 @@
             </li>
 
           </ul>
-        </li>
+        </li> --}}
 
 
         <!----------------------------------------------------------------------------------->
 
-        <li class="nav-item has-treeview menuClose">
+        {{-- <li class="nav-item has-treeview menuClose">
           <a href="#" class="nav-link o-menu-cuatro">
             <i class="nav-icon fas fa-qrcode o-color-menu" aria-hidden="true"></i>
             <p class="o-color-menu">
@@ -604,8 +604,33 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!----------------------------------------------------------------------------------->
+
+        <li class="nav-item has-treeview menuClose">
+          <a href="#" class="nav-link o-menu-principal">
+            <i class="nav-icon fas fa-mobile-alt o-color-menu" aria-hidden="true"></i>
+            <p class="o-color-menu">
+              Trivia
+              <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('gestionUsuarios') }}" class="textSideOption nav-link {!! Request::is('gestionUsuarios') ||  Request::is('/') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <p>Gestión de usuarios</p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="{{ route('estadisticas') }}" class="textSideOption nav-link {!! Request::is('estadisticas') ? 'active activeOn' : '' !!}">
+                <i class="far fa-chart-bar"></i> 
+                <p>Estadísticas</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

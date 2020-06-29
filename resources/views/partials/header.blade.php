@@ -7,15 +7,14 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <span class="o-titulo-sistema">Aquí se coloca el nombre completo del
-                    {{ global_function_example() }}</span><br>
-                <span class="o-titulo-unidad">Característica adicional del sistema</span>
+                <span class="o-titulo-sistema">TRIVIA</span><br>
+                <span class="o-titulo-unidad">Gestión y Estadísticas del uso de la aplicación móvil "Trivia"</span>
             </li>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <div id="repEmail"></div>
                 <!---------------------------------------------------- ALERTA 1 ----------------------------------------------------->
-                <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
+                {{-- <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
                     data-original-title="Observaciones contestadas">
                     <a class="nav-link" id="iconAlertObs" data-toggle="dropdown" href="#">
                         <i class="fas fa-reply-all" aria-hidden="true"></i>
@@ -38,9 +37,9 @@
                         <a href="#" class="dropdown-item dropdown-footer o-alerta-footer">Ir a la Revisión de
                             Actividades</a>
                     </div>
-                </li>
+                </li> --}}
                 <!----------------------------------------------------- ALERTA 2 ------------------------------------------------------>
-                <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
+                {{-- <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
                     data-original-title="Observaciones enviadas">
                     <a class="nav-link" id="iconAlertObs" data-toggle="dropdown" href="#">
                         <i class="fas fa-paper-plane"></i>
@@ -64,9 +63,9 @@
                             Actividades
                         </a>
                     </div>
-                </li>
+                </li> --}}
                 <!----------------------------------------------------- ALERTA 3 ------------------------------------------------------>
-                <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
+                {{-- <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
                     data-original-title="Notificación mensual">
                     <a class="nav-link" id="iconAlertfin" data-toggle="dropdown" href="#">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -87,7 +86,7 @@
                         <a href="#" class="dropdown-item dropdown-footer o-alerta-footer">Ver todas las
                             notificaciones</a>
                     </div>
-                </li>
+                </li> --}}
                 <!------------------------------------------------------- ALERTA 4 ------------------------------------------------------->
                 <li class="nav-item dropdown dropdown-notifications">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
@@ -128,8 +127,8 @@
             style="width: 102% !important; padding-left: 2.8em !important; height: 30px !important;">
             <li class="nav-item">
                 <a href="#" class="nav-link active"
-                    style="color: #fff !important; margin-top: -5px !important; font-weight:bold !important;">Nombre del
-                    Módulo</a>
+                    style="color: #fff !important; margin-top: -5px !important; font-weight:bold !important;">{{ $nombreModulo }}
+                    </a>
             </li>
         </ul>
     </div>
