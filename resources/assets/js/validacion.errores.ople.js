@@ -123,6 +123,12 @@
         typeFile: 'no es un un archivo PDF.',
         sizeFile: 'excede el peso permitido.'
       },
+      data-type=image:{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        numberFile: 'Solo se permite un archivo.',
+        typeFile: 'no es un una imagen.',
+        sizeFile: 'excede el peso permitido.'
+      },
        data-type=excel:{
         required: 'El campo {{INPUTNAME}} es requerido.',
         numberFile: 'Solo se permite un archivo.',
@@ -149,7 +155,11 @@ let messagesErrVjs = {
         required: 'El campo {{INPUTNAME}} es requerido.',
         match: 'Ingrese un correo valido para el campo {{INPUTNAME}}.'
       },
-      'email-check':{
+      'emailOtro':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        match: 'Ingrese un correo valido para el campo {{INPUTNAME}}.'
+      },
+      'emailOtro-check':{
         required: 'El campo {{INPUTNAME}} es requerido.',
         match: 'El campo {{INPUTNAME}} no coincide.'
       },
@@ -235,6 +245,12 @@ let messagesErrVjs = {
         typeFile: 'no es un un archivo PDF.',
         sizeFile: 'excede el peso permitido.'
       },
+      'fileIMG':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        numberFile: 'Solo se permite un archivo.',
+        typeFile: 'no es un una imagen.',
+        sizeFile: 'excede el peso permitido.'
+      },
       'fileEXCEL':{
         required: 'El campo {{INPUTNAME}} es requerido.',
         numberFile: 'Solo se permite un archivo.',
@@ -282,7 +298,7 @@ let messagesErrVjs = {
 
   'formAjax2':{
       'nombre-e2':{
-        required: 'El campo {{INPUTNAME}} es requerido.',
+        //required: 'El campo {{INPUTNAME}} es requerido.',
         type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
         number: 'No se permiten números en el campo {{INPUTNAME}}.',
         match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',

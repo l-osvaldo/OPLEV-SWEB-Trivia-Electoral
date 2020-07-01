@@ -56,6 +56,12 @@
             </li>
 
             <li class="nav-item has-treeview">
+              <a href="{{ route('front.email') }}" class="textSideOption nav-link {!! Request::is('email') ? 'active activeOn' : '' !!}">
+                <i class="far fa-envelope"></i> <p>Email</p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
               <a href="{{ route('front.fechas') }}" class="textSideOption nav-link {!! Request::is('fechas') ? 'active activeOn' : '' !!}">
                 <i class="far fa-calendar"></i> <p>Fechas</p>
               </a>

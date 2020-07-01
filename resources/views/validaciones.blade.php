@@ -46,7 +46,7 @@
                       </div>
                   </div>
 
-                  <label class="col-form-label" for="inputSuccess">Correo Electrónico</label>
+                  <label class="col-form-label" for="inputSuccess">Correo Electrónico, sin confirmación</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
@@ -58,15 +58,27 @@
                       </div>
                   </div>
 
+                  <label class="col-form-label" for="inputSuccess">Correo Electrónico</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-envelope"></i></span>
+                    </div>
+                      <input type="email" id="emailOtro" name="emailOtro" class="form-control validacion-o" placeholder="Ingrese su Correo Electrónico" data-type="emailConfirm" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
+                      <div class="boxMesNum">
+                      <div id="error-emailOtro" class="errorMessage"></div>
+                      <div id="string-emailOtro" class="stringNumber">0</div>
+                      </div>
+                  </div>
+
                   <label class="col-form-label" for="inputSuccess">Confirmar Correo Electrónico</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-envelope"></i></span>
                     </div>
-                      <input type="email" id="email-check" name="email" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
+                      <input type="email" id="emailOtro-check" name="emailName" class="form-control validacion-o" placeholder="Confirmar Correo Electrónico" data-type="confirm" autocomplete="off" maxlength="50" data-inputname="Correo Electrónico">
                       <div class="boxMesNum">
-                      <div id="error-email-check" class="errorMessage"></div>
-                      <div id="string-email-check" class="stringNumber">0</div>
+                      <div id="error-emailOtro-check" class="errorMessage"></div>
+                      <div id="string-emailOtro-check" class="stringNumber">0</div>
                       </div>
                   </div>
 
@@ -366,6 +378,18 @@
                     </div>
                   </div>
 
+                  <div class="form-group">
+                    <label for="customFile">Adjuntar IMG</label>
+
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input validacion-o" id="fileIMG" data-type="image" placeholder="Archivo IMG" data-inputname="Adjuntar IMG">
+                      <label id="fileLabel-fileIMG" class="custom-file-label" for="customFile"></label>
+                      <div class="boxMesNum">
+                      <div id="error-fileIMG" class="errorMessage"></div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -384,7 +408,7 @@
               <form id="formAjax2">
                 <div class="card-body">
 
-                  <label class="col-form-label" for="tipotext">Nombre completo</label>
+                  <label class="col-form-label" for="tipotext">Nombre completo, no requerido</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
