@@ -56,7 +56,7 @@ class WSAppUsersController extends Controller
 
     public function allPreguntas()
     {
-        $allPreguntas = Pregunta::all();
+        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta')->get();
         return response()->json($allPreguntas);
     }
 }
