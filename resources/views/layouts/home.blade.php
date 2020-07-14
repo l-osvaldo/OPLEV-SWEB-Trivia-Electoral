@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!--COMBIAR NOMBRE DE PROYECTO Y VINCULAR LA RUTA CON EL FABICON-->
     <link rel="icon"
-        href="{{ request()->getSchemeAndHttpHost()=='dashboard.test'?asset('public/images/favicon.ico'):asset('images/favicon.ico') }}">
+        href="{{ request()->getSchemeAndHttpHost()=='trivia.test'?asset('public/images/favicon.ico'):asset('../images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-prefix" content="{{ url('/') }}">
     <!-- LARAVEL JAVASCRIPT -->
