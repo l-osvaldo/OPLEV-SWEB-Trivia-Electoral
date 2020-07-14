@@ -1,49 +1,49 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-body.login{
-    background: url('../images/backc.jpg') center center; font-family: 'Roboto', sans-serif;
+body.login {
+    background: url('triviasw/images/backc.jpg') center center;
+    font-family: 'Roboto', sans-serif;
 }
 header {
     width: 100%;
-    height: auto; 
-    background:#f3f3f4;
+    height: auto;
+    background: #f3f3f4;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-header > .logo-container { 
-    float: left;  
+header>.logo-container {
+    float: left;
     width: 100%;
     height: 75px;
-    padding: 0; 
-    background: #293846; 
+    padding: 0;
+    background: #293846;
     text-align: center;
     box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
 }
-.logo-container > .logo-image {    
+.logo-container>.logo-image {
     height: 75px;
     margin: 0 auto;
     padding: 10px;
 }
-header > .title-container {  
-    float: left;  
+header>.title-container {
+    float: left;
     width: 100%;
     height: 75px;
-    padding: 0 1em; 
+    padding: 0 1em;
     color: #7D7D7D;
     font-size: 18px;
     letter-spacing: -0.015em;
 }
-.title-container > .title-text {
+.title-container>.title-text {
     margin: 0;
     padding: 15px;
     line-height: 16px;
     font-weight: bold;
     text-align: center;
 }
-main > .container {
-  padding: 75px 15px 0 15px;
-  height: calc(100vh - 175px);
+main>.container {
+    padding: 75px 15px 0 15px;
+    height: calc(100vh - 175px);
 }
-.login-form
-{
+.login-form {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .login-text {
@@ -56,13 +56,13 @@ main > .container {
 .footer {
     background-color: #fff;
     color: #727475;
-    min-height: 100px; 
-    height: auto; 
+    min-height: 100px;
+    height: auto;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+.footer>.container {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 .footer-left {
     float: left;
@@ -82,34 +82,32 @@ main > .container {
     font-weight: bold;
     text-align: center;
 }
-
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-    
-    header > .logo-container { 
-        float: left;  
+
+@media (min-width: 768px) {
+    header>.logo-container {
+        float: left;
         width: 250px;
         box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
     }
-    header > .title-container {  
-        float: left;  
+    header>.title-container {
+        float: left;
         width: calc(100% - 250px);
     }
-    .title-container > .title-text {
+    .title-container>.title-text {
         transform: translate(0, 70%);
         padding: 0;
         text-align: left;
-    }    
-    .footer-left{
+    }
+    .footer-left {
         width: 30%;
         height: 100px;
     }
-    .footer-middle{
+    .footer-middle {
         width: 40%;
         height: 100px;
     }
-    .footer-text
-    {
+    .footer-text {
         transform: translate(0, 60%);
     }
- }
+}
