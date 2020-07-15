@@ -7,6 +7,14 @@
 
 function global_function_example()
 {
-	$user   = 'Sistema';
+    $user = 'Sistema';
     return $user;
+}
+
+function public_asset($path, $secure = null)
+{
+    if (request()->getHttpHost() == 'rosc.test') {
+        return app('url')->asset($path, $secure);
+    }
+    return app('url')->asset('public/' . $path, $secure);
 }

@@ -63,3 +63,4 @@ const mix = require('laravel-mix');
  mix.copyDirectory('node_modules/inputmask', 'public/inputmask');
  mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');
+ mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
