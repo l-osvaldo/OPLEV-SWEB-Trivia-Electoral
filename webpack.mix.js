@@ -58,9 +58,13 @@ const mix = require('laravel-mix');
  mix.js('resources/js/app.js', 'public/js')
  .sass('resources/sass/app.scss', 'public/css');
  
+
  mix.copy('resources/assets/js/pdfobject.js', 'public/js/pdfobject.js')
  mix.copy('node_modules/highcharts/modules/solid-gauge.js.map', 'public/js/solid-gauge.js.map');
  mix.copyDirectory('node_modules/inputmask', 'public/inputmask');
  mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');
  mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
+
+
+mix.setResourceRoot('../public');
