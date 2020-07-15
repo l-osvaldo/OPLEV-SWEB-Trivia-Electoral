@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 body.login{
-    background: url('/triviasw/images/backc.jpg') center center; font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 header {
     width: 100%;
