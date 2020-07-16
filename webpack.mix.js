@@ -65,4 +65,8 @@ const mix = require('laravel-mix');
  mix.copyDirectory('resources/assets/docs', 'public/docs');
  mix.copyDirectory('resources/assets/images', 'public/images');
 
- mix.setResourceRoot('../public');
+ if (process.env.APP_URL == "http://trivia.test"){
+ 	mix.setResourceRoot('../');
+ }else{
+ 	mix.setResourceRoot('../public');
+ }
