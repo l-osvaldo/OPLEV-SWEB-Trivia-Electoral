@@ -54,7 +54,7 @@
         </div>
     </footer>
     <!-- PROJECT JAVASCRIPT -->
-    <script src="js/all.js"></script>
+    <script src="{{ asset('js/all.js') }}"></script>
 
 </body>
 
