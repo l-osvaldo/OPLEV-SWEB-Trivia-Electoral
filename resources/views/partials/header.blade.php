@@ -8,7 +8,7 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <span class="o-titulo-sistema">TRIVIA</span><br>
-                <span class="o-titulo-unidad">Gestión y Estadísticas del uso de la aplicación móvil "Trivia"</span>
+                <span class="o-titulo-unidad">OPLE veracruz</span>
             </li>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">

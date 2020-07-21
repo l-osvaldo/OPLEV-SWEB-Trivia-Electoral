@@ -44,6 +44,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/', 'TriviaController@index')->name('index');
     Route::get('/gestionUsuarios', 'TriviaController@index')->name('gestionUsuarios');
     Route::get('/estadisticas', 'TriviaController@estadisticas')->name('estadisticas');
+    Route::get('/gestionPreguntas', 'TriviaController@gestionPreguntas')->name('gestionPreguntas');
 
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');

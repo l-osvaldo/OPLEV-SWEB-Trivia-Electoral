@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item active">
-                        Listado de Usuarios
+                        Listado de Preguntas
                     </li>
                 </ol>
             </div>
@@ -25,6 +25,7 @@
     </div>
     <!-- /.container-fluid -->
 </section>
+
 <section class="content">
     <div class="card">
         <div class="card-body">
@@ -32,16 +33,22 @@
                 <thead>
                     <tr>
                         <th>
-                            Nombre usuario
+                            Pregunta
                         </th>
                         <th>
-                            Correo electrónico
+                            Opción A
                         </th>
                         <th>
-                            Edad/Genero
+                            Opción B
                         </th>
                         <th>
-                            Municipio
+                            Opción C
+                        </th>
+                        <th>
+                            Opción D
+                        </th>
+                        <th>
+                            Respuesta
                         </th>
                         <th>
                             Acciones
@@ -49,7 +56,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach ($preguntas as $pregunta)
+                        <tr>
+                            <td>
+                                {{ $pregunta->pregunta }}
+                            </td>
+                            <td>
+                                {{ $pregunta->opcion_a }}
+                            </td>
+                            <td>
+                                {{ $pregunta->opcion_b }}
+                            </td>
+                            <td>
+                                {{ $pregunta->opcion_c }}
+                            </td>
+                            <td>
+                                {{ $pregunta->opcion_d }}
+                            </td>
+                            <td>
+                                {{ $pregunta->respuesta }}
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

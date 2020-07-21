@@ -629,6 +629,12 @@
                 <p>Estadísticas</p>
               </a>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="{{ route('gestionPreguntas') }}" class="textSideOption nav-link {!! Request::is('gestionPreguntas') ? 'active activeOn' : '' !!}">
+                <i class="far fa-question-circle"></i> 
+                <p>Gestión de preguntas</p>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>

@@ -18,7 +18,9 @@ class CreateResultadosTable extends Migration
             $table->integer('id_user_app')->unsigned();
             $table->integer('aciertos')->unsigned();
             $table->integer('errores')->unsigned();
+            $table->string('detalle');
             $table->timestamps();
+
         });
     }
 

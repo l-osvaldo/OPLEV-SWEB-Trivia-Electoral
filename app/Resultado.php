@@ -11,5 +11,6 @@ class Resultado extends Model
         'id_user_app',
         'aciertos',
         'errores',
+        'detalle',
     ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pregunta;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -102,6 +103,23 @@ class TriviaController extends Controller
             $nombreModulo = "Estadísticas";
 
             $vista = view('trivia.estadisticas', compact('usuario', 'nombreModulo'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
+    }
+
+    public function gestionPreguntas()
+    {
+        if (Auth::check()) {
+
+            $usuario      = auth()->user();
+            $nombreModulo = "Gestión de Preguntas";
+            $preguntas    = Pregunta::all();
+
+            $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas'));
 
         } else {
             $vista = redirect()->route('login');
