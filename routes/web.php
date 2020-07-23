@@ -46,6 +46,8 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/estadisticas', 'TriviaController@estadisticas')->name('estadisticas');
     Route::get('/gestionPreguntas', 'TriviaController@gestionPreguntas')->name('gestionPreguntas');
 
+    Route::post('/registrarPregunta', 'TriviaController@registrarPregunta')->name('registrarPregunta');
+
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
 Route::get('/generar_sello', 'selloDigitalController@selloDigital')->name('generar_sello');

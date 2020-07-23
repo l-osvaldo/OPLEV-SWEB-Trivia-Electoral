@@ -315,7 +315,55 @@ let messagesErrVjs = {
         required: 'El campo {{INPUTNAME}} es requerido.',
         match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
       },
-  }
+  },
+
+  'formePregunta':{
+
+      ////////////////////////////////////////////////////////////////////////////formejemplo-1
+      'preguntaNueva':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'opcion_a_nueva':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'opcion_b_nueva':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'opcion_c_nueva':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'opcion_d_nueva':{
+        required: 'El campo {{INPUTNAME}} es requerido.',
+        type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+        number: 'No se permiten números en el campo {{INPUTNAME}}.',
+        match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+        minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+        maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+      },
+      'respuestaNueva': {
+        required: 'El campo {{INPUTNAME}} es requerido.'
+      },
+  },
 
 
 };

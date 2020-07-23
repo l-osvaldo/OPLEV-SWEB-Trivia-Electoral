@@ -49,7 +49,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach ($usuariosApp as $usuarioApp)
+                        <tr>
+                            <td>
+                                {{ $usuarioApp->nombre }}
+                            </td>
+                            <td>
+                                {{ $usuarioApp->email }}
+                            </td>
+                            <td>
+                                {{ $usuarioApp->edad }} años / {{ $usuarioApp->sexo == 'm' ? "Masculino" : "Femenino"  }}
+                            </td>
+                            <td>
+                                {{ $usuarioApp->municipio }}
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
