@@ -18,11 +18,32 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Gestión de Usuarios";
-            $usuariosApp  = AppUser::all();
+            $usuario        = auth()->user();
+            $nombreModulo   = "Gestión de Usuarios";
+            $usuariosApp    = AppUser::all();
+            $numeroUsuarios = count($usuariosApp);
 
-            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp'));
+            $hombres = 0;
+            $mujeres = 0;
+
+            $promedioMujeres = 0;
+            $promedioHombres = 0;
+
+            foreach ($usuariosApp as $value) {
+                if ($value->sexo === 'm') {
+                    $hombres++;
+                    $promedioHombres += $value->edad;
+                }
+                if ($value->sexo === 'f') {
+                    $mujeres++;
+                    $promedioMujeres += $value->edad;
+                }
+            }
+
+            $promedioMujeres = $promedioMujeres / $mujeres;
+            $promedioHombres = $promedioHombres / $hombres;
+
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres'));
 
         } else {
             $vista = redirect()->route('login');
@@ -77,5 +98,30 @@ class TriviaController extends Controller
         $nuevaPregunta->save();
 
         return response()->json($nuevaPregunta);
+    }
+
+    public function editarPregunta(Request $resquest)
+    {
+        $id = encrypt_decrypt('decrypt', $resquest->id);
+
+        $updatePregunta            = Pregunta::find($id);
+        $updatePregunta->pregunta  = $resquest->pregunta;
+        $updatePregunta->opcion_a  = $resquest->opcion_a;
+        $updatePregunta->opcion_b  = $resquest->opcion_b;
+        $updatePregunta->opcion_c  = $resquest->opcion_c;
+        $updatePregunta->opcion_d  = $resquest->opcion_d;
+        $updatePregunta->respuesta = $resquest->respuesta;
+        $updatePregunta->save();
+
+        return response()->json($updatePregunta);
+    }
+
+    public function eliminarPregunta(Request $resquest)
+    {
+        $id = encrypt_decrypt('decrypt', $resquest->id);
+
+        $deletePregunta = Pregunta::destroy($id);
+
+        return response()->json(['success']);
     }
 }

@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 Route::group(['middleware' => 'disablepreventback'], function () {
     Auth::routes();
     // Route::resource('programa', 'DashboardController');
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/verificador-sello', 'DashboardController@verificador')->name('front.verificador-sello');
     Route::get('/fechas', 'DashboardController@fechaspagina')->name('front.fechas');
     Route::get('/cuadros_dos', 'DashboardController@cuadrosdos')->name('front.cuadros_dos');
+    Route::get('/email', 'DashboardController@email')->name('front.email');
 
     Route::get('/', 'TriviaController@index')->name('index');
     Route::get('/gestionUsuarios', 'TriviaController@index')->name('gestionUsuarios');
@@ -47,6 +49,8 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/gestionPreguntas', 'TriviaController@gestionPreguntas')->name('gestionPreguntas');
 
     Route::post('/registrarPregunta', 'TriviaController@registrarPregunta')->name('registrarPregunta');
+    Route::post('/editarPregunta', 'TriviaController@editarPregunta')->name('editarPregunta');
+    Route::post('/eliminarPregunta', 'TriviaController@eliminarPregunta')->name('eliminarPregunta');
 
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');

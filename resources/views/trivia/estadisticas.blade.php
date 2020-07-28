@@ -26,4 +26,18 @@
     <!-- /.container-fluid -->
 </section>
 
+<section class="content">
+    <div class="card borde-ople">
+        <div class="container-fluid">
+            <figure class="highcharts-figure">
+                <div id="highcharts-column-line"></div>
+                <p class="highcharts-description">
+                    
+                </p>
+            </figure>
+        </div>
+    </div>
+
+</section>
+
 @endsection

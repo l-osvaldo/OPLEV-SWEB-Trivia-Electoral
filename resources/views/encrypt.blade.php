@@ -9,7 +9,7 @@
   });
 </script>
 @endif
-<section class="content-header">
+<section class="content-header pt-5">
       <div class="container-fluid">
         <div class="row mb-2 mt-2">
           <div class="col-sm-6">
@@ -37,14 +37,14 @@
             <hr>
         </div-->
 
-        <h6 style="white-space: pre-wrap;word-break: break-word;">Valor encriptado:<br>{{$encrypted}}</h6><br>
-        <h6 style="white-space: pre-wrap;word-break: break-word;">Nomenclatura: <br>{{$varVista}}</h6><br>
+        <!--h6 style="white-space: pre-wrap;word-break: break-word;">Valor encriptado:<br>100</h6><br-->
+        <h6 style="white-space: pre-wrap;word-break: break-word;">Nomenclatura: {{$id}}</h6><br>
 
         <form method="post" action="/encrypted">
 
           {{ csrf_field() }}
           
-          <input type="hidden" name="user_id" value="{{$varVista}}">
+          <input type="hidden" name="user_id" value="{{$id}}">
 
           <button type="submit" class="btn o-fondo-1">Continuar</button>
 

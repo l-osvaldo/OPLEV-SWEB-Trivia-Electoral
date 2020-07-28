@@ -131,38 +131,53 @@ class DashboardController extends Controller
     public function encrypt()
     {
 
-        $encrypted = Crypt::encrypt('100');
+        $id = $this->encrypt_decrypt('encrypt', 100);
 
-        //dd($encrypted);
+        Auth::check() ? $vista = view('encrypt')->with( compact('id')) : $vista = redirect()->route('login');
 
-        $parte1 = substr($encrypted, 0, 15);//eyJpdiI6I
-        $parte2 = substr($encrypted, 15); //eyJpdiI6I
-
-        $varVista = $parte1.str_random(10).$parte2;
-
-        $respuesta = '';
-
-        Auth::check() ? $vista = view('encrypt')->with( compact('encrypted','parte1','parte2','varVista','respuesta')) : $vista = redirect()->route('login');
         return $vista;
     }
 
     public function encrypted(Request $request)
     {
 
-        $parte1 = substr($request->user_id, 0, 15);
-        $parte2 = substr($request->user_id, 25);
+        $id = $this->encrypt_decrypt('decrypt', $request->user_id);
 
-        try {
-            alert()->success('Valor decriptado: '.decrypt($parte1.$parte2), 'Encriptación');
-
-        } catch (DecryptException $e) {
-
+        if ($id){
+            alert()->success('Valor decriptado: '.$id, 'Encriptación');
+        } else {
             alert()->error('Error en la Validación', 'Encriptación');
-
         }
        
        return redirect()->route('front.encrypt');
     }
+
+    public function encrypt_decrypt($action, $string)
+        {
+          $output = false;
+         
+          $encrypt_method = "AES-256-CBC";
+          $secret_key = 'This is my secret key';
+          $secret_iv = 'This is my secret iv';
+
+          $key = hash('sha256', $secret_key);
+          $iv = substr(hash('sha256', $secret_iv), 0, 16);
+         
+          if ($action == 'encrypt')
+          {
+            $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+            $output = base64_encode($output);
+          }
+          else
+          {
+            if ($action == 'decrypt')
+            {
+              $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+            }
+          }
+         
+          return $output;
+        }
 
     public function selloDigital()
     {
@@ -179,6 +194,12 @@ class DashboardController extends Controller
     public function cuadrosdos()
     {
         Auth::check() ? $vista = view('cuadrosdos') : $vista = redirect()->route('login');
+        return $vista;
+    }
+
+    public function email()
+    {
+        Auth::check() ? $vista = view('email') : $vista = redirect()->route('login');
         return $vista;
     }
 

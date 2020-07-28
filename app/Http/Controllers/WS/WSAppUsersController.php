@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WS;
 
 use App\AppUser;
 use App\Http\Controllers\Controller;
+use App\Municipio;
 use App\Pregunta;
 use App\Resultado;
 use Hash;
@@ -94,5 +95,12 @@ class WSAppUsersController extends Controller
 
         }
 
+    }
+
+    public function AllMunicipios()
+    {
+        $AllMunicipios = Municipio::select('numdto', 'nombredto', 'nummpio', 'nombrempio')->get();
+
+        return response()->json($AllMunicipios);
     }
 }
