@@ -51,6 +51,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::post('/registrarPregunta', 'TriviaController@registrarPregunta')->name('registrarPregunta');
     Route::post('/editarPregunta', 'TriviaController@editarPregunta')->name('editarPregunta');
     Route::post('/eliminarPregunta', 'TriviaController@eliminarPregunta')->name('eliminarPregunta');
+    Route::post('/HabilitarDeshabilitarPregunta', 'TriviaController@HabilitarDeshabilitarPregunta')->name('HabilitarDeshabilitarPregunta');
 
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');

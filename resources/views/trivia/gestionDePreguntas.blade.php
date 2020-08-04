@@ -58,6 +58,9 @@
                             Respuesta
                         </th>
                         <th>
+                            Estatus
+                        </th>
+                        <th>
                             Acciones
                         </th>
                     </tr>
@@ -82,6 +85,11 @@
                             </td>
                             <td>
                                 {{ $pregunta->respuesta }}
+                            </td>
+                            <td align="center">
+                                <button class="btn {{ $pregunta->status === 1 ? 'btn-success' : 'btn-danger' }} btn-sm btn-style estatusBtn" data-id="{{ encrypt_decrypt('encrypt',$pregunta->id) }}" data-status="{{ $pregunta->status }}">
+                                    {{ $pregunta->status === 1 ? 'Activado' : 'Desactivado' }}
+                                </button>
                             </td>
                             <td align="center" class="middletd">
                                 <div class="dropdown">

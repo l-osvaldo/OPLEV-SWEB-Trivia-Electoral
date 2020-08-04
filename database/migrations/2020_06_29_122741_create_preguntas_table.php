@@ -21,6 +21,7 @@ class CreatePreguntasTable extends Migration
             $table->string('opcion_c', 50);
             $table->string('opcion_d', 50);
             $table->string('respuesta', 5);
+            $table->integer('status')->default(1)->unsigned();
             $table->timestamps();
         });
     }

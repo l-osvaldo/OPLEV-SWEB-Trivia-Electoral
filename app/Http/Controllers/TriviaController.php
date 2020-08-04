@@ -29,6 +29,9 @@ class TriviaController extends Controller
             $promedioMujeres = 0;
             $promedioHombres = 0;
 
+            $porcentajeMujeres = 0;
+            $porcentajeHombres = 0;
+
             foreach ($usuariosApp as $value) {
                 if ($value->sexo === 'm') {
                     $hombres++;
@@ -40,10 +43,16 @@ class TriviaController extends Controller
                 }
             }
 
-            $promedioMujeres = $promedioMujeres / $mujeres;
-            $promedioHombres = $promedioHombres / $hombres;
+            if ($mujeres > 0) {
+                $promedioMujeres   = $promedioMujeres / $mujeres;
+                $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+            }
+            if ($hombres > 0) {
+                $promedioHombres   = $promedioHombres / $hombres;
+                $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+            }
 
-            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres'));
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres'));
 
         } else {
             $vista = redirect()->route('login');
@@ -123,5 +132,20 @@ class TriviaController extends Controller
         $deletePregunta = Pregunta::destroy($id);
 
         return response()->json(['success']);
+    }
+
+    public function HabilitarDeshabilitarPregunta(Request $resquest)
+    {
+        $id     = encrypt_decrypt('decrypt', $resquest->id);
+        $status = $resquest->status;
+
+        $status === '1' ? $newstatus = 0 : $newstatus = 1;
+
+        $updatePregunta = Pregunta::find($id);
+
+        $updatePregunta->status = $newstatus;
+        $updatePregunta->save();
+
+        return response()->json($updatePregunta);
     }
 }

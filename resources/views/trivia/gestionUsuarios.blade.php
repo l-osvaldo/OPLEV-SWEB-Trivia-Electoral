@@ -49,7 +49,7 @@
             <!-- small card -->
             <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>{{ $mujeres * 100 / $numeroUsuarios }}<sup style="font-size: 20px">%</sup> - {{ $mujeres }}</h3>
+                    <h3>{{ $porcentajeMujeres }}<sup style="font-size: 20px">%</sup> - {{ $mujeres }}</h3>
 
                     <p>Mujeres</p>
                 </div>
@@ -65,7 +65,7 @@
             <!-- small card -->
             <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>{{ $hombres * 100 / $numeroUsuarios }}<sup style="font-size: 20px">%</sup> - {{ $hombres }}</h3>
+                    <h3>{{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup> - {{ $hombres }}</h3>
 
                     <p>Hombres</p>
                 </div>
