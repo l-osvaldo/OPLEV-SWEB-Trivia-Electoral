@@ -91,8 +91,13 @@ class WSAppUsersController extends Controller
                     'errores'  => $request->errores,
                     'detalle'  => $request->detalle]);
 
-            return response()->json($update);
+            if ($update == 1) {
+                $resultado = Resultado::where('id_user_app', $id)->get();
 
+                return response()->json($resultado);
+            } else {
+                return response()->json($update);
+            }
         }
 
     }
