@@ -629,11 +629,28 @@
                 <p>Gestión de usuarios</p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
-              <a href="{{ route('estadisticas') }}" class="textSideOption nav-link {!! Request::is('estadisticas') ? 'active activeOn' : '' !!}">
+            <li class="nav-item has-treeview {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') ? 'menuOpen menu-open' : '' !!}">
+              <a href="#" class="textSideOption nav-link {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') ? 'active activeOn' : '' !!}">
                 <i class="far fa-chart-bar"></i> 
-                <p>Estadísticas</p>
+                <p>
+                  Estadísticas
+                  <i class="right fa fa-chevron-left" aria-hidden="true"></i>
+                </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview">
+                  <a href="{{ route('estadisticas.usuariosAPP') }}" class="textSideOption nav-link {!! Request::is('estadisticas/usuariosAPP') ? 'active activeOn' : '' !!}">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>Usuarios de la App</p>
+                  </a>
+                </li>
+                <li class="nav-item has-treeview">
+                  <a href="{{ route('estadisticas.distritos') }}" class="textSideOption nav-link {!! Request::is('estadisticas/distritos') ? 'active activeOn' : '' !!}">
+                    <i class="fas fa-cubes"></i>
+                    <p>Distritos</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item has-treeview">
               <a href="{{ route('gestionPreguntas') }}" class="textSideOption nav-link {!! Request::is('gestionPreguntas') ? 'active activeOn' : '' !!}">

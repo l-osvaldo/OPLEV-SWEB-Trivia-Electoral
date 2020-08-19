@@ -43,6 +43,7 @@ $(document).ready(function() {
         "retrieve": true,
         "processing": true,
         "fixedHeader": true,
+        "autoWidth": false,
         "sSearch": "Filter Data",
         "dom": "<'row'<'col-sm-2'l><'col-sm-6 text-center'B><'col-sm-4 text-right'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         "language": {
@@ -73,6 +74,10 @@ $(document).ready(function() {
             "extend": "excelHtml5",
             "autoFilter": true,
             "sheetName": "Lista de preguntas"
+        }],
+        "columnDefs": [{
+            "width": '30%',
+            "targets": 0
         }],
     });
 });

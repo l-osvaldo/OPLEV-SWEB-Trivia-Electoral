@@ -30,51 +30,49 @@
         
         <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-primary">
+            <div class="small-box card-primary card-outline">
                 <div class="inner">
-                    <h3>{{ $numeroUsuarios }}</h3>
+                    <p><b>Usuarios Registrados</b></p>
 
-                    <p>Usuarios Registrados</p>
+                    <h3 class="o-color-primario">{{ $numeroUsuarios }}</h3>                    
                 </div>
                 <div class="icon">
-                    <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-user-plus o-color-primario "></i>
                 </div>
-                <span class="small-box-footer">
+                {{-- <span class="small-box-footer">
                     &nbsp;
-                </span>
+                </span> --}}
             </div>
         </div>
 
         <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-primary">
+            <div class="small-box card-primary card-outline">
                 <div class="inner">
-                    <h3>{{ $porcentajeMujeres }}<sup style="font-size: 20px">%</sup> - {{ $mujeres }}</h3>
-
-                    <p>Mujeres</p>
+                    <p><b>Mujeres</b></p>
+                    <h3 class="o-color-primario">{{ $porcentajeMujeres }}<sup style="font-size: 20px">%</sup> - {{ $mujeres }}</h3>                    
                 </div>
                 <div class="icon">
-                    <i class="fas fa-female"></i>
+                    <i class="fas fa-female o-color-primario"></i>
                 </div>
-                <span class="small-box-footer">
+                {{-- <span class="small-box-footer">
                     Edad promedio: {{ $promedioMujeres }} años
-                </span>
+                </span> --}}
             </div>
         </div>
         <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-primary">
+            <div class="small-box card-primary card-outline">
                 <div class="inner">
-                    <h3>{{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup> - {{ $hombres }}</h3>
-
-                    <p>Hombres</p>
+                    <p><b>Hombres</b></p>
+                    <h3 class="o-color-primario">{{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup> - {{ $hombres }}</h3>                    
                 </div>
                 <div class="icon">
-                    <i class="fas fa-male"></i>
+                    <i class="fas fa-male o-color-primario"></i>
                 </div>
-                <span class="small-box-footer">
+                {{-- <span class="small-box-footer">
                     Edad promedio: {{ $promedioHombres }} años
-                </span>
+                </span> --}}
             </div>
         </div>
     </div>
@@ -124,13 +122,13 @@
                                     <div aria-labelledby="dropdownMenuButton" class="dropdown-menu dropmenuPersonalizado2">
                                         <div aria-label="Basic example" class="btn-group" role="group">
                                             <button class="btn btn-success btn-acciones" data-target="#modalEditarPregunta" data-toggle="modal">
-                                                <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Editar Pregunta">
+                                                <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Editar Usuario">
                                                     <i class="fas fa-pen">
                                                     </i>
                                                 </a>
                                             </button>
                                             <button class="btn btn-danger deletePregunta btn-acciones">
-                                                <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Eliminar Pregunta">
+                                                <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Eliminar Usuario">
                                                     <i class="fas fa-times">
                                                     </i>
                                                 </a>

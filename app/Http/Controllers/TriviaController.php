@@ -61,14 +61,30 @@ class TriviaController extends Controller
         return $vista;
     }
 
-    public function estadisticas()
+    public function usuariosAPP()
     {
         if (Auth::check()) {
 
             $usuario      = auth()->user();
             $nombreModulo = "Estadísticas";
 
-            $vista = view('trivia.estadisticas', compact('usuario', 'nombreModulo'));
+            $vista = view('trivia.usuariosDelaAPP', compact('usuario', 'nombreModulo'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
+    }
+
+    public function distritos()
+    {
+        if (Auth::check()) {
+
+            $usuario      = auth()->user();
+            $nombreModulo = "Estadísticas";
+
+            $vista = view('trivia.distritos', compact('usuario', 'nombreModulo'));
 
         } else {
             $vista = redirect()->route('login');

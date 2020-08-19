@@ -27,7 +27,7 @@
 </section>
 
 <section class="content">
-    <div align="right" class="margin-b">
+    <div align="left" class="margin-b">
         <button class="btn btn-danger o-fondo-1" data-target="#modalNuevaPregunta" data-toggle="modal" type="button">
             <i class="fas fa-plus">
             </i>
@@ -36,7 +36,7 @@
     </div>
     <div class="card borde-ople">
         <div class="card-body">
-            <table class="table table-striped table-bordered dt-responsive nowrap" id="dataTablePreguntas" style="width:100%">
+            <table class="table table-striped table-bordered" id="dataTablePreguntas" style="width:100%">
                 <thead>
                     <tr>
                         <th>
@@ -86,7 +86,7 @@
                             <td>
                                 {{ $pregunta->respuesta }}
                             </td>
-                            <td align="center">
+                            <td align="center" class="middletd">
                                 <button class="btn {{ $pregunta->status === 1 ? 'btn-success' : 'btn-danger' }} btn-sm btn-style estatusBtn" data-id="{{ encrypt_decrypt('encrypt',$pregunta->id) }}" data-status="{{ $pregunta->status }}">
                                     {{ $pregunta->status === 1 ? 'Activado' : 'Desactivado' }}
                                 </button>
