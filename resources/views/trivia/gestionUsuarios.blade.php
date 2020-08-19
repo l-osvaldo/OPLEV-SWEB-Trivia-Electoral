@@ -108,7 +108,7 @@
                                 {{ $usuarioApp->email }}
                             </td>
                             <td>
-                                {{ $usuarioApp->edad }} años / {{ $usuarioApp->sexo == 'm' ? "Masculino" : "Femenino"  }}
+                                {{ $usuarioApp->edad }} años / {{ $usuarioApp->sexo == 'M' ? "Masculino" : "Femenino"  }}
                             </td>
                             <td>
                                 {{ $usuarioApp->municipio }}
