@@ -33,11 +33,11 @@ class TriviaController extends Controller
             $porcentajeHombres = 0;
 
             foreach ($usuariosApp as $value) {
-                if ($value->sexo === 'm') {
+                if ($value->sexo === 'M') {
                     $hombres++;
                     $promedioHombres += $value->edad;
                 }
-                if ($value->sexo === 'f') {
+                if ($value->sexo === 'F') {
                     $mujeres++;
                     $promedioMujeres += $value->edad;
                 }
