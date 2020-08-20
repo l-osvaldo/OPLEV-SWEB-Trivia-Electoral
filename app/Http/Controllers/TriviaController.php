@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AppUser;
+use App\Municipio;
 use App\Pregunta;
 use Auth;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class TriviaController extends Controller
             $usuario        = auth()->user();
             $nombreModulo   = "Gestión de Usuarios";
             $usuariosApp    = AppUser::all();
+            $municipios     = Municipio::distinct()->orderBy('nombrempio', 'asc')->get(['nombrempio']);
             $numeroUsuarios = count($usuariosApp);
 
             $hombres = 0;
@@ -52,7 +54,10 @@ class TriviaController extends Controller
                 $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
             }
 
-            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres'));
+            $porcentajeMujeres = bcdiv($porcentajeMujeres, '1', 2);
+            $porcentajeHombres = bcdiv($porcentajeHombres, '1', 2);
+
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios'));
 
         } else {
             $vista = redirect()->route('login');
@@ -65,10 +70,38 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Estadísticas";
+            $usuario        = auth()->user();
+            $nombreModulo   = "Estadísticas - Usuarios de la APP";
+            $usuariosApp    = AppUser::all();
+            $numeroUsuarios = count($usuariosApp);
 
-            $vista = view('trivia.usuariosDelaAPP', compact('usuario', 'nombreModulo'));
+            $hombres = 0;
+            $mujeres = 0;
+
+            $porcentajeMujeres = 0;
+            $porcentajeHombres = 0;
+
+            foreach ($usuariosApp as $value) {
+                if ($value->sexo === 'M') {
+                    $hombres++;
+                }
+                if ($value->sexo === 'F') {
+                    $mujeres++;
+                }
+
+            }
+
+            if ($mujeres > 0) {
+                $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+            }
+            if ($hombres > 0) {
+                $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+            }
+
+            $porcentajeMujeres = bcdiv($porcentajeMujeres, '1', 2);
+            $porcentajeHombres = bcdiv($porcentajeHombres, '1', 2);
+
+            $vista = view('trivia.usuariosDelaAPP', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres'));
 
         } else {
             $vista = redirect()->route('login');
@@ -82,7 +115,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario      = auth()->user();
-            $nombreModulo = "Estadísticas";
+            $nombreModulo = "Estadísticas - Distritos";
 
             $vista = view('trivia.distritos', compact('usuario', 'nombreModulo'));
 
@@ -163,5 +196,29 @@ class TriviaController extends Controller
         $updatePregunta->save();
 
         return response()->json($updatePregunta);
+    }
+
+    public function EditarInformacionUsuarioAPP(Request $resquest)
+    {
+        $id = encrypt_decrypt('decrypt', $resquest->id);
+
+        $updateUsuarioAPP = AppUser::find($id);
+
+        $updateUsuarioAPP->nombre    = $resquest->nombre;
+        $updateUsuarioAPP->edad      = $resquest->edad;
+        $updateUsuarioAPP->sexo      = $resquest->genero;
+        $updateUsuarioAPP->municipio = $resquest->municipio;
+        $updateUsuarioAPP->save();
+
+        return response()->json($updateUsuarioAPP);
+    }
+
+    public function eliminarUsuarioApp(Request $resquest)
+    {
+        $id = encrypt_decrypt('decrypt', $resquest->id);
+
+        $deleteUsuarioApp = AppUser::destroy($id);
+
+        return response()->json(['success']);
     }
 }

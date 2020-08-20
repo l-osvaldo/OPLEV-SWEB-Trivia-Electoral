@@ -53,7 +53,8 @@ const mix = require('laravel-mix');
 'resources/assets/js/toastr.js',
 'resources/assets/js/pusher.js',
 'resources/assets/js/highcharts.js',
-'resources/assets/js/trivia/gestionDePreguntas.js'
+'resources/assets/js/trivia/gestionDePreguntas.js',
+'resources/assets/js/trivia/gestionDeUsuariosApp.js'
 ], 'public/js/all.js');
 
 

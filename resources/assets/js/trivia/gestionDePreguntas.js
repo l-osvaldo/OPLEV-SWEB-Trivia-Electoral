@@ -122,7 +122,7 @@ $('#modalEditarPregunta').on('show.bs.modal', function(event) {
     document.getElementById("opcion_d_editar").classList.add("is-valid");
     document.getElementById("respuestaEditar").classList.add("is-valid");
     //
-    document.getElementById('string-preguntaEditar').innerHTML = 50 - pregunta.length;
+    document.getElementById('string-preguntaEditar').innerHTML = 500 - pregunta.length;
     document.getElementById('string-opcion_a_editar').innerHTML = 50 - opc_a.length;
     document.getElementById('string-opcion_b_editar').innerHTML = 50 - opc_b.length;
     document.getElementById('string-opcion_c_editar').innerHTML = 50 - opc_c.length;
