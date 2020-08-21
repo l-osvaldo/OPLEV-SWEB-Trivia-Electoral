@@ -166,7 +166,7 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 2);
             $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.usuariosDelaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'));
+            $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'));
 
         } else {
             $vista = redirect()->route('login');
