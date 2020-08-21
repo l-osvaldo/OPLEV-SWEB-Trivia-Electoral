@@ -286,4 +286,49 @@ class TriviaController extends Controller
 
         return response()->json(['success']);
     }
+
+    public function graficaUsuariosApp()
+    {
+        $usuariosApp    = AppUser::all();
+        $numeroUsuarios = count($usuariosApp);
+
+        $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0));
+
+        // print_r($estadisticas[0]['rango']);exit;
+
+        foreach ($usuariosApp as $value) {
+
+            if ($value->edad >= 18 && $value->edad <= 30) {
+                $estadisticas[0]['Usuarios']++;
+            }
+            if ($value->edad >= 31 && $value->edad <= 40) {
+                $estadisticas[1]['Usuarios']++;
+            }
+            if ($value->edad >= 41 && $value->edad <= 50) {
+                $estadisticas[2]['Usuarios']++;
+            }
+            if ($value->edad >= 51 && $value->edad <= 60) {
+                $estadisticas[3]['Usuarios']++;
+            }
+            if ($value->edad >= 61 && $value->edad <= 70) {
+                $estadisticas[4]['Usuarios']++;
+            }
+            if ($value->edad >= 71 && $value->edad <= 80) {
+                $estadisticas[5]['Usuarios']++;
+            }
+
+        }
+
+        for ($i = 0; $i < count($estadisticas); $i++) {
+            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+        }
+
+        return response()->json($estadisticas);
+    }
 }

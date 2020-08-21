@@ -84,7 +84,7 @@
                     <p><b>Hombres</b></p>
                     <h3 class="o-color-primario">{{ $hombres }} - {{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup></h3>                    
                 </div> --}}
-                <div class="icon" data-target="#modalGraficaUsuariosDeLaApp" data-toggle="modal" data-toggle="tooltip" title="Ver Gráfica" >
+                <div class="icon" data-target="#modalGraficaUsuariosDeLaApp" data-toggle="modal" data-toggle="tooltip" title="Ver Gráfica" onclick="grafica()">
                     <i class="fas fa-chart-pie"></i>
                 </div>
                 {{-- <span class="small-box-footer">

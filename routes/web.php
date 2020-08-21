@@ -50,6 +50,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
 
     Route::get('/estadisticas/usuariosAPP', 'TriviaController@usuariosAPP')->name('estadisticas.usuariosAPP');
     Route::get('/estadisticas/distritos', 'TriviaController@distritos')->name('estadisticas.distritos');
+    Route::get('/estadisticas/graficaUsuariosApp', 'TriviaController@graficaUsuariosApp')->name('graficaUsuariosApp');
 
     Route::get('/gestionPreguntas', 'TriviaController@gestionPreguntas')->name('gestionPreguntas');
 
