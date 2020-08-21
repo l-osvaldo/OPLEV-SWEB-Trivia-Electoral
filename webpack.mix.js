@@ -28,7 +28,7 @@ const mix = require('laravel-mix');
 'node_modules/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js',
 'node_modules/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js',
 'node_modules/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js',
-'node_modules/admin-lte/plugins/datatables-buttons/js/datatables.buttons.min.js',
+'node_modules/admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js',
 'node_modules/admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js',
 'node_modules/admin-lte/plugins/jszip/jszip.min.js',
 'node_modules/admin-lte/plugins/pdfmake/pdfmake.min.js',
@@ -54,7 +54,8 @@ const mix = require('laravel-mix');
 'resources/assets/js/pusher.js',
 'resources/assets/js/highcharts.js',
 'resources/assets/js/trivia/gestionDePreguntas.js',
-'resources/assets/js/trivia/gestionDeUsuariosApp.js'
+'resources/assets/js/trivia/gestionDeUsuariosApp.js',
+'resources/assets/js/trivia/estadisticas.js'
 ], 'public/js/all.js');
 
 

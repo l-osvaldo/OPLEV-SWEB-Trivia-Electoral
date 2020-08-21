@@ -7,6 +7,7 @@ const highchartsColumn = document.querySelector("#highcharts-column");
 const highchartsArea = document.querySelector("#highcharts-area");
 const highchartsGaugeSpeed = document.querySelector("#highcharts-gauge-speed");
 const highchartsGaugeRpm = document.querySelector("#highcharts-gauge-rpm");
+console.log('vali-v-b-t1');
 if (highchartsColumnFixed) {
     Highcharts.chart('highcharts-column-fixed', {
         chart: {
@@ -143,6 +144,7 @@ if (highchartsLine) {
     });
 }
 if (highchartsPie) {
+    console.log('vali-v-b-t');
     Highcharts.chart('highcharts-pie', {
         chart: {
             plotBackgroundColor: null,
