@@ -77,7 +77,6 @@
             </div>
         </div>
     </div>
-
     <div class="card borde-ople">
         <div class="card-body">
             <table class="table table-striped table-bordered dt-responsive nowrap" id="example" style="width:100%">
@@ -101,11 +100,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($usuariosApp as $usuarioApp)
-                        <tr>
-                            
-                        </tr>
-                    @endforeach --}}
+                    @foreach ($estadisticas as $esta)
+                        {{-- @foreach ($esta as $element) --}}
+                            <tr>
+                                <td>
+                                    {{ $esta['rango'] }} años
+                                </td>
+                                <td>
+                                    {{ $esta['Usuarios'] }}
+                                </td>
+                                <td>
+                                    {{ $esta['porcentaje'] }} %
+                                </td>
+                                <td>
+                                    {{ $esta['mujeres'] }}
+                                </td>
+                                <td>
+                                    {{ $esta['hombres'] }}
+                                </td>
+                            </tr>
+                        {{-- @endforeach --}}
+                        
+                    @endforeach
+                    <tr>
+                        <td>
+                            <b>TOTALES</b>
+                        </td>
+                        <td>
+                            <b>{{ $numeroUsuarios }}</b>
+                        </td>
+                        <td>
+                            <b>100%</b>
+                        </td>
+                        <td>
+                            <b>{{ $mujeres }}</b>
+                        </td>
+                        <td>
+                            <b>{{ $hombres }}</b>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

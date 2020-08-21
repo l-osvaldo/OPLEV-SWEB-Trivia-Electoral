@@ -54,8 +54,8 @@ class TriviaController extends Controller
                 $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
             }
 
-            $porcentajeMujeres = bcdiv($porcentajeMujeres, '1', 2);
-            $porcentajeHombres = bcdiv($porcentajeHombres, '1', 2);
+            $porcentajeMujeres = round($porcentajeMujeres, 2);
+            $porcentajeHombres = round($porcentajeHombres, 2);
 
             $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios'));
 
@@ -81,14 +81,79 @@ class TriviaController extends Controller
             $porcentajeMujeres = 0;
             $porcentajeHombres = 0;
 
+            $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0));
+
+            // print_r($estadisticas[0]['rango']);exit;
+
             foreach ($usuariosApp as $value) {
                 if ($value->sexo === 'M') {
                     $hombres++;
+
+                    if ($value->edad >= 18 && $value->edad <= 30) {
+                        $estadisticas[0]['Usuarios']++;
+                        $estadisticas[0]['hombres']++;
+                    }
+                    if ($value->edad >= 31 && $value->edad <= 40) {
+                        $estadisticas[1]['Usuarios']++;
+                        $estadisticas[1]['hombres']++;
+                    }
+                    if ($value->edad >= 41 && $value->edad <= 50) {
+                        $estadisticas[2]['Usuarios']++;
+                        $estadisticas[2]['hombres']++;
+                    }
+                    if ($value->edad >= 51 && $value->edad <= 60) {
+                        $estadisticas[3]['Usuarios']++;
+                        $estadisticas[3]['hombres']++;
+                    }
+                    if ($value->edad >= 61 && $value->edad <= 70) {
+                        $estadisticas[4]['Usuarios']++;
+                        $estadisticas[4]['hombres']++;
+                    }
+                    if ($value->edad >= 71 && $value->edad <= 80) {
+                        $estadisticas[5]['Usuarios']++;
+                        $estadisticas[5]['hombres']++;
+                    }
+
                 }
                 if ($value->sexo === 'F') {
                     $mujeres++;
+
+                    if ($value->edad >= 18 && $value->edad <= 30) {
+                        $estadisticas[0]['Usuarios']++;
+                        $estadisticas[0]['mujeres']++;
+                    }
+                    if ($value->edad >= 31 && $value->edad <= 40) {
+                        $estadisticas[1]['Usuarios']++;
+                        $estadisticas[1]['mujeres']++;
+                    }
+                    if ($value->edad >= 41 && $value->edad <= 50) {
+                        $estadisticas[2]['Usuarios']++;
+                        $estadisticas[2]['mujeres']++;
+                    }
+                    if ($value->edad >= 51 && $value->edad <= 60) {
+                        $estadisticas[3]['Usuarios']++;
+                        $estadisticas[3]['mujeres']++;
+                    }
+                    if ($value->edad >= 61 && $value->edad <= 70) {
+                        $estadisticas[4]['Usuarios']++;
+                        $estadisticas[4]['mujeres']++;
+                    }
+                    if ($value->edad >= 71 && $value->edad <= 80) {
+                        $estadisticas[5]['Usuarios']++;
+                        $estadisticas[5]['mujeres']++;
+                    }
                 }
 
+            }
+
+            for ($i = 0; $i < count($estadisticas); $i++) {
+                $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
             }
 
             if ($mujeres > 0) {
@@ -98,10 +163,10 @@ class TriviaController extends Controller
                 $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
             }
 
-            $porcentajeMujeres = bcdiv($porcentajeMujeres, '1', 2);
-            $porcentajeHombres = bcdiv($porcentajeHombres, '1', 2);
+            $porcentajeMujeres = round($porcentajeMujeres, 2);
+            $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.usuariosDelaAPP', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres'));
+            $vista = view('trivia.usuariosDelaAPP', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'));
 
         } else {
             $vista = redirect()->route('login');
