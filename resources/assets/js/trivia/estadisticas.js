@@ -78,7 +78,7 @@ function grafica() {
                     type: 'pie'
                 },
                 title: {
-                    text: 'Rangos de edad de los usuarios de la Aplicación'
+                    text: 'Gráfica de los rangos de edad de los usuarios de la Aplicación'
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -127,3 +127,4 @@ function grafica() {
         }
     })
 }
+document.onload = grafica();

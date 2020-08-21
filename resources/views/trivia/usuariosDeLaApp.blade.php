@@ -77,25 +77,11 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box card-primary card-outline" align="center">
-                {{-- <div class="inner">
-                    <p><b>Hombres</b></p>
-                    <h3 class="o-color-primario">{{ $hombres }} - {{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup></h3>                    
-                </div> --}}
-                <div class="icon" data-target="#modalGraficaUsuariosDeLaApp" data-toggle="modal" data-toggle="tooltip" title="Ver Gráfica" onclick="grafica()">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-                {{-- <span class="small-box-footer">
-                    Edad promedio: {{ $promedioHombres }} años
-                </span> --}}
-            </div>
-        </div>
+        
     </div>
     <div class="card borde-ople">
         <div class="card-body">
-            <table class="table table-striped table-bordered dt-responsive nowrap" id="example" style="width:100%">
+            <table class="table table-striped table-bordered" id="estadisticaUsuarios" style="width:100%">
                 <thead>
                     <tr>
                         <th>
@@ -159,9 +145,26 @@
             </table>
         </div>
     </div>
+    {{-- <div class="card borde-ople">
+        <div class="card-body"> --}}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <figure class="highcharts-figure">
+                            <div id="containerP"></div>
+                            <p class="highcharts-description">
+                                
+                            </p>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        {{-- </div>
+    </div> --}}
+    
 
     {{-- Modal para gráfica de pastel --}}
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalGraficaUsuariosDeLaApp">
+    {{-- <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalGraficaUsuariosDeLaApp">
         <div class="modal-dialog modal-lg">
             <div class="modal-content card-primary card-outline">
                 <div class="modal-header o-fondo-2">
@@ -191,7 +194,7 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    </div>
+    </div> --}}
     <!-- /.modal -->
 
 </section>
