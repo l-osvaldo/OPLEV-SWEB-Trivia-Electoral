@@ -28,6 +28,7 @@ class WSAppUsersController extends Controller
             $usuario->sexo      = $request->sexo;
             $usuario->municipio = $request->municipio;
             $usuario->password  = bcrypt($request->password);
+            $usuario->score     = $request->score;
             $usuario->save();
 
             $data = array('done' => true, 'message' => "Usuario Registrado", 'id' => $usuario->id, 'nombre' => $usuario->nombre);
