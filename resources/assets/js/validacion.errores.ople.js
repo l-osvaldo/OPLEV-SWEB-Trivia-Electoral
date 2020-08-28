@@ -367,6 +367,16 @@ let messagesErrVjs = {
         'respuestaNueva': {
             required: 'El campo {{INPUTNAME}} es requerido.'
         },
+        'rubroNuevo': {
+            required: 'El campo {{INPUTNAME}} es requerido.'
+        },
+        'subrubroNuevo': {
+            required: 'El campo {{INPUTNAME}} es requerido.'
+        },
+        'grupoCreado': {
+            required: 'El campo {{INPUTNAME}} es requerido.',
+            match: 'Seleccione al menos una opción para {{INPUTNAME}}.'
+        },
     },
     'formePreguntaEditar': {
         ////////////////////////////////////////////////////////////////////////////formejemplo-1

@@ -97,6 +97,36 @@ $('#modalNuevaPregunta').on('hidden.bs.modal', function(e) {
     document.getElementById('string-opcion_c_nueva').innerHTML = '50';
     document.getElementById('string-opcion_d_nueva').innerHTML = '50';
 });
+$('#modalNuevaPregunta').on('show.bs.modal', function(event) {
+    var etiquetas = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5", "Etiqueta6", "h", "o"];
+    var htmlEtiquetas = '';
+    var bandera = true;
+    for (var i = 0; i < etiquetas.length; i++) {
+        //console.log(etiquetas[i]);
+        bandera = true;
+        if (i == 0 || i == 4 || i == 8) {
+            htmlEtiquetas += '<div class="row">';
+        }
+        htmlEtiquetas += '<div class="col-sm-3">';
+        htmlEtiquetas += '<div class="custom-control custom-checkbox">';
+        htmlEtiquetas += '<input class="custom-control-input validacion-o grupoCreado" type="checkbox" id="customCheckbox' + (i + 1) + '" data-type="checkbox" data-group="grupoCreado" data-inputname="etiquetas">';
+        htmlEtiquetas += '<label for="customCheckbox' + (i + 1) + '" class="custom-control-label">' + etiquetas[i] + '</label>';
+        htmlEtiquetas += '</div>';
+        htmlEtiquetas += '</div>';
+        if (i == 3 || i == 7 || i == 11) {
+            htmlEtiquetas += '</div>';
+            bandera = false;
+        }
+    }
+    if (bandera) {
+        htmlEtiquetas += '</div>';
+    }
+    htmlEtiquetas += '<div class="boxMesNum">';
+    htmlEtiquetas += '<div id="error-grupoCreado" class="errorMessage"></div';
+    htmlEtiquetas += '</div>';
+    // console.log(htmlEtiquetas);
+    document.getElementById('etiquetas').innerHTML = htmlEtiquetas;
+});
 $('#modalEditarPregunta').on('show.bs.modal', function(event) {
     var data = $(event.relatedTarget);
     var id = data.data('id');
@@ -106,6 +136,7 @@ $('#modalEditarPregunta').on('show.bs.modal', function(event) {
     var opc_c = data.data('opcc');
     var opc_d = data.data('opcd');
     var respuesta = data.data('respuesta');
+    var etiquetas = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5", "Etiqueta6"];
     //
     document.getElementById('editPreguntaId').value = id;
     document.getElementById('preguntaEditar').value = pregunta;

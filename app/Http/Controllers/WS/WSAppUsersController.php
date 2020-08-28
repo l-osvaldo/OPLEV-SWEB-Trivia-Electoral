@@ -18,7 +18,7 @@ class WSAppUsersController extends Controller
 
         if ($ExisteEmail > 0) {
 
-            $data = array('done' => false, 'message' => "El email ya esta registrado", 'id' => 0);
+            $data = array('done' => false, 'message' => "El email ya esta registrado", 'id' => 0, 'nombre' => '');
 
         } else {
             $usuario            = new AppUser();
@@ -30,7 +30,7 @@ class WSAppUsersController extends Controller
             $usuario->password  = bcrypt($request->password);
             $usuario->save();
 
-            $data = array('done' => true, 'message' => "Usuario Registrado", 'id' => $usuario->id);
+            $data = array('done' => true, 'message' => "Usuario Registrado", 'id' => $usuario->id, 'nombre' => $usuario->nombre);
         }
 
         return response()->json($data);
@@ -45,12 +45,12 @@ class WSAppUsersController extends Controller
         if (!empty($user)) {
 
             if (Hash::check($password, $user->password)) {
-                $data = array('done' => true, 'message' => "Logueado", 'id' => $user->id);
+                $data = array('done' => true, 'message' => "Logueado", 'id' => $user->id, 'nombre' => $user->nombre);
             } else {
-                $data = array('done' => false, 'message' => "Contraseña Incorrecta", 'id' => 0);
+                $data = array('done' => false, 'message' => "Contraseña Incorrecta", 'id' => 0, 'nombre' => '');
             }
         } else {
-            $data = array('done' => false, 'message' => "El email no esta registrado", 'id' => 0);
+            $data = array('done' => false, 'message' => "El email no esta registrado", 'id' => 0, 'nombre' => '');
         }
 
         return response()->json($data);
@@ -58,13 +58,7 @@ class WSAppUsersController extends Controller
 
     public function allPreguntas()
     {
-        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta')->where('status', 1)->get();
-        return response()->json($allPreguntas);
-    }
-
-    public function pruebaPregunta()
-    {
-        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta')->first();
+        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta', 'rubro', 'subrubro', 'etiquetas', 'version')->where('status', 1)->get();
         return response()->json($allPreguntas);
     }
 
