@@ -80,13 +80,54 @@ class WSAppUsersController extends Controller
 
         if (!empty($user)) {
 
-            if (Hash::check($password, $user->password)) {
-                $data = array('done' => true, 'message' => "Logueado", 'id' => $user->id, 'nombre' => $user->nombre);
+            if ($user->status == 1) {
+                if (Hash::check($password, $user->password)) {
+                    $data = array('done' => true, 'message' => "Logueado",
+                        'id'                 => $user->id,
+                        'nombre'             => $user->nombre,
+                        'email'              => $user->email,
+                        'edad'               => $user->edad,
+                        'sexo'               => $user->sexo,
+                        'municipio'          => $user->municipio,
+                        'password'           => $user->password,
+                        'score'              => $user->score,
+                        'status'             => $user->status);
+                } else {
+                    $data = array('done' => false, 'message' => "Contraseña Incorrecta",
+                        'id'                 => 0,
+                        'nombre'             => '',
+                        'email'              => $email,
+                        'edad'               => 0,
+                        'sexo'               => '',
+                        'municipio'          => '',
+                        'password'           => '',
+                        'score'              => 0,
+                        'status'             => 0);
+                }
             } else {
-                $data = array('done' => false, 'message' => "Contraseña Incorrecta", 'id' => 0, 'nombre' => '');
+                $data = array('done' => false, 'message' => "Status 0",
+                    'id'                 => 0,
+                    'nombre'             => '',
+                    'email'              => $email,
+                    'edad'               => 0,
+                    'sexo'               => '',
+                    'municipio'          => '',
+                    'password'           => '',
+                    'score'              => 0,
+                    'status'             => 0);
             }
+
         } else {
-            $data = array('done' => false, 'message' => "El email no esta registrado", 'id' => 0, 'nombre' => '');
+            $data = array('done' => false, 'message' => "El email no esta registrado",
+                'id'                 => 0,
+                'nombre'             => '',
+                'email'              => $email,
+                'edad'               => 0,
+                'sexo'               => '',
+                'municipio'          => '',
+                'password'           => '',
+                'score'              => 0,
+                'status'             => 0);
         }
 
         return response()->json($data);
