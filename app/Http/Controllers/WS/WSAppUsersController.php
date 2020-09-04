@@ -94,7 +94,7 @@ class WSAppUsersController extends Controller
 
     public function allPreguntas()
     {
-        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta', 'rubro', 'subrubro', 'etiquetas', 'version')->where('status', 1)->get();
+        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta', 'rubro', 'subrubro', 'etiquetas', 'version', 'numero_respuestas')->where('status', 1)->get();
         return response()->json($allPreguntas);
     }
 
@@ -137,5 +137,17 @@ class WSAppUsersController extends Controller
         $AllMunicipios = Municipio::select('numdto', 'nombredto', 'nummpio', 'nombrempio')->get();
 
         return response()->json($AllMunicipios);
+    }
+
+    public function UpdateScoreAppUser(Request $request)
+    {
+        $id = $request->id;
+
+        $updateScore = AppUser::find($id);
+
+        $updateScore->score = $request->score;
+        $updateScore->save();
+
+        return response()->json($updateScore);
     }
 }
