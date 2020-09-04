@@ -18,6 +18,7 @@ class AddCambiosToPreguntas extends Migration
             $table->string('subrubro', '50')->after('rubro');
             $table->string('etiquetas', '150')->after('subrubro');
             $table->integer('version')->default(1)->after('etiquetas');
+            $table->integer('numero_respuestas')->after('version');
         });
     }
 

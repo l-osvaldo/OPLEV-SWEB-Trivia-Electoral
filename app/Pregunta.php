@@ -14,5 +14,10 @@ class Pregunta extends Model
         'opcion_c',
         'opcion_d',
         'respuesta',
+        'rubro',
+        'subrubro',
+        'etiquetas',
+        'version',
+        'status',
     ];
 }

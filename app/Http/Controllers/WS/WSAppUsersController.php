@@ -18,7 +18,33 @@ class WSAppUsersController extends Controller
 
         if ($ExisteEmail > 0) {
 
-            $data = array('done' => false, 'message' => "El email ya esta registrado", 'id' => 0, 'nombre' => '');
+            $status = AppUser::select('status')->where('email', $request->email)->first();
+
+            // echo $status->status;exit;
+
+            if ($status->status == 1) {
+                $data = array('done' => false, 'message' => "El email ya esta registrado",
+                    'id'                 => 0,
+                    'nombre'             => '',
+                    'email'              => $request->email,
+                    'edad'               => 0,
+                    'sexo'               => '',
+                    'municipio'          => '',
+                    'password'           => '',
+                    'score'              => 0,
+                    'status'             => 0);
+            } else {
+                $data = array('done' => false, 'message' => "El email proporcionado esta bloqueado por el administrador, favor de comunicarse con el.",
+                    'id'                 => 0,
+                    'nombre'             => '',
+                    'email'              => $request->email,
+                    'edad'               => 0,
+                    'sexo'               => '',
+                    'municipio'          => '',
+                    'password'           => '',
+                    'score'              => 0,
+                    'status'             => 0);
+            }
 
         } else {
             $usuario            = new AppUser();
@@ -31,7 +57,16 @@ class WSAppUsersController extends Controller
             $usuario->score     = $request->score;
             $usuario->save();
 
-            $data = array('done' => true, 'message' => "Usuario Registrado", 'id' => $usuario->id, 'nombre' => $usuario->nombre);
+            $data = array('done' => true, 'message' => "Usuario Registrado",
+                'id'                 => $usuario->id,
+                'nombre'             => $usuario->nombre,
+                'email'              => $usuario->email,
+                'edad'               => $usuario->edad,
+                'sexo'               => $usuario->sexo,
+                'municipio'          => $usuario->municipio,
+                'password'           => $usuario->password,
+                'score'              => $usuario->score,
+                'status'             => $usuario->status);
         }
 
         return response()->json($data);

@@ -14,5 +14,7 @@ class AppUser extends Model
         'sexo',
         'municipio',
         'password',
+        'score',
+        'status',
     ];
 }

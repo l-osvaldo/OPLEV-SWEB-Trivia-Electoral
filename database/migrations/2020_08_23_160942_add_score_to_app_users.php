@@ -15,6 +15,7 @@ class AddScoreToAppUsers extends Migration
     {
         Schema::table('app_users', function (Blueprint $table) {
             $table->integer('score')->default(0)->after('password');
+            $table->integer('status')->default(1)->after('score');
         });
     }
 
