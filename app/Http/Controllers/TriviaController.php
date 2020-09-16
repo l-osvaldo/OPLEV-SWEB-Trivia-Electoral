@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AppUser;
+use App\Distrito;
 use App\Municipio;
 use App\Pregunta;
 use Auth;
@@ -179,10 +180,70 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Estadísticas - Distritos";
+            $usuario        = auth()->user();
+            $nombreModulo   = "Estadísticas - Distritos";
+            $usuariosApp    = AppUser::all();
+            $numeroUsuarios = count($usuariosApp);
+            $distritos      = Distrito::all();
 
-            $vista = view('trivia.distritos', compact('usuario', 'nombreModulo'));
+            $hombres = 0;
+            $mujeres = 0;
+
+            $porcentajeMujeres = 0;
+            $porcentajeHombres = 0;
+
+            foreach ($distritos as $distrito) {
+                array_add($distrito, 'totalUsuarios', 0);
+                array_add($distrito, 'mujeres', 0);
+                array_add($distrito, 'porcentajeMujeres', 0);
+                array_add($distrito, 'hombres', 0);
+                array_add($distrito, 'porcentajeHombres', 0);
+            }
+
+            foreach ($usuariosApp as $value) {
+                $distritoUsuario = Municipio::where('nombrempio', $value->municipio)->first();
+                foreach ($distritos as $distrito) {
+
+                    if ($distrito->numdto == $distritoUsuario->numdto) {
+
+                        $distrito->totalUsuarios++;
+
+                        if ($value->sexo === 'M') {
+                            $hombres++;
+                            $distrito->hombres++;
+
+                        }
+                        if ($value->sexo === 'F') {
+                            $mujeres++;
+                            $distrito->mujeres++;
+                        }
+                        break;
+                    }
+                }
+
+            }
+
+            foreach ($distritos as $distrito) {
+                if ($distrito->totalUsuarios != 0) {
+                    $distrito->porcentajeMujeres = $distrito->mujeres * 100 / $distrito->totalUsuarios;
+                    $distrito->porcentajeHombres = $distrito->hombres * 100 / $distrito->totalUsuarios;
+
+                    $distrito->porcentajeMujeres = round($distrito->porcentajeMujeres, 2);
+                    $distrito->porcentajeHombres = round($distrito->porcentajeHombres, 2);
+                }
+            }
+
+            if ($mujeres > 0) {
+                $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+            }
+            if ($hombres > 0) {
+                $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+            }
+
+            $porcentajeMujeres = round($porcentajeMujeres, 2);
+            $porcentajeHombres = round($porcentajeHombres, 2);
+
+            $vista = view('trivia.distritos', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'));
 
         } else {
             $vista = redirect()->route('login');
@@ -263,6 +324,21 @@ class TriviaController extends Controller
         return response()->json($updatePregunta);
     }
 
+    public function HabilitarDeshabilitarUsuario(Request $resquest)
+    {
+        $id     = encrypt_decrypt('decrypt', $resquest->id);
+        $status = $resquest->status;
+
+        $status === '1' ? $newstatus = 0 : $newstatus = 1;
+
+        $updateUsuarioAPP = AppUser::find($id);
+
+        $updateUsuarioAPP->status = $newstatus;
+        $updateUsuarioAPP->save();
+
+        return response()->json($updateUsuarioAPP);
+    }
+
     public function EditarInformacionUsuarioAPP(Request $resquest)
     {
         $id = encrypt_decrypt('decrypt', $resquest->id);
@@ -330,5 +406,37 @@ class TriviaController extends Controller
         }
 
         return response()->json($estadisticas);
+    }
+
+    public function graficaDistritos()
+    {
+        $usuariosApp    = AppUser::all();
+        $numeroUsuarios = count($usuariosApp);
+        $distritos      = Distrito::all();
+
+        foreach ($distritos as $distrito) {
+            array_add($distrito, 'totalUsuarios', 0);
+            array_add($distrito, 'porcentaje', 0);
+        }
+
+        foreach ($usuariosApp as $value) {
+            $distritoUsuario = Municipio::where('nombrempio', $value->municipio)->first();
+            foreach ($distritos as $distrito) {
+
+                if ($distrito->numdto == $distritoUsuario->numdto) {
+
+                    $distrito->totalUsuarios++;
+                    break;
+                }
+            }
+        }
+
+        foreach ($distritos as $distrito) {
+            if ($distrito->totalUsuarios != 0) {
+                $distrito->porcentaje = $distrito->totalUsuarios * 100 / $numeroUsuarios;
+                $distrito->porcentaje = round($distrito->porcentaje, 2);
+            }
+        }
+        return response()->json($distritos);
     }
 }

@@ -76,8 +76,9 @@
                 </span> --}}
             </div>
         </div>
-
-        
+        <div class="col-lg-3 col-6">
+            
+        </div>
     </div>
     <div class="card borde-ople">
         <div class="card-body">

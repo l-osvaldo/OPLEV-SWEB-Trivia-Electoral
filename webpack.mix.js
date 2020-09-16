@@ -41,6 +41,8 @@ const mix = require('laravel-mix');
 'node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
 'node_modules/admin-lte/dist/js/adminlte.min.js',
 'node_modules/highcharts/highcharts.js',
+'node_modules/highcharts/modules/exporting.js',
+'node_modules/highcharts/modules/export-data.js',
 'node_modules/highcharts/highcharts-more.js',
 'node_modules/highcharts/modules/solid-gauge.js',
 'resources/assets/js/sellodigital.js',

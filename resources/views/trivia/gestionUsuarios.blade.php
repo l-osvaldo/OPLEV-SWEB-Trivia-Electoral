@@ -94,6 +94,9 @@
                             Municipio
                         </th>
                         <th>
+                            Estatus
+                        </th>
+                        <th>
                             Acciones
                         </th>
                     </tr>
@@ -114,6 +117,11 @@
                                 {{ $usuarioApp->municipio }}
                             </td>
                             <td align="center" class="middletd">
+                                <button class="btn {{ $usuarioApp->status === 1 ? 'btn-success' : 'btn-danger' }} btn-sm btn-style estatusBtnUsuario" data-id="{{ encrypt_decrypt('encrypt',$usuarioApp->id) }}" data-status="{{ $usuarioApp->status }}">
+                                    {{ $usuarioApp->status === 1 ? 'Activado' : 'Desactivado' }}
+                                </button>
+                            </td>
+                            <td align="center" class="middletd">
                                 <div class="dropdown">
                                     <button aria-expanded="false" aria-haspopup="true" class="btn-dropmenu btn-sm dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" type="button">
                                         <i class="fas fa-bars">
@@ -127,12 +135,12 @@
                                                     </i>
                                                 </a>
                                             </button>
-                                            <button class="btn btn-danger deleteUsuarioApp btn-acciones" data-id="{{ encrypt_decrypt('encrypt',$usuarioApp->id) }}">
+                                            {{-- <button class="btn btn-danger deleteUsuarioApp btn-acciones" data-id="{{ encrypt_decrypt('encrypt',$usuarioApp->id) }}">
                                                 <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Eliminar Usuario">
                                                     <i class="fas fa-times">
                                                     </i>
                                                 </a>
-                                            </button>
+                                            </button> --}}
                                         </div>
                                     </div>
                                 </div>

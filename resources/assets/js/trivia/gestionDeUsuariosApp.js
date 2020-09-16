@@ -157,3 +157,53 @@ $(document).on("click", ".deleteUsuarioApp", function(e) {
         return false;
     })
 });
+$('.estatusBtnUsuario').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).attr("data-id");
+    var status = $(this).attr("data-status");
+    var title = status === '1' ? 'Deshabilitar' : 'Habilitar';
+    var body = status === '1' ? 'deshabilito' : 'habilito';
+    //console.log('status');
+    Swal.fire({
+        title: title + " Usuario",
+        text: "¿Desea continuar?",
+        type: "warning",
+        showCancelButton: true,
+        reverseButtons: true,
+        confirmButtonText: '<i class="far fa-check-circle"></i>  Aceptar',
+        confirmButtonAriaLabel: 'Aceptar',
+        cancelButtonText: '<i class="far fa-times-circle"></i>  Cancelar',
+        cancelButtonAriaLabel: 'Cancelar'
+    }).then(function(e) {
+        if (e.value) {
+            if (e.value === true) {
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    type: 'POST',
+                    url: "HabilitarDeshabilitarUsuario",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        status: status,
+                        id: id
+                    },
+                    dataType: 'JSON',
+                    success: function(results) {
+                        location.reload();
+                        $(document).Toasts('create', {
+                            class: 'bg-maroon',
+                            title: title + 'Usuario',
+                            subtitle: title,
+                            body: 'Se ' + body + ' el usuario con exito',
+                            autohide: true,
+                            delay: 7000,
+                        })
+                    }
+                });
+            } else {
+                e.dismiss;
+            }
+        }
+    }, function(dismiss) {
+        return false;
+    })
+});
