@@ -75,6 +75,14 @@
                     Edad promedio: {{ $promedioHombres }} años
                 </span> --}}
             </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <div style="display: block; height: 1em;margin: 5em 0 0 auto" align="right">
+                <button class="btn btn-danger o-fondo-1" type="button" data-target="#modalVisorPDFDistritos" data-toggle="modal">
+                    <i class="fas fa-file-pdf"></i>
+                    <b>Generar PDF</b>                    
+                </button>
+            </div>
         </div>        
     </div>
 
@@ -105,30 +113,28 @@
                 </thead>
                 <tbody>
                     @foreach ($distritos as $distrito)
-                            <tr>
-                                <td>
-                                    {{ $distrito->nombrecorto }}
-                                </td>
-                                <td>
-                                    {{ $distrito->totalUsuarios }}
-                                </td>
-                                <td>
-                                    {{ $distrito->mujeres }}
-                                </td>
-                                <td>
-                                    {{ $distrito->porcentajeMujeres }} %
-                                </td>
-                                <td>
-                                    {{ $distrito->hombres }}
-                                </td>
-                                <td>
-                                    {{ $distrito->porcentajeHombres }} %
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                {{ $distrito->nombrecorto }}
+                            </td>
+                            <td>
+                                {{ $distrito->totalUsuarios }}
+                            </td>
+                            <td>
+                                {{ $distrito->mujeres }}
+                            </td>
+                            <td>
+                                {{ $distrito->porcentajeMujeres }} %
+                            </td>
+                            <td>
+                                {{ $distrito->hombres }}
+                            </td>
+                            <td>
+                                {{ $distrito->porcentajeHombres }} %
+                            </td>
+                        </tr>
                         
                     @endforeach
-                    
-                     
                 </tbody>
                 <tfoot>
                     <tr>
@@ -168,6 +174,28 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalVisorPDFDistritos" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content card-primary card-outline">
+                <div class="modal-header o-fondo-2">
+                    <h4 class="modal-title">Estadísticas sobre los usuarios de la aplicación móvil por distrito</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <iframe width="100%" height="800" id="VisorPDFDistritos"></iframe> </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 </section>
 

@@ -211,3 +211,9 @@ function graficaDistritos() {
     })
 }
 document.onload = graficaDistritos();
+$('#modalVisorPDFUsuariosAPP').on('show.bs.modal', function(event) {
+    document.getElementById('VisorPDFUsuariosAPP').src = '../estadisticas/PDFUsuariosAPP/';
+});
+$('#modalVisorPDFDistritos').on('show.bs.modal', function(event) {
+    document.getElementById('VisorPDFDistritos').src = '../estadisticas/PDFDistritos/';
+});

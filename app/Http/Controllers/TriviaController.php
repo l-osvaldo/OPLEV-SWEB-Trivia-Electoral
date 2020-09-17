@@ -8,9 +8,14 @@ use App\Municipio;
 use App\Pregunta;
 use Auth;
 use Illuminate\Http\Request;
+use PDFS;
 
 class TriviaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -438,5 +443,173 @@ class TriviaController extends Controller
             }
         }
         return response()->json($distritos);
+    }
+
+    public function PDFUsuariosAPP()
+    {
+
+        $usuariosApp    = AppUser::all();
+        $numeroUsuarios = count($usuariosApp);
+
+        $hombres = 0;
+        $mujeres = 0;
+
+        $porcentajeMujeres = 0;
+        $porcentajeHombres = 0;
+
+        $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0));
+
+        // print_r($estadisticas[0]['rango']);exit;
+
+        foreach ($usuariosApp as $value) {
+            if ($value->sexo === 'M') {
+                $hombres++;
+
+                if ($value->edad >= 18 && $value->edad <= 30) {
+                    $estadisticas[0]['Usuarios']++;
+                    $estadisticas[0]['hombres']++;
+                }
+                if ($value->edad >= 31 && $value->edad <= 40) {
+                    $estadisticas[1]['Usuarios']++;
+                    $estadisticas[1]['hombres']++;
+                }
+                if ($value->edad >= 41 && $value->edad <= 50) {
+                    $estadisticas[2]['Usuarios']++;
+                    $estadisticas[2]['hombres']++;
+                }
+                if ($value->edad >= 51 && $value->edad <= 60) {
+                    $estadisticas[3]['Usuarios']++;
+                    $estadisticas[3]['hombres']++;
+                }
+                if ($value->edad >= 61 && $value->edad <= 70) {
+                    $estadisticas[4]['Usuarios']++;
+                    $estadisticas[4]['hombres']++;
+                }
+                if ($value->edad >= 71 && $value->edad <= 80) {
+                    $estadisticas[5]['Usuarios']++;
+                    $estadisticas[5]['hombres']++;
+                }
+
+            }
+            if ($value->sexo === 'F') {
+                $mujeres++;
+
+                if ($value->edad >= 18 && $value->edad <= 30) {
+                    $estadisticas[0]['Usuarios']++;
+                    $estadisticas[0]['mujeres']++;
+                }
+                if ($value->edad >= 31 && $value->edad <= 40) {
+                    $estadisticas[1]['Usuarios']++;
+                    $estadisticas[1]['mujeres']++;
+                }
+                if ($value->edad >= 41 && $value->edad <= 50) {
+                    $estadisticas[2]['Usuarios']++;
+                    $estadisticas[2]['mujeres']++;
+                }
+                if ($value->edad >= 51 && $value->edad <= 60) {
+                    $estadisticas[3]['Usuarios']++;
+                    $estadisticas[3]['mujeres']++;
+                }
+                if ($value->edad >= 61 && $value->edad <= 70) {
+                    $estadisticas[4]['Usuarios']++;
+                    $estadisticas[4]['mujeres']++;
+                }
+                if ($value->edad >= 71 && $value->edad <= 80) {
+                    $estadisticas[5]['Usuarios']++;
+                    $estadisticas[5]['mujeres']++;
+                }
+            }
+
+        }
+
+        for ($i = 0; $i < count($estadisticas); $i++) {
+            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+        }
+
+        if ($mujeres > 0) {
+            $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+        }
+        if ($hombres > 0) {
+            $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+        }
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'))->setPaper('letter', 'portrait');
+        return $pdf->inline('Estadísticas - Usuarios de la APP.pdf');
+    }
+
+    public function PDFDistritos()
+    {
+        $usuariosApp    = AppUser::all();
+        $numeroUsuarios = count($usuariosApp);
+        $distritos      = Distrito::all();
+
+        $hombres = 0;
+        $mujeres = 0;
+
+        $porcentajeMujeres = 0;
+        $porcentajeHombres = 0;
+
+        foreach ($distritos as $distrito) {
+            array_add($distrito, 'totalUsuarios', 0);
+            array_add($distrito, 'mujeres', 0);
+            array_add($distrito, 'porcentajeMujeres', 0);
+            array_add($distrito, 'hombres', 0);
+            array_add($distrito, 'porcentajeHombres', 0);
+        }
+
+        foreach ($usuariosApp as $value) {
+            $distritoUsuario = Municipio::where('nombrempio', $value->municipio)->first();
+            foreach ($distritos as $distrito) {
+
+                if ($distrito->numdto == $distritoUsuario->numdto) {
+
+                    $distrito->totalUsuarios++;
+
+                    if ($value->sexo === 'M') {
+                        $hombres++;
+                        $distrito->hombres++;
+
+                    }
+                    if ($value->sexo === 'F') {
+                        $mujeres++;
+                        $distrito->mujeres++;
+                    }
+                    break;
+                }
+            }
+
+        }
+
+        foreach ($distritos as $distrito) {
+            if ($distrito->totalUsuarios != 0) {
+                $distrito->porcentajeMujeres = $distrito->mujeres * 100 / $distrito->totalUsuarios;
+                $distrito->porcentajeHombres = $distrito->hombres * 100 / $distrito->totalUsuarios;
+
+                $distrito->porcentajeMujeres = round($distrito->porcentajeMujeres, 2);
+                $distrito->porcentajeHombres = round($distrito->porcentajeHombres, 2);
+            }
+        }
+
+        if ($mujeres > 0) {
+            $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+        }
+        if ($hombres > 0) {
+            $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+        }
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteDistritoPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'))->setPaper('letter', 'portrait');
+        return $pdf->inline('Estadísticas - Distritos.pdf');
     }
 }

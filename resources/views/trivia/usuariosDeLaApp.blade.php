@@ -77,7 +77,12 @@
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            
+            <div style="display: block; height: 1em;margin: 5em 0 0 auto" align="right">
+                <button class="btn btn-danger o-fondo-1" type="button" data-target="#modalVisorPDFUsuariosAPP" data-toggle="modal">
+                    <i class="fas fa-file-pdf"></i>
+                    <b>Generar PDF</b>                    
+                </button>
+            </div>
         </div>
     </div>
     <div class="card borde-ople">
@@ -146,56 +151,40 @@
             </table>
         </div>
     </div>
-    {{-- <div class="card borde-ople">
-        <div class="card-body"> --}}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <figure class="highcharts-figure">
-                            <div id="containerP"></div>
-                            <p class="highcharts-description">
-                                
-                            </p>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        {{-- </div>
-    </div> --}}
     
-
-    {{-- Modal para gráfica de pastel --}}
-    {{-- <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalGraficaUsuariosDeLaApp">
-        <div class="modal-dialog modal-lg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9">
+                <figure class="highcharts-figure">
+                    <div id="containerP"></div>
+                    <p class="highcharts-description">
+                        
+                    </p>
+                </figure>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalVisorPDFUsuariosAPP" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content card-primary card-outline">
                 <div class="modal-header o-fondo-2">
-                    <h4 class="modal-title">
-                        Gráfica de Pastel
-                    </h4>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
+                    <h4 class="modal-title">Estadísticas sobre los usuarios de la aplicación móvil</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
-                            <figure class="highcharts-figure">
-                                <div id="containerP"></div>
-                                <p class="highcharts-description">
-                                    
-                                </p>
-                            </figure>
-                        </div>
-                    </div>
+                <div class="modal-body">
+                    <p> <iframe width="100%" height="800" id="VisorPDFUsuariosAPP"></iframe> </p>
                 </div>
-                
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    </div> --}}
+    </div>
     <!-- /.modal -->
 
 </section>
