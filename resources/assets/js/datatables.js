@@ -127,6 +127,7 @@ $(document).ready(function() {
         "processing": true,
         "paging": false,
         "fixedHeader": true,
+        "ordering": false,
         "sSearch": "Filter Data",
         "dom": "<'row'<'col-sm-4 text-left'B><'col-sm-6 text-right'f>>" + "<'row'<'col-sm-10'tr>>",
         "language": {

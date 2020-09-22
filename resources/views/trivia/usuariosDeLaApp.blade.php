@@ -89,7 +89,7 @@
         <div class="card-body">
             <table class="table table-striped table-bordered" id="estadisticaUsuarios" style="width:100%">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <th>
                             Rangos de edad
                         </th>
@@ -109,45 +109,44 @@
                 </thead>
                 <tbody>
                     @foreach ($estadisticas as $esta)
-                        {{-- @foreach ($esta as $element) --}}
-                            <tr>
-                                <td>
-                                    {{ $esta['rango'] }} años
-                                </td>
-                                <td>
-                                    {{ $esta['Usuarios'] }}
-                                </td>
-                                <td>
-                                    {{ $esta['porcentaje'] }} %
-                                </td>
-                                <td>
-                                    {{ $esta['mujeres'] }}
-                                </td>
-                                <td>
-                                    {{ $esta['hombres'] }}
-                                </td>
-                            </tr>
-                        {{-- @endforeach --}}
-                        
-                    @endforeach
+                        <tr>
+                            <td>
+                                {{ $esta['rango'] }} años
+                            </td>
+                            <td align="center">
+                                {{ $esta['Usuarios'] }}
+                            </td>
+                            <td align="center">
+                                {{ $esta['porcentaje'] }} %
+                            </td>
+                            <td align="center">
+                                {{ $esta['mujeres'] }}
+                            </td>
+                            <td align="center">
+                                {{ $esta['hombres'] }}
+                            </td>
+                        </tr>                        
+                    @endforeach                    
+                </tbody>
+                <tfoot>
                     <tr>
                         <td>
                             <b>TOTALES</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $numeroUsuarios }}</b>
                         </td>
-                        <td>
-                            <b>100%</b>
+                        <td align="center">
+                            <b>100 %</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $mujeres }}</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $hombres }}</b>
                         </td>
                     </tr>
-                </tbody>
+                </tfoot>
             </table>
         </div>
     </div>

@@ -90,7 +90,7 @@
         <div class="card-body">
             <table class="table table-striped table-bordered" id="estadisticaDistritos" style="width:100%">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <th>
                             Distrito
                         </th>
@@ -101,13 +101,13 @@
                             Mujeres
                         </th>
                         <th>
-                            Porcentaje %
+                            Porcentaje
                         </th>
                         <th>
                             Hombres
                         </th>
                         <th>
-                            Porcentaje %
+                            Porcentaje
                         </th>
                     </tr>
                 </thead>
@@ -115,21 +115,21 @@
                     @foreach ($distritos as $distrito)
                         <tr>
                             <td>
-                                {{ $distrito->nombrecorto }}
+                                {{ $distrito->numdto }}. {{ $distrito->nombrecorto }}
                             </td>
-                            <td>
+                            <td align="center">
                                 {{ $distrito->totalUsuarios }}
                             </td>
-                            <td>
+                            <td align="center">
                                 {{ $distrito->mujeres }}
                             </td>
-                            <td>
+                            <td align="center">
                                 {{ $distrito->porcentajeMujeres }} %
                             </td>
-                            <td>
+                            <td align="center">
                                 {{ $distrito->hombres }}
                             </td>
-                            <td>
+                            <td align="center">
                                 {{ $distrito->porcentajeHombres }} %
                             </td>
                         </tr>
@@ -141,19 +141,19 @@
                         <td>
                             <b>TOTALES</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $numeroUsuarios }}</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $mujeres }}</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $porcentajeMujeres }} %</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $hombres }}</b>
                         </td>
-                        <td>
+                        <td align="center">
                             <b>{{ $porcentajeHombres }} %</b>
                         </td>
                     </tr>
@@ -164,9 +164,9 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-9">
-                <figure class="highcharts-figure">
-                    <div id="containerDistritos"></div>
+            <div class="col-sm-12">
+                <figure class="highcharts-figure" style="max-width: 1000px !important;">
+                    <div id="containerDistritos" style="width: 1000px"></div>
                     <p class="highcharts-description">
                         
                     </p>
@@ -179,7 +179,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content card-primary card-outline">
                 <div class="modal-header o-fondo-2">
-                    <h4 class="modal-title">Estadísticas sobre los usuarios de la aplicación móvil por distrito</h4>
+                    <h4 class="modal-title">Estadísticas sobre los usuarios de la aplicación móvil por Distrito Electoral</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

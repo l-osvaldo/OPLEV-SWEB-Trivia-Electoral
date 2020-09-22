@@ -421,6 +421,8 @@ class TriviaController extends Controller
 
         foreach ($distritos as $distrito) {
             array_add($distrito, 'totalUsuarios', 0);
+            array_add($distrito, 'mujeres', 0);
+            array_add($distrito, 'hombres', 0);
             array_add($distrito, 'porcentaje', 0);
         }
 
@@ -431,6 +433,14 @@ class TriviaController extends Controller
                 if ($distrito->numdto == $distritoUsuario->numdto) {
 
                     $distrito->totalUsuarios++;
+
+                    if ($value->sexo === 'M') {
+                        $distrito->hombres++;
+
+                    }
+                    if ($value->sexo === 'F') {
+                        $distrito->mujeres++;
+                    }
                     break;
                 }
             }
@@ -542,7 +552,11 @@ class TriviaController extends Controller
         $porcentajeMujeres = round($porcentajeMujeres, 2);
         $porcentajeHombres = round($porcentajeHombres, 2);
 
-        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'))->setPaper('letter', 'portrait');
+        $footer = '<div align="right">';
+        $footer .= utf8_decode("Página Única");
+        $footer .= '</div>';
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '15');
         return $pdf->inline('Estadísticas - Usuarios de la APP.pdf');
     }
 
@@ -609,7 +623,11 @@ class TriviaController extends Controller
         $porcentajeMujeres = round($porcentajeMujeres, 2);
         $porcentajeHombres = round($porcentajeHombres, 2);
 
-        $pdf = PDFS::loadView('trivia.PDF.reporteDistritoPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'))->setPaper('letter', 'portrait');
+        $footer = '<div align="right">';
+        $footer .= utf8_decode("Página Única");
+        $footer .= '</div>';
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteDistritoPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
         return $pdf->inline('Estadísticas - Distritos.pdf');
     }
 }

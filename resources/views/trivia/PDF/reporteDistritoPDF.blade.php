@@ -3,12 +3,12 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
         <title>
-            ORGANISMO PÚBLICO LOCAL ELECTORAL |
+            ORGANISMO PÚBLICO LOCAL ELECTORAL 
         </title>
         <link rel="stylesheet" src="css/normalize.css" type="text/css">
             <style type="text/css">
                 body { 
-      font-size: 16px;
+      font-size: 13px;
       font-family: Arial, Helvetica, sans-serif;
     }
     .row:after {
@@ -22,7 +22,7 @@
     }
     table{
       width: 100%;
-      margin: 0 0 20px 0;
+      margin: 0 0 10px 0;
       border-spacing: 0;
       height: 100px;
     }
@@ -68,7 +68,7 @@
     }
 
     div {
-      margin: .4em 0;
+      margin: .2em 0;
     }
     .texto-vertical-3 {
       margin-left: 25px;
@@ -113,6 +113,13 @@
       border: solid 1px #000;
     }
 
+    /*h4 { 
+        display:inline !important;
+        padding: 35px 0 15px 0 !important; 
+        margin: : 35px 0 15px 0 !important; 
+        border: 35px 0 15px 0 !important; 
+    } */
+
             </style>
         </link>
     </head>
@@ -124,27 +131,36 @@
                 </td>
                 <td style="width: calc(100% - 240px);">
                     <h2>
-                        Organismo Público Local Electoral
+                        Organismo Público Local del Estado de Veracruz
                     </h2>
-                    <h3>
-                    </h3>
-                    <h3>
-                        Reporte de estadísticas de los usuarios de la aplicación móvil por distrito
-                    </h3>
+                    <h4>
+                      Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
+                    </h4>
+                    
+                    <h4>
+                        Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
+                        de selección para integrar los Consejos Distritales en Veracruz
+                    </h4>
+                    
+                    <h4>
+                      Estadísticas de los Usuarios por Distrito Electoral
+                    </h4>
                 </td>
                 <td style="width: 120px; color:#fff">
                     ...
                 </td>
             </tr>
         </table>
-        <p>
-            <b>
-                Fecha de Impresión:
-            </b>
-            <span>
-                <?php echo date("d/m/Y");?>
-            </span>
-        </p>
+        <div align="right">
+          <p>
+              <b>
+                  Fecha de Impresión:
+              </b>
+              <span>
+                  <?php echo date("d/m/Y");?>
+              </span>
+          </p>
+        </div>
         <h3>
             <b>
                 Usuarios por sexo
@@ -161,7 +177,7 @@
                             Número de usuarios
                         </th>
                         <th>
-                            Porcentaje %
+                            Porcentaje 
                         </th>
                     </tr>
                 </thead>
@@ -203,7 +219,7 @@
                         </td>
                         <td>
                             <b>
-                                {{ $porcentajeMujeres + $porcentajeHombres }}
+                                {{ $porcentajeMujeres + $porcentajeHombres }} %
                             </b>
                         </td>
                     </tr>
@@ -228,21 +244,21 @@
                     Mujeres
                 </th>
                 <th>
-                    Porcentaje %
+                    Porcentaje 
                 </th>
                 <th>
                     Hombres
                 </th>
                 <th>
-                    Porcentaje %
+                    Porcentaje 
                 </th>
             </tr>
           </thead>
           <tbody>
             @foreach ($distritos as $distrito)
                 <tr>
-                    <td class="border">
-                        {{ $distrito->nombrecorto }}
+                    <td class="border" style="text-align: left !important;">
+                        {{ $distrito->numdto }}. {{ $distrito->nombrecorto }}
                     </td>
                     <td class="border">
                         {{ $distrito->totalUsuarios }}

@@ -3,7 +3,7 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
         <title>
-            ORGANISMO PÚBLICO LOCAL ELECTORAL |
+            ORGANISMO PÚBLICO LOCAL ELECTORAL
         </title>
         <link rel="stylesheet" src="css/normalize.css" type="text/css">
             <style type="text/css">
@@ -126,28 +126,35 @@
                 </td>
                 <td style="width: calc(100% - 240px);">
                     <h2>
-                        Organismo Público Local Electoral
+                        Organismo Público Local del Estado de Veracruz
                     </h2>
-                    <h3>
-                    </h3>
-                    <h3>
-                        Reporte de estadísticas de los usuarios de la aplicación móvil
-                    </h3>
+                    <h4>
+                      Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
+                    </h4>
+                    <h4>
+                        Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
+                        de selección para integrar los Consejos Distritales en Veracruz
+                    </h4>
+                    <h4>
+                      Estadísticas de los Usuarios
+                    </h4>
                 </td>
                 <td style="width: 120px; color:#fff">
                     ...
                 </td>
             </tr>
         </table>
-        <p>
-            <b>
-                Fecha de Impresión:
-            </b>
-            <span>
-                <?php echo date("d/m/Y");?>
-            </span>
-        </p>
-        <br>
+        <div align="right">
+          <p>
+              <b>
+                  Fecha de Impresión:
+              </b>
+              <span>
+                  <?php echo date("d/m/Y");?>
+              </span>
+          </p>
+        </div>
+        
         <h3>
             <b>
                 Usuarios por sexo
@@ -164,7 +171,7 @@
                             Número de usuarios
                         </th>
                         <th>
-                            Porcentaje %
+                            Porcentaje
                         </th>
                     </tr>
                 </thead>
@@ -206,7 +213,7 @@
                         </td>
                         <td>
                             <b>
-                                {{ $porcentajeMujeres + $porcentajeHombres }}
+                                {{ $porcentajeMujeres + $porcentajeHombres }} %
                             </b>
                         </td>
                     </tr>
@@ -216,7 +223,7 @@
         <br>
         <h3>
             <b>
-                Estadísticas por rango de edades
+                Usuarios por rango de edades
             </b>
         </h3>
         <table>
@@ -269,7 +276,7 @@
                   <b>{{ $numeroUsuarios }}</b>
               </td>
               <td>
-                  <b>100%</b>
+                  <b>100 %</b>
               </td>
               <td>
                   <b>{{ $mujeres }}</b>
@@ -279,7 +286,6 @@
               </td>
             </tr>
           </tfoot>
-        </table>
-        
+        </table>        
     </body>
 </html>

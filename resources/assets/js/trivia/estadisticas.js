@@ -1,57 +1,3 @@
-// Highcharts.chart('containerP', {
-//     chart: {
-//         plotBackgroundColor: null,
-//         plotBorderWidth: null,
-//         plotShadow: false,
-//         type: 'pie'
-//     },
-//     title: {
-//         text: 'Usuarios de la App'
-//     },
-//     tooltip: {
-//         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-//     },
-//     accessibility: {
-//         point: {
-//             valueSuffix: '%'
-//         }
-//     },
-//     plotOptions: {
-//         pie: {
-//             allowPointSelect: true,
-//             cursor: 'pointer',
-//             dataLabels: {
-//                 enabled: true,
-//                 format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-//             }
-//         }
-//     },
-//     series: [{
-//         name: 'Brands',
-//         colorByPoint: true,
-//         data: [{
-//             name: '18 a 30 años',
-//             y: 33.33,
-//             sliced: true,
-//             selected: true
-//         }, {
-//             name: '31 a 40 años',
-//             y: 16.67
-//         }, {
-//             name: '41 a 50 años',
-//             y: 33.33
-//         }, {
-//             name: '51 a 60 años',
-//             y: 16.67
-//         }, {
-//             name: '61 a 70 años',
-//             y: 0
-//         }, {
-//             name: '71 a 80 años',
-//             y: 0
-//         }]
-//     }]
-// });
 function grafica() {
     //console.log(periodo);
     $.ajaxSetup({
@@ -141,70 +87,58 @@ function graficaDistritos() {
         success: function(data) {
             console.log(data);
             var distritos = [];
+            var mujeres = [];
+            var hombres = [];
+            var totales = [];
             $.each(data, function(index, value) {
                 //console.log(value['rango']);
-                var datos = {
-                    name: value['nombrecorto'],
-                    y: value['totalUsuarios'],
-                    sliced: true,
-                    selected: true
-                }
-                distritos.push(datos);
+                distritos.push(value['nombrecorto']);
+                mujeres.push(value['mujeres']);
+                hombres.push(value['hombres']);
+                totales.push(value['totalUsuarios']);
             });
-            console.log(distritos);
             Highcharts.chart('containerDistritos', {
                 chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
+                    type: 'column',
                 },
                 title: {
-                    text: 'Gráfica de los usuarios de la aplicación móvil por distrito'
+                    text: 'Estadísticas sobre los usuarios de la aplicación móvil por Distrito Electoral'
                 },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                subtitle: {
+                    text: ''
                 },
-                accessibility: {
-                    point: {
-                        valueSuffix: '%'
+                xAxis: {
+                    categories: distritos,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Usuarios Registrados'
                     }
                 },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' + '<td style="padding:0"><b>{point.y:.0f} Usuarios</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
                 plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                        }
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
                     }
                 },
                 series: [{
-                    name: 'Porcentaje',
-                    colorByPoint: true,
-                    data: distritos
-                    // [{
-                    //     name: '18 a 30 años',
-                    //     y: rangos[0],
-                    //     sliced: true,
-                    //     selected: true
-                    // }, {
-                    //     name: '31 a 40 años',
-                    //     y: rangos[1]
-                    // }, {
-                    //     name: '41 a 50 años',
-                    //     y: rangos[2]
-                    // }, {
-                    //     name: '51 a 60 años',
-                    //     y: rangos[3]
-                    // }, {
-                    //     name: '61 a 70 años',
-                    //     y: rangos[4]
-                    // }, {
-                    //     name: '71 a 80 años',
-                    //     y: rangos[5]
-                    // }]
+                    name: 'Mujeres',
+                    data: mujeres
+                }, {
+                    name: 'Hombres',
+                    data: hombres
+                }, {
+                    name: 'Total de Usuarios por Distrito Electoral',
+                    data: totales
                 }]
             });
         }
