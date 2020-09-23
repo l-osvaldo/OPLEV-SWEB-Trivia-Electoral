@@ -8,7 +8,7 @@
         <link rel="stylesheet" src="css/normalize.css" type="text/css">
             <style type="text/css">
                 body { 
-      font-size: 13px;
+      font-size: 14px;
       font-family: Arial, Helvetica, sans-serif;
     }
     .row:after {
@@ -24,7 +24,8 @@
       width: 100%;
       margin: 0 0 10px 0;
       border-spacing: 0;
-      height: 100px;
+      height: 50px;
+
     }
     table.table2{
       width: 90%;
@@ -129,7 +130,7 @@
                 <td style="width: 120px;vertical-align: text-top">
                     <img alt="" class="logo" src="{{ public_path('images/logoople.png') }}"/>
                 </td>
-                <td style="width: calc(100% - 240px);">
+                <td style="width: calc(100% - 240px); ">
                     <h2>
                         Organismo Público Local del Estado de Veracruz
                     </h2>
@@ -181,7 +182,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="font-size: 13px;">
                     <tr>
                         <td class="border">
                             Mujeres
@@ -254,7 +255,7 @@
                 </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="font-size: 13px;">
             @foreach ($distritos as $distrito)
                 <tr>
                     <td class="border" style="text-align: left !important;">
@@ -281,7 +282,7 @@
           </tbody>
           <tfoot>
             <tr class="headerfooter">
-                <td>
+                <td style="text-align: left !important;">
                     <b>TOTALES</b>
                 </td>
                 <td>
