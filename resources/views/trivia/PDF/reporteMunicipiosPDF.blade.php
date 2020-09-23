@@ -282,7 +282,7 @@
           </tbody>
           <tfoot>
             <tr class="headerfooter">
-              <td>
+              <td style="text-align: left !important;">
                   <b>TOTALES</b>
               </td>
               <td>

@@ -136,16 +136,15 @@
                     </h2>
                     <h4>
                       Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
-                    </h4>
+                    </h4>                    
                     
-                    <h4>
                         Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
                         de selección para integrar los Consejos Distritales en Veracruz
-                    </h4>
                     
-                    <h4>
+                    <br><br>
+                    
                       Estadísticas de los Usuarios por Distrito Electoral
-                    </h4>
+                    
                 </td>
                 <td style="width: 120px; color:#fff">
                     ...
@@ -255,7 +254,7 @@
                 </th>
             </tr>
           </thead>
-          <tbody style="font-size: 13px;">
+          <tbody style="font-size: 12px;">
             @foreach ($distritos as $distrito)
                 <tr>
                     <td class="border" style="text-align: left !important;">
