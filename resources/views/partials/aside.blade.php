@@ -629,8 +629,8 @@
                 <p>Gestión de usuarios</p>
               </a>
             </li>
-            <li class="nav-item has-treeview {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') ? 'menuOpen menu-open' : '' !!}">
-              <a href="#" class="textSideOption nav-link {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') ? 'active activeOn' : '' !!}">
+            <li class="nav-item has-treeview {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') || Request::is('estadisticas/municipios') ? 'menuOpen menu-open' : '' !!}">
+              <a href="#" class="textSideOption nav-link {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') || Request::is('estadisticas/municipios') ? 'active activeOn' : '' !!}">
                 <i class="far fa-chart-bar"></i> 
                 <p>
                   Estadísticas
@@ -648,6 +648,12 @@
                   <a href="{{ route('estadisticas.distritos') }}" class="textSideOption nav-link {!! Request::is('estadisticas/distritos') ? 'active activeOn' : '' !!}">
                     <i class="fas fa-cubes"></i>
                     <p>Distritos</p>
+                  </a>
+                </li>
+                <li class="nav-item has-treeview">
+                  <a href="{{ route('estadisticas.municipios') }}" class="textSideOption nav-link {!! Request::is('estadisticas/municipios') ? 'active activeOn' : '' !!}">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Municipios</p>
                   </a>
                 </li>
               </ul>

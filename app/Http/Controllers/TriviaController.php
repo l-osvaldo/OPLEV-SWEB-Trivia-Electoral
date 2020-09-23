@@ -257,6 +257,96 @@ class TriviaController extends Controller
         return $vista;
     }
 
+    public function municipios()
+    {
+        if (Auth::check()) {
+
+            $usuario        = auth()->user();
+            $nombreModulo   = "Estadísticas - Municipios";
+            $usuariosApp    = AppUser::all();
+            $numeroUsuarios = count($usuariosApp);
+            $distritos      = Distrito::all();
+
+            $hombres = 0;
+            $mujeres = 0;
+
+            $porcentajeMujeres = 0;
+            $porcentajeHombres = 0;
+
+            foreach ($usuariosApp as $value) {
+                if ($value->sexo === 'M') {
+                    $hombres++;
+                }
+                if ($value->sexo === 'F') {
+                    $mujeres++;
+                }
+            }
+
+            if ($mujeres > 0) {
+                $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+            }
+            if ($hombres > 0) {
+                $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+            }
+
+            $porcentajeMujeres = round($porcentajeMujeres, 2);
+            $porcentajeHombres = round($porcentajeHombres, 2);
+
+            $vista = view('trivia.estadisticaPorMunicipios', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
+
+    }
+
+    public function municipiosPorDistrito(Request $request)
+    {
+        $municipios = Municipio::where('numdto', $request->numeroDistrito)->get();
+
+        foreach ($municipios as $municipio) {
+            array_add($municipio, 'totalUsuarios', 0);
+            array_add($municipio, 'porcentajeMunicipal', 0);
+            array_add($municipio, 'mujeres', 0);
+            array_add($municipio, 'porcentajeMujeres', 0);
+            array_add($municipio, 'hombres', 0);
+            array_add($municipio, 'porcentajeHombres', 0);
+        }
+
+        $totalUsuariosPorMunicipio = 0;
+
+        foreach ($municipios as $municipio) {
+            $usuariosApp = AppUser::where('municipio', $municipio->nombrempio)->get();
+
+            foreach ($usuariosApp as $usuarioApp) {
+                $municipio->totalUsuarios++;
+                $totalUsuariosPorMunicipio++;
+                if ($usuarioApp->sexo === 'M') {
+                    $municipio->hombres++;
+                }
+                if ($usuarioApp->sexo === 'F') {
+                    $municipio->mujeres++;
+                }
+            }
+        }
+
+        foreach ($municipios as $municipio) {
+            if ($municipio->totalUsuarios != 0) {
+                $municipio->porcentajeMujeres   = $municipio->mujeres * 100 / $municipio->totalUsuarios;
+                $municipio->porcentajeHombres   = $municipio->hombres * 100 / $municipio->totalUsuarios;
+                $municipio->porcentajeMunicipal = $municipio->totalUsuarios * 100 / $totalUsuariosPorMunicipio;
+
+                $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
+                $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
+                $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+            }
+        }
+
+        return response()->json($municipios);
+    }
+
     public function gestionPreguntas()
     {
         if (Auth::check()) {
@@ -629,5 +719,88 @@ class TriviaController extends Controller
 
         $pdf = PDFS::loadView('trivia.PDF.reporteDistritoPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
         return $pdf->inline('Estadísticas - Distritos.pdf');
+    }
+
+    public function PDFMunicipios(Request $request)
+    {
+        $usuariosApp    = AppUser::all();
+        $numeroUsuarios = count($usuariosApp);
+        $nombreDistrito = $request->nombreDistrito;
+
+        $hombres = 0;
+        $mujeres = 0;
+
+        $porcentajeMujeres = 0;
+        $porcentajeHombres = 0;
+
+        $totalPorcentajeMunicipal = 0;
+        $totalPorcentajeMujeres   = 0;
+        $totalPorcentajeHombres   = 0;
+
+        $municipios = Municipio::where('numdto', $request->distrito)->get();
+
+        foreach ($municipios as $municipio) {
+            array_add($municipio, 'totalUsuarios', 0);
+            array_add($municipio, 'porcentajeMunicipal', 0);
+            array_add($municipio, 'mujeres', 0);
+            array_add($municipio, 'porcentajeMujeres', 0);
+            array_add($municipio, 'hombres', 0);
+            array_add($municipio, 'porcentajeHombres', 0);
+        }
+
+        $totalUsuariosPorMunicipio = 0;
+
+        foreach ($municipios as $municipio) {
+            $usuariosApp = AppUser::where('municipio', $municipio->nombrempio)->get();
+
+            foreach ($usuariosApp as $usuarioApp) {
+                $municipio->totalUsuarios++;
+                $totalUsuariosPorMunicipio++;
+                if ($usuarioApp->sexo === 'M') {
+                    $hombres++;
+                    $municipio->hombres++;
+                }
+                if ($usuarioApp->sexo === 'F') {
+                    $mujeres++;
+                    $municipio->mujeres++;
+                }
+            }
+        }
+
+        foreach ($municipios as $municipio) {
+            if ($municipio->totalUsuarios != 0) {
+                $municipio->porcentajeMujeres   = $municipio->mujeres * 100 / $municipio->totalUsuarios;
+                $municipio->porcentajeHombres   = $municipio->hombres * 100 / $municipio->totalUsuarios;
+                $municipio->porcentajeMunicipal = $municipio->totalUsuarios * 100 / $totalUsuariosPorMunicipio;
+
+                $totalPorcentajeMunicipal += $municipio->porcentajeMunicipal;
+                $totalPorcentajeMujeres += $municipio->porcentajeMujeres;
+                $totalPorcentajeHombres += $municipio->porcentajeHombres;
+
+                $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
+                $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
+                $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+            }
+        }
+
+        if ($mujeres > 0) {
+            $porcentajeMujeres = $mujeres * 100 / $totalUsuariosPorMunicipio;
+        }
+        if ($hombres > 0) {
+            $porcentajeHombres = $hombres * 100 / $totalUsuariosPorMunicipio;
+        }
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $footer = '<div align="right">';
+        $footer .= utf8_decode("Página Única");
+        $footer .= '</div>';
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteMunicipiosPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'nombreDistrito', 'municipios', 'totalPorcentajeMunicipal', 'totalPorcentajeMujeres', 'totalPorcentajeHombres'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
+        return $pdf->inline('Estadísticas - Municipios por Distrito.pdf');
     }
 }

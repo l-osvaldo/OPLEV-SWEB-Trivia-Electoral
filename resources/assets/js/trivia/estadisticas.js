@@ -151,3 +151,117 @@ $('#modalVisorPDFUsuariosAPP').on('show.bs.modal', function(event) {
 $('#modalVisorPDFDistritos').on('show.bs.modal', function(event) {
     document.getElementById('VisorPDFDistritos').src = '../estadisticas/PDFDistritos/';
 });
+$('#selectDistrito').change(function() {
+    //console.log(this.value);
+    document.getElementById('loader').classList.remove('o-hidden-loader');
+    var distrito = this.value.split('-');
+    document.getElementById('divBtnPDF').style.display = 'block';
+    document.getElementById('nombreDistrito').innerHTML = distrito[0] + '. ' + distrito[1];
+    estadisticasPorDistrito(distrito[0]);
+    document.getElementById('VisorPDFMunicipios').src = '../estadisticas/PDFMunicipios/' + distrito[0] + '/' + distrito[1];
+});
+
+function estadisticasPorDistrito(numeroDistrito) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "municipiosPorDistrito",
+        type: 'POST',
+        data: {
+            numeroDistrito: numeroDistrito,
+        },
+        dataType: 'JSON',
+        success: function(data) {
+            //console.log(data);
+            var totalUsuarios = 0;
+            var porcentajeMunicipal = 0;
+            var porcentajeMujeres = 0;
+            var porcentajeHombres = 0;
+            var mujeres = 0;
+            var hombres = 0;
+            var municipios = [];
+            var arrayMujeres = [];
+            var arrayHombres = [];
+            var arrayTotalUsuarios = [];
+            $('#estadisticaMunicipios').DataTable().clear().draw();
+            $.each(data, function(index, value) {
+                //console.log(value['rango']);
+                $('#estadisticaMunicipios').DataTable().row.add([
+                    value['nombrempio'], '<div align="center">' + value['totalUsuarios'] + '</div>', '<div align="center">' + value['porcentajeMunicipal'] + ' %</div>', '<div align="center">' + value['mujeres'] + '</div>', '<div align="center">' + value['porcentajeMujeres'] + ' %</div>', '<div align="center">' + value['hombres'] + '</div>', '<div align="center">' + value['porcentajeHombres'] + ' %</div>'
+                ]).draw(false);
+                totalUsuarios += value['totalUsuarios'];
+                porcentajeMunicipal += value['porcentajeMunicipal'];
+                porcentajeMujeres += value['porcentajeMujeres'];
+                porcentajeHombres += value['porcentajeHombres'];
+                mujeres += value['mujeres'];
+                hombres += value['hombres'];
+                municipios.push(value['nombrempio']);
+                arrayMujeres.push(value['mujeres']);
+                arrayHombres.push(value['hombres']);
+                arrayTotalUsuarios.push(value['totalUsuarios']);
+            });
+            document.getElementById('totalUsuariosTD').innerHTML = totalUsuarios;
+            document.getElementById('porcentajeMunicipalTD').innerHTML = porcentajeMunicipal + ' %';
+            document.getElementById('mujeresTotalTD').innerHTML = mujeres;
+            document.getElementById('porcentajeMujeresTD').innerHTML = porcentajeMujeres + ' %';
+            document.getElementById('hombresTotalTD').innerHTML = hombres;
+            document.getElementById('porcentajeHombresTD').innerHTML = porcentajeHombres + ' %';
+            graficaMunicipios(municipios, arrayMujeres, arrayHombres, arrayTotalUsuarios);
+        }
+    })
+}
+
+function graficaMunicipios(municipios, mujeres, hombres, totales) {
+    console.log(municipios);
+    console.log(mujeres);
+    console.log(hombres);
+    console.log(totales);
+    Highcharts.chart('containerMunicipios', {
+        chart: {
+            type: 'column',
+        },
+        title: {
+            text: 'Estadísticas sobre los usuarios de la aplicación móvil por Municipio'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: municipios,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Usuarios Registrados'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' + '<td style="padding:0"><b>{point.y:.0f} Usuarios</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Mujeres',
+            data: mujeres
+        }, {
+            name: 'Hombres',
+            data: hombres
+        }, {
+            name: 'Total de Usuarios por Municipio',
+            data: totales
+        }]
+    });
+    document.getElementById('loader').classList.add('o-hidden-loader');
+}

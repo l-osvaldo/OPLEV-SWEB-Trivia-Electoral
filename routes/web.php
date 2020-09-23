@@ -51,10 +51,14 @@ Route::group(['middleware' => 'disablepreventback'], function () {
 
     Route::get('/estadisticas/usuariosAPP', 'TriviaController@usuariosAPP')->name('estadisticas.usuariosAPP');
     Route::get('/estadisticas/distritos', 'TriviaController@distritos')->name('estadisticas.distritos');
+    Route::get('/estadisticas/municipios', 'TriviaController@municipios')->name('estadisticas.municipios');
+    Route::post('/estadisticas/municipiosPorDistrito', 'TriviaController@municipiosPorDistrito')->name('municipiosPorDistrito');
+
     Route::get('/estadisticas/graficaUsuariosApp', 'TriviaController@graficaUsuariosApp')->name('graficaUsuariosApp');
     Route::get('/estadisticas/graficaDistritos', 'TriviaController@graficaDistritos')->name('graficaDistritos');
     Route::get('/estadisticas/PDFUsuariosAPP', 'TriviaController@PDFUsuariosAPP')->name('PDFUsuariosAPP');
     Route::get('/estadisticas/PDFDistritos', 'TriviaController@PDFDistritos')->name('PDFDistritos');
+    Route::get('/estadisticas/PDFMunicipios/{distrito}/{nombreDistrito}', 'TriviaController@PDFMunicipios')->name('PDFMunicipios');
 
     Route::get('/gestionPreguntas', 'TriviaController@gestionPreguntas')->name('gestionPreguntas');
 
