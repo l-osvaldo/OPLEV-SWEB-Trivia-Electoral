@@ -167,7 +167,7 @@
             </b>
         </h3>
         <div style="width: 40%">
-            <table>
+            <table style="font-size: 13px;">
                 <thead>
                     <tr class="header">
                         <th>
@@ -181,7 +181,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody style="font-size: 13px;">
+                <tbody>
                     <tr>
                         <td class="border">
                             Mujeres
