@@ -8,7 +8,7 @@
         <link rel="stylesheet" src="css/normalize.css" type="text/css">
             <style type="text/css">
                 body { 
-      font-size: 13px;
+      font-size: 12px;
       font-family: Arial, Helvetica, sans-serif;
     }
     .row:after {
