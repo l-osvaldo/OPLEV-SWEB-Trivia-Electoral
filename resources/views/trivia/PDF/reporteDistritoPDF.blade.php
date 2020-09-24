@@ -259,7 +259,7 @@
                 </th>
             </tr>
           </thead>
-          <tbody style="font-size: 11.5px;">
+          <tbody style="font-size: 11px;">
             @foreach ($distritos as $distrito)
                 <tr>
                     <td class="border" style="text-align: left !important;">
