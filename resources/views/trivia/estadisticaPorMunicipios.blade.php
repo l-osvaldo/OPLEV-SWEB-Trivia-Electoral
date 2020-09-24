@@ -92,9 +92,9 @@
             	<div class="col-sm-4">
                   	<!-- select -->
                   	<div class="form-group">
-                    	<label class="o-form-label">Seleccione el distrito:</label>
+                    	<label class="o-form-label">Seleccione Distrito Electoral:</label>
                     	<select class="form-control" id="selectDistrito">
-                      		<option value="0" disabled selected>Seleccione el distrito</option>
+                      		<option value="0" disabled selected>Seleccione Distrito Electoral</option>
                       		@foreach ($distritos as $distrito)
                       			<option value="{{ $distrito->numdto }}-{{ $distrito->nombrecorto }}">{{ $distrito->numdto }}. {{ $distrito->nombrecorto }}</option>
                       		@endforeach
@@ -113,16 +113,16 @@
             				Total de usuarios
             			</th>
             			<th>
-            				Porcentaje Municipal
+            				Porcentaje Distrital
             			</th>
             			<th>
-            				Mujeres
+            				Total de Mujeres
             			</th>
             			<th>
             				Porcentaje
             			</th>
             			<th>
-            				Hombres
+            				Total de Hombres
             			</th>
             			<th>
             				Porcentaje
@@ -130,7 +130,7 @@
             		</tr>
             	</thead>
             	<tfoot>
-            		<tr>
+            		<tr style="background-color: #DFDFDF;">
             			<td>
             				<b>TOTALES</b>
             			</td>

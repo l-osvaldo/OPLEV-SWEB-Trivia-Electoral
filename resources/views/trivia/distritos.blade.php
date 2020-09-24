@@ -98,13 +98,16 @@
                             Total de usuarios en el Dto.
                         </th>
                         <th>
-                            Mujeres
+                            Porcentaje Distrital
+                        </th>
+                        <th>
+                            Total de Mujeres
                         </th>
                         <th>
                             Porcentaje
                         </th>
                         <th>
-                            Hombres
+                            Total de Hombres
                         </th>
                         <th>
                             Porcentaje
@@ -119,6 +122,9 @@
                             </td>
                             <td align="center">
                                 {{ $distrito->totalUsuarios }}
+                            </td>
+                            <td align="center">
+                                {{ $distrito->porcentajeDistrital }} %
                             </td>
                             <td align="center">
                                 {{ $distrito->mujeres }}
@@ -137,12 +143,15 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr style="background-color: #DFDFDF;">
                         <td>
                             <b>TOTALES</b>
                         </td>
                         <td align="center">
                             <b>{{ $numeroUsuarios }}</b>
+                        </td>
+                        <td align="center">
+                            <b>100 %</b>
                         </td>
                         <td align="center">
                             <b>{{ $mujeres }}</b>

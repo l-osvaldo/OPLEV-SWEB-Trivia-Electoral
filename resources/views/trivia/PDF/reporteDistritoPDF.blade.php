@@ -134,8 +134,11 @@
                     <h2>
                         Organismo Público Local del Estado de Veracruz
                     </h2>
+                    <h3>
+                      Proceso Electoral 2021
+                    </h3>
                     <h4>
-                      Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
+                      Elección de Diputados Locales y Ayuntamientos
                     </h4>                    
                     
                         Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
@@ -143,7 +146,6 @@
                     
                     <br><br>
                     
-                      Estadísticas de los Usuarios por Distrito Electoral
                     
                 </td>
                 <td style="width: 120px; color:#fff">
@@ -163,7 +165,7 @@
         </div>
         <h3>
             <b>
-                Usuarios por sexo
+                Estadísticas de usuarios por sexo
             </b>
         </h3>
         <div style="width: 40%">
@@ -241,6 +243,9 @@
                     Total de usuarios en el Dto.
                 </th>
                 <th>
+                    Porcentaje Distrital
+                </th>
+                <th>
                     Mujeres
                 </th>
                 <th>
@@ -262,6 +267,9 @@
                     </td>
                     <td class="border">
                         {{ $distrito->totalUsuarios }}
+                    </td>
+                    <td class="border">
+                        {{ $distrito->porcentajeDistrital }} %
                     </td>
                     <td class="border">
                         {{ $distrito->mujeres }}
@@ -286,6 +294,9 @@
                 </td>
                 <td>
                     <b>{{ $numeroUsuarios }}</b>
+                </td>
+                <td>
+                    <b>100 %</b>
                 </td>
                 <td>
                     <b>{{ $mujeres }}</b>

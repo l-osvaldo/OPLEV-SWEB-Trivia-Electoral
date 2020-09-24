@@ -21,7 +21,7 @@
 
 <body class="d-flex flex-column h-100 login" style="background: url('{{ asset('images/backc.jpg') }}') center center !important;">
     @yield('content')
-    }
+    
 </body>
 
 </html>

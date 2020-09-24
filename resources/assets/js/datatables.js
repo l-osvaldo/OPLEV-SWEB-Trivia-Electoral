@@ -129,7 +129,7 @@ $(document).ready(function() {
         "fixedHeader": true,
         "ordering": false,
         "sSearch": "Filter Data",
-        "dom": "<'row'<'col-sm-4 text-left'B><'col-sm-6 text-right'f>>" + "<'row'<'col-sm-10'tr>>",
+        "dom": "<'row'<'col-sm-4 text-left'B><'col-sm-8 text-right'f>>" + "<'row'<'col-sm-12'tr>>",
         "language": {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",
@@ -175,7 +175,7 @@ $(document).ready(function() {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",
             "sZeroRecords": "No se encontraron resultados",
-            "sEmptyTable": "Ningún dato disponible en esta tabla / Seleccione un Distrito",
+            "sEmptyTable": "Ningún dato disponible en esta tabla / Seleccione un Distrito Electoral",
             "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
             "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
             "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",

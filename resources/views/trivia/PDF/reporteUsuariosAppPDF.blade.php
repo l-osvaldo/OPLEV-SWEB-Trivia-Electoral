@@ -128,8 +128,11 @@
                     <h2>
                         Organismo Público Local del Estado de Veracruz
                     </h2>
+                    <h3>
+                      Proceso Electoral 2021
+                    </h3>
                     <h4>
-                      Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
+                      Elección de Diputados Locales y Ayuntamientos
                     </h4>
                     <h4>
                         Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
@@ -157,7 +160,7 @@
         
         <h3>
             <b>
-                Usuarios por sexo
+                Estadísticas de usuarios por sexo
             </b>
         </h3>
         <div style="width: 40%">
@@ -223,7 +226,7 @@
         <br>
         <h3>
             <b>
-                Usuarios por rango de edades
+                Estadísticas de los usuarios por rango de edades
             </b>
         </h3>
         <table>
@@ -239,10 +242,10 @@
                   Porcentaje
               </th>
               <th>
-                  Mujeres
+                  Total de Mujeres
               </th>
               <th>
-                  Hombres
+                  Total de Hombres
               </th>
             </tr>
           </thead>

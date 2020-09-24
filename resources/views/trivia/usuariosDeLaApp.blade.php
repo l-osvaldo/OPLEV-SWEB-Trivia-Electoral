@@ -100,10 +100,10 @@
                             Porcentaje
                         </th>
                         <th>
-                            Mujeres
+                            Total de Mujeres
                         </th>
                         <th>
-                            Hombres
+                            Total de Hombres
                         </th>
                     </tr>
                 </thead>
@@ -129,7 +129,7 @@
                     @endforeach                    
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr style="background-color: #DFDFDF;">
                         <td>
                             <b>TOTALES</b>
                         </td>

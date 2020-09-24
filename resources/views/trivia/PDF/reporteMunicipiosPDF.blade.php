@@ -128,15 +128,15 @@
                     <h2>
                         Organismo Público Local del Estado de Veracruz
                     </h2>
+                    <h3>
+                      Proceso Electoral 2021
+                    </h3>
                     <h4>
-                      Proceso Electoral 2021 - Elección de Diputados Locales y Ayuntamientos
+                       Elección de Diputados Locales y Ayuntamientos
                     </h4>
                     <h4>
                         Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
-                        de selección para integrar los Consejos Distritales en Veracruz
-                    </h4>
-                    <h4>
-                      Estadísticas de los Municipios por Distrito Electoral
+                        de selección para integrar los Consejos Distritales y Especiales en Veracruz
                     </h4>
                 </td>
                 <td style="width: 120px; color:#fff">
@@ -154,10 +154,13 @@
               </span>
           </p>
         </div>
+        <h3>
+          Distrito Electoral: {{ $nombreDistrito }}
+        </h3>
         
         <h3>
             <b>
-                Usuarios por sexo del Distrito Electoral de {{ $nombreDistrito }}
+                Estadísticas de usuarios por sexo 
             </b>
         </h3>
         <div style="width: 40%">
@@ -223,7 +226,7 @@
         <br>
         <h3>
             <b>
-                Estadísticas de los municipios por distrito
+                Estadística Municipal
             </b>
         </h3>
         
@@ -234,19 +237,19 @@
                 Municipio
               </th>
               <th>
-                Total de usuarios
+                Total de usuarios por Municipio
               </th>
               <th>
-                Porcentaje Municipal
+                Porcentaje Distrital
               </th>
               <th>
-                Mujeres
+                Total de Mujeres
               </th>
               <th>
                 Porcentaje
               </th>
               <th>
-                Hombres
+                Total de Hombres
               </th>
               <th>
                 Porcentaje
