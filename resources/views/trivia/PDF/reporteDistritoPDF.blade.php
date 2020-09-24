@@ -235,7 +235,7 @@
         </h3>
         <table>
           <thead>
-            <tr class="header">
+            <tr class="header" style="font-size: 12px;">
                 <th>
                     Distrito
                 </th>
@@ -259,7 +259,7 @@
                 </th>
             </tr>
           </thead>
-          <tbody style="font-size: 12px;">
+          <tbody style="font-size: 11.5px;">
             @foreach ($distritos as $distrito)
                 <tr>
                     <td class="border" style="text-align: left !important;">
@@ -288,7 +288,7 @@
             @endforeach
           </tbody>
           <tfoot>
-            <tr class="headerfooter">
+            <tr class="headerfooter" style="font-size: 12px;">
                 <td style="text-align: left !important;">
                     <b>TOTALES</b>
                 </td>
