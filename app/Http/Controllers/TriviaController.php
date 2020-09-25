@@ -189,7 +189,7 @@ class TriviaController extends Controller
             $nombreModulo   = "Estadísticas - Distritos";
             $usuariosApp    = AppUser::all();
             $numeroUsuarios = count($usuariosApp);
-            $distritos      = Distrito::all();
+            $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
             $hombres = 0;
             $mujeres = 0;
@@ -232,8 +232,8 @@ class TriviaController extends Controller
             foreach ($distritos as $distrito) {
                 if ($distrito->totalUsuarios != 0) {
                     $distrito->porcentajeDistrital = $distrito->totalUsuarios * 100 / $numeroUsuarios;
-                    $distrito->porcentajeMujeres   = $distrito->mujeres * 100 / $distrito->totalUsuarios;
-                    $distrito->porcentajeHombres   = $distrito->hombres * 100 / $distrito->totalUsuarios;
+                    $distrito->porcentajeMujeres   = $distrito->mujeres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
+                    $distrito->porcentajeHombres   = $distrito->hombres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
 
                     $distrito->porcentajeMujeres   = round($distrito->porcentajeMujeres, 2);
                     $distrito->porcentajeHombres   = round($distrito->porcentajeHombres, 2);
@@ -268,7 +268,7 @@ class TriviaController extends Controller
             $nombreModulo   = "Estadísticas - Municipios";
             $usuariosApp    = AppUser::all();
             $numeroUsuarios = count($usuariosApp);
-            $distritos      = Distrito::all();
+            $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
             $hombres = 0;
             $mujeres = 0;
@@ -337,9 +337,9 @@ class TriviaController extends Controller
 
         foreach ($municipios as $municipio) {
             if ($municipio->totalUsuarios != 0) {
-                $municipio->porcentajeMujeres   = $municipio->mujeres * 100 / $municipio->totalUsuarios;
-                $municipio->porcentajeHombres   = $municipio->hombres * 100 / $municipio->totalUsuarios;
                 $municipio->porcentajeMunicipal = $municipio->totalUsuarios * 100 / $totalUsuariosPorMunicipio;
+                $municipio->porcentajeMujeres   = $municipio->mujeres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
+                $municipio->porcentajeHombres   = $municipio->hombres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
 
                 $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
                 $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
@@ -510,7 +510,7 @@ class TriviaController extends Controller
     {
         $usuariosApp    = AppUser::all();
         $numeroUsuarios = count($usuariosApp);
-        $distritos      = Distrito::all();
+        $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
         foreach ($distritos as $distrito) {
             array_add($distrito, 'totalUsuarios', 0);
@@ -657,7 +657,7 @@ class TriviaController extends Controller
     {
         $usuariosApp    = AppUser::all();
         $numeroUsuarios = count($usuariosApp);
-        $distritos      = Distrito::all();
+        $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
         $hombres = 0;
         $mujeres = 0;
@@ -700,8 +700,8 @@ class TriviaController extends Controller
         foreach ($distritos as $distrito) {
             if ($distrito->totalUsuarios != 0) {
                 $distrito->porcentajeDistrital = $distrito->totalUsuarios * 100 / $numeroUsuarios;
-                $distrito->porcentajeMujeres   = $distrito->mujeres * 100 / $distrito->totalUsuarios;
-                $distrito->porcentajeHombres   = $distrito->hombres * 100 / $distrito->totalUsuarios;
+                $distrito->porcentajeMujeres   = $distrito->mujeres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
+                $distrito->porcentajeHombres   = $distrito->hombres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
 
                 $distrito->porcentajeMujeres   = round($distrito->porcentajeMujeres, 2);
                 $distrito->porcentajeHombres   = round($distrito->porcentajeHombres, 2);
@@ -775,9 +775,9 @@ class TriviaController extends Controller
 
         foreach ($municipios as $municipio) {
             if ($municipio->totalUsuarios != 0) {
-                $municipio->porcentajeMujeres   = $municipio->mujeres * 100 / $municipio->totalUsuarios;
-                $municipio->porcentajeHombres   = $municipio->hombres * 100 / $municipio->totalUsuarios;
                 $municipio->porcentajeMunicipal = $municipio->totalUsuarios * 100 / $totalUsuariosPorMunicipio;
+                $municipio->porcentajeMujeres   = $municipio->mujeres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
+                $municipio->porcentajeHombres   = $municipio->hombres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
 
                 $totalPorcentajeMunicipal += $municipio->porcentajeMunicipal;
                 $totalPorcentajeMujeres += $municipio->porcentajeMujeres;
@@ -786,6 +786,9 @@ class TriviaController extends Controller
                 $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
                 $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
                 $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+
+                $totalPorcentajeMujeres = round($totalPorcentajeMujeres, 2);
+                $totalPorcentajeHombres = round($totalPorcentajeHombres, 2);
             }
         }
 

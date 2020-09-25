@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>
-                    
-                </h1>
+                <h4>
+                    <b>Estadísticas de usuarios por sexo</b>
+                </h4>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -88,6 +88,9 @@
 
     <div class="card borde-ople">
         <div class="card-body">
+            <h4>
+                <b>Estadísticas por distrito</b>                
+            </h4>
             <table class="table table-striped table-bordered" id="estadisticaDistritos" style="width:100%">
                 <thead>
                     <tr align="center">
@@ -118,7 +121,11 @@
                     @foreach ($distritos as $distrito)
                         <tr>
                             <td>
-                                {{ $distrito->numdto }}. {{ $distrito->nombrecorto }}
+                                {{ $distrito->numdto }}.
+                                {{ $distrito->numdto == 10 ? ' y 11. ': ''  }}
+                                {{ $distrito->numdto == 14 ? ' y 15. ': ''  }}
+                                {{ $distrito->numdto == 29 ? ' y 30. ': ''  }}
+                                {{ $distrito->nombrecorto }}
                             </td>
                             <td align="center">
                                 {{ $distrito->totalUsuarios }}

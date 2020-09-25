@@ -155,8 +155,11 @@ $('#selectDistrito').change(function() {
     //console.log(this.value);
     document.getElementById('loader').classList.remove('o-hidden-loader');
     var distrito = this.value.split('-');
+    var complementoDistrito1 = distrito[0] == 10 ? 'y 11. ' : '';
+    var complementoDistrito2 = distrito[0] == 14 ? 'y 15. ' : '';
+    var complementoDistrito3 = distrito[0] == 29 ? 'y 30. ' : '';
     document.getElementById('divBtnPDF').style.display = 'block';
-    document.getElementById('nombreDistrito').innerHTML = distrito[0] + '. ' + distrito[1];
+    document.getElementById('nombreDistrito').innerHTML = distrito[0] + '. ' + complementoDistrito1 + complementoDistrito2 + complementoDistrito3 + distrito[1];
     estadisticasPorDistrito(distrito[0]);
     document.getElementById('VisorPDFMunicipios').src = '../estadisticas/PDFMunicipios/' + distrito[0] + '/' + distrito[1];
 });
@@ -203,6 +206,10 @@ function estadisticasPorDistrito(numeroDistrito) {
                 arrayHombres.push(value['hombres']);
                 arrayTotalUsuarios.push(value['totalUsuarios']);
             });
+            document.getElementById('divEstadisticasCuadros').style.display = 'block';
+            document.getElementById('municipiosTotalUsuarios').innerHTML = mujeres + hombres;
+            document.getElementById('municipiosTotalMujaresPorcentaje').innerHTML = mujeres + ' - ' + porcentajeMujeres + '<sup style="font-size: 20px">%</sup>';
+            document.getElementById('municipiosTotalHombresPorcentaje').innerHTML = hombres + ' - ' + porcentajeHombres + '<sup style="font-size: 20px">%</sup>';
             document.getElementById('totalUsuariosTD').innerHTML = totalUsuarios;
             document.getElementById('porcentajeMunicipalTD').innerHTML = porcentajeMunicipal + ' %';
             document.getElementById('mujeresTotalTD').innerHTML = mujeres;

@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>
-                    
-                </h1>
+                <h4>
+                    <b>Estadísticas de usuarios por sexo</b>
+                </h4>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -87,6 +87,9 @@
     </div>
     <div class="card borde-ople">
         <div class="card-body">
+            <h4>
+                <b>Estadísticas de los usuarios por rango de edades</b>                
+            </h4>
             <table class="table table-striped table-bordered" id="estadisticaUsuarios" style="width:100%">
                 <thead>
                     <tr align="center">
@@ -94,7 +97,7 @@
                             Rangos de edad
                         </th>
                         <th>
-                            Usuarios
+                            Total de usuarios
                         </th>
                         <th>
                             Porcentaje

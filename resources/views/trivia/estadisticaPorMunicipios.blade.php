@@ -22,87 +22,105 @@
                 </ol>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- select -->
+                <div class="form-group">
+                    <label class="o-form-label">Seleccione Distrito Electoral:</label>
+                    <select class="form-control" id="selectDistrito">
+                        <option value="0" disabled selected>Seleccione Distrito Electoral</option>
+                        @foreach ($distritos as $distrito)
+                            <option value="{{ $distrito->numdto }}-{{ $distrito->nombrecorto }}">
+                                {{ $distrito->numdto }}.
+                                {{ $distrito->numdto == 10 ? ' y 11. ': ''  }}
+                                {{ $distrito->numdto == 14 ? ' y 15. ': ''  }}
+                                {{ $distrito->numdto == 29 ? ' y 30. ': ''  }}
+                                {{ $distrito->nombrecorto }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.container-fluid -->
 </section>
 
 <section class="content">
-    <div class="row">
-        
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box card-primary card-outline">
-                <div class="inner">
-                    <p><b>Usuarios Registrados</b></p>
+    <div style="display: none" id="divEstadisticasCuadros">
+        <h4>
+            <b>Estadísticas de usuarios por sexo del Distrito Electoral</b>
+        </h4>
+        <div class="row">            
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box card-primary card-outline">
+                    <div class="inner">
+                        <p><b>Usuarios Registrados</b></p>
 
-                    <h3 class="o-color-primario">{{ $numeroUsuarios }}</h3>                    
+                        <h3 class="o-color-primario" id="municipiosTotalUsuarios"></h3>                    
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus o-color-primario "></i>
+                    </div>
+                    {{-- <span class="small-box-footer">
+                        &nbsp;
+                    </span> --}}
                 </div>
-                <div class="icon">
-                    <i class="fas fa-user-plus o-color-primario "></i>
-                </div>
-                {{-- <span class="small-box-footer">
-                    &nbsp;
-                </span> --}}
             </div>
-        </div>
 
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box card-primary card-outline">
-                <div class="inner">
-                    <p><b>Mujeres</b></p>
-                    <h3 class="o-color-primario">{{ $mujeres }} - {{ $porcentajeMujeres }}<sup style="font-size: 20px">%</sup></h3>                    
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box card-primary card-outline">
+                    <div class="inner">
+                        <p><b>Total de Mujeres</b></p>
+                        <h3 class="o-color-primario" id="municipiosTotalMujaresPorcentaje"><sup style="font-size: 20px">%</sup></h3>                    
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-female o-color-primario"></i>
+                    </div>
+                    {{-- <span class="small-box-footer">
+                        Edad promedio: {{ $promedioMujeres }} años
+                    </span> --}}
                 </div>
-                <div class="icon">
-                    <i class="fas fa-female o-color-primario"></i>
-                </div>
-                {{-- <span class="small-box-footer">
-                    Edad promedio: {{ $promedioMujeres }} años
-                </span> --}}
             </div>
+            <div class="col-lg-3 col-6">
+                <!-- small card -->
+                <div class="small-box card-primary card-outline">
+                    <div class="inner">
+                        <p><b>Total de Hombres</b></p>
+                        <h3 class="o-color-primario" id="municipiosTotalHombresPorcentaje"><sup style="font-size: 20px">%</sup></h3>                    
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-male o-color-primario"></i>
+                    </div>
+                    {{-- <span class="small-box-footer">
+                        Edad promedio: {{ $promedioHombres }} años
+                    </span> --}}
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div style="height: 1em;margin: 5em 0 0 auto" align="right" id="divBtnPDF">
+                    <button class="btn btn-danger o-fondo-1" type="button" data-target="#modalVisorPDFMunicipios" data-toggle="modal">
+                        <i class="fas fa-file-pdf"></i>
+                        <b>Generar PDF</b>                    
+                    </button>
+                </div>
+            </div>        
         </div>
-        <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box card-primary card-outline">
-                <div class="inner">
-                    <p><b>Hombres</b></p>
-                    <h3 class="o-color-primario">{{ $hombres }} - {{ $porcentajeHombres }}<sup style="font-size: 20px">%</sup></h3>                    
-                </div>
-                <div class="icon">
-                    <i class="fas fa-male o-color-primario"></i>
-                </div>
-                {{-- <span class="small-box-footer">
-                    Edad promedio: {{ $promedioHombres }} años
-                </span> --}}
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div style="display: none; height: 1em;margin: 5em 0 0 auto" align="right" id="divBtnPDF">
-                <button class="btn btn-danger o-fondo-1" type="button" data-target="#modalVisorPDFMunicipios" data-toggle="modal">
-                    <i class="fas fa-file-pdf"></i>
-                    <b>Generar PDF</b>                    
-                </button>
-            </div>
-        </div>        
     </div>
-
     <div class="card borde-ople">
         <div class="card-body">
             <div class="row">
-            	<div class="col-sm-4">
-                  	<!-- select -->
-                  	<div class="form-group">
-                    	<label class="o-form-label">Seleccione Distrito Electoral:</label>
-                    	<select class="form-control" id="selectDistrito">
-                      		<option value="0" disabled selected>Seleccione Distrito Electoral</option>
-                      		@foreach ($distritos as $distrito)
-                      			<option value="{{ $distrito->numdto }}-{{ $distrito->nombrecorto }}">{{ $distrito->numdto }}. {{ $distrito->nombrecorto }}</option>
-                      		@endforeach
-                    	</select>
-                  	</div>
+                <div class="col-sm-6">
+                    <h4>
+                        <b>Estadística Municipal</b>
+                    </h4>
                 </div>
-            </div>
-            <label><b>Distrito: </b></label> <label id="nombreDistrito"></label>
+                <div class="col-sm-6">
+                    <label><b>Distrito Electoral: </b></label> <label id="nombreDistrito"></label>
+                </div>
+            </div>           
+            
             <table class="table table-striped table-bordered" id="estadisticaMunicipios" style="width:100%">
             	<thead>
             		<tr align="center">

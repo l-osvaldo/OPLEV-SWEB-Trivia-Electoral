@@ -8,7 +8,7 @@
         <link rel="stylesheet" src="css/normalize.css" type="text/css">
             <style type="text/css">
                 body { 
-      font-size: 12px;
+      font-size: 13px;
       font-family: Arial, Helvetica, sans-serif;
     }
     .row:after {
@@ -140,10 +140,10 @@
                     <h4>
                       Elección de Diputados Locales y Ayuntamientos
                     </h4>                    
-                    
+                    <h4>
                         Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
                         de selección para integrar los Consejos Distritales en Veracruz
-                    
+                    </h4>
                     <br><br>
                     
                     
@@ -235,7 +235,7 @@
         </h3>
         <table>
           <thead>
-            <tr class="header" style="font-size: 12px;">
+            <tr class="header" style="font-size: 13px;">
                 <th>
                     Distrito
                 </th>
@@ -259,11 +259,15 @@
                 </th>
             </tr>
           </thead>
-          <tbody style="font-size: 11px;">
+          <tbody style="font-size: 12px;">
             @foreach ($distritos as $distrito)
                 <tr>
                     <td class="border" style="text-align: left !important;">
-                        {{ $distrito->numdto }}. {{ $distrito->nombrecorto }}
+                        {{ $distrito->numdto }}.
+                        {{ $distrito->numdto == 10 ? ' y 11. ': ''  }}
+                        {{ $distrito->numdto == 14 ? ' y 15. ': ''  }}
+                        {{ $distrito->numdto == 29 ? ' y 30. ': ''  }}
+                        {{ $distrito->nombrecorto }}
                     </td>
                     <td class="border">
                         {{ $distrito->totalUsuarios }}
