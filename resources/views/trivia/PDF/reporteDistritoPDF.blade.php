@@ -141,11 +141,8 @@
                       Elección de Diputados Locales y Ayuntamientos
                     </h4>                    
                     <h4>
-                        Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
-                        de selección para integrar los Consejos Distritales en Veracruz
-                    </h4>
-                    <br><br>
-                    
+                        Aplicación móvil para aumentar los conocimientos en materia electoral
+                    </h4>                  
                     
                 </td>
                 <td style="width: 120px; color:#fff">
@@ -165,7 +162,7 @@
         </div>
         <h3>
             <b>
-                Estadísticas de usuarios por sexo
+                Usuarios de la app móvil por sexo
             </b>
         </h3>
         <div style="width: 40%">
@@ -196,30 +193,30 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="border">
                             Hombres
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $hombres }}
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $porcentajeHombres }} %
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr class="headerfooter">
-                        <td>
+                        <td class="border">
                             <b>
                                 TOTALES
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $mujeres + $hombres }}
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $porcentajeMujeres + $porcentajeHombres }} %
                             </b>
@@ -230,7 +227,7 @@
         </div>
         <h3>
             <b>
-                Estadísticas por distrito
+                Estadísticas por Distrito Electoral
             </b>
         </h3>
         <table>
@@ -243,26 +240,26 @@
                     Total de usuarios en el Dto.
                 </th>
                 <th>
-                    Porcentaje Distrital
+                    Porcentaje Distrital del total de usuarios
                 </th>
                 <th>
-                    Mujeres
+                    Total de Mujeres por Distrito
                 </th>
                 <th>
-                    Porcentaje 
+                    Porcentaje de Mujeres por Distrito
                 </th>
                 <th>
-                    Hombres
+                    Total de Hombres por Distrito
                 </th>
                 <th>
-                    Porcentaje 
+                    Porcentaje de Hombres por Distrito 
                 </th>
             </tr>
           </thead>
           <tbody style="font-size: 12px;">
             @foreach ($distritos as $distrito)
                 <tr>
-                    <td class="border" style="text-align: left !important;">
+                    <td class="border" style="text-align: left !important; width: 18%">
                         {{ $distrito->numdto }}.
                         {{ $distrito->numdto == 10 ? ' y 11. ': ''  }}
                         {{ $distrito->numdto == 14 ? ' y 15. ': ''  }}
@@ -293,25 +290,25 @@
           </tbody>
           <tfoot>
             <tr class="headerfooter" style="font-size: 12px;">
-                <td style="text-align: left !important;">
+                <td style="text-align: left !important;" class="border">
                     <b>TOTALES</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>{{ $numeroUsuarios }}</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>100 %</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>{{ $mujeres }}</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>{{ $porcentajeMujeres }} %</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>{{ $hombres }}</b>
                 </td>
-                <td>
+                <td class="border">
                     <b>{{ $porcentajeHombres }} %</b>
                 </td>
             </tr>

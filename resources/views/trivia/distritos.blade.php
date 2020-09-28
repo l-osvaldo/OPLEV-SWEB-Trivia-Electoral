@@ -101,19 +101,19 @@
                             Total de usuarios en el Dto.
                         </th>
                         <th>
-                            Porcentaje Distrital
+                            Porcentaje Distrital del total de usuarios
                         </th>
                         <th>
-                            Total de Mujeres
+                            Total de Mujeres por Distrito
                         </th>
                         <th>
-                            Porcentaje
+                            Porcentaje de Mujeres por Distrito
                         </th>
                         <th>
-                            Total de Hombres
+                            Total de Hombres por Distrito
                         </th>
                         <th>
-                            Porcentaje
+                            Porcentaje de Hombres por Distrito 
                         </th>
                     </tr>
                 </thead>

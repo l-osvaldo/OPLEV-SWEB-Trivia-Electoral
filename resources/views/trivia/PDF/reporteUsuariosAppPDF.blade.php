@@ -135,8 +135,7 @@
                       Elección de Diputados Locales y Ayuntamientos
                     </h4>
                     <h4>
-                        Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
-                        de selección para integrar los Consejos Distritales en Veracruz
+                        Aplicación móvil para aumentar los conocimientos en materia electoral
                     </h4>
                     <h4>
                       Estadísticas de los Usuarios
@@ -160,7 +159,7 @@
         
         <h3>
             <b>
-                Estadísticas de usuarios por sexo
+                Usuarios de la app móvil por sexo
             </b>
         </h3>
         <div style="width: 40%">
@@ -191,30 +190,30 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="border">
                             Hombres
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $hombres }}
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $porcentajeHombres }} %
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr class="headerfooter">
-                        <td>
+                        <td class="border">
                             <b>
                                 TOTALES
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $mujeres + $hombres }}
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $porcentajeMujeres + $porcentajeHombres }} %
                             </b>
@@ -226,7 +225,7 @@
         <br>
         <h3>
             <b>
-                Estadísticas de los usuarios por rango de edades
+                Distribución de usuarios por rango de edades
             </b>
         </h3>
         <table>
@@ -272,19 +271,19 @@
           </tbody>
           <tfoot>
             <tr class="headerfooter">
-              <td>
+              <td class="border">
                   <b>TOTALES</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $numeroUsuarios }}</b>
               </td>
-              <td>
+              <td class="border">
                   <b>100 %</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $mujeres }}</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $hombres }}</b>
               </td>
             </tr>

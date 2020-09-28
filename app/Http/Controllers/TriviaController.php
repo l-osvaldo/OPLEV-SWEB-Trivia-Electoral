@@ -87,6 +87,8 @@ class TriviaController extends Controller
             $porcentajeMujeres = 0;
             $porcentajeHombres = 0;
 
+            $validarPorcentaje = 0;
+
             $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
                 array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
                 array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
@@ -159,7 +161,22 @@ class TriviaController extends Controller
 
             for ($i = 0; $i < count($estadisticas); $i++) {
                 $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
-                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+                if ($estadisticas[$i]['porcentaje'] > 0) {
+                    $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+                }
+
+                $validarPorcentaje += $estadisticas[$i]['porcentaje'];
+            }
+
+            if ($validarPorcentaje > 100) {
+                $decimalesRestantes = $validarPorcentaje - 100;
+                $decimalesRestantes = round($decimalesRestantes, 2);
+                for ($i = (count($estadisticas) - 1); $i >= 0; $i--) {
+                    if (is_float($estadisticas[$i]['porcentaje'])) {
+                        $estadisticas[$i]['porcentaje'] -= $decimalesRestantes;
+                        break;
+                    }
+                }
             }
 
             if ($mujeres > 0) {
@@ -169,8 +186,8 @@ class TriviaController extends Controller
                 $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
             }
 
-            $porcentajeMujeres = round($porcentajeMujeres, 2);
-            $porcentajeHombres = round($porcentajeHombres, 2);
+            $porcentajeMujeres = round($porcentajeMujeres, 3);
+            $porcentajeHombres = round($porcentajeHombres, 3);
 
             $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'));
 
@@ -196,6 +213,10 @@ class TriviaController extends Controller
 
             $porcentajeMujeres = 0;
             $porcentajeHombres = 0;
+
+            $validarPorcentajeTotal   = 0;
+            $validarPorcentajeMujeres = 0;
+            $validarPorcentajeHombres = 0;
 
             foreach ($distritos as $distrito) {
                 array_add($distrito, 'totalUsuarios', 0);
@@ -235,9 +256,31 @@ class TriviaController extends Controller
                     $distrito->porcentajeMujeres   = $distrito->mujeres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
                     $distrito->porcentajeHombres   = $distrito->hombres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
 
-                    $distrito->porcentajeMujeres   = round($distrito->porcentajeMujeres, 2);
-                    $distrito->porcentajeHombres   = round($distrito->porcentajeHombres, 2);
-                    $distrito->porcentajeDistrital = round($distrito->porcentajeDistrital, 2);
+                    if ($distrito->porcentajeMujeres > 0) {
+                        $distrito->porcentajeMujeres = round($distrito->porcentajeMujeres, 2);
+                    }
+                    if ($distrito->porcentajeHombres > 0) {
+                        $distrito->porcentajeHombres = round($distrito->porcentajeHombres, 2);
+                    }
+                    if ($distrito->porcentajeDistrital > 0) {
+                        $distrito->porcentajeDistrital = round($distrito->porcentajeDistrital, 2);
+                    }
+
+                    $validarPorcentajeTotal += $distrito->porcentajeDistrital;
+                    $validarPorcentajeMujeres += $distrito->porcentajeMujeres;
+                    $validarPorcentajeHombres += $distrito->porcentajeHombres;
+                }
+            }
+
+            if ($validarPorcentajeTotal > 100) {
+                $decimalesRestantes = $validarPorcentajeTotal - 100;
+                $decimalesRestantes = round($decimalesRestantes, 2);
+
+                for ($i = (count($distritos) - 1); $i >= 0; $i--) {
+                    if (is_float($distritos[$i]->porcentajeDistrital)) {
+                        $distritos[$i]->porcentajeDistrital -= $decimalesRestantes;
+                        break;
+                    }
                 }
             }
 
@@ -320,6 +363,10 @@ class TriviaController extends Controller
 
         $totalUsuariosPorMunicipio = 0;
 
+        $validarPorcentajeTotal   = 0;
+        $validarPorcentajeMujeres = 0;
+        $validarPorcentajeHombres = 0;
+
         foreach ($municipios as $municipio) {
             $usuariosApp = AppUser::where('municipio', $municipio->nombrempio)->get();
 
@@ -341,9 +388,31 @@ class TriviaController extends Controller
                 $municipio->porcentajeMujeres   = $municipio->mujeres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
                 $municipio->porcentajeHombres   = $municipio->hombres * $municipio->porcentajeMunicipal / $municipio->totalUsuarios;
 
-                $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
-                $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
-                $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+                if ($municipio->porcentajeMujeres > 0) {
+                    $municipio->porcentajeMujeres = round($municipio->porcentajeMujeres, 2);
+                }
+                if ($municipio->porcentajeHombres > 0) {
+                    $municipio->porcentajeHombres = round($municipio->porcentajeHombres, 2);
+                }
+                if ($municipio->porcentajeMunicipal > 0) {
+                    $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+                }
+
+                $validarPorcentajeTotal += $municipio->porcentajeMunicipal;
+                $validarPorcentajeMujeres += $municipio->porcentajeMujeres;
+                $validarPorcentajeHombres += $municipio->porcentajeHombres;
+            }
+        }
+
+        if ($validarPorcentajeTotal > 100) {
+            $decimalesRestantes = $validarPorcentajeTotal - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+
+            for ($i = (count($municipios) - 1); $i >= 0; $i--) {
+                if (is_float($municipios[$i]->porcentajeMunicipal)) {
+                    $municipios[$i]->porcentajeMunicipal -= $decimalesRestantes;
+                    break;
+                }
             }
         }
 
@@ -475,6 +544,8 @@ class TriviaController extends Controller
 
         // print_r($estadisticas[0]['rango']);exit;
 
+        $validarPorcentaje = 0;
+
         foreach ($usuariosApp as $value) {
 
             if ($value->edad >= 18 && $value->edad <= 30) {
@@ -500,7 +571,22 @@ class TriviaController extends Controller
 
         for ($i = 0; $i < count($estadisticas); $i++) {
             $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
-            $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            if ($estadisticas[$i]['porcentaje'] > 0) {
+                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            }
+
+            $validarPorcentaje += $estadisticas[$i]['porcentaje'];
+        }
+
+        if ($validarPorcentaje > 100) {
+            $decimalesRestantes = $validarPorcentaje - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+            for ($i = (count($estadisticas) - 1); $i >= 0; $i--) {
+                if (is_float($estadisticas[$i]['porcentaje'])) {
+                    $estadisticas[$i]['porcentaje'] -= $decimalesRestantes;
+                    break;
+                }
+            }
         }
 
         return response()->json($estadisticas);
@@ -569,6 +655,8 @@ class TriviaController extends Controller
 
         // print_r($estadisticas[0]['rango']);exit;
 
+        $validarPorcentaje = 0;
+
         foreach ($usuariosApp as $value) {
             if ($value->sexo === 'M') {
                 $hombres++;
@@ -632,7 +720,22 @@ class TriviaController extends Controller
 
         for ($i = 0; $i < count($estadisticas); $i++) {
             $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
-            $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            if ($estadisticas[$i]['porcentaje'] > 0) {
+                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            }
+
+            $validarPorcentaje += $estadisticas[$i]['porcentaje'];
+        }
+
+        if ($validarPorcentaje > 100) {
+            $decimalesRestantes = $validarPorcentaje - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+            for ($i = (count($estadisticas) - 1); $i >= 0; $i--) {
+                if (is_float($estadisticas[$i]['porcentaje'])) {
+                    $estadisticas[$i]['porcentaje'] -= $decimalesRestantes;
+                    break;
+                }
+            }
         }
 
         if ($mujeres > 0) {
@@ -664,6 +767,10 @@ class TriviaController extends Controller
 
         $porcentajeMujeres = 0;
         $porcentajeHombres = 0;
+
+        $validarPorcentajeTotal   = 0;
+        $validarPorcentajeMujeres = 0;
+        $validarPorcentajeHombres = 0;
 
         foreach ($distritos as $distrito) {
             array_add($distrito, 'totalUsuarios', 0);
@@ -703,9 +810,31 @@ class TriviaController extends Controller
                 $distrito->porcentajeMujeres   = $distrito->mujeres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
                 $distrito->porcentajeHombres   = $distrito->hombres * $distrito->porcentajeDistrital / $distrito->totalUsuarios;
 
-                $distrito->porcentajeMujeres   = round($distrito->porcentajeMujeres, 2);
-                $distrito->porcentajeHombres   = round($distrito->porcentajeHombres, 2);
-                $distrito->porcentajeDistrital = round($distrito->porcentajeDistrital, 2);
+                if ($distrito->porcentajeMujeres > 0) {
+                    $distrito->porcentajeMujeres = round($distrito->porcentajeMujeres, 2);
+                }
+                if ($distrito->porcentajeHombres > 0) {
+                    $distrito->porcentajeHombres = round($distrito->porcentajeHombres, 2);
+                }
+                if ($distrito->porcentajeDistrital > 0) {
+                    $distrito->porcentajeDistrital = round($distrito->porcentajeDistrital, 2);
+                }
+
+                $validarPorcentajeTotal += $distrito->porcentajeDistrital;
+                $validarPorcentajeMujeres += $distrito->porcentajeMujeres;
+                $validarPorcentajeHombres += $distrito->porcentajeHombres;
+            }
+        }
+
+        if ($validarPorcentajeTotal > 100) {
+            $decimalesRestantes = $validarPorcentajeTotal - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+
+            for ($i = (count($distritos) - 1); $i >= 0; $i--) {
+                if (is_float($distritos[$i]->porcentajeDistrital)) {
+                    $distritos[$i]->porcentajeDistrital -= $decimalesRestantes;
+                    break;
+                }
             }
         }
 
@@ -756,6 +885,10 @@ class TriviaController extends Controller
 
         $totalUsuariosPorMunicipio = 0;
 
+        $validarPorcentajeTotal   = 0;
+        $validarPorcentajeMujeres = 0;
+        $validarPorcentajeHombres = 0;
+
         foreach ($municipios as $municipio) {
             $usuariosApp = AppUser::where('municipio', $municipio->nombrempio)->get();
 
@@ -783,12 +916,34 @@ class TriviaController extends Controller
                 $totalPorcentajeMujeres += $municipio->porcentajeMujeres;
                 $totalPorcentajeHombres += $municipio->porcentajeHombres;
 
-                $municipio->porcentajeMujeres   = round($municipio->porcentajeMujeres, 2);
-                $municipio->porcentajeHombres   = round($municipio->porcentajeHombres, 2);
-                $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+                if ($municipio->porcentajeMujeres > 0) {
+                    $municipio->porcentajeMujeres = round($municipio->porcentajeMujeres, 2);
+                }
+                if ($municipio->porcentajeHombres > 0) {
+                    $municipio->porcentajeHombres = round($municipio->porcentajeHombres, 2);
+                }
+                if ($municipio->porcentajeMunicipal > 0) {
+                    $municipio->porcentajeMunicipal = round($municipio->porcentajeMunicipal, 2);
+                }
+
+                $validarPorcentajeTotal += $municipio->porcentajeMunicipal;
+                $validarPorcentajeMujeres += $municipio->porcentajeMujeres;
+                $validarPorcentajeHombres += $municipio->porcentajeHombres;
 
                 $totalPorcentajeMujeres = round($totalPorcentajeMujeres, 2);
                 $totalPorcentajeHombres = round($totalPorcentajeHombres, 2);
+            }
+        }
+
+        if ($validarPorcentajeTotal > 100) {
+            $decimalesRestantes = $validarPorcentajeTotal - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+
+            for ($i = (count($municipios) - 1); $i >= 0; $i--) {
+                if (is_float($municipios[$i]->porcentajeMunicipal)) {
+                    $municipios[$i]->porcentajeMunicipal -= $decimalesRestantes;
+                    break;
+                }
             }
         }
 

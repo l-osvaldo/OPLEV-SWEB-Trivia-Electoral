@@ -135,8 +135,7 @@
                        Elección de Diputados Locales y Ayuntamientos
                     </h4>
                     <h4>
-                        Aplicación móvil de preparación para el examen de conocimientos que se aplica en el proceso
-                        de selección para integrar los Consejos Distritales y Especiales en Veracruz
+                        Aplicación móvil para aumentar los conocimientos en materia electoral
                     </h4>
                 </td>
                 <td style="width: 120px; color:#fff">
@@ -191,30 +190,30 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="border">
                             Hombres
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $hombres }}
                         </td>
-                        <td>
+                        <td class="border">
                             {{ $porcentajeHombres }} %
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr class="headerfooter">
-                        <td>
+                        <td class="border">
                             <b>
                                 TOTALES
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $mujeres + $hombres }}
                             </b>
                         </td>
-                        <td>
+                        <td class="border">
                             <b>
                                 {{ $porcentajeMujeres + $porcentajeHombres }} %
                             </b>
@@ -237,22 +236,22 @@
                 Municipio
               </th>
               <th>
-                Total de usuarios por Municipio
+                Total de usuarios por municipio
               </th>
               <th>
-                Porcentaje Distrital
+                Porcentaje Municipal
               </th>
               <th>
-                Total de Mujeres
+                Total de Mujeres por Municipio
               </th>
               <th>
-                Porcentaje
+                Porcentaje de Mujeres por Municipio
               </th>
               <th>
-                Total de Hombres
+                Total de Hombres por Municipio
               </th>
               <th>
-                Porcentaje
+                Porcentaje de Hombres por Municipio
               </th>
             </tr>
           </thead>
@@ -285,25 +284,25 @@
           </tbody>
           <tfoot>
             <tr class="headerfooter">
-              <td style="text-align: left !important;">
+              <td style="text-align: left !important;" class="border">
                   <b>TOTALES</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $mujeres + $hombres }}</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $totalPorcentajeMunicipal }} %</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $mujeres }}</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $totalPorcentajeMujeres }} %</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $hombres }}</b>
               </td>
-              <td>
+              <td class="border">
                   <b>{{ $totalPorcentajeHombres }} %</b>
               </td>
             </tr>

@@ -23,10 +23,10 @@ function grafica() {
                     type: 'pie'
                 },
                 title: {
-                    text: 'Gráfica de los rangos de edad de los usuarios de la Aplicación'
+                    text: 'Distribución de usuarios por rango de edades'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
                 },
                 accessibility: {
                     point: {
@@ -39,7 +39,7 @@ function grafica() {
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
                         }
                     }
                 },
@@ -109,7 +109,14 @@ function graficaDistritos() {
                 },
                 xAxis: {
                     categories: distritos,
-                    crosshair: true
+                    crosshair: true,
+                    labels: {
+                        style: {
+                            fontSize: '10px',
+                            paddingLeft: '20px',
+                            paddingRight: '20px',
+                        }
+                    }
                 },
                 yAxis: {
                     min: 0,
@@ -127,18 +134,21 @@ function graficaDistritos() {
                 plotOptions: {
                     column: {
                         pointPadding: 0.2,
-                        borderWidth: 0
+                        borderWidth: 0,
                     }
                 },
                 series: [{
                     name: 'Mujeres',
-                    data: mujeres
+                    data: mujeres,
+                    color: '#572364'
                 }, {
                     name: 'Hombres',
-                    data: hombres
+                    data: hombres,
+                    color: '#000'
                 }, {
                     name: 'Total de Usuarios por Distrito Electoral',
-                    data: totales
+                    data: totales,
+                    color: '#EA0D94'
                 }]
             });
         }
@@ -261,13 +271,16 @@ function graficaMunicipios(municipios, mujeres, hombres, totales) {
         },
         series: [{
             name: 'Mujeres',
-            data: mujeres
+            data: mujeres,
+            color: '#572364'
         }, {
             name: 'Hombres',
-            data: hombres
+            data: hombres,
+            color: '#000'
         }, {
             name: 'Total de Usuarios por Municipio',
-            data: totales
+            data: totales,
+            color: '#EA0D94'
         }]
     });
     document.getElementById('loader').classList.add('o-hidden-loader');

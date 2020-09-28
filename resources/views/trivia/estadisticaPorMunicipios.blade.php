@@ -26,9 +26,9 @@
             <div class="col-sm-4">
                 <!-- select -->
                 <div class="form-group">
-                    <label class="o-form-label">Seleccione Distrito Electoral:</label>
+                    <label class="o-form-label">Seleccione un Distrito Electoral:</label>
                     <select class="form-control" id="selectDistrito">
-                        <option value="0" disabled selected>Seleccione Distrito Electoral</option>
+                        <option value="0" disabled selected>Seleccione un Distrito Electoral</option>
                         @foreach ($distritos as $distrito)
                             <option value="{{ $distrito->numdto }}-{{ $distrito->nombrecorto }}">
                                 {{ $distrito->numdto }}.
@@ -48,7 +48,7 @@
 <section class="content">
     <div style="display: none" id="divEstadisticasCuadros">
         <h4>
-            <b>Estadísticas de usuarios por sexo del Distrito Electoral</b>
+            <b>Usuarios de la App en el Distrito Electoral</b>
         </h4>
         <div class="row">            
             <div class="col-lg-3 col-6">
@@ -128,22 +128,22 @@
             				Municipio
             			</th>
             			<th>
-            				Total de usuarios
+            				Total de usuarios por municipio
             			</th>
             			<th>
-            				Porcentaje Distrital
+            				Porcentaje Municipal
             			</th>
             			<th>
-            				Total de Mujeres
+            				Total de Mujeres por Municipio
             			</th>
             			<th>
-            				Porcentaje
+            				Porcentaje de Mujeres por Municipio
             			</th>
             			<th>
-            				Total de Hombres
+            				Total de Hombres por Municipio
             			</th>
             			<th>
-            				Porcentaje
+            				Porcentaje de Hombres por Municipio
             			</th>
             		</tr>
             	</thead>

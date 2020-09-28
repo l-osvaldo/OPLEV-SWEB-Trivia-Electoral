@@ -88,7 +88,7 @@
     <div class="card borde-ople">
         <div class="card-body">
             <h4>
-                <b>Estadísticas de los usuarios por rango de edades</b>                
+                <b>Usuarios de la app móvil por rango de edades</b>                
             </h4>
             <table class="table table-striped table-bordered" id="estadisticaUsuarios" style="width:100%">
                 <thead>
