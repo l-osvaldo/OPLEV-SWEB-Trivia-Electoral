@@ -19,7 +19,7 @@ class CreateAppUsersTable extends Migration
             $table->string('email', 50);
             $table->integer('edad')->unsigned();
             $table->string('sexo', 2);
-            $table->string('municipio', 30);
+            $table->string('municipio', 30)->nullable(true);
             $table->string('password', 250);
             $table->timestamps();
         });

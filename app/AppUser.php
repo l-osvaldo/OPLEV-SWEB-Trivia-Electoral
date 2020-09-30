@@ -13,6 +13,7 @@ class AppUser extends Model
         'edad',
         'sexo',
         'municipio',
+        'estado',
         'password',
         'score',
         'status',

@@ -30,6 +30,7 @@ class WSAppUsersController extends Controller
                     'edad'               => 0,
                     'sexo'               => '',
                     'municipio'          => '',
+                    'estado'             => '',
                     'password'           => '',
                     'score'              => 0,
                     'status'             => 0);
@@ -41,6 +42,7 @@ class WSAppUsersController extends Controller
                     'edad'               => $usuario->edad,
                     'sexo'               => $usuario->sexo,
                     'municipio'          => $usuario->municipio,
+                    'estado'             => $usuario->estado,
                     'password'           => $usuario->password,
                     'score'              => $usuario->score,
                     'status'             => $usuario->status);
@@ -53,6 +55,7 @@ class WSAppUsersController extends Controller
             $usuario->edad      = $request->edad;
             $usuario->sexo      = $request->sexo;
             $usuario->municipio = $request->municipio;
+            $usuario->estado    = $request->estado;
             $usuario->password  = bcrypt($request->password);
             $usuario->score     = $request->score;
             $usuario->save();
@@ -64,6 +67,7 @@ class WSAppUsersController extends Controller
                 'edad'               => $usuario->edad,
                 'sexo'               => $usuario->sexo,
                 'municipio'          => $usuario->municipio,
+                'estado'             => $usuario->estado,
                 'password'           => $usuario->password,
                 'score'              => $usuario->score,
                 'status'             => $usuario->status);
@@ -89,6 +93,7 @@ class WSAppUsersController extends Controller
                         'edad'               => $user->edad,
                         'sexo'               => $user->sexo,
                         'municipio'          => $user->municipio,
+                        'estado'             => $user->estado,
                         'password'           => $user->password,
                         'score'              => $user->score,
                         'status'             => $user->status);
@@ -100,6 +105,7 @@ class WSAppUsersController extends Controller
                         'edad'               => 0,
                         'sexo'               => '',
                         'municipio'          => '',
+                        'estado'             => '',
                         'password'           => '',
                         'score'              => 0,
                         'status'             => 0);
@@ -112,6 +118,7 @@ class WSAppUsersController extends Controller
                     'edad'               => $user->edad,
                     'sexo'               => $user->sexo,
                     'municipio'          => $user->municipio,
+                    'estado'             => $user->estado,
                     'password'           => $user->password,
                     'score'              => $user->score,
                     'status'             => $user->status);
@@ -125,6 +132,7 @@ class WSAppUsersController extends Controller
                 'edad'               => 0,
                 'sexo'               => '',
                 'municipio'          => '',
+                'estado'             => '',
                 'password'           => '',
                 'score'              => 0,
                 'status'             => 0);
