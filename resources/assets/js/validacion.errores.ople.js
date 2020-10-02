@@ -449,6 +449,31 @@ let messagesErrVjs = {
             required: 'El campo {{INPUTNAME}} es requerido.'
         },
     },
+    'formeUsuariosAPPEditarOEF': {
+        ////////////////////////////////////////////////////////////////////////////formejemplo-1
+        'nombreUsuarioAPPEditOEF': {
+            required: 'El campo {{INPUTNAME}} es requerido.',
+            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
+            number: 'No se permiten números en el campo {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+        },
+        'edadUsuarioAPPEditOEF': {
+            required: 'El campo {{INPUTNAME}} es requerido.',
+            type: 'Ingrese solo números para el campo {{INPUTNAME}}.',
+            number: 'No se permiten letras en el campo {{INPUTNAME}}.',
+            match: 'No se permite texto o caracteres especiales dentro del campo {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.',
+        },
+        'generoUsuarioAPPOEF': {
+            required: 'El campo {{INPUTNAME}} es requerido.'
+        },
+        'EstadoUsuarioAPPOEF': {
+            required: 'El campo {{INPUTNAME}} es requerido.'
+        },
+    },
 };
 
 function myFuctionSendAjax(e) {

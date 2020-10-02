@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AppUser;
 use App\Distrito;
+use App\Estado;
 use App\Municipio;
 use App\Pregunta;
 use Auth;
@@ -25,9 +26,12 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario        = auth()->user();
-            $nombreModulo   = "Gestión de Usuarios";
-            $usuariosApp    = AppUser::all();
+            $usuario      = auth()->user();
+            $nombreModulo = "Gestión de Usuarios";
+
+            /* Veracruz */
+
+            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $municipios     = Municipio::distinct()->orderBy('nombrempio', 'asc')->get(['nombrempio']);
             $numeroUsuarios = count($usuariosApp);
 
@@ -63,7 +67,45 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 2);
             $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios'));
+            /* Otras Entidades Federativas */
+
+            $usuariosAppOEF    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+            $numeroUsuariosOEF = count($usuariosAppOEF);
+            $estados           = Estado::all();
+
+            $hombresOEF = 0;
+            $mujeresOEF = 0;
+
+            $promedioMujeresOEF = 0;
+            $promedioHombresOEF = 0;
+
+            $porcentajeMujeresOEF = 0;
+            $porcentajeHombresOEF = 0;
+
+            foreach ($usuariosAppOEF as $value) {
+                if ($value->sexo === 'M') {
+                    $hombresOEF++;
+                    $promedioHombresOEF += $value->edad;
+                }
+                if ($value->sexo === 'F') {
+                    $mujeresOEF++;
+                    $promedioMujeresOEF += $value->edad;
+                }
+            }
+
+            if ($mujeresOEF > 0) {
+                $promedioMujeresOEF   = $promedioMujeresOEF / $mujeresOEF;
+                $porcentajeMujeresOEF = $mujeresOEF * 100 / $numeroUsuariosOEF;
+            }
+            if ($hombresOEF > 0) {
+                $promedioHombresOEF   = $promedioHombresOEF / $hombresOEF;
+                $porcentajeHombresOEF = $hombresOEF * 100 / $numeroUsuariosOEF;
+            }
+
+            $porcentajeMujeresOEF = round($porcentajeMujeresOEF, 2);
+            $porcentajeHombresOEF = round($porcentajeHombresOEF, 2);
+
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios', 'usuariosAppOEF', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'promedioMujeresOEF', 'promedioHombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estados'));
 
         } else {
             $vista = redirect()->route('login');
@@ -78,7 +120,7 @@ class TriviaController extends Controller
 
             $usuario        = auth()->user();
             $nombreModulo   = "Estadísticas - Usuarios de la APP";
-            $usuariosApp    = AppUser::all();
+            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
 
             $hombres = 0;
@@ -204,7 +246,7 @@ class TriviaController extends Controller
 
             $usuario        = auth()->user();
             $nombreModulo   = "Estadísticas - Distritos";
-            $usuariosApp    = AppUser::all();
+            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
             $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
@@ -309,7 +351,7 @@ class TriviaController extends Controller
 
             $usuario        = auth()->user();
             $nombreModulo   = "Estadísticas - Municipios";
-            $usuariosApp    = AppUser::all();
+            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
             $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
@@ -521,6 +563,21 @@ class TriviaController extends Controller
         return response()->json($updateUsuarioAPP);
     }
 
+    public function EditarInformacionUsuarioAPPOEF(Request $resquest)
+    {
+        $id = encrypt_decrypt('decrypt', $resquest->id);
+
+        $updateUsuarioAPP = AppUser::find($id);
+
+        $updateUsuarioAPP->nombre = $resquest->nombre;
+        $updateUsuarioAPP->edad   = $resquest->edad;
+        $updateUsuarioAPP->sexo   = $resquest->genero;
+        $updateUsuarioAPP->estado = $resquest->estado;
+        $updateUsuarioAPP->save();
+
+        return response()->json($updateUsuarioAPP);
+    }
+
     public function eliminarUsuarioApp(Request $resquest)
     {
         $id = encrypt_decrypt('decrypt', $resquest->id);
@@ -532,7 +589,7 @@ class TriviaController extends Controller
 
     public function graficaUsuariosApp()
     {
-        $usuariosApp    = AppUser::all();
+        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
         $numeroUsuarios = count($usuariosApp);
 
         $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0),
@@ -594,7 +651,7 @@ class TriviaController extends Controller
 
     public function graficaDistritos()
     {
-        $usuariosApp    = AppUser::all();
+        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
         $numeroUsuarios = count($usuariosApp);
         $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
@@ -637,7 +694,7 @@ class TriviaController extends Controller
     public function PDFUsuariosAPP()
     {
 
-        $usuariosApp    = AppUser::all();
+        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
         $numeroUsuarios = count($usuariosApp);
 
         $hombres = 0;
@@ -758,7 +815,7 @@ class TriviaController extends Controller
 
     public function PDFDistritos()
     {
-        $usuariosApp    = AppUser::all();
+        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
         $numeroUsuarios = count($usuariosApp);
         $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
 
@@ -858,7 +915,7 @@ class TriviaController extends Controller
 
     public function PDFMunicipios(Request $request)
     {
-        $usuariosApp    = AppUser::all();
+        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
         $numeroUsuarios = count($usuariosApp);
         $nombreDistrito = $request->nombreDistrito;
 

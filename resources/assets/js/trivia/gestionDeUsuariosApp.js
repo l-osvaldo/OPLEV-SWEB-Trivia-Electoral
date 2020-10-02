@@ -207,3 +207,117 @@ $('.estatusBtnUsuario').on('click', function(e) {
         return false;
     })
 });
+$('#modalEditarUsuariosAPPOEF').on('show.bs.modal', function(event) {
+    var data = $(event.relatedTarget);
+    var id = data.data('id');
+    var nombre = data.data('nombre');
+    var edad = "" + data.data('edad');
+    var genero = data.data('genero');
+    var estado = data.data('estado');
+    //console.log(edad);
+    //
+    document.getElementById('editUsuarioAPPIdOEF').value = id;
+    document.getElementById('nombreUsuarioAPPEditOEF').value = nombre;
+    document.getElementById('edadUsuarioAPPEditOEF').value = edad;
+    document.getElementById('generoUsuarioAPPOEF').value = genero;
+    document.getElementById('EstadoUsuarioAPPOEF').value = estado;
+    //
+    document.getElementById('nombreUsuarioAPPEditOEF').classList.add("is-valid");
+    document.getElementById('edadUsuarioAPPEditOEF').classList.add("is-valid");
+    document.getElementById('generoUsuarioAPPOEF').classList.add("is-valid");
+    document.getElementById("EstadoUsuarioAPPOEF").classList.add("is-valid");
+    //
+    document.getElementById('string-nombreUsuarioAPPEditOEF').innerHTML = 50 - nombre.length;
+    document.getElementById('string-edadUsuarioAPPEditOEF').innerHTML = 3 - edad.length;
+    //
+    document.getElementById('nombreUsuarioAPPEditOEF').removeAttribute("data-errvjs");
+    document.getElementById('edadUsuarioAPPEditOEF').removeAttribute("data-errvjs");
+    document.getElementById('generoUsuarioAPPOEF').removeAttribute("data-errvjs");
+    document.getElementById('EstadoUsuarioAPPOEF').removeAttribute("data-errvjs");
+});
+$('#modalEditarUsuariosAPPOEF').on('hidden.bs.modal', function(e) {
+    document.getElementById('editUsuarioAPPIdOEF').value = '';
+    document.getElementById('nombreUsuarioAPPEditOEF').value = '';
+    document.getElementById('edadUsuarioAPPEditOEF').value = '';
+    document.getElementById('generoUsuarioAPPOEF').value = '';
+    document.getElementById('EstadoUsuarioAPPOEF').value = '';
+    //
+    document.getElementById("nombreUsuarioAPPEditOEF").classList.remove("is-invalid");
+    document.getElementById("edadUsuarioAPPEditOEF").classList.remove("is-invalid");
+    document.getElementById("generoUsuarioAPPOEF").classList.remove("is-invalid");
+    document.getElementById("EstadoUsuarioAPPOEF").classList.remove("is-invalid");
+    //
+    document.getElementById("nombreUsuarioAPPEditOEF").classList.remove("is-valid");
+    document.getElementById("edadUsuarioAPPEditOEF").classList.remove("is-valid");
+    document.getElementById("generoUsuarioAPPOEF").classList.remove("is-valid");
+    document.getElementById("EstadoUsuarioAPPOEF").classList.remove("is-valid");
+    //
+    document.getElementById("nombreUsuarioAPPEditOEF").setAttribute('data-errvjs', 1);
+    document.getElementById("edadUsuarioAPPEditOEF").setAttribute('data-errvjs', 1);
+    document.getElementById("generoUsuarioAPPOEF").setAttribute('data-errvjs', 1);
+    document.getElementById("EstadoUsuarioAPPOEF").setAttribute('data-errvjs', 1);
+    //
+    document.getElementById('error-nombreUsuarioAPPEditOEF').innerHTML = '';
+    document.getElementById('error-edadUsuarioAPPEditOEF').innerHTML = '';
+    document.getElementById('error-generoUsuarioAPPOEF').innerHTML = '';
+    document.getElementById('error-EstadoUsuarioAPPOEF').innerHTML = '';
+    //
+    document.getElementById('string-nombreUsuarioAPPEditOEF').innerHTML = '50';
+    document.getElementById('string-edadUsuarioAPPEditOEF').innerHTML = '3';
+});
+
+function editarUsuarioAPPOEF(e) {
+    e.preventDefault();
+    if (checkFormAjax(document.getElementById('formeUsuariosAPPEditarOEF'))) { //Si el formulario es valido;
+        Swal.fire({
+            title: "Editar Información del Usuario",
+            text: "¿Desea continuar?",
+            type: "warning",
+            showCancelButton: true,
+            reverseButtons: true,
+            confirmButtonText: '<i class="far fa-check-circle"></i>  Aceptar',
+            confirmButtonAriaLabel: 'Aceptar',
+            cancelButtonText: '<i class="far fa-times-circle"></i>  Cancelar',
+            cancelButtonAriaLabel: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                if (result.value === true) {
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                    var id = document.getElementById('editUsuarioAPPIdOEF').value;
+                    var nombre = document.getElementById('nombreUsuarioAPPEditOEF').value;
+                    var edad = document.getElementById('edadUsuarioAPPEditOEF').value;
+                    var genero = document.getElementById('generoUsuarioAPPOEF').value;
+                    var estado = document.getElementById('EstadoUsuarioAPPOEF').value;
+                    $.ajax({
+                        type: 'POST',
+                        url: "EditarInformacionUsuarioAPPOEF",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            id: id,
+                            nombre: nombre,
+                            edad: edad,
+                            genero: genero,
+                            estado: estado
+                        },
+                        dataType: 'JSON',
+                        success: function(results) {
+                            location.reload();
+                            $(document).Toasts('create', {
+                                class: 'bg-maroon',
+                                title: 'Editar Información del Usuario',
+                                subtitle: 'Editar',
+                                body: 'Se actualizó la información del usuario con exito.',
+                                autohide: true,
+                                delay: 7000,
+                            })
+                        }
+                    });
+                } else {
+                    e.dismiss;
+                }
+            }
+        }, function(dismiss) {
+            return false;
+        });
+    }
+}

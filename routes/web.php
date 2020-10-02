@@ -46,6 +46,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/', 'TriviaController@index')->name('index');
     Route::get('/gestionUsuarios', 'TriviaController@index')->name('gestionUsuarios');
     Route::post('/EditarInformacionUsuarioAPP', 'TriviaController@EditarInformacionUsuarioAPP')->name('EditarInformacionUsuarioAPP');
+    Route::post('/EditarInformacionUsuarioAPPOEF', 'TriviaController@EditarInformacionUsuarioAPPOEF')->name('EditarInformacionUsuarioAPPOEF');
     Route::post('/eliminarUsuarioApp', 'TriviaController@eliminarUsuarioApp')->name('eliminarUsuarioApp');
     Route::post('/HabilitarDeshabilitarUsuario', 'TriviaController@HabilitarDeshabilitarUsuario')->name('HabilitarDeshabilitarUsuario');
 
