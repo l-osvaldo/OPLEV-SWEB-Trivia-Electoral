@@ -138,7 +138,7 @@
                         Aplicación móvil para aumentar los conocimientos en materia electoral
                     </h4>
                     <h4>
-                      Estadísticas de los Usuarios
+                      Estadísticas de los Usuarios {{ $entidadFederativa }}
                     </h4>
                 </td>
                 <td style="width: 120px; color:#fff">

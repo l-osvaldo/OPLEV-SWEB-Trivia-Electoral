@@ -118,8 +118,11 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas - Usuarios de la APP";
+            $usuario      = auth()->user();
+            $nombreModulo = "Estadísticas - Usuarios de la APP";
+
+            /* Veracruz  */
+
             $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
 
@@ -231,7 +234,120 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 3);
             $porcentajeHombres = round($porcentajeHombres, 3);
 
-            $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'));
+            /* Otras Entidades Federativas */
+
+            $usuariosAppOEF    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+            $numeroUsuariosOEF = count($usuariosAppOEF);
+
+            $hombresOEF = 0;
+            $mujeresOEF = 0;
+
+            $porcentajeMujeresOEF = 0;
+            $porcentajeHombresOEF = 0;
+
+            $validarPorcentajeOEF = 0;
+
+            $estadisticasOEF = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+                array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0));
+
+            // print_r($estadisticas[0]['rango']);exit;
+
+            foreach ($usuariosAppOEF as $value) {
+                if ($value->sexo === 'M') {
+                    $hombresOEF++;
+
+                    if ($value->edad >= 18 && $value->edad <= 30) {
+                        $estadisticasOEF[0]['Usuarios']++;
+                        $estadisticasOEF[0]['hombres']++;
+                    }
+                    if ($value->edad >= 31 && $value->edad <= 40) {
+                        $estadisticasOEF[1]['Usuarios']++;
+                        $estadisticasOEF[1]['hombres']++;
+                    }
+                    if ($value->edad >= 41 && $value->edad <= 50) {
+                        $estadisticasOEF[2]['Usuarios']++;
+                        $estadisticasOEF[2]['hombres']++;
+                    }
+                    if ($value->edad >= 51 && $value->edad <= 60) {
+                        $estadisticasOEF[3]['Usuarios']++;
+                        $estadisticasOEF[3]['hombres']++;
+                    }
+                    if ($value->edad >= 61 && $value->edad <= 70) {
+                        $estadisticasOEF[4]['Usuarios']++;
+                        $estadisticasOEF[4]['hombres']++;
+                    }
+                    if ($value->edad >= 71 && $value->edad <= 80) {
+                        $estadisticasOEF[5]['Usuarios']++;
+                        $estadisticasOEF[5]['hombres']++;
+                    }
+
+                }
+                if ($value->sexo === 'F') {
+                    $mujeresOEF++;
+
+                    if ($value->edad >= 18 && $value->edad <= 30) {
+                        $estadisticas[0]['Usuarios']++;
+                        $estadisticas[0]['mujeres']++;
+                    }
+                    if ($value->edad >= 31 && $value->edad <= 40) {
+                        $estadisticasOEF[1]['Usuarios']++;
+                        $estadisticasOEF[1]['mujeres']++;
+                    }
+                    if ($value->edad >= 41 && $value->edad <= 50) {
+                        $estadisticasOEF[2]['Usuarios']++;
+                        $estadisticasOEF[2]['mujeres']++;
+                    }
+                    if ($value->edad >= 51 && $value->edad <= 60) {
+                        $estadisticasOEF[3]['Usuarios']++;
+                        $estadisticasOEF[3]['mujeres']++;
+                    }
+                    if ($value->edad >= 61 && $value->edad <= 70) {
+                        $estadisticasOEF[4]['Usuarios']++;
+                        $estadisticasOEF[4]['mujeres']++;
+                    }
+                    if ($value->edad >= 71 && $value->edad <= 80) {
+                        $estadisticasOEF[5]['Usuarios']++;
+                        $estadisticasOEF[5]['mujeres']++;
+                    }
+                }
+
+            }
+
+            for ($i = 0; $i < count($estadisticasOEF); $i++) {
+                $estadisticasOEF[$i]['porcentaje'] = $estadisticasOEF[$i]['Usuarios'] * 100 / $numeroUsuariosOEF;
+                if ($estadisticasOEF[$i]['porcentaje'] > 0) {
+                    $estadisticasOEF[$i]['porcentaje'] = round($estadisticasOEF[$i]['porcentaje'], 2);
+                }
+
+                $validarPorcentajeOEF += $estadisticasOEF[$i]['porcentaje'];
+            }
+
+            if ($validarPorcentajeOEF > 100) {
+                $decimalesRestantesOEF = $validarPorcentajeOEF - 100;
+                $decimalesRestantesOEF = round($decimalesRestantesOEF, 2);
+                for ($i = (count($estadisticasOEF) - 1); $i >= 0; $i--) {
+                    if (is_float($estadisticasOEF[$i]['porcentaje'])) {
+                        $estadisticasOEF[$i]['porcentaje'] -= $decimalesRestantesOEF;
+                        break;
+                    }
+                }
+            }
+
+            if ($mujeresOEF > 0) {
+                $porcentajeMujeresOEF = $mujeresOEF * 100 / $numeroUsuariosOEF;
+            }
+            if ($hombresOEF > 0) {
+                $porcentajeHombresOEF = $hombresOEF * 100 / $numeroUsuariosOEF;
+            }
+
+            $porcentajeMujeresOEF = round($porcentajeMujeresOEF, 3);
+            $porcentajeHombresOEF = round($porcentajeHombresOEF, 3);
+
+            $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estadisticasOEF'));
 
         } else {
             $vista = redirect()->route('login');
@@ -649,6 +765,68 @@ class TriviaController extends Controller
         return response()->json($estadisticas);
     }
 
+    public function graficaUsuariosAppOEF()
+    {
+        $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+        $numeroUsuarios = count($usuariosApp);
+
+        $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0),
+            array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0));
+
+        // print_r($estadisticas[0]['rango']);exit;
+
+        $validarPorcentaje = 0;
+
+        foreach ($usuariosApp as $value) {
+
+            if ($value->edad >= 18 && $value->edad <= 30) {
+                $estadisticas[0]['Usuarios']++;
+            }
+            if ($value->edad >= 31 && $value->edad <= 40) {
+                $estadisticas[1]['Usuarios']++;
+            }
+            if ($value->edad >= 41 && $value->edad <= 50) {
+                $estadisticas[2]['Usuarios']++;
+            }
+            if ($value->edad >= 51 && $value->edad <= 60) {
+                $estadisticas[3]['Usuarios']++;
+            }
+            if ($value->edad >= 61 && $value->edad <= 70) {
+                $estadisticas[4]['Usuarios']++;
+            }
+            if ($value->edad >= 71 && $value->edad <= 80) {
+                $estadisticas[5]['Usuarios']++;
+            }
+
+        }
+
+        for ($i = 0; $i < count($estadisticas); $i++) {
+            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            if ($estadisticas[$i]['porcentaje'] > 0) {
+                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            }
+
+            $validarPorcentaje += $estadisticas[$i]['porcentaje'];
+        }
+
+        if ($validarPorcentaje > 100) {
+            $decimalesRestantes = $validarPorcentaje - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+            for ($i = (count($estadisticas) - 1); $i >= 0; $i--) {
+                if (is_float($estadisticas[$i]['porcentaje'])) {
+                    $estadisticas[$i]['porcentaje'] -= $decimalesRestantes;
+                    break;
+                }
+            }
+        }
+
+        return response()->json($estadisticas);
+    }
+
     public function graficaDistritos()
     {
         $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
@@ -694,8 +872,9 @@ class TriviaController extends Controller
     public function PDFUsuariosAPP()
     {
 
-        $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
-        $numeroUsuarios = count($usuariosApp);
+        $usuariosApp       = AppUser::where('estado', 'VERACRUZ')->get();
+        $numeroUsuarios    = count($usuariosApp);
+        $entidadFederativa = "del Estado de Veracruz";
 
         $hombres = 0;
         $mujeres = 0;
@@ -809,7 +988,130 @@ class TriviaController extends Controller
         $footer .= utf8_decode("Página Única");
         $footer .= '</div>';
 
-        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '15');
+        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas', 'entidadFederativa'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '15');
+        return $pdf->inline('Estadísticas - Usuarios de la APP.pdf');
+    }
+
+    public function PDFUsuariosAPPOEF()
+    {
+
+        $usuariosApp       = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+        $numeroUsuarios    = count($usuariosApp);
+        $entidadFederativa = "de otras Entidades Federativas";
+
+        $hombres = 0;
+        $mujeres = 0;
+
+        $porcentajeMujeres = 0;
+        $porcentajeHombres = 0;
+
+        $estadisticas = array(array('rango' => '18 a 30', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '31 a 40', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '41 a 50', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '51 a 60', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '61 a 70', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0),
+            array('rango' => '71 a 80', 'Usuarios' => 0, 'porcentaje' => 0, 'mujeres' => 0, 'hombres' => 0));
+
+        // print_r($estadisticas[0]['rango']);exit;
+
+        $validarPorcentaje = 0;
+
+        foreach ($usuariosApp as $value) {
+            if ($value->sexo === 'M') {
+                $hombres++;
+
+                if ($value->edad >= 18 && $value->edad <= 30) {
+                    $estadisticas[0]['Usuarios']++;
+                    $estadisticas[0]['hombres']++;
+                }
+                if ($value->edad >= 31 && $value->edad <= 40) {
+                    $estadisticas[1]['Usuarios']++;
+                    $estadisticas[1]['hombres']++;
+                }
+                if ($value->edad >= 41 && $value->edad <= 50) {
+                    $estadisticas[2]['Usuarios']++;
+                    $estadisticas[2]['hombres']++;
+                }
+                if ($value->edad >= 51 && $value->edad <= 60) {
+                    $estadisticas[3]['Usuarios']++;
+                    $estadisticas[3]['hombres']++;
+                }
+                if ($value->edad >= 61 && $value->edad <= 70) {
+                    $estadisticas[4]['Usuarios']++;
+                    $estadisticas[4]['hombres']++;
+                }
+                if ($value->edad >= 71 && $value->edad <= 80) {
+                    $estadisticas[5]['Usuarios']++;
+                    $estadisticas[5]['hombres']++;
+                }
+
+            }
+            if ($value->sexo === 'F') {
+                $mujeres++;
+
+                if ($value->edad >= 18 && $value->edad <= 30) {
+                    $estadisticas[0]['Usuarios']++;
+                    $estadisticas[0]['mujeres']++;
+                }
+                if ($value->edad >= 31 && $value->edad <= 40) {
+                    $estadisticas[1]['Usuarios']++;
+                    $estadisticas[1]['mujeres']++;
+                }
+                if ($value->edad >= 41 && $value->edad <= 50) {
+                    $estadisticas[2]['Usuarios']++;
+                    $estadisticas[2]['mujeres']++;
+                }
+                if ($value->edad >= 51 && $value->edad <= 60) {
+                    $estadisticas[3]['Usuarios']++;
+                    $estadisticas[3]['mujeres']++;
+                }
+                if ($value->edad >= 61 && $value->edad <= 70) {
+                    $estadisticas[4]['Usuarios']++;
+                    $estadisticas[4]['mujeres']++;
+                }
+                if ($value->edad >= 71 && $value->edad <= 80) {
+                    $estadisticas[5]['Usuarios']++;
+                    $estadisticas[5]['mujeres']++;
+                }
+            }
+
+        }
+
+        for ($i = 0; $i < count($estadisticas); $i++) {
+            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            if ($estadisticas[$i]['porcentaje'] > 0) {
+                $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
+            }
+
+            $validarPorcentaje += $estadisticas[$i]['porcentaje'];
+        }
+
+        if ($validarPorcentaje > 100) {
+            $decimalesRestantes = $validarPorcentaje - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+            for ($i = (count($estadisticas) - 1); $i >= 0; $i--) {
+                if (is_float($estadisticas[$i]['porcentaje'])) {
+                    $estadisticas[$i]['porcentaje'] -= $decimalesRestantes;
+                    break;
+                }
+            }
+        }
+
+        if ($mujeres > 0) {
+            $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+        }
+        if ($hombres > 0) {
+            $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+        }
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $footer = '<div align="right">';
+        $footer .= utf8_decode("Página Única");
+        $footer .= '</div>';
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteUsuariosAppPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas', 'entidadFederativa'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '15');
         return $pdf->inline('Estadísticas - Usuarios de la APP.pdf');
     }
 

@@ -74,6 +74,82 @@ function grafica() {
 }
 document.onload = grafica();
 
+function graficaOEF() {
+    //console.log(periodo);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "graficaUsuariosAppOEF",
+        type: 'GET',
+        success: function(data) {
+            //console.log(data);
+            var rangos = [];
+            $.each(data, function(index, value) {
+                //console.log(value['rango']);
+                rangos.push(value['porcentaje']);
+            });
+            Highcharts.chart('containerPEOF', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Distribución de usuarios por rango de edades'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Porcentaje',
+                    colorByPoint: true,
+                    data: [{
+                        name: '18 a 30 años',
+                        y: rangos[0],
+                        sliced: true,
+                        selected: true
+                    }, {
+                        name: '31 a 40 años',
+                        y: rangos[1]
+                    }, {
+                        name: '41 a 50 años',
+                        y: rangos[2]
+                    }, {
+                        name: '51 a 60 años',
+                        y: rangos[3]
+                    }, {
+                        name: '61 a 70 años',
+                        y: rangos[4]
+                    }, {
+                        name: '71 a 80 años',
+                        y: rangos[5]
+                    }]
+                }]
+            });
+        }
+    })
+}
+document.onload = graficaOEF();
+
 function graficaDistritos() {
     //console.log(periodo);
     $.ajaxSetup({
@@ -157,6 +233,9 @@ function graficaDistritos() {
 document.onload = graficaDistritos();
 $('#modalVisorPDFUsuariosAPP').on('show.bs.modal', function(event) {
     document.getElementById('VisorPDFUsuariosAPP').src = '../estadisticas/PDFUsuariosAPP/';
+});
+$('#modalVisorPDFUsuariosAPPOEF').on('show.bs.modal', function(event) {
+    document.getElementById('VisorPDFUsuariosAPPOEF').src = '../estadisticas/PDFUsuariosAPPOEF/';
 });
 $('#modalVisorPDFDistritos').on('show.bs.modal', function(event) {
     document.getElementById('VisorPDFDistritos').src = '../estadisticas/PDFDistritos/';

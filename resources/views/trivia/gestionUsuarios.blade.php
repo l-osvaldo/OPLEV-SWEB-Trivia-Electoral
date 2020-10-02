@@ -105,6 +105,9 @@
                                             </div>
                                         </div>
                                         <div class="card borde-ople">
+                                            <h4>
+                                                <b>Usuarios de la aplicación móvil del Estado de Veracruz</b>
+                                            </h4>
                                             <div class="card-body">
                                                 <table class="table table-striped table-bordered dt-responsive nowrap" id="example" style="width:100%">
                                                     <thead>
@@ -235,6 +238,9 @@
                                             </div>
                                         </div>
                                         <div class="card borde-ople">
+                                            <h4>
+                                                <b>Usuarios de la aplicación móvil de otras Entidades Federativas</b>
+                                            </h4>
                                             <div class="card-body">
                                                 <table class="table table-striped table-bordered dt-responsive nowrap" id="example2" style="width:100%">
                                                     <thead>
