@@ -577,6 +577,110 @@ class TriviaController extends Controller
         return response()->json($municipios);
     }
 
+    public function estados()
+    {
+        if (Auth::check()) {
+
+            $usuario        = auth()->user();
+            $nombreModulo   = "Estadísticas - Estados";
+            $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+            $numeroUsuarios = count($usuariosApp);
+            $estados        = Estado::all();
+
+            $hombres = 0;
+            $mujeres = 0;
+
+            $porcentajeMujeres = 0;
+            $porcentajeHombres = 0;
+
+            $validarPorcentajeTotal   = 0;
+            $validarPorcentajeMujeres = 0;
+            $validarPorcentajeHombres = 0;
+
+            foreach ($estados as $estado) {
+                array_add($estado, 'totalUsuarios', 0);
+                array_add($estado, 'porcentajeEstatal', 0);
+                array_add($estado, 'mujeres', 0);
+                array_add($estado, 'porcentajeMujeres', 0);
+                array_add($estado, 'hombres', 0);
+                array_add($estado, 'porcentajeHombres', 0);
+            }
+
+            foreach ($usuariosApp as $value) {
+
+                foreach ($estados as $estado) {
+
+                    if ($estado->nombre == $value->estado) {
+
+                        $estado->totalUsuarios++;
+
+                        if ($value->sexo === 'M') {
+                            $hombres++;
+                            $estado->hombres++;
+
+                        }
+                        if ($value->sexo === 'F') {
+                            $mujeres++;
+                            $estado->mujeres++;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            foreach ($estados as $estado) {
+                if ($estado->totalUsuarios != 0) {
+                    $estado->porcentajeEstatal = $estado->totalUsuarios * 100 / $numeroUsuarios;
+                    $estado->porcentajeMujeres = $estado->mujeres * $estado->porcentajeEstatal / $estado->totalUsuarios;
+                    $estado->porcentajeHombres = $estado->hombres * $estado->porcentajeEstatal / $estado->totalUsuarios;
+
+                    if ($estado->porcentajeMujeres > 0) {
+                        $estado->porcentajeMujeres = round($estado->porcentajeMujeres, 2);
+                    }
+                    if ($estado->porcentajeHombres > 0) {
+                        $estado->porcentajeHombres = round($estado->porcentajeHombres, 2);
+                    }
+                    if ($estado->porcentajeEstatal > 0) {
+                        $estado->porcentajeEstatal = round($estado->porcentajeEstatal, 2);
+                    }
+
+                    $validarPorcentajeTotal += $estado->porcentajeEstatal;
+                    $validarPorcentajeMujeres += $estado->porcentajeMujeres;
+                    $validarPorcentajeHombres += $estado->porcentajeHombres;
+                }
+            }
+
+            if ($validarPorcentajeTotal > 100) {
+                $decimalesRestantes = $validarPorcentajeTotal - 100;
+                $decimalesRestantes = round($decimalesRestantes, 2);
+
+                for ($i = (count($estados) - 1); $i >= 0; $i--) {
+                    if (is_float($estados[$i]->porcentajeEstatal)) {
+                        $estados[$i]->porcentajeEstatal -= $decimalesRestantes;
+                        break;
+                    }
+                }
+            }
+
+            if ($mujeres > 0) {
+                $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+            }
+            if ($hombres > 0) {
+                $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+            }
+
+            $porcentajeMujeres = round($porcentajeMujeres, 2);
+            $porcentajeHombres = round($porcentajeHombres, 2);
+
+            $vista = view('trivia.estadisticaPorEstados', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'hombres', 'mujeres', 'porcentajeHombres', 'porcentajeMujeres', 'estados'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
+    }
+
     public function gestionPreguntas()
     {
         if (Auth::check()) {
@@ -867,6 +971,41 @@ class TriviaController extends Controller
             }
         }
         return response()->json($distritos);
+    }
+
+    public function graficaEstados()
+    {
+
+        $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+        $numeroUsuarios = count($usuariosApp);
+        $estados        = Estado::all();
+
+        foreach ($estados as $estado) {
+            array_add($estado, 'totalUsuarios', 0);
+            array_add($estado, 'mujeres', 0);
+            array_add($estado, 'hombres', 0);
+        }
+
+        foreach ($usuariosApp as $value) {
+
+            foreach ($estados as $estado) {
+
+                if ($estado->nombre == $value->estado) {
+
+                    $estado->totalUsuarios++;
+
+                    if ($value->sexo === 'M') {
+                        $estado->hombres++;
+
+                    }
+                    if ($value->sexo === 'F') {
+                        $estado->mujeres++;
+                    }
+                    break;
+                }
+            }
+        }
+        return response()->json($estados);
     }
 
     public function PDFUsuariosAPP()
@@ -1325,5 +1464,106 @@ class TriviaController extends Controller
 
         $pdf = PDFS::loadView('trivia.PDF.reporteMunicipiosPDF', compact('numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'nombreDistrito', 'municipios', 'totalPorcentajeMunicipal', 'totalPorcentajeMujeres', 'totalPorcentajeHombres'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
         return $pdf->inline('Estadísticas - Municipios por Distrito.pdf');
+    }
+
+    public function PDFEstados()
+    {
+        $usuario        = auth()->user();
+        $nombreModulo   = "Estadísticas - Estados";
+        $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+        $numeroUsuarios = count($usuariosApp);
+        $estados        = Estado::all();
+
+        $hombres = 0;
+        $mujeres = 0;
+
+        $porcentajeMujeres = 0;
+        $porcentajeHombres = 0;
+
+        $validarPorcentajeTotal   = 0;
+        $validarPorcentajeMujeres = 0;
+        $validarPorcentajeHombres = 0;
+
+        foreach ($estados as $estado) {
+            array_add($estado, 'totalUsuarios', 0);
+            array_add($estado, 'porcentajeEstatal', 0);
+            array_add($estado, 'mujeres', 0);
+            array_add($estado, 'porcentajeMujeres', 0);
+            array_add($estado, 'hombres', 0);
+            array_add($estado, 'porcentajeHombres', 0);
+        }
+
+        foreach ($usuariosApp as $value) {
+
+            foreach ($estados as $estado) {
+
+                if ($estado->nombre == $value->estado) {
+
+                    $estado->totalUsuarios++;
+
+                    if ($value->sexo === 'M') {
+                        $hombres++;
+                        $estado->hombres++;
+
+                    }
+                    if ($value->sexo === 'F') {
+                        $mujeres++;
+                        $estado->mujeres++;
+                    }
+                    break;
+                }
+            }
+        }
+
+        foreach ($estados as $estado) {
+            if ($estado->totalUsuarios != 0) {
+                $estado->porcentajeEstatal = $estado->totalUsuarios * 100 / $numeroUsuarios;
+                $estado->porcentajeMujeres = $estado->mujeres * $estado->porcentajeEstatal / $estado->totalUsuarios;
+                $estado->porcentajeHombres = $estado->hombres * $estado->porcentajeEstatal / $estado->totalUsuarios;
+
+                if ($estado->porcentajeMujeres > 0) {
+                    $estado->porcentajeMujeres = round($estado->porcentajeMujeres, 2);
+                }
+                if ($estado->porcentajeHombres > 0) {
+                    $estado->porcentajeHombres = round($estado->porcentajeHombres, 2);
+                }
+                if ($estado->porcentajeEstatal > 0) {
+                    $estado->porcentajeEstatal = round($estado->porcentajeEstatal, 2);
+                }
+
+                $validarPorcentajeTotal += $estado->porcentajeEstatal;
+                $validarPorcentajeMujeres += $estado->porcentajeMujeres;
+                $validarPorcentajeHombres += $estado->porcentajeHombres;
+            }
+        }
+
+        if ($validarPorcentajeTotal > 100) {
+            $decimalesRestantes = $validarPorcentajeTotal - 100;
+            $decimalesRestantes = round($decimalesRestantes, 2);
+
+            for ($i = (count($estados) - 1); $i >= 0; $i--) {
+                if (is_float($estados[$i]->porcentajeEstatal)) {
+                    $estados[$i]->porcentajeEstatal -= $decimalesRestantes;
+                    break;
+                }
+            }
+        }
+
+        if ($mujeres > 0) {
+            $porcentajeMujeres = $mujeres * 100 / $numeroUsuarios;
+        }
+        if ($hombres > 0) {
+            $porcentajeHombres = $hombres * 100 / $numeroUsuarios;
+        }
+
+        $porcentajeMujeres = round($porcentajeMujeres, 2);
+        $porcentajeHombres = round($porcentajeHombres, 2);
+
+        $footer = '<div align="right">';
+        $footer .= utf8_decode("Página Única");
+        $footer .= '</div>';
+
+        $pdf = PDFS::loadView('trivia.PDF.reporteEstadosPDF', compact('usuario', 'numeroUsuarios', 'hombres', 'mujeres', 'porcentajeHombres', 'porcentajeMujeres', 'estados'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
+        return $pdf->inline('Estadísticas - otras Entidades Federativas.pdf');
     }
 }

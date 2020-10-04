@@ -240,6 +240,9 @@ $('#modalVisorPDFUsuariosAPPOEF').on('show.bs.modal', function(event) {
 $('#modalVisorPDFDistritos').on('show.bs.modal', function(event) {
     document.getElementById('VisorPDFDistritos').src = '../estadisticas/PDFDistritos/';
 });
+$('#modalVisorPDFEstados').on('show.bs.modal', function(event) {
+    document.getElementById('VisorPDFEstados').src = '../estadisticas/PDFEstados/';
+});
 $('#selectDistrito').change(function() {
     //console.log(this.value);
     document.getElementById('loader').classList.remove('o-hidden-loader');
@@ -364,3 +367,85 @@ function graficaMunicipios(municipios, mujeres, hombres, totales) {
     });
     document.getElementById('loader').classList.add('o-hidden-loader');
 }
+
+function graficaEstados() {
+    //console.log(periodo);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "graficaEstados",
+        type: 'GET',
+        success: function(data) {
+            console.log(data);
+            var estados = [];
+            var mujeres = [];
+            var hombres = [];
+            var totales = [];
+            $.each(data, function(index, value) {
+                //console.log(value['rango']);
+                estados.push(value['nombre']);
+                mujeres.push(value['mujeres']);
+                hombres.push(value['hombres']);
+                totales.push(value['totalUsuarios']);
+            });
+            Highcharts.chart('containerEstatal', {
+                chart: {
+                    type: 'column',
+                },
+                title: {
+                    text: 'Estadísticas sobre los usuarios de la aplicación móvil de otras Entidades Federativas'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: estados,
+                    crosshair: true,
+                    labels: {
+                        style: {
+                            fontSize: '10px',
+                            paddingLeft: '20px',
+                            paddingRight: '20px',
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Usuarios Registrados'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' + '<td style="padding:0"><b>{point.y:.0f} Usuarios</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                    }
+                },
+                series: [{
+                    name: 'Mujeres',
+                    data: mujeres,
+                    color: '#572364'
+                }, {
+                    name: 'Hombres',
+                    data: hombres,
+                    color: '#000'
+                }, {
+                    name: 'Total de Usuarios por Entidad Federativa',
+                    data: totales,
+                    color: '#EA0D94'
+                }]
+            });
+        }
+    })
+}
+document.onload = graficaEstados();
