@@ -113,6 +113,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th>
+                                                                ID
+                                                            </th>
+                                                            <th>
                                                                 Nombre usuario
                                                             </th>
                                                             <th>
@@ -135,6 +138,9 @@
                                                     <tbody>
                                                         @foreach ($usuariosApp as $usuarioApp)
                                                             <tr>
+                                                                <td>
+                                                                    {{ $usuarioApp->id }}
+                                                                </td>
                                                                 <td>
                                                                     {{ $usuarioApp->nombre }}
                                                                 </td>
@@ -246,6 +252,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th>
+                                                                ID
+                                                            </th>
+                                                            <th>
                                                                 Nombre usuario
                                                             </th>
                                                             <th>
@@ -268,6 +277,9 @@
                                                     <tbody>
                                                         @foreach ($usuariosAppOEF as $usuarioApp)
                                                             <tr>
+                                                                <td>
+                                                                    {{ $usuarioApp->id }}
+                                                                </td>
                                                                 <td>
                                                                     {{ $usuarioApp->nombre }}
                                                                 </td>

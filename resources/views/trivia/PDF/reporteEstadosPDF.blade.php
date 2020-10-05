@@ -143,7 +143,7 @@
                     <b>
                         Aplicación móvil para aumentar los conocimientos en materia electoral
                     </b>   <br>               
-                    Otras Entidades Federativas
+                    Reporte por Entidades Federativas
                 </td>
                 <td style="width: 120px; color:#fff">
                     ...

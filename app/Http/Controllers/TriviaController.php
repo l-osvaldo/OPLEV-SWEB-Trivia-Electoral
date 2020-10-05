@@ -27,7 +27,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario      = auth()->user();
-            $nombreModulo = "Gestión de Usuarios";
+            $nombreModulo = "Gestión de usuarios de la aplicación móvil";
 
             /* Veracruz */
 
@@ -119,7 +119,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario      = auth()->user();
-            $nombreModulo = "Estadísticas - Usuarios de la APP";
+            $nombreModulo = "Estadísticas de los usuarios de la aplicación móvil";
 
             /* Veracruz  */
 
@@ -361,7 +361,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas - Distritos";
+            $nombreModulo   = "Estadísticas de los distritos electorales de la aplicación móvil";
             $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
             $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
@@ -466,7 +466,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas - Municipios";
+            $nombreModulo   = "Estadísticas de los municipios de la aplicación móvil";
             $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
             $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
@@ -582,7 +582,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas - Estados";
+            $nombreModulo   = "Estadísticas de las entidades federativas de la aplicación móvil";
             $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
             $numeroUsuarios = count($usuariosApp);
             $estados        = Estado::all();
@@ -686,7 +686,7 @@ class TriviaController extends Controller
         if (Auth::check()) {
 
             $usuario      = auth()->user();
-            $nombreModulo = "Gestión de Preguntas";
+            $nombreModulo = "Gestión de preguntas de la aplicación móvil";
             $preguntas    = Pregunta::all();
 
             $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas'));

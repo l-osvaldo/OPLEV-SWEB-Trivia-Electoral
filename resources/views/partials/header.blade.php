@@ -126,7 +126,7 @@
         <ul class="navbar-nav navbar-dark navbar-darkgrey"
             style="width: 102% !important; padding-left: 2.8em !important; height: 30px !important;">
             <li class="nav-item">
-                <a href="#" class="nav-link active"
+                <a class="nav-link active"
                     style="color: #fff !important; margin-top: -5px !important; font-weight:bold !important;">{{ $nombreModulo }}
                     </a>
             </li>
