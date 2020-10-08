@@ -154,4 +154,16 @@ $(document).ready(function() {
 function limpiarNotificaciones() {
     document.getElementById('alertIcon').textContent = 0;
     document.getElementById("marcoCountNotificaciones").style.display = 'none';
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: "updateStatusNotificaciones",
+        type: 'GET',
+        success: function(data) {
+            //console.log(data);
+        }
+    })
 }

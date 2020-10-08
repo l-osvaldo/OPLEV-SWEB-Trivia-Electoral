@@ -91,7 +91,7 @@
                 <li class="nav-item dropdown dropdown-notifications">
                     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" onclick="limpiarNotificaciones()">
                         <i data-count="0" class="far fa-bell"></i>
-                        <span class="badge badge-oplever navbar-badge" id="marcoCountNotificaciones" {{ $countNotificaciones == 0 ? 'style="display: none"' : '' }} ><span class="notif-count" id="alertIcon">{{ $countNotificaciones }}</span></span>
+                        <span class="badge badge-oplever navbar-badge" id="marcoCountNotificaciones"  style="{{ $countNotificaciones == '0' ? 'display: none' : '' }}" ><span class="notif-count" id="alertIcon">{{ $countNotificaciones }}</span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="width: 400px !important">
                         <span class="dropdown-item dropdown-header">Notificaciones (<span

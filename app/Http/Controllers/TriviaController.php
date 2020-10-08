@@ -29,8 +29,8 @@ class TriviaController extends Controller
 
             $usuario             = auth()->user();
             $nombreModulo        = "Gestión de usuarios de la aplicación móvil";
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             /* Veracruz */
 
@@ -123,8 +123,8 @@ class TriviaController extends Controller
 
             $usuario             = auth()->user();
             $nombreModulo        = "Estadísticas de los usuarios de la aplicación móvil";
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             /* Veracruz  */
 
@@ -370,8 +370,8 @@ class TriviaController extends Controller
             $usuariosApp         = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios      = count($usuariosApp);
             $distritos           = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -477,8 +477,8 @@ class TriviaController extends Controller
             $usuariosApp         = AppUser::where('estado', 'VERACRUZ')->get();
             $numeroUsuarios      = count($usuariosApp);
             $distritos           = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -595,8 +595,8 @@ class TriviaController extends Controller
             $usuariosApp         = AppUser::where('estado', '!=', 'VERACRUZ')->get();
             $numeroUsuarios      = count($usuariosApp);
             $estados             = Estado::all();
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -699,8 +699,8 @@ class TriviaController extends Controller
             $usuario             = auth()->user();
             $nombreModulo        = "Gestión de preguntas de la aplicación móvil";
             $preguntas           = Pregunta::all();
-            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-            $countNotificaciones = Notify::count();
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
 
             $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas', 'notificaciones', 'countNotificaciones'));
 
@@ -1582,7 +1582,13 @@ class TriviaController extends Controller
 
     public function scrollNotificaciones()
     {
-        $notificaciones = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+        $notificaciones = Notify::orderBy('id', 'DESC')->paginate(10);
         return view("trivia.notificaciones.template", compact("notificaciones"));
+    }
+
+    public function updateStatusNotificaciones()
+    {
+        $updateStatus = Notify::where('status', 1)->update(['status' => 0]);
+        return response()->json($updateStatus);
     }
 }

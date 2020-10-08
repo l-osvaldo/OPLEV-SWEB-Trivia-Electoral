@@ -73,6 +73,7 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::post('/HabilitarDeshabilitarPregunta', 'TriviaController@HabilitarDeshabilitarPregunta')->name('HabilitarDeshabilitarPregunta');
 
     Route::get('/scrollNotificaciones', 'TriviaController@scrollNotificaciones')->name('scrollNotificaciones');
+    Route::get('/updateStatusNotificaciones', 'TriviaController@updateStatusNotificaciones')->name('updateStatusNotificaciones');
 
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
