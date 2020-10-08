@@ -54,8 +54,9 @@
         </div>
     </footer>
     <!-- PROJECT JAVASCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script src="{{ asset('js/all.js') }}"></script>
-
+    
 </body>
 
 </html>

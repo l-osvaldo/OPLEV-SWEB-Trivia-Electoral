@@ -3,14 +3,12 @@
 namespace App\Events;
 
 use App\Notify;
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
+use Carbon\Carbon;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class MyEvent implements ShouldBroadcast
 {
@@ -25,17 +23,25 @@ class MyEvent implements ShouldBroadcast
 
     public function __construct(Notify $notify)
     {
-       $this->notify = $notify;
+        $fecha          = Carbon::parse($notify->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A');
+        $myObj          = new \stdClass();
+        $myObj->idUser  = encrypt_notify("trivia2020Notify", $notify->idUser);
+        $myObj->mensaje = encrypt_notify("trivia2020Notify", $notify->mensaje);
+        $myObj->email   = encrypt_notify("trivia2020Notify", $notify->email);
+        $myObj->nombre  = encrypt_notify("trivia2020Notify", $notify->nombre);
+        $myObj->fecha   = encrypt_notify("trivia2020Notify", $fecha);
+        $myJSON         = json_encode($myObj);
+        $this->notify   = $myJSON;
     }
 
     public function broadcastOn()
     {
-       return new PrivateChannel('example');
+        return new PrivateChannel('example');
     }
 
     public function broadcastAs()
     {
-       return ('example');
+        return ('example');
     }
 
 }

@@ -89,20 +89,48 @@
                 </li> --}}
                 <!------------------------------------------------------- ALERTA 4 ------------------------------------------------------->
                 <li class="nav-item dropdown dropdown-notifications">
-                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" onclick="limpiarNotificaciones()">
                         <i data-count="0" class="far fa-bell"></i>
-                        <span class="badge badge-oplever navbar-badge"><span class="notif-count"></span></span>
+                        <span class="badge badge-oplever navbar-badge" id="marcoCountNotificaciones" {{ $countNotificaciones == 0 ? 'style="display: none"' : '' }} ><span class="notif-count" id="alertIcon">{{ $countNotificaciones }}</span></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="width: 400px !important">
                         <span class="dropdown-item dropdown-header">Notificaciones (<span
-                                class="notif-count"></span>)</span>
+                                class="notif-count" id="alertIcon2">{{ $countNotificaciones }}</span>)</span>
                         <div class="test">
                             <div class="dropdown-divider"></div>
 
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
-                            Notificaciones</a>
+                        <div id="addNotify" class="" style="height:450px;overflow-y: scroll;">
+                            @foreach ($notificaciones as $notificacion)
+                                <div>
+                                    <a class="dropdown-item" style="padding: .1em !important;background:#efefef;">
+                                        <div class="media" style="margin: 0.5em 0;">
+                                            <div style="position: relative;text-align: center;" class="col-md-3">
+                                                <img src="../images/logoople.png" width="50" height="50" style="border-radius: 90px;border: solid 1px #DCDCDC;">
+                                            </div>
+                                            <div class="media-body">
+                                                <b class="dropdown-item-title" style="font-size: 13px !important;">
+                                                    {{ $notificacion->mensaje }}
+                                                </b>
+                                                <p style="font-size: 12px !important;" class="text-sm">
+                                                    {{ $notificacion->email }}
+                                                </p>
+                                                <p style="font-size: 10px !important;" class="text-sm text-muted">
+                                                    {{  $notificacion->nombre }}
+                                                </p>
+                                                <p style="font-size: 10px !important;" class="text-sm text-muted">
+                                                    {{ \Carbon\Carbon::parse($notificacion->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>                                
+                            @endforeach    
+                        </div>
+                        
+                        {{-- <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
+                            Notificaciones</a> --}}
                     </div>
                 </li>
                 <!-- logout -->

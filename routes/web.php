@@ -72,6 +72,8 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::post('/eliminarPregunta', 'TriviaController@eliminarPregunta')->name('eliminarPregunta');
     Route::post('/HabilitarDeshabilitarPregunta', 'TriviaController@HabilitarDeshabilitarPregunta')->name('HabilitarDeshabilitarPregunta');
 
+    Route::get('/scrollNotificaciones', 'TriviaController@scrollNotificaciones')->name('scrollNotificaciones');
+
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
 Route::get('/generar_sello', 'selloDigitalController@selloDigital')->name('generar_sello');

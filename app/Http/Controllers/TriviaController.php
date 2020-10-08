@@ -6,6 +6,7 @@ use App\AppUser;
 use App\Distrito;
 use App\Estado;
 use App\Municipio;
+use App\Notify;
 use App\Pregunta;
 use Auth;
 use Illuminate\Http\Request;
@@ -26,8 +27,10 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Gestión de usuarios de la aplicación móvil";
+            $usuario             = auth()->user();
+            $nombreModulo        = "Gestión de usuarios de la aplicación móvil";
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
             /* Veracruz */
 
@@ -105,7 +108,7 @@ class TriviaController extends Controller
             $porcentajeMujeresOEF = round($porcentajeMujeresOEF, 2);
             $porcentajeHombresOEF = round($porcentajeHombresOEF, 2);
 
-            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios', 'usuariosAppOEF', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'promedioMujeresOEF', 'promedioHombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estados'));
+            $vista = view('trivia.gestionUsuarios', compact('usuario', 'nombreModulo', 'usuariosApp', 'numeroUsuarios', 'mujeres', 'hombres', 'promedioMujeres', 'promedioHombres', 'porcentajeMujeres', 'porcentajeHombres', 'municipios', 'usuariosAppOEF', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'promedioMujeresOEF', 'promedioHombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estados', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -118,8 +121,10 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Estadísticas de los usuarios de la aplicación móvil";
+            $usuario             = auth()->user();
+            $nombreModulo        = "Estadísticas de los usuarios de la aplicación móvil";
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
             /* Veracruz  */
 
@@ -347,7 +352,7 @@ class TriviaController extends Controller
             $porcentajeMujeresOEF = round($porcentajeMujeresOEF, 3);
             $porcentajeHombresOEF = round($porcentajeHombresOEF, 3);
 
-            $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estadisticasOEF'));
+            $vista = view('trivia.usuariosDeLaApp', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeMujeres', 'porcentajeHombres', 'estadisticas', 'numeroUsuariosOEF', 'mujeresOEF', 'hombresOEF', 'porcentajeMujeresOEF', 'porcentajeHombresOEF', 'estadisticasOEF', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -360,11 +365,13 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas de los distritos electorales de la aplicación móvil";
-            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
-            $numeroUsuarios = count($usuariosApp);
-            $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
+            $usuario             = auth()->user();
+            $nombreModulo        = "Estadísticas de los distritos electorales de la aplicación móvil";
+            $usuariosApp         = AppUser::where('estado', 'VERACRUZ')->get();
+            $numeroUsuarios      = count($usuariosApp);
+            $distritos           = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -452,7 +459,7 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 2);
             $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.distritos', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'));
+            $vista = view('trivia.distritos', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -465,11 +472,13 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas de los municipios de la aplicación móvil";
-            $usuariosApp    = AppUser::where('estado', 'VERACRUZ')->get();
-            $numeroUsuarios = count($usuariosApp);
-            $distritos      = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
+            $usuario             = auth()->user();
+            $nombreModulo        = "Estadísticas de los municipios de la aplicación móvil";
+            $usuariosApp         = AppUser::where('estado', 'VERACRUZ')->get();
+            $numeroUsuarios      = count($usuariosApp);
+            $distritos           = Distrito::whereNotIn('numdto', [11, 15, 30])->get();
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -496,7 +505,7 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 2);
             $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.estadisticaPorMunicipios', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos'));
+            $vista = view('trivia.estadisticaPorMunicipios', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'mujeres', 'hombres', 'porcentajeHombres', 'porcentajeMujeres', 'distritos', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -581,11 +590,13 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario        = auth()->user();
-            $nombreModulo   = "Estadísticas de las entidades federativas de la aplicación móvil";
-            $usuariosApp    = AppUser::where('estado', '!=', 'VERACRUZ')->get();
-            $numeroUsuarios = count($usuariosApp);
-            $estados        = Estado::all();
+            $usuario             = auth()->user();
+            $nombreModulo        = "Estadísticas de las entidades federativas de la aplicación móvil";
+            $usuariosApp         = AppUser::where('estado', '!=', 'VERACRUZ')->get();
+            $numeroUsuarios      = count($usuariosApp);
+            $estados             = Estado::all();
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
             $hombres = 0;
             $mujeres = 0;
@@ -672,7 +683,7 @@ class TriviaController extends Controller
             $porcentajeMujeres = round($porcentajeMujeres, 2);
             $porcentajeHombres = round($porcentajeHombres, 2);
 
-            $vista = view('trivia.estadisticaPorEstados', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'hombres', 'mujeres', 'porcentajeHombres', 'porcentajeMujeres', 'estados'));
+            $vista = view('trivia.estadisticaPorEstados', compact('usuario', 'nombreModulo', 'numeroUsuarios', 'hombres', 'mujeres', 'porcentajeHombres', 'porcentajeMujeres', 'estados', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -685,11 +696,13 @@ class TriviaController extends Controller
     {
         if (Auth::check()) {
 
-            $usuario      = auth()->user();
-            $nombreModulo = "Gestión de preguntas de la aplicación móvil";
-            $preguntas    = Pregunta::all();
+            $usuario             = auth()->user();
+            $nombreModulo        = "Gestión de preguntas de la aplicación móvil";
+            $preguntas           = Pregunta::all();
+            $notificaciones      = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::count();
 
-            $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas'));
+            $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas', 'notificaciones', 'countNotificaciones'));
 
         } else {
             $vista = redirect()->route('login');
@@ -1565,5 +1578,11 @@ class TriviaController extends Controller
 
         $pdf = PDFS::loadView('trivia.PDF.reporteEstadosPDF', compact('usuario', 'numeroUsuarios', 'hombres', 'mujeres', 'porcentajeHombres', 'porcentajeMujeres', 'estados'))->setPaper('letter', 'portrait')->setOption('footer-html', $footer)->setOption('margin-bottom', '10');
         return $pdf->inline('Estadísticas - otras Entidades Federativas.pdf');
+    }
+
+    public function scrollNotificaciones()
+    {
+        $notificaciones = Notify::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+        return view("trivia.notificaciones.template", compact("notificaciones"));
     }
 }

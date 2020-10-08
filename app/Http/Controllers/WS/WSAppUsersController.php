@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\WS;
 
 use App\AppUser;
+use App\Events\MyEvent;
 use App\Http\Controllers\Controller;
 use App\Municipio;
+use App\Notify;
 use App\Pregunta;
 use App\Resultado;
 use Hash;
@@ -71,6 +73,16 @@ class WSAppUsersController extends Controller
                 'password'           => $usuario->password,
                 'score'              => $usuario->score,
                 'status'             => $usuario->status);
+
+            $notify          = new Notify();
+            $notify->idUser  = $usuario->id;
+            $notify->mensaje = "Nuevo usuario registrado";
+            $notify->email   = $usuario->email;
+            $notify->nombre  = $usuario->nombre;
+            $notify->save();
+
+            event(new MyEvent($notify));
+
         }
 
         return response()->json($data);

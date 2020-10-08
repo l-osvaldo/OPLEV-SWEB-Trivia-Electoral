@@ -41,3 +41,14 @@ function encrypt_decrypt($action, $string)
 
     return $output;
 }
+
+function encrypt_notify($password, $mensaje)
+{
+    $salt           = 'L%&li6@g^Ccs8h_+!0^m83EvK%Xq0eJby4|dosm!ArX?G#Be6b|v-nCV85OtThCjD^RatZhW_mRm18ccRcqbZGtp0S-VaUlWhGVF5uBbOryOp0I@H*y==#?Qw&jWnt8oy_r^dIvto#og2a87A#4j0G8cxXg=vMOwf$?0wZe-09TAAIAoJ=Gpub-Jv+hl!w+b+nfKVTCbxC4YulAfpcCT1a^WCF_Gh0ag4Z*ri=80%X5CvD=bMtQiP%dsk1!hSnA6';
+    $iv             = 'BC}R#{vQg)8p)!&a';
+    $iterations     = 999;
+    $key            = hash_pbkdf2("sha512", $password, $salt, $iterations, 64);
+    $encrypted_data = openssl_encrypt($mensaje, 'aes-256-cbc', hex2bin($key), OPENSSL_RAW_DATA, $iv);
+    $data           = array("ciphertext" => base64_encode($encrypted_data), "iv" => bin2hex($iv), "salt" => bin2hex($salt));
+    return json_encode($data);
+}
