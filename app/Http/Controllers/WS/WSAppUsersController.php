@@ -74,11 +74,13 @@ class WSAppUsersController extends Controller
                 'score'              => $usuario->score,
                 'status'             => $usuario->status);
 
-            $notify          = new Notify();
-            $notify->idUser  = $usuario->id;
-            $notify->mensaje = "Nuevo usuario registrado";
-            $notify->email   = $usuario->email;
-            $notify->nombre  = $usuario->nombre;
+            $notify            = new Notify();
+            $notify->idUser    = $usuario->id;
+            $notify->mensaje   = "Nuevo usuario registrado";
+            $notify->email     = $usuario->email;
+            $notify->nombre    = $usuario->nombre;
+            $notify->municipio = $usuario->municipio;
+            $notify->estado    = $usuario->estado;
             $notify->save();
 
             event(new MyEvent($notify));

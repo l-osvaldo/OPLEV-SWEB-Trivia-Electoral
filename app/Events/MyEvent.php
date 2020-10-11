@@ -23,15 +23,17 @@ class MyEvent implements ShouldBroadcast
 
     public function __construct(Notify $notify)
     {
-        $fecha          = Carbon::parse($notify->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A');
-        $myObj          = new \stdClass();
-        $myObj->idUser  = encrypt_notify("trivia2020Notify", $notify->idUser);
-        $myObj->mensaje = encrypt_notify("trivia2020Notify", $notify->mensaje);
-        $myObj->email   = encrypt_notify("trivia2020Notify", $notify->email);
-        $myObj->nombre  = encrypt_notify("trivia2020Notify", $notify->nombre);
-        $myObj->fecha   = encrypt_notify("trivia2020Notify", $fecha);
-        $myJSON         = json_encode($myObj);
-        $this->notify   = $myJSON;
+        $fecha            = Carbon::parse($notify->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A');
+        $myObj            = new \stdClass();
+        $myObj->idUser    = encrypt_notify("trivia2020Notify", $notify->idUser);
+        $myObj->mensaje   = encrypt_notify("trivia2020Notify", $notify->mensaje);
+        $myObj->email     = encrypt_notify("trivia2020Notify", $notify->email);
+        $myObj->nombre    = encrypt_notify("trivia2020Notify", $notify->nombre);
+        $myObj->municipio = encrypt_notify("trivia2020Notify", $notify->municipio);
+        $myObj->estado    = encrypt_notify("trivia2020Notify", $notify->estado);
+        $myObj->fecha     = encrypt_notify("trivia2020Notify", $fecha);
+        $myJSON           = json_encode($myObj);
+        $this->notify     = $myJSON;
     }
 
     public function broadcastOn()

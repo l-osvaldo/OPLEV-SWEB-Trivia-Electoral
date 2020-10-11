@@ -114,10 +114,10 @@
                                                     {{ $notificacion->mensaje }}
                                                 </b>
                                                 <p style="font-size: 12px !important;" class="text-sm">
-                                                    {{ $notificacion->email }}
+                                                    {{ $notificacion->nombre }}
                                                 </p>
                                                 <p style="font-size: 10px !important;" class="text-sm text-muted">
-                                                    {{  $notificacion->nombre }}
+                                                    {{  $notificacion->estado == 'VERACRUZ' ? $notificacion->municipio : $notificacion->estado}}
                                                 </p>
                                                 <p style="font-size: 10px !important;" class="text-sm text-muted">
                                                     {{ \Carbon\Carbon::parse($notificacion->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A') }}
