@@ -107,7 +107,7 @@
                                     <a class="dropdown-item" style="padding: .1em !important;background:#efefef;">
                                         <div class="media" style="margin: 0.5em 0;">
                                             <div style="position: relative;text-align: center;" class="col-md-3">
-                                                <img src="../images/logoople.png" width="50" height="50" style="border-radius: 90px;border: solid 1px #DCDCDC;">
+                                                <img src="{{ Request::path() == 'gestionUsuarios' || Request::path() == 'gestionPreguntas' ? 'images/logoople.png' : '../images/logoople.png'}}" width="50" height="50" style="border-radius: 90px;border: solid 1px #DCDCDC;">
                                             </div>
                                             <div class="media-body">
                                                 <b class="dropdown-item-title" style="font-size: 13px !important;">
@@ -128,10 +128,11 @@
                                 </div>                                
                             @endforeach    
                         </div>
-                        
-                        {{-- <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
-                            Notificaciones</a> --}}
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
+                            Notificaciones</a>
                     </div>
+                    
                 </li>
                 <!-- logout -->
                 <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
