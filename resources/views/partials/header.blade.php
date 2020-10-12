@@ -132,7 +132,7 @@
                         <a href="{{ route('notificaciones') }}" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
                             Notificaciones</a>
                     </div>
-                    
+                    key: {{ env('PUSHER_APP_KEY') }}
                 </li>
                 <!-- logout -->
                 <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""

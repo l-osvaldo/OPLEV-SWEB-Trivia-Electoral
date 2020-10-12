@@ -10,8 +10,9 @@ var notifications = notificationsWrapper.find('div.test');
 // }
 var key = pusherKey;
 console.log('key="' + key + '"');
+console.log(window.location.host);
 var pusher = new Pusher(key, {
-    authEndpoint: '/triviasw/authchannel',
+    authEndpoint: window.location.host == "trivia.test" ? '/authchannel' : '/triviasw/authchannel',
     auth: {
         headers: {
             'X-CSRF-Token': $("[name='csrf-token']").attr('content')
