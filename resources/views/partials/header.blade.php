@@ -132,13 +132,6 @@
                         <a href="{{ route('notificaciones') }}" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
                             Notificaciones</a>
                     </div>
-                    key: {{ env('PUSHER_APP_KEY') }}
-                    <br>
-                    {{ App::environment() }}
-                    <br>
-                    {{ env('APP_NAME') }}
-                    <br>
-                    {{ env('APP_ENV') }}
                 </li>
                 <!-- logout -->
                 <li class="nav-item dropdown" data-placement="left" data-toggle="tooltip" title=""
