@@ -13,7 +13,7 @@
     href="{{ request()->getSchemeAndHttpHost()=='http://trivia.test'? asset('../images/favicon.ico') : asset('public/images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-prefix" content="{{ url('/') }}">
-    <meta name="pusher-key" content="{{ env('PUSHER_APP_KEY') }}">
+    <meta name="pusher-key" content="d2c90ca77e813cbd6bbc">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
