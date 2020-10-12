@@ -119,6 +119,7 @@ $(document).ready(function() {
     $('#addNotify').scroll(function() {
         if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight && banderaNotificacioes) {
             banderaNotificacioes = false;
+            var url = window.location.host == "trivia.test" ? "/scrollNotificaciones?page=" : "/triviasw/scrollNotificaciones?page="
             //document.getElementBy("spinnerDiv").style.display = 'block';
             let col = document.createElement('div');
             var contenido = '<div style="padding: .1em !important;background:#efefef !important;text-align: center;" align="center" id="spinnerDiv' + pagina + '" class="classNotificacionSpinner">';
@@ -134,7 +135,7 @@ $(document).ready(function() {
                 }
             });
             $.ajax({
-                url: "/scrollNotificaciones?page=" + pagina,
+                url: url + pagina,
                 type: 'GET',
                 // data: {
                 //     page: pagina
