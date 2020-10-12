@@ -117,7 +117,7 @@
                                                     {{ $notificacion->nombre }}
                                                 </p>
                                                 <p style="font-size: 10px !important;" class="text-sm text-muted">
-                                                    {{  $notificacion->estado == 'VERACRUZ' ? $notificacion->municipio : $notificacion->estado}}
+                                                    {{  $notificacion->estado == 'VERACRUZ' ? 'Mpio: '.$notificacion->municipio : 'Ent. Fed.: '.$notificacion->estado}}
                                                 </p>
                                                 <p style="font-size: 10px !important;" class="text-sm text-muted">
                                                     {{ \Carbon\Carbon::parse($notificacion->created_at)->format('l, d \d\e F \d\e\l Y \| g:i A') }}
@@ -129,7 +129,7 @@
                             @endforeach    
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
+                        <a href="{{ route('notificaciones') }}" class="dropdown-item dropdown-footer" style="color:#594b57;">Ver Todas las
                             Notificaciones</a>
                     </div>
                     

@@ -629,6 +629,12 @@
                 <p>Gestión de usuarios</p>
               </a>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="{{ route('notificaciones') }}" class="textSideOption nav-link {!! Request::is('notificaciones') ? 'active activeOn' : '' !!}">
+                <i class="fas fa-bell" aria-hidden="true"></i>
+                <p>Notificaciones</p>
+              </a>
+            </li>
             <li class="nav-item has-treeview {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') || Request::is('estadisticas/municipios') || Request::is('estadisticas/estados') ? 'menuOpen menu-open' : '' !!}">
               <a href="#" class="textSideOption nav-link {!! Request::is('estadisticas/usuariosAPP') || Request::is('estadisticas/distritos') || Request::is('estadisticas/municipios') || Request::is('estadisticas/estados')  ? 'active activeOn' : '' !!}">
                 <i class="far fa-chart-bar"></i> 

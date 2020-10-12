@@ -75,6 +75,8 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::get('/scrollNotificaciones', 'TriviaController@scrollNotificaciones')->name('scrollNotificaciones');
     Route::get('/updateStatusNotificaciones', 'TriviaController@updateStatusNotificaciones')->name('updateStatusNotificaciones');
 
+    Route::get('/notificaciones', 'TriviaController@notificaciones')->name('notificaciones');
+
 });
 Route::post('/destroy_document', 'PDFController@destroy_document')->name('destroy_document');
 Route::get('/generar_sello', 'selloDigitalController@selloDigital')->name('generar_sello');

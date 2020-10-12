@@ -117,6 +117,26 @@ class TriviaController extends Controller
         return $vista;
     }
 
+    public function notificaciones()
+    {
+        if (Auth::check()) {
+
+            $usuario             = auth()->user();
+            $nombreModulo        = "Notificaciones";
+            $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
+            $countNotificaciones = Notify::where('status', 1)->count();
+            $allNotificaciones   = Notify::orderBy('id', 'DESC')->get();
+            $numeroUsuarios      = AppUser::count();
+
+            $vista = view('trivia.notificaciones', compact('usuario', 'nombreModulo', 'notificaciones', 'countNotificaciones', 'allNotificaciones', 'numeroUsuarios'));
+
+        } else {
+            $vista = redirect()->route('login');
+        }
+
+        return $vista;
+    }
+
     public function usuariosAPP()
     {
         if (Auth::check()) {
