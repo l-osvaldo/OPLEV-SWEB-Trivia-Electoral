@@ -8,7 +8,7 @@
   </a>
 
       <!-- Sidebar user panel (optional) -->
-    <div class="user-panel d-flex text-center o-img-fondo mb-3">
+    <div class="user-panel d-flex text-center o-img-fondo mb-3" style="background: url('{{ asset('images/backu.png') }}')   !important; background-size: cover !important; background-repeat: no-repeat !important; background-position-y: bottom !important;">
       
       <div class="nav-header col-md-12 o-nombre-usuario">
        <i class="fas fa-user-circle o-icon-usuario"></i><br>
