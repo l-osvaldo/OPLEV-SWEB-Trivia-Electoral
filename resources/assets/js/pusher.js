@@ -69,7 +69,7 @@ privateChannel.bind('example', function(data) {
     var contenido = '<a class="dropdown-item" style="padding: .1em !important;background:#efefef;">';
     contenido += '<div class="media" style="margin: 0.5em 0;">';
     contenido += '<div style="position: relative;text-align: center;" class="col-md-3">';
-    contenido += '<img src="../images/logoople.png" width="50" height="50" style="border-radius: 90px;border: solid 1px #DCDCDC;">'
+    contenido += '<img src="{{ asset("images/logoople.png") }}" width="50" height="50" style="border-radius: 90px;border: solid 1px #DCDCDC;">'
     //contenido +=                      decrypt_notify('trivia2020Notify', datanot.mensaje);
     contenido += '</div>';
     contenido += '<div class="media-body">';
