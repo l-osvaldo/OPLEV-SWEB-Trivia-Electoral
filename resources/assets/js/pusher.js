@@ -11,7 +11,7 @@ var notifications = notificationsWrapper.find('div.test');
 var key = pusherKey;
 console.log('key="' + key + '"');
 var pusher = new Pusher(key, {
-    authEndpoint: '/authchannel',
+    authEndpoint: '/triviasw/authchannel',
     auth: {
         headers: {
             'X-CSRF-Token': $("[name='csrf-token']").attr('content')
