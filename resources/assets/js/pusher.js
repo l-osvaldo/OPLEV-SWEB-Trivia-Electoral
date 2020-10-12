@@ -9,8 +9,9 @@ var notifications = notificationsWrapper.find('div.test');
 //     notificationsWrapper.hide();
 // }
 var key = pusherKey;
+console.log('key="' + key + '"');
 var pusher = new Pusher(key, {
-    authEndpoint: 'http://test.oplever.org.mx/triviasw/authchannel',
+    authEndpoint: '/authchannel',
     auth: {
         headers: {
             'X-CSRF-Token': $("[name='csrf-token']").attr('content')
