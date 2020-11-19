@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+	Jenssegers\Date\DateServiceProvider::class,
 
     ],
 
@@ -231,7 +232,7 @@ return [
         'PDFS'         => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage'  => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Pusher'       => Pusher\Pusher::class,
-
+	'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

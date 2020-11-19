@@ -230,7 +230,9 @@ class TriviaController extends Controller
             }
 
             for ($i = 0; $i < count($estadisticas); $i++) {
-                $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+                if ($estadisticas[$i]['Usuarios'] > 0){
+			$estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+		}
                 if ($estadisticas[$i]['porcentaje'] > 0) {
                     $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
                 }
@@ -343,7 +345,9 @@ class TriviaController extends Controller
             }
 
             for ($i = 0; $i < count($estadisticasOEF); $i++) {
-                $estadisticasOEF[$i]['porcentaje'] = $estadisticasOEF[$i]['Usuarios'] * 100 / $numeroUsuariosOEF;
+		if ($estadisticasOEF[$i]['Usuarios'] > 0){
+                	$estadisticasOEF[$i]['porcentaje'] = $estadisticasOEF[$i]['Usuarios'] * 100 / $numeroUsuariosOEF;
+		}
                 if ($estadisticasOEF[$i]['porcentaje'] > 0) {
                     $estadisticasOEF[$i]['porcentaje'] = round($estadisticasOEF[$i]['porcentaje'], 2);
                 }
