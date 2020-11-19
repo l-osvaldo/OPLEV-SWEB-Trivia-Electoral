@@ -884,7 +884,9 @@ class TriviaController extends Controller
         }
 
         for ($i = 0; $i < count($estadisticas); $i++) {
-            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            if ($estadisticas[$i]['Usuarios'] > 0){
+	    	$estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+	    }
             if ($estadisticas[$i]['porcentaje'] > 0) {
                 $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
             }
@@ -946,7 +948,9 @@ class TriviaController extends Controller
         }
 
         for ($i = 0; $i < count($estadisticas); $i++) {
-            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+       	    if ($estadisticas[$i]['Usuarios'] > 0){    
+		$estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+	    }
             if ($estadisticas[$i]['porcentaje'] > 0) {
                 $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
             }
@@ -1131,7 +1135,9 @@ class TriviaController extends Controller
         }
 
         for ($i = 0; $i < count($estadisticas); $i++) {
-            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            if ($estadisticas[$i]['Usuarios'] > 0){
+		$estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+	    }
             if ($estadisticas[$i]['porcentaje'] > 0) {
                 $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
             }
@@ -1254,7 +1260,9 @@ class TriviaController extends Controller
         }
 
         for ($i = 0; $i < count($estadisticas); $i++) {
-            $estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+            if ($estadisticas[$i]['Usuarios'] > 0){
+		$estadisticas[$i]['porcentaje'] = $estadisticas[$i]['Usuarios'] * 100 / $numeroUsuarios;
+	    }
             if ($estadisticas[$i]['porcentaje'] > 0) {
                 $estadisticas[$i]['porcentaje'] = round($estadisticas[$i]['porcentaje'], 2);
             }
