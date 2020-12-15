@@ -8,16 +8,19 @@ class Pregunta extends Model
 {
     protected $fillable = [
         'id',
+        'idrubro',
+        'rubro',
+        'idsubrubro',
+        'subrubro',
+        'etiquetas',
         'pregunta',
         'opcion_a',
         'opcion_b',
         'opcion_c',
-        'opcion_d',
         'respuesta',
-        'rubro',
-        'subrubro',
-        'etiquetas',
+        'complemento_error',
         'version',
         'status',
+        'status_error',
     ];
 }

@@ -15,14 +15,22 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('idrubro')->unsigned();
+            $table->string('rubro', 100);
+            $table->integer('idsubrubro')->unsigned();
+            $table->string('subrubro', 50);
+            $table->string('etiquetas', 150);
             $table->string('pregunta', 900);
             $table->string('opcion_a', 300);
             $table->string('opcion_b', 300);
             $table->string('opcion_c', 300);
-            $table->string('opcion_d', 300);
             $table->string('respuesta', 5);
+            $table->string('complemento_error', 250);
+            $table->integer('version')->default(1);
             $table->integer('status')->default(1)->unsigned();
+            $table->integer('status_error')->default(1)->unsigned();
             $table->timestamps();
+
         });
     }
 

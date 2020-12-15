@@ -157,7 +157,7 @@ class WSAppUsersController extends Controller
 
     public function allPreguntas()
     {
-        $allPreguntas = Pregunta::select('id', 'pregunta', 'opcion_a', 'opcion_b', 'opcion_c', 'opcion_d', 'respuesta', 'rubro', 'subrubro', 'etiquetas', 'version', 'numero_respuestas')->where('status', 1)->get();
+        $allPreguntas = Pregunta::where('status', 1)->get();
         return response()->json($allPreguntas);
     }
 
@@ -212,5 +212,17 @@ class WSAppUsersController extends Controller
         $updateScore->save();
 
         return response()->json($updateScore);
+    }
+
+    public function notificarErrorPregunta(Request $request)
+    {
+        $id = $request->id;
+
+        $updateError = Pregunta::find($id);
+
+        $updateError->status_error = 1;
+        $updateError->save();
+
+        return response()->json($updateError);
     }
 }
