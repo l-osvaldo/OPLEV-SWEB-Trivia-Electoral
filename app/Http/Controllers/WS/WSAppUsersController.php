@@ -276,13 +276,10 @@ class WSAppUsersController extends Controller
 
     public function cambiarPass(Request $request)
     {
-        $id   = $request->id;
-        $pass = $request->pass;
+        $email = $request->email;
+        $pass  = bcrypt($request->pass);
 
-        $updatePass = AppUser::find($id);
-
-        $updatePass->password = bcrypt($pass);
-        $updatePass->save();
+        $updatePass = AppUser::where('email', $email)->update(['password' => $pass]);
 
         return response()->json($updatePass);
 
