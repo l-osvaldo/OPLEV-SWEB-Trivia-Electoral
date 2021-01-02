@@ -225,4 +225,66 @@ class WSAppUsersController extends Controller
 
         return response()->json($updateError);
     }
+
+    public function temas()
+    {
+        $p = Pregunta::select('etiquetas')->get();
+
+        $pruena = [
+        ];
+        $bandera = true;
+        foreach ($p as $value) {
+            $temas = explode(",", $value->etiquetas);
+
+            for ($i = 0; $i < count($temas); $i++) {
+                // if ($bandera == false) {
+                //     return array_search($temas[$i], $pruena);
+                // }
+                // if ($bandera) {
+                //     $id   = count($pruena) + 1;
+                //     $name = [
+                //         'id' => $id, 'tema' => $temas[$i],
+                //     ];
+                //     array_push($pruena, $name);
+                //     $bandera = false;
+                // }
+
+                $temas[$i] = mb_strtoupper($temas[$i]);
+
+                if (!in_array($temas[$i], $pruena)) {
+                    //return response()->json($temas[$i]);
+
+                    array_push($pruena, $temas[$i]);
+
+                }
+
+            }
+        }
+        $pruena2 = [
+        ];
+        foreach ($pruena as $value) {
+            $id   = count($pruena2) + 1;
+            $name = [
+                'id' => $id, 'tema' => $value,
+            ];
+
+            array_push($pruena2, $name);
+        }
+
+        return response()->json($pruena2);
+    }
+
+    public function cambiarPass(Request $request)
+    {
+        $id   = $request->id;
+        $pass = $request->pass;
+
+        $updatePass = AppUser::find($id);
+
+        $updatePass->password = bcrypt($pass);
+        $updatePass->save();
+
+        return response()->json($updatePass);
+
+    }
 }

@@ -87,7 +87,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::get('/ws/AllMunicipios', 'WS\WSAppUsersController@AllMunicipios');
             Route::post('/ws/UpdateScoreAppUser', 'WS\WSAppUsersController@UpdateScoreAppUser');
             Route::post('/ws/notificarErrorPregunta', 'WS\WSAppUsersController@notificarErrorPregunta');
-
+            Route::get('/ws/temas', 'WS\WSAppUsersController@temas');
+            Route::get('/ws/updatePassword', 'WS\WSAppUsersController@cambiarPass');
         });
 
     }
