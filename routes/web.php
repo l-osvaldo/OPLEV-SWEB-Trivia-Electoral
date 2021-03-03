@@ -71,6 +71,9 @@ Route::group(['middleware' => 'disablepreventback'], function () {
     Route::post('/editarPregunta', 'TriviaController@editarPregunta')->name('editarPregunta');
     Route::post('/eliminarPregunta', 'TriviaController@eliminarPregunta')->name('eliminarPregunta');
     Route::post('/HabilitarDeshabilitarPregunta', 'TriviaController@HabilitarDeshabilitarPregunta')->name('HabilitarDeshabilitarPregunta');
+    Route::post('/actualizarBaseDeDatosApp', 'TriviaController@actualizarBaseDeDatosApp')->name('actualizarBaseDeDatosApp');
+
+    
 
     Route::get('/scrollNotificaciones', 'TriviaController@scrollNotificaciones')->name('scrollNotificaciones');
     Route::get('/updateStatusNotificaciones', 'TriviaController@updateStatusNotificaciones')->name('updateStatusNotificaciones');

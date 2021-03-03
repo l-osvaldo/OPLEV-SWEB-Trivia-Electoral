@@ -27,18 +27,29 @@
 </section>
 
 <section class="content">
-    <div align="left" class="margin-b">
+    {{-- <div align="left" class="margin-b">
         <button class="btn btn-danger o-fondo-1" data-target="#modalNuevaPregunta" data-toggle="modal" type="button">
             <i class="fas fa-plus">
             </i>
             Nueva Pregunta
         </button>
+    </div> --}}
+    <div class="row">
+        <div class="col-sm-4">
+            <button class="btn btn-danger o-fondo-1" type="button" {{ $actualizar_banco > 0 ? '' : 'disabled' }} id="btnActualizarBancoPreguntas" onclick="actualizarBaseDeDatosApp()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                Actualizar banco de preguntas de la aplicación móvil
+            </button>
+        </div>
     </div>
-    <div class="card borde-ople">
+    <div class="card borde-ople" style="margin-top: 15px;">
         <div class="card-body">
             <table class="table table-striped table-bordered" id="dataTablePreguntas" style="width:100%">
                 <thead>
                     <tr>
+                        <th>
+                            #
+                        </th>
                         <th>
                             Pregunta
                         </th>
@@ -51,17 +62,20 @@
                         <th>
                             Opción C
                         </th>
-                        <th>
+                        {{-- <th>
                             Opción D
-                        </th>
+                        </th> --}}
                         <th>
                             Respuesta
                         </th>
                         <th>
                             Rubro/Subrubro
                         </th>
-                        <th>
+                        {{-- <th>
                             Etiquetas
+                        </th> --}}
+                        <th>
+                            Complemento
                         </th>
                         <th>
                             Estatus
@@ -74,6 +88,9 @@
                 <tbody>
                     @foreach ($preguntas as $pregunta)
                         <tr>
+                            <td align="center">
+                                {{ $pregunta->id }}
+                            </td>
                             <td>
                                 {{ $pregunta->pregunta }}
                             </td>
@@ -86,17 +103,20 @@
                             <td>
                                 {{ $pregunta->opcion_c }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $pregunta->opcion_d }}
-                            </td>
-                            <td>
+                            </td> --}}
+                            <td align="center">
                                 {{ $pregunta->respuesta }}
                             </td>
                             <td>
                                 {{ $pregunta->rubro }}/{{ $pregunta->subrubro }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $pregunta->etiquetas }}
+                            </td> --}}
+                            <td>
+                                {{ $pregunta->complemento_error }}
                             </td>
                             <td align="center" class="middletd">
                                 <button class="btn {{ $pregunta->status === 1 ? 'btn-success' : 'btn-danger' }} btn-sm btn-style estatusBtn" data-id="{{ encrypt_decrypt('encrypt',$pregunta->id) }}" data-status="{{ $pregunta->status }}">
@@ -111,7 +131,7 @@
                                     </button>
                                     <div aria-labelledby="dropdownMenuButton" class="dropdown-menu dropmenuPersonalizado2">
                                         <div aria-label="Basic example" class="btn-group" role="group">
-                                            <button class="btn btn-success btn-acciones" data-id="{{ encrypt_decrypt('encrypt',$pregunta->id) }}" data-pregunta="{{ $pregunta->pregunta }}" data-opca ="{{ $pregunta->opcion_a }}" data-opcb ="{{ $pregunta->opcion_b }}" data-opcc ="{{ $pregunta->opcion_c }}" data-opcd ="{{ $pregunta->opcion_d }}" data-respuesta="{{ $pregunta->respuesta }}" data-target="#modalEditarPregunta" data-toggle="modal">
+                                            <button class="btn btn-success btn-acciones" data-id="{{ encrypt_decrypt('encrypt',$pregunta->id) }}" data-pregunta="{{ $pregunta->pregunta }}" data-opca ="{{ $pregunta->opcion_a }}" data-opcb ="{{ $pregunta->opcion_b }}" data-opcc ="{{ $pregunta->opcion_c }}" data-opcd ="{{ $pregunta->opcion_d }}" data-respuesta="{{ $pregunta->respuesta }}" data-complemento="{{ $pregunta->complemento_error }}" data-target="#modalEditarPregunta" data-toggle="modal">
                                                 <a data-placement="top" data-toggle="tooltip" href="#" style="color: #fff;" title="Editar Pregunta">
                                                     <i class="fas fa-pen">
                                                     </i>
@@ -375,7 +395,7 @@
 
     {{-- Modal para editar preguntas --}}
     <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalEditarPregunta">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content card-primary card-outline">
                 <div class="modal-header o-fondo-2">
                     <h4 class="modal-title">
@@ -402,7 +422,7 @@
                                     </i>
                                 </span>
                             </div>
-                            <textarea autocomplete="off" class="form-control validacion-o" data-inputname="Pregunta" data-type="advancedText" id="preguntaEditar" maxlength="500" minlength="5" name="preguntaEditar" placeholder="Pregunta" rows="3"></textarea>
+                            <textarea autocomplete="off" class="form-control validacion-o" data-inputname="Pregunta" data-type="advancedText" id="preguntaEditar" maxlength="900" minlength="5" name="preguntaEditar" placeholder="Pregunta" rows="3"></textarea>
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="far">
@@ -430,8 +450,8 @@
                                     </i>
                                 </span>
                             </div>
-                            <input autocomplete="off" class="form-control validacion-o" data-inputname="Opción A" data-type="mediumText" id="opcion_a_editar" maxlength="50" minlength="3" name="opcion_a_editar" placeholder="Opción A" type="text">
-                            </input>
+                            <textarea autocomplete="off" class="form-control validacion-o" data-inputname="Opción A" data-type="advancedText" id="opcion_a_editar" maxlength="300" minlength="3" name="opcion_a_editar" placeholder="Opción A" type="text" rows="3"></textarea>
+                            
                             <div class="boxMesNum">
                                 <div class="errorMessage" id="error-opcion_a_editar"></div>
                                 <div class="stringNumber" id="string-opcion_a_editar">
@@ -448,8 +468,7 @@
                                     </i>
                                 </span>
                             </div>
-                            <input autocomplete="off" class="form-control validacion-o" data-inputname="Opción B" data-type="mediumText" id="opcion_b_editar" maxlength="50" minlength="3" name="opcion_b_editar" placeholder="Opción B" type="text">
-                            </input>
+                            <textarea autocomplete="off" class="form-control validacion-o" data-inputname="Opción B" data-type="advancedText" id="opcion_b_editar" maxlength="300" minlength="3" name="opcion_b_editar" placeholder="Opción B" type="text" rows="3"></textarea>
                             <div class="boxMesNum">
                                 <div class="errorMessage" id="error-opcion_b_editar"></div>
                                 <div class="stringNumber" id="string-opcion_b_editar">
@@ -466,8 +485,7 @@
                                     </i>
                                 </span>
                             </div>
-                            <input autocomplete="off" class="form-control validacion-o" data-inputname="Opción C" data-type="mediumText" id="opcion_c_editar" maxlength="50" minlength="3" name="opcion_c_editar" placeholder="Opción C" type="text">
-                            </input>
+                            <textarea  autocomplete="off" class="form-control validacion-o" data-inputname="Opción C" data-type="advancedText" id="opcion_c_editar" maxlength="300" minlength="3" name="opcion_c_editar" placeholder="Opción C" type="text" rows="3"></textarea>
                             <div class="boxMesNum">
                                 <div class="errorMessage" id="error-opcion_c_editar"></div>
                                 <div class="stringNumber" id="string-opcion_c_editar">
@@ -476,7 +494,28 @@
                             </div>
                         </div>
 
+                        <label class="o-form-label" for="evento_fecha">
+                            Complemento:
+                        </label>
+
                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="">
+                                        C
+                                    </i>
+                                </span>
+                            </div>
+                            <textarea  autocomplete="off" class="form-control validacion-o" data-inputname="Complemento" data-type="advancedText" id="complemento_error_editar" maxlength="250" minlength="3" name="complemento_error_editar" placeholder="Complemento" type="text" rows="3"></textarea>
+                            <div class="boxMesNum">
+                                <div class="errorMessage" id="error-complemento_error_editar"></div>
+                                <div class="stringNumber" id="string-complemento_error_editar">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="">
@@ -492,47 +531,50 @@
                                     0
                                 </div>
                             </div>
+                        </div> --}}
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="o-form-label" for="evento_fecha">
+                                    Respuesta correcta:
+                                </label>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-reply"></i>
+                                        </span>
+                                    </div>
+                                    <select autocomplete="off" class="form-control validacion-o" data-inputname="Respuesta correcta" data-type="list" id="respuestaEditar" name="fache" placeholder="lista">
+                                        <option disabled="" selected="" value="">
+                                            Selecciona la respuesta correcta
+                                        </option>
+                                        <option value="a">
+                                            A
+                                        </option>
+                                        <option value="b">
+                                            B
+                                        </option>
+                                        <option value="c">
+                                            C
+                                        </option>
+                                    </select>
+                                    <div class="boxMesNum">
+                                        <div class="errorMessage" id="error-respuestaEditar"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <label class="o-form-label" for="evento_fecha">
-                            Respuesta correcta:
-                        </label>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-reply"></i>
-                                </span>
-                            </div>
-                            <select autocomplete="off" class="form-control validacion-o" data-inputname="Respuesta correcta" data-type="list" id="respuestaEditar" name="fache" placeholder="lista">
-                                <option disabled="" selected="" value="">
-                                    Selecciona la respuesta correcta
-                                </option>
-                                <option value="a">
-                                    A
-                                </option>
-                                <option value="b">
-                                    B
-                                </option>
-                                <option value="c">
-                                    C
-                                </option>
-                                <option value="d">
-                                    D
-                                </option>
-                            </select>
-                            <div class="boxMesNum">
-                                <div class="errorMessage" id="error-respuestaEditar"></div>
-                            </div>
-                        </div>
+                                
                         
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button class="btn btn-default" data-dismiss="modal" type="button">
                             Cerrar
                         </button>                        
-                        <button class="btn btn-primary btn-submit-o o-fondo-1" data-form="formePreguntaEditar" type="button" id="btnCrearEmpleado" onclick="editarPregunta(event)">
-                            Guardar
+                        <button class="btn btn-primary btn-submit-o o-fondo-1" data-form="formePreguntaEditar" type="button" id="btnEditarPregunta" onclick="editarPregunta(event)">
+                            Actualizar
                         </button> 
                     </div>
                 </form>

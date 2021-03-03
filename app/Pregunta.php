@@ -22,5 +22,6 @@ class Pregunta extends Model
         'version',
         'status',
         'status_error',
+        'actualizar_banco',
     ];
 }

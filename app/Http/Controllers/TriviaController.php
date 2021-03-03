@@ -726,7 +726,9 @@ class TriviaController extends Controller
             $notificaciones      = Notify::orderBy('id', 'DESC')->paginate(10);
             $countNotificaciones = Notify::where('status', 1)->count();
 
-            $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas', 'notificaciones', 'countNotificaciones'));
+            $actualizar_banco = Pregunta::where('actualizar_banco',1)->count();
+
+            $vista = view('trivia.gestionDePreguntas', compact('usuario', 'nombreModulo', 'preguntas', 'notificaciones', 'countNotificaciones','actualizar_banco'));
 
         } else {
             $vista = redirect()->route('login');
@@ -759,8 +761,10 @@ class TriviaController extends Controller
         $updatePregunta->opcion_a  = $resquest->opcion_a;
         $updatePregunta->opcion_b  = $resquest->opcion_b;
         $updatePregunta->opcion_c  = $resquest->opcion_c;
-        $updatePregunta->opcion_d  = $resquest->opcion_d;
+        $updatePregunta->complemento_error  = $resquest->complemento;
         $updatePregunta->respuesta = $resquest->respuesta;
+        $updatePregunta->actualizar_banco = 1;
+
         $updatePregunta->save();
 
         return response()->json($updatePregunta);
@@ -1622,5 +1626,19 @@ class TriviaController extends Controller
     {
         $updateStatus = Notify::where('status', 1)->update(['status' => 0]);
         return response()->json($updateStatus);
+    }
+
+    public function actualizarBaseDeDatosApp(Request $request)
+    {
+        $version = pregunta::select('version')->get();
+
+        $version2 = $version[0]->version + 1;
+
+        Pregunta::query()->update([
+            'version'           => $version2,
+            'actualizar_banco'  => 0,
+        ]);
+
+        return response()->json(1);
     }
 }

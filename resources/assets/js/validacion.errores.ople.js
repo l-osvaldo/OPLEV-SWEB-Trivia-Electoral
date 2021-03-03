@@ -381,47 +381,47 @@ let messagesErrVjs = {
     'formePreguntaEditar': {
         ////////////////////////////////////////////////////////////////////////////formejemplo-1
         'preguntaEditar': {
-            required: 'El campo {{INPUTNAME}} es requerido.',
-            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-            number: 'No se permiten números en el campo {{INPUTNAME}}.',
-            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+            required: 'La {{INPUTNAME}} es obligatoria.',
+            type: 'Ingrese solo texto para la {{INPUTNAME}}.',
+            number: 'No se permiten números en la {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro de la {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para la {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para la {{INPUTNAME}} es {{MAXLENGTH}}.'
         },
         'opcion_a_editar': {
-            required: 'El campo {{INPUTNAME}} es requerido.',
-            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-            number: 'No se permiten números en el campo {{INPUTNAME}}.',
-            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+            required: 'La {{INPUTNAME}} es obligatoria.',
+            type: 'Ingrese solo texto para la {{INPUTNAME}}.',
+            number: 'No se permiten números en la {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro de la {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para la {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para la {{INPUTNAME}} es {{MAXLENGTH}}.'
         },
         'opcion_b_editar': {
-            required: 'El campo {{INPUTNAME}} es requerido.',
-            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-            number: 'No se permiten números en el campo {{INPUTNAME}}.',
-            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+            required: 'La {{INPUTNAME}} es obligatoria.',
+            type: 'Ingrese solo texto para la {{INPUTNAME}}.',
+            number: 'No se permiten números en la {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro de la {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para la {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para la {{INPUTNAME}} es {{MAXLENGTH}}.'
         },
         'opcion_c_editar': {
-            required: 'El campo {{INPUTNAME}} es requerido.',
-            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-            number: 'No se permiten números en el campo {{INPUTNAME}}.',
-            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+            required: 'La {{INPUTNAME}} es obligatoria.',
+            type: 'Ingrese solo texto para la {{INPUTNAME}}.',
+            number: 'No se permiten números en la {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro de la {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para la {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para la {{INPUTNAME}} es {{MAXLENGTH}}.'
         },
-        'opcion_d_editar': {
-            required: 'El campo {{INPUTNAME}} es requerido.',
-            type: 'Ingrese solo texto para el campo {{INPUTNAME}}.',
-            number: 'No se permiten números en el campo {{INPUTNAME}}.',
-            match: 'No se permiten números o caracteres especiales dentro del campo {{INPUTNAME}}.',
-            minlength: 'El número mínimo de caracteres para el campo {{INPUTNAME}} es {{MINLENGTH}}.',
-            maxlength: 'El número máximo de caracteres para el campo {{INPUTNAME}} es {{MAXLENGTH}}.'
+        'complemento_error_editar': {
+            required: 'La {{INPUTNAME}} es obligatoria.',
+            type: 'Ingrese solo texto para la {{INPUTNAME}}.',
+            number: 'No se permiten números en la {{INPUTNAME}}.',
+            match: 'No se permiten números o caracteres especiales dentro de la {{INPUTNAME}}.',
+            minlength: 'El número mínimo de caracteres para la {{INPUTNAME}} es {{MINLENGTH}}.',
+            maxlength: 'El número máximo de caracteres para la {{INPUTNAME}} es {{MAXLENGTH}}.'
         },
         'respuestaEditar': {
-            required: 'El campo {{INPUTNAME}} es requerido.'
+            required: 'La {{INPUTNAME}} es obligatoria.'
         },
     },
     'formeUsuariosAPPEditar': {

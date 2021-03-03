@@ -154,9 +154,12 @@ $(document).ready(function() {
             "sheetName": "Lista de preguntas"
         }],
         "columnDefs": [{
-            "width": '30%',
+            "width": '3%',
             "targets": 0
-        }],
+        }, {
+            "width": '20%',
+            "targets": 1
+        }, ],
     });
 });
 $(document).ready(function() {
