@@ -756,6 +756,8 @@ class TriviaController extends Controller
     {
         $id = encrypt_decrypt('decrypt', $resquest->id);
 
+        //dd ($resquest->opcion_a, $resquest->opcion_b, $resquest->opcion_c);
+
         $updatePregunta            = Pregunta::find($id);
         $updatePregunta->pregunta  = $resquest->pregunta;
         $updatePregunta->opcion_a  = $resquest->opcion_a;

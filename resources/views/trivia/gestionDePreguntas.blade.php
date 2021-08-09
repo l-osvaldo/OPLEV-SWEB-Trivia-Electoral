@@ -300,17 +300,14 @@
                                         <option disabled="" selected="" value="">
                                             Selecciona la respuesta correcta
                                         </option>
-                                        <option value="a">
+                                        <option value="A">
                                             A
                                         </option>
-                                        <option value="b">
+                                        <option value="B">
                                             B
                                         </option>
-                                        <option value="c">
+                                        <option value="C">
                                             C
-                                        </option>
-                                        <option value="d">
-                                            D
                                         </option>
                                     </select>
                                     <div class="boxMesNum">
@@ -549,13 +546,13 @@
                                         <option disabled="" selected="" value="">
                                             Selecciona la respuesta correcta
                                         </option>
-                                        <option value="a">
+                                        <option value="A">
                                             A
                                         </option>
-                                        <option value="b">
+                                        <option value="B">
                                             B
                                         </option>
-                                        <option value="c">
+                                        <option value="C">
                                             C
                                         </option>
                                     </select>
