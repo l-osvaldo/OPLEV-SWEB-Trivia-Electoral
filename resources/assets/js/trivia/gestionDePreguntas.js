@@ -137,7 +137,7 @@ $('#modalEditarPregunta').on('show.bs.modal', function(event) {
     var complemento = data.data('complemento');
     var respuesta = data.data('respuesta');
     var etiquetas = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5", "Etiqueta6"];
-    //console.log(respuesta);
+    console.log(respuesta);
     //
     document.getElementById('editPreguntaId').value = id;
     document.getElementById('preguntaEditar').value = pregunta;
@@ -145,7 +145,7 @@ $('#modalEditarPregunta').on('show.bs.modal', function(event) {
     document.getElementById('opcion_b_editar').value = opc_b;
     document.getElementById('opcion_c_editar').value = opc_c;
     document.getElementById('complemento_error_editar').value = complemento;
-    document.getElementById('respuestaEditar').value = respuesta.toLowerCase();
+    document.getElementById('respuestaEditar').value = respuesta;
     //
     document.getElementById('preguntaEditar').classList.add("is-valid");
     document.getElementById('opcion_a_editar').classList.add("is-valid");
