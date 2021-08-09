@@ -396,7 +396,7 @@ function validaInput(e) {
             case 'advancedText':
                 var required = this.value.length === 0 && messagesErrVjs[this.form.getAttribute('id')][this.getAttribute('id')].required != undefined ? true : false;
                 var type = typeof this.value === 'string' ? true : false;
-                var match = /^[a-zA-Z Ññ,áéíóúÁÉÍÓÚ_-¡!¿?.;:0-9!()#"]+$/.test(this.value);
+                var match = /^[a-zA-Z Ññ,áéíóúÁÉÍÓÚ_-¡!¿?.;:0-9!()#/"]+$/.test(this.value);
                 var minLength = this.value.length >= parseInt(this.getAttribute('minLength'), 10) ? true : false;
                 var maxLength = this.value.length <= parseInt(this.getAttribute('maxlength'), 10) ? true : false;
                 document.getElementById('string-' + this.getAttribute('id')) ? document.getElementById('string-' + this.getAttribute('id')).textContent = this.getAttribute('maxlength') - this.value.length : '';
