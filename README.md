@@ -41,7 +41,7 @@ Clona la plantilla con el nombre de tu nuevo proyecto dentro del directorio **co
 
 ```
 $ cd code
-$ git clone https://github.com/l-osvaldo/OPLEV-SWEB-Inventario.git nuevo-proyecto
+$ git clone https://github.com/l-osvaldo/OPLEV-SWEB-Trivia-Electoral.git nuevo-proyecto
 ```
 
 Agrega la rutas del proyecto y su base de datos a Homestead:
