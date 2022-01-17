@@ -29,6 +29,7 @@ class CreatePreguntasTable extends Migration
             $table->integer('version')->default(1);
             $table->integer('status')->default(1)->unsigned();
             $table->integer('status_error')->default(1)->unsigned();
+            $table->integer('actualizar_banco')->default(0)->unsigned();
             $table->timestamps();
 
         });

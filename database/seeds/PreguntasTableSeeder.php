@@ -17,7 +17,6 @@ class PreguntasTableSeeder extends Seeder
         $pregunta->opcion_a  = 'opc_a';
         $pregunta->opcion_b  = 'opc_b';
         $pregunta->opcion_c  = 'opc_c';
-        $pregunta->opcion_d  = 'opc_d';
         $pregunta->respuesta = 'b';
         $pregunta->save();
 
@@ -26,7 +25,6 @@ class PreguntasTableSeeder extends Seeder
         $pregunta->opcion_a  = 'opc_a';
         $pregunta->opcion_b  = 'opc_b';
         $pregunta->opcion_c  = 'opc_c';
-        $pregunta->opcion_d  = 'opc_d';
         $pregunta->respuesta = 'a';
         $pregunta->save();
 
@@ -35,7 +33,6 @@ class PreguntasTableSeeder extends Seeder
         $pregunta->opcion_a  = 'opc_a';
         $pregunta->opcion_b  = 'opc_b';
         $pregunta->opcion_c  = 'opc_c';
-        $pregunta->opcion_d  = 'opc_d';
         $pregunta->respuesta = 'c';
         $pregunta->save();
     }
